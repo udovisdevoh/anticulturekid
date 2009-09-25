@@ -5,6 +5,10 @@ using System.Text;
 
 namespace AntiCulture.Kid
 {
+    /// <summary>
+    /// This class is used to remove implicity connections that make no sens
+    /// by removing explicit connections on which they are based
+    /// </summary>
     class FlatPurifier
     {
         #region Fields
@@ -115,6 +119,14 @@ namespace AntiCulture.Kid
             return null;
         }
 
+        /// <summary>
+        /// We get some randomly chosen implicit connection that are being
+        /// obstructed by another connection
+        /// </summary>
+        /// <param name="subject">subject concept to perform selection on</param>
+        /// <returns>randomly chosen implicit connection that are being
+        /// obstructed by another connection (these implicit connection are
+        /// about subject concept)</returns>
         private List<Concept> GetSomeArbitraryObstructableFlatConnection(Concept subject)
         {
             Concept verb;
@@ -141,6 +153,11 @@ namespace AntiCulture.Kid
             return null;
         }
 
+        /// <summary>
+        /// We try to find the most obstructable implicit connections
+        /// </summary>
+        /// <param name="subject">subject concept to perform selection on</param>
+        /// <returns>most obstructable implicit connections about subject</returns>
         private List<Concept> GetMostObstructableFlatConnection(Concept subject)
         {
             List<Concept> mostObstructableConnection = null;
