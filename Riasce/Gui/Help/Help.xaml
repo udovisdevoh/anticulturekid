@@ -1,0 +1,24 @@
+﻿<UserControl x:Class="AntiCulture.Kid.Help"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ScrollViewer>
+        <RichTextBox Name="richTextBoxHelp" IsReadOnly="True">
+            <RichTextBox.Resources>
+                <Style TargetType="Span" x:Key="H2">
+                    <Setter Property="FontSize" Value="17"/>
+                </Style>
+                <Style TargetType="Paragraph" x:Key="Summary">
+                    <Setter Property="FontSize" Value="11"/>
+                </Style>
+                <Style TargetType="Paragraph" x:Key="Syntax">
+                    <Setter Property="FontSize" Value="11"/>
+                </Style>
+                <Style TargetType="Paragraph">
+                    <Setter Property="Margin" Value="12"/>
+                </Style>
+            </RichTextBox.Resources>
+            <FlowDocument>
+            </FlowDocument>
+        </RichTextBox>
+    </ScrollViewer>
+</UserControl>
