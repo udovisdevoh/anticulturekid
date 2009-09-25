@@ -8,6 +8,13 @@ namespace AntiCulture.Kid
     class SerialBackgroundThinker : AbstractBackgroundThinker
     {
         #region Constructors
+        /// <summary>
+        /// Create a serial background thinker
+        /// </summary>
+        /// <param name="purifier">purifier</param>
+        /// <param name="theorizer">theorizer</param>
+        /// <param name="repairer">repairer</param>
+        /// <param name="rejectedTheories">rejected theories</param>
         public SerialBackgroundThinker(Purifier purifier, Theorizer theorizer, Repairer repairer, RejectedTheories rejectedTheories)
         {
             this.purifier = purifier;
@@ -71,6 +78,10 @@ namespace AntiCulture.Kid
         #endregion
 
         #region Private Methods
+        /// <summary>
+        /// Theorize and remember random theory about concept
+        /// </summary>
+        /// <param name="conceptToThinkAbout">concept to think about</param>
         private void TheorizeAndRememberRandomTheoryAbout(Concept conceptToThinkAbout)
         {
             Theory theory = null;
