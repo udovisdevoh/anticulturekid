@@ -97,8 +97,7 @@
     <Compile Include="Ai\Brain\Memory\EpisodicMemory\Memento\SpecializedMementos\MetaOperationMemento.cs" />
     <Compile Include="Ai\Brain\Memory\EpisodicMemory\Memento\SpecializedMementos\OperationMemento.cs" />
     <Compile Include="Ai\Brain\Memory\EpisodicMemory\Memento\SpecializedMementos\StringMemento.cs" />
-    <Compile Include="Ai\Brain\BackgroundThinker\Purifier\FlatPurifier\AbstractFlatPurifier.cs" />
-    <Compile Include="Ai\Brain\BackgroundThinker\Purifier\FlatPurifier\Implementation\FlatPurifier.cs" />
+    <Compile Include="Ai\Brain\BackgroundThinker\Purifier\FlatPurifier.cs" />
     <Compile Include="Ai\Brain\BackgroundThinker\Purifier\OptimizedPurifier\AbstractOptimizedPurifier.cs" />
     <Compile Include="Ai\Brain\BackgroundThinker\Purifier\OptimizedPurifier\Implementation\OptimizedPurifier.cs" />
     <Compile Include="Ai\Brain\BackgroundThinker\Purifier\Trauma\AbstractTrauma.cs" />
