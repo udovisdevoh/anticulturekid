@@ -5,7 +5,7 @@ using System.Text;
 
 namespace AntiCulture.Kid
 {
-    class FlatPurifier : AbstractFlatPurifier
+    class FlatPurifier
     {
         #region Fields
         private ConnectionManager connectionManager;
@@ -22,7 +22,14 @@ namespace AntiCulture.Kid
         #endregion
 
         #region Public Methods
-        public override Trauma Purify(Concept concept)
+        /// <summary>
+        /// Remove inconsistant FLAT connections from concept
+        /// For instance, cat isa animal, cat contradict animal, isa cant contradict
+        /// Ooops! Do we keep cat isa animal or do we keep cat contradict animal?
+        /// </summary>
+        /// <param name="concept">concept to repair</param>
+        /// <returns>Trauma object about removed connections</returns>
+        public Trauma Purify(Concept concept)
         {
             //loop:
             //  repair the concept
@@ -61,9 +68,13 @@ namespace AntiCulture.Kid
                 return null;
             }
         }
-        #endregion
 
-        #region Private Methods
+        /// <summary>
+        /// Return the most obstructable connection for provided concept, but look deep in flat connections
+        /// </summary>
+        /// <param name="subject">provided concept</param>
+        /// <param name="flatConnectionSource">source flat connection for which obstruction can be found</param>
+        /// <returns>If most obstructable connection has obstruction, return obstructable connection, else: null</returns>
         public override List<Concept> GetMostObstructableConnection(Concept subject, out List<Concept> flatConnectionSource)
         {
             //flatConnectionSource = GetMostObstructableFlatConnection(subject);
@@ -79,7 +90,9 @@ namespace AntiCulture.Kid
 
             return GetFirstOptimizedArgument(proof);
         }
+        #endregion
 
+        #region Private Methods
         /// <summary>
         /// From proof, returns the first argument that is an optimized connection
         /// </summary>
