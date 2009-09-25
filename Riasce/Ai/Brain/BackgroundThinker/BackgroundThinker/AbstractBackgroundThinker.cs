@@ -7,8 +7,9 @@ using System.Threading;
 namespace AntiCulture.Kid
 {
     /// <summary>
-    /// This class represents abstract thinkers and how they are used
-    /// by other classes
+    /// This class represents abstract thinkers and how they are used by other classes
+    /// It is the common implementation of all possible background thinker
+    /// Which is a composite class of all background procedures (theories, repairs)
     /// </summary>
     abstract class AbstractBackgroundThinker
     {

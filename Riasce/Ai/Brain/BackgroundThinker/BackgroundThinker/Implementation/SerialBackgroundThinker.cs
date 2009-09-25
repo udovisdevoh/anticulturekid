@@ -5,6 +5,9 @@ using System.Text;
 
 namespace AntiCulture.Kid
 {
+    /// <summary>
+    /// This abstract class represents a serial background thinker (no parallel programming)
+    /// </summary>
     class SerialBackgroundThinker : AbstractBackgroundThinker
     {
         #region Constructors
