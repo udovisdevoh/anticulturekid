@@ -1,0 +1,55 @@
+﻿<Window x:Class="Riasce.CategoryExtractorViewer"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    ResizeMode="NoResize"
+    Title="Category Extractor"
+    Width="800" Height="600">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="32"></RowDefinition>
+            <RowDefinition Height="32"></RowDefinition>
+            <RowDefinition Height="24"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="24"></RowDefinition>
+            <RowDefinition Height="88"></RowDefinition>
+            <RowDefinition Height="32"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="96"></ColumnDefinition>
+            <ColumnDefinition Width="224"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        
+        <Button Name="buttonSelectSourceFile" Click="buttonSelectSourceFile_Click" Grid.Row="0" Margin="5">Source file</Button>
+        <TextBlock Name="textBlockSourceFile" Grid.Row="0" Grid.Column="1" Margin="5" FontStyle="Italic">please select a source file...</TextBlock>
+        
+        <Button Name="buttonSelectCheckListFile" Click="buttonSelectCheckListFile_Click" Grid.Row="1" Margin="5">Check list file</Button>
+        <TextBlock Name="textBlockCheckListFile" Grid.Row="1" Grid.Column="1" Margin="5" FontStyle="Italic">please select a check list file...</TextBlock>
+        
+        <Label Margin="5,0,0,0" Grid.Row="2" Grid.ColumnSpan="2">List of concepts affected by general description for category:</Label>
+        <TextBlock Name="textBlockCategoryName" Grid.Row="2" Grid.Column="2"/>
+        
+        <Button Click="buttonStart_Click" Name="buttonStart" Grid.Row="0" Grid.Column="2" Margin="5">Start</Button>
+        
+        <Border Grid.Row="3" Grid.ColumnSpan="3" BorderThickness="2" BorderBrush="Gray" Margin="5">
+            <ScrollViewer>
+                <ListBox Name="listBoxConcept" BorderThickness="0"/>
+            </ScrollViewer>
+        </Border>
+        
+        <Label Margin="5,0,0,0" Grid.Row="4" Grid.ColumnSpan="3">Type general affectation for category members (for instance: isa plant madeof wood): </Label>
+        <Border Grid.Row="5" Grid.ColumnSpan="3" BorderThickness="2" BorderBrush="Gray" Margin="5">
+            <ScrollViewer>
+                <TextBox Name="textBoxGeneralAffectation" BorderThickness="0"/>
+            </ScrollViewer>
+        </Border>
+        
+        <StackPanel Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="4" Orientation="Horizontal">
+            <Button Click="buttonPrevious_Click" Name="buttonPrevious" Margin="5" Padding="40,0">Previous</Button>
+            <Button Click="buttonNext_Click" Name="buttonNext" Margin="5" Padding="40,0">Next</Button>
+            <Button Click="buttonApply_Click" Name="buttonApply" Margin="5" Padding="40,0">Apply</Button>
+            <Button Click="buttonIgnore_Click" Name="buttonIgnore" Margin="5" Padding="20,0">Ignore permenantly</Button>
+            <Button Click="buttonClose_Click" Name="buttonClose" Margin="5" Padding="40,0">Close</Button>
+        </StackPanel>
+    </Grid>
+</Window>

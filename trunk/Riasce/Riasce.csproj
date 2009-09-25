@@ -1,0 +1,422 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{3796AA35-DC7B-41DF-A296-2B45DAF6496B}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>AntiCulture.Kid</RootNamespace>
+    <AssemblyName>Riasce</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <StartupObject>AntiCulture.Kid.Program</StartupObject>
+    <ApplicationIcon>Gui\MainWindow\RiasceIcon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="PresentationCore">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="PresentationFramework">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="ReachFramework">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Printing">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="UIAutomationProvider">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsFormsIntegration">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Ai\Ai\Ai.cs" />
+    <Compile Include="Ai\Answerer\Alterator\Alterator.cs" />
+    <Compile Include="Ai\Answerer\Answerer\Answerer.cs" />
+    <Compile Include="Ai\Answerer\DefinitionBuilder\DefinitionBuilder.cs" />
+    <Compile Include="Ai\Brain\AiSqlWrapper\ConditionBuilder\ConditionBuilder.cs" />
+    <Compile Include="Ai\Brain\AiSqlWrapper\ConditionBuilder\ConditionException.cs" />
+    <Compile Include="Ai\Brain\AiSqlWrapper\ConditionBuilder\Condition\ArgumentPrototype.cs" />
+    <Compile Include="Ai\Brain\AiSqlWrapper\ConditionBuilder\Condition\Condition.cs" />
+    <Compile Include="Ai\Brain\BackgroundThinker\Theorizer\LinguisticTheorizer\AbstractLinguisticTheorizer.cs" />
+    <Compile Include="Ai\Brain\BackgroundThinker\Theorizer\LinguisticTheorizer\Implementation\LinguisticTheorizer.cs" />
+    <Compile Include="Ai\Brain\BackgroundThinker\Theorizer\PhoneticTheorizer\AbstractPhoneticTheorizer.cs" />
+    <Compile Include="Ai\Brain\BackgroundThinker\Theorizer\PhoneticTheorizer\Implementation\PhoneticTheorizer.cs" />
+    <Compile Include="Ai\Brain\Brain\Brain.cs" />
+    <Compile Include="Ai\Brain\DefinitionMaker\AbstractDefinitionMaker.cs" />
+    <Compile Include="Ai\Brain\DefinitionMaker\DefinitionException.cs" />
+    <Compile Include="Ai\Brain\DefinitionMaker\Implementation\DefinitionMaker.cs" />
+    <Compile Include="Ai\Brain\ImplyConnectionManager\AbstractImplyConnectionManager.cs" />
+    <Compile Include="Ai\Brain\ImplyConnectionManager\ImplyConnectionException.cs" />
+    <Compile Include="Ai\Brain\ImplyConnectionManager\Implementation\ImplyConnectionManager.cs" />
+    <Compile Include="Ai\Brain\Memory\Concept\ExplyConnectionTree\AbstractImplyConnectionTree.cs" />
+    <Compile Include="Ai\Brain\Memory\Concept\ExplyConnectionTree\Implementation\ImplyConnectionTree.cs" />
+    <Compile Include="Ai\Brain\Memory\Concept\TotologyException.cs" />
+    <Compile Include="Ai\Brain\Memory\EpisodicMemory\Memento\SpecializedMementos\ListStringAndConceptMemento.cs" />
+    <Compile Include="Ai\Brain\Memory\EpisodicMemory\Memento\SpecializedMementos\MetaOperationMemento.cs" />
+    <Compile Include="Ai\Brain\Memory\EpisodicMemory\Memento\SpecializedMementos\OperationMemento.cs" />
+    <Compile Include="Ai\Brain\Memory\EpisodicMemory\Memento\SpecializedMementos\StringMemento.cs" />
+    <Compile Include="Ai\Brain\BackgroundThinker\Purifier\FlatPurifier\AbstractFlatPurifier.cs" />
+    <Compile Include="Ai\Brain\BackgroundThinker\Purifier\FlatPurifier\Implementation\FlatPurifier.cs" />
+    <Compile Include="Ai\Brain\BackgroundThinker\Purifier\OptimizedPurifier\AbstractOptimizedPurifier.cs" />
+    <Compile Include="Ai\Brain\BackgroundThinker\Purifier\OptimizedPurifier\Implementation\OptimizedPurifier.cs" />
+    <Compile Include="Ai\Brain\BackgroundThinker\Purifier\Trauma\AbstractTrauma.cs" />
+    <Compile Include="Ai\Brain\BackgroundThinker\Purifier\Trauma\Implementation\Trauma.cs" />
+    <Compile Include="Ai\Brain\Repairer\Flattenizer\Flattenizer\FlattenizationException.cs" />
+    <Compile Include="Ai\Brain\Memory\Concept\Concept\AbstractConcept.cs" />
+    <Compile Include="Ai\Brain\Memory\Concept\Concept\Implementation\Concept.cs" />
+    <Compile Include="Ai\Brain\Memory\Concept\ConnectionBranch\ConnectionBranch\AbstractConnectionBranch.cs" />
+    <Compile Include="Ai\Brain\Memory\Concept\ConnectionBranch\ConnectionBranch\Implementation\ConnectionBranch.cs" />
+    <Compile Include="Ai\Brain\Repairer\Flattenizer\Flattenizer\AbstractFlattenizer.cs" />
+    <Compile Include="Ai\Brain\Repairer\Flattenizer\Flattenizer\Implementation\Flattenizer.cs" />
+    <Compile Include="Ai\Brain\Memory\Concept\ConnectionBranch\Proof\AbstractProof.cs" />
+    <Compile Include="Ai\Brain\Memory\Concept\ConnectionBranch\Proof\Implementation\Proof.cs" />
+    <Compile Include="Ai\Brain\Memory\Memory\AbstractMemory.cs" />
+    <Compile Include="Ai\Brain\Memory\Memory\Implementation\Memory.cs" />
+    <Compile Include="Ai\Brain\Memory\Concept\MetaConnectionTree\AbstractMetaConnectionTree.cs" />
+    <Compile Include="Ai\Brain\Memory\Concept\MetaConnectionTree\Implementation\MetaConnectionTree.cs" />
+    <Compile Include="Ai\Brain\Memory\Memory\MemoryException.cs" />
+    <Compile Include="Ai\Brain\MetaConnectionManager\MetaConnectionManager\AbstractMetaConnectionManager.cs" />
+    <Compile Include="Ai\Brain\MetaConnectionManager\MetaConnectionManager\Implementation\MetaConnectionManager.cs" />
+    <Compile Include="Ai\Brain\MetaConnectionManager\MetaConnectionManager\MetaConnectionException.cs" />
+    <Compile Include="Ai\Brain\ConnectionManager\AbstractConnectionManager.cs" />
+    <Compile Include="Ai\Brain\ConnectionManager\Implementation\ConnectionManager.cs" />
+    <Compile Include="Ai\Brain\Repairer\Flattenizer\VerbMetaConnectionCache\AbstractVerbConnectionCache.cs" />
+    <Compile Include="Ai\Brain\Repairer\Flattenizer\VerbMetaConnectionCache\Implementation\VerbConnectionCache.cs" />
+    <Compile Include="Ai\Brain\Repairer\Optimizer\AbstractOptimizer.cs" />
+    <Compile Include="Ai\Brain\Repairer\Optimizer\Implementation\Optimizer.cs" />
+    <Compile Include="Ai\Brain\Repairer\Optimizer\OptimizationException.cs" />
+    <Compile Include="Ai\Brain\MetaConnectionManager\MetaConnectionFlattenizer\AbstractMetaConnectionFlattenizer.cs" />
+    <Compile Include="Ai\Brain\MetaConnectionManager\MetaConnectionFlattenizer\Implementation\MetaConnectionFlattenizer.cs" />
+    <Compile Include="Ai\Brain\Repairer\Repairer\AbstractRepairer.cs" />
+    <Compile Include="Ai\Brain\Repairer\Repairer\Implementation\Repairer.cs" />
+    <Compile Include="Ai\Brain\Aliaser\Destroyer\Destroyer.cs" />
+    <Compile Include="Ai\Brain\Aliaser\Destroyer\DestructionException.cs" />
+    <Compile Include="Ai\Brain\Aliaser\Aliaser.cs" />
+    <Compile Include="Ai\Brain\Aliaser\Assimilator\Assimilator.cs" />
+    <Compile Include="Ai\Brain\Aliaser\Assimilator\AssimilationException.cs" />
+    <Compile Include="Ai\Brain\BackgroundThinker\Purifier\Purifier\AbstractPurifier.cs" />
+    <Compile Include="Ai\Brain\BackgroundThinker\Purifier\PurificationException.cs" />
+    <Compile Include="Ai\Brain\BackgroundThinker\Purifier\Purifier\Implementation\Purifier.cs" />
+    <Compile Include="Ai\Brain\Asker\AskingException.cs" />
+    <Compile Include="Ai\Brain\Asker\Asker.cs" />
+    <Compile Include="Ai\Brain\Analogizer\Analogizer.cs" />
+    <Compile Include="Ai\Brain\Analogizer\AnalogyException.cs" />
+    <Compile Include="Ai\Brain\Analogizer\Analogy.cs" />
+    <Compile Include="Ai\Brain\BrotherHoodManager\BrotherHoodManager\AbstractBrotherHoodManager.cs" />
+    <Compile Include="Ai\Brain\BrotherHoodManager\BrotherHoodManager\Implementation\BrotherHoodManager.cs" />
+    <Compile Include="Ai\Brain\StatMaker\StatInfo\StatInfo.cs" />
+    <Compile Include="Ai\Brain\StatMaker\Stat\Stat.cs" />
+    <Compile Include="Ai\Conversation\AbstractConversation.cs" />
+    <Compile Include="Ai\Conversation\Implementation\Conversation.cs" />
+    <Compile Include="Ai\Answerer\DefinitionSorter\AbstractDefinitionSorter.cs" />
+    <Compile Include="Ai\Answerer\DefinitionSorter\Implementation\DefinitionSorter.cs" />
+    <Compile Include="Ai\Answerer\DefinitionSorter\Implementation\SortableComplementInfo.cs" />
+    <Compile Include="Ai\Answerer\DefinitionSorter\Implementation\SortableDefinitionElement.cs" />
+    <Compile Include="Ai\Answerer\DefinitionSorter\SortingException.cs" />
+    <Compile Include="Ai\Instinct\Ego\Ego.cs" />
+    <Compile Include="Ai\SaverLoader\MemoryDump\ConceptInfo.cs" />
+    <Compile Include="Ai\SaverLoader\MemoryDump\ConditionInfo.cs" />
+    <Compile Include="Ai\SaverLoader\MemoryDump\ConnectionTheoryInfo.cs" />
+    <Compile Include="Ai\SaverLoader\MemoryDump\MemoryDump\AbstractMemoryDump.cs" />
+    <Compile Include="Ai\SaverLoader\MemoryDump\MemoryDump\Implementation\MemoryDump.cs" />
+    <Compile Include="Ai\SaverLoader\MemoryDump\MetaConnectionTheoryInfo.cs" />
+    <Compile Include="Ai\Brain\Memory\EpisodicMemory\EpisodicMemory\AbstractEpisodicMemory.cs" />
+    <Compile Include="Ai\Brain\Memory\EpisodicMemory\EpisodicMemory\Implementation\EpisodicMemory.cs" />
+    <Compile Include="Ai\Brain\Memory\EpisodicMemory\Memento\AbstractMemento.cs" />
+    <Compile Include="Ai\Brain\Memory\EpisodicMemory\Memento\SpecializedMementos\StatementMemento.cs" />
+    <Compile Include="Ai\Brain\BackgroundThinker\BackgroundThinker\AbstractBackgroundThinker.cs" />
+    <Compile Include="Ai\Brain\BackgroundThinker\BackgroundThinker\Implementation\SerialBackgroundThinker.cs" />
+    <Compile Include="Ai\Brain\BackgroundThinker\TheoryMemory\TheoryList\AbstractTheoryList.cs" />
+    <Compile Include="Ai\Brain\BackgroundThinker\TheoryMemory\TheoryList\Implementation\TheoryList.cs" />
+    <Compile Include="Ai\Brain\BackgroundThinker\TheoryMemory\TheoryMemory\AbstractTheoryMemory.cs" />
+    <Compile Include="Ai\Brain\BackgroundThinker\TheoryMemory\TheoryMemory\Implementation\TheoryMemory.cs" />
+    <Compile Include="ExternalModules\Linguistics\PhoneticMatrixManager\AbstractPhoneticMatrixManager.cs" />
+    <Compile Include="ExternalModules\Linguistics\PhoneticMatrixManager\Implementation\PhoneticMatrixExtractor.cs" />
+    <Compile Include="Gui\AutoComplete\AutoCompleteModel\AutoCompleteModel\Implementation\AutoCompleteModelBinarySearch.cs" />
+    <Compile Include="Gui\AutoComplete\AutoCompleteModel\DisambiguationNamer\AbstractDisambiguationNamer.cs" />
+    <Compile Include="Gui\AutoComplete\AutoCompleteModel\DisambiguationNamer\Implementation\DisambiguationNamer.cs" />
+    <Compile Include="Gui\AutoComplete\AutoCompleteModel\AutoCompleteModel\AbstractAutoCompleteModel.cs" />
+    <Compile Include="Gui\AutoComplete\AutoCompleteViewer\AutoCompleteViewer.xaml.cs">
+      <DependentUpon>AutoCompleteViewer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Gui\AutoComplete\AutoComplete\AbstractAutoComplete.cs" />
+    <Compile Include="Gui\AutoComplete\AutoComplete\Implementation\AutoComplete.cs" />
+    <Compile Include="Gui\AutoComplete\RegexMatcher\AbstractRegexMatcher.cs" />
+    <Compile Include="Gui\AutoComplete\RegexMatcher\Implementation\RegexMatcher.cs" />
+    <Compile Include="Gui\CommandHistory\AbstractCommandHistory.cs" />
+    <Compile Include="Gui\CommandHistory\Implementation\CommandHistory.cs" />
+    <Compile Include="Ai\FeelingMonitor\FeelingMonitor.cs" />
+    <Compile Include="Gui\Help\Help.xaml.cs">
+      <DependentUpon>Help.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Gui\MemoryTreeView\MemoryTreeViewItem\MemoryTreeViewItem.cs" />
+    <Compile Include="Gui\MemoryTreeView\MemoryTreeView\MemoryTreeView.xaml.cs">
+      <DependentUpon>MemoryTreeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Gui\Visualizer\StringEventArgs.cs" />
+    <Compile Include="Gui\Visualizer\PictureCache\AbstractPictureCache.cs" />
+    <Compile Include="Gui\Visualizer\PictureCache\Implementation\PictureCache.cs" />
+    <Compile Include="Gui\Visualizer\VisualizerHistory\AbstractVisualizerHistory.cs" />
+    <Compile Include="Gui\Visualizer\VisualizerHistory\Implementation\VisualizerHistory.cs" />
+    <Compile Include="Gui\Visualizer\VisualizerViewer\ColorMaker\AbstractColorMaker.cs" />
+    <Compile Include="Gui\Visualizer\VisualizerViewer\ColorMaker\Implementation\ColorMaker.cs" />
+    <Compile Include="ExternalModules\Linguistics\Matrix\AbstractMatrix.cs" />
+    <Compile Include="ExternalModules\Linguistics\Matrix\Implementation\Matrix.cs" />
+    <Compile Include="ExternalModules\Linguistics\SemanticLikenessMatrixBuilder\AbstractSemanticLikenessMatrixBuilder.cs" />
+    <Compile Include="ExternalModules\Linguistics\SemanticLikenessMatrixBuilder\Implementation\SemanticLikenessMatrixBuilder.cs" />
+    <Compile Include="ExternalModules\Linguistics\WordMatrixExtractor\AbstractWordMatrixExtractor.cs" />
+    <Compile Include="ExternalModules\Linguistics\WordMatrixExtractor\Implementation\WordMatrixExtractor.cs" />
+    <Compile Include="ExternalModules\Linguistics\XmlMatrixSaverLoader\AbstractXmlMatrixSaverLoader.cs" />
+    <Compile Include="ExternalModules\Linguistics\XmlMatrixSaverLoader\Implementation\XmlMatrixSaverLoader.cs" />
+    <Compile Include="ExternalModules\Markov\Markov\Markov.cs" />
+    <Compile Include="ExternalModules\Markov\LetterMatrix\AbstractLetterMatrix.cs" />
+    <Compile Include="ExternalModules\Markov\LetterMatrix\Implementation\LetterMatrix.cs" />
+    <Compile Include="Name.cs" />
+    <Compile Include="Gui\MainWindow\MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Ai\NameMapper\AbstractNameMapper.cs" />
+    <Compile Include="Ai\NameMapper\Implementation\NameMapper.cs" />
+    <Compile Include="Ai\NameMapper\NameMappingException.cs" />
+    <Compile Include="Ai\Instinct\AbstractInstinct.cs" />
+    <Compile Include="Ai\Instinct\StandardInstinct\StandardInstinct.cs" />
+    <Compile Include="Ai\Brain\ConnectionManager\ConnectionException.cs" />
+    <Compile Include="Ai\Brain\Repairer\Reciprocator\AbstractReciprocator.cs" />
+    <Compile Include="Ai\Brain\Repairer\Reciprocator\Implementation\Reciprocator.cs" />
+    <Compile Include="Ai\Brain\Repairer\Reciprocator\ReciprocatorException.cs" />
+    <Compile Include="Ai\Brain\Teacher\AbstractTeacher.cs" />
+    <Compile Include="Ai\Brain\Teacher\Implementation\Teacher.cs" />
+    <Compile Include="Ai\Brain\Teacher\TeachingException.cs" />
+    <Compile Include="CollectionSampling.cs" />
+    <Compile Include="Ai\Brain\BrotherHoodManager\BrotherHoodSet\BrotherHoodSet\AbstractBrotherHoodSet.cs" />
+    <Compile Include="Ai\Brain\BrotherHoodManager\BrotherHoodSet\BrotherHoodSet\Implementation\BrotherHoodSet.cs" />
+    <Compile Include="Ai\Brain\BrotherHoodManager\BrotherHoodSet\BrotherHood\AbstractBrotherHood.cs" />
+    <Compile Include="Ai\Brain\BrotherHoodManager\BrotherHoodSet\BrotherHood\Implementation\BrotherHood.cs" />
+    <Compile Include="Ai\Brain\BackgroundThinker\Theorizer\ConnectionTheorizer\ConnectionTheorizer\AbstractConnectionTheorizer.cs" />
+    <Compile Include="Ai\Brain\BackgroundThinker\Theorizer\ConnectionTheorizer\ConnectionTheorizer\Implementation\ConnectionTheorizer.cs" />
+    <Compile Include="Ai\Brain\BackgroundThinker\Theorizer\MetaConnectionTheorizer\MctFromConnection\AbstractMctFromConnection.cs" />
+    <Compile Include="Ai\Brain\BackgroundThinker\Theorizer\MetaConnectionTheorizer\MctFromConnection\Implementation\MctFromConnection.cs" />
+    <Compile Include="Ai\Brain\BackgroundThinker\Theorizer\MetaConnectionTheorizer\MctFromMetaConnection\AbstractMctFromMetaConnection.cs" />
+    <Compile Include="Ai\Brain\BackgroundThinker\Theorizer\MetaConnectionTheorizer\MctFromMetaConnection\Implementation\MctFromMetaConnection.cs" />
+    <Compile Include="Ai\Brain\BackgroundThinker\Theorizer\MetaConnectionTheorizer\MetaConnectionTheorizer\AbstractMetaConnectionTheorizer.cs" />
+    <Compile Include="Ai\Brain\BackgroundThinker\Theorizer\MetaConnectionTheorizer\MetaConnectionTheorizer\Implementation\MetaConnectionTheorizer.cs" />
+    <Compile Include="Ai\Brain\BackgroundThinker\Theorizer\RejectedTheories\AbstractRejectedTheories.cs" />
+    <Compile Include="Ai\Brain\BackgroundThinker\Theorizer\RejectedTheories\Implementation\RejectedTheories.cs" />
+    <Compile Include="Ai\Brain\BackgroundThinker\Theorizer\Theorizer\AbstractTheorizer.cs" />
+    <Compile Include="Ai\Brain\BackgroundThinker\Theorizer\Theorizer\Implementation\Theorizer.cs" />
+    <Compile Include="Ai\Brain\BackgroundThinker\Theorizer\Theorizer\TheoryException.cs" />
+    <Compile Include="Ai\Brain\BackgroundThinker\Theorizer\ConnectionTheorizer\TheoryStatistics\TheoryInfo\AbstractTheoryInfo.cs" />
+    <Compile Include="Ai\Brain\BackgroundThinker\Theorizer\ConnectionTheorizer\TheoryStatistics\TheoryInfo\Implementation\TheoryInfo.cs" />
+    <Compile Include="Ai\Brain\BackgroundThinker\Theorizer\ConnectionTheorizer\TheoryStatistics\TheoryStatistics\AbstractTheoryStatistics.cs" />
+    <Compile Include="Ai\Brain\BackgroundThinker\Theorizer\ConnectionTheorizer\TheoryStatistics\TheoryStatistics\Implementation\TheoryStatistics.cs" />
+    <Compile Include="Ai\Brain\BackgroundThinker\Theorizer\Theory\AbstractTheory.cs" />
+    <Compile Include="Ai\Brain\BackgroundThinker\Theorizer\Theory\MetaConnectionArgument.cs" />
+    <Compile Include="Ai\Brain\BackgroundThinker\Theorizer\Theory\Implementation\Theory.cs" />
+    <Compile Include="Ai\SaverLoader\SaverLoader\AbstractSaverLoader.cs" />
+    <Compile Include="Ai\SaverLoader\SaverLoader\Implementation\SaverLoader.cs" />
+    <Compile Include="Ai\SaverLoader\SaveLoadException.cs" />
+    <Compile Include="Neologizer\AbstractNeologizer.cs" />
+    <Compile Include="Neologizer\Implementation\Neologizer.cs" />
+    <Compile Include="Neologizer\NeologyException.cs" />
+    <Compile Include="Ai\Brain\AiSqlWrapper\QuerySplitter.cs" />
+    <Compile Include="Ai\Brain\AiSqlWrapper\AiSqlWrapper.cs" />
+    <Compile Include="Ai\Brain\AiSqlWrapper\AiSqlException.cs" />
+    <Compile Include="StatementListFactory\StatementFactory\Implementation\AnalogyStatementFactory.cs" />
+    <Compile Include="Ai\Brain\StatMaker\StatisticException.cs" />
+    <Compile Include="Ai\Brain\StatMaker\StatMaker\AbstractStatMaker.cs" />
+    <Compile Include="Ai\Brain\StatMaker\StatMaker\Implementation\StatMaker.cs" />
+    <Compile Include="StatementListFactory\StatementFactory\Implementation\ExplyStatementFactory.cs" />
+    <Compile Include="StatementListFactory\StatementFactory\Implementation\PsychosisStatementFactory.cs" />
+    <Compile Include="StatementListFactory\StatementFactory\Implementation\SelectStatementFactory.cs" />
+    <Compile Include="StatementListFactory\StatementFactory\Implementation\StatCrossStatementFactory.cs" />
+    <Compile Include="StatementListFactory\StatementFactory\Implementation\UpdateStatementFactory.cs" />
+    <Compile Include="StatementListFactory\StatementListFactory\MultipleSubjectBetweenAndExtractor\MultipleSubjectBetweenAndExtractor.cs" />
+    <Compile Include="StatementListFactory\StatementListFactory\RelativeSubOrdinateExtractor\AbstractRelativeSubOrdinateExtractor.cs" />
+    <Compile Include="StatementListFactory\StatementListFactory\RelativeSubOrdinateExtractor\Implementation\RelativeSubOrdinateExtractor.cs" />
+    <Compile Include="UnitTests\Parts\TestAnalogizer.cs" />
+    <Compile Include="UnitTests\Parts\TestAssimilator.cs" />
+    <Compile Include="UnitTests\Parts\TestBrain.cs" />
+    <Compile Include="UnitTests\Parts\TestCategoryListExtractorModel.cs" />
+    <Compile Include="UnitTests\Parts\TestConcept.cs" />
+    <Compile Include="UnitTests\Parts\TestConditionBuilder.cs" />
+    <Compile Include="UnitTests\Parts\TestNameMapper.cs" />
+    <Compile Include="UnitTests\Parts\TestConnectionManager.cs" />
+    <Compile Include="UnitTests\Parts\TestConnectionTheorizer.cs" />
+    <Compile Include="UnitTests\Parts\TestDisambiguationNamer.cs" />
+    <Compile Include="UnitTests\Parts\TestFlattenizer.cs" />
+    <Compile Include="UnitTests\Parts\TestInstinct.cs" />
+    <Compile Include="UnitTests\Parts\TestMctFromMetaConnection.cs" />
+    <Compile Include="UnitTests\Parts\TestMemory.cs" />
+    <Compile Include="UnitTests\Parts\TestMetaConnectionFlattenizer.cs" />
+    <Compile Include="UnitTests\Parts\TestMetaConnectionManager.cs" />
+    <Compile Include="UnitTests\Parts\TestOptimizer.cs" />
+    <Compile Include="UnitTests\Parts\TestProof.cs" />
+    <Compile Include="UnitTests\Parts\TestPurifier.cs" />
+    <Compile Include="UnitTests\Parts\TestQuerySplitter.cs" />
+    <Compile Include="UnitTests\Parts\TestReciprocator.cs" />
+    <Compile Include="UnitTests\Parts\TestRejectedTheories.cs" />
+    <Compile Include="UnitTests\Parts\TestAiSqlWrapper.cs" />
+    <Compile Include="UnitTests\Parts\TestStatementFactory.cs" />
+    <Compile Include="UnitTests\Parts\TestStatementListFactory.cs" />
+    <Compile Include="Gui\VisibleCommentBuilders\AbstractVisibleCommentBuilder.cs" />
+    <Compile Include="Gui\VisibleCommentBuilders\AiVisibleCommentBuilder\AbstractAiVisibleCommentBuilder.cs" />
+    <Compile Include="Gui\VisibleCommentBuilders\HumanVisibleCommentBuilder\AbstractHumanVisibleCommentBuilder.cs" />
+    <Compile Include="Gui\VisibleCommentBuilders\HumanVisibleCommentBuilder\Implementation\XamlHumanVisibleCommentBuilder.cs" />
+    <Compile Include="Gui\VisibleCommentBuilders\VisibleCommentConstructionException.cs" />
+    <Compile Include="Gui\VisibleCommentBuilders\AiVisibleCommentBuilder\Implementation\XamlAiVisibleCommentBuilder.cs" />
+    <Compile Include="Argument.cs" />
+    <Compile Include="LanguageDictionary.cs" />
+    <Compile Include="StatementListFactory\StatementFactory\AbstractStatementFactory.cs" />
+    <Compile Include="StatementListFactory\StatementFactory\Implementation\AliasStatementFactory.cs" />
+    <Compile Include="StatementListFactory\StatementFactory\Implementation\MetaOperationStatementFactory\MetaOperationEquivalenceStatementFactory.cs" />
+    <Compile Include="StatementListFactory\StatementFactory\Implementation\MetaOperationStatementFactory\MetaOperationImplicationStatementFactory\MetaOperationBinaryImplicationSF.cs" />
+    <Compile Include="StatementListFactory\StatementFactory\Implementation\MetaOperationStatementFactory\MetaOperationImplicationStatementFactory\MetaOperationImplicationStatementFactory.cs" />
+    <Compile Include="StatementListFactory\StatementFactory\Implementation\MetaOperationStatementFactory\MetaOperationImplicationStatementFactory\MetaOperationTernaryImplicationSF.cs" />
+    <Compile Include="StatementListFactory\StatementFactory\Implementation\MetaOperationStatementFactory\MetaOperationStatementFactory.cs" />
+    <Compile Include="StatementListFactory\StatementFactory\Implementation\BinaryStatementFactory.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Statement.cs" />
+    <Compile Include="StatementListFactory\StatementFactory\Implementation\RenameStatementFactory.cs" />
+    <Compile Include="StatementListFactory\StatementFactory\Implementation\StatementFactory.cs" />
+    <Compile Include="StatementListFactory\StatementFactory\Implementation\NullaryStatementFactory.cs" />
+    <Compile Include="StatementListFactory\StatementFactory\Implementation\UnaryStatementFactory.cs" />
+    <Compile Include="StatementListFactory\StatementFactory\StatementParsingException.cs" />
+    <Compile Include="StatementListFactory\StatementListFactory\StatementListFactory\AbstractStatementListFactory.cs" />
+    <Compile Include="StatementListFactory\StatementListFactory\StatementListFactory\Implementation\StatementListFactory.cs" />
+    <Compile Include="UnitTests\Parts\TestStatMaker.cs" />
+    <Compile Include="UnitTests\Parts\TestWikiCategoryPage.cs" />
+    <Compile Include="UnitTests\UnitTests.cs" />
+    <Compile Include="StringManipulation.cs" />
+    <Compile Include="Gui\Visualizer\VisualizerException.cs" />
+    <Compile Include="Gui\Visualizer\VisualizerViewer\VisualizerViewer.xaml.cs">
+      <DependentUpon>VisualizerViewer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Gui\Visualizer\Visualizer\AbstractVisualizer.cs" />
+    <Compile Include="Gui\Visualizer\Visualizer\Implementation\Visualizer.cs" />
+    <Compile Include="ExternalModules\WikipediaParser\CategoryExtractor\CategoryExtractorModel\CategoryCheckList\AbstractCategoryCheckList.cs" />
+    <Compile Include="ExternalModules\WikipediaParser\CategoryExtractor\CategoryExtractorModel\CategoryCheckList\Implementation\CategoryCheckList.cs" />
+    <Compile Include="ExternalModules\WikipediaParser\CategoryExtractor\CategoryExtractorModel\CategoryExtractorModel\AbstractCategoryExtractorModel.cs" />
+    <Compile Include="ExternalModules\WikipediaParser\CategoryExtractor\CategoryExtractorModel\CategoryExtractorModel\Implementation\CategoryExtractorModel.cs" />
+    <Compile Include="ExternalModules\WikipediaParser\CategoryExtractor\CategoryExtractorModel\SourceCategoryList\AbstractSourceCategoryList.cs" />
+    <Compile Include="ExternalModules\WikipediaParser\CategoryExtractor\CategoryExtractorModel\SourceCategoryList\Implementation\SourceCategoryList.cs" />
+    <Compile Include="ExternalModules\WikipediaParser\CategoryExtractor\CategoryExtractorModel\WikiCategoryPage\AbstractWikiCategoryPage.cs" />
+    <Compile Include="ExternalModules\WikipediaParser\CategoryExtractor\CategoryExtractorModel\WikiCategoryPage\Implementation\WikiCategoryPage.cs" />
+    <Compile Include="ExternalModules\WikipediaParser\CategoryExtractor\CategoryExtractorViewer\CategoryExtractorViewer.xaml.cs">
+      <DependentUpon>CategoryExtractorViewer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalModules\WikipediaParser\CategoryExtractor\CategoryExtractor.cs" />
+    <Compile Include="ExternalModules\WikipediaParser\CategoryListExtractor\CategoryListExtractorModel\AbstractCategoryListExtractorModel.cs" />
+    <Compile Include="ExternalModules\WikipediaParser\CategoryListExtractor\CategoryListExtractorModel\Implementation\CategoryListExtractorModel.cs" />
+    <Compile Include="ExternalModules\WikipediaParser\CategoryListExtractor\CategoryListExtractorViewer\CategoryListExtractorViewer.xaml.cs">
+      <DependentUpon>CategoryListExtractorViewer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalModules\WikipediaParser\CategoryListExtractor\CategoryListExtractor\AbstractCategoryExtractor.cs" />
+    <Compile Include="ExternalModules\WikipediaParser\CategoryListExtractor\CategoryListExtractor\Implementation\CategoryListExtractor.cs" />
+    <Compile Include="ExternalModules\WikipediaParser\CategoryListFileExplorer\CategoryListFileExplorer.cs" />
+    <Compile Include="ExternalModules\WikipediaParser\CategoryListSorterTrimmer\CategoryListSorterTrimmer\AbstractCategoryListSorterTrimmer.cs" />
+    <Compile Include="ExternalModules\WikipediaParser\CategoryListSorterTrimmer\CategoryListSorterTrimmer\Implementation\CategoryListSorterTrimmer.cs" />
+    <Compile Include="ExternalModules\WikipediaParser\CategoryListSorterTrimmer\SortableCategory\SortableCategory.cs" />
+    <Compile Include="ExternalModules\WikipediaParser\WikiCategoryListPage\AbstractWikiCategoryListPage.cs" />
+    <Compile Include="ExternalModules\WikipediaParser\WikiCategoryListPage\Implementation\WikiCategoryListPage.cs" />
+    <Compile Include="ExternalModules\WebExplorer\WebExplorer.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Gui\AutoComplete\AutoCompleteViewer\AutoCompleteViewer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Gui\Help\Help.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Gui\MainWindow\MainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Gui\MemoryTreeView\MemoryTreeView\MemoryTreeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Gui\Visualizer\VisualizerViewer\VisualizerViewer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ExternalModules\WikipediaParser\CategoryExtractor\CategoryExtractorViewer\CategoryExtractorViewer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ExternalModules\WikipediaParser\CategoryListExtractor\CategoryListExtractorViewer\CategoryListExtractorViewer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Gui\MainWindow\RiasceIcon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Gui\Visualizer\VisualizerViewer\Zoom-In-64.png" />
+    <Resource Include="Gui\Visualizer\VisualizerViewer\Zoom-Out-64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Gui\Visualizer\VisualizerViewer\Next-64.png" />
+    <Resource Include="Gui\Visualizer\VisualizerViewer\Previous-64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Gui\Visualizer\VisualizerViewer\Refresh-64.png" />
+    <Resource Include="Gui\Visualizer\VisualizerViewer\Stop-64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Gui\Visualizer\VisualizerViewer\Print-64.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
