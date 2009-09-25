@@ -75,7 +75,7 @@ namespace AntiCulture.Kid
         /// <param name="subject">provided concept</param>
         /// <param name="flatConnectionSource">source flat connection for which obstruction can be found</param>
         /// <returns>If most obstructable connection has obstruction, return obstructable connection, else: null</returns>
-        public override List<Concept> GetMostObstructableConnection(Concept subject, out List<Concept> flatConnectionSource)
+        public List<Concept> GetMostObstructableConnection(Concept subject, out List<Concept> flatConnectionSource)
         {
             //flatConnectionSource = GetMostObstructableFlatConnection(subject);
             flatConnectionSource = GetSomeArbitraryObstructableFlatConnection(subject);
