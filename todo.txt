@@ -1,0 +1,523 @@
+whole project major refactoring:
+-everything must be unit testable and unit tested
+-visualizer thread must be safe (no visual conflict)
+-everything must be documented
+-must create new class diagram
+-classe that should be static will be static
+-flattenizer must be multithread
+-background thinker must be multithreaded
+-flat branch cache must be persistant
+-add linq queries where needed
+-make it possible to create web view, implement web view
+-ultrabasic operators (if, and etc...) must be customizable and renamable
+-if, then statements must be c-like
+
+
+allow stuff like:
+fred_pion isa man and programmer synergize guitar (which isa musical_instrument (which make music))
+
+imply isa musician wher
+
+
+
+
+console input must be in a different thread
+
+
+
+
+
+when Ai ask about his theory, allow human to reject argumentation
+for further theories
+
+
+
+
+
+
+class brain
+remove calls to RepairRange, do selective repair instead
+
+
+
+
+
+
+analogies must be made in background thinker
+
+
+
+
+create metaOperator prefered_operator
+for instance: isa prefered_operator someare
+when doing proofs, replace arguments containing someare to isa
+and inverse subject and complement
+because isa is a prefered operator and someare inverse_of isa
+and maybe inverse argument orders for chunks of arguments when operator is inverted to prefered_operator
+add prefered_operator to instinct and standard memory
+
+
+
+
+create metaOperator essence_operator for operators like "isa"
+create transcendant_concept operator for concepts like "something"
+by doing this, every concept will have connectiom: "isa something"
+add to help: essence_operator and transcendant_concept
+add to instinct:
+isa essence_operator isa
+something transcendant_concept something
+nothing contradict something
+
+
+
+
+
+
+
+
+
+
+
+select/update: special "where" for optimized connection only
+for instance: select where isa student and +partof cvm
+
+
+
+
+matrix: occurence to semantic
+fix bug overrite when not needed
+use half instead of float
+
+
+
+
+
+allow stuff like:
+select where oppress self
+imply isa oppressing_thing where oppress something
+imply isa concept where isa something
+imply isa self_destructive_thing where oppress self
+
+
+
+
+abstract (anonymous) concepts
+joe told received_statement
+joe told {me listen statement}
+joe told {me listen {pine isa tree}}
+{something something something} isa statement
+{something listen statement} isa received_statement
+received_statement isa statement
+statement isa event
+{event partof time} isa timed_event
+timed_event isa event
+{joe told {me listen {pine isa tree}}} partof time_yesterday
+time must be sortable by timestamp and accessible through some kind of autocomplete calendar
+name mapper must create time formatting
+operators before/after automatic (from time sorting) must be implemented
+exemple: europe found {meteor madeof amino_acid}
+lorsqu'on utilise lambda concepts,
+donner des warning tant et aussi longtemps qu'aucun opérateur d'essence par défaut n'est assigné
+allow stuff like pantheism isa theism madeof {god partof everything} 
+allow stuff like empiricism isa philosophy madeof {knowledge madeby experience}
+allow stuff like
+{
+	//joe told: asian betterthan white
+	joe promote {asian betterthan white}
+	joe promote {{isa asian} betterthan {isa white}}
+	asian isa race
+	white isa race
+	joe promote {{isa race} betterthan {isa race}}
+	{{isa race} betterthan {isa race}} isa racism
+	joe promote racism
+	therefore joe isa racist
+}
+find contradictions automatically, for instance:
+evolution isa belief promote (universe madeby randomness)
+
+
+
+
+
+
+
+
+
+
+
+
+
+?allow stuff like:
+detection of stuff like: shared_memory_zone isa memory_zone?
+
+
+
+
+
+visualizer:
+?empêcher clash d'icones: faire que on ne peut visualiser un item
+que si le thread de visualisation est absolument terminé
+utiliser genre de bool pour fermer thread (voir backgroundTheorizer)?
+remove bad code plugged to dispatcher
+mettre:
+Action action = delegate { AddItem(foo, bar); };
+Dispatcher.Invoke(DispatcherPriority.Normal, action);
+
+Starting de thread avec argument:
+ThreadStart threadStart= delegate { visualizerViewer.Show(foo, bar); };
+viewerThread = new Thread(action);
+
+
+
+
+
+
+add Tristan's DynUML to visualizer 
+
+
+
+
+
+
+?permettre théories linguistiques/phonologiques de faire connections avec concepts qui n'existent pas?
+
+
+build: mettre fichiers xml dans rep spécial
+
+
+
+matrices:
+afficher progress bar et boutons pendant extraction
+
+
+
+
+
+
+learn lambda, linq syntax AND reactive framework
+
+
+
+
+
+implement neologizer:
+ajouter des layers au concepts, par exemple:
+tu peux lui répondre et ça cré un concept intermédiaire
+exemple: whats the common name for isa plant madeof wood someare pine, willow and palm?
+I would suggest something like: poak <- (Markov Generated from matching concepts)
+add to talk and talkabout
+
+
+
+
+teach stuff about:
+?if something need planned_obsolescence and planned_obsolescence oppress me then something oppress me?
+religion antagonize sex
+teach stuff about sin
+sin synergize guilt
+guilt oppress ego
+if sin make guilt and guilt oppress ego then sin oppress ego
+sin synergize super_ego
+guilt oppress id
+ego need id and super_ego
+consciousness madeof ego and id and super_ego
+human madeof consciousness
+human isa conscious_being
+conscious_being madeof ego and id and super_ego
+witchcraft (? isa superstition?)
+it/id_(freud) -> super_ego/english name for super_ego
+teach stuff about evolution, chaos, entropy, determinism, order, stuff in wiki in a jar, holon 
+holon, qualia, monad
+faith someare true_faith (which isa feeling from id_(freud)) and false_faith (which true_faith contradict isa guilt_feeling madeby super_ego from duty)
+
+
+
+
+
+
+
+
+
+
+
+
+
+save:
+xml load file must use XmlDocument XPath et LinqToXml 
+
+
+
+
+episodicMemeory must save and load in file
+episodicMemory must remember Ai's statement too
+implement episodicMemoryViewer: (genre de calendrier en arbre (hiérarchie))
+affiche si connection existe ou pas (vert si existe, jaune si pas, rouge si impossible)
+(mettre couleur selon mois, heure, saison etc...)
+doit garbage collecter les souvenirs comportant des concepts qui n'existent pas dans la mémoire sémantique
+save seulement statements de humain et machine, comme fichier de journalisation d'oracle
+
+
+
+
+
+
+?force to never use operator with no permutable_side or inverse_of
+do not reciprocate?
+
+
+
+
+
+
+?when trying to create theory (thinking), never create theories if they imply something in ignore list
+(we could flatten the ignore list before starting to think)?
+or simply discard ignore list and encourage the use of mutually exclusive operators,
+(in console, show commented example like the one below)
+for instance:
+-does me madeof brain?
+-no
+-why 
+-you isa machine
+-brain isa organ
+-machine without organ
+(madeof is mutually exclusive to without)
+
+
+
+
+
+
+
+établir relation qu'a un concept avec lui meme (ou avec les autres concepts en général) pour faire appréciation (synergize, oppress, etc...)
+faire prédiction sur disparition etc...
+lors de traumatisme, utilise mémoire épisodique pour déterminer quel concept garder (si plus vieux)
+plugger concept temporel (genre, year_2002)
+plugger isa de memoire épisodique sur was de mémoire sémantique
+considérer l'effet global sur tout le reste
+considérer la longuer des preuves d'effet sur lui-même comme longueur de cycle et d'éléments affectés
+
+
+
+
+
+
+
+add assimilate operator, for instance:
+human assimilate homo_sapiens
+human assimilate homo_(genus)
+human assimilate homo_ergaster etc...
+use it to clean up stuff about different human species
+(very similar to alias, but with no new name)
+if trying to assimilate alias of assimilator, unalias first
+
+
+
+
+?make it possible to delete concepts?
+
+
+?make 3d treeView?
+
+
+
+
+
+
+?add promote/promotedby operator?
+allow stuff like:
+if mcdonalds make mcnugget and mcnugget madeof trans_fat then mcdonalds promote trans_fat
+remove 
+if mcdonalds make mcnugget and mcnugget madeof trans_fat then mcdonalds make trans_fat
+if mcdonalds promote trans_fat and mcdonalds oppress human then mcdonalds oppress human
+
+
+
+
+
+detect stuff like:
+why gibbon madeof big brain?
+and replace it to
+why gibbon madeof big_brain?
+or
+why gibbon madeof bigbrain?
+depending on available concept names
+even detect stuff like
+why gibbon madeof bigbrain?
+and replace it to
+why gibbon madeof big_brain?
+
+
+
+
+
+?visualizer: when concept name is too long, show it on two lines or more, for instance
+visualize walmart: abusive_natural_resource_extraction?
+
+
+
+
+create metaOperator double_negate
+as
+if christianism oppress contraception and contraception oppress overpopulation then christianism make overpopulation
+should be parsed as
+oppress double_negate make
+add double_negate stuff to instinct
+(so pope make overpopulation and pope make starvation)
+
+
+
+create metaOperator hide_connection
+as
+without hide_connection madeof
+so we will remove without cant madeof from instinct and replace it to without hide_connection madeof
+so it will be possible to make stuff like:
+joe isa man without head (every connection depending on it will be ignored)
+remove imply for big nose in congoid_human and add hide to hamitic big nose
+
+
+
+
+
+
+
+
+
+operator sing: sing something similar to teach but merged with markov chains
+example:
+lies make negative_consequences oppress human.
+we won't forsake the holy land.
+we won't forsake the one who touched my soul.
+therefore, religion oppress human.
+mistakes.
+lies make lies make lies make mistakes.
+against god and his tabernacle.
+forgiveness will free the holy land.
+against god and his tabernacle.
+against god and his tabernacle.
+to heaven.
+spiritual holocaust feeds them.
+to the holy land
+
+
+
+utiliser lyrics text file pour stats sur mots en anglais
+
+
+
+
+
+
+
+
+image: right click: reset image
+?implement "star rating" for concept images.?
+implement something to remove bad concept images
+
+
+
+
+wiki category extractor: allow user to find categories with search keywords
+allow user to select category from ordered list (alphabetically)
+
+
+
+
+
+
+
+
+
+?add "if" to proofs (from metaConnections and exply)?
+
+
+
+
+Create some kind of english to himml translator which will simplify
+the text a lot (replace stuff like "it" to repetition of subject, etc...)
+use generative grammar theory to parse human language and convert it to a tree
+find words with simmilar adjacent word probability tree
+
+
+create some kind of himml to english translator to view
+some kind of english version of "whatis"
+add a progression of operator synonyms according to adjacent operators
+
+
+
+
+
+
+
+ctrl+f (edit: find) find text in console
+
+
+
+
+
+
+parse simple english wikipedia
+
+
+
+
+
+établir une relation avec TextRunner
+http://www.cs.washington.edu/research/textrunner/
+
+
+
+faire demo automatisée qui showoff chaque feature (toute classe dont le nom se termine en "er", etc...)
+(load un texte, simule que c'est tappé, execute)
+
+
+
+eventually make flattenizer multithreaded
+repairers and flattenizers must eventually be static
+
+
+
+
+
+
+
+
+implement automatic name asker, add password to user
+
+
+
+
+
+
+
+Visualizer:
+zoom in and zoom out must be centered
+zoom could work with mouse wheel
+
+
+
+
+
+visualize_why
+visualizer: why proofs must show something more visual with concept images
+?make shorter proofs, skip multiple repeating connections of same type?
+add [+] folding to fold long proofs when repeating operator
+add visualize_why to help
+add visualize_why to visualizer "why?" link
+visualized proof must have links to concept targeting "visualize conceptName"
+add icons to visualize_why
+if proof is null, don't show visualize why
+
+
+
+
+
+?implement some kind of procedural memory?
+
+
+
+
+
+background thread:
+create more than one thinking background thread
+?remove reciprocation etc when creating metaConnection?
+only think/reciprocate/purify in background process, when the AI is idle
