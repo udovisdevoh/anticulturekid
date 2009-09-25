@@ -5,12 +5,13 @@ using System.Text;
 
 namespace AntiCulture.Kid
 {
+    /// <summary>
+    /// Exceptions thrown when purification fails
+    /// </summary>
     class PurificationException : Exception
     {
-        #region Constructors
         public PurificationException(string info)
             : base(info)
         { }
-        #endregion
     }
 }

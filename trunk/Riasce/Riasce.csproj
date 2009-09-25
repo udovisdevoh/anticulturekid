@@ -135,9 +135,8 @@
     <Compile Include="Ai\Brain\Aliaser\Aliaser.cs" />
     <Compile Include="Ai\Brain\Aliaser\Assimilator\Assimilator.cs" />
     <Compile Include="Ai\Brain\Aliaser\Assimilator\AssimilationException.cs" />
-    <Compile Include="Ai\Brain\BackgroundThinker\Purifier\Purifier\AbstractPurifier.cs" />
     <Compile Include="Ai\Brain\BackgroundThinker\Purifier\PurificationException.cs" />
-    <Compile Include="Ai\Brain\BackgroundThinker\Purifier\Purifier\Implementation\Purifier.cs" />
+    <Compile Include="Ai\Brain\BackgroundThinker\Purifier\Purifier.cs" />
     <Compile Include="Ai\Brain\Asker\AskingException.cs" />
     <Compile Include="Ai\Brain\Asker\Asker.cs" />
     <Compile Include="Ai\Brain\Analogizer\Analogizer.cs" />
