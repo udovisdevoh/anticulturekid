@@ -74,7 +74,7 @@
     <Compile Include="Ai\Ai\Ai.cs" />
     <Compile Include="Ai\Answerer\Alterator\Alterator.cs" />
     <Compile Include="Ai\Answerer\Answerer\Answerer.cs" />
-    <Compile Include="Ai\Answerer\DefinitionBuilder\DefinitionBuilder.cs" />
+    <Compile Include="Ai\Answerer\StringBasedDefinitions\StringBasedDefinitionBuilder.cs" />
     <Compile Include="Ai\Brain\AiSqlWrapper\ConditionBuilder\ConditionBuilder.cs" />
     <Compile Include="Ai\Brain\AiSqlWrapper\ConditionBuilder\ConditionException.cs" />
     <Compile Include="Ai\Brain\AiSqlWrapper\ConditionBuilder\Condition\ArgumentPrototype.cs" />
@@ -98,10 +98,8 @@
     <Compile Include="Ai\Brain\Memory\EpisodicMemory\Memento\SpecializedMementos\OperationMemento.cs" />
     <Compile Include="Ai\Brain\Memory\EpisodicMemory\Memento\SpecializedMementos\StringMemento.cs" />
     <Compile Include="Ai\Brain\BackgroundThinker\Purifier\FlatPurifier.cs" />
-    <Compile Include="Ai\Brain\BackgroundThinker\Purifier\OptimizedPurifier\AbstractOptimizedPurifier.cs" />
-    <Compile Include="Ai\Brain\BackgroundThinker\Purifier\OptimizedPurifier\Implementation\OptimizedPurifier.cs" />
-    <Compile Include="Ai\Brain\BackgroundThinker\Purifier\Trauma\AbstractTrauma.cs" />
-    <Compile Include="Ai\Brain\BackgroundThinker\Purifier\Trauma\Implementation\Trauma.cs" />
+    <Compile Include="Ai\Brain\BackgroundThinker\Purifier\OptimizedPurifier.cs" />
+    <Compile Include="Ai\Brain\BackgroundThinker\Purifier\Trauma.cs" />
     <Compile Include="Ai\Brain\Repairer\Flattenizer\Flattenizer\FlattenizationException.cs" />
     <Compile Include="Ai\Brain\Memory\Concept\Concept\AbstractConcept.cs" />
     <Compile Include="Ai\Brain\Memory\Concept\Concept\Implementation\Concept.cs" />
@@ -148,11 +146,10 @@
     <Compile Include="Ai\Brain\StatMaker\Stat\Stat.cs" />
     <Compile Include="Ai\Conversation\AbstractConversation.cs" />
     <Compile Include="Ai\Conversation\Implementation\Conversation.cs" />
-    <Compile Include="Ai\Answerer\DefinitionSorter\AbstractDefinitionSorter.cs" />
-    <Compile Include="Ai\Answerer\DefinitionSorter\Implementation\DefinitionSorter.cs" />
-    <Compile Include="Ai\Answerer\DefinitionSorter\Implementation\SortableComplementInfo.cs" />
-    <Compile Include="Ai\Answerer\DefinitionSorter\Implementation\SortableDefinitionElement.cs" />
-    <Compile Include="Ai\Answerer\DefinitionSorter\SortingException.cs" />
+    <Compile Include="Ai\Answerer\StringBasedDefinitions\StringBasedDefinitionSorter.cs" />
+    <Compile Include="Ai\Answerer\StringBasedDefinitions\SortableComplementInfo.cs" />
+    <Compile Include="Ai\Answerer\StringBasedDefinitions\SortableDefinitionElement.cs" />
+    <Compile Include="Ai\Answerer\StringBasedDefinitions\SortingException.cs" />
     <Compile Include="Ai\Instinct\Ego\Ego.cs" />
     <Compile Include="Ai\SaverLoader\MemoryDump\ConceptInfo.cs" />
     <Compile Include="Ai\SaverLoader\MemoryDump\ConditionInfo.cs" />
@@ -408,6 +405,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Gui\Visualizer\VisualizerViewer\Print-64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Ai\Answerer\DefinitionSorter\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

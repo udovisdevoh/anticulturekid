@@ -50,9 +50,9 @@ namespace AntiCulture.Kid
         /// </summary>
         private Name humanName;
 
-        private DefinitionSorter definitionSorter = new DefinitionSorter();
+        private StringBasedDefinitionSorter definitionSorter = new StringBasedDefinitionSorter();
 
-        private DefinitionBuilder definitionManager = new DefinitionBuilder();
+        private StringBasedDefinitionBuilder definitionManager = new StringBasedDefinitionBuilder();
 
         private Random random = new Random();
         #endregion
