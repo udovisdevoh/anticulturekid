@@ -11,8 +11,14 @@ namespace AntiCulture.Kid
     class SortableComplementInfo : IComparable
     {
         #region Fields
+        /// <summary>
+        /// Complement's name
+        /// </summary>
         private string name;
 
+        /// <summary>
+        /// Proof length
+        /// </summary>
         private int proofLength;
         #endregion
 
@@ -31,6 +37,12 @@ namespace AntiCulture.Kid
         #endregion
 
         #region Public methods
+        /// <summary>
+        /// Compare a sortable sortable complement info to another one
+        /// in order to sort a definition
+        /// </summary>
+        /// <param name="obj">other sortable complement info</param>
+        /// <returns>difference</returns>
         public int CompareTo(object obj)
         {
             SortableComplementInfo other = (SortableComplementInfo)(obj);
@@ -39,11 +51,17 @@ namespace AntiCulture.Kid
         #endregion
 
         #region Properties
+        /// <summary>
+        /// Complement name
+        /// </summary>
         public string Name
         {
             get { return name; }
         }
 
+        /// <summary>
+        /// Proof length
+        /// </summary>
         public int ProofLength
         {
             get { return proofLength; }
