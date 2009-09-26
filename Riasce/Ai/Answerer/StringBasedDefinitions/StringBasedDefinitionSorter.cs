@@ -11,14 +11,29 @@ namespace AntiCulture.Kid
     class StringBasedDefinitionSorter
     {
         #region Static
+        /// <summary>
+        /// Sort by verb name
+        /// </summary>
         public static readonly int SORT_BY_VERB_NAME = 1;
 
+        /// <summary>
+        /// Sort by loose complement cardinality
+        /// </summary>
         public static readonly int SORT_BY_LOOSE_COMPLEMENT_CARDINALITY = 2;
 
+        /// <summary>
+        /// Sort by custom order (Defined in this class)
+        /// </summary>
         public static readonly int SORT_BY_CUSTOM_ORDER = 3;
 
+        /// <summary>
+        /// Sort by proof length
+        /// </summary>
         public static readonly int SORT_BY_PROOF_LENGTH = 4;
 
+        /// <summary>
+        /// Custom order
+        /// </summary>
         public static readonly Dictionary<string, int> customOrder;
         #endregion
 
@@ -125,6 +140,12 @@ namespace AntiCulture.Kid
         #endregion
 
         #region Private methods
+        /// <summary>
+        /// Convert real string based definition to sortable element list
+        /// </summary>
+        /// <param name="definition">real string based definition</param>
+        /// <param name="sortingMode">sortable element list</param>
+        /// <returns>sortable element list</returns>
         private List<SortableDefinitionElement> GetSortableElementList(Dictionary<string, List<string>> definition, int sortingMode)
         {
             List<SortableDefinitionElement> sortableElementList = new List<SortableDefinitionElement>();
@@ -135,6 +156,11 @@ namespace AntiCulture.Kid
             return sortableElementList;
         }
 
+        /// <summary>
+        /// Convert sortable element list to real string based definition
+        /// </summary>
+        /// <param name="sortableElementList">sortable element list</param>
+        /// <returns>real string based definition</returns>
         private Dictionary<string, List<string>> GetDefinition(List<SortableDefinitionElement> sortableElementList)
         {
             Dictionary<string, List<string>> definition = new Dictionary<string, List<string>>();
