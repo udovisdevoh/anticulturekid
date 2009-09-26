@@ -24,6 +24,15 @@ namespace AntiCulture.Kid
         #endregion
 
         #region Plugging and Unplugging
+        /// <summary>
+        /// Plug subject concept to complement concept using verb concept
+        /// Perform subsequent connection to contraposates
+        /// Dirten affected concepts
+        /// Doesn't check whether connection can be done or not (please use FindObstructionToPlug() method before)
+        /// </summary>
+        /// <param name="subject">subject concept</param>
+        /// <param name="verb">verb concept</param>
+        /// <param name="complement">complement concept</param>
         public override void Plug(Concept subject, Concept verb, Concept complement)
         {
             #region We throw exception if concepts are dirty or if subject is verb or is complement
@@ -66,6 +75,15 @@ namespace AntiCulture.Kid
             #endregion
         }
 
+        /// <summary>
+        /// UnPlug subject concept from complement concept using verb concept
+        /// Unplug subsequent connection to contraposates
+        /// Dirten affected concepts
+        /// Doesn't check whether disconnection can be done or not (please use FindObstructionToUnPlug() method before)
+        /// </summary>
+        /// <param name="subject">subject concept</param>
+        /// <param name="verb">verb concept</param>
+        /// <param name="complement">complement concept</param>
         public override void UnPlug(Concept subject, Concept verb, Concept complement)
         {
             #region We throw exception if concepts are dirty or if subject is verb or is complement
@@ -119,6 +137,15 @@ namespace AntiCulture.Kid
         #endregion
 
         #region Finding Obstructions
+        /// <summary>
+        /// Returns a connection that prevents to plug specified concepts
+        /// </summary>
+        /// <param name="subject">subject concept</param>
+        /// <param name="verb">verb concept</param>
+        /// <param name="complement">complement concept</param>
+        /// <param name="strictMode">if true, consider unlikeliness as an obstruction, if not, don't</param>
+        /// <returns>List of 3 concepts (subject, verb, complement) that prevents to connect specified concepts
+        /// Return null if couldn't find anything obstructing specified connection</returns>
         public override List<Concept> FindObstructionToPlug(Concept subject, Concept verb, Concept complement, bool strictMode)
         {
             if (!disableFlattenizeAndOptimizeAndPurify && (subject.IsFlatDirty /*|| verb.IsFlatDirty || complement.IsFlatDirty*/))
@@ -131,6 +158,15 @@ namespace AntiCulture.Kid
             return null;
         }
 
+        /// <summary>
+        /// Returns a connection that prevents to plug specified concepts, but ignore obstruction for verbs that are merely inverse_of the other
+        /// </summary>
+        /// <param name="subject">subject concept</param>
+        /// <param name="verb">verb concept</param>
+        /// <param name="complement">complement concept</param>
+        /// <param name="strictMode">if true, consider unlikeliness as an obstruction, if not, don't</param>
+        /// <returns>List of 3 concepts (subject, verb, complement) that prevents to connect specified concepts
+        /// Return null if couldn't find anything obstructing specified connection</returns>
         public override List<Concept> FindObstructionToPlugAllowInverseAndPermutableSide(Concept subject, Concept verb, Concept complement, bool strictMode)
         {
             if (!disableFlattenizeAndOptimizeAndPurify && (subject.IsFlatDirty /*|| verb.IsFlatDirty || complement.IsFlatDirty*/))
@@ -148,6 +184,14 @@ namespace AntiCulture.Kid
             return null;
         }
 
+        /// <summary>
+        /// Returns the amount of possible flat connections that prevent provided connection to be possible
+        /// </summary>
+        /// <param name="subject">subject concept</param>
+        /// <param name="verb">verb concept</param>
+        /// <param name="complement">complement concept</param>
+        /// <param name="strictMode">if true, consider unlikeliness as an obstruction, if not, don't</param>
+        /// <returns>the amount of possible flat connections that prevent provided connection to be possible</returns>
         public override int CountObstructionToPlug(Concept subject, Concept verb, Concept complement, bool strictMode)
         {
             int obstructionCount = 0;
@@ -163,6 +207,13 @@ namespace AntiCulture.Kid
         #endregion
 
         #region Testing connection
+        /// <summary>
+        /// Returns true if connection currently exist (in flat representation)
+        /// </summary>
+        /// <param name="subject">subject concept</param>
+        /// <param name="verb">verb concept</param>
+        /// <param name="complement">complement concept</param>
+        /// <returns>True if connection exist, false if not</returns>
         public override bool TestConnection(Concept subject, Concept verb, Concept complement)
         {
             bool isConnected;
@@ -184,6 +235,13 @@ namespace AntiCulture.Kid
             return isConnected;
         }
 
+        /// <summary>
+        /// Returns a proof to provided connection
+        /// </summary>
+        /// <param name="subject">subject concept</param>
+        /// <param name="verb">verb concept</param>
+        /// <param name="complement">complement concept</param>
+        /// <returns>Proof object, null if connection doesn't exist</returns>
         public override Proof GetProofToConnection(Concept subject, Concept verb, Concept complement)
         {
             if (!TestConnection(subject, verb, complement))
