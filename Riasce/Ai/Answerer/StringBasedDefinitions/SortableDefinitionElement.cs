@@ -11,12 +11,24 @@ namespace AntiCulture.Kid
     class SortableDefinitionElement : IComparable
     {
         #region Fields
+        /// <summary>
+        /// Verb name
+        /// </summary>
         private string verbName;
 
+        /// <summary>
+        /// Complement name list
+        /// </summary>
         private List<string> complementNameList;
 
+        /// <summary>
+        /// Sorting mode (see StringBasedDefinitionSorter's static members for values)
+        /// </summary>
         private int sortingMode;
 
+        /// <summary>
+        /// Shortest proof length to complement in branch
+        /// </summary>
         private int shortestProofLength = 0;
         #endregion
 
@@ -30,6 +42,11 @@ namespace AntiCulture.Kid
         #endregion
 
         #region Public Methods
+        /// <summary>
+        /// Compare branch to another one to sort them
+        /// </summary>
+        /// <param name="obj">other branch</param>
+        /// <returns>difference</returns>
         public int CompareTo(object obj)
         {
             SortableDefinitionElement otherElement = (SortableDefinitionElement)(obj);
@@ -134,6 +151,12 @@ namespace AntiCulture.Kid
             }
         }
 
+        /// <summary>
+        /// Sort by proof length
+        /// </summary>
+        /// <param name="subject">subject concept</param>
+        /// <param name="nameMapper">name mapper to look into</param>
+        /// <param name="memory">memory to look into</param>
         public void SortByProofLength(Concept subject, NameMapper nameMapper, Memory memory)
         {
             if (verbName.ToUpper() == verbName)//Ignore metaConnectionBranches
@@ -169,16 +192,25 @@ namespace AntiCulture.Kid
         #endregion
 
         #region Properties
+        /// <summary>
+        /// Complement count
+        /// </summary>
         public int Count
         {
             get { return complementNameList.Count; }
         }
 
+        /// <summary>
+        /// Verb name
+        /// </summary>
         public string Verb
         {
             get { return verbName; }
         }
 
+        /// <summary>
+        /// Complement list
+        /// </summary>
         public List<string> ComplementList
         {
             get { return complementNameList; }
