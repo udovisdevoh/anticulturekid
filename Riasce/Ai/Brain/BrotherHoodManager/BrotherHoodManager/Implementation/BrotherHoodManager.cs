@@ -5,7 +5,7 @@ using System.Text;
 
 namespace AntiCulture.Kid
 {
-    public class BrotherHoodManager : AbstractBrotherHoodManager
+    public class BrotherHoodManager
     {
         #region Fields
         private VerbMetaConnectionCache verbMetaConnectionCache;
@@ -20,8 +20,13 @@ namespace AntiCulture.Kid
         }
         #endregion
 
-        #region Methods
-        public override BrotherHoodSet GetFlatBrotherHoodSet(Concept subject)
+        #region Public Methods
+        /// <summary>
+        /// Returns a set of brotherhoods for subject concept
+        /// </summary>
+        /// <param name="subject">subject concept</param>
+        /// <returns>a set of brotherhoods for subject concept</returns>
+        public BrotherHoodSet GetFlatBrotherHoodSet(Concept subject)
         {
             verbMetaConnectionCache = new VerbMetaConnectionCache();
 
@@ -92,7 +97,12 @@ namespace AntiCulture.Kid
             return brotherHoodSet;
         }
 
-        public override BrotherHoodSet GetOptimizedBrotherHoodSet(Concept subject)
+        /// <summary>
+        /// Returns a set of brotherhoods for subject concept
+        /// </summary>
+        /// <param name="subject">subject concept</param>
+        /// <returns>a set of brotherhoods for subject concept</returns>
+        public BrotherHoodSet GetOptimizedBrotherHoodSet(Concept subject)
         {
             verbMetaConnectionCache = new VerbMetaConnectionCache();
 
@@ -163,6 +173,11 @@ namespace AntiCulture.Kid
             return brotherHoodSet;
         }
 
+        /// <summary>
+        /// Returns all brothers of subject and their brotherhood strengths
+        /// </summary>
+        /// <param name="subject">subject concept</param>
+        /// <returns>all brothers of subject and their brotherhood strengths</returns>
         public override Dictionary<Concept, double> GetBrotherAndStrengthList(Concept subject)
         {
             verbMetaConnectionCache = new VerbMetaConnectionCache();
@@ -177,6 +192,57 @@ namespace AntiCulture.Kid
             return brotherAndStrengthList;
         }
 
+        /// <summary>
+        /// Get the fraternity strength
+        /// </summary>
+        /// <param name="subject">concept 1</param>
+        /// <param name="brother">concept 2</param>
+        /// <returns>fraternity strength</returns>
+        public override double GetFraternityStrength(Concept subject, Concept brother)
+        {
+            double fraternityStrength = 0;
+
+            int totalSubjectConnection = 0;
+            int totalSubjectConnectionInBrother = 0;
+            int totalBrotherConnection = 0;
+            int totalBrotherConnectionInSubject = 0;
+
+            Concept verb;
+            ConnectionBranch flatBranch;
+            foreach (KeyValuePair<Concept, ConnectionBranch> verbAndBranch in subject.FlatConnectionBranchList)
+            {
+                verb = verbAndBranch.Key;
+                flatBranch = verbAndBranch.Value;
+                HashSet<Concept> complementList = flatBranch.ComplementConceptList;
+                totalSubjectConnection += complementList.Count;
+                foreach (Concept complement in complementList)
+                    if (brother.GetFlatConnectionBranch(verb).ComplementConceptList.Contains(complement))
+                        totalSubjectConnectionInBrother++;
+            }
+
+            foreach (KeyValuePair<Concept, ConnectionBranch> verbAndBranch in brother.FlatConnectionBranchList)
+            {
+                verb = verbAndBranch.Key;
+                flatBranch = verbAndBranch.Value;
+                HashSet<Concept> complementList = flatBranch.ComplementConceptList;
+                totalBrotherConnection += complementList.Count;
+                foreach (Concept complement in complementList)
+                    if (subject.GetFlatConnectionBranch(verb).ComplementConceptList.Contains(complement))
+                        totalBrotherConnectionInSubject++;
+            }
+
+            if (totalSubjectConnection > 0)
+                fraternityStrength += (double)(totalSubjectConnectionInBrother) / (double)(totalSubjectConnection);
+            if (totalBrotherConnection > 0)
+                fraternityStrength += (double)(totalBrotherConnectionInSubject) / (double)(totalBrotherConnection);
+
+            fraternityStrength /= 2;
+
+            return fraternityStrength;
+        }
+        #endregion
+
+        #region Private Methods
         private HashSet<Concept> GetInverseOrPermutableVerb(Concept verb)
         {
             HashSet<Concept> inverseOfVerbList = verbMetaConnectionCache.GetVerbFlatListFromCache(verb, "inverse_of", true);
@@ -228,49 +294,11 @@ namespace AntiCulture.Kid
             return brotherList;
         }
 
-        public override double GetFraternityStrength(Concept subject, Concept brother)
-        {
-            double fraternityStrength = 0;
-
-            int totalSubjectConnection = 0;
-            int totalSubjectConnectionInBrother = 0;
-            int totalBrotherConnection = 0;
-            int totalBrotherConnectionInSubject = 0;
-
-            Concept verb;
-            ConnectionBranch flatBranch;
-            foreach (KeyValuePair<Concept, ConnectionBranch> verbAndBranch in subject.FlatConnectionBranchList)
-            {
-                verb = verbAndBranch.Key;
-                flatBranch = verbAndBranch.Value;
-                HashSet<Concept> complementList = flatBranch.ComplementConceptList;
-                totalSubjectConnection += complementList.Count;
-                foreach (Concept complement in complementList)
-                    if (brother.GetFlatConnectionBranch(verb).ComplementConceptList.Contains(complement))
-                        totalSubjectConnectionInBrother++;
-            }
-
-            foreach (KeyValuePair<Concept, ConnectionBranch> verbAndBranch in brother.FlatConnectionBranchList)
-            {
-                verb = verbAndBranch.Key;
-                flatBranch = verbAndBranch.Value;
-                HashSet<Concept> complementList = flatBranch.ComplementConceptList;
-                totalBrotherConnection += complementList.Count;
-                foreach (Concept complement in complementList)
-                    if (subject.GetFlatConnectionBranch(verb).ComplementConceptList.Contains(complement))
-                        totalBrotherConnectionInSubject++;
-            }
-
-            if (totalSubjectConnection > 0)
-                fraternityStrength += (double)(totalSubjectConnectionInBrother) / (double)(totalSubjectConnection);
-            if (totalBrotherConnection > 0)
-                fraternityStrength += (double)(totalBrotherConnectionInSubject) / (double)(totalBrotherConnection);
-
-            fraternityStrength /= 2;
-
-            return fraternityStrength;
-        }
-
+        /// <summary>
+        /// Get the list of concept plugged to subject
+        /// </summary>
+        /// <param name="subject">subject concept</param>
+        /// <returns>list of concept plugged to subject</returns>
         public override HashSet<Concept> GetOptimizedParentConceptList(Concept subject)
         {
             HashSet<Concept> parentConceptList = new HashSet<Concept>();
