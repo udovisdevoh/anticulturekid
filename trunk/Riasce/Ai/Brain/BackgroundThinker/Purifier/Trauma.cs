@@ -5,6 +5,9 @@ using System.Text;
 
 namespace AntiCulture.Kid
 {
+    /// <summary>
+    /// This class represents a trauma (which is the result of a memory purification)
+    /// </summary>
     class Trauma : IEnumerable<List<Concept>>
     {
         #region Fields
