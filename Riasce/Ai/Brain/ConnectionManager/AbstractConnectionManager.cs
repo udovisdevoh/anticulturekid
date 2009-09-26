@@ -5,6 +5,9 @@ using System.Text;
 
 namespace AntiCulture.Kid
 {
+    /// <summary>
+    /// Abstraction of how a connection manager works
+    /// </summary>
     abstract class AbstractConnectionManager
     {
         /// <summary>
@@ -78,5 +81,14 @@ namespace AntiCulture.Kid
         /// <param name="complement">complement concept</param>
         /// <returns>Proof object, null if connection doesn't exist</returns>
         public abstract Proof GetProofToConnection(Concept subject, Concept verb, Concept complement);
+
+        /// <summary>
+        /// By default: false. Use this to disable repair after adding/removing connections
+        /// </summary>
+        public abstract bool DisableFlattenizeAndOptimizeAndPurify
+        {
+            get;
+            set;
+        }
     }
 }

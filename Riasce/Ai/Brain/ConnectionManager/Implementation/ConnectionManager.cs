@@ -5,11 +5,21 @@ using System.Text;
 
 namespace AntiCulture.Kid
 {
+    /// <summary>
+    /// Concrete implementation of connection manager
+    /// (handles connections/disconnections)
+    /// </summary>
     class ConnectionManager : AbstractConnectionManager
     {
         #region Fields
+        /// <summary>
+        /// We need a metaConnection manager
+        /// </summary>
         private MetaConnectionManager metaConnectionManager = new MetaConnectionManager();
 
+        /// <summary>
+        /// By default: false. Use this to disable repair after adding/removing connections
+        /// </summary>
         private bool disableFlattenizeAndOptimizeAndPurify = false;
         #endregion
 
@@ -184,7 +194,10 @@ namespace AntiCulture.Kid
         #endregion
 
         #region Properties
-        public bool DisableFlattenizeAndOptimizeAndPurify
+        /// <summary>
+        /// By default: false. Use this to disable repair after adding/removing connections
+        /// </summary>
+        public override bool DisableFlattenizeAndOptimizeAndPurify
         {
             get { return disableFlattenizeAndOptimizeAndPurify; }
             set { disableFlattenizeAndOptimizeAndPurify = value; }
