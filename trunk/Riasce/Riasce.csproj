@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.30729</ProductVersion>
+    <ProductVersion>9.0.21022</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{3796AA35-DC7B-41DF-A296-2B45DAF6496B}</ProjectGuid>
     <OutputType>WinExe</OutputType>
@@ -72,8 +72,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Ai\Ai\Ai.cs" />
-    <Compile Include="Ai\Answerer\Alterator\Alterator.cs" />
-    <Compile Include="Ai\Answerer\Answerer\Answerer.cs" />
+    <Compile Include="Ai\Answerer\Alterator.cs" />
+    <Compile Include="Ai\Answerer\Answerer.cs" />
     <Compile Include="Ai\Answerer\StringBasedDefinitions\StringBasedDefinitionBuilder.cs" />
     <Compile Include="Ai\Brain\AiSqlWrapper\ConditionBuilder\ConditionBuilder.cs" />
     <Compile Include="Ai\Brain\AiSqlWrapper\ConditionBuilder\ConditionException.cs" />
@@ -140,8 +140,7 @@
     <Compile Include="Ai\Brain\Analogizer\Analogizer.cs" />
     <Compile Include="Ai\Brain\Analogizer\AnalogyException.cs" />
     <Compile Include="Ai\Brain\Analogizer\Analogy.cs" />
-    <Compile Include="Ai\Brain\BrotherHoodManager\BrotherHoodManager\AbstractBrotherHoodManager.cs" />
-    <Compile Include="Ai\Brain\BrotherHoodManager\BrotherHoodManager\Implementation\BrotherHoodManager.cs" />
+    <Compile Include="Ai\Brain\BrotherHoodManager\BrotherHoodManager\BrotherHoodManager.cs" />
     <Compile Include="Ai\Brain\StatMaker\StatInfo\StatInfo.cs" />
     <Compile Include="Ai\Brain\StatMaker\Stat\Stat.cs" />
     <Compile Include="Ai\Conversation\AbstractConversation.cs" />
@@ -405,9 +404,6 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Gui\Visualizer\VisualizerViewer\Print-64.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Ai\Answerer\DefinitionSorter\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

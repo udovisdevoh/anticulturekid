@@ -1,6 +1,3 @@
-add documentation to ai.answerer.definitionsorter classes
-
-
 whole project major refactoring:
 -everything must be unit testable and unit tested
 -visualizer thread must be safe (no visual conflict)
