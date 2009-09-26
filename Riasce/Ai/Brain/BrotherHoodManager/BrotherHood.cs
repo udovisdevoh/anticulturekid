@@ -5,13 +5,25 @@ using System.Text;
 
 namespace AntiCulture.Kid
 {
+    /// <summary>
+    /// This class represents concepts that have a common connection
+    /// </summary>
     public class BrotherHood : IEnumerable<Concept>
     {
         #region Fields
+        /// <summary>
+        /// Common verb
+        /// </summary>
         private Concept verb;
 
+        /// <summary>
+        /// Common complement
+        /// </summary>
         private Concept complement;
 
+        /// <summary>
+        /// Brother list
+        /// </summary>
         private HashSet<Concept> brotherList = new HashSet<Concept>();
         #endregion
 
@@ -45,16 +57,25 @@ namespace AntiCulture.Kid
         #endregion
 
         #region Properties
+        /// <summary>
+        /// Common verb
+        /// </summary>
         public Concept Verb
         {
             get { return verb; }
         }
 
+        /// <summary>
+        /// Common complement
+        /// </summary>
         public Concept Complement
         {
             get { return complement; }
         }
 
+        /// <summary>
+        /// How many concept in the brotherhood
+        /// </summary>
         public int Count
         {
             get { return brotherList.Count; }
