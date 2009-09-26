@@ -5,6 +5,9 @@ using System.Text;
 
 namespace AntiCulture.Kid
 {
+    /// <summary>
+    /// This class is used to find brother concepts to concepts
+    /// </summary>
     public class BrotherHoodManager
     {
         #region Fields
@@ -62,6 +65,11 @@ namespace AntiCulture.Kid
             return brotherHoodSet;
         }
 
+        /// <summary>
+        /// Get a random flat brotherhood to subject concept
+        /// </summary>
+        /// <param name="subject">subject concept</param>
+        /// <returns>random flat brotherhood to subject concept</returns>
         public BrotherHoodSet GetRandomFlatBrotherHood(Concept subject)
         {
             verbMetaConnectionCache = new VerbMetaConnectionCache();
@@ -138,6 +146,11 @@ namespace AntiCulture.Kid
             return brotherHoodSet;
         }
 
+        /// <summary>
+        /// Get a random optimized brotherhood to subject concept
+        /// </summary>
+        /// <param name="subject">subject concept</param>
+        /// <returns>random optimized brotherhood to subject concept</returns>
         public BrotherHoodSet GetRandomOptimizedBrotherHood(Concept subject)
         {
             verbMetaConnectionCache = new VerbMetaConnectionCache();
@@ -178,7 +191,7 @@ namespace AntiCulture.Kid
         /// </summary>
         /// <param name="subject">subject concept</param>
         /// <returns>all brothers of subject and their brotherhood strengths</returns>
-        public override Dictionary<Concept, double> GetBrotherAndStrengthList(Concept subject)
+        public Dictionary<Concept, double> GetBrotherAndStrengthList(Concept subject)
         {
             verbMetaConnectionCache = new VerbMetaConnectionCache();
 
@@ -198,7 +211,7 @@ namespace AntiCulture.Kid
         /// <param name="subject">concept 1</param>
         /// <param name="brother">concept 2</param>
         /// <returns>fraternity strength</returns>
-        public override double GetFraternityStrength(Concept subject, Concept brother)
+        public double GetFraternityStrength(Concept subject, Concept brother)
         {
             double fraternityStrength = 0;
 
@@ -243,6 +256,11 @@ namespace AntiCulture.Kid
         #endregion
 
         #region Private Methods
+        /// <summary>
+        /// Return list of verbs that are inverse_of or permutable_side to provided verb concept
+        /// </summary>
+        /// <param name="verb">provided verb concept</param>
+        /// <returns>list of verbs that are inverse_of or permutable_side to provided verb concept</returns>
         private HashSet<Concept> GetInverseOrPermutableVerb(Concept verb)
         {
             HashSet<Concept> inverseOfVerbList = verbMetaConnectionCache.GetVerbFlatListFromCache(verb, "inverse_of", true);
@@ -265,6 +283,11 @@ namespace AntiCulture.Kid
             return inverseOrPermutableVerb;
         }
 
+        /// <summary>
+        /// Get the list of brother concepts to subject concept
+        /// </summary>
+        /// <param name="subject">subject concept</param>
+        /// <returns>brother concepts to subject concept</returns>
         private HashSet<Concept> GetBrotherList(Concept subject)
         {
             HashSet<Concept> brotherList = new HashSet<Concept>();
@@ -299,7 +322,7 @@ namespace AntiCulture.Kid
         /// </summary>
         /// <param name="subject">subject concept</param>
         /// <returns>list of concept plugged to subject</returns>
-        public override HashSet<Concept> GetOptimizedParentConceptList(Concept subject)
+        public HashSet<Concept> GetOptimizedParentConceptList(Concept subject)
         {
             HashSet<Concept> parentConceptList = new HashSet<Concept>();
 
