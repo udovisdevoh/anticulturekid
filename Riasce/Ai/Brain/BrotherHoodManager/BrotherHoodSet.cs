@@ -5,7 +5,7 @@ using System.Text;
 
 namespace AntiCulture.Kid
 {
-    public class BrotherHoodSet : AbstractBrotherHoodSet
+    public class BrotherHoodSet : IEnumerable<BrotherHood>
     {
         #region Fields
         private Dictionary<Concept, Dictionary<Concept, BrotherHood>> brotherHoodList = new Dictionary<Concept, Dictionary<Concept, BrotherHood>>();

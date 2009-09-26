@@ -5,7 +5,7 @@ using System.Text;
 
 namespace AntiCulture.Kid
 {
-    public class BrotherHood : AbstractBrotherHood
+    public class BrotherHood : IEnumerable<Concept>
     {
         #region Fields
         private Concept verb;
@@ -24,29 +24,38 @@ namespace AntiCulture.Kid
         #endregion
 
         #region Methods
-        public override void Add(Concept brother)
+        /// <summary>
+        /// Add a brother to brotherhood
+        /// </summary>
+        /// <param name="brotherConcept">brother concept</param>
+        public void Add(Concept brother)
         {
             brotherList.Add(brother);
         }
 
-        public override IEnumerator<Concept> GetEnumerator()
+        public IEnumerator<Concept> GetEnumerator()
         {
             return brotherList.GetEnumerator();
+        }
+
+        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
         }
         #endregion
 
         #region Properties
-        public override Concept Verb
+        public Concept Verb
         {
             get { return verb; }
         }
 
-        public override Concept Complement
+        public Concept Complement
         {
             get { return complement; }
         }
 
-        public override int Count
+        public int Count
         {
             get { return brotherList.Count; }
         }
