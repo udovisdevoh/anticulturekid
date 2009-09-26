@@ -84,9 +84,8 @@
     <Compile Include="Ai\Brain\BackgroundThinker\Theorizer\PhoneticTheorizer\AbstractPhoneticTheorizer.cs" />
     <Compile Include="Ai\Brain\BackgroundThinker\Theorizer\PhoneticTheorizer\Implementation\PhoneticTheorizer.cs" />
     <Compile Include="Ai\Brain\Brain\Brain.cs" />
-    <Compile Include="Ai\Brain\DefinitionMaker\AbstractDefinitionMaker.cs" />
     <Compile Include="Ai\Brain\DefinitionMaker\DefinitionException.cs" />
-    <Compile Include="Ai\Brain\DefinitionMaker\Implementation\DefinitionMaker.cs" />
+    <Compile Include="Ai\Brain\DefinitionMaker\DefinitionMaker.cs" />
     <Compile Include="Ai\Brain\ImplyConnectionManager\AbstractImplyConnectionManager.cs" />
     <Compile Include="Ai\Brain\ImplyConnectionManager\ImplyConnectionException.cs" />
     <Compile Include="Ai\Brain\ImplyConnectionManager\Implementation\ImplyConnectionManager.cs" />
@@ -140,7 +139,7 @@
     <Compile Include="Ai\Brain\Analogizer\Analogizer.cs" />
     <Compile Include="Ai\Brain\Analogizer\AnalogyException.cs" />
     <Compile Include="Ai\Brain\Analogizer\Analogy.cs" />
-    <Compile Include="Ai\Brain\BrotherHoodManager\BrotherHoodManager\BrotherHoodManager.cs" />
+    <Compile Include="Ai\Brain\BrotherHoodManager\BrotherHoodManager.cs" />
     <Compile Include="Ai\Brain\StatMaker\StatInfo\StatInfo.cs" />
     <Compile Include="Ai\Brain\StatMaker\Stat\Stat.cs" />
     <Compile Include="Ai\Conversation\AbstractConversation.cs" />
@@ -224,10 +223,8 @@
     <Compile Include="Ai\Brain\Teacher\Implementation\Teacher.cs" />
     <Compile Include="Ai\Brain\Teacher\TeachingException.cs" />
     <Compile Include="CollectionSampling.cs" />
-    <Compile Include="Ai\Brain\BrotherHoodManager\BrotherHoodSet\BrotherHoodSet\AbstractBrotherHoodSet.cs" />
-    <Compile Include="Ai\Brain\BrotherHoodManager\BrotherHoodSet\BrotherHoodSet\Implementation\BrotherHoodSet.cs" />
-    <Compile Include="Ai\Brain\BrotherHoodManager\BrotherHoodSet\BrotherHood\AbstractBrotherHood.cs" />
-    <Compile Include="Ai\Brain\BrotherHoodManager\BrotherHoodSet\BrotherHood\Implementation\BrotherHood.cs" />
+    <Compile Include="Ai\Brain\BrotherHoodManager\BrotherHoodSet.cs" />
+    <Compile Include="Ai\Brain\BrotherHoodManager\BrotherHood.cs" />
     <Compile Include="Ai\Brain\BackgroundThinker\Theorizer\ConnectionTheorizer\ConnectionTheorizer\AbstractConnectionTheorizer.cs" />
     <Compile Include="Ai\Brain\BackgroundThinker\Theorizer\ConnectionTheorizer\ConnectionTheorizer\Implementation\ConnectionTheorizer.cs" />
     <Compile Include="Ai\Brain\BackgroundThinker\Theorizer\MetaConnectionTheorizer\MctFromConnection\AbstractMctFromConnection.cs" />

@@ -43,7 +43,7 @@ namespace AntiCulture.Kid
             return brotherHood;
         }
 
-        public override IEnumerator<BrotherHood> GetEnumerator()
+        public IEnumerator<BrotherHood> GetEnumerator()
         {
             HashSet<BrotherHood> enumeration = new HashSet<BrotherHood>();
 
@@ -52,13 +52,18 @@ namespace AntiCulture.Kid
 
             return enumeration.GetEnumerator();
         }
+
+        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
+        {
+            throw new NotImplementedException();
+        }
         #endregion
 
         #region Properties
         /// <summary>
         /// Count how many brothers (in total) in all brotherhoods
         /// </summary>
-        public override int CountBrothers
+        public int CountBrothers
         {
             get
             {
