@@ -86,9 +86,8 @@
     <Compile Include="Ai\Brain\Brain\Brain.cs" />
     <Compile Include="Ai\Brain\DefinitionMaker\DefinitionException.cs" />
     <Compile Include="Ai\Brain\DefinitionMaker\DefinitionMaker.cs" />
-    <Compile Include="Ai\Brain\ImplyConnectionManager\AbstractImplyConnectionManager.cs" />
     <Compile Include="Ai\Brain\ImplyConnectionManager\ImplyConnectionException.cs" />
-    <Compile Include="Ai\Brain\ImplyConnectionManager\Implementation\ImplyConnectionManager.cs" />
+    <Compile Include="Ai\Brain\ImplyConnectionManager\ImplyConnectionManager.cs" />
     <Compile Include="Ai\Brain\Memory\Concept\ExplyConnectionTree\AbstractImplyConnectionTree.cs" />
     <Compile Include="Ai\Brain\Memory\Concept\ExplyConnectionTree\Implementation\ImplyConnectionTree.cs" />
     <Compile Include="Ai\Brain\Memory\Concept\TotologyException.cs" />
