@@ -5,12 +5,11 @@ using System.Text;
 
 namespace AntiCulture.Kid
 {
+    /// <summary>
+    /// Basic metaConnections for the Ai
+    /// </summary>
     class StandardInstinct : AbstractInstinct
     {
-        #region Fields
-        private List<string> statementList = new List<string>();
-        #endregion
-
         #region Constructors
         public StandardInstinct()
         {
@@ -112,25 +111,6 @@ namespace AntiCulture.Kid
             Add("IF joe without tooth AND tooth someare molar THEN joe without molar");
             Add("IF invertebrate without vertebrate_column AND invertebrate someare arthropod THEN arthropod without vertebrate_column");
             Add("IF joe without hat THEN joe cant own hat");
-        }
-        #endregion
-
-        #region Methods
-        public override IEnumerator<string> GetEnumerator()
-        {
-            return statementList.GetEnumerator();
-        }
-
-        private void Add(string statement)
-        {
-            statementList.Add(statement.ToLower().Trim());
-        }
-        #endregion
-
-        #region Properties
-        public override int Count
-        {
-            get { return  statementList.Count; }
         }
         #endregion
     }
