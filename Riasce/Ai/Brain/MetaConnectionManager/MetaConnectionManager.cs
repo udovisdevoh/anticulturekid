@@ -5,14 +5,26 @@ using System.Text;
 
 namespace AntiCulture.Kid
 {
-    public class MetaConnectionManager : AbstractMetaConnectionManager
+    /// <summary>
+    /// This class represents the metaConnection manager
+    /// </summary>
+    public class MetaConnectionManager
     {
         #region Fields
+        /// <summary>
+        /// MetaConnection flattenizer
+        /// </summary>
         private MetaConnectionFlattenizer metaConnectionFlattenizer = new MetaConnectionFlattenizer();
         #endregion
 
-        #region Methods
-        public override void AddMetaConnection(Concept concept1, string metaOperatorName, Concept concept2)
+        #region Public Methods
+        /// <summary>
+        /// Add a metaconnection of type metaOperatorName between concept 1 and concept 2
+        /// </summary>
+        /// <param name="concept1">concept 1</param>
+        /// <param name="metaOperatorName">metaOperator's name</param>
+        /// <param name="concept2">concept 2</param>
+        public void AddMetaConnection(Concept concept1, string metaOperatorName, Concept concept2)
         {
             metaConnectionFlattenizer.AddVerbToList(concept1);
             metaConnectionFlattenizer.AddVerbToList(concept2);
@@ -211,7 +223,13 @@ namespace AntiCulture.Kid
             }
         }
 
-        public override void RemoveMetaConnection(Concept concept1, string metaOperatorName, Concept concept2)
+        /// <summary>
+        /// Remove a metaconnection of type metaOperatorName between concept 1 and concept 2
+        /// </summary>
+        /// <param name="concept1">concept 1</param>
+        /// <param name="metaOperatorName">metaOperator's name</param>
+        /// <param name="concept2">concept 2</param>
+        public void RemoveMetaConnection(Concept concept1, string metaOperatorName, Concept concept2)
         {
             if (metaOperatorName == "permutable_side" || metaOperatorName == "inverse_of" || metaOperatorName == "cant" || metaOperatorName == "unlikely")
             {
@@ -228,7 +246,14 @@ namespace AntiCulture.Kid
                 throw new MetaConnectionException("MetaConnection is still present as the result of the combination of other metaConnections.");
         }
 
-        public override bool IsMetaConnected(Concept concept1, string metaOperatorName, Concept concept2)
+        /// <summary>
+        /// Test whether concept1 and concept2 are connected using metaoperatorname
+        /// </summary>
+        /// <param name="concept1">concept 1</param>
+        /// <param name="metaOperatorName">metaOperator's name</param>
+        /// <param name="concept2">concept 2</param>
+        /// <returns>true if connected, else: false</returns>
+        public bool IsMetaConnected(Concept concept1, string metaOperatorName, Concept concept2)
         {
             if (metaOperatorName == "permutable_side" || metaOperatorName == "inverse_of" || metaOperatorName == "cant" || metaOperatorName == "unlikely")
             {
@@ -247,7 +272,15 @@ namespace AntiCulture.Kid
             return false;
         }
 
-        public override bool IsFlatMetaConnected(Concept concept1, string metaOperatorName, Concept concept2)
+        /// <summary>
+        /// Test whether concept1 and concept2 are connected using metaoperatorname
+        /// The metaConnectionFlattenizer must check recursively whether the connection exist or not
+        /// </summary>
+        /// <param name="concept1">concept 1</param>
+        /// <param name="metaOperatorName">metaOperator's name</param>
+        /// <param name="concept2">concept 2</param>
+        /// <returns>true if connected, else: false</returns>
+        public bool IsFlatMetaConnected(Concept concept1, string metaOperatorName, Concept concept2)
         {
             HashSet<Concept> verb1FlatListFromMetaConnection = GetVerbFlatListFromMetaConnection(concept1, metaOperatorName,true);
             HashSet<Concept> verb2FlatListFromMetaConnection = GetVerbFlatListFromMetaConnection(concept2, metaOperatorName, false);
@@ -261,7 +294,13 @@ namespace AntiCulture.Kid
                 return false;
         }
 
-        public override HashSet<Concept> GetIncompatibleVerbList(Concept verb, bool strictMode)
+        /// <summary>
+        /// Returns a list of verb that are incompatible with verb
+        /// </summary>
+        /// <param name="verb">verb for which you wish to retrieve incompatible verb list</param>
+        /// <param name="strictMode">whether want to consider "unlikely" metaOperator as an incompatibility</param>
+        /// <returns>a list of verbs which are incompatible with verb</returns>
+        public HashSet<Concept> GetIncompatibleVerbList(Concept verb, bool strictMode)
         {
             if (strictMode)
                 return GetVerbFlatListFromMetaConnection(verb, "unlikely",true);
@@ -269,7 +308,14 @@ namespace AntiCulture.Kid
                 return GetVerbFlatListFromMetaConnection(verb, "cant",true);
         }
 
-        public override HashSet<Concept> GetVerbListFromMetaConnection(Concept verb, string metaOperatorName, bool ConnectionPositivity)
+        /// <summary>
+        /// Return a list of verbs that have a metaconnection from verb to x
+        /// </summary>
+        /// <param name="verb">verb</param>
+        /// <param name="metaOperatorName">metaConnection</param>
+        /// <param name="ConnectionPositivity">whether the connection from verb to x is positive</param>
+        /// <returns>List of metaconnected verbs</returns>
+        public HashSet<Concept> GetVerbListFromMetaConnection(Concept verb, string metaOperatorName, bool ConnectionPositivity)
         {
             if (ConnectionPositivity == true)
                 return verb.MetaConnectionTreePositive.GetAffectedOperatorsByMetaConnection(metaOperatorName);
@@ -277,12 +323,42 @@ namespace AntiCulture.Kid
                 return verb.MetaConnectionTreeNegative.GetAffectedOperatorsByMetaConnection(metaOperatorName);
         }
 
-        public override HashSet<Concept> GetVerbListDependantOn(Concept verb)
+        /// <summary>
+        /// Returns a list of verb that are dependant on provided verb.
+        /// Basically, if another verb's connection branch might be modified if verb is modified,
+        /// the other verb is dependant on verb
+        /// </summary>
+        /// <param name="verb">verb</param>
+        /// <returns>List of verb that are dependant on verb</returns>
+        public HashSet<Concept> GetVerbListDependantOn(Concept verb)
         {
             HashSet<Concept> verbIgnoreList = new HashSet<Concept>();
             return GetVerbListDependantOn(verb, verbIgnoreList);
         }
 
+        /// <summary>
+        /// Return a list of verbs that have a metaconnection from verb to x
+        /// Use the metaConnectionFlattenizer to get a full list recursively
+        /// </summary>
+        /// <param name="verb">verb</param>
+        /// <param name="metaOperatorName">metaConnection</param>
+        /// <param name="isMetaConnectionPositive">whether the connection from verb to x is positive</param>
+        /// <returns>List of metaconnected verbs</returns>
+        public HashSet<Concept> GetVerbFlatListFromMetaConnection(Concept verb, string metaOperatorName, bool isMetaConnectionPositive)
+        {
+            return metaConnectionFlattenizer.GetFlatVerbListFromMetaConnection(verb, metaOperatorName, isMetaConnectionPositive);
+        }
+        #endregion
+
+        #region Private Methods
+        /// <summary>
+        /// Returns a list of verb that are dependant on provided verb.
+        /// Basically, if another verb's connection branch might be modified if verb is modified,
+        /// the other verb is dependant on verb
+        /// </summary>
+        /// <param name="verb">verb</param>
+        /// <param name="verbIgnoreList"></param>
+        /// <returns>List of verb that are dependant on verb</returns>
         private HashSet<Concept> GetVerbListDependantOn(Concept verb, HashSet<Concept> verbIgnoreList)
         {
             HashSet<Concept> dependantVerbList = new HashSet<Concept>();
@@ -306,11 +382,6 @@ namespace AntiCulture.Kid
             dependantVerbList.UnionWith(newDependantVerbList);
 
             return dependantVerbList;
-        }
-
-        public override HashSet<Concept> GetVerbFlatListFromMetaConnection(Concept verb, string metaOperatorName, bool isMetaConnectionPositive)
-        {
-            return metaConnectionFlattenizer.GetFlatVerbListFromMetaConnection(verb, metaOperatorName, isMetaConnectionPositive);
         }
         #endregion
     }
