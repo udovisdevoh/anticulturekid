@@ -135,7 +135,7 @@
     <Compile Include="Ai\Answerer\StringBasedDefinitions\SortableComplementInfo.cs" />
     <Compile Include="Ai\Answerer\StringBasedDefinitions\SortableDefinitionElement.cs" />
     <Compile Include="Ai\Answerer\StringBasedDefinitions\SortingException.cs" />
-    <Compile Include="Ai\Instinct\Ego\Ego.cs" />
+    <Compile Include="Ai\Instinct\Ego.cs" />
     <Compile Include="Ai\SaverLoader\MemoryDump\ConceptInfo.cs" />
     <Compile Include="Ai\SaverLoader\MemoryDump\ConditionInfo.cs" />
     <Compile Include="Ai\SaverLoader\MemoryDump\ConnectionTheoryInfo.cs" />
@@ -200,7 +200,7 @@
     <Compile Include="Ai\NameMapper\Implementation\NameMapper.cs" />
     <Compile Include="Ai\NameMapper\NameMappingException.cs" />
     <Compile Include="Ai\Instinct\AbstractInstinct.cs" />
-    <Compile Include="Ai\Instinct\StandardInstinct\StandardInstinct.cs" />
+    <Compile Include="Ai\Instinct\StandardInstinct.cs" />
     <Compile Include="Ai\Brain\ConnectionManager\ConnectionException.cs" />
     <Compile Include="Ai\Brain\Repairer\Reciprocator\Reciprocator.cs" />
     <Compile Include="Ai\Brain\Repairer\Reciprocator\ReciprocatorException.cs" />

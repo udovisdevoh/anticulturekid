@@ -5,12 +5,11 @@ using System.Text;
 
 namespace AntiCulture.Kid
 {
+    /// <summary>
+    /// Basic knowlege the Ai has about himself
+    /// </summary>
     class Ego : AbstractInstinct
     {
-        #region Fields
-        private List<string> statementList = new List<string>();
-        #endregion
-
         #region Constructors
         public Ego()
         {
@@ -25,25 +24,6 @@ namespace AntiCulture.Kid
             Add("you make logical_deduction");
             Add("you make proof");
             Add("you madeof memory");
-        }
-        #endregion
-
-        #region Methods
-        public override IEnumerator<string> GetEnumerator()
-        {
-            return statementList.GetEnumerator();
-        }
-
-        private void Add(string statement)
-        {
-            statementList.Add(statement.ToLower().Trim());
-        }
-        #endregion
-
-        #region Properties
-        public override int Count
-        {
-            get { return statementList.Count; }
         }
         #endregion
     }

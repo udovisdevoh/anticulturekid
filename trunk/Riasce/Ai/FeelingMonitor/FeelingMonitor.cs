@@ -5,36 +5,78 @@ using System.Text;
 
 namespace AntiCulture.Kid
 {
+    /// <summary>
+    /// This class represents the feeling monitor
+    /// It monitors the Ai's state and logs stuff that happens
+    /// </summary>
     class FeelingMonitor
     {
-        #region Fields
+        #region Static Fields
+        /// <summary>
+        /// List of current feelings, (use constants)
+        /// </summary>
         private static HashSet<int> feelingList = new HashSet<int>();
 
+        /// <summary>
+        /// Totology
+        /// </summary>
         public static readonly int TOTOLOGY = 1;
 
+        /// <summary>
+        /// Purification
+        /// </summary>
         public static readonly int PURIFICATION = 2;
 
+        /// <summary>
+        /// Flattenizing
+        /// </summary>
         public static readonly int FLATTENIZING = 3;
 
+        /// <summary>
+        /// Optimizing
+        /// </summary>
         public static readonly int OPTIMIZING = 4;
 
+        /// <summary>
+        /// Reciprocating
+        /// </summary>
         public static readonly int RECIPROCATING = 5;
 
+        /// <summary>
+        /// Emptiness
+        /// </summary>
         public static readonly int EMPTINESS = 6;
 
+        /// <summary>
+        /// Single side connection
+        /// </summary>
         public static readonly int SINGLE_SIDE_CONNECTION = 7;
 
+        /// <summary>
+        /// Unlikely connection
+        /// </summary>
         public static readonly int UNLIKELY_CONNECTION = 8;
 
+        /// <summary>
+        /// Connection exception
+        /// </summary>
         public static readonly int CONNECTION_EXCEPTION = 9;
         #endregion
 
         #region Methods
+        /// <summary>
+        /// Add feeling to feeling list
+        /// </summary>
+        /// <param name="feelingType">feeling type (use this class's constants)</param>
         public static void Add(int feelingType)
         {
             feelingList.Add(feelingType);
         }
 
+        /// <summary>
+        /// Get current feeling and reset feeling list
+        /// </summary>
+        /// <returns>current feeling</returns>
         public static HashSet<string> GetCurrentFeelingListAndReset()
         {
             HashSet<string> currentFeelingDescriptionList = new HashSet<string>();
