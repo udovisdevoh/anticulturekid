@@ -5,14 +5,25 @@ using System.Text;
 
 namespace AntiCulture.Kid
 {
-    class Teacher : AbstractTeacher
+    /// <summary>
+    /// Class used by Ai to teach stuff to human abour concepts
+    /// </summary>
+    class Teacher
     {
         #region Fields
+        /// <summary>
+        /// Random number generator
+        /// </summary>
         private Random random = new Random();
         #endregion
 
-        #region Methods
-        public override KeyValuePair<List<Concept>, Proof> TeachAbout(Concept subject)
+        #region Public Methods
+        /// <summary>
+        /// Returns a random connection and its proof about subject concept
+        /// </summary>
+        /// <param name="subject">subject concept</param>
+        /// <returns>random connection and proof about subject concept</returns>
+        public KeyValuePair<List<Concept>, Proof> TeachAbout(Concept subject)
         {
             Concept verb;
             Concept complement;
@@ -44,7 +55,12 @@ namespace AntiCulture.Kid
             return new KeyValuePair<List<Concept>, Proof>(connection, proof);
         }
 
-        public override KeyValuePair<List<Concept>, Proof> TeachAboutRandomConcept(IEnumerable<Concept> conceptCollection)
+        /// <summary>
+        /// Returns a random connection and its proof about random concept from conceptCollection
+        /// </summary>
+        /// <param name="conceptCollection">conceptCollection</param>
+        /// <returns>random connection and proof about random concept from conceptCollection</returns>
+        public KeyValuePair<List<Concept>, Proof> TeachAboutRandomConcept(IEnumerable<Concept> conceptCollection)
         {
             int randomIndex;
 
@@ -62,7 +78,9 @@ namespace AntiCulture.Kid
             FeelingMonitor.Add(FeelingMonitor.EMPTINESS);
             throw new TeachingException("Couldn't find anything to teach about");
         }
+        #endregion 
 
+        #region Private Methods
         /// <summary>
         /// Return true if concept has proof with arguments
         /// </summary>

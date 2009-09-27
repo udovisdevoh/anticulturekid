@@ -5,12 +5,13 @@ using System.Text;
 
 namespace AntiCulture.Kid
 {
+    /// <summary>
+    /// Exceptions thrown when teaching fails
+    /// </summary>
     class TeachingException : Exception
     {
-        #region Constructors
         public TeachingException(string info)
             : base(info)
         { }
-        #endregion
     }
 }
