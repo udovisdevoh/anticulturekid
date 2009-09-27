@@ -312,6 +312,11 @@ namespace AntiCulture.Kid
         {
             return idMap.Keys.GetEnumerator();
         }
+
+        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
+        {
+            throw new NotImplementedException();
+        }
         #endregion
 
         #region Private Methods
@@ -389,7 +394,7 @@ namespace AntiCulture.Kid
         /// <summary>
         /// Count how many concept names exists in name mapper
         /// </summary>
-        public override int Count
+        public int Count
         {
             get { return idMap.Keys.Count; }
         }
