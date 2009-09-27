@@ -5,12 +5,13 @@ using System.Text;
 
 namespace AntiCulture.Kid
 {
+    /// <summary>
+    /// Exception thrown when IO to/from memory fails
+    /// </summary>
     class MemoryException : Exception
     {
-        #region Constructors
         public MemoryException(string info)
             : base(info)
         { }
-        #endregion
     }
 }

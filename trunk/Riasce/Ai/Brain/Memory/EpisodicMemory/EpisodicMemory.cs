@@ -25,7 +25,7 @@ namespace AntiCulture.Kid
         /// <param name="conceptList">concept list</param>
         /// <param name="isNegative">whether the connection is negative or not</param>
         /// <param name="isInterrogative">whether the connection is interrogative or not</param>
-        public override void RememberOperation(string authorName, List<Concept> conceptList, bool isNegative, bool isInterrogative)
+        public void RememberOperation(string authorName, List<Concept> conceptList, bool isNegative, bool isInterrogative)
         {
             DateTime dateTime = DateTime.Now;
             OperationMemento memento = new OperationMemento(dateTime, authorName, conceptList, isNegative, isInterrogative);
@@ -40,7 +40,7 @@ namespace AntiCulture.Kid
         /// <param name="metaOperator">metaOperator's name</param>
         /// <param name="isNegative">whether the metaConnection is negative or not</param>
         /// <param name="isInterrogative">whether the metaConnection is interrogative or not</param>
-        public override void RememberMetaOperation(string authorName, List<Concept> conceptList, string metaOperator, bool isNegative, bool isInterrogative)
+        public void RememberMetaOperation(string authorName, List<Concept> conceptList, string metaOperator, bool isNegative, bool isInterrogative)
         {
             DateTime dateTime = DateTime.Now;
             MetaOperationMemento memento = new MetaOperationMemento(dateTime, authorName, conceptList, metaOperator, isNegative, isInterrogative);
@@ -54,7 +54,7 @@ namespace AntiCulture.Kid
         /// <param name="stringList">a list of string (could be unary operators or stuff like that)</param>
         /// <param name="conceptList">a list of concept</param>
         /// <param name="isNegative">whether the "connection" is negative or not</param>
-        public override void RememberListStringAndConcept(string authorName, IEnumerable<string> stringList, IEnumerable<Concept> conceptList, bool isNegative)
+        public void RememberListStringAndConcept(string authorName, IEnumerable<string> stringList, IEnumerable<Concept> conceptList, bool isNegative)
         {
             DateTime dateTime = DateTime.Now;
             ListStringAndConceptMemento memento = new ListStringAndConceptMemento(dateTime, authorName, stringList, conceptList, isNegative);
@@ -66,7 +66,7 @@ namespace AntiCulture.Kid
         /// </summary>
         /// <param name="authorName">author's name</param>
         /// <param name="statement">statement to remember</param>
-        public override void RememberStatement(string authorName, Statement statement)
+        public void RememberStatement(string authorName, Statement statement)
         {
             DateTime dateTime = DateTime.Now;
             StatementMemento memento = new StatementMemento(dateTime, authorName, statement);
@@ -78,7 +78,7 @@ namespace AntiCulture.Kid
         /// </summary>
         /// <param name="authorName">author's name</param>
         /// <param name="comment">unspecified string comment</param>
-        public override void RememberString(string authorName, string comment)
+        public void RememberString(string authorName, string comment)
         {
             DateTime dateTime = DateTime.Now;
             StringMemento memento = new StringMemento(dateTime, authorName, comment);
