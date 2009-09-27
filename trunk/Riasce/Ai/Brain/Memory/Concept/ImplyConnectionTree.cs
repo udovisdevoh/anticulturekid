@@ -5,13 +5,18 @@ using System.Text;
 
 namespace AntiCulture.Kid
 {
-    public class ImplyConnectionTree : AbstractImplyConnectionTree
+    public class ImplyConnectionTree : IEnumerable<KeyValuePair<Concept, HashSet<Condition>>>
     {
         #region Fields
         private Dictionary<Concept, HashSet<Condition>> connectionList = new Dictionary<Concept, HashSet<Condition>>();
         #endregion
 
         #region Public methods
+        /// <summary>
+        /// Add imply connection to complement
+        /// </summary>
+        /// <param name="complement">complement concept</param>
+        /// <param name="condition">condition</param>
         public override void AddConnection(Concept complement, Condition condition)
         {
             if (TestConnection(complement, condition))
@@ -28,6 +33,12 @@ namespace AntiCulture.Kid
             conditionList.Add(condition);
         }
 
+        /// <summary>
+        /// Remove imply connection to complement
+        /// </summary>
+        /// <param name="complement">verb concept</param>
+        /// <param name="complement">complement concept</param>
+        /// <param name="condition">condition</param>
         public override void RemoveConnection(Concept verb, Concept complement, Condition condition)
         {
             Condition conditionToRemove = null;
@@ -57,6 +68,12 @@ namespace AntiCulture.Kid
             }
         }
 
+        /// <summary>
+        /// Returns true if imply connection exists, else: false
+        /// </summary>
+        /// <param name="complement">complement concept</param>
+        /// <param name="condition">condition</param>
+        /// <returns>true if imply connection exists, else: false</returns>
         public override bool TestConnection(Concept complement, Condition condition)
         {
             HashSet<Condition> conditionList;

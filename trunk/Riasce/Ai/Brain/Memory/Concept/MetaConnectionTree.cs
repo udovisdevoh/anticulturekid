@@ -5,9 +5,17 @@ using System.Text;
 
 namespace AntiCulture.Kid
 {
+    /// <summary>
+    /// This class represents a set of metaConnection branch for each metaOperator name
+    /// </summary>
     public class MetaConnectionTree
     {
         #region Fields
+        /// <summary>
+        /// MetaConnections for each metaOperator type
+        /// Key: metaOperator
+        /// Value: metaConnection branch
+        /// </summary>
         private Dictionary<string, HashSet<Concept>> metaConnections = new Dictionary<string, HashSet<Concept>>();
         #endregion
 
@@ -72,6 +80,9 @@ namespace AntiCulture.Kid
         #endregion
 
         #region Properties
+        /// <summary>
+        /// Whether the metaConnection tree is empty
+        /// </summary>
         public bool IsEmpty
         {
             get
@@ -83,6 +94,9 @@ namespace AntiCulture.Kid
             }
         }
 
+        /// <summary>
+        /// Whether the metaConnection tree has at least a connection to another verb
+        /// </summary>
         public bool IsConnectedToSomething
         {
             get
