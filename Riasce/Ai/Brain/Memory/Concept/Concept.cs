@@ -5,25 +5,56 @@ using System.Text;
 
 namespace AntiCulture.Kid
 {
-    public class Concept : AbstractConcept
+    /// <summary>
+    /// Represents a concept which can also be an operator.
+    /// Facade to FlatConnectionSet, OptimizedConnectionSet, ImplyConnectionTree and MetaConnectionSet
+    /// </summary>
+    public class Concept
     {
         #region Fields
+        /// <summary>
+        /// Positive MetaConnection tree
+        /// </summary>
         private MetaConnectionTree metaConnectionTreePositive = new MetaConnectionTree();
 
+        /// <summary>
+        /// Negative metaConnection tree
+        /// </summary>
         private MetaConnectionTree metaConnectionTreeNegative = new MetaConnectionTree();
         
+        /// <summary>
+        /// Optimized connection branch list
+        /// </summary>
         private Dictionary<Concept, ConnectionBranch> optimizedConnectionBranchList = new Dictionary<Concept, ConnectionBranch>();
 
+        /// <summary>
+        /// Flat connection branch list
+        /// </summary>
         private Dictionary<Concept, ConnectionBranch> flatConnectionBranchList = new Dictionary<Concept, ConnectionBranch>();
 
+        /// <summary>
+        /// Positive imply connection tree
+        /// </summary>
         private ImplyConnectionTree implyConnectionTreePositive = new ImplyConnectionTree();
 
+        /// <summary>
+        /// Negative imply connection tree
+        /// </summary>
         private ImplyConnectionTree implyConnectionTreeNegative = new ImplyConnectionTree();
 
+        /// <summary>
+        /// Indexed imply condition list
+        /// </summary>
         private HashSet<Condition> indexedImplyConditionList = new HashSet<Condition>();
         
+        /// <summary>
+        /// Whether the concept is flat dirty or not
+        /// </summary>
         private bool isFlatDirty = false;
 
+        /// <summary>
+        /// Concept name in debugger (debugger only)
+        /// </summary>
         private string debuggerName;
         #endregion
 
@@ -46,9 +77,13 @@ namespace AntiCulture.Kid
         }
         #endregion
 
-        #region Methods
         #region Operations on Optimized Connections
-        public override void AddOptimizedConnection(Concept verbConcept, Concept complementConcept)
+        /// <summary>
+        /// Add a optimized connection
+        /// </summary>
+        /// <param name="verbConcept">verb concept</param>
+        /// <param name="complementConcept">complement concept</param>
+        public void AddOptimizedConnection(Concept verbConcept, Concept complementConcept)
         {
             ConnectionBranch connectionBranch;
             if (!optimizedConnectionBranchList.TryGetValue(verbConcept, out connectionBranch))
@@ -59,14 +94,25 @@ namespace AntiCulture.Kid
             connectionBranch.AddConnection(complementConcept);
         }
 
-        public override void RemoveOptimizedConnection(Concept verbConcept, Concept complementConcept)
+        /// <summary>
+        /// Remove an optimized connection
+        /// </summary>
+        /// <param name="verbConcept">verb concept</param>
+        /// <param name="complementConcept">complement concept</param>
+        public void RemoveOptimizedConnection(Concept verbConcept, Concept complementConcept)
         {
             ConnectionBranch connectionBranch;
             if (optimizedConnectionBranchList.TryGetValue(verbConcept, out connectionBranch))
                 connectionBranch.RemoveConnection(complementConcept);
         }
 
-        public override bool IsOptimizedConnectedTo(Concept verbConcept, Concept complementConcept)
+        /// <summary>
+        /// Returns true if optimized connection exists
+        /// </summary>
+        /// <param name="verbConcept">verb concept</param>
+        /// <param name="complementConcept">complement concept</param>
+        /// <returns>True if optimized connection exists</returns>
+        public bool IsOptimizedConnectedTo(Concept verbConcept, Concept complementConcept)
         {
             ConnectionBranch connectionBranch;
             if (optimizedConnectionBranchList.TryGetValue(verbConcept, out connectionBranch))
@@ -77,7 +123,12 @@ namespace AntiCulture.Kid
         #endregion
 
         #region Operations on Flat Connections
-        public override void AddFlatConnection(Concept verbConcept, Concept complementConcept)
+        /// <summary>
+        /// Add a flat connection
+        /// </summary>
+        /// <param name="verbConcept">verb concept</param>
+        /// <param name="complementConcept">complement concept</param>
+        public void AddFlatConnection(Concept verbConcept, Concept complementConcept)
         {
             ConnectionBranch connectionBranch;
             if (!flatConnectionBranchList.TryGetValue(verbConcept, out connectionBranch))
@@ -88,14 +139,25 @@ namespace AntiCulture.Kid
             connectionBranch.AddConnection(complementConcept);
         }
 
-        public override void RemoveFlatConnection(Concept verbConcept, Concept complementConcept)
+        /// <summary>
+        /// Remove a flat connection
+        /// </summary>
+        /// <param name="verbConcept">verb concept</param>
+        /// <param name="complementConcept">complement concept</param>
+        public void RemoveFlatConnection(Concept verbConcept, Concept complementConcept)
         {
             ConnectionBranch connectionBranch;
             if (flatConnectionBranchList.TryGetValue(verbConcept, out connectionBranch))
                 connectionBranch.RemoveConnection(complementConcept);
         }
 
-        public override bool IsFlatConnectedTo(Concept verbConcept, Concept complementConcept)
+        /// <summary>
+        /// Returns true if flat connection exists
+        /// </summary>
+        /// <param name="verbConcept">verb concept</param>
+        /// <param name="complementConcept">complement concept</param>
+        /// <returns>True if flat connection exists</returns>
+        public bool IsFlatConnectedTo(Concept verbConcept, Concept complementConcept)
         {
             ConnectionBranch connectionBranch;
             if (flatConnectionBranchList.TryGetValue(verbConcept, out connectionBranch))
@@ -104,7 +166,11 @@ namespace AntiCulture.Kid
             return false;
         }
 
-        public override void FlatDirthenFromOperatorList(HashSet<Concept> operatorList)
+        /// <summary>
+        /// Dirthen concept's flat representation for each branches matching operator list
+        /// </summary>
+        /// <param name="operatorList">list of operators to match</param>
+        public void FlatDirthenFromOperatorList(HashSet<Concept> operatorList)
         {
             ConnectionBranch flatBranch;
             foreach (Concept verb in operatorList)
@@ -116,7 +182,12 @@ namespace AntiCulture.Kid
         #endregion
 
         #region Operations on metaConnections
-        public override void AddMetaConnection(string metaOperatorName, Concept complementConcept, bool connectionSens)
+        /// <summary>
+        /// Adds a connection to the other concept
+        /// </summary>
+        /// <param name="metaOperator">metaOperator name</param>
+        /// <param name="concept">complement concept</param>
+        public void AddMetaConnection(string metaOperatorName, Concept complementConcept, bool connectionSens)
         {
             if (connectionSens == true)
                 metaConnectionTreePositive.AddMetaConnection(metaOperatorName, complementConcept);
@@ -124,7 +195,12 @@ namespace AntiCulture.Kid
                 metaConnectionTreeNegative.AddMetaConnection(metaOperatorName, complementConcept);
         }
 
-        public override void RemoveMetaConnection(string metaOperatorName, Concept complementConcept, bool connectionSens)
+        /// <summary>
+        /// Remove a connection to the other concept
+        /// </summary>
+        /// <param name="metaOperator">metaOperator name</param>
+        /// <param name="concept">complement concept</param>
+        public void RemoveMetaConnection(string metaOperatorName, Concept complementConcept, bool connectionSens)
         {
             if (connectionSens == true)
                 metaConnectionTreePositive.RemoveMetaConnection(metaOperatorName, complementConcept);
@@ -132,7 +208,13 @@ namespace AntiCulture.Kid
                 metaConnectionTreeNegative.RemoveMetaConnection(metaOperatorName, complementConcept);
         }
 
-        public override bool IsMetaConnectedTo(string metaOperatorName, Concept complementConcept, bool connectionSens)
+        /// <summary>
+        /// Test whether meta connection exist or not
+        /// </summary>
+        /// <param name="metaOperator">metaOperator name</param>
+        /// <param name="concept">complement concept</param>
+        /// <returns>If connection exist: true, else: false</returns>
+        public bool IsMetaConnectedTo(string metaOperatorName, Concept complementConcept, bool connectionSens)
         {
             if (connectionSens == true)
                 return metaConnectionTreePositive.IsMetaConnectedTo(metaOperatorName, complementConcept);
@@ -142,7 +224,13 @@ namespace AntiCulture.Kid
         #endregion
 
         #region Operations on implyConnections
-        public override void AddImplyConnection(Concept complement, Condition condition, bool isPositive)
+        /// <summary>
+        /// Add imply connection
+        /// </summary>
+        /// <param name="complement">complement</param>
+        /// <param name="condition">condition</param>
+        /// <param name="isPositive">connection sense</param>
+        public void AddImplyConnection(Concept complement, Condition condition, bool isPositive)
         {
             if (isPositive)
                 implyConnectionTreePositive.AddConnection(complement, condition);
@@ -150,7 +238,13 @@ namespace AntiCulture.Kid
                 implyConnectionTreeNegative.AddConnection(complement, condition);
         }
 
-        public override void RemoveImplyConnection(Concept complement, Condition condition, bool isPositive)
+        /// <summary>
+        /// Remove imply connection
+        /// </summary>
+        /// <param name="complement">complement</param>
+        /// <param name="condition">condition</param>
+        /// <param name="isPositive">connection sense</param>
+        public void RemoveImplyConnection(Concept complement, Condition condition, bool isPositive)
         {
             if (isPositive)
                 implyConnectionTreePositive.RemoveConnection(this, complement, condition);
@@ -158,7 +252,14 @@ namespace AntiCulture.Kid
                 implyConnectionTreeNegative.RemoveConnection(this, complement, condition);
         }
 
-        public override bool TestImplyConnection(Concept complement, Condition condition, bool isPositive)
+        /// <summary>
+        /// Remove imply connection
+        /// </summary>
+        /// <param name="complement">complement</param>
+        /// <param name="condition">condition</param>
+        /// <param name="isPositive">connection sense</param>
+        /// <returns>whether a matching connection exists</returns>
+        public bool TestImplyConnection(Concept complement, Condition condition, bool isPositive)
         {
             if (isPositive)
                 return implyConnectionTreePositive.TestConnection(complement, condition);
@@ -166,23 +267,39 @@ namespace AntiCulture.Kid
                 return implyConnectionTreeNegative.TestConnection(complement, condition);
         }
 
-        public override void AddIndexToImplyCondition(Condition condition)
+        /// <summary>
+        /// Add an index to imply condition to fasten search
+        /// </summary>
+        /// <param name="condition">imply condition</param>
+        public void AddIndexToImplyCondition(Condition condition)
         {
             indexedImplyConditionList.Add(condition);
         }
 
-        public override void RemoveIndexToImplyCondition(Condition condition)
+        /// <summary>
+        /// Remove index to imply condition
+        /// </summary>
+        /// <param name="condition">imply condition</param>
+        public void RemoveIndexToImplyCondition(Condition condition)
         {
             indexedImplyConditionList.Remove(condition);
         }
 
-        public override void ClearIndexToImplyCondition()
+        /// <summary>
+        /// Clear index to imply condition
+        /// </summary>
+        public void ClearIndexToImplyCondition()
         {
             indexedImplyConditionList.Clear();
         }
         #endregion
 
         #region Getters
+        /// <summary>
+        /// Get concepts's flat connection branch from prodived verb
+        /// </summary>
+        /// <param name="verb">provided verb</param>
+        /// <returns>flat connection branch on prodived verb</returns>
         public ConnectionBranch GetFlatConnectionBranch(Concept verb)
         {
             ConnectionBranch connectionBranch;
@@ -194,6 +311,11 @@ namespace AntiCulture.Kid
             return connectionBranch;
         }
 
+        /// <summary>
+        /// Get concepts's optimized connection branch from prodived verb
+        /// </summary>
+        /// <param name="verb">provided verb</param>
+        /// <returns>optimized connection branch on prodived verb</returns>
         public ConnectionBranch GetOptimizedConnectionBranch(Concept verb)
         {
             ConnectionBranch connectionBranch;
@@ -205,10 +327,12 @@ namespace AntiCulture.Kid
             return connectionBranch;
         }
         #endregion
-        #endregion
 
         #region Properties
-        public override bool IsConnectedToSomething
+        /// <summary>
+        /// Whether concept or operator is connected or metaConnected to something or not
+        /// </summary>
+        public bool IsConnectedToSomething
         {
             get
             {
@@ -228,13 +352,19 @@ namespace AntiCulture.Kid
             }
         }
 
-        public override bool IsFlatDirty
+        /// <summary>
+        /// Whether the concept's flat representation need repair or not
+        /// </summary>
+        public bool IsFlatDirty
         {
             get {return isFlatDirty;}
             set {isFlatDirty = value;}
         }
 
-        public override bool IsOptimizedDirty
+        /// <summary>
+        /// Whether the concept's optimized representation need repair or not
+        /// </summary>
+        public bool IsOptimizedDirty
         {
             get
             {
@@ -255,16 +385,25 @@ namespace AntiCulture.Kid
             }
         }
 
+        /// <summary>
+        /// Positive MetaConnection tree
+        /// </summary>
         public MetaConnectionTree MetaConnectionTreePositive
         {
             get { return metaConnectionTreePositive; }
         }
 
+        /// <summary>
+        /// Negative metaConnection tree
+        /// </summary>
         public MetaConnectionTree MetaConnectionTreeNegative
         {
             get { return metaConnectionTreeNegative; }
         }
 
+        /// <summary>
+        /// Flat connection branch list
+        /// </summary>
         public Dictionary<Concept, ConnectionBranch> FlatConnectionBranchList
         {
             get
@@ -277,6 +416,9 @@ namespace AntiCulture.Kid
             }
         }
 
+        /// <summary>
+        /// Optimized connection branch list
+        /// </summary>
         public Dictionary<Concept, ConnectionBranch> OptimizedConnectionBranchList
         {
             get
@@ -290,12 +432,18 @@ namespace AntiCulture.Kid
             }
         }
 
+        /// <summary>
+        /// Concept name in debugger (debugger only)
+        /// </summary>
         public string DebuggerName
         {
             get {return debuggerName;}
             set {debuggerName = value;}
         }
 
+        /// <summary>
+        /// All concepts flat plugged to this concept
+        /// </summary>
         public HashSet<Concept> ConceptFlatPluggedTo
         {
             get
@@ -309,16 +457,25 @@ namespace AntiCulture.Kid
             }
         }
 
+        /// <summary>
+        /// Positive imply connection tree
+        /// </summary>
         public ImplyConnectionTree ImplyConnectionTreePositive
         {
             get { return implyConnectionTreePositive; }
         }
 
+        /// <summary>
+        /// Negative imply connection tree
+        /// </summary>
         public ImplyConnectionTree ImplyConnectionTreeNegative
         {
             get { return implyConnectionTreeNegative; }
         }
 
+        /// <summary>
+        /// Indexed imply condition list
+        /// </summary>
         public HashSet<Condition> IndexedImplyConditionList
         {
             get { return indexedImplyConditionList; }
