@@ -5,6 +5,9 @@ using System.Text;
 
 namespace AntiCulture.Kid
 {
+    /// <summary>
+    /// Represents the abstraction of connection flattenizers
+    /// </summary>
     abstract class AbstractFlattenizer
     {
         /// <summary>

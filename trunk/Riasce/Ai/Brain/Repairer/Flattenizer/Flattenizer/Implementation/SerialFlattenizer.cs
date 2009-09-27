@@ -5,22 +5,47 @@ using System.Text;
 
 namespace AntiCulture.Kid
 {
+    /// <summary>
+    /// Represents the single threaded version of the connection flattenizer
+    /// </summary>
     class SerialFlattenizer : AbstractFlattenizer
     {
         #region Fields
+        /// <summary>
+        /// MetaConnection manager
+        /// </summary>
         private MetaConnectionManager metaConnectionManager = new MetaConnectionManager();
 
+        /// <summary>
+        /// Remember which branches are already repaired to improve performance a lot
+        /// </summary>
         private HashSet<ConnectionBranch> repairedBranches;
 
+        /// <summary>
+        /// Remember metaConnections to improve performances
+        /// </summary>
         private VerbMetaConnectionCache verbConnectionCache;
         #endregion
 
         #region Public Methods
+        /// <summary>
+        /// Repair a concept's flat representation and regenerate its optimized representation
+        /// so no useless connection persist
+        /// </summary>
+        /// <param name="concept">Concept to repair</param>
         public override void Repair(Concept subject)
         {
             Repair(subject, new HashSet<ConnectionBranch>(), new VerbMetaConnectionCache());
         }
 
+        /// <summary>
+        /// Repair a concept's flat representation and regenerate its optimized representation
+        /// so no useless connection persist.
+        /// THIS METHOD MUST ONLY BE USED BY REPAIRER CLASS!!!
+        /// </summary>
+        /// <param name="concept">concept to repair</param>
+        /// <param name="repairedBranches">provided HashSet to rememebr which branches were repaired</param>
+        /// <param name="verbConnectionCache">provided cache to remember flattenized metaConnections</param>
         public override void Repair(Concept subject, HashSet<ConnectionBranch> repairedBranches, VerbMetaConnectionCache verbConnectionCache)
         {
             this.repairedBranches = repairedBranches;
@@ -78,6 +103,12 @@ namespace AntiCulture.Kid
             return flatBranch;
         }
 
+        /// <summary>
+        /// Flatten connections depending on direct implication metaConnections
+        /// </summary>
+        /// <param name="flatBranch">flat branch</param>
+        /// <param name="subject">subject concept</param>
+        /// <param name="verb">verb concept</param>
         private void FlattenDirectImplication(ConnectionBranch flatBranch, Concept subject, Concept verb)
         {
             HashSet<Concept> directImplicationVerbList = verbConnectionCache.GetVerbFlatListFromCache(verb, "direct_implication", false);
@@ -134,6 +165,12 @@ namespace AntiCulture.Kid
             }
         }
 
+        /// <summary>
+        /// Flatten connections depending on liffid metaConnections
+        /// </summary>
+        /// <param name="flatBranch">flat branch</param>
+        /// <param name="subject">subject concept</param>
+        /// <param name="verb">verb concept</param>
         private void FlattenLiffid(ConnectionBranch flatBranch, Concept subject, Concept verb)
         {
             HashSet<Concept> liffidVerbList = verbConnectionCache.GetVerbFlatListFromCache(verb, "liffid", true);
@@ -198,6 +235,12 @@ namespace AntiCulture.Kid
             }
         }
 
+        /// <summary>
+        /// Flatten connections depending on muct metaConnections
+        /// </summary>
+        /// <param name="flatBranch">flat branch</param>
+        /// <param name="subject">subject concept</param>
+        /// <param name="verb">verb concept</param>
         private void FlattenMuct(ConnectionBranch flatBranch, Concept subject, Concept verb)
         {
             HashSet<Concept> muctVerbList = verbConnectionCache.GetVerbFlatListFromCache(verb, "muct", true);
@@ -265,6 +308,12 @@ namespace AntiCulture.Kid
             }
         }
 
+        /// <summary>
+        /// Flatten connections depending on positive "Imply" connections
+        /// </summary>
+        /// <param name="flatBranch">flat branch</param>
+        /// <param name="subject">subject concept</param>
+        /// <param name="verb">verb concept</param>
         private void FlattenPositiveImply(ConnectionBranch flatBranch, Concept subject, Concept verb)
         {
             Concept complement;
@@ -281,6 +330,12 @@ namespace AntiCulture.Kid
             }
         }
 
+        /// <summary>
+        /// Flatten connections depending on negative "Imply" connections
+        /// </summary>
+        /// <param name="flatBranch">flat branch</param>
+        /// <param name="subject">subject concept</param>
+        /// <param name="verb">verb concept</param>
         private void FlattenNegativeImply(ConnectionBranch flatBranch, Concept subject, Concept verb)
         {
             Concept complement;
@@ -297,6 +352,13 @@ namespace AntiCulture.Kid
             }
         }
 
+        /// <summary>
+        /// Try flatten positive imply condition
+        /// </summary>
+        /// <param name="flatBranch">flat branch</param>
+        /// <param name="subject">subject concept</param>
+        /// <param name="verb">verb concept</param>
+        /// <param name="condition">imply condition</param>
         private void TryFlattenConditionPositiveImply(ConnectionBranch flatBranch, Concept subject, Concept verb, Condition condition)
         {
             if (subject == condition.ActionComplement) //Cannot plug a concept to itself
@@ -336,7 +398,14 @@ namespace AntiCulture.Kid
                     flatBranch.SetProofTo(condition.ActionComplement, new Proof());
             }
         }
-
+        
+        /// <summary>
+        /// Try flatten negative imply condition
+        /// </summary>
+        /// <param name="flatBranch">flat branch</param>
+        /// <param name="subject">subject concept</param>
+        /// <param name="verb">verb concept</param>
+        /// <param name="condition">imply condition</param>
         private void TryFlattenConditionNegativeImply(ConnectionBranch flatBranch, Concept subject, Concept verb, Condition condition)
         {
             if (subject != condition.ActionComplement) //Ignore flattenization if subject is not concerned
@@ -384,6 +453,11 @@ namespace AntiCulture.Kid
             }
         }
 
+        /// <summary>
+        /// Get proof object from proof prototype
+        /// </summary>
+        /// <param name="proofPrototype">provided proof prototype</param>
+        /// <returns>proof object</returns>
         private Proof GetProofFromPrototype(HashSet<ArgumentPrototype> proofPrototype)
         {
             Proof proof = new Proof();
