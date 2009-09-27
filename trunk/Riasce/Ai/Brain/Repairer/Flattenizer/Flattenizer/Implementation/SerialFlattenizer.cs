@@ -5,7 +5,7 @@ using System.Text;
 
 namespace AntiCulture.Kid
 {
-    class Flattenizer : AbstractFlattenizer
+    class SerialFlattenizer : AbstractFlattenizer
     {
         #region Fields
         private MetaConnectionManager metaConnectionManager = new MetaConnectionManager();
