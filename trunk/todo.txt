@@ -1,10 +1,12 @@
 whole project major refactoring:
+-everything must be documented
+-remove useless abstraction
+-each class must be responsible of only one thing
+-classe that should be static will be static
 -everything must be unit testable and unit tested
 -visualizer thread must be safe (no visual conflict)
--everything must be documented
 -must create new class diagram
--classe that should be static will be static
--flattenizer must be multithread
+-flattenizer must be multithreaded
 -background thinker must be multithreaded
 -flat branch cache must be persistant
 -add linq queries where needed

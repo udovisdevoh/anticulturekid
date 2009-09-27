@@ -5,6 +5,9 @@ using System.Text;
 
 namespace AntiCulture.Kid
 {
+    /// <summary>
+    /// This class is used to add, remove and test "Imply" connections
+    /// </summary>
     class ImplyConnectionManager
     {
         #region Public Methods
