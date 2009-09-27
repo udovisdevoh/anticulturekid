@@ -99,12 +99,10 @@
     <Compile Include="Ai\Brain\BackgroundThinker\Purifier\Trauma.cs" />
     <Compile Include="Ai\Brain\Repairer\Flattenizer\Flattenizer\FlattenizationException.cs" />
     <Compile Include="Ai\Brain\Memory\Concept\Concept.cs" />
-    <Compile Include="Ai\Brain\Memory\Concept\ConnectionBranch\ConnectionBranch\AbstractConnectionBranch.cs" />
-    <Compile Include="Ai\Brain\Memory\Concept\ConnectionBranch\ConnectionBranch\Implementation\ConnectionBranch.cs" />
+    <Compile Include="Ai\Brain\Memory\Concept\ConnectionBranch\ConnectionBranch.cs" />
     <Compile Include="Ai\Brain\Repairer\Flattenizer\Flattenizer\AbstractFlattenizer.cs" />
     <Compile Include="Ai\Brain\Repairer\Flattenizer\Flattenizer\Implementation\Flattenizer.cs" />
-    <Compile Include="Ai\Brain\Memory\Concept\ConnectionBranch\Proof\AbstractProof.cs" />
-    <Compile Include="Ai\Brain\Memory\Concept\ConnectionBranch\Proof\Implementation\Proof.cs" />
+    <Compile Include="Ai\Brain\Memory\Concept\ConnectionBranch\Proof.cs" />
     <Compile Include="Ai\Brain\Memory\Memory\AbstractMemory.cs" />
     <Compile Include="Ai\Brain\Memory\Memory\Implementation\Memory.cs" />
     <Compile Include="Ai\Brain\Memory\Concept\MetaConnectionTree.cs" />
