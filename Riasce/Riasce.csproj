@@ -88,8 +88,7 @@
     <Compile Include="Ai\Brain\DefinitionMaker\DefinitionMaker.cs" />
     <Compile Include="Ai\Brain\ImplyConnectionManager\ImplyConnectionException.cs" />
     <Compile Include="Ai\Brain\ImplyConnectionManager\ImplyConnectionManager.cs" />
-    <Compile Include="Ai\Brain\Memory\Concept\ExplyConnectionTree\AbstractImplyConnectionTree.cs" />
-    <Compile Include="Ai\Brain\Memory\Concept\ExplyConnectionTree\Implementation\ImplyConnectionTree.cs" />
+    <Compile Include="Ai\Brain\Memory\Concept\ImplyConnectionTree.cs" />
     <Compile Include="Ai\Brain\Memory\Concept\TotologyException.cs" />
     <Compile Include="Ai\Brain\Memory\EpisodicMemory\Memento\SpecializedMementos\ListStringAndConceptMemento.cs" />
     <Compile Include="Ai\Brain\Memory\EpisodicMemory\Memento\SpecializedMementos\MetaOperationMemento.cs" />
@@ -108,8 +107,7 @@
     <Compile Include="Ai\Brain\Memory\Concept\ConnectionBranch\Proof\Implementation\Proof.cs" />
     <Compile Include="Ai\Brain\Memory\Memory\AbstractMemory.cs" />
     <Compile Include="Ai\Brain\Memory\Memory\Implementation\Memory.cs" />
-    <Compile Include="Ai\Brain\Memory\Concept\MetaConnectionTree\AbstractMetaConnectionTree.cs" />
-    <Compile Include="Ai\Brain\Memory\Concept\MetaConnectionTree\Implementation\MetaConnectionTree.cs" />
+    <Compile Include="Ai\Brain\Memory\Concept\MetaConnectionTree.cs" />
     <Compile Include="Ai\Brain\Memory\Memory\MemoryException.cs" />
     <Compile Include="Ai\Brain\MetaConnectionManager\MetaConnectionManager\AbstractMetaConnectionManager.cs" />
     <Compile Include="Ai\Brain\MetaConnectionManager\MetaConnectionManager\Implementation\MetaConnectionManager.cs" />

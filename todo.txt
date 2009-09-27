@@ -15,6 +15,14 @@ whole project major refactoring:
 -if, then statements must be c-like
 
 
+
+remove magical strings for metaOperator and ultra-basic operators
+so they can be replaced if needed
+
+proof must work with some kind of linked list rather than array with copied content
+
+
+
 allow stuff like:
 fred_pion isa man and programmer synergize guitar (which isa musical_instrument (which make music))
 
