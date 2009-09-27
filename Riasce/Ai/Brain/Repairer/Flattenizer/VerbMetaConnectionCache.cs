@@ -5,16 +5,32 @@ using System.Text;
 
 namespace AntiCulture.Kid
 {
-    public class VerbMetaConnectionCache : AbstractVerbMetaConnectionCache
+    /// <summary>
+    /// Represents the verb metaConnection cache used to improve metaOperation flattenization
+    /// </summary>
+    public class VerbMetaConnectionCache
     {
         #region Fields
+        /// <summary>
+        /// Positive verb metaConnection cache
+        /// </summary>
         private Dictionary<Concept,Dictionary<string,HashSet<Concept>>> positiveCache = new Dictionary<Concept,Dictionary<string,HashSet<Concept>>>();
 
+        /// <summary>
+        /// Negative verb metaConnection cache
+        /// </summary>
         private Dictionary<Concept, Dictionary<string, HashSet<Concept>>> negativeCache = new Dictionary<Concept, Dictionary<string, HashSet<Concept>>>();
         #endregion
 
-        #region Methods
-        public override HashSet<Concept> GetVerbFlatListFromCache(Concept verb, string metaOperatorName, bool isPositive)
+        #region Public Methods
+        /// <summary>
+        /// Gets the cached verb list
+        /// </summary>
+        /// <param name="verb">verb</param>
+        /// <param name="metaOperatorName">metaOperator name</param>
+        /// <param name="isPositive">whether the connection is positive or not</param>
+        /// <returns>a list of flat metaConnected verbs to provided verb</returns>
+        public HashSet<Concept> GetVerbFlatListFromCache(Concept verb, string metaOperatorName, bool isPositive)
         {
             Dictionary<Concept, Dictionary<string, HashSet<Concept>>> currentCache;
             if (isPositive)
@@ -34,7 +50,14 @@ namespace AntiCulture.Kid
             return null;
         }
 
-        public override void Remember(Concept verb, string metaOperatorName, bool isPositive, HashSet<Concept> flatVerbList)
+        /// <summary>
+        /// Add a list of flat metaConnected verbs to cache
+        /// </summary>
+        /// <param name="verb">verb</param>
+        /// <param name="metaOperatorName">metaOperator name</param>
+        /// <param name="isPositive">whether the connection is positive or not</param>
+        /// <param name="flatVerbList">a list of flat metaConnected verbs to provided verb</param>
+        public void Remember(Concept verb, string metaOperatorName, bool isPositive, HashSet<Concept> flatVerbList)
         {
             Dictionary<Concept, Dictionary<string, HashSet<Concept>>> currentCache;
             if (isPositive)
