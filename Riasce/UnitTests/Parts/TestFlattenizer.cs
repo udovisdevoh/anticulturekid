@@ -94,7 +94,7 @@ namespace AntiCulture.Kid
             Memory.TotalVerbList = new HashSet<Concept>();
             MetaConnectionManager metaConnectionManager = new MetaConnectionManager();
             ConnectionManager connectionManager = new ConnectionManager();
-            Flattenizer flattenizer = new Flattenizer();
+            SerialFlattenizer flattenizer = new SerialFlattenizer();
             Optimizer optimizer = new Optimizer();
 
             #region We create the verbs that we will need
@@ -626,7 +626,7 @@ namespace AntiCulture.Kid
         {
             MetaConnectionManager metaConnectionManager = new MetaConnectionManager();
             ConnectionManager connectionManager = new ConnectionManager();
-            Flattenizer flattenizer = new Flattenizer();
+            SerialFlattenizer flattenizer = new SerialFlattenizer();
             Optimizer optimizer = new Optimizer();
             Memory.TotalVerbList = new HashSet<Concept>();
 
