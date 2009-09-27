@@ -5,17 +5,35 @@ using System.Text;
 
 namespace AntiCulture.Kid
 {
+    /// <summary>
+    /// Concept ID based statistic info
+    /// </summary>
     class StatInfo
     {
         #region Fields
+        /// <summary>
+        /// Denominator verb id
+        /// </summary>
         private int denominatorVerbId;
 
+        /// <summary>
+        /// Denominator complement id
+        /// </summary>
         private int denominatorComplementId;
 
+        /// <summary>
+        /// Numerator verb id
+        /// </summary>
         private int numeratorVerbId;
 
+        /// <summary>
+        /// Numerator complement id
+        /// </summary>
         private int numeratorComplementId;
 
+        /// <summary>
+        /// Ratio (from 0 to 1)
+        /// </summary>
         private double ratio;
         #endregion
 
@@ -31,6 +49,9 @@ namespace AntiCulture.Kid
         #endregion
 
         #region Properties
+        /// <summary>
+        /// Ratio (from 0 to 1)
+        /// </summary>
         public double Ratio
         {
             get
@@ -39,6 +60,9 @@ namespace AntiCulture.Kid
             }
         }
 
+        /// <summary>
+        /// Denominator verb id
+        /// </summary>
         public int DenominatorVerbId
         {
             get
@@ -47,6 +71,9 @@ namespace AntiCulture.Kid
             }
         }
 
+        /// <summary>
+        /// Denominator complement id
+        /// </summary>
         public int DenominatorComplementId
         {
             get
@@ -55,6 +82,9 @@ namespace AntiCulture.Kid
             }
         }
 
+        /// <summary>
+        /// Numerator verb id
+        /// </summary>
         public int NumeratorVerbId
         {
             get
@@ -63,6 +93,9 @@ namespace AntiCulture.Kid
             }
         }
 
+        /// <summary>
+        /// Numerator complement id
+        /// </summary>
         public int NumeratorComplementId
         {
             get
