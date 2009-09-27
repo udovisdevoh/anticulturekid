@@ -5,6 +5,9 @@ using System.Text;
 
 namespace AntiCulture.Kid
 {
+    /// <summary>
+    /// Exceptions thrown when imply connect/disconnect fails
+    /// </summary>
     class ImplyConnectionException : Exception
     {
         public ImplyConnectionException(string info)
