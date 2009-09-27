@@ -5,13 +5,25 @@ using System.Text;
 
 namespace AntiCulture.Kid
 {
+    /// <summary>
+    /// Represents a memento about an operation
+    /// </summary>
     class OperationMemento : AbstractMemento
     {
         #region Fields
+        /// <summary>
+        /// Concept list
+        /// </summary>
         private List<Concept> conceptList;
 
+        /// <summary>
+        /// Whether the connection is negative
+        /// </summary>
         private bool isNegative;
 
+        /// <summary>
+        /// Whether the connection is interrogative
+        /// </summary>
         private bool isInterrogative;
         #endregion
 

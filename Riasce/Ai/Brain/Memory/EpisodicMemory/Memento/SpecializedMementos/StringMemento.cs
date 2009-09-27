@@ -5,9 +5,15 @@ using System.Text;
 
 namespace AntiCulture.Kid
 {
+    /// <summary>
+    /// Represents a memento about a string
+    /// </summary>
     class StringMemento : AbstractMemento
     {
         #region Fields
+        /// <summary>
+        /// String based comment
+        /// </summary>
         private string comment;
         #endregion
 
