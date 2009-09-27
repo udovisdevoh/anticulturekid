@@ -5,10 +5,16 @@ using System.Text;
 
 namespace AntiCulture.Kid
 {
-    class ImplyConnectionManager : AbstractImplyConnectionManager
+    class ImplyConnectionManager
     {
         #region Public Methods
-        public override void AddImplyConnection(Concept verb, Concept complement, Condition condition)
+        /// <summary>
+        /// Add imply metaconnection to verb
+        /// </summary>
+        /// <param name="verb">verb concept</param>
+        /// <param name="complement">complement concept</param>
+        /// <param name="condition">condition</param>
+        public void AddImplyConnection(Concept verb, Concept complement, Condition condition)
         {
             Memory.TotalVerbList.Add(verb);
 
@@ -65,7 +71,13 @@ namespace AntiCulture.Kid
             }
         }
 
-        public override void RemoveImplyConnection(Concept verb, Concept complement, Condition condition)
+        /// <summary>
+        /// Remove imply metaconnection to verb
+        /// </summary>
+        /// <param name="verb">verb concept</param>
+        /// <param name="complement">complement concept</param>
+        /// <param name="condition">condition</param>
+        public void RemoveImplyConnection(Concept verb, Concept complement, Condition condition)
         {
             verb.RemoveImplyConnection(complement, condition, true);
 
@@ -78,7 +90,14 @@ namespace AntiCulture.Kid
                 inverseVerb.RemoveImplyConnection(complement, inverseCondition, false);
         }
 
-        public override bool TestImplyConnection(Concept verb, Concept complement, Condition condition)
+        /// <summary>
+        /// Returns true if Imply Connection exists
+        /// </summary>
+        /// <param name="verb">verb concept</param>
+        /// <param name="complement">complement concept</param>
+        /// <param name="condition">condition</param>
+        /// <returns>Returns true if Imply Connection exists, else: false</returns>
+        public bool TestImplyConnection(Concept verb, Concept complement, Condition condition)
         {
             bool exists = verb.TestImplyConnection(complement, condition, true);
 
