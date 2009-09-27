@@ -5,14 +5,24 @@ using System.Text;
 
 namespace AntiCulture.Kid
 {
-    class Conversation : AbstractConversation
+    /// <summary>
+    /// This class represents conversations between Ai and Human
+    /// </summary>
+    class Conversation
     {
         #region Fields
+        /// <summary>
+        /// Random number generator
+        /// </summary>
         private Random random = new Random();
         #endregion
 
-        #region Methods
-        public override Statement GetCurrentStatementForAiToAnswerTo()
+        #region Public Methods
+        /// <summary>
+        /// Returns the statement the Ai wishes to say right now
+        /// </summary>
+        /// <returns>the statement the Ai wishes to say right now</returns>
+        public Statement GetCurrentStatementForAiToAnswerTo()
         {
             int statementType = random.Next(0,3);
 

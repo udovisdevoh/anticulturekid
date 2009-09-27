@@ -23,6 +23,11 @@ proof must work with some kind of linked list rather than array with copied cont
 
 
 
+
+analogizer could work with semantic proximity matrix too
+
+
+
 allow stuff like:
 fred_pion isa man and programmer synergize guitar (which isa musical_instrument (which make music))
 
