@@ -5,14 +5,19 @@ using System.Text;
 
 namespace AntiCulture.Kid
 {
-    public class MetaConnectionTree : AbstractMetaConnectionTree
+    public class MetaConnectionTree
     {
         #region Fields
         private Dictionary<string, HashSet<Concept>> metaConnections = new Dictionary<string, HashSet<Concept>>();
         #endregion
 
         #region Methods
-        public override void AddMetaConnection(string metaOperatorName, Concept concept)
+        /// <summary>
+        /// Adds a connection to the other concept
+        /// </summary>
+        /// <param name="metaOperator">metaOperator name</param>
+        /// <param name="concept">complement concept</param>
+        public void AddMetaConnection(string metaOperatorName, Concept concept)
         {
             HashSet<Concept> connectionSubSet;
             if (!metaConnections.TryGetValue(metaOperatorName, out connectionSubSet))
@@ -23,14 +28,25 @@ namespace AntiCulture.Kid
             connectionSubSet.Add(concept);
         }
 
-        public override void RemoveMetaConnection(string metaOperatorName, Concept concept)
+        /// <summary>
+        /// Remove a connection to the other concept
+        /// </summary>
+        /// <param name="metaOperator">metaOperator name</param>
+        /// <param name="concept">complement concept</param>
+        public void RemoveMetaConnection(string metaOperatorName, Concept concept)
         {
             HashSet<Concept> connectionSubSet;
             if (metaConnections.TryGetValue(metaOperatorName, out connectionSubSet))
                 connectionSubSet.Remove(concept);
         }
 
-        public override bool IsMetaConnectedTo(string metaOperatorName, Concept concept)
+        /// <summary>
+        /// Test whether meta connection exist or not
+        /// </summary>
+        /// <param name="metaOperator">metaOperator name</param>
+        /// <param name="concept">complement concept</param>
+        /// <returns>If connection exist: true, else: false</returns>
+        public bool IsMetaConnectedTo(string metaOperatorName, Concept concept)
         {
             HashSet<Concept> connectionSubSet;
             if (metaConnections.TryGetValue(metaOperatorName, out connectionSubSet))
@@ -39,6 +55,11 @@ namespace AntiCulture.Kid
             return false;
         }
 
+        /// <summary>
+        /// Returns all complement operators for specified metaOperator
+        /// </summary>
+        /// <param name="metaOperatorName">meta operator name</param>
+        /// <returns>HashSet containing a list of operators</returns>
         public override HashSet<Concept> GetAffectedOperatorsByMetaConnection(string metaOperatorName)
         {
             HashSet<Concept> affectedOperators;
