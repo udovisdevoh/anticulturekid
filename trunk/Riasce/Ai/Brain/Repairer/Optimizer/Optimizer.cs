@@ -5,9 +5,18 @@ using System.Text;
 
 namespace AntiCulture.Kid
 {
-    class Optimizer : AbstractOptimizer
+    /// <summary>
+    /// This class is used to remove useless connections from concepts
+    /// </summary>
+    class Optimizer
     {
-        public override void Repair(Concept concept)
+        #region Public Methods
+        /// <summary>
+        /// Repair a concept's optimized representation
+        /// so no useless connection persist
+        /// </summary>
+        /// <param name="concept">Concept to repair</param>
+        public void Repair(Concept concept)
         {
             if (concept.IsFlatDirty)
                 throw new OptimizationException("Repair flat representation before repairing optimized representation");
@@ -17,7 +26,9 @@ namespace AntiCulture.Kid
 
             concept.OptimizedConnectionBranchList = BuildOptimizedFromFlat(concept.FlatConnectionBranchList);
         }
+        #endregion
 
+        #region Private Methods
         /// <summary>
         /// Rebuild optimized branches from flat branches where proof has no argument
         /// </summary>
@@ -54,5 +65,6 @@ namespace AntiCulture.Kid
 
             return optimizedBranch;
         }
+        #endregion
     }
 }

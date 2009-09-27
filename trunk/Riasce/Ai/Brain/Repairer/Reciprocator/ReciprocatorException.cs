@@ -5,6 +5,9 @@ using System.Text;
 
 namespace AntiCulture.Kid
 {
+    /// <summary>
+    /// Exception thrown when reciprocation fails
+    /// </summary>
     class ReciprocatorException : Exception
     {
         public ReciprocatorException(string info)

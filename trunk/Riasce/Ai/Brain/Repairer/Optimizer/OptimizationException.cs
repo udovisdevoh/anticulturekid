@@ -5,6 +5,9 @@ using System.Text;
 
 namespace AntiCulture.Kid
 {
+    /// <summary>
+    /// Exception thrown when concept optimization fails
+    /// </summary>
     class OptimizationException : Exception
     {
         public OptimizationException(string info)
