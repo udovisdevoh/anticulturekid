@@ -196,8 +196,7 @@
     <Compile Include="Gui\MainWindow\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Ai\NameMapper\AbstractNameMapper.cs" />
-    <Compile Include="Ai\NameMapper\Implementation\NameMapper.cs" />
+    <Compile Include="Ai\NameMapper\NameMapper.cs" />
     <Compile Include="Ai\NameMapper\NameMappingException.cs" />
     <Compile Include="Ai\Instinct\AbstractInstinct.cs" />
     <Compile Include="Ai\Instinct\StandardInstinct.cs" />
