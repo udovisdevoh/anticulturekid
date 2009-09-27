@@ -5,6 +5,9 @@ using System.Text;
 
 namespace AntiCulture.Kid
 {
+    /// <summary>
+    /// Exceptions thrown when flattenization fails
+    /// </summary>
     class FlattenizationException : Exception
     {
         public FlattenizationException(string info)

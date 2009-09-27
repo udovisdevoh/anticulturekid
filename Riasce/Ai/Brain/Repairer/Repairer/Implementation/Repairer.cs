@@ -8,7 +8,7 @@ namespace AntiCulture.Kid
     public class Repairer : AbstractRepairer
     {
         #region Fields
-        private Flattenizer flattenizer = new Flattenizer();
+        private SerialFlattenizer flattenizer = new SerialFlattenizer();
 
         private Optimizer optimizer = new Optimizer();
 
