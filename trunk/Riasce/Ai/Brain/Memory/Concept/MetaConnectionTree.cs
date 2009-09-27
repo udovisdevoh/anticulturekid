@@ -68,7 +68,7 @@ namespace AntiCulture.Kid
         /// </summary>
         /// <param name="metaOperatorName">meta operator name</param>
         /// <returns>HashSet containing a list of operators</returns>
-        public override HashSet<Concept> GetAffectedOperatorsByMetaConnection(string metaOperatorName)
+        public HashSet<Concept> GetAffectedOperatorsByMetaConnection(string metaOperatorName)
         {
             HashSet<Concept> affectedOperators;
 

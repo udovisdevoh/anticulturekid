@@ -5,9 +5,17 @@ using System.Text;
 
 namespace AntiCulture.Kid
 {
+    /// <summary>
+    /// This class represents all the "imply" connections for a concept
+    /// </summary>
     public class ImplyConnectionTree : IEnumerable<KeyValuePair<Concept, HashSet<Condition>>>
     {
         #region Fields
+        /// <summary>
+        /// Connection list
+        /// key: complement concept
+        /// value: condition
+        /// </summary>
         private Dictionary<Concept, HashSet<Condition>> connectionList = new Dictionary<Concept, HashSet<Condition>>();
         #endregion
 
@@ -17,7 +25,7 @@ namespace AntiCulture.Kid
         /// </summary>
         /// <param name="complement">complement concept</param>
         /// <param name="condition">condition</param>
-        public override void AddConnection(Concept complement, Condition condition)
+        public void AddConnection(Concept complement, Condition condition)
         {
             if (TestConnection(complement, condition))
                 return;
@@ -39,7 +47,7 @@ namespace AntiCulture.Kid
         /// <param name="complement">verb concept</param>
         /// <param name="complement">complement concept</param>
         /// <param name="condition">condition</param>
-        public override void RemoveConnection(Concept verb, Concept complement, Condition condition)
+        public void RemoveConnection(Concept verb, Concept complement, Condition condition)
         {
             Condition conditionToRemove = null;
             HashSet<Condition> conditionList;
@@ -74,7 +82,7 @@ namespace AntiCulture.Kid
         /// <param name="complement">complement concept</param>
         /// <param name="condition">condition</param>
         /// <returns>true if imply connection exists, else: false</returns>
-        public override bool TestConnection(Concept complement, Condition condition)
+        public bool TestConnection(Concept complement, Condition condition)
         {
             HashSet<Condition> conditionList;
             if (connectionList.TryGetValue(complement, out conditionList))
@@ -84,9 +92,14 @@ namespace AntiCulture.Kid
             return false;
         }
 
-        public override IEnumerator<KeyValuePair<Concept, HashSet<Condition>>> GetEnumerator()
+        public IEnumerator<KeyValuePair<Concept, HashSet<Condition>>> GetEnumerator()
         {
             return connectionList.GetEnumerator();
+        }
+
+        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
+        {
+            throw new NotImplementedException();
         }
         #endregion
     }

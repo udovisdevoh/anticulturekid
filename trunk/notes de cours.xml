@@ -1,0 +1,2059 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ai aiNameValue="riasce" humanNameValue="guillaume" nameMapperCounter="95">
+    <conceptList>
+        <concept id="0"><!--isa-->
+            <nameList>
+                <name>isa</name>
+            </nameList>
+            <connectionList />
+            <metaConnectionList>
+                <positiveMetaConnectionList>
+                    <metaConnection metaOperator="inverse_of">
+                        <operator id="1" /><!--someare-->
+                    </metaConnection>
+                    <metaConnection metaOperator="cant">
+                        <operator id="12" /><!--contradict-->
+                    </metaConnection>
+                    <metaConnection metaOperator="unlikely">
+                        <operator id="4" /><!--madeof-->
+                        <operator id="16" /><!--antagonize-->
+                    </metaConnection>
+                    <metaConnection metaOperator="muct">
+                        <operator id="0" /><!--isa-->
+                    </metaConnection>
+                </positiveMetaConnectionList>
+                <negativeMetaConnectionList>
+                    <metaConnection metaOperator="muct">
+                        <operator id="0" /><!--isa-->
+                        <operator id="4" /><!--madeof-->
+                        <operator id="6" /><!--need-->
+                        <operator id="8" /><!--make-->
+                        <operator id="13" /><!--oppress-->
+                        <operator id="12" /><!--contradict-->
+                        <operator id="15" /><!--synergize-->
+                        <operator id="16" /><!--antagonize-->
+                        <operator id="17" /><!--from-->
+                        <operator id="22" /><!--ownedby-->
+                        <operator id="21" /><!--own-->
+                    </metaConnection>
+                    <metaConnection metaOperator="liffid">
+                        <operator id="4" /><!--madeof-->
+                        <operator id="6" /><!--need-->
+                        <operator id="8" /><!--make-->
+                        <operator id="10" /><!--was-->
+                    </metaConnection>
+                    <metaConnection metaOperator="consics">
+                        <operator id="13" /><!--oppress-->
+                    </metaConnection>
+                </negativeMetaConnectionList>
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="1"><!--someare-->
+            <nameList>
+                <name>someare</name>
+            </nameList>
+            <connectionList />
+            <metaConnectionList>
+                <positiveMetaConnectionList>
+                    <metaConnection metaOperator="inverse_of">
+                        <operator id="0" /><!--isa-->
+                    </metaConnection>
+                    <metaConnection metaOperator="conservative_thinking">
+                        <operator id="1" /><!--someare-->
+                    </metaConnection>
+                </positiveMetaConnectionList>
+                <negativeMetaConnectionList>
+                    <metaConnection metaOperator="sublar">
+                        <operator id="23" /><!--without-->
+                    </metaConnection>
+                    <metaConnection metaOperator="liffid">
+                        <operator id="23" /><!--without-->
+                    </metaConnection>
+                    <metaConnection metaOperator="conservative_thinking">
+                        <operator id="1" /><!--someare-->
+                    </metaConnection>
+                </negativeMetaConnectionList>
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="12"><!--contradict-->
+            <nameList>
+                <name>contradict</name>
+            </nameList>
+            <connectionList />
+            <metaConnectionList>
+                <positiveMetaConnectionList>
+                    <metaConnection metaOperator="permutable_side">
+                        <operator id="12" /><!--contradict-->
+                    </metaConnection>
+                    <metaConnection metaOperator="cant">
+                        <operator id="0" /><!--isa-->
+                    </metaConnection>
+                    <metaConnection metaOperator="muct">
+                        <operator id="0" /><!--isa-->
+                    </metaConnection>
+                </positiveMetaConnectionList>
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="4"><!--madeof-->
+            <nameList>
+                <name>madeof</name>
+            </nameList>
+            <connectionList />
+            <metaConnectionList>
+                <positiveMetaConnectionList>
+                    <metaConnection metaOperator="inverse_of">
+                        <operator id="5" /><!--partof-->
+                    </metaConnection>
+                    <metaConnection metaOperator="cant">
+                        <operator id="23" /><!--without-->
+                    </metaConnection>
+                    <metaConnection metaOperator="unlikely">
+                        <operator id="0" /><!--isa-->
+                        <operator id="5" /><!--partof-->
+                        <operator id="10" /><!--was-->
+                    </metaConnection>
+                    <metaConnection metaOperator="muct">
+                        <operator id="4" /><!--madeof-->
+                        <operator id="0" /><!--isa-->
+                    </metaConnection>
+                    <metaConnection metaOperator="liffid">
+                        <operator id="0" /><!--isa-->
+                    </metaConnection>
+                </positiveMetaConnectionList>
+                <negativeMetaConnectionList>
+                    <metaConnection metaOperator="muct">
+                        <operator id="4" /><!--madeof-->
+                        <operator id="13" /><!--oppress-->
+                        <operator id="6" /><!--need-->
+                    </metaConnection>
+                    <metaConnection metaOperator="liffid">
+                        <operator id="6" /><!--need-->
+                    </metaConnection>
+                </negativeMetaConnectionList>
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="16"><!--antagonize-->
+            <nameList>
+                <name>antagonize</name>
+            </nameList>
+            <connectionList />
+            <metaConnectionList>
+                <positiveMetaConnectionList>
+                    <metaConnection metaOperator="permutable_side">
+                        <operator id="16" /><!--antagonize-->
+                    </metaConnection>
+                    <metaConnection metaOperator="cant">
+                        <operator id="15" /><!--synergize-->
+                    </metaConnection>
+                    <metaConnection metaOperator="unlikely">
+                        <operator id="0" /><!--isa-->
+                        <operator id="7" /><!--allow-->
+                    </metaConnection>
+                    <metaConnection metaOperator="muct">
+                        <operator id="0" /><!--isa-->
+                    </metaConnection>
+                </positiveMetaConnectionList>
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="6"><!--need-->
+            <nameList>
+                <name>need</name>
+            </nameList>
+            <connectionList />
+            <metaConnectionList>
+                <positiveMetaConnectionList>
+                    <metaConnection metaOperator="inverse_of">
+                        <operator id="7" /><!--allow-->
+                    </metaConnection>
+                    <metaConnection metaOperator="muct">
+                        <operator id="6" /><!--need-->
+                        <operator id="0" /><!--isa-->
+                        <operator id="4" /><!--madeof-->
+                    </metaConnection>
+                    <metaConnection metaOperator="liffid">
+                        <operator id="4" /><!--madeof-->
+                        <operator id="0" /><!--isa-->
+                    </metaConnection>
+                </positiveMetaConnectionList>
+                <negativeMetaConnectionList>
+                    <metaConnection metaOperator="muct">
+                        <operator id="6" /><!--need-->
+                    </metaConnection>
+                    <metaConnection metaOperator="consics">
+                        <operator id="13" /><!--oppress-->
+                    </metaConnection>
+                </negativeMetaConnectionList>
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="8"><!--make-->
+            <nameList>
+                <name>make</name>
+            </nameList>
+            <connectionList />
+            <metaConnectionList>
+                <positiveMetaConnectionList>
+                    <metaConnection metaOperator="inverse_of">
+                        <operator id="9" /><!--madeby-->
+                    </metaConnection>
+                    <metaConnection metaOperator="muct">
+                        <operator id="8" /><!--make-->
+                        <operator id="0" /><!--isa-->
+                    </metaConnection>
+                    <metaConnection metaOperator="liffid">
+                        <operator id="0" /><!--isa-->
+                    </metaConnection>
+                </positiveMetaConnectionList>
+                <negativeMetaConnectionList>
+                    <metaConnection metaOperator="muct">
+                        <operator id="8" /><!--make-->
+                        <operator id="13" /><!--oppress-->
+                    </metaConnection>
+                </negativeMetaConnectionList>
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="13"><!--oppress-->
+            <nameList>
+                <name>oppress</name>
+            </nameList>
+            <connectionList />
+            <metaConnectionList>
+                <positiveMetaConnectionList>
+                    <metaConnection metaOperator="inverse_of">
+                        <operator id="14" /><!--oppressedby-->
+                    </metaConnection>
+                    <metaConnection metaOperator="cant">
+                        <operator id="15" /><!--synergize-->
+                    </metaConnection>
+                    <metaConnection metaOperator="unlikely">
+                        <operator id="7" /><!--allow-->
+                    </metaConnection>
+                    <metaConnection metaOperator="muct">
+                        <operator id="4" /><!--madeof-->
+                        <operator id="0" /><!--isa-->
+                        <operator id="8" /><!--make-->
+                    </metaConnection>
+                    <metaConnection metaOperator="consics">
+                        <operator id="0" /><!--isa-->
+                        <operator id="6" /><!--need-->
+                    </metaConnection>
+                </positiveMetaConnectionList>
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="15"><!--synergize-->
+            <nameList>
+                <name>synergize</name>
+            </nameList>
+            <connectionList />
+            <metaConnectionList>
+                <positiveMetaConnectionList>
+                    <metaConnection metaOperator="permutable_side">
+                        <operator id="15" /><!--synergize-->
+                    </metaConnection>
+                    <metaConnection metaOperator="cant">
+                        <operator id="13" /><!--oppress-->
+                        <operator id="16" /><!--antagonize-->
+                    </metaConnection>
+                    <metaConnection metaOperator="muct">
+                        <operator id="0" /><!--isa-->
+                    </metaConnection>
+                </positiveMetaConnectionList>
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="17"><!--from-->
+            <nameList>
+                <name>from</name>
+            </nameList>
+            <connectionList />
+            <metaConnectionList>
+                <positiveMetaConnectionList>
+                    <metaConnection metaOperator="inverse_of">
+                        <operator id="18" /><!--originof-->
+                    </metaConnection>
+                    <metaConnection metaOperator="muct">
+                        <operator id="0" /><!--isa-->
+                    </metaConnection>
+                    <metaConnection metaOperator="liffid">
+                        <operator id="5" /><!--partof-->
+                    </metaConnection>
+                </positiveMetaConnectionList>
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="22"><!--ownedby-->
+            <nameList>
+                <name>ownedby</name>
+            </nameList>
+            <connectionList />
+            <metaConnectionList>
+                <positiveMetaConnectionList>
+                    <metaConnection metaOperator="inverse_of">
+                        <operator id="21" /><!--own-->
+                    </metaConnection>
+                    <metaConnection metaOperator="muct">
+                        <operator id="0" /><!--isa-->
+                    </metaConnection>
+                </positiveMetaConnectionList>
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="21"><!--own-->
+            <nameList>
+                <name>own</name>
+            </nameList>
+            <connectionList />
+            <metaConnectionList>
+                <positiveMetaConnectionList>
+                    <metaConnection metaOperator="inverse_of">
+                        <operator id="22" /><!--ownedby-->
+                    </metaConnection>
+                    <metaConnection metaOperator="cant">
+                        <operator id="23" /><!--without-->
+                    </metaConnection>
+                    <metaConnection metaOperator="muct">
+                        <operator id="21" /><!--own-->
+                        <operator id="0" /><!--isa-->
+                    </metaConnection>
+                </positiveMetaConnectionList>
+                <negativeMetaConnectionList>
+                    <metaConnection metaOperator="muct">
+                        <operator id="21" /><!--own-->
+                    </metaConnection>
+                </negativeMetaConnectionList>
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="10"><!--was-->
+            <nameList>
+                <name>was</name>
+            </nameList>
+            <connectionList />
+            <metaConnectionList>
+                <positiveMetaConnectionList>
+                    <metaConnection metaOperator="inverse_of">
+                        <operator id="11" /><!--become-->
+                    </metaConnection>
+                    <metaConnection metaOperator="unlikely">
+                        <operator id="4" /><!--madeof-->
+                    </metaConnection>
+                    <metaConnection metaOperator="muct">
+                        <operator id="10" /><!--was-->
+                    </metaConnection>
+                    <metaConnection metaOperator="liffid">
+                        <operator id="0" /><!--isa-->
+                    </metaConnection>
+                </positiveMetaConnectionList>
+                <negativeMetaConnectionList>
+                    <metaConnection metaOperator="muct">
+                        <operator id="10" /><!--was-->
+                    </metaConnection>
+                </negativeMetaConnectionList>
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="23"><!--without-->
+            <nameList>
+                <name>without</name>
+            </nameList>
+            <connectionList />
+            <metaConnectionList>
+                <positiveMetaConnectionList>
+                    <metaConnection metaOperator="inverse_of">
+                        <operator id="24" /><!--notpartof-->
+                    </metaConnection>
+                    <metaConnection metaOperator="cant">
+                        <operator id="4" /><!--madeof-->
+                        <operator id="21" /><!--own-->
+                    </metaConnection>
+                    <metaConnection metaOperator="sublar">
+                        <operator id="1" /><!--someare-->
+                    </metaConnection>
+                    <metaConnection metaOperator="liffid">
+                        <operator id="1" /><!--someare-->
+                    </metaConnection>
+                </positiveMetaConnectionList>
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="5"><!--partof-->
+            <nameList>
+                <name>partof</name>
+            </nameList>
+            <connectionList />
+            <metaConnectionList>
+                <positiveMetaConnectionList>
+                    <metaConnection metaOperator="inverse_of">
+                        <operator id="4" /><!--madeof-->
+                    </metaConnection>
+                    <metaConnection metaOperator="unlikely">
+                        <operator id="4" /><!--madeof-->
+                    </metaConnection>
+                </positiveMetaConnectionList>
+                <negativeMetaConnectionList>
+                    <metaConnection metaOperator="liffid">
+                        <operator id="17" /><!--from-->
+                    </metaConnection>
+                </negativeMetaConnectionList>
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="7"><!--allow-->
+            <nameList>
+                <name>allow</name>
+            </nameList>
+            <connectionList />
+            <metaConnectionList>
+                <positiveMetaConnectionList>
+                    <metaConnection metaOperator="inverse_of">
+                        <operator id="6" /><!--need-->
+                    </metaConnection>
+                    <metaConnection metaOperator="unlikely">
+                        <operator id="13" /><!--oppress-->
+                        <operator id="16" /><!--antagonize-->
+                    </metaConnection>
+                </positiveMetaConnectionList>
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="9"><!--madeby-->
+            <nameList>
+                <name>madeby</name>
+            </nameList>
+            <connectionList />
+            <metaConnectionList>
+                <positiveMetaConnectionList>
+                    <metaConnection metaOperator="inverse_of">
+                        <operator id="8" /><!--make-->
+                    </metaConnection>
+                </positiveMetaConnectionList>
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="14"><!--oppressedby-->
+            <nameList>
+                <name>oppressedby</name>
+            </nameList>
+            <connectionList />
+            <metaConnectionList>
+                <positiveMetaConnectionList>
+                    <metaConnection metaOperator="inverse_of">
+                        <operator id="13" /><!--oppress-->
+                    </metaConnection>
+                </positiveMetaConnectionList>
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="18"><!--originof-->
+            <nameList>
+                <name>originof</name>
+            </nameList>
+            <connectionList />
+            <metaConnectionList>
+                <positiveMetaConnectionList>
+                    <metaConnection metaOperator="inverse_of">
+                        <operator id="17" /><!--from-->
+                    </metaConnection>
+                </positiveMetaConnectionList>
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="11"><!--become-->
+            <nameList>
+                <name>become</name>
+            </nameList>
+            <connectionList />
+            <metaConnectionList>
+                <positiveMetaConnectionList>
+                    <metaConnection metaOperator="inverse_of">
+                        <operator id="10" /><!--was-->
+                    </metaConnection>
+                </positiveMetaConnectionList>
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="24"><!--notpartof-->
+            <nameList>
+                <name>notpartof</name>
+            </nameList>
+            <connectionList />
+            <metaConnectionList>
+                <positiveMetaConnectionList>
+                    <metaConnection metaOperator="inverse_of">
+                        <operator id="23" /><!--without-->
+                    </metaConnection>
+                </positiveMetaConnectionList>
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="19"><!--largerthan-->
+            <nameList>
+                <name>largerthan</name>
+            </nameList>
+            <connectionList />
+            <metaConnectionList>
+                <positiveMetaConnectionList>
+                    <metaConnection metaOperator="inverse_of">
+                        <operator id="20" /><!--smallerthan-->
+                    </metaConnection>
+                    <metaConnection metaOperator="muct">
+                        <operator id="19" /><!--largerthan-->
+                    </metaConnection>
+                </positiveMetaConnectionList>
+                <negativeMetaConnectionList>
+                    <metaConnection metaOperator="muct">
+                        <operator id="19" /><!--largerthan-->
+                    </metaConnection>
+                </negativeMetaConnectionList>
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="20"><!--smallerthan-->
+            <nameList>
+                <name>smallerthan</name>
+            </nameList>
+            <connectionList />
+            <metaConnectionList>
+                <positiveMetaConnectionList>
+                    <metaConnection metaOperator="inverse_of">
+                        <operator id="19" /><!--largerthan-->
+                    </metaConnection>
+                </positiveMetaConnectionList>
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="25"><!--oracle_server-->
+            <nameList>
+                <name>oracle_server</name>
+            </nameList>
+            <connectionList>
+                <verb id="4"><!--madeof-->
+                    <complement id="26" /><!--oracle_database-->
+                    <complement id="27" /><!--oracle_instance-->
+                </verb>
+                <verb id="9"><!--madeby-->
+                    <complement id="45" /><!--oracle-->
+                </verb>
+            </connectionList>
+            <metaConnectionList>
+                <positiveMetaConnectionList />
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="26"><!--oracle_database-->
+            <nameList>
+                <name>oracle_database</name>
+            </nameList>
+            <connectionList>
+                <verb id="0"><!--isa-->
+                    <complement id="36" /><!--database-->
+                </verb>
+                <verb id="4"><!--madeof-->
+                    <complement id="30" /><!--parameter_file-->
+                    <complement id="31" /><!--control_file-->
+                    <complement id="32" /><!--data_file-->
+                    <complement id="33" /><!--redo_log_file-->
+                    <complement id="47" /><!--scheme-->
+                </verb>
+                <verb id="8"><!--make-->
+                    <complement id="74" /><!--persistence-->
+                </verb>
+                <verb id="1"><!--someare-->
+                    <complement id="28" /><!--decisional_database-->
+                    <complement id="29" /><!--transactional_database-->
+                </verb>
+                <verb id="5"><!--partof-->
+                    <complement id="25" /><!--oracle_server-->
+                </verb>
+            </connectionList>
+            <metaConnectionList>
+                <positiveMetaConnectionList />
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="27"><!--oracle_instance-->
+            <nameList>
+                <name>oracle_instance</name>
+            </nameList>
+            <connectionList>
+                <verb id="4"><!--madeof-->
+                    <complement id="66" /><!--system_global_area-->
+                    <complement id="67" /><!--program_global_area-->
+                </verb>
+                <verb id="6"><!--need-->
+                    <complement id="30" /><!--parameter_file-->
+                </verb>
+                <verb id="8"><!--make-->
+                    <complement id="73" /><!--performance-->
+                </verb>
+                <verb id="5"><!--partof-->
+                    <complement id="25" /><!--oracle_server-->
+                </verb>
+            </connectionList>
+            <metaConnectionList>
+                <positiveMetaConnectionList />
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="45"><!--oracle-->
+            <nameList>
+                <name>oracle</name>
+            </nameList>
+            <connectionList>
+                <verb id="0"><!--isa-->
+                    <complement id="46" /><!--corporation-->
+                </verb>
+                <verb id="8"><!--make-->
+                    <complement id="25" /><!--oracle_server-->
+                </verb>
+            </connectionList>
+            <metaConnectionList>
+                <positiveMetaConnectionList />
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="30"><!--parameter_file-->
+            <nameList>
+                <name>parameter_file</name>
+            </nameList>
+            <connectionList>
+                <verb id="0"><!--isa-->
+                    <complement id="34" /><!--file-->
+                </verb>
+                <verb id="5"><!--partof-->
+                    <complement id="26" /><!--oracle_database-->
+                </verb>
+                <verb id="7"><!--allow-->
+                    <complement id="31" /><!--control_file-->
+                    <complement id="27" /><!--oracle_instance-->
+                </verb>
+            </connectionList>
+            <metaConnectionList>
+                <positiveMetaConnectionList />
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="31"><!--control_file-->
+            <nameList>
+                <name>control_file</name>
+            </nameList>
+            <connectionList>
+                <verb id="0"><!--isa-->
+                    <complement id="34" /><!--file-->
+                </verb>
+                <verb id="4"><!--madeof-->
+                    <complement id="35" /><!--database_name-->
+                    <complement id="37" /><!--creation_date-->
+                </verb>
+                <verb id="6"><!--need-->
+                    <complement id="30" /><!--parameter_file-->
+                </verb>
+                <verb id="7"><!--allow-->
+                    <complement id="32" /><!--data_file-->
+                    <complement id="40" /><!--sequence_number-->
+                </verb>
+                <verb id="5"><!--partof-->
+                    <complement id="26" /><!--oracle_database-->
+                </verb>
+            </connectionList>
+            <metaConnectionList>
+                <positiveMetaConnectionList />
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="32"><!--data_file-->
+            <nameList>
+                <name>data_file</name>
+            </nameList>
+            <connectionList>
+                <verb id="0"><!--isa-->
+                    <complement id="34" /><!--file-->
+                </verb>
+                <verb id="4"><!--madeof-->
+                    <complement id="43" /><!--user_object-->
+                    <complement id="44" /><!--data_dictionary-->
+                </verb>
+                <verb id="6"><!--need-->
+                    <complement id="31" /><!--control_file-->
+                </verb>
+                <verb id="5"><!--partof-->
+                    <complement id="26" /><!--oracle_database-->
+                </verb>
+            </connectionList>
+            <metaConnectionList>
+                <positiveMetaConnectionList />
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="33"><!--redo_log_file-->
+            <nameList>
+                <name>redo_log_file</name>
+            </nameList>
+            <connectionList>
+                <verb id="0"><!--isa-->
+                    <complement id="34" /><!--file-->
+                </verb>
+                <verb id="4"><!--madeof-->
+                    <complement id="40" /><!--sequence_number-->
+                </verb>
+                <verb id="5"><!--partof-->
+                    <complement id="26" /><!--oracle_database-->
+                </verb>
+            </connectionList>
+            <metaConnectionList>
+                <positiveMetaConnectionList />
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="47"><!--scheme-->
+            <nameList>
+                <name>scheme</name>
+            </nameList>
+            <connectionList>
+                <verb id="4"><!--madeof-->
+                    <complement id="43" /><!--user_object-->
+                </verb>
+                <verb id="5"><!--partof-->
+                    <complement id="26" /><!--oracle_database-->
+                </verb>
+            </connectionList>
+            <metaConnectionList>
+                <positiveMetaConnectionList />
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="74"><!--persistence-->
+            <nameList>
+                <name>persistence</name>
+            </nameList>
+            <connectionList>
+                <verb id="9"><!--madeby-->
+                    <complement id="26" /><!--oracle_database-->
+                </verb>
+            </connectionList>
+            <metaConnectionList>
+                <positiveMetaConnectionList />
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="28"><!--decisional_database-->
+            <nameList>
+                <name>decisional_database</name>
+            </nameList>
+            <connectionList>
+                <verb id="0"><!--isa-->
+                    <complement id="26" /><!--oracle_database-->
+                </verb>
+            </connectionList>
+            <metaConnectionList>
+                <positiveMetaConnectionList />
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="29"><!--transactional_database-->
+            <nameList>
+                <name>transactional_database</name>
+            </nameList>
+            <connectionList>
+                <verb id="0"><!--isa-->
+                    <complement id="26" /><!--oracle_database-->
+                </verb>
+            </connectionList>
+            <metaConnectionList>
+                <positiveMetaConnectionList />
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="66"><!--system_global_area-->
+            <nameList>
+                <name>system_global_area</name>
+            </nameList>
+            <connectionList>
+                <verb id="0"><!--isa-->
+                    <complement id="70" /><!--shared_memory_zone-->
+                </verb>
+                <verb id="4"><!--madeof-->
+                    <complement id="71" /><!--process-->
+                    <complement id="75" /><!--database_buffer_cache-->
+                    <complement id="79" /><!--redo_log_cache-->
+                    <complement id="83" /><!--shared_pool-->
+                </verb>
+                <verb id="5"><!--partof-->
+                    <complement id="27" /><!--oracle_instance-->
+                </verb>
+            </connectionList>
+            <metaConnectionList>
+                <positiveMetaConnectionList />
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="67"><!--program_global_area-->
+            <nameList>
+                <name>program_global_area</name>
+            </nameList>
+            <connectionList>
+                <verb id="0"><!--isa-->
+                    <complement id="72" /><!--private_memory_zone-->
+                </verb>
+                <verb id="8"><!--make-->
+                    <complement id="89" /><!--sorting-->
+                </verb>
+                <verb id="5"><!--partof-->
+                    <complement id="27" /><!--oracle_instance-->
+                </verb>
+            </connectionList>
+            <metaConnectionList>
+                <positiveMetaConnectionList />
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="73"><!--performance-->
+            <nameList>
+                <name>performance</name>
+            </nameList>
+            <connectionList>
+                <verb id="9"><!--madeby-->
+                    <complement id="27" /><!--oracle_instance-->
+                    <complement id="76" /><!--cache-->
+                    <complement id="86" /><!--sql_compilation-->
+                </verb>
+            </connectionList>
+            <metaConnectionList>
+                <positiveMetaConnectionList />
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="46"><!--corporation-->
+            <nameList>
+                <name>corporation</name>
+            </nameList>
+            <connectionList>
+                <verb id="1"><!--someare-->
+                    <complement id="45" /><!--oracle-->
+                </verb>
+            </connectionList>
+            <metaConnectionList>
+                <positiveMetaConnectionList />
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="34"><!--file-->
+            <nameList>
+                <name>file</name>
+            </nameList>
+            <connectionList>
+                <verb id="1"><!--someare-->
+                    <complement id="30" /><!--parameter_file-->
+                    <complement id="31" /><!--control_file-->
+                    <complement id="32" /><!--data_file-->
+                    <complement id="33" /><!--redo_log_file-->
+                    <complement id="65" /><!--single_file-->
+                </verb>
+            </connectionList>
+            <metaConnectionList>
+                <positiveMetaConnectionList />
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="35"><!--database_name-->
+            <nameList>
+                <name>database_name</name>
+            </nameList>
+            <connectionList>
+                <verb id="0"><!--isa-->
+                    <complement id="38" /><!--name-->
+                </verb>
+                <verb id="5"><!--partof-->
+                    <complement id="31" /><!--control_file-->
+                    <complement id="36" /><!--database-->
+                </verb>
+            </connectionList>
+            <metaConnectionList>
+                <positiveMetaConnectionList />
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="37"><!--creation_date-->
+            <nameList>
+                <name>creation_date</name>
+            </nameList>
+            <connectionList>
+                <verb id="0"><!--isa-->
+                    <complement id="39" /><!--date-->
+                </verb>
+                <verb id="5"><!--partof-->
+                    <complement id="31" /><!--control_file-->
+                </verb>
+            </connectionList>
+            <metaConnectionList>
+                <positiveMetaConnectionList />
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="40"><!--sequence_number-->
+            <nameList>
+                <name>sequence_number</name>
+            </nameList>
+            <connectionList>
+                <verb id="6"><!--need-->
+                    <complement id="31" /><!--control_file-->
+                </verb>
+                <verb id="5"><!--partof-->
+                    <complement id="33" /><!--redo_log_file-->
+                </verb>
+            </connectionList>
+            <metaConnectionList>
+                <positiveMetaConnectionList />
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="43"><!--user_object-->
+            <nameList>
+                <name>user_object</name>
+            </nameList>
+            <connectionList>
+                <verb id="0"><!--isa-->
+                    <complement id="49" /><!--database_object-->
+                </verb>
+                <verb id="4"><!--madeof-->
+                    <complement id="41" /><!--table-->
+                    <complement id="48" /><!--view-->
+                    <complement id="42" /><!--index-->
+                </verb>
+                <verb id="5"><!--partof-->
+                    <complement id="32" /><!--data_file-->
+                    <complement id="47" /><!--scheme-->
+                </verb>
+            </connectionList>
+            <metaConnectionList>
+                <positiveMetaConnectionList />
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="44"><!--data_dictionary-->
+            <nameList>
+                <name>data_dictionary</name>
+            </nameList>
+            <connectionList>
+                <verb id="5"><!--partof-->
+                    <complement id="32" /><!--data_file-->
+                </verb>
+            </connectionList>
+            <metaConnectionList>
+                <positiveMetaConnectionList />
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="70"><!--shared_memory_zone-->
+            <nameList>
+                <name>shared_memory_zone</name>
+            </nameList>
+            <connectionList>
+                <verb id="0"><!--isa-->
+                    <complement id="68" /><!--memory_zone-->
+                </verb>
+                <verb id="12"><!--contradict-->
+                    <complement id="72" /><!--private_memory_zone-->
+                </verb>
+                <verb id="1"><!--someare-->
+                    <complement id="66" /><!--system_global_area-->
+                </verb>
+            </connectionList>
+            <metaConnectionList>
+                <positiveMetaConnectionList />
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="71"><!--process-->
+            <nameList>
+                <name>process</name>
+            </nameList>
+            <connectionList>
+                <verb id="5"><!--partof-->
+                    <complement id="66" /><!--system_global_area-->
+                </verb>
+            </connectionList>
+            <metaConnectionList>
+                <positiveMetaConnectionList />
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="75"><!--database_buffer_cache-->
+            <nameList>
+                <name>database_buffer_cache</name>
+            </nameList>
+            <connectionList>
+                <verb id="0"><!--isa-->
+                    <complement id="76" /><!--cache-->
+                </verb>
+                <verb id="4"><!--madeof-->
+                    <complement id="77" /><!--reusable_block-->
+                    <complement id="78" /><!--origin_block-->
+                </verb>
+                <verb id="5"><!--partof-->
+                    <complement id="66" /><!--system_global_area-->
+                </verb>
+            </connectionList>
+            <metaConnectionList>
+                <positiveMetaConnectionList />
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="79"><!--redo_log_cache-->
+            <nameList>
+                <name>redo_log_cache</name>
+            </nameList>
+            <connectionList>
+                <verb id="0"><!--isa-->
+                    <complement id="76" /><!--cache-->
+                </verb>
+                <verb id="5"><!--partof-->
+                    <complement id="66" /><!--system_global_area-->
+                </verb>
+            </connectionList>
+            <metaConnectionList>
+                <positiveMetaConnectionList />
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="83"><!--shared_pool-->
+            <nameList>
+                <name>shared_pool</name>
+            </nameList>
+            <connectionList>
+                <verb id="0"><!--isa-->
+                    <complement id="76" /><!--cache-->
+                </verb>
+                <verb id="4"><!--madeof-->
+                    <complement id="84" /><!--library_cache-->
+                    <complement id="90" /><!--dictionary_cache-->
+                </verb>
+                <verb id="5"><!--partof-->
+                    <complement id="66" /><!--system_global_area-->
+                </verb>
+            </connectionList>
+            <metaConnectionList>
+                <positiveMetaConnectionList />
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="72"><!--private_memory_zone-->
+            <nameList>
+                <name>private_memory_zone</name>
+            </nameList>
+            <connectionList>
+                <verb id="0"><!--isa-->
+                    <complement id="68" /><!--memory_zone-->
+                </verb>
+                <verb id="1"><!--someare-->
+                    <complement id="67" /><!--program_global_area-->
+                </verb>
+                <verb id="12"><!--contradict-->
+                    <complement id="70" /><!--shared_memory_zone-->
+                </verb>
+            </connectionList>
+            <metaConnectionList>
+                <positiveMetaConnectionList />
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="89"><!--sorting-->
+            <nameList>
+                <name>sorting</name>
+            </nameList>
+            <connectionList>
+                <verb id="9"><!--madeby-->
+                    <complement id="67" /><!--program_global_area-->
+                </verb>
+            </connectionList>
+            <metaConnectionList>
+                <positiveMetaConnectionList />
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="76"><!--cache-->
+            <nameList>
+                <name>cache</name>
+            </nameList>
+            <connectionList>
+                <verb id="0"><!--isa-->
+                    <complement id="82" /><!--temporary_memory_zone-->
+                </verb>
+                <verb id="8"><!--make-->
+                    <complement id="73" /><!--performance-->
+                </verb>
+                <verb id="1"><!--someare-->
+                    <complement id="75" /><!--database_buffer_cache-->
+                    <complement id="79" /><!--redo_log_cache-->
+                    <complement id="83" /><!--shared_pool-->
+                    <complement id="84" /><!--library_cache-->
+                    <complement id="90" /><!--dictionary_cache-->
+                </verb>
+            </connectionList>
+            <metaConnectionList>
+                <positiveMetaConnectionList />
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="86"><!--sql_compilation-->
+            <nameList>
+                <name>sql_compilation</name>
+            </nameList>
+            <connectionList>
+                <verb id="9"><!--madeby-->
+                    <complement id="84" /><!--library_cache-->
+                </verb>
+                <verb id="4"><!--madeof-->
+                    <complement id="88" /><!--sql-->
+                </verb>
+                <verb id="0"><!--isa-->
+                    <complement id="87" /><!--compilation-->
+                </verb>
+                <verb id="8"><!--make-->
+                    <complement id="73" /><!--performance-->
+                </verb>
+            </connectionList>
+            <metaConnectionList>
+                <positiveMetaConnectionList />
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="65"><!--single_file-->
+            <nameList>
+                <name>single_file</name>
+            </nameList>
+            <connectionList>
+                <verb id="4"><!--madeof-->
+                    <complement id="52" /><!--extension-->
+                </verb>
+                <verb id="0"><!--isa-->
+                    <complement id="34" /><!--file-->
+                </verb>
+            </connectionList>
+            <metaConnectionList>
+                <positiveMetaConnectionList />
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="38"><!--name-->
+            <nameList>
+                <name>name</name>
+            </nameList>
+            <connectionList>
+                <verb id="1"><!--someare-->
+                    <complement id="35" /><!--database_name-->
+                </verb>
+            </connectionList>
+            <metaConnectionList>
+                <positiveMetaConnectionList />
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="36"><!--database-->
+            <nameList>
+                <name>database</name>
+            </nameList>
+            <connectionList>
+                <verb id="1"><!--someare-->
+                    <complement id="26" /><!--oracle_database-->
+                </verb>
+                <verb id="4"><!--madeof-->
+                    <complement id="35" /><!--database_name-->
+                </verb>
+            </connectionList>
+            <metaConnectionList>
+                <positiveMetaConnectionList />
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="39"><!--date-->
+            <nameList>
+                <name>date</name>
+            </nameList>
+            <connectionList>
+                <verb id="1"><!--someare-->
+                    <complement id="37" /><!--creation_date-->
+                </verb>
+            </connectionList>
+            <metaConnectionList>
+                <positiveMetaConnectionList />
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="49"><!--database_object-->
+            <nameList>
+                <name>database_object</name>
+            </nameList>
+            <connectionList>
+                <verb id="1"><!--someare-->
+                    <complement id="43" /><!--user_object-->
+                    <complement id="50" /><!--logical_object-->
+                    <complement id="51" /><!--physical_object-->
+                </verb>
+            </connectionList>
+            <metaConnectionList>
+                <positiveMetaConnectionList />
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="41"><!--table-->
+            <nameList>
+                <name>table</name>
+            </nameList>
+            <connectionList>
+                <verb id="0"><!--isa-->
+                    <complement id="50" /><!--logical_object-->
+                </verb>
+                <verb id="4"><!--madeof-->
+                    <complement id="59" /><!--segment-->
+                </verb>
+                <verb id="5"><!--partof-->
+                    <complement id="43" /><!--user_object-->
+                    <complement id="60" /><!--tablespace-->
+                </verb>
+            </connectionList>
+            <metaConnectionList>
+                <positiveMetaConnectionList />
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="48"><!--view-->
+            <nameList>
+                <name>view</name>
+            </nameList>
+            <connectionList>
+                <verb id="5"><!--partof-->
+                    <complement id="43" /><!--user_object-->
+                </verb>
+            </connectionList>
+            <metaConnectionList>
+                <positiveMetaConnectionList />
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="42"><!--index-->
+            <nameList>
+                <name>index</name>
+            </nameList>
+            <connectionList>
+                <verb id="5"><!--partof-->
+                    <complement id="43" /><!--user_object-->
+                </verb>
+            </connectionList>
+            <metaConnectionList>
+                <positiveMetaConnectionList />
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="52"><!--extension-->
+            <nameList>
+                <name>extension</name>
+            </nameList>
+            <connectionList>
+                <verb id="0"><!--isa-->
+                    <complement id="51" /><!--physical_object-->
+                    <complement id="54" /><!--contiguous_set-->
+                </verb>
+                <verb id="4"><!--madeof-->
+                    <complement id="53" /><!--block-->
+                </verb>
+                <verb id="5"><!--partof-->
+                    <complement id="59" /><!--segment-->
+                    <complement id="65" /><!--single_file-->
+                </verb>
+            </connectionList>
+            <metaConnectionList>
+                <positiveMetaConnectionList />
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="50"><!--logical_object-->
+            <nameList>
+                <name>logical_object</name>
+            </nameList>
+            <connectionList>
+                <verb id="0"><!--isa-->
+                    <complement id="49" /><!--database_object-->
+                </verb>
+                <verb id="1"><!--someare-->
+                    <complement id="59" /><!--segment-->
+                    <complement id="41" /><!--table-->
+                    <complement id="60" /><!--tablespace-->
+                </verb>
+            </connectionList>
+            <metaConnectionList>
+                <positiveMetaConnectionList />
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="59"><!--segment-->
+            <nameList>
+                <name>segment</name>
+            </nameList>
+            <connectionList>
+                <verb id="0"><!--isa-->
+                    <complement id="50" /><!--logical_object-->
+                </verb>
+                <verb id="4"><!--madeof-->
+                    <complement id="52" /><!--extension-->
+                </verb>
+                <verb id="5"><!--partof-->
+                    <complement id="41" /><!--table-->
+                </verb>
+            </connectionList>
+            <metaConnectionList>
+                <positiveMetaConnectionList />
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="60"><!--tablespace-->
+            <nameList>
+                <name>tablespace</name>
+            </nameList>
+            <connectionList>
+                <verb id="1"><!--someare-->
+                    <complement id="61" /><!--reserved_table_space-->
+                </verb>
+                <verb id="4"><!--madeof-->
+                    <complement id="41" /><!--table-->
+                    <complement id="64" /><!--common_concept-->
+                </verb>
+                <verb id="0"><!--isa-->
+                    <complement id="50" /><!--logical_object-->
+                    <complement id="55" /><!--set-->
+                </verb>
+            </connectionList>
+            <metaConnectionList>
+                <positiveMetaConnectionList />
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="61"><!--reserved_table_space-->
+            <nameList>
+                <name>reserved_table_space</name>
+            </nameList>
+            <connectionList>
+                <verb id="1"><!--someare-->
+                    <complement id="62" /><!--system_(reserved_table_space)-->
+                    <complement id="63" /><!--sysaux_(reserved_table_space)-->
+                </verb>
+                <verb id="0"><!--isa-->
+                    <complement id="60" /><!--tablespace-->
+                </verb>
+            </connectionList>
+            <metaConnectionList>
+                <positiveMetaConnectionList />
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="64"><!--common_concept-->
+            <nameList>
+                <name>common_concept</name>
+            </nameList>
+            <connectionList>
+                <verb id="5"><!--partof-->
+                    <complement id="60" /><!--tablespace-->
+                </verb>
+            </connectionList>
+            <metaConnectionList>
+                <positiveMetaConnectionList />
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="55"><!--set-->
+            <nameList>
+                <name>set</name>
+            </nameList>
+            <connectionList>
+                <verb id="1"><!--someare-->
+                    <complement id="54" /><!--contiguous_set-->
+                    <complement id="60" /><!--tablespace-->
+                    <complement id="68" /><!--memory_zone-->
+                </verb>
+            </connectionList>
+            <metaConnectionList>
+                <positiveMetaConnectionList />
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="51"><!--physical_object-->
+            <nameList>
+                <name>physical_object</name>
+            </nameList>
+            <connectionList>
+                <verb id="0"><!--isa-->
+                    <complement id="49" /><!--database_object-->
+                </verb>
+                <verb id="1"><!--someare-->
+                    <complement id="52" /><!--extension-->
+                    <complement id="53" /><!--block-->
+                </verb>
+            </connectionList>
+            <metaConnectionList>
+                <positiveMetaConnectionList />
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="53"><!--block-->
+            <nameList>
+                <name>block</name>
+            </nameList>
+            <connectionList>
+                <verb id="0"><!--isa-->
+                    <complement id="51" /><!--physical_object-->
+                    <complement id="58" /><!--atomic_data_unit-->
+                </verb>
+                <verb id="1"><!--someare-->
+                    <complement id="77" /><!--reusable_block-->
+                    <complement id="78" /><!--origin_block-->
+                </verb>
+                <verb id="5"><!--partof-->
+                    <complement id="52" /><!--extension-->
+                </verb>
+            </connectionList>
+            <metaConnectionList>
+                <positiveMetaConnectionList />
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="54"><!--contiguous_set-->
+            <nameList>
+                <name>contiguous_set</name>
+            </nameList>
+            <connectionList>
+                <verb id="0"><!--isa-->
+                    <complement id="55" /><!--set-->
+                </verb>
+                <verb id="4"><!--madeof-->
+                    <complement id="56" /><!--physical_proximity-->
+                </verb>
+                <verb id="1"><!--someare-->
+                    <complement id="52" /><!--extension-->
+                </verb>
+            </connectionList>
+            <metaConnectionList>
+                <positiveMetaConnectionList />
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="58"><!--atomic_data_unit-->
+            <nameList>
+                <name>atomic_data_unit</name>
+            </nameList>
+            <connectionList>
+                <verb id="1"><!--someare-->
+                    <complement id="53" /><!--block-->
+                </verb>
+            </connectionList>
+            <metaConnectionList>
+                <positiveMetaConnectionList />
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="77"><!--reusable_block-->
+            <nameList>
+                <name>reusable_block</name>
+            </nameList>
+            <connectionList>
+                <verb id="0"><!--isa-->
+                    <complement id="53" /><!--block-->
+                </verb>
+                <verb id="5"><!--partof-->
+                    <complement id="75" /><!--database_buffer_cache-->
+                </verb>
+            </connectionList>
+            <metaConnectionList>
+                <positiveMetaConnectionList />
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="78"><!--origin_block-->
+            <nameList>
+                <name>origin_block</name>
+            </nameList>
+            <connectionList>
+                <verb id="0"><!--isa-->
+                    <complement id="53" /><!--block-->
+                </verb>
+                <verb id="5"><!--partof-->
+                    <complement id="75" /><!--database_buffer_cache-->
+                </verb>
+            </connectionList>
+            <metaConnectionList>
+                <positiveMetaConnectionList />
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="56"><!--physical_proximity-->
+            <nameList>
+                <name>physical_proximity</name>
+            </nameList>
+            <connectionList>
+                <verb id="0"><!--isa-->
+                    <complement id="57" /><!--proximity-->
+                </verb>
+                <verb id="5"><!--partof-->
+                    <complement id="54" /><!--contiguous_set-->
+                </verb>
+            </connectionList>
+            <metaConnectionList>
+                <positiveMetaConnectionList />
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="68"><!--memory_zone-->
+            <nameList>
+                <name>memory_zone</name>
+            </nameList>
+            <connectionList>
+                <verb id="0"><!--isa-->
+                    <complement id="55" /><!--set-->
+                </verb>
+                <verb id="1"><!--someare-->
+                    <complement id="70" /><!--shared_memory_zone-->
+                    <complement id="72" /><!--private_memory_zone-->
+                    <complement id="82" /><!--temporary_memory_zone-->
+                </verb>
+                <verb id="5"><!--partof-->
+                    <complement id="69" /><!--memory-->
+                </verb>
+            </connectionList>
+            <metaConnectionList>
+                <positiveMetaConnectionList />
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="57"><!--proximity-->
+            <nameList>
+                <name>proximity</name>
+            </nameList>
+            <connectionList>
+                <verb id="1"><!--someare-->
+                    <complement id="56" /><!--physical_proximity-->
+                </verb>
+            </connectionList>
+            <metaConnectionList>
+                <positiveMetaConnectionList />
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="82"><!--temporary_memory_zone-->
+            <nameList>
+                <name>temporary_memory_zone</name>
+            </nameList>
+            <connectionList>
+                <verb id="0"><!--isa-->
+                    <complement id="68" /><!--memory_zone-->
+                </verb>
+                <verb id="1"><!--someare-->
+                    <complement id="76" /><!--cache-->
+                </verb>
+            </connectionList>
+            <metaConnectionList>
+                <positiveMetaConnectionList />
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="69"><!--memory-->
+            <nameList>
+                <name>memory</name>
+            </nameList>
+            <connectionList>
+                <verb id="4"><!--madeof-->
+                    <complement id="68" /><!--memory_zone-->
+                </verb>
+            </connectionList>
+            <metaConnectionList>
+                <positiveMetaConnectionList />
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="62"><!--system_(reserved_table_space)-->
+            <nameList>
+                <name>system_(reserved_table_space)</name>
+            </nameList>
+            <connectionList>
+                <verb id="0"><!--isa-->
+                    <complement id="61" /><!--reserved_table_space-->
+                </verb>
+            </connectionList>
+            <metaConnectionList>
+                <positiveMetaConnectionList />
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="63"><!--sysaux_(reserved_table_space)-->
+            <nameList>
+                <name>sysaux_(reserved_table_space)</name>
+            </nameList>
+            <connectionList>
+                <verb id="0"><!--isa-->
+                    <complement id="61" /><!--reserved_table_space-->
+                </verb>
+            </connectionList>
+            <metaConnectionList>
+                <positiveMetaConnectionList />
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="84"><!--library_cache-->
+            <nameList>
+                <name>library_cache</name>
+            </nameList>
+            <connectionList>
+                <verb id="0"><!--isa-->
+                    <complement id="76" /><!--cache-->
+                </verb>
+                <verb id="13"><!--oppress-->
+                    <complement id="85" /><!--sql_injection-->
+                </verb>
+                <verb id="8"><!--make-->
+                    <complement id="86" /><!--sql_compilation-->
+                </verb>
+                <verb id="5"><!--partof-->
+                    <complement id="83" /><!--shared_pool-->
+                </verb>
+            </connectionList>
+            <metaConnectionList>
+                <positiveMetaConnectionList />
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="90"><!--dictionary_cache-->
+            <nameList>
+                <name>dictionary_cache</name>
+            </nameList>
+            <connectionList>
+                <verb id="0"><!--isa-->
+                    <complement id="76" /><!--cache-->
+                </verb>
+                <verb id="5"><!--partof-->
+                    <complement id="83" /><!--shared_pool-->
+                </verb>
+                <verb id="7"><!--allow-->
+                    <complement id="91" /><!--user_validation-->
+                </verb>
+            </connectionList>
+            <metaConnectionList>
+                <positiveMetaConnectionList />
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="85"><!--sql_injection-->
+            <nameList>
+                <name>sql_injection</name>
+            </nameList>
+            <connectionList>
+                <verb id="14"><!--oppressedby-->
+                    <complement id="84" /><!--library_cache-->
+                </verb>
+            </connectionList>
+            <metaConnectionList>
+                <positiveMetaConnectionList />
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="88"><!--sql-->
+            <nameList>
+                <name>sql</name>
+            </nameList>
+            <connectionList>
+                <verb id="5"><!--partof-->
+                    <complement id="86" /><!--sql_compilation-->
+                </verb>
+            </connectionList>
+            <metaConnectionList>
+                <positiveMetaConnectionList />
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="87"><!--compilation-->
+            <nameList>
+                <name>compilation</name>
+            </nameList>
+            <connectionList>
+                <verb id="1"><!--someare-->
+                    <complement id="86" /><!--sql_compilation-->
+                </verb>
+            </connectionList>
+            <metaConnectionList>
+                <positiveMetaConnectionList />
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="91"><!--user_validation-->
+            <nameList>
+                <name>user_validation</name>
+            </nameList>
+            <connectionList>
+                <verb id="6"><!--need-->
+                    <complement id="90" /><!--dictionary_cache-->
+                </verb>
+            </connectionList>
+            <metaConnectionList>
+                <positiveMetaConnectionList />
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+    </conceptList>
+    <rejectedTheoryList>
+        <rejectedConnectionTheoryList>
+            <rejectedConnectionTheory>
+                <subject>44</subject><!--data_dictionary-->
+                <verb>5</verb><!--partof-->
+                <complement>47</complement><!--scheme-->
+            </rejectedConnectionTheory>
+        </rejectedConnectionTheoryList>
+        <rejectedMetaConnectionTheoryList />
+    </rejectedTheoryList>
+</ai>
