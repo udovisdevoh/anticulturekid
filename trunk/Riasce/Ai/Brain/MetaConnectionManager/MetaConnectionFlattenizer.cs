@@ -5,11 +5,21 @@ using System.Text;
 
 namespace AntiCulture.Kid
 {
-    class MetaConnectionFlattenizer : AbstractMetaConnectionFlattenizer
+    /// <summary>
+    /// This class represents the metaConnection flattenizer
+    /// </summary>
+    class MetaConnectionFlattenizer
     {
-        #region Methods
-        #region Overrides
-        public override HashSet<Concept> GetFlatVerbListFromMetaConnection(Concept sourceVerb, string metaOperatorName, bool isMetaConnectionPositive)
+        #region Public Methods
+        /// <summary>
+        /// Returns all the verbs that are (recursively or not) metaconnected to sourceVerb through metaOperator name
+        /// If data exist in cache, use data from cache, or else, regenerate it
+        /// </summary>
+        /// <param name="sourceVerb">source verb</param>
+        /// <param name="metaOperatorName">metaOperator name</param>
+        /// <param name="isMetaConnectionPositive">whether you want positive or negative metaconnections</param>
+        /// <returns>List of verbs that are (recursively or not) metaconnected to sourceVerb through metaOperator name</returns>
+        public HashSet<Concept> GetFlatVerbListFromMetaConnection(Concept sourceVerb, string metaOperatorName, bool isMetaConnectionPositive)
         {
             HashSet<Concept> affectedVerbList;
 
@@ -21,13 +31,23 @@ namespace AntiCulture.Kid
             return affectedVerbList;
         }
 
-        public override void AddVerbToList(Concept concept)
+        /// <summary>
+        /// Add a verb concept to rememberable total list of verbs
+        /// </summary>
+        /// <param name="concept">verb to remember</param>
+        public void AddVerbToList(Concept concept)
         {
             Memory.TotalVerbList.Add(concept);
         }
         #endregion
 
-        #region Generators
+        #region Private Methods
+        /// <summary>
+        /// Get flat negative metaConnection to verb
+        /// </summary>
+        /// <param name="verb">verb concept</param>
+        /// <param name="metaOperatorName">metaOperator name</param>
+        /// <returns>flat negative metaConnection to verb</returns>
         private HashSet<Concept> GetFlatNegativeMetaConnectionsToVerb(Concept verb, string metaOperatorName)
         {
             HashSet<Concept> flatNegativeMetaConnectionList = new HashSet<Concept>();
@@ -42,6 +62,14 @@ namespace AntiCulture.Kid
             return flatNegativeMetaConnectionList;
         }
 
+        /// <summary>
+        /// Render flat metaconnection verb list
+        /// </summary>
+        /// <param name="sourceVerb">source verb</param>
+        /// <param name="metaOperatorName">metaOperator name</param>
+        /// <param name="ignoreList">ignore list</param>
+        /// <param name="isMetaConnectionPositive">whether the metaConnection is positive</param>
+        /// <returns>rendered verb list</returns>
         private HashSet<Concept> RenderFlatMetaConnectionVerbList(Concept sourceVerb, string metaOperatorName, HashSet<string> ignoreList, bool isMetaConnectionPositive)
         {
             HashSet<Concept> flatMetaConnectionVerbList = new HashSet<Concept>();
@@ -97,6 +125,14 @@ namespace AntiCulture.Kid
             return flatMetaConnectionVerbList;
         }
 
+        /// <summary>
+        /// Render flat metaConnection direct Implication
+        /// </summary>
+        /// <param name="directImplicationFlatMetaConnectionVerbList">direct Implication flat metaConnection verb list</param>
+        /// <param name="sourceVerb">source verb</param>
+        /// <param name="ignoreList">ignore list</param>
+        /// <param name="isMetaConnectionPositive">whether the metaConnection is positive</param>
+        /// <returns>rendered verb list</returns>
         private HashSet<Concept> RenderFlatMetaConnectionDirectImplication(HashSet<Concept> directImplicationFlatMetaConnectionVerbList, Concept sourceVerb, HashSet<string> ignoreList, bool isMetaConnectionPositive)
         {
             if (isMetaConnectionPositive)
@@ -169,6 +205,14 @@ namespace AntiCulture.Kid
             return directImplicationFlatMetaConnectionVerbList;
         }
 
+        /// <summary>
+        /// Render flat metaConnection inverse_of
+        /// </summary>
+        /// <param name="inverseFlatMetaConnectionVerbList">inverse flat metaConnection verb list</param>
+        /// <param name="sourceVerb">source verb</param>
+        /// <param name="ignoreList">ignore list</param>
+        /// <param name="isMetaConnectionPositive">whether the metaConnection is positive</param>
+        /// <returns>rendered verb list</returns>
         private HashSet<Concept> RenderFlatMetaConnectionInverseImplication(HashSet<Concept> inverseFlatMetaConnectionVerbList, Concept sourceVerb, HashSet<string> ignoreList, bool isMetaConnectionPositive)
         {
             if (isMetaConnectionPositive)
@@ -238,6 +282,14 @@ namespace AntiCulture.Kid
             return inverseFlatMetaConnectionVerbList;
         }
 
+        /// <summary>
+        /// Render flat metaConnection cant
+        /// </summary>
+        /// <param name="cantFlatMetaConnectionVerbList">cant flat metaConnection verb list</param>
+        /// <param name="sourceVerb">source verb</param>
+        /// <param name="ignoreList">ignore list</param>
+        /// <param name="isMetaConnectionPositive">whether the metaConnection is positive</param>
+        /// <returns>rendered verb list</returns>
         private HashSet<Concept> RenderFlatMetaConnectionCant(HashSet<Concept> cantFlatMetaConnectionVerbList, Concept sourceVerb, HashSet<string> ignoreList, bool isMetaConnectionPositive)
         {
             HashSet<Concept> inverseDirectImplicationList = RenderFlatMetaConnectionVerbList(sourceVerb, "direct_implication", ignoreList, !isMetaConnectionPositive);
@@ -330,6 +382,14 @@ namespace AntiCulture.Kid
             return cantFlatMetaConnectionVerbList;
         }
 
+        /// <summary>
+        /// Render flat metaConnection unlikely
+        /// </summary>
+        /// <param name="unlikelyFlatMetaConnectionVerbList">unlikely flat metaConnection verb list</param>
+        /// <param name="sourceVerb">source verb</param>
+        /// <param name="ignoreList">ignore list</param>
+        /// <param name="isMetaConnectionPositive">whether the metaConnection is positive</param>
+        /// <returns>rendered verb list</returns>
         private HashSet<Concept> RenderFlatMetaConnectionUnlikely(HashSet<Concept> unlikelyFlatMetaConnectionVerbList, Concept sourceVerb, HashSet<string> ignoreList, bool isMetaConnectionPositive)
         {
             HashSet<Concept> inverseDirectImplicationList = RenderFlatMetaConnectionVerbList(sourceVerb, "direct_implication", ignoreList, !isMetaConnectionPositive);
@@ -431,6 +491,14 @@ namespace AntiCulture.Kid
             return unlikelyFlatMetaConnectionVerbList;
         }
 
+        /// <summary>
+        /// Render flat metaConnection sublar
+        /// </summary>
+        /// <param name="sublarFlatMetaConnectionVerbList">sublar flat metaConnection verb list</param>
+        /// <param name="sourceVerb">source verb</param>
+        /// <param name="ignoreList">ignore list</param>
+        /// <param name="isMetaConnectionPositive">whether the metaConnection is positive</param>
+        /// <returns>rendered verb list</returns>
         private HashSet<Concept> RenderFlatMetaConnectionSublar(HashSet<Concept> sublarFlatMetaConnectionVerbList, Concept sourceVerb, HashSet<string> ignoreList, bool isMetaConnectionPositive)
         {
             HashSet<Concept> muctConnectionList = RenderFlatMetaConnectionVerbList(sourceVerb, "muct", ignoreList, isMetaConnectionPositive);
@@ -463,6 +531,14 @@ namespace AntiCulture.Kid
             return sublarFlatMetaConnectionVerbList;
         }
 
+        /// <summary>
+        /// Render flat metaConnection consics
+        /// </summary>
+        /// <param name="consicsFlatMetaConnectionVerbList">consics flat metaConnection verb list</param>
+        /// <param name="sourceVerb">source verb</param>
+        /// <param name="ignoreList">ignore list</param>
+        /// <param name="isMetaConnectionPositive">whether the metaConnection is positive</param>
+        /// <returns>rendered verb list</returns>
         private HashSet<Concept> RenderFlatMetaConnectionConsics(HashSet<Concept> consicsFlatMetaConnectionVerbList, Concept sourceVerb, HashSet<string> ignoreList, bool isMetaConnectionPositive)
         {
             HashSet<Concept> farMuctConnectionList;
@@ -496,6 +572,14 @@ namespace AntiCulture.Kid
             return consicsFlatMetaConnectionVerbList;
         }
 
+        /// <summary>
+        /// Render flat metaConnection liffid
+        /// </summary>
+        /// <param name="liffidFlatMetaConnectionVerbList">liffid flat metaConnection verb list</param>
+        /// <param name="sourceVerb">source verb</param>
+        /// <param name="ignoreList">ignore list</param>
+        /// <param name="isMetaConnectionPositive">whether the metaConnection is positive</param>
+        /// <returns>rendered verb list</returns>
         private HashSet<Concept> RenderFlatMetaConnectionLiffid(HashSet<Concept> liffidFlatMetaConnectionVerbList, Concept sourceVerb, HashSet<string> ignoreList, bool isMetaConnectionPositive)
         {
             HashSet<Concept> consicsConnectionList = RenderFlatMetaConnectionVerbList(sourceVerb, "consics", ignoreList, isMetaConnectionPositive);
@@ -538,6 +622,14 @@ namespace AntiCulture.Kid
             return liffidFlatMetaConnectionVerbList;
         }
 
+        /// <summary>
+        /// Render flat metaConnection muct
+        /// </summary>
+        /// <param name="muctFlatMetaConnectionVerbList">muct flat metaConnection verb list</param>
+        /// <param name="sourceVerb">source verb</param>
+        /// <param name="ignoreList">ignore list</param>
+        /// <param name="isMetaConnectionPositive">whether the metaConnection is positive</param>
+        /// <returns>rendered verb list</returns>
         private HashSet<Concept> RenderFlatMetaConnectionMuct(HashSet<Concept> muctFlatMetaConnectionVerbList, Concept sourceVerb, HashSet<string> ignoreList, bool isMetaConnectionPositive)
         {
             HashSet<Concept> sublarConnectionList = RenderFlatMetaConnectionVerbList(sourceVerb, "sublar", ignoreList, isMetaConnectionPositive);
@@ -568,7 +660,6 @@ namespace AntiCulture.Kid
 
             return muctFlatMetaConnectionVerbList;
         }
-        #endregion
         #endregion
     }
 }
