@@ -6,9 +6,17 @@ using Text;
 
 namespace AntiCulture.Kid
 {
+    /// <summary>
+    /// Build binary (operation) statements
+    /// </summary>
     class BinaryStatementFactory : AbstractStatementFactory
     {
-        #region Methods
+        /// <summary>
+        /// Build binary operation statement
+        /// </summary>
+        /// <param name="humanName">human's name</param>
+        /// <param name="humanStatement">human's raw statement</param>
+        /// <returns>Parsed binary operation statement</returns>
         public sealed override Statement GetInterpretedHumanStatement(string humanName, string humanStatement)
         {
             bool isNegative = false;
@@ -71,6 +79,5 @@ namespace AntiCulture.Kid
             else
                 return new Statement(humanName, Statement.MODE_OPERATION, words[0], words[1], words[2], isInterrogative, isNegative, isAskingWhy, isAskingVisualizeWhy, humanStatement);
         }
-        #endregion
     }
 }
