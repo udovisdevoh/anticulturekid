@@ -6,10 +6,16 @@ using Text;
 
 namespace AntiCulture.Kid
 {
-    class RelativeSubOrdinateExtractor : AbstractRelativeSubOrdinateExtractor
+    class RelativeSubOrdinateExtractor
     {
         #region Public Methods
-        public override string ExtractList(string originalStatement, out List<string> relativeSubOrdinateList)
+        /// <summary>
+        /// Remove and return relative subordinate list from original string
+        /// </summary>
+        /// <param name="originalStatement">original string</param>
+        /// <param name="relativeSubOrdinateList">list of relative subordinate</param>
+        /// <returns>original string stripped from relative subordinate</returns>
+        public string ExtractList(string originalStatement, out List<string> relativeSubOrdinateList)
         {
             relativeSubOrdinateList = new List<string>();
 
@@ -28,7 +34,13 @@ namespace AntiCulture.Kid
             return originalStatement;
         }
 
-        public override string Extract(string originalString, out string subOrdinate)
+        /// <summary>
+        /// Remove and return relative subordinate from string
+        /// </summary>
+        /// <param name="fromString">from string</param>
+        /// <param name="subOrdinate">sub ordinate</param>
+        /// <returns>original string stripped from relative subordinate</returns>
+        public string Extract(string originalString, out string subOrdinate)
         {
             if (!originalString.ContainsWord("(which"))
             {

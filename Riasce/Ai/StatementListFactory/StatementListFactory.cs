@@ -6,7 +6,10 @@ using Text;
 
 namespace AntiCulture.Kid
 {
-    class StatementListFactory : AbstractStatementListFactory
+    /// <summary>
+    /// Build lists of parsed statements from raw strings from human
+    /// </summary>
+    class StatementListFactory
     {
         #region Parts
         private StatementFactory statementFactory = new StatementFactory();
@@ -17,7 +20,13 @@ namespace AntiCulture.Kid
         #endregion
 
         #region Public Methods
-        public override List<Statement> GetInterpretedHumanStatementList(string humanName, string humanStatementParagraph)
+        /// <summary>
+        /// Takes a string and return a list of interpreted human statement so they can be parsed one by one by an artificial intelligence program
+        /// </summary>
+        /// <param name="humanStatement">represents the original human list of statements</param>
+        /// <param name="humanName">represents name (concept identifier) of the human who initiaties the original textual statement</param>
+        /// <returns></returns>
+        public List<Statement> GetInterpretedHumanStatementList(string humanName, string humanStatementParagraph)
         {
             List<Statement> statementList = new List<Statement>();
             Statement currentStatement;

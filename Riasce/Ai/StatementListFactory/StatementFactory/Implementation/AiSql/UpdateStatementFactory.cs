@@ -5,8 +5,17 @@ using System.Text;
 
 namespace AntiCulture.Kid
 {
+    /// <summary>
+    /// Create update statement
+    /// </summary>
     class UpdateStatementFactory : AbstractStatementFactory
     {
+        /// <summary>
+        /// Create update statement
+        /// </summary>
+        /// <param name="humanName">human's name</param>
+        /// <param name="humanStatement">human's raw statement</param>
+        /// <returns>Update statement</returns>
         public override Statement GetInterpretedHumanStatement(string humanName, string humanStatement)
         {
             humanStatement = humanStatement.Trim();

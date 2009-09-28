@@ -7,6 +7,9 @@ using Text;
 
 namespace AntiCulture.Kid
 {
+    /// <summary>
+    /// Builds metaOperation statements
+    /// </summary>
     class MetaOperationStatementFactory : AbstractStatementFactory
     {
         #region Fields
@@ -19,8 +22,7 @@ namespace AntiCulture.Kid
         private MetaOperationImplicationStatementFactory metaOperationImplicationStatementFactory = new MetaOperationImplicationStatementFactory();
         #endregion
 
-        #region Methods
-        #region Getters
+        #region Public Methods
         public sealed override Statement GetInterpretedHumanStatement(string humanName, string humanStatement)
         {
             humanStatement = humanStatement.FixStringForHimmlStatementParsing();
@@ -42,7 +44,6 @@ namespace AntiCulture.Kid
             else
                 throw new StatementParsingException("Couldn't match meta operation");
         }
-        #endregion
         #endregion
     }
 }

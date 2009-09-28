@@ -38,7 +38,7 @@ namespace AntiCulture.Kid
         /// <summary>
         /// Persistant reference to Ai's statementList factory
         /// </summary>
-        private AbstractStatementListFactory statementListFactory;
+        private StatementListFactory statementListFactory;
 
         /// <summary>
         /// Persistant reference to ai's aiName
@@ -58,7 +58,7 @@ namespace AntiCulture.Kid
         #endregion
 
         #region Constructor
-        public Answerer(Brain brain, NameMapper nameMapper, MainWindow mainWindow, Alterator alterator, AbstractAiVisibleCommentBuilder aiVisibleCommentBuilder, AbstractStatementListFactory statementListFactory, Name aiName, Name humanName)
+        public Answerer(Brain brain, NameMapper nameMapper, MainWindow mainWindow, Alterator alterator, AbstractAiVisibleCommentBuilder aiVisibleCommentBuilder, StatementListFactory statementListFactory, Name aiName, Name humanName)
         {
             this.brain = brain;
             this.nameMapper = nameMapper;

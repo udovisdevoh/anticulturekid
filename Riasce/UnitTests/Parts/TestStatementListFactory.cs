@@ -10,7 +10,7 @@ namespace AntiCulture.Kid
         public static void Test()
         {
             AbstractStatementFactory sentenceInterpreter = new StatementFactory();
-            AbstractStatementListFactory paragraphInterpreter = new StatementListFactory();
+            StatementListFactory paragraphInterpreter = new StatementListFactory();
             List<Statement> statementList;
 
             #region Testing single operation
