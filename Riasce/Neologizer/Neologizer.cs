@@ -5,7 +5,7 @@ using System.Text;
 
 namespace AntiCulture.Kid
 {
-    class Neologizer : AbstractNeologizer
+    class Neologizer
     {
     }
 }

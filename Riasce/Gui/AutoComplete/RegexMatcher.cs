@@ -7,7 +7,7 @@ using Text;
 
 namespace AntiCulture.Kid
 {
-    class RegexMatcher : AbstractRegexMatcher
+    class RegexMatcher
     {
         #region Fields
         private static List<Regex> regexList;
@@ -55,7 +55,12 @@ namespace AntiCulture.Kid
         #endregion
 
         #region Public methods
-        public override bool MatchesOneAndOnlyOneRegex(string stringToMatch)
+        /// <summary>
+        /// Returns true if string matches one and only one regex, else: false
+        /// </summary>
+        /// <param name="stringToMatch">string to match</param>
+        /// <returns>true if string matches one and only one regex, else: false</returns>
+        public bool MatchesOneAndOnlyOneRegex(string stringToMatch)
         {
             bool isAskingWhy = false;
             bool isAskingVisualizeWhy = false;
