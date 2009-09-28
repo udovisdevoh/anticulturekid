@@ -5,22 +5,46 @@ using System.Text;
 
 namespace AntiCulture.Kid
 {
+    /// <summary>
+    /// Represents information that can be saved about concept
+    /// </summary>
     [Serializable]
     public class ConceptInfo
     {
         #region Fields
+        /// <summary>
+        /// Name list for concept
+        /// </summary>
         private HashSet<string> nameList = new HashSet<string>();
 
+        /// <summary>
+        /// Positive metaConnection list
+        /// </summary>
         private Dictionary<string, HashSet<int>> positiveMetaConnectionList = new Dictionary<string, HashSet<int>>();
 
+        /// <summary>
+        /// Negative metaConnection list
+        /// </summary>
         private Dictionary<string, HashSet<int>> negativeMetaConnectionList = new Dictionary<string, HashSet<int>>();
 
+        /// <summary>
+        /// Connection info
+        /// </summary>
         private Dictionary<int, HashSet<int>> connectionInfo = new Dictionary<int, HashSet<int>>();
 
+        /// <summary>
+        /// Positive Imply condition info list
+        /// </summary>
         private Dictionary<int, HashSet<ConditionInfo>> implyConditionInfoListPositive = new Dictionary<int, HashSet<ConditionInfo>>();
 
+        /// <summary>
+        /// Negative Imply condition info list
+        /// </summary>
         private Dictionary<int, HashSet<ConditionInfo>> implyConditionInfoListNegative = new Dictionary<int, HashSet<ConditionInfo>>();
 
+        /// <summary>
+        /// Concept id
+        /// </summary>
         private int id;
         #endregion
 
