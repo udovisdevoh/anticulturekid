@@ -7,18 +7,35 @@ using Text;
 
 namespace AntiCulture.Kid
 {
+    /// <summary>
+    /// Build metaOperation binary implication statement
+    /// </summary>
     class MetaOperationBinaryImplicationStatementFactory : AbstractStatementFactory
     {
         #region Fields and parts
+        /// <summary>
+        /// Matches direct implication statement
+        /// </summary>
         private static readonly Regex directImplication = new Regex(@"\Aif ([a-z0-9_()]+) [a-z0-9_()]+ ([a-z0-9_()]+) then \1 [a-z0-9_()]+ \2\Z");
 
+        /// <summary>
+        /// Matches invers implication statement
+        /// </summary>
         private static readonly Regex inverseImplication = new Regex(@"\Aif ([a-z0-9_()]+) [a-z0-9_()]+ ([a-z0-9_()]+) then \2 [a-z0-9_()]+ \1\Z");
 
+        /// <summary>
+        /// Imply statement factory
+        /// </summary>
         private ImplyStatementFactory implyStatementFactory = new ImplyStatementFactory();
         #endregion
 
-        #region Methods
-        #region Getters
+        #region Public Methods
+        /// <summary>
+        /// Get parsed statement
+        /// </summary>
+        /// <param name="humanName">human's name</param>
+        /// <param name="humanStatement">raw human statement</param>
+        /// <returns>parsed statement</returns>
         public sealed override Statement GetInterpretedHumanStatement(string humanName, string humanStatement)
         {
             string metaOpratorName;
@@ -73,7 +90,6 @@ namespace AntiCulture.Kid
                 }
             }
         }
-        #endregion
         #endregion
     }
 }

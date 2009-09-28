@@ -6,9 +6,18 @@ using Text;
 
 namespace AntiCulture.Kid
 {
+    /// <summary>
+    /// Create imply statements
+    /// </summary>
     class ImplyStatementFactory : AbstractStatementFactory
     {
         #region Public Methods
+        /// <summary>
+        /// Create imply statements
+        /// </summary>
+        /// <param name="humanName">human's name</param>
+        /// <param name="humanStatement">human's raw statement</param>
+        /// <returns>parsed imply statement</returns>
         public override Statement GetInterpretedHumanStatement(string humanName, string humanStatement)
         {
             while (humanStatement.Contains("( "))
@@ -16,8 +25,6 @@ namespace AntiCulture.Kid
 
             while (humanStatement.Contains(" )"))
                 humanStatement = humanStatement.Replace(" )", ")");
-
-
 
             if (humanStatement.ContainsWord("if") && humanStatement.ContainsWord("then"))
                 humanStatement = TransformIfThenElseToImply(humanStatement);
@@ -47,6 +54,11 @@ namespace AntiCulture.Kid
         #endregion
 
         #region Private methods
+        /// <summary>
+        /// Transform "if, then, else" syntax to "imply" syntax
+        /// </summary>
+        /// <param name="humanStatement">human's raw statement</param>
+        /// <returns>"imply" syntax</returns>
         private string TransformIfThenElseToImply(string humanStatement)
         {
             bool isNegative = false;

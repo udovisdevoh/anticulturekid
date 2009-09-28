@@ -7,15 +7,30 @@ using Text;
 
 namespace AntiCulture.Kid
 {
+    /// <summary>
+    /// Create equivalence statements
+    /// </summary>
     class MetaOperationEquivalenceStatementFactory : AbstractStatementFactory
     {
         #region Fields
+        /// <summary>
+        /// Matches permutable_side expression
+        /// </summary>
         private static readonly Regex permutableSideExpression = new Regex(@"\A([a-z0-9_()]+) ([a-z0-9_()]+) ([a-z0-9_()]+) = \3 \2 \1\Z");
 
+        /// <summary>
+        /// Matches inverse_of expression
+        /// </summary>
         private static readonly Regex inverseOfExpression = new Regex(@"\A([a-z0-9_()]+) [a-z0-9_()]+ ([a-z0-9_()]+) = \2 [a-z0-9_()]+ \1\Z");
         #endregion
 
-        #region Methods
+        #region Public Methods
+        /// <summary>
+        /// Get interpreted human statement
+        /// </summary>
+        /// <param name="humanName">human's name</param>
+        /// <param name="humanStatement">raw human statement</param>
+        /// <returns>interpreted human statement</returns>
         public sealed override Statement GetInterpretedHumanStatement(string humanName, string humanStatement)
         {
             bool isNegative = humanStatement.ContainsWord("not");

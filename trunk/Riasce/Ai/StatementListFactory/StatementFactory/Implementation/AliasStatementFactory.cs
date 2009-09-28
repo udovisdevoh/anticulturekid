@@ -6,9 +6,18 @@ using Text;
 
 namespace AntiCulture.Kid
 {
+    /// <summary>
+    /// Used to create alias statements
+    /// </summary>
     class AliasStatementFactory : AbstractStatementFactory
     {
-        #region Methods
+        #region Public Methods
+        /// <summary>
+        /// Create alias statement from string
+        /// </summary>
+        /// <param name="humanName">human name</param>
+        /// <param name="humanStatement">human statement</param>
+        /// <returns>parsed alias statement</returns>
         public sealed override Statement GetInterpretedHumanStatement(string humanName, string humanStatement)
         {
             bool isNegative = false;
