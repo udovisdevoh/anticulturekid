@@ -228,8 +228,7 @@
     <Compile Include="Ai\Brain\BackgroundThinker\Theorizer\Theory\AbstractTheory.cs" />
     <Compile Include="Ai\Brain\BackgroundThinker\Theorizer\Theory\MetaConnectionArgument.cs" />
     <Compile Include="Ai\Brain\BackgroundThinker\Theorizer\Theory\Implementation\Theory.cs" />
-    <Compile Include="Ai\SaverLoader\SaverLoader\AbstractSaverLoader.cs" />
-    <Compile Include="Ai\SaverLoader\SaverLoader\Implementation\SaverLoader.cs" />
+    <Compile Include="Ai\SaverLoader\SaverLoader.cs" />
     <Compile Include="Ai\SaverLoader\SaveLoadException.cs" />
     <Compile Include="Neologizer\AbstractNeologizer.cs" />
     <Compile Include="Neologizer\Implementation\Neologizer.cs" />
