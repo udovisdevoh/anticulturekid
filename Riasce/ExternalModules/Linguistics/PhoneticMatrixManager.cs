@@ -7,14 +7,25 @@ using Text;
 
 namespace AntiCulture.Kid
 {
-    class PhoneticMatrixManager : AbstractPhoneticMatrixManager
+    /// <summary>
+    /// Build and manage phonetic matrixes
+    /// </summary>
+    class PhoneticMatrixManager
     {
         #region Public Constants
+        /// <summary>
+        /// Max word in phonetic matrix by starting value
+        /// </summary>
         private static readonly int maxToWordCount = 60;
         #endregion
 
         #region Public Methods
-        public override Matrix BuildMatrixFromTextFile(string textFileName)
+        /// <summary>
+        /// Create a word phonetic proximity matrix from text file
+        /// </summary>
+        /// <param name="textFileName">text file name</param>
+        /// <returns>word phonetic proximity matrix from text file</returns>
+        public Matrix BuildMatrixFromTextFile(string textFileName)
         {
             Matrix matrix = new Matrix();
             string line;
@@ -27,7 +38,12 @@ namespace AntiCulture.Kid
             return matrix;
         }
 
-        public override void LearnNewWord(Matrix matrix, string word)
+        /// <summary>
+        /// Add a new word to phonetic matrix
+        /// </summary>
+        /// <param name="matrix">matrix to add new word to</param>
+        /// <param name="word">word</param>
+        public void LearnNewWord(Matrix matrix, string word)
         {
             float comparison;
             if (matrix.ContainsKey(word))
