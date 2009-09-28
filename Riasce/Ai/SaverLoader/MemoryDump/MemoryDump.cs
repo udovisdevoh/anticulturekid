@@ -6,38 +6,77 @@ using System.Xml;
 
 namespace AntiCulture.Kid
 {
+    /// <summary>
+    /// Represents a saveable representation of ai's memory
+    /// </summary>
     [Serializable]
     class MemoryDump
     {
         #region Fields
+        /// <summary>
+        /// Concept info list
+        /// </summary>
         private Dictionary<int, ConceptInfo> conceptInfoList = new Dictionary<int, ConceptInfo>();
 
+        /// <summary>
+        /// Rejected metaConnection theory info list
+        /// </summary>
         private List<MetaConnectionTheoryInfo> rejectedMetaConnectionTheoryInfoList = new List<MetaConnectionTheoryInfo>();
 
+        /// <summary>
+        /// Rejected connection theory info list
+        /// </summary>
         private List<ConnectionTheoryInfo> rejectedConnectionTheoryInfoList = new List<ConnectionTheoryInfo>();
 
+        /// <summary>
+        /// Ai's name value
+        /// </summary>
         private string aiNameValue;
 
+        /// <summary>
+        /// Human's name value
+        /// </summary>
         private string humanNameValue;
 
+        /// <summary>
+        /// Name mapper counter
+        /// </summary>
         private int nameMapperCounter;
 
+        /// <summary>
+        /// Total theory list
+        /// </summary>
         [NonSerialized]
         private TheoryList totalTheoryList;
 
+        /// <summary>
+        /// Name mapper to look into
+        /// </summary>
         [NonSerialized]
         private NameMapper nameMapper;
 
+        /// <summary>
+        /// Memory to look into
+        /// </summary>
         [NonSerialized]
         private Memory memory;
 
+        /// <summary>
+        /// MetaConnection manager
+        /// </summary>
         [NonSerialized]
         private MetaConnectionManager metaConnectionManager = new MetaConnectionManager();
         #endregion
 
         #region Constants
+        /// <summary>
+        /// Max theory count to save
+        /// </summary>
         private static readonly int maxTheoryCountToSave = 1000;
 
+        /// <summary>
+        /// Max argument count by theory to save
+        /// </summary>
         private static readonly int maxArgumentCountToSave = 7;
         #endregion
 
@@ -104,7 +143,7 @@ namespace AntiCulture.Kid
         }
         #endregion
 
-        #region Public XML saving methods
+        #region XML saving methods
         /// <summary>
         /// Write memory dump to xml file
         /// </summary>
@@ -521,7 +560,7 @@ namespace AntiCulture.Kid
         }
         #endregion
 
-        #region Private XML loading methods
+        #region XML loading methods
         private void xmlReadAiHumanNameValueAndNameMapperCounter(XmlTextReader textReader, out string aiNameValue, out string humanNameValue, out int nameMapperCounter)
         {
             nameMapperCounter = -1;
@@ -944,6 +983,10 @@ namespace AntiCulture.Kid
         #endregion
 
         #region Public Loading methods
+        /// <summary>
+        /// Get name mapper
+        /// </summary>
+        /// <returns>name mapper</returns>
         public NameMapper GetNameMapper()
         {
             NameMapper nameMapper = new NameMapper(new Name(this.aiNameValue), new Name(this.humanNameValue), nameMapperCounter);
@@ -954,6 +997,10 @@ namespace AntiCulture.Kid
             return nameMapper;
         }
 
+        /// <summary>
+        /// Get Memory
+        /// </summary>
+        /// <returns>Memory</returns>
         public Memory GetMemory()
         {
             Memory memory = new Memory();
@@ -1063,6 +1110,11 @@ namespace AntiCulture.Kid
             return memory;
         }
 
+        /// <summary>
+        /// Get total verb list from memory
+        /// </summary>
+        /// <param name="memory">memory</param>
+        /// <returns>total verb list from memory</returns>
         public HashSet<Concept> GetTotalVerbList(Memory memory)
         {
             HashSet<Concept> totalVerbList = new HashSet<Concept>();
@@ -1078,6 +1130,11 @@ namespace AntiCulture.Kid
             return totalVerbList;
         }
 
+        /// <summary>
+        /// Get rejected theories from memory
+        /// </summary>
+        /// <param name="memory">memory</param>
+        /// <returns>rejected theories from memory</returns>
         public RejectedTheories GetRejectedTheories(Memory memory)
         {
             RejectedTheories rejectedTheories = new RejectedTheories();

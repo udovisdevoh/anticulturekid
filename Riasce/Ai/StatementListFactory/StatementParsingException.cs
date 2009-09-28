@@ -5,6 +5,9 @@ using System.Text;
 
 namespace AntiCulture.Kid
 {
+    /// <summary>
+    /// Exception thrown when statement parsing fails
+    /// </summary>
     class StatementParsingException : Exception
     {
         public StatementParsingException(string info)
