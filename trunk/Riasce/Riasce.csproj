@@ -139,8 +139,7 @@
     <Compile Include="Ai\SaverLoader\MemoryDump\ConceptInfo.cs" />
     <Compile Include="Ai\SaverLoader\MemoryDump\ConditionInfo.cs" />
     <Compile Include="Ai\SaverLoader\MemoryDump\ConnectionTheoryInfo.cs" />
-    <Compile Include="Ai\SaverLoader\MemoryDump\MemoryDump\AbstractMemoryDump.cs" />
-    <Compile Include="Ai\SaverLoader\MemoryDump\MemoryDump\Implementation\MemoryDump.cs" />
+    <Compile Include="Ai\SaverLoader\MemoryDump\MemoryDump.cs" />
     <Compile Include="Ai\SaverLoader\MemoryDump\MetaConnectionTheoryInfo.cs" />
     <Compile Include="Ai\Brain\Memory\EpisodicMemory\EpisodicMemory.cs" />
     <Compile Include="Ai\Brain\Memory\EpisodicMemory\Memento\AbstractMemento.cs" />
