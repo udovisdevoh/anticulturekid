@@ -5,7 +5,7 @@ using System.Text;
 
 namespace AntiCulture.Kid
 {
-    class SemanticLikenessMatrixBuilder : AbstractSemanticLikenessMatrixBuilder
+    class SemanticLikenessMatrixBuilder
     {
         #region Parts
         private Dictionary<string, Dictionary<string, float>> reducedRowCache = new Dictionary<string, Dictionary<string, float>>();
@@ -18,12 +18,24 @@ namespace AntiCulture.Kid
         #endregion
 
         #region Public Methods
-        public override Matrix BuildAndBreakSourceMatrix(Matrix occurenceMatrix)
+        /// <summary>
+        /// Build semantic likeness matrix from occurence matrix
+        /// </summary>
+        /// <param name="occurenceMatrix">word occurence matrix</param>
+        /// <returns>semantic likeness matrix</returns>
+        public Matrix BuildAndBreakSourceMatrix(Matrix occurenceMatrix)
         {
             return Build(occurenceMatrix, defaultSourceWordCount, defaultTargetWordCount);
         }
 
-        public override Matrix Build(Matrix occurenceMatrix, int sourceWordCount, int targetWordCount)
+        /// <summary>
+        /// Build semantic likeness matrix from occurence matrix
+        /// </summary>
+        /// <param name="occurenceMatrix">word occurence matrix</param>
+        /// <param name="sourceWordCount">max source word count</param>
+        /// <param name="targetWordCount">max target word count</param>
+        /// <returns>semantic likeness matrix</returns>
+        public Matrix Build(Matrix occurenceMatrix, int sourceWordCount, int targetWordCount)
         {
             Matrix semanticLikenessMatrix = new Matrix();
 
