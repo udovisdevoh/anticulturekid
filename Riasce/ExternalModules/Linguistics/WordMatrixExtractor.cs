@@ -7,10 +7,18 @@ using Text;
 
 namespace AntiCulture.Kid
 {
-    class WordMatrixExtractor : AbstractWordMatrixExtractor
+    /// <summary>
+    /// Word matrix extractor
+    /// </summary>
+    class WordMatrixExtractor
     {
         #region Public Methods
-        public override Matrix BuildMatrixFromTextFile(string textFileName)
+        /// <summary>
+        /// Create a word pair occurence matrix from text file
+        /// </summary>
+        /// <param name="textFileName">text file name</param>
+        /// <returns>word pair occurence matrix from text file</returns>
+        public Matrix BuildMatrixFromTextFile(string textFileName)
         {
             Matrix matrix = new Matrix();
 
@@ -25,7 +33,12 @@ namespace AntiCulture.Kid
         }
         #endregion
 
-        #region Private Strings
+        #region Private Methods
+        /// <summary>
+        /// Learn from line
+        /// </summary>
+        /// <param name="matrix">matrix to add information to</param>
+        /// <param name="line">line to learn from</param>
         private void LearnFromLine(Matrix matrix, string line)
         {
             line = line.Replace("-", "_");
