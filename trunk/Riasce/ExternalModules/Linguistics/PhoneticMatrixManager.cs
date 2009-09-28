@@ -63,6 +63,11 @@ namespace AntiCulture.Kid
         #endregion
 
         #region Private methods
+        /// <summary>
+        /// Learn information from text line
+        /// </summary>
+        /// <param name="matrix">matrix to add information to</param>
+        /// <param name="line">text line</param>
         private void LearnFromLine(Matrix matrix, string line)
         {
             line = line.Replace("-", "_");
@@ -85,6 +90,12 @@ namespace AntiCulture.Kid
                 LearnNewWord(matrix, currentWord);
         }
 
+        /// <summary>
+        /// Compare phoneme occurence
+        /// </summary>
+        /// <param name="word1">word 1</param>
+        /// <param name="word2">word 2</param>
+        /// <returns>phoneme occurence proximity (from 0 to 1)</returns>
         private float ComparePhonemeOccurence(string word1, string word2)
         {
             float occurence = 0;
@@ -102,6 +113,12 @@ namespace AntiCulture.Kid
             return occurence;
         }
 
+        /// <summary>
+        /// Get total phoneme list from two words
+        /// </summary>
+        /// <param name="word1">word 1</param>
+        /// <param name="word2">word 2</param>
+        /// <returns>total phoneme list from for words</returns>
         private HashSet<string> GetTotalPhonemeList(string word1, string word2)
         {
             HashSet<string> totalPhonemeList1 = GetTotalPhonemeList(word1);
@@ -112,6 +129,11 @@ namespace AntiCulture.Kid
             return totalPhonemeList1;
         }
 
+        /// <summary>
+        /// Get total phoneme list from provided word
+        /// </summary>
+        /// <param name="word">word</param>
+        /// <returns>total phoneme list int provided word</returns>
         private HashSet<string> GetTotalPhonemeList(string word)
         {
             HashSet<string> totalPhonemeList = new HashSet<string>();
@@ -131,12 +153,21 @@ namespace AntiCulture.Kid
             return totalPhonemeList;
         }
 
+        /// <summary>
+        /// Remove unsignificant information from matrix
+        /// </summary>
+        /// <param name="matrix">matrix to reduce</param>
         private void Reduce(Matrix matrix)
         {
             matrix.NormalData = Reduce(matrix.NormalData);
             matrix.ReversedData = Reduce(matrix.ReversedData);
         }
 
+        /// <summary>
+        /// RRemove unsignificant information from matrix
+        /// </summary>
+        /// <param name="data">matrix's data</param>
+        /// <returns>reduced data</returns>
         private Dictionary<string, Dictionary<string, float>> Reduce(Dictionary<string, Dictionary<string, float>> data)
         {
             string fromWord;
