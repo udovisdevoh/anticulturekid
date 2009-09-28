@@ -6,10 +6,18 @@ using System.Xml;
 
 namespace AntiCulture.Kid
 {
-    class XmlMatrixSaverLoader : AbstractXmlMatrixSaverLoader
+    /// <summary>
+    /// Xml matrix saver loader
+    /// </summary>
+    class XmlMatrixSaverLoader
     {
         #region Public Methods
-        public override void Save(Matrix matrix, string fileName)
+        /// <summary>
+        /// Save matrix to XML file
+        /// </summary>
+        /// <param name="matrix">matrix to save</param>
+        /// <param name="fileName">file name</param>
+        public void Save(Matrix matrix, string fileName)
         {
             XmlTextWriter textWriter = new XmlTextWriter(fileName, Encoding.UTF8);
             textWriter.Formatting = Formatting.Indented;
@@ -27,7 +35,12 @@ namespace AntiCulture.Kid
             textWriter.Close();
         }
 
-        public override Matrix Load(string fileName)
+        /// <summary>
+        /// Load matrix from XML file
+        /// </summary>
+        /// <param name="fileName">file name</param>
+        /// <returns>Loaded matrix</returns>
+        public Matrix Load(string fileName)
         {
             XmlTextReader textReader = new XmlTextReader(fileName);
             Matrix matrix = new Matrix();
@@ -62,6 +75,11 @@ namespace AntiCulture.Kid
         #endregion
 
         #region Private Methods
+        /// <summary>
+        /// Write xml data
+        /// </summary>
+        /// <param name="textWriter">text writer</param>
+        /// <param name="data">data to write</param>
         private void XmlWriteData(XmlTextWriter textWriter, Dictionary<string, Dictionary<string, float>> data)
         {
             string from;
@@ -75,6 +93,12 @@ namespace AntiCulture.Kid
             }
         }
 
+        /// <summary>
+        /// Write xml row
+        /// </summary>
+        /// <param name="textWriter">text writer</param>
+        /// <param name="from">from word</param>
+        /// <param name="row">row to write</param>
         private void XmlWriteRow(XmlTextWriter textWriter, string from, Dictionary<string, float> row)
         {
             textWriter.WriteStartElement("fromWord");
