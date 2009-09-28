@@ -181,10 +181,8 @@
     <Compile Include="Gui\AutoComplete\AutoCompleteViewer\AutoCompleteViewer.xaml.cs">
       <DependentUpon>AutoCompleteViewer.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Gui\AutoComplete\AutoComplete\AbstractAutoComplete.cs" />
-    <Compile Include="Gui\AutoComplete\AutoComplete\Implementation\AutoComplete.cs" />
-    <Compile Include="Gui\AutoComplete\RegexMatcher\AbstractRegexMatcher.cs" />
-    <Compile Include="Gui\AutoComplete\RegexMatcher\Implementation\RegexMatcher.cs" />
+    <Compile Include="Gui\AutoComplete\AutoComplete.cs" />
+    <Compile Include="Gui\AutoComplete\RegexMatcher.cs" />
     <Compile Include="Gui\CommandHistory\AbstractCommandHistory.cs" />
     <Compile Include="Gui\CommandHistory\Implementation\CommandHistory.cs" />
     <Compile Include="Ai\FeelingMonitor\FeelingMonitor.cs" />
@@ -251,8 +249,7 @@
     <Compile Include="Ai\Brain\BackgroundThinker\Theorizer\Theory\Implementation\Theory.cs" />
     <Compile Include="Ai\SaverLoader\SaverLoader.cs" />
     <Compile Include="Ai\SaverLoader\SaveLoadException.cs" />
-    <Compile Include="Neologizer\AbstractNeologizer.cs" />
-    <Compile Include="Neologizer\Implementation\Neologizer.cs" />
+    <Compile Include="Neologizer\Neologizer.cs" />
     <Compile Include="Neologizer\NeologyException.cs" />
     <Compile Include="Ai\Brain\AiSqlWrapper\QuerySplitter.cs" />
     <Compile Include="Ai\Brain\AiSqlWrapper\AiSqlWrapper.cs" />

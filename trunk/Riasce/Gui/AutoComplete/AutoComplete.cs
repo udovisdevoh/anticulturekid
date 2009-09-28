@@ -6,7 +6,7 @@ using System.Windows.Controls;
 
 namespace AntiCulture.Kid
 {
-    class AutoComplete : AbstractAutoComplete
+    class AutoComplete
     {
         #region Fields
         private AbstractAutoCompleteModel autoCompleteModel;
