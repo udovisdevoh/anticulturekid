@@ -6,8 +6,17 @@ using Text;
 
 namespace AntiCulture.Kid
 {
+    /// <summary>
+    /// Build unary statements (statements with single operator and no argument concept)
+    /// </summary>
     class UnaryStatementFactory : AbstractStatementFactory
     {
+        /// <summary>
+        /// Build unary statement from human's raw statement
+        /// </summary>
+        /// <param name="humanName">human's name</param>
+        /// <param name="humanStatement">human's raw statement</param>
+        /// <returns>unary statement</returns>
         public sealed override Statement GetInterpretedHumanStatement(string humanName, string humanStatement)
         {
             humanStatement = humanStatement.FixStringForHimmlStatementParsing();

@@ -6,8 +6,17 @@ using Text;
 
 namespace AntiCulture.Kid
 {
+    /// <summary>
+    /// Build statCross statements
+    /// </summary>
     class StatCrossStatementFactory : AbstractStatementFactory
     {
+        /// <summary>
+        /// Build statcross statement
+        /// </summary>
+        /// <param name="humanName">human's name</param>
+        /// <param name="humanStatement">human's raw statement</param>
+        /// <returns>statcross statement</returns>
         public sealed override Statement GetInterpretedHumanStatement(string humanName, string humanStatement)
         {
             humanStatement = humanStatement.FixStringForHimmlStatementParsing();

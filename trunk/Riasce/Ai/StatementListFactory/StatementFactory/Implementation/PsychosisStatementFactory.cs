@@ -5,9 +5,18 @@ using System.Text;
 
 namespace AntiCulture.Kid
 {
+    /// <summary>
+    /// Build psychosis statements
+    /// </summary>
     class PsychosisStatementFactory : AbstractStatementFactory
     {
         #region Public Methods
+        /// <summary>
+        /// Build psychosis statement
+        /// </summary>
+        /// <param name="humanName">human's name</param>
+        /// <param name="humanStatement">human's raw statement</param>
+        /// <returns>psychosis statement</returns>
         public override Statement GetInterpretedHumanStatement(string humanName, string humanStatement)
         {
             int probability;

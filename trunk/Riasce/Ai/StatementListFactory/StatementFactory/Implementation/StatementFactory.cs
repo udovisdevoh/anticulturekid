@@ -8,7 +8,7 @@ using Misc;
 namespace AntiCulture.Kid
 {
     /// <summary>
-    /// Represents the implementation (bridge pattern) of a statement factory
+    /// Represents the implementation the statement factory
     /// Its purpose is to convert human generated strings into Statement objects that can be interpreted by an AI
     /// </summary>
     class StatementFactory : AbstractStatementFactory
@@ -40,6 +40,12 @@ namespace AntiCulture.Kid
         #endregion
 
         #region Public Methods
+        /// <summary>
+        /// Build parsed statement of any kind from human's raw statement
+        /// </summary>
+        /// <param name="humanName">human's name</param>
+        /// <param name="humanStatement">human's raw statement</param>
+        /// <returns>parsed statement of any kind</returns>
         public sealed override Statement GetInterpretedHumanStatement(string humanName, string humanStatement)
         {
             Argument.Ensure(humanName, "Human name");
