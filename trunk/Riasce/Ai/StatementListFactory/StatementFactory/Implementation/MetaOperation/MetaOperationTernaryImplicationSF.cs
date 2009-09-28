@@ -7,38 +7,65 @@ using Text;
 
 namespace AntiCulture.Kid
 {
+    /// <summary>
+    /// Build ternary implication statements
+    /// </summary>
     class MetaOperationTernaryImplicationStatementFactory : AbstractStatementFactory
     {
         #region Fields and parts
-        //if pine isa tree and tree madeof wood then pine madeof wood
+        /// <summary>
+        /// if pine isa tree and tree madeof wood then pine madeof wood
+        /// </summary>
         private static readonly Regex muctA = new Regex(@"if ([a-z0-9_()]+) ([a-z0-9_()]+) ([a-z0-9_()]+) and \3 ([a-z0-9_()]+) ([a-z0-9_()]+) then \1 \4 \5");
 
-        //if tree madeof wood and pine isa tree then pine madeof wood
+        /// <summary>
+        /// if tree madeof wood and pine isa tree then pine madeof wood
+        /// </summary>
         private static readonly Regex muctB = new Regex(@"if ([a-z0-9_()]+) ([a-z0-9_()]+) ([a-z0-9_()]+) and ([a-z0-9_()]+) ([a-z0-9_()]+) \1 then \4 \2 \3");
-        
-        //if wood isa material and pine madeof wood then pine madeof material
+
+        /// <summary>
+        /// if wood isa material and pine madeof wood then pine madeof material
+        /// </summary>
         private static readonly Regex liffidA = new Regex(@"if ([a-z0-9_()]+) ([a-z0-9_()]+) ([a-z0-9_()]+) and ([a-z0-9_()]+) ([a-z0-9_()]+) \1 then \4 \5 \3");
         
-        //if pine madeof wood and wood isa material then pine madeof material
+        /// <summary>
+        /// if pine madeof wood and wood isa material then pine madeof material
+        /// </summary>
         private static readonly Regex liffidB = new Regex(@"if ([a-z0-9_()]+) ([a-z0-9_()]+) ([a-z0-9_()]+) and \3 ([a-z0-9_()]+) ([a-z0-9_()]+) then \1 \2 \5");
         
-        //if tree someare pine and tree madeof wood then pine madeof wood
+        /// <summary>
+        /// if tree someare pine and tree madeof wood then pine madeof wood
+        /// </summary>
         private static readonly Regex sublarA = new Regex(@"if ([a-z0-9_()]+) ([a-z0-9_()]+) ([a-z0-9_()]+) and \1 ([a-z0-9_()]+) ([a-z0-9_()]+) then \3 \4 \5");
         
-        //if tree madeof wood and tree someare pine then pine madeof wood
+        /// <summary>
+        /// if tree madeof wood and tree someare pine then pine madeof wood
+        /// </summary>
         private static readonly Regex sublarB = new Regex(@"if ([a-z0-9_()]+) ([a-z0-9_()]+) ([a-z0-9_()]+) and \1 ([a-z0-9_()]+) ([a-z0-9_()]+) then \5 \2 \3");
         
-        //if pine isa tree and wood partof tree then wood partof pine
+        /// <summary>
+        /// if pine isa tree and wood partof tree then wood partof pine
+        /// </summary>
         private static readonly Regex consicsA = new Regex(@"if ([a-z0-9_()]+) ([a-z0-9_()]+) ([a-z0-9_()]+) and ([a-z0-9_()]+) ([a-z0-9_()]+) \3 then \4 \5 \1");
 
-        //if wood partof tree and pine isa tree then wood partof pine
+        /// <summary>
+        /// if wood partof tree and pine isa tree then wood partof pine
+        /// </summary>
         private static readonly Regex consicsB = new Regex(@"if ([a-z0-9_()]+) ([a-z0-9_()]+) ([a-z0-9_()]+) and ([a-z0-9_()]+) ([a-z0-9_()]+) \3 then \1 \2 \4");
 
+        /// <summary>
+        /// Imply statement factory
+        /// </summary>
         private ImplyStatementFactory implyStatementFactory = new ImplyStatementFactory();
         #endregion
 
-        #region Methods
-        #region Getters
+        #region Public Methods
+        /// <summary>
+        /// Build ternary implication statement
+        /// </summary>
+        /// <param name="humanName">human's name</param>
+        /// <param name="humanStatement">human's raw statement</param>
+        /// <returns>ternary implication statement</returns>
         public sealed override Statement GetInterpretedHumanStatement(string humanName, string humanStatement)
         {
             bool isNegative = humanStatement.StartsWith("not");
@@ -103,7 +130,6 @@ namespace AntiCulture.Kid
                 }
             }
         }
-        #endregion
         #endregion
     }
 }

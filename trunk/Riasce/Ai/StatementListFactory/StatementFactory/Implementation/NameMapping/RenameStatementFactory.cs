@@ -6,8 +6,17 @@ using Text;
 
 namespace AntiCulture.Kid
 {
+    /// <summary>
+    /// Build rename statement
+    /// </summary>
     class RenameStatementFactory : AbstractStatementFactory
     {
+        /// <summary>
+        /// Rename statement
+        /// </summary>
+        /// <param name="humanName">human's name</param>
+        /// <param name="humanStatement">human's raw statement</param>
+        /// <returns>Rename statement</returns>
         public sealed override Statement GetInterpretedHumanStatement(string humanName, string humanStatement)
         {
             bool isNegative = false;

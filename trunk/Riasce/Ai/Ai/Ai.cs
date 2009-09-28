@@ -47,7 +47,7 @@ namespace AntiCulture.Kid
 
         private AbstractAiVisibleCommentBuilder aiVisibleCommentBuilder;
 
-        private AbstractStatementListFactory statementListFactory;
+        private StatementListFactory statementListFactory;
 
         private NameMapper nameMapper;
 

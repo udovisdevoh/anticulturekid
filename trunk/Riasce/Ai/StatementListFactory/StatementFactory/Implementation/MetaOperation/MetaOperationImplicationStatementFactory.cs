@@ -6,16 +6,30 @@ using System.Text.RegularExpressions;
 
 namespace AntiCulture.Kid
 {
+    /// <summary>
+    /// Builds metaOperation implication statement factory
+    /// </summary>
     class MetaOperationImplicationStatementFactory : AbstractStatementFactory
     {
         #region Parts
+        /// <summary>
+        /// MetaOperation binary implication statement factory
+        /// </summary>
         private MetaOperationBinaryImplicationStatementFactory metaOperationBinaryImplicationStatementFactory = new MetaOperationBinaryImplicationStatementFactory();
 
+        /// <summary>
+        /// MetaOperation ternary implication statement factory
+        /// </summary>
         private MetaOperationTernaryImplicationStatementFactory metaOperationTernaryImplicationStatementFactory = new MetaOperationTernaryImplicationStatementFactory();
         #endregion
 
-        #region Methods
-        #region Getters
+        #region Public Methods
+        /// <summary>
+        /// Build interpreted human statement
+        /// </summary>
+        /// <param name="humanName">human's name</param>
+        /// <param name="humanStatement">human's raw statement</param>
+        /// <returns>interpreted human statement</returns>
         public sealed override Statement GetInterpretedHumanStatement(string humanName, string humanStatement)
         {
             if (humanStatement.Contains(" and "))
@@ -23,7 +37,6 @@ namespace AntiCulture.Kid
             else
                 return metaOperationBinaryImplicationStatementFactory.GetInterpretedHumanStatement(humanName, humanStatement);
         }
-        #endregion
         #endregion
     }
 }
