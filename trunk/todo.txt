@@ -24,6 +24,24 @@ proof must work with some kind of linked list rather than array with copied cont
 
 
 
+
+add special operator "definition_priority"
+to make it so that some operator are displayed before others
+instead of sorting them by custom order
+add new information to instinct
+
+
+
+
+add special operator "translate_to"
+for instance: madeof translate_to "is made of"
+add multiple translations
+used to translate to/from
+when translating to english, pick random translation
+add new information to instinct
+
+
+
 analogizer could work with semantic proximity matrix too
 
 
