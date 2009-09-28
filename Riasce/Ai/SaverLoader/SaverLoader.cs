@@ -7,29 +7,52 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 namespace AntiCulture.Kid
 {
-    class SaverLoader : AbstractSaverLoader
+    /// <summary>
+    /// This class is used to save and load memory to file
+    /// </summary>
+    class SaverLoader
     {
         #region Static
+        /// <summary>
+        /// Default file type filter
+        /// </summary>
         private static readonly string defaultFileTypeFilter = "XML Memory files|*.xml|Legacy Memory files|*.AiMemory";
         #endregion
 
         #region Fields
+        /// <summary>
+        /// File name
+        /// </summary>
         private string fileName;
 
+        /// <summary>
+        /// Name mapper
+        /// </summary>
         private NameMapper nameMapper;
 
+        /// <summary>
+        /// Memory
+        /// </summary>
         private Memory memory;
 
+        /// <summary>
+        /// Total verb list
+        /// </summary>
         private HashSet<Concept> totalVerbList;
 
+        /// <summary>
+        /// Rejected theories
+        /// </summary>
         private RejectedTheories rejectedTheories;
 
-        private Stream stream;
-
+        /// <summary>
+        /// Total theory list
+        /// </summary>
         private TheoryList totalTheoryList;
 
-        private BinaryFormatter formatter = new BinaryFormatter();
-
+        /// <summary>
+        /// Whether file needs to be saved
+        /// </summary>
         private bool fileNeedSave = false;
         #endregion
 
@@ -40,8 +63,11 @@ namespace AntiCulture.Kid
         }
         #endregion
 
-        #region Methods
-        public override void Save()
+        #region Public Methods
+        /// <summary>
+        /// Save
+        /// </summary>
+        public void Save()
         {
             if (fileName == null || nameMapper == null || memory == null || totalVerbList == null || rejectedTheories == null || totalTheoryList == null)
                 throw new SaveLoadException("Missing saving parameters");
@@ -54,38 +80,23 @@ namespace AntiCulture.Kid
 
             MemoryDump memoryDump = new MemoryDump(nameMapper, memory, rejectedTheories, totalVerbList, totalTheoryList);
 
-            if (fileName.Length > 3 && fileName.ToLower().Substring(fileName.Length - 4) == ".xml")
-            {
-                memoryDump.SaveXmlFile(fileName);
-            }
-            else
-            {
-                stream = new FileStream(fileName, FileMode.Create, FileAccess.Write, FileShare.None);
-                formatter.Serialize(stream, memoryDump);
-                stream.Close();
-            }
+            memoryDump.SaveXmlFile(fileName);
+
             ResetSavingParameters();
         }
 
-        public override void Load()
+        /// <summary>
+        /// Load
+        /// </summary>
+        public void Load()
         {
             if (fileName == null)
                 throw new SaveLoadException("Missing fileName");
 
             MemoryDump memoryDump;
 
-            if (fileName.Length > 3 && fileName.ToLower().Substring(fileName.Length - 4) == ".xml")
-            {
-                memoryDump = new MemoryDump(fileName);
-            }
-            else
-            {
-                //Unserialize stuff
-                using (stream = new FileStream(fileName, FileMode.Open, FileAccess.Read, FileShare.None))
-                {
-                    memoryDump = (MemoryDump)formatter.Deserialize(stream);
-                }
-            }
+            memoryDump = new MemoryDump(fileName);
+    
 
             nameMapper = memoryDump.GetNameMapper();
             memory = memoryDump.GetMemory();
@@ -95,7 +106,12 @@ namespace AntiCulture.Kid
             if (nameMapper == null || memory == null || totalVerbList == null || rejectedTheories == null)
                 throw new SaveLoadException("Couldn't load all data from file");
         }
+        #endregion
 
+        #region Private Methods
+        /// <summary>
+        /// Reset saving parameters
+        /// </summary>
         private void ResetSavingParameters()
         {
             fileName = null;
@@ -105,6 +121,11 @@ namespace AntiCulture.Kid
             rejectedTheories = null;
         }
 
+        /// <summary>
+        /// Get next backup file name from saving file name
+        /// </summary>
+        /// <param name="fileName">saving file name</param>
+        /// <returns>next backup file name from saving file name</returns>
         private string GetNextNewBackupName(string fileName)
         {
             string newBackupName = fileName + ".noMoreBackup";
@@ -127,48 +148,72 @@ namespace AntiCulture.Kid
         #endregion
 
         #region Properties
-        public override string FileName
+        /// <summary>
+        /// FileName to save or load
+        /// </summary>
+        public string FileName
         {
             get { return fileName; }
             set { fileName = value; }
         }
 
-        public override NameMapper NameMapper
+        /// <summary>
+        /// Name mapper
+        /// </summary>
+        public NameMapper NameMapper
         {
             get { return nameMapper; }
             set { nameMapper = value; }
         }
 
-        public override Memory Memory
+        /// <summary>
+        /// Memory
+        /// </summary>
+        public Memory Memory
         {
             get { return memory; }
             set { memory = value; }
         }
 
-        public override HashSet<Concept> TotalVerbList
+        /// <summary>
+        /// Operator list
+        /// </summary>
+        public HashSet<Concept> TotalVerbList
         {
             get { return totalVerbList; }
             set { totalVerbList = value; }
         }
 
-        public override RejectedTheories RejectedTheories
+        /// <summary>
+        /// Rejected theories
+        /// </summary>
+        public RejectedTheories RejectedTheories
         {
             get { return rejectedTheories; }
             set { rejectedTheories = value; }
         }
 
-        public override TheoryList TotalTheoryList
+        /// <summary>
+        /// Postulated theories
+        /// </summary>
+        public TheoryList TotalTheoryList
         {
             get { return totalTheoryList; }
             set { totalTheoryList = value; }
         }
 
-        public override string DefaultFileTypeFilter
+        /// <summary>
+        /// Default file type filter
+        /// </summary>
+        public string DefaultFileTypeFilter
         {
             get { return defaultFileTypeFilter; }
         }
 
-        public override bool FileNeedSave
+        /// <summary>
+        /// Whether current file need to be saved or not
+        /// </summary>
+        public bool FileNeedSave
         {
             get { return fileNeedSave; }
             set { fileNeedSave = value; }
