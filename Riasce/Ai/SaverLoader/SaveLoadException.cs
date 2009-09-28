@@ -5,6 +5,9 @@ using System.Text;
 
 namespace AntiCulture.Kid
 {
+    /// <summary>
+    /// Exception thrown when saving or loading fails
+    /// </summary>
     class SaveLoadException : Exception
     {
         public SaveLoadException(string info)

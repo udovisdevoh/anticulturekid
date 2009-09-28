@@ -7,7 +7,7 @@ using System.Xml;
 namespace AntiCulture.Kid
 {
     [Serializable]
-    class MemoryDump : AbstractMemoryDump
+    class MemoryDump
     {
         #region Fields
         private Dictionary<int, ConceptInfo> conceptInfoList = new Dictionary<int, ConceptInfo>();
@@ -105,7 +105,11 @@ namespace AntiCulture.Kid
         #endregion
 
         #region Public XML saving methods
-        public override void SaveXmlFile(string xmlFileName)
+        /// <summary>
+        /// Write memory dump to xml file
+        /// </summary>
+        /// <param name="xmlFileName">xml file name</param>
+        public void SaveXmlFile(string xmlFileName)
         {
             XmlTextWriter textWriter = new XmlTextWriter(xmlFileName, Encoding.UTF8);
 
