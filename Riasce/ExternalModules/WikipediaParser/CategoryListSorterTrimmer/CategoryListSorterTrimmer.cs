@@ -6,10 +6,18 @@ using System.IO;
 
 namespace AntiCulture.Kid
 {
-    class CategoryListSorterTrimmer : AbstractCategoryListSorterTrimmer
+    /// <summary>
+    /// Category list sorter and trimmer
+    /// </summary>
+    class CategoryListSorterTrimmer
     {
         #region Public Methods
-        public override void SortAndTrimCategoryListFile(string inputFileName, string outputFileName)
+        /// <summary>
+        /// Sort and trim a category list file
+        /// </summary>
+        /// <param name="inputFileName">input file name</param>
+        /// <param name="outputFileName">output file name</param>
+        public void SortAndTrimCategoryListFile(string inputFileName, string outputFileName)
         {
             List<SortableCategory> categoryList = GetCategoryListFromFile(inputFileName);
             categoryList.Sort();
@@ -19,6 +27,11 @@ namespace AntiCulture.Kid
         #endregion
 
         #region Private Methods
+        /// <summary>
+        /// Get category list from file
+        /// </summary>
+        /// <param name="fileName">file name</param>
+        /// <returns>category list from file</returns>
         private List<SortableCategory> GetCategoryListFromFile(string fileName)
         {
             List<SortableCategory> categoryList = new List<SortableCategory>();
@@ -43,6 +56,11 @@ namespace AntiCulture.Kid
             return categoryList;
         }
 
+        /// <summary>
+        /// Write outpuf file
+        /// </summary>
+        /// <param name="categoryList">category list</param>
+        /// <param name="fileName">file name</param>
         private void WriteOutputFile(List<SortableCategory> categoryList, string fileName)
         {
             using (StreamWriter streamWriter = new StreamWriter(fileName))
@@ -54,6 +72,11 @@ namespace AntiCulture.Kid
             }
         }
 
+        /// <summary>
+        /// Trim category list
+        /// </summary>
+        /// <param name="categoryList">category list</param>
+        /// <returns>Trimmed category list</returns>
         private List<SortableCategory> TrimCategoryList(List<SortableCategory> categoryList)
         {
             List<SortableCategory> newCategoryList = new List<SortableCategory>();
@@ -66,6 +89,12 @@ namespace AntiCulture.Kid
             return newCategoryList;
         }
 
+        /// <summary>
+        /// Whether category name is in list
+        /// </summary>
+        /// <param name="name">name</param>
+        /// <param name="stringList">list</param>
+        /// <returns>whether category name is in list</returns>
         private bool InList(string name, List<string> stringList)
         {
             name = name.ToLower();

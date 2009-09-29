@@ -309,12 +309,10 @@
       <DependentUpon>CategoryListExtractorViewer.xaml</DependentUpon>
     </Compile>
     <Compile Include="ExternalModules\WikipediaParser\CategoryListExtractor\CategoryListExtractor.cs" />
-    <Compile Include="ExternalModules\WikipediaParser\CategoryListFileExplorer\CategoryListFileExplorer.cs" />
-    <Compile Include="ExternalModules\WikipediaParser\CategoryListSorterTrimmer\CategoryListSorterTrimmer\AbstractCategoryListSorterTrimmer.cs" />
-    <Compile Include="ExternalModules\WikipediaParser\CategoryListSorterTrimmer\CategoryListSorterTrimmer\Implementation\CategoryListSorterTrimmer.cs" />
-    <Compile Include="ExternalModules\WikipediaParser\CategoryListSorterTrimmer\SortableCategory\SortableCategory.cs" />
-    <Compile Include="ExternalModules\WikipediaParser\WikiCategoryListPage\AbstractWikiCategoryListPage.cs" />
-    <Compile Include="ExternalModules\WikipediaParser\WikiCategoryListPage\Implementation\WikiCategoryListPage.cs" />
+    <Compile Include="ExternalModules\WikipediaParser\CategoryListFileExplorer.cs" />
+    <Compile Include="ExternalModules\WikipediaParser\CategoryListSorterTrimmer\CategoryListSorterTrimmer.cs" />
+    <Compile Include="ExternalModules\WikipediaParser\CategoryListSorterTrimmer\SortableCategory.cs" />
+    <Compile Include="ExternalModules\WikipediaParser\WikiCategoryListPage.cs" />
     <Compile Include="ExternalModules\WebExplorer\WebExplorer.cs" />
   </ItemGroup>
   <ItemGroup>
