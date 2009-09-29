@@ -13,10 +13,7 @@ namespace AntiCulture.Kid
         }
 
         private static void GeneralTest()
-        {
-            Optimizer optimizer = new Optimizer();
-            
-
+        {          
             #region We create the verbs that we will need
             Concept isa = new Concept("isa");
             Concept someare = new Concept("someare");
@@ -83,7 +80,7 @@ namespace AntiCulture.Kid
             proof.AddArgument(pine, isa, tree);
             pine.GetFlatConnectionBranch(isa).SetProofTo(plant, proof);
 
-            optimizer.Repair(pine);
+            Optimizer.Repair(pine);
 
             if (!pine.IsOptimizedConnectedTo(isa, tree))
                 throw new Exception("Connection should exist");

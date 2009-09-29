@@ -8,7 +8,7 @@ namespace AntiCulture.Kid
     /// <summary>
     /// This class is used to remove useless connections from concepts
     /// </summary>
-    class Optimizer
+    static class Optimizer
     {
         #region Public Methods
         /// <summary>
@@ -16,7 +16,7 @@ namespace AntiCulture.Kid
         /// so no useless connection persist
         /// </summary>
         /// <param name="concept">Concept to repair</param>
-        public void Repair(Concept concept)
+        public static void Repair(Concept concept)
         {
             if (concept.IsFlatDirty)
                 throw new OptimizationException("Repair flat representation before repairing optimized representation");
@@ -34,7 +34,7 @@ namespace AntiCulture.Kid
         /// </summary>
         /// <param name="optimizedConnectionBranchList">optimized branch list</param>
         /// <returns>Repaired optimized branches</returns>
-        private Dictionary<Concept, ConnectionBranch> BuildOptimizedFromFlat(Dictionary<Concept, ConnectionBranch> flatConnectionBranchList)
+        private static Dictionary<Concept, ConnectionBranch> BuildOptimizedFromFlat(Dictionary<Concept, ConnectionBranch> flatConnectionBranchList)
         {
             Dictionary<Concept, ConnectionBranch> optimizedConnectionBranchList = new Dictionary<Concept, ConnectionBranch>();
 
@@ -56,7 +56,7 @@ namespace AntiCulture.Kid
         /// </summary>
         /// <param name="flatBranch">source flat branch</param>
         /// <returns>optimized branch</returns>
-        private ConnectionBranch RepairOptimizedBranch(ConnectionBranch flatBranch)
+        private static ConnectionBranch RepairOptimizedBranch(ConnectionBranch flatBranch)
         {
             ConnectionBranch optimizedBranch = new ConnectionBranch();
             foreach (Concept complement in flatBranch.ComplementConceptList)
