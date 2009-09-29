@@ -203,9 +203,8 @@
     <Compile Include="ExternalModules\Linguistics\SemanticLikenessMatrixBuilder.cs" />
     <Compile Include="ExternalModules\Linguistics\WordMatrixExtractor.cs" />
     <Compile Include="ExternalModules\Linguistics\XmlMatrixSaverLoader.cs" />
-    <Compile Include="ExternalModules\Markov\Markov\Markov.cs" />
-    <Compile Include="ExternalModules\Markov\LetterMatrix\AbstractLetterMatrix.cs" />
-    <Compile Include="ExternalModules\Markov\LetterMatrix\Implementation\LetterMatrix.cs" />
+    <Compile Include="ExternalModules\Markov\Markov.cs" />
+    <Compile Include="ExternalModules\Markov\LetterMatrix.cs" />
     <Compile Include="Name.cs" />
     <Compile Include="Gui\MainWindow\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -244,8 +243,8 @@
     <Compile Include="Ai\Brain\BackgroundThinker\Theorizer\Theory\Implementation\Theory.cs" />
     <Compile Include="Ai\SaverLoader\SaverLoader.cs" />
     <Compile Include="Ai\SaverLoader\SaveLoadException.cs" />
-    <Compile Include="Neologizer\Neologizer.cs" />
-    <Compile Include="Neologizer\NeologyException.cs" />
+    <Compile Include="Ai\Brain\Neologizer\Neologizer.cs" />
+    <Compile Include="Ai\Brain\Neologizer\NeologyException.cs" />
     <Compile Include="Ai\Brain\AiSqlWrapper\QuerySplitter.cs" />
     <Compile Include="Ai\Brain\AiSqlWrapper\AiSqlWrapper.cs" />
     <Compile Include="Ai\Brain\AiSqlWrapper\AiSqlException.cs" />
