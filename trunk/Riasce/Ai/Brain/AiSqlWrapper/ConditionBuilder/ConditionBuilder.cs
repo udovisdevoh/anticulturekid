@@ -11,10 +11,6 @@ namespace AntiCulture.Kid
     /// </summary>
     class ConditionBuilder
     {
-        #region Fields
-        private QuerySplitter querySplitter = new QuerySplitter();
-        #endregion
-
         #region Public Methods
         /// <summary>
         /// Create a condition from string
@@ -28,7 +24,7 @@ namespace AntiCulture.Kid
             text = text.FixStringForHimmlStatementParsing();
             text = text.TryRemoveUselessParantheses();
 
-            List<string> splittedQuery = querySplitter.TrySplit(text);
+            List<string> splittedQuery = QuerySplitter.TrySplit(text);
             if (splittedQuery != null)
             {
                 Condition leftChild = ParseString(splittedQuery[0], nameMapper, memory);

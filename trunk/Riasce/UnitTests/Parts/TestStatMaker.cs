@@ -9,9 +9,8 @@ namespace AntiCulture.Kid
     {
         public static void Test()
         {
-            MetaConnectionManager metaConnectionManager = new MetaConnectionManager();
             Memory.TotalVerbList = new HashSet<Concept>();
-            StatMaker statMaker = new StatMaker(metaConnectionManager);
+            StatMaker statMaker = new StatMaker();
             ConnectionManager connectionManager = new ConnectionManager();
             Repairer repairer = new Repairer();
 
@@ -28,11 +27,11 @@ namespace AntiCulture.Kid
             Concept plant = new Concept("plant");
             Concept wood = new Concept("wood");
 
-            metaConnectionManager.AddMetaConnection(isa, "inverse_of", someare);
-            metaConnectionManager.AddMetaConnection(madeof, "inverse_of", partof);
-            metaConnectionManager.AddMetaConnection(madeof, "muct", isa);
-            metaConnectionManager.AddMetaConnection(madeof, "liffid", isa);
-            metaConnectionManager.AddMetaConnection(madeof, "muct", madeof);
+            MetaConnectionManager.AddMetaConnection(isa, "inverse_of", someare);
+            MetaConnectionManager.AddMetaConnection(madeof, "inverse_of", partof);
+            MetaConnectionManager.AddMetaConnection(madeof, "muct", isa);
+            MetaConnectionManager.AddMetaConnection(madeof, "liffid", isa);
+            MetaConnectionManager.AddMetaConnection(madeof, "muct", madeof);
 
             repairer.Repair(pine, tree, palmtree, willow, cactus, plant, wood, isa, someare, madeof, partof);
             repairer.Repair(pine, tree, palmtree, willow, cactus, plant, wood, isa, someare, madeof, partof);

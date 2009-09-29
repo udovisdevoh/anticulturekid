@@ -12,11 +12,6 @@ namespace AntiCulture.Kid
     {
         #region Fields
         /// <summary>
-        /// MetaConnection manager
-        /// </summary>
-        private MetaConnectionManager metaConnectionManager;
-
-        /// <summary>
         /// Random number generator
         /// </summary>
         private Random random = new Random();
@@ -25,13 +20,6 @@ namespace AntiCulture.Kid
         /// Maximum sampling size when create random statistics to find the best one
         /// </summary>
         private static readonly int samplingSize = 20;
-        #endregion
-
-        #region Constructor
-        public StatMaker(MetaConnectionManager metaConnectionManager)
-        {
-            this.metaConnectionManager = metaConnectionManager;
-        }
         #endregion
 
         #region Public Methods
@@ -149,8 +137,8 @@ namespace AntiCulture.Kid
             List<Concept> verbList = new List<Concept>(verbHash);
             Concept denominatorVerbInverse = verbList[random.Next(0, verbHash.Count)];
 
-            HashSet<Concept> allowedDenominatorVerbHash = metaConnectionManager.GetVerbFlatListFromMetaConnection(denominatorVerbInverse, "inverse_of", true);
-            allowedDenominatorVerbHash.UnionWith(metaConnectionManager.GetVerbFlatListFromMetaConnection(denominatorVerbInverse, "permutable_side", true));
+            HashSet<Concept> allowedDenominatorVerbHash = MetaConnectionManager.GetVerbFlatListFromMetaConnection(denominatorVerbInverse, "inverse_of", true);
+            allowedDenominatorVerbHash.UnionWith(MetaConnectionManager.GetVerbFlatListFromMetaConnection(denominatorVerbInverse, "permutable_side", true));
 
             if (allowedDenominatorVerbHash.Count < 1)
                 throw new StatisticException("Couldn't find anything to build statistics on");
@@ -171,8 +159,8 @@ namespace AntiCulture.Kid
         {
             HashSet<Concept> conceptListHavingConnection = new HashSet<Concept>();
 
-            HashSet<Concept> permutableSideOrInverseOfVerbList = metaConnectionManager.GetVerbFlatListFromMetaConnection(denominatorVerb, "inverse_of", true);
-            permutableSideOrInverseOfVerbList.UnionWith(metaConnectionManager.GetVerbFlatListFromMetaConnection(denominatorVerb, "permutable_side", true));
+            HashSet<Concept> permutableSideOrInverseOfVerbList = MetaConnectionManager.GetVerbFlatListFromMetaConnection(denominatorVerb, "inverse_of", true);
+            permutableSideOrInverseOfVerbList.UnionWith(MetaConnectionManager.GetVerbFlatListFromMetaConnection(denominatorVerb, "permutable_side", true));
 
             foreach (Concept inverseVerb in permutableSideOrInverseOfVerbList)
             {

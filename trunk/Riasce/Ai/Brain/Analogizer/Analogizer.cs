@@ -23,15 +23,12 @@ namespace AntiCulture.Kid
         /// </summary>
         private VerbMetaConnectionCache verbMetaConnectionCache;
 
-        private MetaConnectionManager metaConnectionManager;
-
         private BrotherHoodManager brotherHoodManager;
         #endregion
 
         #region Constructor
-        public Analogizer(MetaConnectionManager metaConnectionManager, BrotherHoodManager brotherHoodManager)
+        public Analogizer(BrotherHoodManager brotherHoodManager)
         {
-            this.metaConnectionManager = metaConnectionManager;
             this.brotherHoodManager = brotherHoodManager;
         }
         #endregion

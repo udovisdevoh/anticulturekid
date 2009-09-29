@@ -18,8 +18,6 @@ namespace AntiCulture.Kid
 
         private ConnectionManager connectionManager = new ConnectionManager();
 
-        private MetaConnectionManager metaConnectionManager = new MetaConnectionManager();
-
         private ImplyConnectionManager implyConnectionManager = new ImplyConnectionManager();
 
         private Repairer repairer = new Repairer();
@@ -55,14 +53,14 @@ namespace AntiCulture.Kid
         public Brain()
         {
             aliaser = new Aliaser(memory,connectionManager, repairer);
-            asker = new Asker(metaConnectionManager);
-            brotherHoodManager = new BrotherHoodManager(metaConnectionManager);
+            asker = new Asker();
+            brotherHoodManager = new BrotherHoodManager();
             RejectedTheories rejectedTheories = new RejectedTheories();
-            analogizer = new Analogizer(metaConnectionManager,brotherHoodManager);
+            analogizer = new Analogizer(brotherHoodManager);
             disambiguationNamer = new DisambiguationNamer(brotherHoodManager, repairer);
-            statMaker = new StatMaker(metaConnectionManager);
-            aiSqlWrapper = new AiSqlWrapper(metaConnectionManager);
-            backgroundThinker = new SerialBackgroundThinker(new Purifier(repairer, connectionManager), new Theorizer(metaConnectionManager, connectionManager, brotherHoodManager, rejectedTheories), repairer, rejectedTheories);
+            statMaker = new StatMaker();
+            aiSqlWrapper = new AiSqlWrapper();
+            backgroundThinker = new SerialBackgroundThinker(new Purifier(repairer, connectionManager), new Theorizer(connectionManager, brotherHoodManager, rejectedTheories), repairer, rejectedTheories);
         }
         #endregion
 
@@ -226,7 +224,7 @@ namespace AntiCulture.Kid
             TotologyException totologyException = null;
             Trauma trauma = null;
 
-            metaConnectionManager.AddMetaConnection(operator1, metaOperatorName, operator2);
+            MetaConnectionManager.AddMetaConnection(operator1, metaOperatorName, operator2);
 
             if (disableRepairAfterMetaConnection == true)//Only when loading instinct!!!
                 return null;
@@ -240,7 +238,7 @@ namespace AntiCulture.Kid
             {
                 totologyException = e;
                 FeelingMonitor.Add(FeelingMonitor.TOTOLOGY);
-                metaConnectionManager.RemoveMetaConnection(operator1, metaOperatorName, operator2);
+                MetaConnectionManager.RemoveMetaConnection(operator1, metaOperatorName, operator2);
                 repairer.RepairRange(memory);
             }
             finally
@@ -269,7 +267,7 @@ namespace AntiCulture.Kid
             Concept operator1 = memory.GetOrCreateConcept(operator1Id);
             Concept operator2 = memory.GetOrCreateConcept(operator2Id);
 
-            metaConnectionManager.RemoveMetaConnection(operator1, metaOperatorName, operator2);
+            MetaConnectionManager.RemoveMetaConnection(operator1, metaOperatorName, operator2);
 
             repairer.RepairRange(memory);
             repairer.ReciprocateRange(memory);
@@ -287,7 +285,7 @@ namespace AntiCulture.Kid
             Concept operator1 = memory.GetOrCreateConcept(operator1Id);
             Concept operator2 = memory.GetOrCreateConcept(operator2Id);
 
-            return metaConnectionManager.IsFlatMetaConnected(operator1, metaOperatorName, operator2);
+            return MetaConnectionManager.IsFlatMetaConnected(operator1, metaOperatorName, operator2);
         }
 
         /// <summary>
@@ -370,7 +368,7 @@ namespace AntiCulture.Kid
         {
             List<int> flatMetaOperationVerbIdList = new List<int>();
             Concept verb = memory.GetOrCreateConcept(verbId);
-            HashSet<Concept> farVerbList = metaConnectionManager.GetVerbFlatListFromMetaConnection(verb, metaOperator,true);
+            HashSet<Concept> farVerbList = MetaConnectionManager.GetVerbFlatListFromMetaConnection(verb, metaOperator,true);
 
             foreach (Concept farVerb in farVerbList)
                 flatMetaOperationVerbIdList.Add(memory.GetIdFromConcept(farVerb));

@@ -60,12 +60,6 @@ namespace AntiCulture.Kid
         /// </summary>
         [NonSerialized]
         private Memory memory;
-
-        /// <summary>
-        /// MetaConnection manager
-        /// </summary>
-        [NonSerialized]
-        private MetaConnectionManager metaConnectionManager = new MetaConnectionManager();
         #endregion
 
         #region Constants
@@ -916,8 +910,8 @@ namespace AntiCulture.Kid
         {
             foreach (string metaOperatorName in LanguageDictionary.MetaOperatorList)
             {
-                HashSet<Concept> farVerbListPositiveConnection = metaConnectionManager.GetVerbListFromMetaConnection(concept, metaOperatorName, true);
-                HashSet<Concept> farVerbListNegativeConnection = metaConnectionManager.GetVerbListFromMetaConnection(concept, metaOperatorName, false);
+                HashSet<Concept> farVerbListPositiveConnection = MetaConnectionManager.GetVerbListFromMetaConnection(concept, metaOperatorName, true);
+                HashSet<Concept> farVerbListNegativeConnection = MetaConnectionManager.GetVerbListFromMetaConnection(concept, metaOperatorName, false);
                 int farVerbId;
 
                 foreach (Concept farVerb in farVerbListPositiveConnection)

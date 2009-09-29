@@ -15,7 +15,7 @@ namespace AntiCulture.Kid
         private static void GeneralTest()
         {
             Optimizer optimizer = new Optimizer();
-            MetaConnectionManager metaConnectionManager = new MetaConnectionManager();
+            
 
             #region We create the verbs that we will need
             Concept isa = new Concept("isa");
@@ -42,20 +42,20 @@ namespace AntiCulture.Kid
              * contradict muct isa
              * contradict cant isa
             */
-            metaConnectionManager.AddMetaConnection(isa, "inverse_of", someare);
-            metaConnectionManager.AddMetaConnection(isa, "muct", isa);
-            metaConnectionManager.AddMetaConnection(isa, "cant", someare);
-            metaConnectionManager.AddMetaConnection(isa, "cant", madeof);
-            metaConnectionManager.AddMetaConnection(isa, "cant", partof);
-            metaConnectionManager.AddMetaConnection(madeof, "inverse_of", partof);
-            metaConnectionManager.AddMetaConnection(madeof, "muct", madeof);
-            metaConnectionManager.AddMetaConnection(madeof, "muct", isa);
-            metaConnectionManager.AddMetaConnection(madeof, "liffid", isa);
-            metaConnectionManager.AddMetaConnection(madeof, "unlikely", isa);
-            metaConnectionManager.AddMetaConnection(madeof, "cant", partof);
-            metaConnectionManager.AddMetaConnection(contradict, "permutable_side", contradict);
-            metaConnectionManager.AddMetaConnection(contradict, "muct", isa);
-            metaConnectionManager.AddMetaConnection(contradict, "cant", isa);
+            MetaConnectionManager.AddMetaConnection(isa, "inverse_of", someare);
+            MetaConnectionManager.AddMetaConnection(isa, "muct", isa);
+            MetaConnectionManager.AddMetaConnection(isa, "cant", someare);
+            MetaConnectionManager.AddMetaConnection(isa, "cant", madeof);
+            MetaConnectionManager.AddMetaConnection(isa, "cant", partof);
+            MetaConnectionManager.AddMetaConnection(madeof, "inverse_of", partof);
+            MetaConnectionManager.AddMetaConnection(madeof, "muct", madeof);
+            MetaConnectionManager.AddMetaConnection(madeof, "muct", isa);
+            MetaConnectionManager.AddMetaConnection(madeof, "liffid", isa);
+            MetaConnectionManager.AddMetaConnection(madeof, "unlikely", isa);
+            MetaConnectionManager.AddMetaConnection(madeof, "cant", partof);
+            MetaConnectionManager.AddMetaConnection(contradict, "permutable_side", contradict);
+            MetaConnectionManager.AddMetaConnection(contradict, "muct", isa);
+            MetaConnectionManager.AddMetaConnection(contradict, "cant", isa);
             #endregion
 
             #region We create some concepts

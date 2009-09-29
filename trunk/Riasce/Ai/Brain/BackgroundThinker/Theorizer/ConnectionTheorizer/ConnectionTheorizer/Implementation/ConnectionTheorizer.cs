@@ -12,8 +12,6 @@ namespace AntiCulture.Kid
 
         private RejectedTheories rejectedTheories;
 
-        private MetaConnectionManager metaConnectionManager;
-
         private TheoryStatistics theoryStatistics = new TheoryStatistics();
 
         private ConnectionManager connectionManager;
@@ -24,10 +22,9 @@ namespace AntiCulture.Kid
         #endregion
 
         #region Constructor
-        public ConnectionTheorizer(RejectedTheories rejectedTheories, MetaConnectionManager metaConnectionManager, ConnectionManager connectionManager, BrotherHoodManager brotherHoodManager)
+        public ConnectionTheorizer(RejectedTheories rejectedTheories, ConnectionManager connectionManager, BrotherHoodManager brotherHoodManager)
         {
             this.rejectedTheories = rejectedTheories;
-            this.metaConnectionManager = metaConnectionManager;
             this.connectionManager = connectionManager;
             this.brotherHoodManager = brotherHoodManager;
         }
@@ -173,7 +170,7 @@ namespace AntiCulture.Kid
         {
             HashSet<Theory> contraposateList = new HashSet<Theory>();
 
-            HashSet<Concept> listVerbInverseOf = metaConnectionManager.GetVerbFlatListFromMetaConnection(theory.GetConcept(1), "inverse_of", true);
+            HashSet<Concept> listVerbInverseOf = MetaConnectionManager.GetVerbFlatListFromMetaConnection(theory.GetConcept(1), "inverse_of", true);
 
             foreach (Concept inverseVerb in listVerbInverseOf)
             {

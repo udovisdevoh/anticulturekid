@@ -9,10 +9,9 @@ namespace AntiCulture.Kid
     {
         public static void Test()
         {
-            MetaConnectionManager metaConnectionManager  = new MetaConnectionManager();
             ConnectionManager connectionManager = new ConnectionManager();
-            BrotherHoodManager brotherHoodManager = new BrotherHoodManager(metaConnectionManager);
-            Analogizer analogizer = new Analogizer(metaConnectionManager,brotherHoodManager);
+            BrotherHoodManager brotherHoodManager = new BrotherHoodManager();
+            Analogizer analogizer = new Analogizer(brotherHoodManager);
             Repairer repairer = new Repairer();
             Memory.TotalVerbList = new HashSet<Concept>();
 
@@ -29,11 +28,11 @@ namespace AntiCulture.Kid
             Concept madeof = new Concept("madeof");
             Concept partof = new Concept("partof");
 
-            metaConnectionManager.AddMetaConnection(isa, "inverse_of", someare);
-            metaConnectionManager.AddMetaConnection(madeof, "inverse_of", partof);
-            metaConnectionManager.AddMetaConnection(madeof, "muct", isa);
-            metaConnectionManager.AddMetaConnection(madeof, "liffid", isa);
-            metaConnectionManager.AddMetaConnection(madeof, "madeof", isa);
+            MetaConnectionManager.AddMetaConnection(isa, "inverse_of", someare);
+            MetaConnectionManager.AddMetaConnection(madeof, "inverse_of", partof);
+            MetaConnectionManager.AddMetaConnection(madeof, "muct", isa);
+            MetaConnectionManager.AddMetaConnection(madeof, "liffid", isa);
+            MetaConnectionManager.AddMetaConnection(madeof, "madeof", isa);
 
             repairer.Repair(apple, fruit);
             connectionManager.Plug(apple, isa, fruit);

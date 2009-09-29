@@ -29,7 +29,6 @@ namespace AntiCulture.Kid
 
         private static void TestFlattenizerInverseOfWithMuct()
         {
-            MetaConnectionManager metaConnectionManager = new MetaConnectionManager();
             ConnectionManager connectionManager = new ConnectionManager();
             Repairer repairer = new Repairer();
 
@@ -40,8 +39,8 @@ namespace AntiCulture.Kid
             Concept tree = new Concept("tree");
             Concept plant = new Concept("plant");
 
-            metaConnectionManager.AddMetaConnection(isa, "inverse_of", someare);
-            metaConnectionManager.AddMetaConnection(isa, "muct", isa);
+            MetaConnectionManager.AddMetaConnection(isa, "inverse_of", someare);
+            MetaConnectionManager.AddMetaConnection(isa, "muct", isa);
 
             if (connectionManager.TestConnection(pine, isa, plant))
                 throw new Exception("Connection shouldn't exist yet");
@@ -58,13 +57,13 @@ namespace AntiCulture.Kid
 
             //Pre-conditions
 
-            if (!metaConnectionManager.IsFlatMetaConnected(isa, "inverse_of", someare))
+            if (!MetaConnectionManager.IsFlatMetaConnected(isa, "inverse_of", someare))
                 throw new Exception("MetaConnection should exist because it's explicit");
 
-            if (!metaConnectionManager.IsFlatMetaConnected(isa, "muct", isa))
+            if (!MetaConnectionManager.IsFlatMetaConnected(isa, "muct", isa))
                 throw new Exception("MetaConnection should exist because it's explicit");
 
-            if (!metaConnectionManager.IsFlatMetaConnected(someare, "liffid", someare))
+            if (!MetaConnectionManager.IsFlatMetaConnected(someare, "liffid", someare))
                 throw new Exception("MetaConnection should exist because it's implicit");
 
             if (!connectionManager.TestConnection(tree, isa, plant))
@@ -92,7 +91,6 @@ namespace AntiCulture.Kid
         private static void TestFlattenizerGeneralStuff()
         {
             Memory.TotalVerbList = new HashSet<Concept>();
-            MetaConnectionManager metaConnectionManager = new MetaConnectionManager();
             ConnectionManager connectionManager = new ConnectionManager();
             SerialFlattenizer flattenizer = new SerialFlattenizer();
             Optimizer optimizer = new Optimizer();
@@ -145,20 +143,20 @@ namespace AntiCulture.Kid
              * contradict muct isa
              * contradict cant isa
             */
-            metaConnectionManager.AddMetaConnection(isa, "inverse_of", someare);
-            metaConnectionManager.AddMetaConnection(isa, "muct", isa);
-            metaConnectionManager.AddMetaConnection(isa, "cant", someare);
-            metaConnectionManager.AddMetaConnection(isa, "cant", madeof);
-            metaConnectionManager.AddMetaConnection(isa, "cant", partof);
-            metaConnectionManager.AddMetaConnection(madeof, "inverse_of", partof);
-            metaConnectionManager.AddMetaConnection(madeof, "muct", madeof);
-            metaConnectionManager.AddMetaConnection(madeof, "muct", isa);
-            metaConnectionManager.AddMetaConnection(madeof, "liffid", isa);
-            metaConnectionManager.AddMetaConnection(madeof, "unlikely", isa);
-            metaConnectionManager.AddMetaConnection(madeof, "cant", partof);
-            metaConnectionManager.AddMetaConnection(contradict, "permutable_side", contradict);
-            metaConnectionManager.AddMetaConnection(contradict, "muct", isa);
-            metaConnectionManager.AddMetaConnection(contradict, "cant", isa);
+            MetaConnectionManager.AddMetaConnection(isa, "inverse_of", someare);
+            MetaConnectionManager.AddMetaConnection(isa, "muct", isa);
+            MetaConnectionManager.AddMetaConnection(isa, "cant", someare);
+            MetaConnectionManager.AddMetaConnection(isa, "cant", madeof);
+            MetaConnectionManager.AddMetaConnection(isa, "cant", partof);
+            MetaConnectionManager.AddMetaConnection(madeof, "inverse_of", partof);
+            MetaConnectionManager.AddMetaConnection(madeof, "muct", madeof);
+            MetaConnectionManager.AddMetaConnection(madeof, "muct", isa);
+            MetaConnectionManager.AddMetaConnection(madeof, "liffid", isa);
+            MetaConnectionManager.AddMetaConnection(madeof, "unlikely", isa);
+            MetaConnectionManager.AddMetaConnection(madeof, "cant", partof);
+            MetaConnectionManager.AddMetaConnection(contradict, "permutable_side", contradict);
+            MetaConnectionManager.AddMetaConnection(contradict, "muct", isa);
+            MetaConnectionManager.AddMetaConnection(contradict, "cant", isa);
             #endregion
 
             #region Testing the argumentless proof resulting from flattening the 1st layer
@@ -190,17 +188,17 @@ namespace AntiCulture.Kid
             #region Testing recursive implicit connections
             #region Testing direct implications
             //The child loves the mother
-            metaConnectionManager.AddMetaConnection(make, "inverse_of", madeby);
-            metaConnectionManager.AddMetaConnection(love, "inverse_of", lovedby);
-            metaConnectionManager.AddMetaConnection(make, "inverse_implication", love);
+            MetaConnectionManager.AddMetaConnection(make, "inverse_of", madeby);
+            MetaConnectionManager.AddMetaConnection(love, "inverse_of", lovedby);
+            MetaConnectionManager.AddMetaConnection(make, "inverse_implication", love);
 
-            if (!metaConnectionManager.IsFlatMetaConnected(make, "inverse_implication", love))
+            if (!MetaConnectionManager.IsFlatMetaConnected(make, "inverse_implication", love))
                 throw new Exception("Verbs should be flat metaConnected because it's explicit");
 
-            if (!metaConnectionManager.IsFlatMetaConnected(madeby, "inverse_implication", lovedby))
+            if (!MetaConnectionManager.IsFlatMetaConnected(madeby, "inverse_implication", lovedby))
                 throw new Exception("Verbs should be flat metaConnected because it's explicit");
 
-            if (!metaConnectionManager.IsFlatMetaConnected(make, "direct_implication", lovedby))
+            if (!MetaConnectionManager.IsFlatMetaConnected(make, "direct_implication", lovedby))
                 throw new Exception("Verbs should be flat metaConnected because it's explicit");
 
             connectionManager.Plug(mother, make, child);
@@ -281,10 +279,10 @@ namespace AntiCulture.Kid
 
             //Pre-conditions
 
-            if (!metaConnectionManager.IsFlatMetaConnected(isa, "muct", isa))
+            if (!MetaConnectionManager.IsFlatMetaConnected(isa, "muct", isa))
                 throw new Exception("MetaConnection should exist");
 
-            if (!metaConnectionManager.IsFlatMetaConnected(someare, "liffid", someare))
+            if (!MetaConnectionManager.IsFlatMetaConnected(someare, "liffid", someare))
                 throw new Exception("MetaConnection should exist");
 
             //Real test
@@ -477,7 +475,6 @@ namespace AntiCulture.Kid
         private static void TestLongDiversifiedRecursivity()
         {
             ConnectionManager connectionManager = new ConnectionManager();
-            MetaConnectionManager metaConnectionManager = new MetaConnectionManager();
             Repairer repairer = new Repairer();
 
             Memory.TotalVerbList = new HashSet<Concept>();
@@ -495,11 +492,11 @@ namespace AntiCulture.Kid
             Concept liquid = new Concept("liquid");
             Concept matter = new Concept("matter");
 
-            metaConnectionManager.AddMetaConnection(isa, "inverse_of", someare);
-            metaConnectionManager.AddMetaConnection(madeof, "inverse_of", partof);
-            metaConnectionManager.AddMetaConnection(madeof, "muct", isa);
-            metaConnectionManager.AddMetaConnection(madeof, "liffid", isa);
-            metaConnectionManager.AddMetaConnection(madeof, "muct", madeof);
+            MetaConnectionManager.AddMetaConnection(isa, "inverse_of", someare);
+            MetaConnectionManager.AddMetaConnection(madeof, "inverse_of", partof);
+            MetaConnectionManager.AddMetaConnection(madeof, "muct", isa);
+            MetaConnectionManager.AddMetaConnection(madeof, "liffid", isa);
+            MetaConnectionManager.AddMetaConnection(madeof, "muct", madeof);
 
             connectionManager.Plug(mygarden, isa, garden);
             
@@ -561,7 +558,6 @@ namespace AntiCulture.Kid
         private static void TestXmasPineIsaThing()
         {
             ConnectionManager connectionManager = new ConnectionManager();
-            MetaConnectionManager metaConnectionManager = new MetaConnectionManager();
             Repairer repairer = new Repairer();
 
             Memory.TotalVerbList = new HashSet<Concept>();
@@ -576,8 +572,8 @@ namespace AntiCulture.Kid
             Concept isa = new Concept("isa");
             Concept someare = new Concept("someare");
 
-            metaConnectionManager.AddMetaConnection(isa, "muct", isa);
-            metaConnectionManager.AddMetaConnection(isa, "inverse_of", someare);
+            MetaConnectionManager.AddMetaConnection(isa, "muct", isa);
+            MetaConnectionManager.AddMetaConnection(isa, "inverse_of", someare);
 
             connectionManager.Plug(xmaspine, isa, pine);
 
@@ -601,7 +597,7 @@ namespace AntiCulture.Kid
 
             //Pre-conditions
 
-            if (!metaConnectionManager.IsFlatMetaConnected(someare,"liffid",someare))
+            if (!MetaConnectionManager.IsFlatMetaConnected(someare,"liffid",someare))
                 throw new Exception("Should be flat metaConnected because it's implicit");
 
             //Real test
@@ -624,7 +620,6 @@ namespace AntiCulture.Kid
 
         private static void TestTreeMadeofMaterial()
         {
-            MetaConnectionManager metaConnectionManager = new MetaConnectionManager();
             ConnectionManager connectionManager = new ConnectionManager();
             SerialFlattenizer flattenizer = new SerialFlattenizer();
             Optimizer optimizer = new Optimizer();
@@ -639,9 +634,9 @@ namespace AntiCulture.Kid
             Concept wood = new Concept("wood");
             Concept material = new Concept("material");
 
-            metaConnectionManager.AddMetaConnection(isa, "inverse_of", someare);
-            metaConnectionManager.AddMetaConnection(madeof, "inverse_of", partof);
-            metaConnectionManager.AddMetaConnection(madeof, "liffid", isa);
+            MetaConnectionManager.AddMetaConnection(isa, "inverse_of", someare);
+            MetaConnectionManager.AddMetaConnection(madeof, "inverse_of", partof);
+            MetaConnectionManager.AddMetaConnection(madeof, "liffid", isa);
 
             flattenizer.Repair(tree);
             optimizer.Repair(tree);
@@ -678,7 +673,6 @@ namespace AntiCulture.Kid
 
         private static void PineMadeofMaterial()
         {
-            MetaConnectionManager metaConnectionManager = new MetaConnectionManager();
             ConnectionManager connectionManager = new ConnectionManager();
             Repairer repairer = new Repairer();
             Memory.TotalVerbList = new HashSet<Concept>();
@@ -693,11 +687,11 @@ namespace AntiCulture.Kid
             Concept wood = new Concept("wood");
             Concept material = new Concept("material");
 
-            metaConnectionManager.AddMetaConnection(isa, "inverse_of", someare);
-            metaConnectionManager.AddMetaConnection(isa, "muct", isa);
-            metaConnectionManager.AddMetaConnection(madeof, "muct", isa);
-            metaConnectionManager.AddMetaConnection(madeof, "liffid", isa);
-            metaConnectionManager.AddMetaConnection(madeof, "inverse_of", partof);
+            MetaConnectionManager.AddMetaConnection(isa, "inverse_of", someare);
+            MetaConnectionManager.AddMetaConnection(isa, "muct", isa);
+            MetaConnectionManager.AddMetaConnection(madeof, "muct", isa);
+            MetaConnectionManager.AddMetaConnection(madeof, "liffid", isa);
+            MetaConnectionManager.AddMetaConnection(madeof, "inverse_of", partof);
             
 
             repairer.Repair(pine, tree);
@@ -739,7 +733,7 @@ namespace AntiCulture.Kid
 
         private static void PineMadeofEnergy()
         {
-            MetaConnectionManager metaConnectionManager = new MetaConnectionManager();
+            
             ConnectionManager connectionManager = new ConnectionManager();
             Repairer repairer = new Repairer();
             Memory.TotalVerbList = new HashSet<Concept>();
@@ -756,12 +750,12 @@ namespace AntiCulture.Kid
             Concept matter = new Concept("matter");
             Concept energy = new Concept("energy");
 
-            metaConnectionManager.AddMetaConnection(isa, "inverse_of", someare);
-            metaConnectionManager.AddMetaConnection(isa, "muct", isa);
-            metaConnectionManager.AddMetaConnection(madeof, "muct", isa);
-            metaConnectionManager.AddMetaConnection(madeof, "liffid", isa);
-            metaConnectionManager.AddMetaConnection(madeof, "inverse_of", partof);
-            metaConnectionManager.AddMetaConnection(madeof, "muct", madeof);
+            MetaConnectionManager.AddMetaConnection(isa, "inverse_of", someare);
+            MetaConnectionManager.AddMetaConnection(isa, "muct", isa);
+            MetaConnectionManager.AddMetaConnection(madeof, "muct", isa);
+            MetaConnectionManager.AddMetaConnection(madeof, "liffid", isa);
+            MetaConnectionManager.AddMetaConnection(madeof, "inverse_of", partof);
+            MetaConnectionManager.AddMetaConnection(madeof, "muct", madeof);
 
 
             repairer.Repair(pine, tree);
@@ -821,7 +815,7 @@ namespace AntiCulture.Kid
 
             Memory.TotalVerbList = new HashSet<Concept>();
             ConnectionManager connectionManager = new ConnectionManager();
-            MetaConnectionManager metaConnectionManager = new MetaConnectionManager();
+            
             Reciprocator reciprocator = new Reciprocator();
             Repairer repairer = new Repairer();
 
@@ -834,9 +828,9 @@ namespace AntiCulture.Kid
             Concept madeof = new Concept("madeof");
 
             /*
-            metaConnectionManager.AddMetaConnection(isa, "muct", isa);
-            metaConnectionManager.AddMetaConnection(madeof, "muct", isa);
-            metaConnectionManager.AddMetaConnection(isa, "inverse_of", someare);
+            MetaConnectionManager.AddMetaConnection(isa, "muct", isa);
+            MetaConnectionManager.AddMetaConnection(madeof, "muct", isa);
+            MetaConnectionManager.AddMetaConnection(isa, "inverse_of", someare);
             */
 
             repairer.Repair(pine, tree);
@@ -849,9 +843,9 @@ namespace AntiCulture.Kid
 
             repairer.Repair(pine, tree, wood);
 
-            metaConnectionManager.AddMetaConnection(isa, "muct", isa);
-            metaConnectionManager.AddMetaConnection(madeof, "muct", isa);
-            metaConnectionManager.AddMetaConnection(isa, "inverse_of", someare);
+            MetaConnectionManager.AddMetaConnection(isa, "muct", isa);
+            MetaConnectionManager.AddMetaConnection(madeof, "muct", isa);
+            MetaConnectionManager.AddMetaConnection(isa, "inverse_of", someare);
 
             repairer.Repair(pine, tree, wood);
 
@@ -888,7 +882,7 @@ namespace AntiCulture.Kid
         {
             Memory.TotalVerbList = new HashSet<Concept>();
             ConnectionManager connectionManager = new ConnectionManager();
-            MetaConnectionManager metaConnectionManager = new MetaConnectionManager();
+            
             Reciprocator reciprocator = new Reciprocator();
             Repairer repairer = new Repairer();
 
@@ -901,13 +895,13 @@ namespace AntiCulture.Kid
             Concept earth = new Concept("earth");
 
 
-            metaConnectionManager.AddMetaConnection(orbit, "permutable_side", orbit);
-            metaConnectionManager.AddMetaConnection(gravity, "permutable_side", gravity);
-            metaConnectionManager.AddMetaConnection(attract, "permutable_side", attract);
-            metaConnectionManager.AddMetaConnection(suck, "permutable_side", suck);
-            metaConnectionManager.AddMetaConnection(orbit, "direct_implication", gravity);
-            metaConnectionManager.AddMetaConnection(gravity, "direct_implication", attract);
-            metaConnectionManager.AddMetaConnection(attract, "direct_implication", suck);
+            MetaConnectionManager.AddMetaConnection(orbit, "permutable_side", orbit);
+            MetaConnectionManager.AddMetaConnection(gravity, "permutable_side", gravity);
+            MetaConnectionManager.AddMetaConnection(attract, "permutable_side", attract);
+            MetaConnectionManager.AddMetaConnection(suck, "permutable_side", suck);
+            MetaConnectionManager.AddMetaConnection(orbit, "direct_implication", gravity);
+            MetaConnectionManager.AddMetaConnection(gravity, "direct_implication", attract);
+            MetaConnectionManager.AddMetaConnection(attract, "direct_implication", suck);
 
             connectionManager.Plug(moon, orbit, earth);
 
@@ -915,13 +909,13 @@ namespace AntiCulture.Kid
 
             //Pre-conditions
 
-            if (!metaConnectionManager.IsFlatMetaConnected(orbit, "direct_implication", gravity))
+            if (!MetaConnectionManager.IsFlatMetaConnected(orbit, "direct_implication", gravity))
                 throw new Exception("Should be flat metaConnected because it's implicit");
 
-            if (!metaConnectionManager.IsFlatMetaConnected(orbit, "direct_implication", attract))
+            if (!MetaConnectionManager.IsFlatMetaConnected(orbit, "direct_implication", attract))
                 throw new Exception("Should be flat metaConnected because it's implicit");
 
-            if (!metaConnectionManager.IsFlatMetaConnected(orbit, "direct_implication", suck))
+            if (!MetaConnectionManager.IsFlatMetaConnected(orbit, "direct_implication", suck))
                 throw new Exception("Should be flat metaConnected because it's implicit");
 
             if (!connectionManager.TestConnection(moon, orbit, earth))
@@ -943,7 +937,7 @@ namespace AntiCulture.Kid
         {
             Memory.TotalVerbList = new HashSet<Concept>();
             ConnectionManager connectionManager = new ConnectionManager();
-            MetaConnectionManager metaConnectionManager = new MetaConnectionManager();
+            
             Reciprocator reciprocator = new Reciprocator();
             Repairer repairer = new Repairer();
 
@@ -955,14 +949,14 @@ namespace AntiCulture.Kid
             Concept moon = new Concept("moon");
             Concept earth = new Concept("earth");
 
-            metaConnectionManager.AddMetaConnection(orbit, "permutable_side", orbit);
-            metaConnectionManager.AddMetaConnection(gravity, "permutable_side", gravity);
-            metaConnectionManager.AddMetaConnection(attract, "permutable_side", attract);
-            metaConnectionManager.AddMetaConnection(suck, "permutable_side", suck);
+            MetaConnectionManager.AddMetaConnection(orbit, "permutable_side", orbit);
+            MetaConnectionManager.AddMetaConnection(gravity, "permutable_side", gravity);
+            MetaConnectionManager.AddMetaConnection(attract, "permutable_side", attract);
+            MetaConnectionManager.AddMetaConnection(suck, "permutable_side", suck);
 
-            metaConnectionManager.AddMetaConnection(gravity, "direct_implication", attract);
-            metaConnectionManager.AddMetaConnection(attract, "direct_implication", suck);
-            metaConnectionManager.AddMetaConnection(orbit, "direct_implication", gravity);
+            MetaConnectionManager.AddMetaConnection(gravity, "direct_implication", attract);
+            MetaConnectionManager.AddMetaConnection(attract, "direct_implication", suck);
+            MetaConnectionManager.AddMetaConnection(orbit, "direct_implication", gravity);
             
             connectionManager.Plug(moon, orbit, earth);
 
@@ -970,13 +964,13 @@ namespace AntiCulture.Kid
 
             //Pre-conditions
 
-            if (!metaConnectionManager.IsFlatMetaConnected(orbit, "direct_implication", gravity))
+            if (!MetaConnectionManager.IsFlatMetaConnected(orbit, "direct_implication", gravity))
                 throw new Exception("Should be flat metaConnected because it's implicit");
 
-            if (!metaConnectionManager.IsFlatMetaConnected(orbit, "direct_implication", attract))
+            if (!MetaConnectionManager.IsFlatMetaConnected(orbit, "direct_implication", attract))
                 throw new Exception("Should be flat metaConnected because it's implicit");
 
-            if (!metaConnectionManager.IsFlatMetaConnected(orbit, "direct_implication", suck))
+            if (!MetaConnectionManager.IsFlatMetaConnected(orbit, "direct_implication", suck))
                 throw new Exception("Should be flat metaConnected because it's implicit");
 
             if (!connectionManager.TestConnection(moon, orbit, earth))
@@ -998,7 +992,7 @@ namespace AntiCulture.Kid
         {
             Memory.TotalVerbList = new HashSet<Concept>();
             ConnectionManager connectionManager = new ConnectionManager();
-            MetaConnectionManager metaConnectionManager = new MetaConnectionManager();
+            
             Reciprocator reciprocator = new Reciprocator();
             Repairer repairer = new Repairer();
 
@@ -1011,13 +1005,13 @@ namespace AntiCulture.Kid
             Concept earth = new Concept("earth");
 
 
-            metaConnectionManager.AddMetaConnection(orbit, "permutable_side", orbit);
-            metaConnectionManager.AddMetaConnection(gravity, "permutable_side",gravity);
-            metaConnectionManager.AddMetaConnection(attract, "permutable_side", attract);
-            metaConnectionManager.AddMetaConnection(suck, "permutable_side", suck);
-            metaConnectionManager.AddMetaConnection(gravity, "direct_implication", attract);
-            metaConnectionManager.AddMetaConnection(attract, "direct_implication", suck);
-            metaConnectionManager.AddMetaConnection(orbit, "direct_implication", gravity);
+            MetaConnectionManager.AddMetaConnection(orbit, "permutable_side", orbit);
+            MetaConnectionManager.AddMetaConnection(gravity, "permutable_side",gravity);
+            MetaConnectionManager.AddMetaConnection(attract, "permutable_side", attract);
+            MetaConnectionManager.AddMetaConnection(suck, "permutable_side", suck);
+            MetaConnectionManager.AddMetaConnection(gravity, "direct_implication", attract);
+            MetaConnectionManager.AddMetaConnection(attract, "direct_implication", suck);
+            MetaConnectionManager.AddMetaConnection(orbit, "direct_implication", gravity);
 
             connectionManager.Plug(moon, orbit, earth);
 
@@ -1025,13 +1019,13 @@ namespace AntiCulture.Kid
 
             //Pre-conditions
 
-            if (!metaConnectionManager.IsFlatMetaConnected(orbit, "direct_implication", gravity))
+            if (!MetaConnectionManager.IsFlatMetaConnected(orbit, "direct_implication", gravity))
                 throw new Exception("Should be flat metaConnected because it's implicit");
 
-            if (!metaConnectionManager.IsFlatMetaConnected(orbit, "direct_implication", attract))
+            if (!MetaConnectionManager.IsFlatMetaConnected(orbit, "direct_implication", attract))
                 throw new Exception("Should be flat metaConnected because it's implicit");
 
-            if (!metaConnectionManager.IsFlatMetaConnected(orbit, "direct_implication", suck))
+            if (!MetaConnectionManager.IsFlatMetaConnected(orbit, "direct_implication", suck))
                 throw new Exception("Should be flat metaConnected because it's implicit");
 
             if (!connectionManager.TestConnection(moon, orbit, earth))
@@ -1053,7 +1047,7 @@ namespace AntiCulture.Kid
         {
             Memory.TotalVerbList = new HashSet<Concept>();
             ConnectionManager connectionManager = new ConnectionManager();
-            MetaConnectionManager metaConnectionManager = new MetaConnectionManager();
+            
             Reciprocator reciprocator = new Reciprocator();
             Repairer repairer = new Repairer();
 
@@ -1074,31 +1068,31 @@ namespace AntiCulture.Kid
             repairer.ReciprocateRange(memory);
             purifier.PurifyRangeOptimized(memory);
             repairer.RepairRange(memory);
-            metaConnectionManager.AddMetaConnection(isa, "inverse_of", someare);
+            MetaConnectionManager.AddMetaConnection(isa, "inverse_of", someare);
 
             repairer.RepairRange(memory);
             repairer.ReciprocateRange(memory);
             purifier.PurifyRangeOptimized(memory);
             repairer.RepairRange(memory);
-            metaConnectionManager.AddMetaConnection(madeof, "muct", isa);
+            MetaConnectionManager.AddMetaConnection(madeof, "muct", isa);
 
             repairer.RepairRange(memory);
             repairer.ReciprocateRange(memory);
             purifier.PurifyRangeOptimized(memory);
             repairer.RepairRange(memory);
-            metaConnectionManager.AddMetaConnection(madeof, "inverse_of", partof);
+            MetaConnectionManager.AddMetaConnection(madeof, "inverse_of", partof);
 
             repairer.RepairRange(memory);
             repairer.ReciprocateRange(memory);
             purifier.PurifyRangeOptimized(memory);
             repairer.RepairRange(memory);
-            metaConnectionManager.AddMetaConnection(madeof, "liffid", isa);
+            MetaConnectionManager.AddMetaConnection(madeof, "liffid", isa);
 
             /*repairer.RepairRange(memory);
             repairer.ReciprocateRange(memory);
             purifier.PurifyRange(memory);
             repairer.RepairRange(memory);
-            metaConnectionManager.AddMetaConnection(madeof, "muct", madeof);*/
+            MetaConnectionManager.AddMetaConnection(madeof, "muct", madeof);*/
 
             repairer.Repair(pine,isa,tree);
             connectionManager.Plug(pine, isa, tree);
@@ -1113,10 +1107,10 @@ namespace AntiCulture.Kid
 
             //pre-conditions about metaConnections
 
-            if (!metaConnectionManager.IsFlatMetaConnected(madeof, "muct", isa))
+            if (!MetaConnectionManager.IsFlatMetaConnected(madeof, "muct", isa))
                 throw new Exception("Should be metaConnected because it's explicit");
 
-            if (!metaConnectionManager.IsFlatMetaConnected(partof, "muct", someare))
+            if (!MetaConnectionManager.IsFlatMetaConnected(partof, "muct", someare))
                 throw new Exception("Should be metaConnected because it's implicit");
 
             //pre-conditions about connections
@@ -1147,7 +1141,7 @@ namespace AntiCulture.Kid
 
         private static void TestGmNotCreateCarGmMakeCar()
         {
-            MetaConnectionManager metaConnectionManager = new MetaConnectionManager();
+            
             ConnectionManager connectionManager = new ConnectionManager();
             Repairer repairer = new Repairer();
             Memory.TotalVerbList = new HashSet<Concept>();
@@ -1160,9 +1154,9 @@ namespace AntiCulture.Kid
             Concept car = new Concept("car");
             Concept gm = new Concept("gm");
 
-            metaConnectionManager.AddMetaConnection(make, "inverse_of", madeby);
-            metaConnectionManager.AddMetaConnection(create, "inverse_of", createdby);
-            metaConnectionManager.AddMetaConnection(create, "direct_implication", make);
+            MetaConnectionManager.AddMetaConnection(make, "inverse_of", madeby);
+            MetaConnectionManager.AddMetaConnection(create, "inverse_of", createdby);
+            MetaConnectionManager.AddMetaConnection(create, "direct_implication", make);
 
             //Real test here
 
@@ -1187,7 +1181,7 @@ namespace AntiCulture.Kid
 
         private static void TestDoubleSidedLove()
         {
-            MetaConnectionManager metaConnectionManager = new MetaConnectionManager();
+            
             ConnectionManager connectionManager = new ConnectionManager();
             Repairer repairer = new Repairer();
             Memory.TotalVerbList = new HashSet<Concept>();
@@ -1198,8 +1192,8 @@ namespace AntiCulture.Kid
             Concept me = new Concept("me");
             Concept you = new Concept("you");
 
-            metaConnectionManager.AddMetaConnection(love, "inverse_of", lovedby);
-            metaConnectionManager.AddMetaConnection(love, "muct", love);
+            MetaConnectionManager.AddMetaConnection(love, "inverse_of", lovedby);
+            MetaConnectionManager.AddMetaConnection(love, "muct", love);
 
             //Real test here
 
@@ -1225,7 +1219,7 @@ namespace AntiCulture.Kid
 
         private static void TestDoubleSidedLoveYouLovePie()
         {
-            MetaConnectionManager metaConnectionManager = new MetaConnectionManager();
+            
             ConnectionManager connectionManager = new ConnectionManager();
             Repairer repairer = new Repairer();
             Memory.TotalVerbList = new HashSet<Concept>();
@@ -1237,8 +1231,8 @@ namespace AntiCulture.Kid
             Concept you = new Concept("you");
             Concept pie = new Concept("pie");
 
-            metaConnectionManager.AddMetaConnection(love, "inverse_of", lovedby);
-            metaConnectionManager.AddMetaConnection(love, "muct", love);
+            MetaConnectionManager.AddMetaConnection(love, "inverse_of", lovedby);
+            MetaConnectionManager.AddMetaConnection(love, "muct", love);
 
             repairer.Repair(me, love, you);
             connectionManager.Plug(me, love, you);

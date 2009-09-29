@@ -10,13 +10,6 @@ namespace AntiCulture.Kid
     /// </summary>
     class Reciprocator
     {
-        #region Fields
-        /// <summary>
-        /// MetaConnection manager
-        /// </summary>
-        private MetaConnectionManager metaConnectionManager = new MetaConnectionManager();
-        #endregion
-
         #region Methods
         /// <summary>
         /// Repair a concept's reciprocal connections, (verbs metaConnected with inverse_of or permutable_side)
@@ -62,14 +55,14 @@ namespace AntiCulture.Kid
                 HashSet<Concept> inverseOfVerbList = verbMetaConnectionCache.GetVerbFlatListFromCache(verb, "inverse_of", true);
                 if (inverseOfVerbList == null)
                 {
-                    inverseOfVerbList = metaConnectionManager.GetVerbFlatListFromMetaConnection(verb, "inverse_of", true);
+                    inverseOfVerbList = MetaConnectionManager.GetVerbFlatListFromMetaConnection(verb, "inverse_of", true);
                     verbMetaConnectionCache.Remember(verb, "inverse_of", true, inverseOfVerbList);
                 }
                 
                 HashSet<Concept> permutableSideVerbList = verbMetaConnectionCache.GetVerbFlatListFromCache(verb, "permutable_side", true);
                 if (permutableSideVerbList == null)
                 {
-                    permutableSideVerbList = metaConnectionManager.GetVerbFlatListFromMetaConnection(verb, "permutable_side", true);
+                    permutableSideVerbList = MetaConnectionManager.GetVerbFlatListFromMetaConnection(verb, "permutable_side", true);
                     verbMetaConnectionCache.Remember(verb, "permutable_side", true, permutableSideVerbList);
                 }
                 #endregion

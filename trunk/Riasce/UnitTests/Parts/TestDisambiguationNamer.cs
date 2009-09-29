@@ -10,8 +10,7 @@ namespace AntiCulture.Kid
         public static void Test()
         {
             ConnectionManager connectionManager  = new ConnectionManager();
-            MetaConnectionManager metaConnectionManager = new MetaConnectionManager();
-            BrotherHoodManager brotherHoodManger = new BrotherHoodManager(metaConnectionManager);
+            BrotherHoodManager brotherHoodManger = new BrotherHoodManager();
             Repairer repairer = new Repairer();
             DisambiguationNamer disambiguationNamer = new DisambiguationNamer(brotherHoodManger,repairer);
             
@@ -23,8 +22,8 @@ namespace AntiCulture.Kid
             Concept isa = new Concept("isa");
             Concept someare = new Concept("someare");
 
-            metaConnectionManager.AddMetaConnection(isa, "inverse_of", someare);
-            metaConnectionManager.AddMetaConnection(isa, "muct", isa);
+            MetaConnectionManager.AddMetaConnection(isa, "inverse_of", someare);
+            MetaConnectionManager.AddMetaConnection(isa, "muct", isa);
 
             connectionManager.Plug(pine, isa, tree);
             repairer.Repair(pine, tree);

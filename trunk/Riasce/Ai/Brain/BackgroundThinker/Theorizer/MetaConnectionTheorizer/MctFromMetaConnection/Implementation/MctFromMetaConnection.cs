@@ -12,16 +12,13 @@ namespace AntiCulture.Kid
 
         private RejectedTheories rejectedTheories;
 
-        private MetaConnectionManager metaConnectionManager;
-
         private Random random = new Random();
         #endregion
 
         #region Constructor
-        public MctFromMetaConnection(RejectedTheories rejectedTheories, MetaConnectionManager metaConnectionManager)
+        public MctFromMetaConnection(RejectedTheories rejectedTheories)
         {
             this.rejectedTheories = rejectedTheories;
-            this.metaConnectionManager = metaConnectionManager;
         }
         #endregion
 
@@ -88,8 +85,8 @@ namespace AntiCulture.Kid
             {
                 double predictedProbability;
                 int totalMatchingPostulate = 0;
-                HashSet<Concept> directlyImpliedVerbFromPostulate = metaConnectionManager.GetVerbFlatListFromMetaConnection(postulateVerb, "direct_implication", true);
-                HashSet<Concept> farVerbList = metaConnectionManager.GetVerbFlatListFromMetaConnection(verb, metaOperatorName, true);
+                HashSet<Concept> directlyImpliedVerbFromPostulate = MetaConnectionManager.GetVerbFlatListFromMetaConnection(postulateVerb, "direct_implication", true);
+                HashSet<Concept> farVerbList = MetaConnectionManager.GetVerbFlatListFromMetaConnection(verb, metaOperatorName, true);
                 argumentList = new List<MetaConnectionArgument>();
                 foreach (Concept farVerb in farVerbList)
                 {
@@ -101,7 +98,7 @@ namespace AntiCulture.Kid
                     }
                 }
 
-                if (directlyImpliedVerbFromPostulate.Count > 1 && totalMatchingPostulate > 1 && !metaConnectionManager.GetVerbFlatListFromMetaConnection(verb, metaOperatorName, true).Contains(postulateVerb))
+                if (directlyImpliedVerbFromPostulate.Count > 1 && totalMatchingPostulate > 1 && !MetaConnectionManager.GetVerbFlatListFromMetaConnection(verb, metaOperatorName, true).Contains(postulateVerb))
                 {
                     predictedProbability = (double)(totalMatchingPostulate) / (double)(directlyImpliedVerbFromPostulate.Count);
                     currentTheory = new Theory(predictedProbability, verb, metaOperatorName, postulateVerb);
@@ -124,8 +121,8 @@ namespace AntiCulture.Kid
 
             double predictedProbability;
             int totalMatchingPostulate = 0;
-            HashSet<Concept> directlyImpliedVerbFromPostulate = metaConnectionManager.GetVerbFlatListFromMetaConnection(postulateVerb, "direct_implication", true);
-            HashSet<Concept> farVerbList = metaConnectionManager.GetVerbFlatListFromMetaConnection(verb, metaOperatorName, true);
+            HashSet<Concept> directlyImpliedVerbFromPostulate = MetaConnectionManager.GetVerbFlatListFromMetaConnection(postulateVerb, "direct_implication", true);
+            HashSet<Concept> farVerbList = MetaConnectionManager.GetVerbFlatListFromMetaConnection(verb, metaOperatorName, true);
             argumentList = new List<MetaConnectionArgument>();
             foreach (Concept farVerb in farVerbList)
             {
@@ -137,7 +134,7 @@ namespace AntiCulture.Kid
                 }
             }
 
-            if (directlyImpliedVerbFromPostulate.Count > 1 && totalMatchingPostulate > 1 && !metaConnectionManager.GetVerbFlatListFromMetaConnection(verb, metaOperatorName, true).Contains(postulateVerb))
+            if (directlyImpliedVerbFromPostulate.Count > 1 && totalMatchingPostulate > 1 && !MetaConnectionManager.GetVerbFlatListFromMetaConnection(verb, metaOperatorName, true).Contains(postulateVerb))
             {
                 predictedProbability = (double)(totalMatchingPostulate) / (double)(directlyImpliedVerbFromPostulate.Count);
                 currentTheory = new Theory(predictedProbability, verb, metaOperatorName, postulateVerb);
