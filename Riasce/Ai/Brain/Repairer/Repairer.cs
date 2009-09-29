@@ -21,11 +21,6 @@ namespace AntiCulture.Kid
         /// Optimizer
         /// </summary>
         private Optimizer optimizer = new Optimizer();
-
-        /// <summary>
-        /// Reciprocator
-        /// </summary>
-        private Reciprocator reciprocator = new Reciprocator();
         #endregion
 
         #region Methods
@@ -215,7 +210,7 @@ namespace AntiCulture.Kid
         /// <param name="concept">Concept to repair</param>
         public void Reciprocate(Concept concept)
         {
-            reciprocator.Reciprocate(concept);
+            Reciprocator.Reciprocate(concept);
         }
 
         /// <summary>
@@ -224,7 +219,7 @@ namespace AntiCulture.Kid
         /// <param name="conceptCollection">collection of concepts</param>
         public void ReciprocateRange(IEnumerable<Concept> conceptCollection)
         {
-            reciprocator.ReciprocateRange(conceptCollection);
+            Reciprocator.ReciprocateRange(conceptCollection);
         }
 
         /// <summary>
