@@ -36,7 +36,7 @@ namespace AntiCulture.Kid
 
         private MemoryTreeView memoryTreeView = new MemoryTreeView();
 
-        private Visualizer visualizer;
+        private WpfVisualizer visualizer;
         #endregion
 
         #region Events
@@ -100,7 +100,7 @@ namespace AntiCulture.Kid
             scrollViewerForTreeView.Content = memoryTreeView;
             memoryTreeView.OnClickItem += VisualizerClickConceptHandler;
             helpTab.Content = new Help();
-            visualizer = new Visualizer();
+            visualizer = new WpfVisualizer();
             visualizer.OnClickConcept += VisualizerClickConceptHandler;
             visualizer.OnClickDefineLink += VisualizerClickDefineLinkHandler;
             visualizer.OnClickWhyLink += VisualizerClickWhyLinkHandler;

@@ -7,7 +7,10 @@ using System.Threading;
 
 namespace AntiCulture.Kid
 {
-    class Visualizer : AbstractVisualizer
+    /// <summary>
+    /// Represents a WPF implementation of concept visualizer
+    /// </summary>
+    class WpfVisualizer : AbstractVisualizer
     {
         #region Fields
         private PictureCache pictureCache;
@@ -24,7 +27,7 @@ namespace AntiCulture.Kid
         #endregion
 
         #region Constructor
-        public Visualizer()
+        public WpfVisualizer()
         {
             pictureCache = new PictureCache();
             visualizerViewer = new VisualizerViewer(pictureCache);
@@ -52,11 +55,22 @@ namespace AntiCulture.Kid
         #endregion
 
         #region Public Methods
+        /// <summary>
+        /// Show a concept
+        /// </summary>
+        /// <param name="conceptName">concept name</param>
+        /// <param name="conceptDefinition">concept definition</param>
         public override void ShowConcept(string conceptName, Dictionary<string, List<string>> conceptDefinition)
         {
             ShowConcept(conceptName, conceptDefinition, null);
         }
 
+        /// <summary>
+        /// Show a concept
+        /// </summary>
+        /// <param name="conceptName">concept name</param>
+        /// <param name="conceptDefinition">concept definition</param>
+        /// <param name="connectionsNoWhy">connenctions for which no why link will be shown (can be null)</param>
         public override void ShowConcept(string conceptName, Dictionary<string, List<string>> conceptDefinition, Dictionary<string, List<string>> connectionsNoWhy)
         {
             StopViewer();
@@ -80,7 +94,10 @@ namespace AntiCulture.Kid
             viewerThread.Start();
         }
 
-        public void ShowProof(List<string> proofDefinitionList)
+        /// <summary>
+        /// Get Visualizer Viewer
+        /// </summary>
+        public override void ShowProof(List<string> proofDefinitionList)
         {
             StopViewer();
             visualizerViewer.ClearItems();

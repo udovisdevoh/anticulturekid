@@ -5,6 +5,9 @@ using System.Text;
 
 namespace AntiCulture.Kid
 {
+    /// <summary>
+    /// Represents concept visualizer
+    /// </summary>
     abstract class AbstractVisualizer
     {
         /// <summary>
