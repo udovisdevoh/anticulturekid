@@ -8,7 +8,7 @@ namespace AntiCulture.Kid
     /// <summary>
     /// This class is used to add, remove and test "Imply" connections
     /// </summary>
-    class ImplyConnectionManager
+    static class ImplyConnectionManager
     {
         #region Public Methods
         /// <summary>
@@ -17,7 +17,7 @@ namespace AntiCulture.Kid
         /// <param name="verb">verb concept</param>
         /// <param name="complement">complement concept</param>
         /// <param name="condition">condition</param>
-        public void AddImplyConnection(Concept verb, Concept complement, Condition condition)
+        public static void AddImplyConnection(Concept verb, Concept complement, Condition condition)
         {
             Memory.TotalVerbList.Add(verb);
 
@@ -80,7 +80,7 @@ namespace AntiCulture.Kid
         /// <param name="verb">verb concept</param>
         /// <param name="complement">complement concept</param>
         /// <param name="condition">condition</param>
-        public void RemoveImplyConnection(Concept verb, Concept complement, Condition condition)
+        public static void RemoveImplyConnection(Concept verb, Concept complement, Condition condition)
         {
             verb.RemoveImplyConnection(complement, condition, true);
 
@@ -100,7 +100,7 @@ namespace AntiCulture.Kid
         /// <param name="complement">complement concept</param>
         /// <param name="condition">condition</param>
         /// <returns>Returns true if Imply Connection exists, else: false</returns>
-        public bool TestImplyConnection(Concept verb, Concept complement, Condition condition)
+        public static bool TestImplyConnection(Concept verb, Concept complement, Condition condition)
         {
             bool exists = verb.TestImplyConnection(complement, condition, true);
 
