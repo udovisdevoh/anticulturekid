@@ -191,8 +191,7 @@
       <DependentUpon>MemoryTreeView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Gui\Visualizer\StringEventArgs.cs" />
-    <Compile Include="Gui\Visualizer\PictureCache\AbstractPictureCache.cs" />
-    <Compile Include="Gui\Visualizer\PictureCache\Implementation\PictureCache.cs" />
+    <Compile Include="Gui\Visualizer\PictureCache.cs" />
     <Compile Include="Gui\Visualizer\VisualizerHistory\AbstractVisualizerHistory.cs" />
     <Compile Include="Gui\Visualizer\VisualizerHistory\Implementation\VisualizerHistory.cs" />
     <Compile Include="Gui\Visualizer\VisualizerViewer\ColorMaker\AbstractColorMaker.cs" />
