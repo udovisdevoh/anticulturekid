@@ -41,7 +41,7 @@ namespace AntiCulture.Kid
             analogizer = new Analogizer();
             disambiguationNamer = new DisambiguationNamer();
             statMaker = new StatMaker();
-            backgroundThinker = new SerialBackgroundThinker(new Purifier(), new Theorizer(rejectedTheories), rejectedTheories);
+            backgroundThinker = new SerialBackgroundThinker(new Theorizer(rejectedTheories), rejectedTheories);
         }
         #endregion
 
@@ -77,7 +77,7 @@ namespace AntiCulture.Kid
                     Repairer.Repair(subject, verb, complement);    
                     #warning PurifyFlat is temporarly disabled
                     /*
-                    trauma = purifier.PurifyFlat(subject);
+                    trauma = Purifier.PurifyFlat(subject);
                     Repairer.Repair(subject, complement);
                     */
                 }
@@ -226,7 +226,7 @@ namespace AntiCulture.Kid
             {
                 Repairer.ReciprocateRange(memory);
                 #warning Disabled purifyRange because it's done in BackgroundThinker
-                //trauma = purifier.PurifyRangeOptimized(memory);
+                //trauma = Purifier.PurifyRangeOptimized(memory);
                 Repairer.RepairRange(memory);
 
                 if (totologyException != null)
