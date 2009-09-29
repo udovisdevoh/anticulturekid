@@ -22,10 +22,10 @@ namespace AntiCulture.Kid
         #endregion
 
         #region Constructor
-        public Theorizer(MetaConnectionManager metaConnectionManager, ConnectionManager connectionManager, BrotherHoodManager brotherHoodManager, RejectedTheories rejectedTheories)
+        public Theorizer(ConnectionManager connectionManager, BrotherHoodManager brotherHoodManager, RejectedTheories rejectedTheories)
         {
-            connectionTheorizer = new ConnectionTheorizer(rejectedTheories, metaConnectionManager, connectionManager, brotherHoodManager);
-            metaConnectionTheorizer = new MetaConnectionTheorizer(rejectedTheories, metaConnectionManager);
+            connectionTheorizer = new ConnectionTheorizer(rejectedTheories, connectionManager, brotherHoodManager);
+            metaConnectionTheorizer = new MetaConnectionTheorizer(rejectedTheories);
             linguisticTheorizer = new LinguisticTheorizer(connectionManager);
             phoneticTheorizer = new PhoneticTheorizer(connectionManager);
         }

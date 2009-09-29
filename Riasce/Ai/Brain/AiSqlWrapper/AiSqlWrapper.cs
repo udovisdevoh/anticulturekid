@@ -32,19 +32,7 @@ namespace AntiCulture.Kid
         /// </summary>
         private Memory currentMemory;
 
-        private MetaConnectionManager metaConnectionManager;
-
-        private QuerySplitter querySplitter;
-
         private Repairer repairer;
-        #endregion
-
-        #region Constructor
-        public AiSqlWrapper(MetaConnectionManager metaConnectionManager)
-        {
-            this.metaConnectionManager = metaConnectionManager;
-            this.querySplitter = new QuerySplitter();
-        }
         #endregion
 
         #region Public methods
@@ -81,7 +69,7 @@ namespace AntiCulture.Kid
         {
             HashSet<Concept> selection1;
             HashSet<Concept> selection2;
-            List<string> splittedQuery = querySplitter.TrySplit(query);
+            List<string> splittedQuery = QuerySplitter.TrySplit(query);
             if (splittedQuery != null)
             {
                 selection1 = Select(splittedQuery[0], isConsiderSelfMuct);
@@ -169,8 +157,8 @@ namespace AntiCulture.Kid
             if (verb.IsFlatDirty || (complement != null && complement.IsFlatDirty))
                 throw new AiSqlException("Repair concepts first");
 
-            HashSet<Concept> inverseOfVerbList = metaConnectionManager.GetVerbFlatListFromMetaConnection(verb, "inverse_of", true);
-            inverseOfVerbList.UnionWith(metaConnectionManager.GetVerbFlatListFromMetaConnection(verb, "permutable_side", true));
+            HashSet<Concept> inverseOfVerbList = MetaConnectionManager.GetVerbFlatListFromMetaConnection(verb, "inverse_of", true);
+            inverseOfVerbList.UnionWith(MetaConnectionManager.GetVerbFlatListFromMetaConnection(verb, "permutable_side", true));
 
 
 
@@ -185,7 +173,7 @@ namespace AntiCulture.Kid
                 {
                     //If the verb self muct, we add complement to subjects
                     //Will allow stuff like "plant isa plant" or "wood madeof wood"
-                    if (metaConnectionManager.GetVerbFlatListFromMetaConnection(verb, "muct", true).Contains(verb))
+                    if (MetaConnectionManager.GetVerbFlatListFromMetaConnection(verb, "muct", true).Contains(verb))
                         subjectList.Add(complement);
                 }
             }

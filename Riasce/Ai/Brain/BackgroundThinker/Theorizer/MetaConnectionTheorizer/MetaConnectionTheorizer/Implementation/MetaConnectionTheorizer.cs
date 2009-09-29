@@ -18,11 +18,11 @@ namespace AntiCulture.Kid
         #endregion
 
         #region Constructor
-        public MetaConnectionTheorizer(RejectedTheories rejectedTheories, MetaConnectionManager metaConnectionManager)
+        public MetaConnectionTheorizer(RejectedTheories rejectedTheories)
         {
             this.rejectedTheories = rejectedTheories;
             mctFromConnection = new MctFromConnection(rejectedTheories);
-            mctFromMetaConnection = new MctFromMetaConnection(rejectedTheories, metaConnectionManager);
+            mctFromMetaConnection = new MctFromMetaConnection(rejectedTheories);
         }
         #endregion
 

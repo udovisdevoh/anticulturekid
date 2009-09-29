@@ -17,9 +17,8 @@ namespace AntiCulture.Kid
 
         private static void TestTryingToFindMuctMetaConnectionTheory()
         {
-            MetaConnectionManager metaConnectionManager = new MetaConnectionManager();
             RejectedTheories rejectedTheories = new RejectedTheories();
-            MctFromMetaConnection mctFromMetaConnection = new MctFromMetaConnection(rejectedTheories, metaConnectionManager);
+            MctFromMetaConnection mctFromMetaConnection = new MctFromMetaConnection(rejectedTheories);
             Memory.TotalVerbList = new HashSet<Concept>();
 
             Concept isa = new Concept("isa");
@@ -33,20 +32,20 @@ namespace AntiCulture.Kid
             Concept someere = new Concept("someere");
             Concept partof = new Concept("partof");
 
-            metaConnectionManager.AddMetaConnection(madeof, "inverse_of", partof);
-            metaConnectionManager.AddMetaConnection(isa, "inverse_of", someare);
-            metaConnectionManager.AddMetaConnection(isi, "inverse_of", someire);
-            metaConnectionManager.AddMetaConnection(iso, "inverse_of", someore);
-            metaConnectionManager.AddMetaConnection(ise, "inverse_of", someere);
-            metaConnectionManager.AddMetaConnection(madeof, "muct", iso);
-            metaConnectionManager.AddMetaConnection(madeof, "muct", isi);
-            metaConnectionManager.AddMetaConnection(isa, "direct_implication", iso);
-            metaConnectionManager.AddMetaConnection(isa, "direct_implication", isi);
-            metaConnectionManager.AddMetaConnection(isa, "direct_implication", ise);
+            MetaConnectionManager.AddMetaConnection(madeof, "inverse_of", partof);
+            MetaConnectionManager.AddMetaConnection(isa, "inverse_of", someare);
+            MetaConnectionManager.AddMetaConnection(isi, "inverse_of", someire);
+            MetaConnectionManager.AddMetaConnection(iso, "inverse_of", someore);
+            MetaConnectionManager.AddMetaConnection(ise, "inverse_of", someere);
+            MetaConnectionManager.AddMetaConnection(madeof, "muct", iso);
+            MetaConnectionManager.AddMetaConnection(madeof, "muct", isi);
+            MetaConnectionManager.AddMetaConnection(isa, "direct_implication", iso);
+            MetaConnectionManager.AddMetaConnection(isa, "direct_implication", isi);
+            MetaConnectionManager.AddMetaConnection(isa, "direct_implication", ise);
 
             //Pre-condtions
 
-            if (metaConnectionManager.IsFlatMetaConnected(isa,"muct",isa))
+            if (MetaConnectionManager.IsFlatMetaConnected(isa,"muct",isa))
                 throw new Exception("Shouldn't be flat metaConnected");
 
             //Real test here
@@ -92,10 +91,9 @@ namespace AntiCulture.Kid
         }
 
         private static void TestTryingToFindLiffidMetaConnectionTheory()
-        {
-            MetaConnectionManager metaConnectionManager = new MetaConnectionManager();
+        {    
             RejectedTheories rejectedTheories = new RejectedTheories();
-            MctFromMetaConnection mctFromMetaConnection = new MctFromMetaConnection(rejectedTheories, metaConnectionManager);
+            MctFromMetaConnection mctFromMetaConnection = new MctFromMetaConnection(rejectedTheories);
             Memory.TotalVerbList = new HashSet<Concept>();
 
             Concept isa = new Concept("isa");
@@ -109,16 +107,16 @@ namespace AntiCulture.Kid
             Concept someere = new Concept("someere");
             Concept partof = new Concept("partof");
 
-            metaConnectionManager.AddMetaConnection(madeof, "inverse_of", partof);
-            metaConnectionManager.AddMetaConnection(isa, "inverse_of", someare);
-            metaConnectionManager.AddMetaConnection(isi, "inverse_of", someire);
-            metaConnectionManager.AddMetaConnection(iso, "inverse_of", someore);
-            metaConnectionManager.AddMetaConnection(ise, "inverse_of", someere);
-            metaConnectionManager.AddMetaConnection(madeof, "liffid", iso);
-            metaConnectionManager.AddMetaConnection(madeof, "liffid", isi);
-            metaConnectionManager.AddMetaConnection(isa, "direct_implication", iso);
-            metaConnectionManager.AddMetaConnection(isa, "direct_implication", isi);
-            metaConnectionManager.AddMetaConnection(isa, "direct_implication", ise);
+            MetaConnectionManager.AddMetaConnection(madeof, "inverse_of", partof);
+            MetaConnectionManager.AddMetaConnection(isa, "inverse_of", someare);
+            MetaConnectionManager.AddMetaConnection(isi, "inverse_of", someire);
+            MetaConnectionManager.AddMetaConnection(iso, "inverse_of", someore);
+            MetaConnectionManager.AddMetaConnection(ise, "inverse_of", someere);
+            MetaConnectionManager.AddMetaConnection(madeof, "liffid", iso);
+            MetaConnectionManager.AddMetaConnection(madeof, "liffid", isi);
+            MetaConnectionManager.AddMetaConnection(isa, "direct_implication", iso);
+            MetaConnectionManager.AddMetaConnection(isa, "direct_implication", isi);
+            MetaConnectionManager.AddMetaConnection(isa, "direct_implication", ise);
 
             Theory theory;
 
@@ -141,9 +139,9 @@ namespace AntiCulture.Kid
 
         private static void TestTryingToFindSublarMetaConnectionTheory()
         {
-            MetaConnectionManager metaConnectionManager = new MetaConnectionManager();
+            
             RejectedTheories rejectedTheories = new RejectedTheories();
-            MctFromMetaConnection mctFromMetaConnection = new MctFromMetaConnection(rejectedTheories, metaConnectionManager);
+            MctFromMetaConnection mctFromMetaConnection = new MctFromMetaConnection(rejectedTheories);
             Memory.TotalVerbList = new HashSet<Concept>();
 
             Concept isa = new Concept("isa");
@@ -157,16 +155,16 @@ namespace AntiCulture.Kid
             Concept someere = new Concept("someere");
             Concept someore = new Concept("someore");
 
-            metaConnectionManager.AddMetaConnection(madeof, "inverse_of", partof);
-            metaConnectionManager.AddMetaConnection(isa, "inverse_of", someare);
-            metaConnectionManager.AddMetaConnection(isi, "inverse_of", someire);
-            metaConnectionManager.AddMetaConnection(ise, "inverse_of", someere);
-            metaConnectionManager.AddMetaConnection(iso, "inverse_of", someore);
-            metaConnectionManager.AddMetaConnection(madeof, "sublar", iso);
-            metaConnectionManager.AddMetaConnection(madeof, "sublar", isi);
-            metaConnectionManager.AddMetaConnection(isa, "direct_implication", iso);
-            metaConnectionManager.AddMetaConnection(isa, "direct_implication", isi);
-            metaConnectionManager.AddMetaConnection(isa, "direct_implication", ise);
+            MetaConnectionManager.AddMetaConnection(madeof, "inverse_of", partof);
+            MetaConnectionManager.AddMetaConnection(isa, "inverse_of", someare);
+            MetaConnectionManager.AddMetaConnection(isi, "inverse_of", someire);
+            MetaConnectionManager.AddMetaConnection(ise, "inverse_of", someere);
+            MetaConnectionManager.AddMetaConnection(iso, "inverse_of", someore);
+            MetaConnectionManager.AddMetaConnection(madeof, "sublar", iso);
+            MetaConnectionManager.AddMetaConnection(madeof, "sublar", isi);
+            MetaConnectionManager.AddMetaConnection(isa, "direct_implication", iso);
+            MetaConnectionManager.AddMetaConnection(isa, "direct_implication", isi);
+            MetaConnectionManager.AddMetaConnection(isa, "direct_implication", ise);
 
             Theory theory;
 
@@ -179,9 +177,9 @@ namespace AntiCulture.Kid
 
         private static void TestTryingToFindConsicsMetaConnectionTheory()
         {
-            MetaConnectionManager metaConnectionManager = new MetaConnectionManager();
+            
             RejectedTheories rejectedTheories = new RejectedTheories();
-            MctFromMetaConnection mctFromMetaConnection = new MctFromMetaConnection(rejectedTheories, metaConnectionManager);
+            MctFromMetaConnection mctFromMetaConnection = new MctFromMetaConnection(rejectedTheories);
             Memory.TotalVerbList = new HashSet<Concept>();
 
             Concept isa = new Concept("isa");
@@ -195,16 +193,16 @@ namespace AntiCulture.Kid
             Concept someere = new Concept("someere");
             Concept someore = new Concept("someore");
 
-            metaConnectionManager.AddMetaConnection(madeof, "inverse_of", partof);
-            metaConnectionManager.AddMetaConnection(isa, "inverse_of", someare);
-            metaConnectionManager.AddMetaConnection(isi, "inverse_of", someire);
-            metaConnectionManager.AddMetaConnection(ise, "inverse_of", someere);
-            metaConnectionManager.AddMetaConnection(iso, "inverse_of", someore);
-            metaConnectionManager.AddMetaConnection(madeof, "consics", iso);
-            metaConnectionManager.AddMetaConnection(madeof, "consics", isi);
-            metaConnectionManager.AddMetaConnection(isa, "direct_implication", iso);
-            metaConnectionManager.AddMetaConnection(isa, "direct_implication", isi);
-            metaConnectionManager.AddMetaConnection(isa, "direct_implication", ise);
+            MetaConnectionManager.AddMetaConnection(madeof, "inverse_of", partof);
+            MetaConnectionManager.AddMetaConnection(isa, "inverse_of", someare);
+            MetaConnectionManager.AddMetaConnection(isi, "inverse_of", someire);
+            MetaConnectionManager.AddMetaConnection(ise, "inverse_of", someere);
+            MetaConnectionManager.AddMetaConnection(iso, "inverse_of", someore);
+            MetaConnectionManager.AddMetaConnection(madeof, "consics", iso);
+            MetaConnectionManager.AddMetaConnection(madeof, "consics", isi);
+            MetaConnectionManager.AddMetaConnection(isa, "direct_implication", iso);
+            MetaConnectionManager.AddMetaConnection(isa, "direct_implication", isi);
+            MetaConnectionManager.AddMetaConnection(isa, "direct_implication", ise);
 
             Theory theory;
 

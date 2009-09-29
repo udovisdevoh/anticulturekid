@@ -15,7 +15,7 @@ namespace AntiCulture.Kid
         private static void TestPostConnectionInverseOf()
         {
             ConnectionManager connectionManager = new ConnectionManager();
-            MetaConnectionManager metaConnectionManager = new MetaConnectionManager();
+            
             Repairer repairer = new Repairer();
             Memory.TotalVerbList = new HashSet<Concept>();
 
@@ -49,11 +49,11 @@ namespace AntiCulture.Kid
 
             repairer.Repair(pine, tree, plant, water, liquid);
 
-            metaConnectionManager.AddMetaConnection(isa, "muct", isa);
-            metaConnectionManager.AddMetaConnection(madeof, "muct", isa);
-            metaConnectionManager.AddMetaConnection(madeof, "liffid", isa);
-            metaConnectionManager.AddMetaConnection(madeof, "muct", madeof);
-            metaConnectionManager.AddMetaConnection(madeof, "inverse_of", partof);
+            MetaConnectionManager.AddMetaConnection(isa, "muct", isa);
+            MetaConnectionManager.AddMetaConnection(madeof, "muct", isa);
+            MetaConnectionManager.AddMetaConnection(madeof, "liffid", isa);
+            MetaConnectionManager.AddMetaConnection(madeof, "muct", madeof);
+            MetaConnectionManager.AddMetaConnection(madeof, "inverse_of", partof);
 
             repairer.Repair(pine, tree, plant, water, liquid);
 

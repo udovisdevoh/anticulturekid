@@ -18,9 +18,9 @@ namespace AntiCulture.Kid
             Memory memory = new Memory();
             NameMapper nameMapper = new NameMapper(new Name("aiName"), new Name("humanName"));
             ConnectionManager connectionManager = new ConnectionManager();
-            MetaConnectionManager metaConnectionManager = new MetaConnectionManager();
+            
             Repairer repairer = new Repairer();
-            AiSqlWrapper aiSqlWrapper = new AiSqlWrapper(metaConnectionManager);
+            AiSqlWrapper aiSqlWrapper = new AiSqlWrapper();
             HashSet<Concept> selection;
 
             Concept isa = new Concept("isa");
@@ -52,11 +52,11 @@ namespace AntiCulture.Kid
             memory.SetConcept(nameMapper.GetOrCreateConceptId("lifeform"), lifeform);
             memory.SetConcept(nameMapper.GetOrCreateConceptId("cactus"), cactus);
 
-            metaConnectionManager.AddMetaConnection(isa, "inverse_of", someare);
-            metaConnectionManager.AddMetaConnection(madeof, "inverse_of", partof);
-            metaConnectionManager.AddMetaConnection(madeof, "muct", isa);
-            metaConnectionManager.AddMetaConnection(madeof, "liffid", isa);
-            metaConnectionManager.AddMetaConnection(madeof, "muct", madeof);
+            MetaConnectionManager.AddMetaConnection(isa, "inverse_of", someare);
+            MetaConnectionManager.AddMetaConnection(madeof, "inverse_of", partof);
+            MetaConnectionManager.AddMetaConnection(madeof, "muct", isa);
+            MetaConnectionManager.AddMetaConnection(madeof, "liffid", isa);
+            MetaConnectionManager.AddMetaConnection(madeof, "muct", madeof);
 
             repairer.RepairRange(memory);
             repairer.RepairRange(memory);

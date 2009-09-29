@@ -12,11 +12,6 @@ namespace AntiCulture.Kid
     {
         #region Fields
         /// <summary>
-        /// MetaConnection manager
-        /// </summary>
-        private MetaConnectionManager metaConnectionManager = new MetaConnectionManager();
-
-        /// <summary>
         /// Remember which branches are already repaired to improve performance a lot
         /// </summary>
         private HashSet<ConnectionBranch> repairedBranches;
@@ -114,7 +109,7 @@ namespace AntiCulture.Kid
             HashSet<Concept> directImplicationVerbList = verbConnectionCache.GetVerbFlatListFromCache(verb, "direct_implication", false);
             if (directImplicationVerbList == null)
             {
-                directImplicationVerbList = metaConnectionManager.GetVerbFlatListFromMetaConnection(verb, "direct_implication", false);
+                directImplicationVerbList = MetaConnectionManager.GetVerbFlatListFromMetaConnection(verb, "direct_implication", false);
                 verbConnectionCache.Remember(verb, "direct_implication", false, directImplicationVerbList);
             }
             foreach (Concept directlyImpliedVerb in directImplicationVerbList)
@@ -176,7 +171,7 @@ namespace AntiCulture.Kid
             HashSet<Concept> liffidVerbList = verbConnectionCache.GetVerbFlatListFromCache(verb, "liffid", true);
             if (liffidVerbList == null)
             {
-                liffidVerbList = metaConnectionManager.GetVerbFlatListFromMetaConnection(verb, "liffid", true);
+                liffidVerbList = MetaConnectionManager.GetVerbFlatListFromMetaConnection(verb, "liffid", true);
                 verbConnectionCache.Remember(verb, "liffid", true, liffidVerbList);
             }
             foreach (Concept liffidVerb in liffidVerbList)
@@ -246,7 +241,7 @@ namespace AntiCulture.Kid
             HashSet<Concept> muctVerbList = verbConnectionCache.GetVerbFlatListFromCache(verb, "muct", true);
             if (muctVerbList == null)
             {
-                muctVerbList = metaConnectionManager.GetVerbFlatListFromMetaConnection(verb, "muct", true);
+                muctVerbList = MetaConnectionManager.GetVerbFlatListFromMetaConnection(verb, "muct", true);
                 verbConnectionCache.Remember(verb, "muct", true, muctVerbList);
             }
             foreach (Concept muctVerb in muctVerbList)

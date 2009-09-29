@@ -19,7 +19,7 @@ namespace AntiCulture.Kid
         {
             Repairer repairer = new Repairer();
             ConnectionManager connectionManager = new ConnectionManager();
-            MetaConnectionManager metaConnectionManager = new MetaConnectionManager();
+            
             Memory memory = new Memory();
             Purifier purifier = new Purifier(repairer, connectionManager);
             Memory.TotalVerbList = new HashSet<Concept>();
@@ -35,13 +35,13 @@ namespace AntiCulture.Kid
             Concept partof = new Concept("partof");
             Concept contradict = new Concept("contradict");
 
-            metaConnectionManager.AddMetaConnection(isa, "inverse_of", someare);
-            metaConnectionManager.AddMetaConnection(madeof, "inverse_of", partof);
-            metaConnectionManager.AddMetaConnection(contradict, "permutable_side", contradict);
-            metaConnectionManager.AddMetaConnection(madeof, "muct", isa);
-            metaConnectionManager.AddMetaConnection(madeof, "liffid", isa);
-            metaConnectionManager.AddMetaConnection(isa, "muct", isa);
-            metaConnectionManager.AddMetaConnection(madeof, "muct", madeof);
+            MetaConnectionManager.AddMetaConnection(isa, "inverse_of", someare);
+            MetaConnectionManager.AddMetaConnection(madeof, "inverse_of", partof);
+            MetaConnectionManager.AddMetaConnection(contradict, "permutable_side", contradict);
+            MetaConnectionManager.AddMetaConnection(madeof, "muct", isa);
+            MetaConnectionManager.AddMetaConnection(madeof, "liffid", isa);
+            MetaConnectionManager.AddMetaConnection(isa, "muct", isa);
+            MetaConnectionManager.AddMetaConnection(madeof, "muct", madeof);
 
             repairer.Repair(cat, animal, lifeform, water);
             repairer.Reciprocate(cat);
@@ -76,7 +76,7 @@ namespace AntiCulture.Kid
 
             //Real test here
 
-            metaConnectionManager.AddMetaConnection(isa, "cant", contradict);
+            MetaConnectionManager.AddMetaConnection(isa, "cant", contradict);
 
             repairer.Repair(cat, animal, lifeform, water);
             repairer.Reciprocate(cat);
@@ -105,7 +105,7 @@ namespace AntiCulture.Kid
         {
             Repairer repairer = new Repairer();
             ConnectionManager connectionManager = new ConnectionManager();
-            MetaConnectionManager metaConnectionManager = new MetaConnectionManager();
+            
             Purifier purifier = new Purifier(repairer, connectionManager);
             Memory.TotalVerbList = new HashSet<Concept>();
 
@@ -120,13 +120,13 @@ namespace AntiCulture.Kid
             Concept partof = new Concept("partof");
             Concept contradict = new Concept("contradict");
 
-            metaConnectionManager.AddMetaConnection(isa, "inverse_of", someare);
-            metaConnectionManager.AddMetaConnection(madeof, "inverse_of", partof);
-            metaConnectionManager.AddMetaConnection(contradict, "permutable_side", contradict);
-            metaConnectionManager.AddMetaConnection(madeof, "muct", isa);
-            metaConnectionManager.AddMetaConnection(madeof, "liffid", isa);
-            metaConnectionManager.AddMetaConnection(isa, "muct", isa);
-            metaConnectionManager.AddMetaConnection(madeof, "muct", madeof);
+            MetaConnectionManager.AddMetaConnection(isa, "inverse_of", someare);
+            MetaConnectionManager.AddMetaConnection(madeof, "inverse_of", partof);
+            MetaConnectionManager.AddMetaConnection(contradict, "permutable_side", contradict);
+            MetaConnectionManager.AddMetaConnection(madeof, "muct", isa);
+            MetaConnectionManager.AddMetaConnection(madeof, "liffid", isa);
+            MetaConnectionManager.AddMetaConnection(isa, "muct", isa);
+            MetaConnectionManager.AddMetaConnection(madeof, "muct", madeof);
 
             repairer.Repair(cat, animal, lifeform, water);
             repairer.Reciprocate(cat);
@@ -161,7 +161,7 @@ namespace AntiCulture.Kid
 
             //Real test here
 
-            metaConnectionManager.AddMetaConnection(isa, "cant", contradict);
+            MetaConnectionManager.AddMetaConnection(isa, "cant", contradict);
 
             repairer.Repair(cat, animal, lifeform, water);
             repairer.Reciprocate(cat);
@@ -190,7 +190,7 @@ namespace AntiCulture.Kid
         {
             Repairer repairer = new Repairer();
             ConnectionManager connectionManager = new ConnectionManager();
-            MetaConnectionManager metaConnectionManager = new MetaConnectionManager();
+            
             Purifier purifier = new Purifier(repairer, connectionManager);
             Memory.TotalVerbList = new HashSet<Concept>();
 
@@ -205,13 +205,13 @@ namespace AntiCulture.Kid
             Concept partof = new Concept("partof");
             Concept contradict = new Concept("contradict");
 
-            metaConnectionManager.AddMetaConnection(isa, "inverse_of", someare);
-            metaConnectionManager.AddMetaConnection(madeof, "inverse_of", partof);
-            metaConnectionManager.AddMetaConnection(contradict, "permutable_side", contradict);
-            metaConnectionManager.AddMetaConnection(madeof, "muct", isa);
-            metaConnectionManager.AddMetaConnection(madeof, "liffid", isa);
-            metaConnectionManager.AddMetaConnection(isa, "muct", isa);
-            metaConnectionManager.AddMetaConnection(madeof, "muct", madeof);
+            MetaConnectionManager.AddMetaConnection(isa, "inverse_of", someare);
+            MetaConnectionManager.AddMetaConnection(madeof, "inverse_of", partof);
+            MetaConnectionManager.AddMetaConnection(contradict, "permutable_side", contradict);
+            MetaConnectionManager.AddMetaConnection(madeof, "muct", isa);
+            MetaConnectionManager.AddMetaConnection(madeof, "liffid", isa);
+            MetaConnectionManager.AddMetaConnection(isa, "muct", isa);
+            MetaConnectionManager.AddMetaConnection(madeof, "muct", madeof);
 
             repairer.Repair(cat, animal, lifeform, water);
             repairer.Reciprocate(cat);
@@ -246,7 +246,7 @@ namespace AntiCulture.Kid
 
             //Real test here
 
-            metaConnectionManager.AddMetaConnection(isa, "cant", contradict);
+            MetaConnectionManager.AddMetaConnection(isa, "cant", contradict);
 
             repairer.Repair(cat, animal, lifeform, water);
             repairer.Reciprocate(cat);
@@ -275,7 +275,7 @@ namespace AntiCulture.Kid
         {
             Repairer repairer = new Repairer();
             ConnectionManager connectionManager = new ConnectionManager();
-            MetaConnectionManager metaConnectionManager = new MetaConnectionManager();
+            
             Purifier purifier = new Purifier(repairer, connectionManager);
             Memory.TotalVerbList = new HashSet<Concept>();
 
@@ -290,13 +290,13 @@ namespace AntiCulture.Kid
             Concept partof = new Concept("partof");
             Concept contradict = new Concept("contradict");
 
-            metaConnectionManager.AddMetaConnection(isa, "inverse_of", someare);
-            metaConnectionManager.AddMetaConnection(madeof, "inverse_of", partof);
-            metaConnectionManager.AddMetaConnection(contradict, "permutable_side", contradict);
-            metaConnectionManager.AddMetaConnection(madeof, "muct", isa);
-            metaConnectionManager.AddMetaConnection(madeof, "liffid", isa);
-            metaConnectionManager.AddMetaConnection(isa, "muct", isa);
-            metaConnectionManager.AddMetaConnection(madeof, "muct", madeof);
+            MetaConnectionManager.AddMetaConnection(isa, "inverse_of", someare);
+            MetaConnectionManager.AddMetaConnection(madeof, "inverse_of", partof);
+            MetaConnectionManager.AddMetaConnection(contradict, "permutable_side", contradict);
+            MetaConnectionManager.AddMetaConnection(madeof, "muct", isa);
+            MetaConnectionManager.AddMetaConnection(madeof, "liffid", isa);
+            MetaConnectionManager.AddMetaConnection(isa, "muct", isa);
+            MetaConnectionManager.AddMetaConnection(madeof, "muct", madeof);
 
             repairer.Repair(cat, animal, lifeform, water);
             repairer.Reciprocate(cat);
@@ -331,7 +331,7 @@ namespace AntiCulture.Kid
 
             //Real test here
 
-            metaConnectionManager.AddMetaConnection(isa, "cant", contradict);
+            MetaConnectionManager.AddMetaConnection(isa, "cant", contradict);
 
             repairer.Repair(cat, animal, lifeform, water);
             repairer.Reciprocate(cat);

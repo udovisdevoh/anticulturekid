@@ -17,15 +17,6 @@ namespace AntiCulture.Kid
         /// Maximum amount of questions created when picking the best one
         /// </summary>
         private static readonly int samplingSize = 7;
-
-        private MetaConnectionManager metaConnectionManager;
-        #endregion
-
-        #region Constructor
-        public Asker(MetaConnectionManager metaConnectionManager)
-        {
-            this.metaConnectionManager = metaConnectionManager;
-        }
         #endregion
 
         #region Public Methods
@@ -237,10 +228,10 @@ namespace AntiCulture.Kid
             int connectionCount = subject.GetOptimizedConnectionBranch(verb).ComplementConceptList.Count;
             int permutableSideOrInverseOfConnectionCount = 0;
 
-            foreach (Concept inverseOfVerb in metaConnectionManager.GetVerbFlatListFromMetaConnection(verb, "inverse_of", true))
+            foreach (Concept inverseOfVerb in MetaConnectionManager.GetVerbFlatListFromMetaConnection(verb, "inverse_of", true))
                 permutableSideOrInverseOfConnectionCount += subject.GetOptimizedConnectionBranch(inverseOfVerb).ComplementConceptList.Count;
             
-            foreach (Concept permutableSideVerb in metaConnectionManager.GetVerbFlatListFromMetaConnection(verb, "permutable_side", true))
+            foreach (Concept permutableSideVerb in MetaConnectionManager.GetVerbFlatListFromMetaConnection(verb, "permutable_side", true))
                 permutableSideOrInverseOfConnectionCount += subject.GetOptimizedConnectionBranch(permutableSideVerb).ComplementConceptList.Count;
 
             if (connectionCount > permutableSideOrInverseOfConnectionCount)

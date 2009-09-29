@@ -1,5 +1,4 @@
 whole project major refactoring:
--each class must be responsible of only one thing
 -classe that should be static will be static
 -everything must be unit testable and unit tested
 -visualizer thread must be safe (no visual conflict)

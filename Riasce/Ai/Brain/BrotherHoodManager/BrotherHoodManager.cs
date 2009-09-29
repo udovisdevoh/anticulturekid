@@ -12,15 +12,6 @@ namespace AntiCulture.Kid
     {
         #region Fields
         private VerbMetaConnectionCache verbMetaConnectionCache;
-
-        private MetaConnectionManager metaConnectionManager;
-        #endregion
-
-        #region Constructor
-        public BrotherHoodManager(MetaConnectionManager metaConnectionManager)
-        {
-            this.metaConnectionManager = metaConnectionManager;
-        }
         #endregion
 
         #region Public Methods
@@ -266,14 +257,14 @@ namespace AntiCulture.Kid
             HashSet<Concept> inverseOfVerbList = verbMetaConnectionCache.GetVerbFlatListFromCache(verb, "inverse_of", true);
             if (inverseOfVerbList == null)
             {
-                inverseOfVerbList = metaConnectionManager.GetVerbFlatListFromMetaConnection(verb, "inverse_of", true);
+                inverseOfVerbList = MetaConnectionManager.GetVerbFlatListFromMetaConnection(verb, "inverse_of", true);
                 verbMetaConnectionCache.Remember(verb, "inverse_of", true, inverseOfVerbList);
             }
 
             HashSet<Concept> permutableSideVerbList = verbMetaConnectionCache.GetVerbFlatListFromCache(verb, "permutable_side", true);
             if (permutableSideVerbList == null)
             {
-                permutableSideVerbList = metaConnectionManager.GetVerbFlatListFromMetaConnection(verb, "permutable_side", true);
+                permutableSideVerbList = MetaConnectionManager.GetVerbFlatListFromMetaConnection(verb, "permutable_side", true);
                 verbMetaConnectionCache.Remember(verb, "permutable_side", true, permutableSideVerbList);
             }
 

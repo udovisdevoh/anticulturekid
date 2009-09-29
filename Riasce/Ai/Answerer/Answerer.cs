@@ -28,6 +28,9 @@ namespace AntiCulture.Kid
         /// </summary>
         private MainWindow mainWindow;
 
+        /// <summary>
+        /// Alterator
+        /// </summary>
         private Alterator alterator;
 
         /// <summary>

@@ -9,7 +9,7 @@ namespace AntiCulture.Kid
     /// <summary>
     /// This class is used to split an AiSql query into smaller chunks
     /// </summary>
-    class QuerySplitter
+    static class QuerySplitter
     {
         #region Public methods
         /// <summary>
@@ -17,7 +17,7 @@ namespace AntiCulture.Kid
         /// </summary>
         /// <param name="query">query to split</param>
         /// <returns>Splitted query. element[0] query1, element[1]: separator, element[2] query2</returns>
-        public List<string> TrySplit(string query)
+        public static List<string> TrySplit(string query)
         {
             query = query.Replace(")or(", ") or (");
             query = query.Replace(" or(", " or (");
@@ -65,7 +65,7 @@ namespace AntiCulture.Kid
         /// </summary>
         /// <param name="query">query to split</param>
         /// <returns>Splitted query. element[0] query1, element[1]: separator, element[2] query2</returns>
-        private List<string> TrySplitOr(string query)
+        private static List<string> TrySplitOr(string query)
         {
             List<string> splittedQuery = new List<string>();
             Dictionary<int, int> depthMap = query.GetParantheseDepthMap();
@@ -92,7 +92,7 @@ namespace AntiCulture.Kid
         /// </summary>
         /// <param name="query">query to split</param>
         /// <returns>Splitted query. element[0] query1, element[1]: separator, element[2] query2</returns>
-        private List<string> TrySplitAndNot(string query)
+        private static List<string> TrySplitAndNot(string query)
         {
             List<string> splittedQuery = new List<string>();
             Dictionary<int, int> depthMap = query.GetParantheseDepthMap();
@@ -119,7 +119,7 @@ namespace AntiCulture.Kid
         /// </summary>
         /// <param name="query">query to split</param>
         /// <returns>Splitted query. element[0] query1, element[1]: separator, element[2] query2</returns>
-        private List<string> TrySplitAnd(string query)
+        private static List<string> TrySplitAnd(string query)
         {
             List<string> splittedQuery = new List<string>();
             Dictionary<int, int> depthMap = query.GetParantheseDepthMap();
@@ -147,7 +147,7 @@ namespace AntiCulture.Kid
         /// <param name="haystack">haystack</param>
         /// <param name="needle">needle</param>
         /// <returns>position list to where to cut</returns>
-        private List<int> GetPositionsListFor(string haystack, string needle)
+        private static List<int> GetPositionsListFor(string haystack, string needle)
         {
             List<int> positionList = new List<int>();
 
