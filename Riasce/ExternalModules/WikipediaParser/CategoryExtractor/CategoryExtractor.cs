@@ -82,6 +82,10 @@ namespace AntiCulture.Kid
         #endregion
 
         #region Private Methods
+        /// <summary>
+        /// Extract category
+        /// </summary>
+        /// <param name="categoryName">category name</param>
         private void ExtractCategory(string categoryName)
         {
             if (categoryName == null)
@@ -92,6 +96,9 @@ namespace AntiCulture.Kid
             categoryExtractorViewer.ElementNameList = categoryElementNameList;
         }
 
+        /// <summary>
+        /// Extract next category
+        /// </summary>
         private void ExtractNextCategory()
         {
             string categoryName = categoryExtractorModel.GetNextCategoryName();
@@ -103,6 +110,9 @@ namespace AntiCulture.Kid
             }
         }
 
+        /// <summary>
+        /// Extract previous category
+        /// </summary>
         private void ExtractPreviousCategory()
         {
             string categoryName = categoryExtractorModel.GetPreviousCategoryName();
@@ -114,6 +124,10 @@ namespace AntiCulture.Kid
             }
         }
 
+        /// <summary>
+        /// Set button enabling (use constants defined in this class)
+        /// </summary>
+        /// <param name="buttonMode"></param>
         private void SetButtonEnabling(int buttonMode)
         {
             if (buttonMode == BUTTON_MODE_WAITING_FOR_FILES)
@@ -142,6 +156,9 @@ namespace AntiCulture.Kid
             }
         }
 
+        /// <summary>
+        /// Apply current category
+        /// </summary>
         private void ApplyCurrentCategory()
         {
             categoryExtractorModel.MarkAsDone(categoryExtractorModel.CurrentCategoryName);
@@ -149,6 +166,9 @@ namespace AntiCulture.Kid
             ExtractNextCategory();
         }
 
+        /// <summary>
+        /// Ignore current category
+        /// </summary>
         private void IgnoreCurrentCategory()
         {
             categoryExtractorModel.MarkAsDone(categoryExtractorModel.CurrentCategoryName);
