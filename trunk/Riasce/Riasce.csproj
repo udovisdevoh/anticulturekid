@@ -296,14 +296,12 @@
     </Compile>
     <Compile Include="Gui\Visualizer\Visualizer\AbstractVisualizer.cs" />
     <Compile Include="Gui\Visualizer\Visualizer\Implementation\Visualizer.cs" />
-    <Compile Include="ExternalModules\WikipediaParser\CategoryExtractor\CategoryExtractorModel\CategoryCheckList\AbstractCategoryCheckList.cs" />
-    <Compile Include="ExternalModules\WikipediaParser\CategoryExtractor\CategoryExtractorModel\CategoryCheckList\Implementation\CategoryCheckList.cs" />
+    <Compile Include="ExternalModules\WikipediaParser\CategoryExtractor\CategoryExtractorModel\CategoryCheckList.cs" />
     <Compile Include="ExternalModules\WikipediaParser\CategoryExtractor\CategoryExtractorModel\CategoryExtractorModel\AbstractCategoryExtractorModel.cs" />
     <Compile Include="ExternalModules\WikipediaParser\CategoryExtractor\CategoryExtractorModel\CategoryExtractorModel\Implementation\CategoryExtractorModel.cs" />
     <Compile Include="ExternalModules\WikipediaParser\CategoryExtractor\CategoryExtractorModel\SourceCategoryList\AbstractSourceCategoryList.cs" />
     <Compile Include="ExternalModules\WikipediaParser\CategoryExtractor\CategoryExtractorModel\SourceCategoryList\Implementation\SourceCategoryList.cs" />
-    <Compile Include="ExternalModules\WikipediaParser\CategoryExtractor\CategoryExtractorModel\WikiCategoryPage\AbstractWikiCategoryPage.cs" />
-    <Compile Include="ExternalModules\WikipediaParser\CategoryExtractor\CategoryExtractorModel\WikiCategoryPage\Implementation\WikiCategoryPage.cs" />
+    <Compile Include="ExternalModules\WikipediaParser\CategoryExtractor\CategoryExtractorModel\WikiCategoryPage.cs" />
     <Compile Include="ExternalModules\WikipediaParser\CategoryExtractor\CategoryExtractorViewer\CategoryExtractorViewer.xaml.cs">
       <DependentUpon>CategoryExtractorViewer.xaml</DependentUpon>
     </Compile>
