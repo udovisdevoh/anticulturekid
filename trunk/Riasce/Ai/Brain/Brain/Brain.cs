@@ -16,8 +16,6 @@ namespace AntiCulture.Kid
         #region Fields
         private Memory memory = new Memory();
 
-        private ImplyConnectionManager implyConnectionManager = new ImplyConnectionManager();
-
         private Repairer repairer = new Repairer();
 
         private Teacher teacher = new Teacher();
@@ -931,7 +929,7 @@ namespace AntiCulture.Kid
                 actionComplementId = nameMapper.GetOrCreateConceptId(actionComplementName);
                 actionComplement = memory.GetOrCreateConcept(actionComplementId);
 
-                implyConnectionManager.AddImplyConnection(actionVerb, actionComplement, condition);
+                ImplyConnectionManager.AddImplyConnection(actionVerb, actionComplement, condition);
             }
         }
 
@@ -967,7 +965,7 @@ namespace AntiCulture.Kid
                 actionComplementId = nameMapper.GetOrCreateConceptId(actionComplementName);
                 actionComplement = memory.GetOrCreateConcept(actionComplementId);
 
-                implyConnectionManager.RemoveImplyConnection(actionVerb, actionComplement, condition);
+                ImplyConnectionManager.RemoveImplyConnection(actionVerb, actionComplement, condition);
             }
         }
 
@@ -1004,7 +1002,7 @@ namespace AntiCulture.Kid
                 actionComplementId = nameMapper.GetOrCreateConceptId(actionComplementName);
                 actionComplement = memory.GetOrCreateConcept(actionComplementId);
 
-                if (!implyConnectionManager.TestImplyConnection(actionVerb, actionComplement, condition))
+                if (!ImplyConnectionManager.TestImplyConnection(actionVerb, actionComplement, condition))
                     return false;
             }
 
