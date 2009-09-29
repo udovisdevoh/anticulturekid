@@ -5,9 +5,15 @@ using System.Text;
 
 namespace AntiCulture.Kid
 {
-    class WikiCategoryListPage : AbstractWikiCategoryListPage
+    /// <summary>
+    /// Wikipedia category list page
+    /// </summary>
+    class WikiCategoryListPage
     {
         #region Fields
+        /// <summary>
+        /// Url
+        /// </summary>
         private string url;
         #endregion
 
@@ -24,7 +30,13 @@ namespace AntiCulture.Kid
         #endregion
 
         #region Public methods
-        public override HashSet<string> GetCategoryList(int chunkSize, string offset)
+        /// <summary>
+        /// Get the list of category from wiki
+        /// </summary>
+        /// <param name="chunkSize">chunk size</param>
+        /// <param name="offset">offset name</param>
+        /// <returns>the list of category from wiki</returns>
+        public HashSet<string> GetCategoryList(int chunkSize, string offset)
         {
             string formattedChunkSize = chunkSize.ToString();
             if (formattedChunkSize.Length == 4)
@@ -57,6 +69,11 @@ namespace AntiCulture.Kid
         #endregion
 
         #region Private methods
+        /// <summary>
+        /// Format chunk line
+        /// </summary>
+        /// <param name="line">line</param>
+        /// <returns>formated chunk line</returns>
         private string FormatChunkLine(string line)
         {
             if (line.Contains("index.php") || line.Contains("&quot;") || line.Length < 9 || line.Contains("%"))

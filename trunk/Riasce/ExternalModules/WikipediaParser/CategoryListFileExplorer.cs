@@ -6,9 +6,17 @@ using System.IO;
 
 namespace AntiCulture.Kid
 {
+    /// <summary>
+    /// Category list file exporter
+    /// </summary>
     class CategoryListFileExplorer
     {
         #region Public methods
+        /// <summary>
+        /// Get first entry
+        /// </summary>
+        /// <param name="fileName">file name</param>
+        /// <returns>first entry</returns>
         public static string GetFirstEntry(string fileName)
         {
             string entry = null;
@@ -30,6 +38,11 @@ namespace AntiCulture.Kid
             return entry;
         }
 
+        /// <summary>
+        /// Get last entry
+        /// </summary>
+        /// <param name="fileName">file name</param>
+        /// <returns>last entry</returns>
         public static string GetLastEntry(string fileName)
         {
             string line = "";
