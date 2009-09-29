@@ -24,8 +24,6 @@ namespace AntiCulture.Kid
 
         private Aliaser aliaser;
 
-        private Asker asker;
-
         private Analogizer analogizer;
 
         private BrotherHoodManager brotherHoodManager;
@@ -45,7 +43,6 @@ namespace AntiCulture.Kid
         public Brain()
         {
             aliaser = new Aliaser(memory, repairer);
-            asker = new Asker();
             brotherHoodManager = new BrotherHoodManager();
             RejectedTheories rejectedTheories = new RejectedTheories();
             analogizer = new Analogizer(brotherHoodManager);
@@ -420,7 +417,7 @@ namespace AntiCulture.Kid
         public List<int> GetBestQuestionAbout(int conceptId)
         {
             Concept concept = memory.GetOrCreateConcept(conceptId);
-            List<Concept> question = asker.GetBestQuestionAbout(concept);
+            List<Concept> question = Asker.GetBestQuestionAbout(concept);
             repairer.Repair(concept);
             List<int> questionById = new List<int>();
             questionById.Add(memory.GetIdFromConcept(question[0]));
@@ -435,7 +432,7 @@ namespace AntiCulture.Kid
         public List<int> GetBestQuestionAboutRandomConcept()
         {
             repairer.RepairRange(memory);
-            List<Concept> question = asker.GetBestQuestionAboutRandomConcept(memory);
+            List<Concept> question = Asker.GetBestQuestionAboutRandomConcept(memory);
             List<int> questionById = new List<int>();
             questionById.Add(memory.GetIdFromConcept(question[0]));
             questionById.Add(memory.GetIdFromConcept(question[1]));

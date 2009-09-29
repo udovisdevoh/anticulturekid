@@ -8,7 +8,7 @@ namespace AntiCulture.Kid
     /// <summary>
     /// This class is used
     /// </summary>
-    class Asker
+    static class Asker
     {
         #region Fields
         private static Random random = new Random();
@@ -25,7 +25,7 @@ namespace AntiCulture.Kid
         /// </summary>
         /// <param name="concept">subject concept</param>
         /// <returns>best question to ask about subject concept</returns>
-        public List<Concept> GetBestQuestionAbout(Concept subject)
+        public static List<Concept> GetBestQuestionAbout(Concept subject)
         {
             Concept bestVerb;
 
@@ -46,7 +46,7 @@ namespace AntiCulture.Kid
         /// </summary>
         /// <param name="conceptEnumeration">concept collection</param>
         /// <returns>>best question to ask about concepts in concept collection</returns>
-        public List<Concept> GetBestQuestionAboutRandomConcept(IEnumerable<Concept> conceptCollection)
+        public static List<Concept> GetBestQuestionAboutRandomConcept(IEnumerable<Concept> conceptCollection)
         {
             HashSet<Concept> conceptSample = conceptCollection.GetRandomSample(samplingSize);
 
@@ -75,7 +75,7 @@ namespace AntiCulture.Kid
         /// </summary>
         /// <param name="subject">subject concept</param>
         /// <returns>least documented verb</returns>
-        private Concept GetLeastDocumentedVerb(Concept subject)
+        private static Concept GetLeastDocumentedVerb(Concept subject)
         {
             int minimumComplementCount = -1;
             Concept verb;
@@ -102,7 +102,7 @@ namespace AntiCulture.Kid
         /// </summary>
         /// <param name="subject">subject concept</param>
         /// <returns>random verb</returns>
-        private Concept GetRandomVerb(Concept subject)
+        private static Concept GetRandomVerb(Concept subject)
         {
             List<Concept> verbList = new List<Concept>(Memory.TotalVerbList);
             return verbList[random.Next(verbList.Count)];
@@ -113,7 +113,7 @@ namespace AntiCulture.Kid
         /// </summary>
         /// <param name="subject">subject concept</param>
         /// <returns>Whether it is possible to ask questions about concept or not </returns>
-        private bool IsConceptAskable(Concept subject)
+        private static bool IsConceptAskable(Concept subject)
         {
             ConnectionBranch flatBranch;
             foreach (KeyValuePair<Concept, ConnectionBranch> verbAndBranch in subject.FlatConnectionBranchList)
@@ -133,7 +133,7 @@ namespace AntiCulture.Kid
         /// </summary>
         /// <param name="conceptCollection">concept collection</param>
         /// <returns>the concept with the least amount of optimized connections</returns>
-        private Concept GetConceptWithLeastOptimizedConnection(IEnumerable<Concept> conceptCollection)
+        private static Concept GetConceptWithLeastOptimizedConnection(IEnumerable<Concept> conceptCollection)
         {
             int minimumOptimizedConnectionCount = -1;
             int currentOptimizedConnectionCount;
@@ -157,7 +157,7 @@ namespace AntiCulture.Kid
         /// </summary>
         /// <param name="conceptCollection">concept collection</param>
         /// <returns>the concept with the largest level of asymetry</returns>
-        private Concept GetConceptWithMostAsymmetricOptimizedConnection(HashSet<Concept> conceptCollection)
+        private static Concept GetConceptWithMostAsymmetricOptimizedConnection(HashSet<Concept> conceptCollection)
         {
             double maximumAsymetry = -1;
             double currentAsymerty;
@@ -181,7 +181,7 @@ namespace AntiCulture.Kid
         /// </summary>
         /// <param name="concept">concept</param>
         /// <returns>how many optimized collections are in concept</returns>
-        private int CountOptimizedConnection(Concept concept)
+        private static int CountOptimizedConnection(Concept concept)
         {
             int optimizedConnectionCount = 0;
             foreach (ConnectionBranch branch in concept.OptimizedConnectionBranchList.Values)
@@ -197,7 +197,7 @@ namespace AntiCulture.Kid
         /// </summary>
         /// <param name="concept">concept</param>
         /// <returns>concept's level of asymetry (from 0 to 1)</returns>
-        private double GetConceptAsymetry(Concept concept)
+        private static double GetConceptAsymetry(Concept concept)
         {
             double asymetry = 0;
 
@@ -221,7 +221,7 @@ namespace AntiCulture.Kid
         /// <param name="subject">subject concept</param>
         /// <param name="verb">verb concept</param>
         /// <returns>a connection branch's asymetry (from 0 to 1)</returns>
-        private double GetBranchAsymetry(Concept subject, Concept verb)
+        private static double GetBranchAsymetry(Concept subject, Concept verb)
         {
             double asymetry = 0;
 
