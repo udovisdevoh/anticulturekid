@@ -5,13 +5,25 @@ using System.Text;
 
 namespace AntiCulture.Kid
 {
-    public class DisambiguationNamer : AbstractDisambiguationNamer
+    /// <summary>
+    /// Add paranthesed disambiguation concept name to autocomplete concept names
+    /// </summary>
+    public class DisambiguationNamer
     {
         #region Fields
+        /// <summary>
+        /// Brotherhood manager
+        /// </summary>
         private BrotherHoodManager brotherHoodManager;
 
+        /// <summary>
+        /// Disambiguation concept mapping cache
+        /// </summary>
         private Dictionary<Concept, Concept> cache = new Dictionary<Concept, Concept>();
 
+        /// <summary>
+        /// Repairer
+        /// </summary>
         private Repairer repairer;
         #endregion
 
@@ -23,8 +35,13 @@ namespace AntiCulture.Kid
         }
         #endregion
 
-        #region Methods
-        public override Concept GetContextConcept(Concept subject)
+        #region Public Methods
+        /// <summary>
+        /// Returns the context concept for subject concept
+        /// </summary>
+        /// <param name="subject">subject concept</param>
+        /// <returns>context concept</returns>
+        public Concept GetContextConcept(Concept subject)
         {
             Concept bestParent = null;
 

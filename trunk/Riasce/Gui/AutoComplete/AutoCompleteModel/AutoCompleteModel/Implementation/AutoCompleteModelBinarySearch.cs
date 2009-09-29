@@ -5,6 +5,9 @@ using System.Text;
 
 namespace AntiCulture.Kid
 {
+    /// <summary>
+    /// Represents autocomplete working with binary search
+    /// </summary>
     class AutoCompleteModelBinarySearch : AbstractAutoCompleteModel
     {
         #region Fields

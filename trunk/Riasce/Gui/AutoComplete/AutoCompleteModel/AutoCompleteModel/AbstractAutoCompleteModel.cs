@@ -5,6 +5,9 @@ using System.Text;
 
 namespace AntiCulture.Kid
 {
+    /// <summary>
+    /// Represents an autocomplete engine
+    /// </summary>
     abstract class AbstractAutoCompleteModel
     {
         #region Fields
