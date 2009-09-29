@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.21022</ProductVersion>
+    <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{3796AA35-DC7B-41DF-A296-2B45DAF6496B}</ProjectGuid>
     <OutputType>WinExe</OutputType>
@@ -174,16 +174,14 @@
     <Compile Include="Ai\StatementListFactory\StatementFactory\Implementation\AiSql\UpdateStatementFactory.cs" />
     <Compile Include="ExternalModules\Linguistics\PhoneticMatrixManager.cs" />
     <Compile Include="Gui\AutoComplete\AutoCompleteModel\AutoCompleteModel\Implementation\AutoCompleteModelBinarySearch.cs" />
-    <Compile Include="Gui\AutoComplete\AutoCompleteModel\DisambiguationNamer\AbstractDisambiguationNamer.cs" />
-    <Compile Include="Gui\AutoComplete\AutoCompleteModel\DisambiguationNamer\Implementation\DisambiguationNamer.cs" />
+    <Compile Include="Gui\AutoComplete\AutoCompleteModel\DisambiguationNamer.cs" />
     <Compile Include="Gui\AutoComplete\AutoCompleteModel\AutoCompleteModel\AbstractAutoCompleteModel.cs" />
     <Compile Include="Gui\AutoComplete\AutoCompleteViewer\AutoCompleteViewer.xaml.cs">
       <DependentUpon>AutoCompleteViewer.xaml</DependentUpon>
     </Compile>
     <Compile Include="Gui\AutoComplete\AutoComplete.cs" />
     <Compile Include="Gui\AutoComplete\RegexMatcher.cs" />
-    <Compile Include="Gui\CommandHistory\AbstractCommandHistory.cs" />
-    <Compile Include="Gui\CommandHistory\Implementation\CommandHistory.cs" />
+    <Compile Include="Gui\CommandHistory.cs" />
     <Compile Include="Ai\FeelingMonitor\FeelingMonitor.cs" />
     <Compile Include="Gui\Help\Help.xaml.cs">
       <DependentUpon>Help.xaml</DependentUpon>
@@ -313,7 +311,7 @@
     <Compile Include="ExternalModules\WikipediaParser\CategoryListSorterTrimmer\CategoryListSorterTrimmer.cs" />
     <Compile Include="ExternalModules\WikipediaParser\CategoryListSorterTrimmer\SortableCategory.cs" />
     <Compile Include="ExternalModules\WikipediaParser\WikiCategoryListPage.cs" />
-    <Compile Include="ExternalModules\WebExplorer\WebExplorer.cs" />
+    <Compile Include="ExternalModules\WebExplorer.cs" />
   </ItemGroup>
   <ItemGroup>
     <Page Include="Gui\AutoComplete\AutoCompleteViewer\AutoCompleteViewer.xaml">
