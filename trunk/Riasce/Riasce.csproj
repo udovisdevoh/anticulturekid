@@ -193,8 +193,7 @@
     <Compile Include="Gui\Visualizer\StringEventArgs.cs" />
     <Compile Include="Gui\Visualizer\PictureCache.cs" />
     <Compile Include="Gui\Visualizer\VisualizerHistory.cs" />
-    <Compile Include="Gui\Visualizer\VisualizerViewer\ColorMaker\AbstractColorMaker.cs" />
-    <Compile Include="Gui\Visualizer\VisualizerViewer\ColorMaker\Implementation\ColorMaker.cs" />
+    <Compile Include="Gui\Visualizer\VisualizerViewer\ColorMaker.cs" />
     <Compile Include="ExternalModules\Linguistics\Matrix.cs" />
     <Compile Include="ExternalModules\Linguistics\SemanticLikenessMatrixBuilder.cs" />
     <Compile Include="ExternalModules\Linguistics\WordMatrixExtractor.cs" />
