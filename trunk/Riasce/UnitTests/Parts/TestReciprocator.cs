@@ -14,7 +14,7 @@ namespace AntiCulture.Kid
 
         private static void TestPostConnectionInverseOf()
         {
-            ConnectionManager connectionManager = new ConnectionManager();
+            
             
             Repairer repairer = new Repairer();
             Memory.TotalVerbList = new HashSet<Concept>();
@@ -33,19 +33,19 @@ namespace AntiCulture.Kid
 
             repairer.Repair(pine, tree);
 
-            connectionManager.Plug(pine, isa, tree);
+            ConnectionManager.Plug(pine, isa, tree);
 
             repairer.Repair(tree, plant);
 
-            connectionManager.Plug(tree, isa, plant);
+            ConnectionManager.Plug(tree, isa, plant);
 
             repairer.Repair(plant, water);
 
-            connectionManager.Plug(plant, madeof, water);
+            ConnectionManager.Plug(plant, madeof, water);
 
             repairer.Repair(water, liquid);
 
-            connectionManager.Plug(water, isa, liquid);
+            ConnectionManager.Plug(water, isa, liquid);
 
             repairer.Repair(pine, tree, plant, water, liquid);
 
@@ -67,21 +67,21 @@ namespace AntiCulture.Kid
 
             //Pre-conditions
 
-            if (!connectionManager.TestConnection(plant, madeof, water))
+            if (!ConnectionManager.TestConnection(plant, madeof, water))
                 throw new Exception("Should be connected because it's explicit");
 
             //Real test
 
-            if (!connectionManager.TestConnection(tree, madeof, water))
+            if (!ConnectionManager.TestConnection(tree, madeof, water))
                 throw new Exception("Should be connected because it's implicit");
 
-            if (!connectionManager.TestConnection(pine, madeof, water))
+            if (!ConnectionManager.TestConnection(pine, madeof, water))
                 throw new Exception("Should be connected because it's implicit");
 
-            if (!connectionManager.TestConnection(pine, madeof, liquid))
+            if (!ConnectionManager.TestConnection(pine, madeof, liquid))
                 throw new Exception("Should be connected because it's implicit");
 
-            if (!connectionManager.TestConnection(liquid, partof, pine))
+            if (!ConnectionManager.TestConnection(liquid, partof, pine))
                 throw new Exception("Should be connected because it's implicit");
 
             /*pine isa tree

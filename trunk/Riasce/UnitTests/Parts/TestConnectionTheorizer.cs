@@ -15,9 +15,9 @@ namespace AntiCulture.Kid
         private static void TestPineMadeOfWood()
         {
             RejectedTheories rejectedTheories = new RejectedTheories();
-            ConnectionManager connectionManager = new ConnectionManager();
+            
             BrotherHoodManager brotherHoodManager = new BrotherHoodManager();
-            ConnectionTheorizer connectionTheorizer = new ConnectionTheorizer(rejectedTheories, connectionManager, brotherHoodManager);
+            ConnectionTheorizer connectionTheorizer = new ConnectionTheorizer(rejectedTheories, brotherHoodManager);
             Repairer repairer = new Repairer();
             Memory.TotalVerbList = new HashSet<Concept>();
 
@@ -42,22 +42,22 @@ namespace AntiCulture.Kid
             MetaConnectionManager.AddMetaConnection(madeof, "muct", madeof);
 
             repairer.Repair(pine, tree);
-            connectionManager.Plug(pine,isa,tree);
+            ConnectionManager.Plug(pine,isa,tree);
 
             repairer.Repair(pine, water);
-            connectionManager.Plug(pine, madeof, water);
+            ConnectionManager.Plug(pine, madeof, water);
 
             repairer.Repair(willow, tree);
-            connectionManager.Plug(willow, isa, tree);
+            ConnectionManager.Plug(willow, isa, tree);
 
             repairer.Repair(palmtree, tree);
-            connectionManager.Plug(palmtree, isa, tree);
+            ConnectionManager.Plug(palmtree, isa, tree);
 
             repairer.Repair(palmtree, wood);
-            connectionManager.Plug(palmtree, madeof, wood);
+            ConnectionManager.Plug(palmtree, madeof, wood);
 
             repairer.Repair(willow, wood);
-            connectionManager.Plug(willow, madeof, wood);
+            ConnectionManager.Plug(willow, madeof, wood);
 
             repairer.Repair(pine,tree,willow,palmtree,wood);
 

@@ -29,7 +29,7 @@ namespace AntiCulture.Kid
 
         private static void TestFlattenizerInverseOfWithMuct()
         {
-            ConnectionManager connectionManager = new ConnectionManager();
+            
             Repairer repairer = new Repairer();
 
             Concept isa = new Concept("isa");
@@ -42,16 +42,16 @@ namespace AntiCulture.Kid
             MetaConnectionManager.AddMetaConnection(isa, "inverse_of", someare);
             MetaConnectionManager.AddMetaConnection(isa, "muct", isa);
 
-            if (connectionManager.TestConnection(pine, isa, plant))
+            if (ConnectionManager.TestConnection(pine, isa, plant))
                 throw new Exception("Connection shouldn't exist yet");
 
             repairer.Repair(pine, isa, tree, plant);
 
-            connectionManager.Plug(tree, isa, plant);
+            ConnectionManager.Plug(tree, isa, plant);
 
             repairer.Repair(pine, isa, tree, plant);
 
-            connectionManager.Plug(pine, isa, tree);
+            ConnectionManager.Plug(pine, isa, tree);
 
             repairer.Repair(pine, isa, tree, plant);
 
@@ -66,24 +66,24 @@ namespace AntiCulture.Kid
             if (!MetaConnectionManager.IsFlatMetaConnected(someare, "liffid", someare))
                 throw new Exception("MetaConnection should exist because it's implicit");
 
-            if (!connectionManager.TestConnection(tree, isa, plant))
+            if (!ConnectionManager.TestConnection(tree, isa, plant))
                 throw new Exception("Connection should exist because it's explicit");
 
-            if (!connectionManager.TestConnection(plant, someare, tree))
+            if (!ConnectionManager.TestConnection(plant, someare, tree))
                 throw new Exception("Connection should exist because it's explicit");
 
-            if (!connectionManager.TestConnection(pine, isa, tree))
+            if (!ConnectionManager.TestConnection(pine, isa, tree))
                 throw new Exception("Connection should exist because it's explicit");
 
-            if (!connectionManager.TestConnection(tree, someare, pine))
+            if (!ConnectionManager.TestConnection(tree, someare, pine))
                 throw new Exception("Connection should exist because it's explicit");
 
             //Real test
 
-            if (!connectionManager.TestConnection(pine, isa, plant))
+            if (!ConnectionManager.TestConnection(pine, isa, plant))
                 throw new Exception("Connection should exist because it's implicit");
 
-            if (!connectionManager.TestConnection(plant, someare, pine))
+            if (!ConnectionManager.TestConnection(plant, someare, pine))
                 throw new Exception("Connection should exist because it's implicit");
 
         }
@@ -91,7 +91,7 @@ namespace AntiCulture.Kid
         private static void TestFlattenizerGeneralStuff()
         {
             Memory.TotalVerbList = new HashSet<Concept>();
-            ConnectionManager connectionManager = new ConnectionManager();
+            
             SerialFlattenizer flattenizer = new SerialFlattenizer();
             Optimizer optimizer = new Optimizer();
 
@@ -161,7 +161,7 @@ namespace AntiCulture.Kid
 
             #region Testing the argumentless proof resulting from flattening the 1st layer
             Proof proof;
-            connectionManager.Plug(pine, isa, tree);
+            ConnectionManager.Plug(pine, isa, tree);
 
             proof = pine.GetFlatConnectionBranch(isa).GetProofTo(tree);
             if (proof != null)
@@ -178,10 +178,10 @@ namespace AntiCulture.Kid
 
             flattenizer.Repair(tree);
 
-            if (!connectionManager.TestConnection(pine, isa, tree))
+            if (!ConnectionManager.TestConnection(pine, isa, tree))
                 throw new Exception("Connection should exist");
 
-            if (!connectionManager.TestConnection(tree, someare, pine))
+            if (!ConnectionManager.TestConnection(tree, someare, pine))
                 throw new Exception("Connection should exist");
             #endregion
 
@@ -201,17 +201,17 @@ namespace AntiCulture.Kid
             if (!MetaConnectionManager.IsFlatMetaConnected(make, "direct_implication", lovedby))
                 throw new Exception("Verbs should be flat metaConnected because it's explicit");
 
-            connectionManager.Plug(mother, make, child);
+            ConnectionManager.Plug(mother, make, child);
 
             flattenizer.Repair(mother);
             optimizer.Repair(mother);
             flattenizer.Repair(child);
             optimizer.Repair(child);
 
-            if (!connectionManager.TestConnection(child, love, mother))
+            if (!ConnectionManager.TestConnection(child, love, mother))
                 throw new Exception("Concepts should be connected because it's implicit");
 
-            if (!connectionManager.TestConnection(mother, lovedby, child))
+            if (!ConnectionManager.TestConnection(mother, lovedby, child))
                 throw new Exception("Concepts should be connected because it's implicit");
 
             Proof testProof;
@@ -234,12 +234,12 @@ namespace AntiCulture.Kid
             flattenizer.Repair(plant);
             optimizer.Repair(plant);
 
-            if (connectionManager.TestConnection(pine, isa, plant))
+            if (ConnectionManager.TestConnection(pine, isa, plant))
                 throw new Exception("Connection shouldn't exist yet exist");
 
-            if (connectionManager.TestConnection(plant, someare, pine))
+            if (ConnectionManager.TestConnection(plant, someare, pine))
                 throw new Exception("Connection shouldn't exist yet exist");
-            connectionManager.Plug(tree, isa, plant);
+            ConnectionManager.Plug(tree, isa, plant);
 
             flattenizer.Repair(tree);
             optimizer.Repair(tree);
@@ -248,25 +248,25 @@ namespace AntiCulture.Kid
             flattenizer.Repair(plant);
             optimizer.Repair(plant);
 
-            if (!connectionManager.TestConnection(tree, isa, plant))
+            if (!ConnectionManager.TestConnection(tree, isa, plant))
                 throw new Exception("Connection should exist");
 
-            if (!connectionManager.TestConnection(pine, isa, plant))
+            if (!ConnectionManager.TestConnection(pine, isa, plant))
                 throw new Exception("Connection should exist");
 
-            if (!connectionManager.TestConnection(plant, someare, pine))
+            if (!ConnectionManager.TestConnection(plant, someare, pine))
                 throw new Exception("Connection should exist");
 
-            if (connectionManager.TestConnection(plant, isa, pine))
+            if (ConnectionManager.TestConnection(plant, isa, pine))
                 throw new Exception("Connection shouldn't exist exist because it's illogical");
 
-            if (connectionManager.TestConnection(lifeform, someare, pine))
+            if (ConnectionManager.TestConnection(lifeform, someare, pine))
                 throw new Exception("Connection shouldn't exist yet");
 
-            if (connectionManager.TestConnection(pine, isa, lifeform))
+            if (ConnectionManager.TestConnection(pine, isa, lifeform))
                 throw new Exception("Connection shouldn't exist yet");
 
-            connectionManager.Plug(plant, isa, lifeform);
+            ConnectionManager.Plug(plant, isa, lifeform);
 
             flattenizer.Repair(tree);
             optimizer.Repair(tree);
@@ -287,10 +287,10 @@ namespace AntiCulture.Kid
 
             //Real test
 
-            if (!connectionManager.TestConnection(lifeform, someare, pine))
+            if (!ConnectionManager.TestConnection(lifeform, someare, pine))
                 throw new Exception("Connection should exist");
 
-            if (!connectionManager.TestConnection(pine, isa, lifeform))
+            if (!ConnectionManager.TestConnection(pine, isa, lifeform))
                 throw new Exception("Connection should exist");
 
             flattenizer.Repair(plant);
@@ -300,10 +300,10 @@ namespace AntiCulture.Kid
             flattenizer.Repair(tree);
             optimizer.Repair(tree);
 
-            if (connectionManager.TestConnection(pine, madeof, wood))
+            if (ConnectionManager.TestConnection(pine, madeof, wood))
                 throw new Exception("Connection shouldn't exist yet");
 
-            connectionManager.Plug(tree, madeof, wood);
+            ConnectionManager.Plug(tree, madeof, wood);
 
             flattenizer.Repair(wood);
             optimizer.Repair(wood);
@@ -312,23 +312,23 @@ namespace AntiCulture.Kid
             flattenizer.Repair(tree);
             optimizer.Repair(tree);
 
-            if (!connectionManager.TestConnection(pine, madeof, wood))
+            if (!ConnectionManager.TestConnection(pine, madeof, wood))
                 throw new Exception("Connection should exist");
 
-            if (connectionManager.TestConnection(pine, madeof, material))
+            if (ConnectionManager.TestConnection(pine, madeof, material))
                 throw new Exception("Connection shouldn't exist");
 
-            connectionManager.Plug(wood, isa, material);
+            ConnectionManager.Plug(wood, isa, material);
 
             flattenizer.Repair(pine);
             optimizer.Repair(pine);
             flattenizer.Repair(material);
             optimizer.Repair(material);
 
-            if (!connectionManager.TestConnection(pine, madeof, material))
+            if (!ConnectionManager.TestConnection(pine, madeof, material))
                 throw new Exception("Connection should exist");
 
-            if (!connectionManager.TestConnection(material, partof, pine))
+            if (!ConnectionManager.TestConnection(material, partof, pine))
                 throw new Exception("Connection should exist");
 
 
@@ -345,10 +345,10 @@ namespace AntiCulture.Kid
             flattenizer.Repair(pine);
             optimizer.Repair(pine);
 
-            if (connectionManager.TestConnection(wood, contradict, water))
+            if (ConnectionManager.TestConnection(wood, contradict, water))
                 throw new Exception("Connection shouldn't exist yet");
 
-            connectionManager.Plug(liquid, contradict, solid);
+            ConnectionManager.Plug(liquid, contradict, solid);
 
             flattenizer.Repair(water);
             optimizer.Repair(water);
@@ -363,7 +363,7 @@ namespace AntiCulture.Kid
             flattenizer.Repair(pine);
             optimizer.Repair(pine);
 
-            connectionManager.Plug(solid, isa, material);
+            ConnectionManager.Plug(solid, isa, material);
 
             flattenizer.Repair(water);
             optimizer.Repair(water);
@@ -378,7 +378,7 @@ namespace AntiCulture.Kid
             flattenizer.Repair(pine);
             optimizer.Repair(pine);
 
-            connectionManager.Plug(liquid, isa, material);
+            ConnectionManager.Plug(liquid, isa, material);
 
             flattenizer.Repair(water);
             optimizer.Repair(water);
@@ -393,7 +393,7 @@ namespace AntiCulture.Kid
             flattenizer.Repair(pine);
             optimizer.Repair(pine);
 
-            connectionManager.Plug(wood, isa, solid);
+            ConnectionManager.Plug(wood, isa, solid);
 
             flattenizer.Repair(water);
             optimizer.Repair(water);
@@ -408,7 +408,7 @@ namespace AntiCulture.Kid
             flattenizer.Repair(pine);
             optimizer.Repair(pine);
 
-            connectionManager.Plug(water, isa, liquid);
+            ConnectionManager.Plug(water, isa, liquid);
 
             flattenizer.Repair(water);
             optimizer.Repair(water);
@@ -423,40 +423,40 @@ namespace AntiCulture.Kid
             flattenizer.Repair(pine);
             optimizer.Repair(pine);
 
-            if (!connectionManager.TestConnection(solid, contradict, liquid))
+            if (!ConnectionManager.TestConnection(solid, contradict, liquid))
                 throw new Exception("Connection should exist");
 
-            if (!connectionManager.TestConnection(liquid, contradict, solid))
+            if (!ConnectionManager.TestConnection(liquid, contradict, solid))
                 throw new Exception("Connection should exist");
 
-            if (!connectionManager.TestConnection(water, contradict, solid))
+            if (!ConnectionManager.TestConnection(water, contradict, solid))
                 throw new Exception("Connection should exist");
 
-            if (!connectionManager.TestConnection(solid, contradict, water))
+            if (!ConnectionManager.TestConnection(solid, contradict, water))
                 throw new Exception("Connection should exist");
 
-            if (!connectionManager.TestConnection(wood, contradict, liquid))
+            if (!ConnectionManager.TestConnection(wood, contradict, liquid))
                 throw new Exception("Connection should exist");
 
-            if (!connectionManager.TestConnection(liquid, contradict, wood))
+            if (!ConnectionManager.TestConnection(liquid, contradict, wood))
                 throw new Exception("Connection should exist");
 
-            if (!connectionManager.TestConnection(water, contradict, wood))
+            if (!ConnectionManager.TestConnection(water, contradict, wood))
                 throw new Exception("Connection should exist");
 
-            if (!connectionManager.TestConnection(wood, contradict, water))
+            if (!ConnectionManager.TestConnection(wood, contradict, water))
                 throw new Exception("Connection should exist");
 
-            if (connectionManager.TestConnection(pine, contradict, liquid))
+            if (ConnectionManager.TestConnection(pine, contradict, liquid))
                 throw new Exception("Connection shouldn't exist because it's illogical");
 
-            if (connectionManager.TestConnection(pine, madeof, water))
+            if (ConnectionManager.TestConnection(pine, madeof, water))
                 throw new Exception("Connection shouldn't exist yet");
 
             flattenizer.Repair(lifeform);
             optimizer.Repair(lifeform);
 
-            connectionManager.Plug(lifeform, madeof, water);
+            ConnectionManager.Plug(lifeform, madeof, water);
 
             flattenizer.Repair(lifeform);
             optimizer.Repair(lifeform);
@@ -467,14 +467,14 @@ namespace AntiCulture.Kid
             flattenizer.Repair(water);
             optimizer.Repair(water);
 
-            if (!connectionManager.TestConnection(pine, madeof, water))
+            if (!ConnectionManager.TestConnection(pine, madeof, water))
                 throw new Exception("Connection should exist");
             #endregion
         }
 
         private static void TestLongDiversifiedRecursivity()
         {
-            ConnectionManager connectionManager = new ConnectionManager();
+            
             Repairer repairer = new Repairer();
 
             Memory.TotalVerbList = new HashSet<Concept>();
@@ -498,66 +498,66 @@ namespace AntiCulture.Kid
             MetaConnectionManager.AddMetaConnection(madeof, "liffid", isa);
             MetaConnectionManager.AddMetaConnection(madeof, "muct", madeof);
 
-            connectionManager.Plug(mygarden, isa, garden);
+            ConnectionManager.Plug(mygarden, isa, garden);
             
             repairer.Repair(garden, plant);
 
-            connectionManager.Plug(garden, madeof, plant);
+            ConnectionManager.Plug(garden, madeof, plant);
             
             repairer.Repair(plant, lifeform);
             
-            connectionManager.Plug(plant, isa, lifeform);
+            ConnectionManager.Plug(plant, isa, lifeform);
 
             repairer.Repair(lifeform, water);
 
-            connectionManager.Plug(lifeform, madeof, water);
+            ConnectionManager.Plug(lifeform, madeof, water);
 
             repairer.Repair(water, liquid);
 
-            connectionManager.Plug(water, isa, liquid);
+            ConnectionManager.Plug(water, isa, liquid);
 
             repairer.Repair(liquid, water);
 
-            connectionManager.Plug(liquid, madeof, matter);
+            ConnectionManager.Plug(liquid, madeof, matter);
 
             //pre-conditions
 
             repairer.Repair(mygarden, garden);
 
-            if (!connectionManager.TestConnection(mygarden, isa, garden))
+            if (!ConnectionManager.TestConnection(mygarden, isa, garden))
                 throw new Exception("Should be connected because it's explicit");
 
             //real test
 
             repairer.Repair(mygarden, plant);
 
-            if (!connectionManager.TestConnection(mygarden, madeof, plant))
+            if (!ConnectionManager.TestConnection(mygarden, madeof, plant))
                 throw new Exception("Should be connected because it's implicit");
 
             repairer.Repair(mygarden, lifeform);
 
-            if (!connectionManager.TestConnection(mygarden, madeof, lifeform))
+            if (!ConnectionManager.TestConnection(mygarden, madeof, lifeform))
                 throw new Exception("Should be connected because it's implicit");
 
             repairer.Repair(mygarden, water);
 
-            if (!connectionManager.TestConnection(mygarden, madeof, water))
+            if (!ConnectionManager.TestConnection(mygarden, madeof, water))
                 throw new Exception("Should be connected because it's implicit");
 
             repairer.Repair(mygarden, liquid);
 
-            if (!connectionManager.TestConnection(mygarden, madeof, liquid))
+            if (!ConnectionManager.TestConnection(mygarden, madeof, liquid))
                 throw new Exception("Should be connected because it's implicit");
 
             repairer.Repair(mygarden, matter);
 
-            if (!connectionManager.TestConnection(mygarden, madeof, matter))
+            if (!ConnectionManager.TestConnection(mygarden, madeof, matter))
                 throw new Exception("Should be connected because it's implicit");
         }
 
         private static void TestXmasPineIsaThing()
         {
-            ConnectionManager connectionManager = new ConnectionManager();
+            
             Repairer repairer = new Repairer();
 
             Memory.TotalVerbList = new HashSet<Concept>();
@@ -575,23 +575,23 @@ namespace AntiCulture.Kid
             MetaConnectionManager.AddMetaConnection(isa, "muct", isa);
             MetaConnectionManager.AddMetaConnection(isa, "inverse_of", someare);
 
-            connectionManager.Plug(xmaspine, isa, pine);
+            ConnectionManager.Plug(xmaspine, isa, pine);
 
             repairer.Repair(pine, tree);
 
-            connectionManager.Plug(pine, isa, tree);
+            ConnectionManager.Plug(pine, isa, tree);
             
             repairer.Repair(tree, plant);
 
-            connectionManager.Plug(tree, isa, plant);
+            ConnectionManager.Plug(tree, isa, plant);
 
             repairer.Repair(plant, lifeform);
 
-            connectionManager.Plug(plant, isa, lifeform);
+            ConnectionManager.Plug(plant, isa, lifeform);
 
             repairer.Repair(lifeform, thing);
 
-            connectionManager.Plug(lifeform, isa, thing);
+            ConnectionManager.Plug(lifeform, isa, thing);
 
             repairer.Repair(xmaspine, pine, tree, plant, lifeform, thing);
 
@@ -602,25 +602,25 @@ namespace AntiCulture.Kid
 
             //Real test
 
-            if (!connectionManager.TestConnection(xmaspine, isa, pine))
+            if (!ConnectionManager.TestConnection(xmaspine, isa, pine))
                 throw new Exception("Should be connected because it's explicit");
 
-            if (!connectionManager.TestConnection(xmaspine, isa, tree))
+            if (!ConnectionManager.TestConnection(xmaspine, isa, tree))
                 throw new Exception("Should be connected because it's implicit");
 
-            if (!connectionManager.TestConnection(xmaspine, isa, plant))
+            if (!ConnectionManager.TestConnection(xmaspine, isa, plant))
                 throw new Exception("Should be connected because it's implicit");
 
-            if (!connectionManager.TestConnection(xmaspine, isa, lifeform))
+            if (!ConnectionManager.TestConnection(xmaspine, isa, lifeform))
                 throw new Exception("Should be connected because it's implicit");
 
-            if (!connectionManager.TestConnection(xmaspine, isa, thing))
+            if (!ConnectionManager.TestConnection(xmaspine, isa, thing))
                 throw new Exception("Should be connected because it's implicit");
         }
 
         private static void TestTreeMadeofMaterial()
         {
-            ConnectionManager connectionManager = new ConnectionManager();
+            
             SerialFlattenizer flattenizer = new SerialFlattenizer();
             Optimizer optimizer = new Optimizer();
             Memory.TotalVerbList = new HashSet<Concept>();
@@ -645,11 +645,11 @@ namespace AntiCulture.Kid
             flattenizer.Repair(material);
             optimizer.Repair(material);
 
-            if (connectionManager.TestConnection(tree, madeof, material))
+            if (ConnectionManager.TestConnection(tree, madeof, material))
                 throw new Exception("Connection shouldn't exist yet");
 
 
-            connectionManager.Plug(tree, madeof, wood);
+            ConnectionManager.Plug(tree, madeof, wood);
 
             flattenizer.Repair(tree);
             optimizer.Repair(tree);
@@ -658,7 +658,7 @@ namespace AntiCulture.Kid
             flattenizer.Repair(material);
             optimizer.Repair(material);
 
-            connectionManager.Plug(wood, isa, material);
+            ConnectionManager.Plug(wood, isa, material);
 
             flattenizer.Repair(tree);
             optimizer.Repair(tree);
@@ -667,13 +667,13 @@ namespace AntiCulture.Kid
             flattenizer.Repair(material);
             optimizer.Repair(material);
 
-            if (!connectionManager.TestConnection(tree, madeof, material))
+            if (!ConnectionManager.TestConnection(tree, madeof, material))
                 throw new Exception("Connection should exist because it's implicit");
         }
 
         private static void PineMadeofMaterial()
         {
-            ConnectionManager connectionManager = new ConnectionManager();
+            
             Repairer repairer = new Repairer();
             Memory.TotalVerbList = new HashSet<Concept>();
 
@@ -696,45 +696,45 @@ namespace AntiCulture.Kid
 
             repairer.Repair(pine, tree);
 
-            connectionManager.Plug(pine, isa, tree);
+            ConnectionManager.Plug(pine, isa, tree);
 
             repairer.Repair(tree,wood);
 
-            connectionManager.Plug(tree,madeof,wood);
+            ConnectionManager.Plug(tree,madeof,wood);
 
             repairer.Repair(wood, material);
 
-            connectionManager.Plug(wood,isa,material);
+            ConnectionManager.Plug(wood,isa,material);
 
             repairer.Repair(pine,tree,wood,material);
 
             //Pre-conditions
 
-            if (!connectionManager.TestConnection(pine, isa, tree))
+            if (!ConnectionManager.TestConnection(pine, isa, tree))
                 throw new Exception("Concepts should be connected because it's explicit");
 
-            if (!connectionManager.TestConnection(tree,madeof,wood))
+            if (!ConnectionManager.TestConnection(tree,madeof,wood))
                 throw new Exception("Concepts should be connected because it's explicit");
 
-            if (!connectionManager.TestConnection(wood, isa, material))
+            if (!ConnectionManager.TestConnection(wood, isa, material))
                 throw new Exception("Concepts should be connected because it's explicit");
 
             //Real test
 
-            if (!connectionManager.TestConnection(pine, madeof, wood))
+            if (!ConnectionManager.TestConnection(pine, madeof, wood))
                 throw new Exception("Concepts should be connected because it's implicit");
 
-            if (!connectionManager.TestConnection(tree, madeof, material))
+            if (!ConnectionManager.TestConnection(tree, madeof, material))
                 throw new Exception("Concepts should be connected because it's implicit");
 
-            if (!connectionManager.TestConnection(pine, madeof, material))
+            if (!ConnectionManager.TestConnection(pine, madeof, material))
                 throw new Exception("Concepts should be connected because it's implicit");
         }
 
         private static void PineMadeofEnergy()
         {
             
-            ConnectionManager connectionManager = new ConnectionManager();
+            
             Repairer repairer = new Repairer();
             Memory.TotalVerbList = new HashSet<Concept>();
 
@@ -760,49 +760,49 @@ namespace AntiCulture.Kid
 
             repairer.Repair(pine, tree);
 
-            connectionManager.Plug(pine, isa, tree);
+            ConnectionManager.Plug(pine, isa, tree);
 
             repairer.Repair(tree, wood);
 
-            connectionManager.Plug(tree, madeof, wood);
+            ConnectionManager.Plug(tree, madeof, wood);
 
             repairer.Repair(wood, material);
 
-            connectionManager.Plug(wood, isa, material);
+            ConnectionManager.Plug(wood, isa, material);
 
             repairer.Repair(material, matter);
 
-            connectionManager.Plug(material,madeof,matter);
+            ConnectionManager.Plug(material,madeof,matter);
 
             repairer.Repair(matter, energy);
 
-            connectionManager.Plug(matter, madeof, energy);
+            ConnectionManager.Plug(matter, madeof, energy);
 
             repairer.Repair(pine, tree, wood, material,matter,energy);
 
             //Pre-conditions
 
-            if (!connectionManager.TestConnection(pine, isa, tree))
+            if (!ConnectionManager.TestConnection(pine, isa, tree))
                 throw new Exception("Concepts should be connected because it's explicit");
 
-            if (!connectionManager.TestConnection(tree, madeof, wood))
+            if (!ConnectionManager.TestConnection(tree, madeof, wood))
                 throw new Exception("Concepts should be connected because it's explicit");
 
-            if (!connectionManager.TestConnection(wood, isa, material))
+            if (!ConnectionManager.TestConnection(wood, isa, material))
                 throw new Exception("Concepts should be connected because it's explicit");
 
             //Real test
 
-            if (!connectionManager.TestConnection(pine, madeof, wood))
+            if (!ConnectionManager.TestConnection(pine, madeof, wood))
                 throw new Exception("Concepts should be connected because it's implicit");
 
-            if (!connectionManager.TestConnection(tree, madeof, material))
+            if (!ConnectionManager.TestConnection(tree, madeof, material))
                 throw new Exception("Concepts should be connected because it's implicit");
 
-            if (!connectionManager.TestConnection(pine, madeof, material))
+            if (!ConnectionManager.TestConnection(pine, madeof, material))
                 throw new Exception("Concepts should be connected because it's implicit");
 
-            if (!connectionManager.TestConnection(pine, madeof, energy))
+            if (!ConnectionManager.TestConnection(pine, madeof, energy))
                 throw new Exception("Concepts should be connected because it's implicit");
         }
 
@@ -814,7 +814,7 @@ namespace AntiCulture.Kid
 
 
             Memory.TotalVerbList = new HashSet<Concept>();
-            ConnectionManager connectionManager = new ConnectionManager();
+            
             
             Reciprocator reciprocator = new Reciprocator();
             Repairer repairer = new Repairer();
@@ -835,11 +835,11 @@ namespace AntiCulture.Kid
 
             repairer.Repair(pine, tree);
 
-            connectionManager.Plug(pine, isa, tree);
+            ConnectionManager.Plug(pine, isa, tree);
 
             repairer.Repair(tree, wood);
 
-            connectionManager.Plug(tree, madeof, wood);
+            ConnectionManager.Plug(tree, madeof, wood);
 
             repairer.Repair(pine, tree, wood);
 
@@ -863,25 +863,25 @@ namespace AntiCulture.Kid
 
             //Pre-conditions
 
-            if (!connectionManager.TestConnection(tree, madeof, wood))
+            if (!ConnectionManager.TestConnection(tree, madeof, wood))
                 throw new Exception("Should be connected because it's explicit");
 
             //Test begins here
 
-            if (!connectionManager.TestConnection(pine, madeof, wood))
+            if (!ConnectionManager.TestConnection(pine, madeof, wood))
                 throw new Exception("Should be connected because it's implicit");
 
-            if (!connectionManager.TestConnection(pine, isa, tree))
+            if (!ConnectionManager.TestConnection(pine, isa, tree))
                 throw new Exception("Should be connected because it's implicit");
 
-            if (!connectionManager.TestConnection(tree,someare,pine))
+            if (!ConnectionManager.TestConnection(tree,someare,pine))
                 throw new Exception("Should be connected because it's implicit");
         }
 
         private static void TestOrbitDirectImplySuckInGoodOrder()
         {
             Memory.TotalVerbList = new HashSet<Concept>();
-            ConnectionManager connectionManager = new ConnectionManager();
+            
             
             Reciprocator reciprocator = new Reciprocator();
             Repairer repairer = new Repairer();
@@ -903,7 +903,7 @@ namespace AntiCulture.Kid
             MetaConnectionManager.AddMetaConnection(gravity, "direct_implication", attract);
             MetaConnectionManager.AddMetaConnection(attract, "direct_implication", suck);
 
-            connectionManager.Plug(moon, orbit, earth);
+            ConnectionManager.Plug(moon, orbit, earth);
 
             repairer.Repair(moon, earth);
 
@@ -918,25 +918,25 @@ namespace AntiCulture.Kid
             if (!MetaConnectionManager.IsFlatMetaConnected(orbit, "direct_implication", suck))
                 throw new Exception("Should be flat metaConnected because it's implicit");
 
-            if (!connectionManager.TestConnection(moon, orbit, earth))
+            if (!ConnectionManager.TestConnection(moon, orbit, earth))
                 throw new Exception("Should be flat connected because it's implicit");
 
-            if (!connectionManager.TestConnection(moon, gravity, earth))
+            if (!ConnectionManager.TestConnection(moon, gravity, earth))
                 throw new Exception("Should be flat connected because it's implicit");
 
-            if (!connectionManager.TestConnection(moon, attract, earth))
+            if (!ConnectionManager.TestConnection(moon, attract, earth))
                 throw new Exception("Should be flat connected because it's implicit");
 
             //Real test begins here
 
-            if (!connectionManager.TestConnection(moon,suck,earth))
+            if (!ConnectionManager.TestConnection(moon,suck,earth))
                 throw new Exception("Should be flat connected because it's implicit");
         }
 
         private static void TestOrbitDirectImplySuckInBadOrderWithPermutalbleSide()
         {
             Memory.TotalVerbList = new HashSet<Concept>();
-            ConnectionManager connectionManager = new ConnectionManager();
+            
             
             Reciprocator reciprocator = new Reciprocator();
             Repairer repairer = new Repairer();
@@ -958,7 +958,7 @@ namespace AntiCulture.Kid
             MetaConnectionManager.AddMetaConnection(attract, "direct_implication", suck);
             MetaConnectionManager.AddMetaConnection(orbit, "direct_implication", gravity);
             
-            connectionManager.Plug(moon, orbit, earth);
+            ConnectionManager.Plug(moon, orbit, earth);
 
             repairer.Repair(moon, earth);
 
@@ -973,25 +973,25 @@ namespace AntiCulture.Kid
             if (!MetaConnectionManager.IsFlatMetaConnected(orbit, "direct_implication", suck))
                 throw new Exception("Should be flat metaConnected because it's implicit");
 
-            if (!connectionManager.TestConnection(moon, orbit, earth))
+            if (!ConnectionManager.TestConnection(moon, orbit, earth))
                 throw new Exception("Should be flat connected because it's implicit");
 
-            if (!connectionManager.TestConnection(moon, gravity, earth))
+            if (!ConnectionManager.TestConnection(moon, gravity, earth))
                 throw new Exception("Should be flat connected because it's implicit");
 
-            if (!connectionManager.TestConnection(moon, attract, earth))
+            if (!ConnectionManager.TestConnection(moon, attract, earth))
                 throw new Exception("Should be flat connected because it's implicit");
 
             //Real test begins here
 
-            if (!connectionManager.TestConnection(moon, suck, earth))
+            if (!ConnectionManager.TestConnection(moon, suck, earth))
                 throw new Exception("Should be flat connected because it's implicit");
         }
 
         private static void TestOrbitDirectImplySuckInBadOrder()
         {
             Memory.TotalVerbList = new HashSet<Concept>();
-            ConnectionManager connectionManager = new ConnectionManager();
+            
             
             Reciprocator reciprocator = new Reciprocator();
             Repairer repairer = new Repairer();
@@ -1013,7 +1013,7 @@ namespace AntiCulture.Kid
             MetaConnectionManager.AddMetaConnection(attract, "direct_implication", suck);
             MetaConnectionManager.AddMetaConnection(orbit, "direct_implication", gravity);
 
-            connectionManager.Plug(moon, orbit, earth);
+            ConnectionManager.Plug(moon, orbit, earth);
 
             repairer.Repair(moon, earth);
 
@@ -1028,25 +1028,25 @@ namespace AntiCulture.Kid
             if (!MetaConnectionManager.IsFlatMetaConnected(orbit, "direct_implication", suck))
                 throw new Exception("Should be flat metaConnected because it's implicit");
 
-            if (!connectionManager.TestConnection(moon, orbit, earth))
+            if (!ConnectionManager.TestConnection(moon, orbit, earth))
                 throw new Exception("Should be flat connected because it's implicit");
 
-            if (!connectionManager.TestConnection(moon, gravity, earth))
+            if (!ConnectionManager.TestConnection(moon, gravity, earth))
                 throw new Exception("Should be flat connected because it's implicit");
 
-            if (!connectionManager.TestConnection(moon, attract, earth))
+            if (!ConnectionManager.TestConnection(moon, attract, earth))
                 throw new Exception("Should be flat connected because it's implicit");
 
             //Real test begins here
 
-            if (!connectionManager.TestConnection(moon, suck, earth))
+            if (!ConnectionManager.TestConnection(moon, suck, earth))
                 throw new Exception("Should be flat connected because it's implicit");
         }
 
         private static void TestNoIsaMuctIsa()
         {
             Memory.TotalVerbList = new HashSet<Concept>();
-            ConnectionManager connectionManager = new ConnectionManager();
+            
             
             Reciprocator reciprocator = new Reciprocator();
             Repairer repairer = new Repairer();
@@ -1062,7 +1062,7 @@ namespace AntiCulture.Kid
             Concept water = new Concept("water");
             List<Concept> memory = new List<Concept>() { isa, someare, madeof, partof, pine, tree, plant, water };
 
-            Purifier purifier = new Purifier(repairer, connectionManager);
+            Purifier purifier = new Purifier(repairer);
 
             repairer.RepairRange(memory);
             repairer.ReciprocateRange(memory);
@@ -1095,13 +1095,13 @@ namespace AntiCulture.Kid
             MetaConnectionManager.AddMetaConnection(madeof, "muct", madeof);*/
 
             repairer.Repair(pine,isa,tree);
-            connectionManager.Plug(pine, isa, tree);
+            ConnectionManager.Plug(pine, isa, tree);
 
             repairer.Repair(tree, isa, plant);
-            connectionManager.Plug(tree,isa,plant);
+            ConnectionManager.Plug(tree,isa,plant);
 
             repairer.Repair(plant, madeof, water);
-            connectionManager.Plug(plant,madeof,water);
+            ConnectionManager.Plug(plant,madeof,water);
 
             repairer.Repair(water,tree,plant,pine);
 
@@ -1115,34 +1115,34 @@ namespace AntiCulture.Kid
 
             //pre-conditions about connections
 
-            if (!connectionManager.TestConnection(pine,isa,tree))
+            if (!ConnectionManager.TestConnection(pine,isa,tree))
                 throw new Exception("Should be connected because it's explicit");
 
-            if (!connectionManager.TestConnection(plant, madeof, water))
+            if (!ConnectionManager.TestConnection(plant, madeof, water))
                 throw new Exception("Should be connected because it's explicit");
 
-            if (!connectionManager.TestConnection(tree, madeof, water))
+            if (!ConnectionManager.TestConnection(tree, madeof, water))
                 throw new Exception("Should be connected because it's implicit");
 
-            if (!connectionManager.TestConnection(water,partof,tree))
+            if (!ConnectionManager.TestConnection(water,partof,tree))
                 throw new Exception("Should be connected because it's implicit");
 
-            if (!connectionManager.TestConnection(tree,someare,pine))
+            if (!ConnectionManager.TestConnection(tree,someare,pine))
                 throw new Exception("Should be connected because it's implicit");
 
             //real test here
 
-            if (!connectionManager.TestConnection(pine, madeof, water))
+            if (!ConnectionManager.TestConnection(pine, madeof, water))
                 throw new Exception("Should be connected because it's implicit");
 
-            if (!connectionManager.TestConnection(water, partof, pine))
+            if (!ConnectionManager.TestConnection(water, partof, pine))
                 throw new Exception("Should be connected because it's implicit");
         }
 
         private static void TestGmNotCreateCarGmMakeCar()
         {
             
-            ConnectionManager connectionManager = new ConnectionManager();
+            
             Repairer repairer = new Repairer();
             Memory.TotalVerbList = new HashSet<Concept>();
 
@@ -1161,28 +1161,28 @@ namespace AntiCulture.Kid
             //Real test here
 
             repairer.Repair(gm, create, car);
-            connectionManager.Plug(gm, create, car);
+            ConnectionManager.Plug(gm, create, car);
             repairer.Repair(gm, create, car);
 
             repairer.Repair(gm, create, car);
-            connectionManager.UnPlug(gm, create, car);
+            ConnectionManager.UnPlug(gm, create, car);
             repairer.Repair(gm, create, car);
             repairer.Repair(gm, create, car);
             
             repairer.Repair(gm, make, car);
-            connectionManager.Plug(gm, make, car);
+            ConnectionManager.Plug(gm, make, car);
             repairer.Repair(gm, make, car);
 
             repairer.Repair(gm);
             repairer.Repair(car);
-            if (!connectionManager.TestConnection(gm, make, car))
+            if (!ConnectionManager.TestConnection(gm, make, car))
                 throw new Exception("Should be connected because it's explicit");
         }
 
         private static void TestDoubleSidedLove()
         {
             
-            ConnectionManager connectionManager = new ConnectionManager();
+            
             Repairer repairer = new Repairer();
             Memory.TotalVerbList = new HashSet<Concept>();
 
@@ -1198,9 +1198,9 @@ namespace AntiCulture.Kid
             //Real test here
 
             repairer.Repair(me, love, you);
-            connectionManager.Plug(me, love, you);
+            ConnectionManager.Plug(me, love, you);
             repairer.Repair(me, love, you);
-            connectionManager.Plug(you, love, me);
+            ConnectionManager.Plug(you, love, me);
             repairer.Repair(me, love, you);
 
             Proof expectedProof1 = new Proof();
@@ -1211,7 +1211,7 @@ namespace AntiCulture.Kid
             expectedProof2.AddArgument(you, love, me);
             expectedProof2.AddArgument(me, love, you);
 
-            Proof proof = connectionManager.GetProofToConnection(me, love, me);
+            Proof proof = ConnectionManager.GetProofToConnection(me, love, me);
 
             if (proof != expectedProof1 && proof != expectedProof2)
                 throw new Exception("Proof should match");
@@ -1220,7 +1220,7 @@ namespace AntiCulture.Kid
         private static void TestDoubleSidedLoveYouLovePie()
         {
             
-            ConnectionManager connectionManager = new ConnectionManager();
+            
             Repairer repairer = new Repairer();
             Memory.TotalVerbList = new HashSet<Concept>();
 
@@ -1235,41 +1235,41 @@ namespace AntiCulture.Kid
             MetaConnectionManager.AddMetaConnection(love, "muct", love);
 
             repairer.Repair(me, love, you);
-            connectionManager.Plug(me, love, you);
+            ConnectionManager.Plug(me, love, you);
             repairer.Repair(me, love, you);
-            connectionManager.Plug(you, love, me);
+            ConnectionManager.Plug(you, love, me);
             repairer.Repair(me, love, you, pie);
 
             //real test here
 
             Proof proof;
 
-            connectionManager.Plug(you, love, pie);
+            ConnectionManager.Plug(you, love, pie);
             //repairer.Repair(you, pie, me, love);
             repairer.Repair(pie, you, me, love);
 
-            proof = connectionManager.GetProofToConnection(you, love, pie);
+            proof = ConnectionManager.GetProofToConnection(you, love, pie);
 
             repairer.Repair(you, pie, me, love);
 
-            if (!connectionManager.TestConnection(you, love, pie))
+            if (!ConnectionManager.TestConnection(you, love, pie))
                 throw new Exception("Should be connected because it's explicit");
 
-            if (!connectionManager.TestConnection(me, love, pie))
+            if (!ConnectionManager.TestConnection(me, love, pie))
                 throw new Exception("Should be connected because it's implicit");
 
             //Advanced test here
 
             repairer.Repair(pie, you, me, love);
 
-            connectionManager.UnPlug(you, love, pie);
+            ConnectionManager.UnPlug(you, love, pie);
 
             repairer.Repair(pie, you, me, love);
 
-            if (connectionManager.TestConnection(you, love, pie))
+            if (ConnectionManager.TestConnection(you, love, pie))
                 throw new Exception("Shouldn't be connected");
 
-            if (connectionManager.TestConnection(me, love, pie))
+            if (ConnectionManager.TestConnection(me, love, pie))
                 throw new Exception("Shouldn't be connected");
         }
     }

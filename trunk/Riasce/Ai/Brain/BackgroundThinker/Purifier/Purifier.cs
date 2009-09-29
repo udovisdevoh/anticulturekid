@@ -14,20 +14,17 @@ namespace AntiCulture.Kid
         #region Fields
         private Repairer repairer;
 
-        private ConnectionManager connectionManager;
-
         private OptimizedPurifier optimizedPurifier;
 
         private FlatPurifier flatPurifier;
         #endregion
 
         #region Constructor
-        public Purifier(Repairer repairer, ConnectionManager connectionManager)
+        public Purifier(Repairer repairer)
         {
             this.repairer = repairer;
-            this.connectionManager = connectionManager;
-            flatPurifier = new FlatPurifier(this.connectionManager,repairer);
-            optimizedPurifier = new OptimizedPurifier(this.connectionManager,repairer);
+            flatPurifier = new FlatPurifier(repairer);
+            optimizedPurifier = new OptimizedPurifier(repairer);
         }
         #endregion
 

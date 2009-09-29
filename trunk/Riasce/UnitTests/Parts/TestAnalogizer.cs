@@ -9,7 +9,7 @@ namespace AntiCulture.Kid
     {
         public static void Test()
         {
-            ConnectionManager connectionManager = new ConnectionManager();
+            
             BrotherHoodManager brotherHoodManager = new BrotherHoodManager();
             Analogizer analogizer = new Analogizer(brotherHoodManager);
             Repairer repairer = new Repairer();
@@ -35,17 +35,17 @@ namespace AntiCulture.Kid
             MetaConnectionManager.AddMetaConnection(madeof, "madeof", isa);
 
             repairer.Repair(apple, fruit);
-            connectionManager.Plug(apple, isa, fruit);
+            ConnectionManager.Plug(apple, isa, fruit);
             repairer.Repair(banana, fruit);
-            connectionManager.Plug(banana, isa, fruit);
+            ConnectionManager.Plug(banana, isa, fruit);
             repairer.Repair(appletree, tree);
-            connectionManager.Plug(appletree, isa, tree);
+            ConnectionManager.Plug(appletree, isa, tree);
             repairer.Repair(bananatree, tree);
-            connectionManager.Plug(bananatree, isa, tree);
+            ConnectionManager.Plug(bananatree, isa, tree);
             repairer.Repair(appletree, apple);
-            connectionManager.Plug(appletree,madeof,apple);
+            ConnectionManager.Plug(appletree,madeof,apple);
             repairer.Repair(bananatree, banana);
-            connectionManager.Plug(bananatree, madeof, banana);
+            ConnectionManager.Plug(bananatree, madeof, banana);
 
             repairer.Repair(fruit, apple, banana, tree, appletree, bananatree);
 

@@ -9,8 +9,6 @@ namespace AntiCulture.Kid
     {
         #region Fields
         private Matrix semanticProximityMatrix;
-
-        private ConnectionManager connectionManager;
         #endregion
 
         #region Constants
@@ -18,9 +16,8 @@ namespace AntiCulture.Kid
         #endregion
 
         #region Constructor
-        public LinguisticTheorizer(ConnectionManager connectionManager)
+        public LinguisticTheorizer()
         {
-            this.connectionManager = connectionManager;
             XmlMatrixSaverLoader xmlMatrixSaverLoader = new XmlMatrixSaverLoader();
             this.semanticProximityMatrix = xmlMatrixSaverLoader.Load(matrixFileName);
         }
@@ -88,7 +85,7 @@ namespace AntiCulture.Kid
                         {
                             if (otherConcept != subject)
                             {
-                                if (connectionManager.FindObstructionToPlug(subject, verb, complement, true) == null)
+                                if (ConnectionManager.FindObstructionToPlug(subject, verb, complement, true) == null)
                                 {
                                     if (subject != complement)
                                     {

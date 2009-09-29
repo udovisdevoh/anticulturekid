@@ -81,7 +81,7 @@ namespace AntiCulture.Kid
 
         private static void TestProofFromDirectImplicationFlattenization()
         {
-            ConnectionManager connectionManager = new ConnectionManager();
+            
             
             Memory.TotalVerbList = new HashSet<Concept>();
             Repairer repairer = new Repairer();
@@ -104,7 +104,7 @@ namespace AntiCulture.Kid
             MetaConnectionManager.AddMetaConnection(gravity, "direct_implication", attract);
             MetaConnectionManager.AddMetaConnection(attract, "direct_implication", interaction);
 
-            connectionManager.Plug(moon, orbit, earth);
+            ConnectionManager.Plug(moon, orbit, earth);
 
             repairer.Repair(moon, earth);
 
@@ -113,16 +113,16 @@ namespace AntiCulture.Kid
             if (!MetaConnectionManager.IsFlatMetaConnected(orbit, "direct_implication", interaction))
                 throw new Exception("Should be flat MetaConnected because it's implicit");
 
-            if (!connectionManager.TestConnection(moon, orbit, earth))
+            if (!ConnectionManager.TestConnection(moon, orbit, earth))
                 throw new Exception("Should be connected because it's explicit");
 
-            if (!connectionManager.TestConnection(moon, gravity, earth))
+            if (!ConnectionManager.TestConnection(moon, gravity, earth))
                 throw new Exception("Should be connected because it's implicit");
 
-            if (!connectionManager.TestConnection(moon, attract, earth))
+            if (!ConnectionManager.TestConnection(moon, attract, earth))
                 throw new Exception("Should be connected because it's implicit");
 
-            if (!connectionManager.TestConnection(moon, interaction, earth))
+            if (!ConnectionManager.TestConnection(moon, interaction, earth))
                 throw new Exception("Should be connected because it's implicit");
 
             //Real test
@@ -140,7 +140,7 @@ namespace AntiCulture.Kid
 
         private static void TestPineMadeofWood()
         {
-            ConnectionManager connectionManager = new ConnectionManager();
+            
             
             Memory.TotalVerbList = new HashSet<Concept>();
             Repairer repairer = new Repairer();
@@ -154,11 +154,11 @@ namespace AntiCulture.Kid
 
             MetaConnectionManager.AddMetaConnection(madeof, "muct", isa);
 
-            connectionManager.Plug(pine, isa, tree);
+            ConnectionManager.Plug(pine, isa, tree);
             
             repairer.Repair(pine, tree);
 
-            connectionManager.Plug(tree, madeof, wood);
+            ConnectionManager.Plug(tree, madeof, wood);
 
             repairer.Repair(pine, tree, wood);
 
@@ -167,13 +167,13 @@ namespace AntiCulture.Kid
             if (!MetaConnectionManager.IsFlatMetaConnected(madeof, "muct", isa))
                 throw new Exception("Should be flat metaConnected because it's explicit");
 
-            if (!connectionManager.TestConnection(pine, isa, tree))
+            if (!ConnectionManager.TestConnection(pine, isa, tree))
                 throw new Exception("Should be connected because it's explicit");
 
-            if (!connectionManager.TestConnection(tree, madeof, wood))
+            if (!ConnectionManager.TestConnection(tree, madeof, wood))
                 throw new Exception("Should be connected because it's explicit");
 
-            if (!connectionManager.TestConnection(pine, madeof, wood))
+            if (!ConnectionManager.TestConnection(pine, madeof, wood))
                 throw new Exception("Should be connected because it's implicit");
 
             //Real test begins here
@@ -190,7 +190,7 @@ namespace AntiCulture.Kid
 
         private static void TestWoodPartofPine()
         {
-            ConnectionManager connectionManager = new ConnectionManager();
+            
             
             Memory.TotalVerbList = new HashSet<Concept>();
             Repairer repairer = new Repairer();
@@ -208,11 +208,11 @@ namespace AntiCulture.Kid
             MetaConnectionManager.AddMetaConnection(isa, "inverse_of", someare);
             MetaConnectionManager.AddMetaConnection(madeof, "inverse_of", partof);
 
-            connectionManager.Plug(pine, isa, tree);
+            ConnectionManager.Plug(pine, isa, tree);
 
             repairer.Repair(pine, tree);
 
-            connectionManager.Plug(tree, madeof, wood);
+            ConnectionManager.Plug(tree, madeof, wood);
 
             repairer.Repair(pine, tree, wood);
 
@@ -221,13 +221,13 @@ namespace AntiCulture.Kid
             if (!MetaConnectionManager.IsFlatMetaConnected(madeof, "muct", isa))
                 throw new Exception("Should be flat metaConnected because it's explicit");
 
-            if (!connectionManager.TestConnection(tree, someare, pine))
+            if (!ConnectionManager.TestConnection(tree, someare, pine))
                 throw new Exception("Should be connected because it's explicit");
 
-            if (!connectionManager.TestConnection(wood, partof, tree))
+            if (!ConnectionManager.TestConnection(wood, partof, tree))
                 throw new Exception("Should be connected because it's explicit");
 
-            if (!connectionManager.TestConnection(wood, partof, pine))
+            if (!ConnectionManager.TestConnection(wood, partof, pine))
                 throw new Exception("Should be connected because it's implicit");
 
             //Real test begins here
@@ -244,7 +244,7 @@ namespace AntiCulture.Kid
 
         private static void TestTreeMadeofMaterial()
         {
-            ConnectionManager connectionManager = new ConnectionManager();
+            
             
             Memory.TotalVerbList = new HashSet<Concept>();
             Repairer repairer = new Repairer();
@@ -260,11 +260,11 @@ namespace AntiCulture.Kid
 
             repairer.Repair(tree,wood);
 
-            connectionManager.Plug(tree, madeof, wood);
+            ConnectionManager.Plug(tree, madeof, wood);
 
             repairer.Repair(wood,material);
 
-            connectionManager.Plug(wood, isa, material);
+            ConnectionManager.Plug(wood, isa, material);
 
             repairer.Repair(tree, wood, material);
 
@@ -273,13 +273,13 @@ namespace AntiCulture.Kid
             if (!MetaConnectionManager.IsFlatMetaConnected(madeof, "liffid", isa))
                 throw new Exception("Should be flat metaConnected because it's explicit");
 
-            if (!connectionManager.TestConnection(tree, madeof, wood))
+            if (!ConnectionManager.TestConnection(tree, madeof, wood))
                 throw new Exception("Should be connected because it's explicit");
 
-            if (!connectionManager.TestConnection(wood, isa, material))
+            if (!ConnectionManager.TestConnection(wood, isa, material))
                 throw new Exception("Should be connected because it's explicit");
 
-            if (!connectionManager.TestConnection(tree, madeof, material))
+            if (!ConnectionManager.TestConnection(tree, madeof, material))
                 throw new Exception("Should be connected because it's implicit");
 
             //Real test begins here
@@ -296,7 +296,7 @@ namespace AntiCulture.Kid
 
         private static void TestMaterialPartofTree()
         {
-            ConnectionManager connectionManager = new ConnectionManager();
+            
             
             Memory.TotalVerbList = new HashSet<Concept>();
             Repairer repairer = new Repairer();
@@ -316,11 +316,11 @@ namespace AntiCulture.Kid
 
             repairer.Repair(tree, wood);
 
-            connectionManager.Plug(tree, madeof, wood);
+            ConnectionManager.Plug(tree, madeof, wood);
 
             repairer.Repair(wood, material);
 
-            connectionManager.Plug(wood, isa, material);
+            ConnectionManager.Plug(wood, isa, material);
 
             repairer.Repair(tree, wood, material);
 
@@ -329,13 +329,13 @@ namespace AntiCulture.Kid
             if (!MetaConnectionManager.IsFlatMetaConnected(madeof, "liffid", isa))
                 throw new Exception("Should be flat metaConnected because it's explicit");
 
-            if (!connectionManager.TestConnection(wood, partof, tree))
+            if (!ConnectionManager.TestConnection(wood, partof, tree))
                 throw new Exception("Should be connected because it's explicit");
 
-            if (!connectionManager.TestConnection(material, someare, wood))
+            if (!ConnectionManager.TestConnection(material, someare, wood))
                 throw new Exception("Should be connected because it's explicit");
 
-            if (!connectionManager.TestConnection(material, partof, tree))
+            if (!ConnectionManager.TestConnection(material, partof, tree))
                 throw new Exception("Should be connected because it's implicit");
 
             //Real test begins here
@@ -352,7 +352,7 @@ namespace AntiCulture.Kid
 
         private static void TestPineMadeofMaterial()
         {
-            ConnectionManager connectionManager = new ConnectionManager();
+            
             
             Memory.TotalVerbList = new HashSet<Concept>();
             Repairer repairer = new Repairer();
@@ -368,15 +368,15 @@ namespace AntiCulture.Kid
             MetaConnectionManager.AddMetaConnection(madeof, "muct", isa);
             MetaConnectionManager.AddMetaConnection(madeof, "liffid", isa);
 
-            connectionManager.Plug(pine, isa, tree);
+            ConnectionManager.Plug(pine, isa, tree);
 
             repairer.Repair(pine, tree);
 
-            connectionManager.Plug(tree, madeof, wood);
+            ConnectionManager.Plug(tree, madeof, wood);
 
             repairer.Repair(tree, wood);
 
-            connectionManager.Plug(wood, isa, material);
+            ConnectionManager.Plug(wood, isa, material);
 
             repairer.Repair(pine, tree, wood, material);
 
@@ -385,19 +385,19 @@ namespace AntiCulture.Kid
             if (!MetaConnectionManager.IsFlatMetaConnected(madeof, "muct", isa))
                 throw new Exception("Should be flat metaConnected because it's explicit");
 
-            if (!connectionManager.TestConnection(pine, isa, tree))
+            if (!ConnectionManager.TestConnection(pine, isa, tree))
                 throw new Exception("Should be connected because it's explicit");
 
-            if (!connectionManager.TestConnection(tree, madeof, wood))
+            if (!ConnectionManager.TestConnection(tree, madeof, wood))
                 throw new Exception("Should be connected because it's explicit");
 
-            if (!connectionManager.TestConnection(pine, madeof, wood))
+            if (!ConnectionManager.TestConnection(pine, madeof, wood))
                 throw new Exception("Should be connected because it's implicit");
 
-            if (!connectionManager.TestConnection(tree, madeof, material))
+            if (!ConnectionManager.TestConnection(tree, madeof, material))
                 throw new Exception("Should be connected because it's implicit");
 
-            if (!connectionManager.TestConnection(pine, madeof, material))
+            if (!ConnectionManager.TestConnection(pine, madeof, material))
                 throw new Exception("Should be connected because it's implicit");
 
             //Real test begins here
@@ -415,7 +415,7 @@ namespace AntiCulture.Kid
 
         private static void TestMaterialPartofPine()
         {
-            ConnectionManager connectionManager = new ConnectionManager();
+            
             
             Memory.TotalVerbList = new HashSet<Concept>();
             Repairer repairer = new Repairer();
@@ -437,15 +437,15 @@ namespace AntiCulture.Kid
             MetaConnectionManager.AddMetaConnection(isa, "inverse_of", someare);
             MetaConnectionManager.AddMetaConnection(madeof, "inverse_of", partof);
 
-            connectionManager.Plug(pine, isa, tree);
+            ConnectionManager.Plug(pine, isa, tree);
 
             repairer.Repair(pine, tree);
 
-            connectionManager.Plug(tree, madeof, wood);
+            ConnectionManager.Plug(tree, madeof, wood);
 
             repairer.Repair(tree, wood);
 
-            connectionManager.Plug(wood, isa, material);
+            ConnectionManager.Plug(wood, isa, material);
 
             repairer.Repair(pine, tree, wood, material);
 
@@ -456,19 +456,19 @@ namespace AntiCulture.Kid
             if (!MetaConnectionManager.IsFlatMetaConnected(madeof, "muct", isa))
                 throw new Exception("Should be flat metaConnected because it's explicit");
 
-            if (!connectionManager.TestConnection(tree, someare, pine))
+            if (!ConnectionManager.TestConnection(tree, someare, pine))
                 throw new Exception("Should be connected because it's explicit");
 
-            if (!connectionManager.TestConnection(wood, partof, tree))
+            if (!ConnectionManager.TestConnection(wood, partof, tree))
                 throw new Exception("Should be connected because it's explicit");
 
-            if (!connectionManager.TestConnection(wood, partof, pine))
+            if (!ConnectionManager.TestConnection(wood, partof, pine))
                 throw new Exception("Should be connected because it's implicit");
 
-            if (!connectionManager.TestConnection(material, partof, tree))
+            if (!ConnectionManager.TestConnection(material, partof, tree))
                 throw new Exception("Should be connected because it's implicit");
 
-            if (!connectionManager.TestConnection(material, partof, pine))
+            if (!ConnectionManager.TestConnection(material, partof, pine))
                 throw new Exception("Should be connected because it's implicit");
 
             //Other pre-condition
@@ -526,7 +526,7 @@ namespace AntiCulture.Kid
 
         private static void TestPineMadeofMatter()
         {
-            ConnectionManager connectionManager = new ConnectionManager();
+            
             
             Memory.TotalVerbList = new HashSet<Concept>();
             Repairer repairer = new Repairer();
@@ -544,19 +544,19 @@ namespace AntiCulture.Kid
             MetaConnectionManager.AddMetaConnection(madeof, "liffid", isa);
             MetaConnectionManager.AddMetaConnection(madeof, "muct", madeof);
 
-            connectionManager.Plug(pine, isa, tree);
+            ConnectionManager.Plug(pine, isa, tree);
 
             repairer.Repair(pine, tree);
 
-            connectionManager.Plug(tree, madeof, wood);
+            ConnectionManager.Plug(tree, madeof, wood);
 
             repairer.Repair(tree, wood);
 
-            connectionManager.Plug(wood, isa, material);
+            ConnectionManager.Plug(wood, isa, material);
 
             repairer.Repair(material, matter);
 
-            connectionManager.Plug(material, madeof, matter);
+            ConnectionManager.Plug(material, madeof, matter);
 
             repairer.Repair(pine, tree, wood, material, matter);
 
@@ -565,22 +565,22 @@ namespace AntiCulture.Kid
             if (!MetaConnectionManager.IsFlatMetaConnected(madeof, "muct", isa))
                 throw new Exception("Should be flat metaConnected because it's explicit");
 
-            if (!connectionManager.TestConnection(pine, isa, tree))
+            if (!ConnectionManager.TestConnection(pine, isa, tree))
                 throw new Exception("Should be connected because it's explicit");
 
-            if (!connectionManager.TestConnection(tree, madeof, wood))
+            if (!ConnectionManager.TestConnection(tree, madeof, wood))
                 throw new Exception("Should be connected because it's explicit");
 
-            if (!connectionManager.TestConnection(pine, madeof, wood))
+            if (!ConnectionManager.TestConnection(pine, madeof, wood))
                 throw new Exception("Should be connected because it's implicit");
 
-            if (!connectionManager.TestConnection(tree, madeof, material))
+            if (!ConnectionManager.TestConnection(tree, madeof, material))
                 throw new Exception("Should be connected because it's implicit");
 
-            if (!connectionManager.TestConnection(pine, madeof, material))
+            if (!ConnectionManager.TestConnection(pine, madeof, material))
                 throw new Exception("Should be connected because it's implicit");
 
-            if (!connectionManager.TestConnection(pine, madeof, matter))
+            if (!ConnectionManager.TestConnection(pine, madeof, matter))
                 throw new Exception("Should be connected because it's implicit");
 
             //Real test begins here
@@ -599,7 +599,7 @@ namespace AntiCulture.Kid
 
         private static void TestMatterPartofPine()
         {
-            ConnectionManager connectionManager = new ConnectionManager();
+            
             
             Memory.TotalVerbList = new HashSet<Concept>();
             Repairer repairer = new Repairer();
@@ -621,19 +621,19 @@ namespace AntiCulture.Kid
             MetaConnectionManager.AddMetaConnection(isa, "inverse_of", someare);
             MetaConnectionManager.AddMetaConnection(madeof, "inverse_of", partof);
 
-            connectionManager.Plug(pine, isa, tree);
+            ConnectionManager.Plug(pine, isa, tree);
 
             repairer.Repair(pine, tree);
 
-            connectionManager.Plug(tree, madeof, wood);
+            ConnectionManager.Plug(tree, madeof, wood);
 
             repairer.Repair(tree, wood);
 
-            connectionManager.Plug(wood, isa, material);
+            ConnectionManager.Plug(wood, isa, material);
 
             repairer.Repair(material, matter);
 
-            connectionManager.Plug(material, madeof, matter);
+            ConnectionManager.Plug(material, madeof, matter);
 
             repairer.Repair(pine, tree, wood, material, matter);
 
@@ -642,22 +642,22 @@ namespace AntiCulture.Kid
             if (!MetaConnectionManager.IsFlatMetaConnected(madeof, "muct", isa))
                 throw new Exception("Should be flat metaConnected because it's explicit");
 
-            if (!connectionManager.TestConnection(tree,someare,pine))
+            if (!ConnectionManager.TestConnection(tree,someare,pine))
                 throw new Exception("Should be connected because it's explicit");
 
-            if (!connectionManager.TestConnection(wood,partof,tree))
+            if (!ConnectionManager.TestConnection(wood,partof,tree))
                 throw new Exception("Should be connected because it's explicit");
 
-            if (!connectionManager.TestConnection(wood,partof,pine))
+            if (!ConnectionManager.TestConnection(wood,partof,pine))
                 throw new Exception("Should be connected because it's implicit");
 
-            if (!connectionManager.TestConnection(material,partof,tree))
+            if (!ConnectionManager.TestConnection(material,partof,tree))
                 throw new Exception("Should be connected because it's implicit");
 
-            if (!connectionManager.TestConnection(material,partof,pine))
+            if (!ConnectionManager.TestConnection(material,partof,pine))
                 throw new Exception("Should be connected because it's implicit");
 
-            if (!connectionManager.TestConnection(matter,partof,pine))
+            if (!ConnectionManager.TestConnection(matter,partof,pine))
                 throw new Exception("Should be connected because it's implicit");
 
             //Real test begins here
@@ -676,7 +676,7 @@ namespace AntiCulture.Kid
 
         private static void TestPostMuctDirectImplication()
         {
-            ConnectionManager connectionManager = new ConnectionManager();
+            
             
             Memory.TotalVerbList = new HashSet<Concept>();
             Repairer repairer = new Repairer();
@@ -701,11 +701,11 @@ namespace AntiCulture.Kid
             MetaConnectionManager.AddMetaConnection(madeof, "direct_implication", composition);
             MetaConnectionManager.AddMetaConnection(composition, "direct_implication", interaction);
 
-            connectionManager.Plug(pine, isa, tree);
+            ConnectionManager.Plug(pine, isa, tree);
 
             repairer.Repair(pine, tree);
 
-            connectionManager.Plug(tree, madeof, wood);
+            ConnectionManager.Plug(tree, madeof, wood);
 
             repairer.Repair(pine, tree, wood);
 
@@ -714,16 +714,16 @@ namespace AntiCulture.Kid
             if (!MetaConnectionManager.IsFlatMetaConnected(madeof, "muct", isa))
                 throw new Exception("Should be flat metaConnected because it's explicit");
 
-            if (!connectionManager.TestConnection(pine, isa, tree))
+            if (!ConnectionManager.TestConnection(pine, isa, tree))
                 throw new Exception("Should be connected because it's explicit");
 
-            if (!connectionManager.TestConnection(tree, madeof, wood))
+            if (!ConnectionManager.TestConnection(tree, madeof, wood))
                 throw new Exception("Should be connected because it's explicit");
 
-            if (!connectionManager.TestConnection(pine, madeof, wood))
+            if (!ConnectionManager.TestConnection(pine, madeof, wood))
                 throw new Exception("Should be connected because it's implicit");
 
-            if (!connectionManager.TestConnection(pine, composition, wood))
+            if (!ConnectionManager.TestConnection(pine, composition, wood))
                 throw new Exception("Should be connected because it's implicit");
 
             //Real test begins here

@@ -10,17 +10,6 @@ namespace AntiCulture.Kid
     /// </summary>
     class Assimilator
     {
-        #region Fields
-        private ConnectionManager connectionManager;
-        #endregion
-
-        #region Constructor
-        public Assimilator(ConnectionManager connectionManager)
-        {
-            this.connectionManager = connectionManager;
-        }
-        #endregion
-
         #region Public Methods
         /// <summary>
         /// Make assimilator concept assimilate assimilated concept
@@ -50,7 +39,7 @@ namespace AntiCulture.Kid
                 optimizedBranch = verbAndBranch.Value;
 
                 foreach (Concept complement in optimizedBranch.ComplementConceptList)
-                    if (connectionManager.FindObstructionToPlug(assimilator, verb, complement, false) != null)
+                    if (ConnectionManager.FindObstructionToPlug(assimilator, verb, complement, false) != null)
                         throw new AssimilationException("These concepts have incompatible connections and can't be merged");
             }
 
@@ -60,7 +49,7 @@ namespace AntiCulture.Kid
                 optimizedBranch = verbAndBranch.Value;
 
                 foreach (Concept complement in optimizedBranch.ComplementConceptList)
-                    if (connectionManager.FindObstructionToPlug(assimilator, verb, complement, false) == null)
+                    if (ConnectionManager.FindObstructionToPlug(assimilator, verb, complement, false) == null)
                     {
                         if (assimilator != complement)
                         {

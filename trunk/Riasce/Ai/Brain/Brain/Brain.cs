@@ -16,8 +16,6 @@ namespace AntiCulture.Kid
         #region Fields
         private Memory memory = new Memory();
 
-        private ConnectionManager connectionManager = new ConnectionManager();
-
         private ImplyConnectionManager implyConnectionManager = new ImplyConnectionManager();
 
         private Repairer repairer = new Repairer();
@@ -52,7 +50,7 @@ namespace AntiCulture.Kid
         #region Constructor
         public Brain()
         {
-            aliaser = new Aliaser(memory,connectionManager, repairer);
+            aliaser = new Aliaser(memory, repairer);
             asker = new Asker();
             brotherHoodManager = new BrotherHoodManager();
             RejectedTheories rejectedTheories = new RejectedTheories();
@@ -60,7 +58,7 @@ namespace AntiCulture.Kid
             disambiguationNamer = new DisambiguationNamer(brotherHoodManager, repairer);
             statMaker = new StatMaker();
             aiSqlWrapper = new AiSqlWrapper();
-            backgroundThinker = new SerialBackgroundThinker(new Purifier(repairer, connectionManager), new Theorizer(connectionManager, brotherHoodManager, rejectedTheories), repairer, rejectedTheories);
+            backgroundThinker = new SerialBackgroundThinker(new Purifier(repairer), new Theorizer(brotherHoodManager, rejectedTheories), repairer, rejectedTheories);
         }
         #endregion
 
@@ -79,19 +77,19 @@ namespace AntiCulture.Kid
             Concept complement = memory.GetOrCreateConcept(complementConceptId);
             Trauma trauma = null;
 
-            if (!connectionManager.DisableFlattenizeAndOptimizeAndPurify)
+            if (!ConnectionManager.DisableFlattenizeAndOptimizeAndPurify)
                 repairer.Repair(subject, verb, complement);
 
-            List<Concept> obstruction = connectionManager.FindObstructionToPlug(subject,verb,complement,false);
+            List<Concept> obstruction = ConnectionManager.FindObstructionToPlug(subject,verb,complement,false);
 
             if (obstruction == null)
             {
-                if (connectionManager.FindObstructionToPlug(subject, verb, complement, true) != null)
+                if (ConnectionManager.FindObstructionToPlug(subject, verb, complement, true) != null)
                     FeelingMonitor.Add(FeelingMonitor.UNLIKELY_CONNECTION);
 
-                connectionManager.Plug(subject, verb, complement);
+                ConnectionManager.Plug(subject, verb, complement);
 
-                if (!connectionManager.DisableFlattenizeAndOptimizeAndPurify)
+                if (!ConnectionManager.DisableFlattenizeAndOptimizeAndPurify)
                 {
                     repairer.Repair(subject, verb, complement);    
                     #warning PurifyFlat is temporarly disabled
@@ -117,10 +115,10 @@ namespace AntiCulture.Kid
             Concept verb = memory.GetOrCreateConcept(verbConceptId);
             Concept complement = memory.GetOrCreateConcept(complementConceptId);
 
-            if (!connectionManager.DisableFlattenizeAndOptimizeAndPurify)
+            if (!ConnectionManager.DisableFlattenizeAndOptimizeAndPurify)
                 repairer.Repair(subject, verb, complement);
 
-            if (connectionManager.TestConnection(subject, verb, complement))
+            if (ConnectionManager.TestConnection(subject, verb, complement))
                 return true;
             else
                 return false;
@@ -152,10 +150,10 @@ namespace AntiCulture.Kid
             Concept verb = memory.GetOrCreateConcept(verbConceptId);
             Concept complement = memory.GetOrCreateConcept(complementConceptId);
 
-            if (!connectionManager.DisableFlattenizeAndOptimizeAndPurify)
+            if (!ConnectionManager.DisableFlattenizeAndOptimizeAndPurify)
                 repairer.Repair(subject, verb, complement);
 
-            List<Concept> obstruction = connectionManager.FindObstructionToPlug(subject, verb, complement, strictMode);
+            List<Concept> obstruction = ConnectionManager.FindObstructionToPlug(subject, verb, complement, strictMode);
 
             if (obstruction == null)
                 return null;
@@ -180,12 +178,12 @@ namespace AntiCulture.Kid
             Concept verb = memory.GetOrCreateConcept(verbConceptId);
             Concept complement = memory.GetOrCreateConcept(complementConceptId);
 
-            if (!connectionManager.DisableFlattenizeAndOptimizeAndPurify)
+            if (!ConnectionManager.DisableFlattenizeAndOptimizeAndPurify)
                 repairer.Repair(subject, verb, complement);
             
-            connectionManager.UnPlug(subject, verb, complement);
+            ConnectionManager.UnPlug(subject, verb, complement);
 
-            if (!connectionManager.DisableFlattenizeAndOptimizeAndPurify)
+            if (!ConnectionManager.DisableFlattenizeAndOptimizeAndPurify)
                 repairer.Repair(subject, verb, complement);
         }
 
@@ -202,10 +200,10 @@ namespace AntiCulture.Kid
             Concept verb = memory.GetOrCreateConcept(verbConceptId);
             Concept complement = memory.GetOrCreateConcept(complementConceptId);
 
-            if (!connectionManager.DisableFlattenizeAndOptimizeAndPurify)
+            if (!ConnectionManager.DisableFlattenizeAndOptimizeAndPurify)
                 repairer.Repair(subject, verb, complement);
 
-            Proof proof = connectionManager.GetProofToConnection(subject, verb, complement);
+            Proof proof = ConnectionManager.GetProofToConnection(subject, verb, complement);
 
             return ProofToInt(proof);
         }
@@ -1337,8 +1335,8 @@ namespace AntiCulture.Kid
         /// </summary>
         public bool DisableFlattenizeAndOptimize
         {
-            get { return connectionManager.DisableFlattenizeAndOptimizeAndPurify; }
-            set { connectionManager.DisableFlattenizeAndOptimizeAndPurify = value; }
+            get { return ConnectionManager.DisableFlattenizeAndOptimizeAndPurify; }
+            set { ConnectionManager.DisableFlattenizeAndOptimizeAndPurify = value; }
         }
         #endregion
     }

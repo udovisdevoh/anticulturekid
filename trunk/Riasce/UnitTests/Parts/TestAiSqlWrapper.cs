@@ -17,7 +17,7 @@ namespace AntiCulture.Kid
             Memory.TotalVerbList = new HashSet<Concept>();
             Memory memory = new Memory();
             NameMapper nameMapper = new NameMapper(new Name("aiName"), new Name("humanName"));
-            ConnectionManager connectionManager = new ConnectionManager();
+            
             
             Repairer repairer = new Repairer();
             AiSqlWrapper aiSqlWrapper = new AiSqlWrapper();
@@ -60,28 +60,28 @@ namespace AntiCulture.Kid
 
             repairer.RepairRange(memory);
             repairer.RepairRange(memory);
-            connectionManager.Plug(lifeform, someare, plant);
+            ConnectionManager.Plug(lifeform, someare, plant);
             repairer.RepairRange(memory);
             repairer.RepairRange(memory);
-            connectionManager.Plug(lifeform, someare, animal);
+            ConnectionManager.Plug(lifeform, someare, animal);
             repairer.RepairRange(memory);
             repairer.RepairRange(memory);
-            connectionManager.Plug(tree, isa, plant);
+            ConnectionManager.Plug(tree, isa, plant);
             repairer.RepairRange(memory);
             repairer.RepairRange(memory);
-            connectionManager.Plug(cat, isa, animal);
+            ConnectionManager.Plug(cat, isa, animal);
             repairer.RepairRange(memory);
             repairer.RepairRange(memory);
-            connectionManager.Plug(pine, isa, tree);
+            ConnectionManager.Plug(pine, isa, tree);
             repairer.RepairRange(memory);
             repairer.RepairRange(memory);
-            connectionManager.Plug(willow, isa, tree);
+            ConnectionManager.Plug(willow, isa, tree);
             repairer.RepairRange(memory);
             repairer.RepairRange(memory);
-            connectionManager.Plug(palmtree, isa, tree);
+            ConnectionManager.Plug(palmtree, isa, tree);
             repairer.RepairRange(memory);
             repairer.RepairRange(memory);
-            connectionManager.Plug(cactus, isa, plant);
+            ConnectionManager.Plug(cactus, isa, plant);
             repairer.RepairRange(memory);
             repairer.RepairRange(memory);
 

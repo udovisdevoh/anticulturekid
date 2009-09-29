@@ -8,17 +8,14 @@ namespace AntiCulture.Kid
     class PhoneticTheorizer : AbstractPhoneticTheorizer
     {
         #region Fields
-        private ConnectionManager connectionManager;
-
         private Matrix phoneticMatrix;
 
         private PhoneticMatrixManager phoneticMatrixManager;
         #endregion
 
         #region Constructor
-        public PhoneticTheorizer(ConnectionManager connectionManager)
+        public PhoneticTheorizer()
         {
-            this.connectionManager = connectionManager;
             this.phoneticMatrix = new Matrix();
             this.phoneticMatrixManager = new PhoneticMatrixManager();
         }
@@ -56,7 +53,7 @@ namespace AntiCulture.Kid
                     Concept complement = otherConcept.GetOptimizedConnectionBranch(verb).ComplementConceptList.GetRandomItem();
                     if (complement != null)
                     {
-                        if (connectionManager.FindObstructionToPlug(subject, verb, complement, true) == null)
+                        if (ConnectionManager.FindObstructionToPlug(subject, verb, complement, true) == null)
                         {
                             if (subject != complement)
                             {
