@@ -17,11 +17,11 @@ namespace AntiCulture.Kid
 
         private static void TestPurifyWithPreContradict()
         {
-            Repairer repairer = new Repairer();
+            
             
             
             Memory memory = new Memory();
-            Purifier purifier = new Purifier(repairer);
+            Purifier purifier = new Purifier();
             Memory.TotalVerbList = new HashSet<Concept>();
 
             Concept cat = new Concept("cat");
@@ -43,28 +43,28 @@ namespace AntiCulture.Kid
             MetaConnectionManager.AddMetaConnection(isa, "muct", isa);
             MetaConnectionManager.AddMetaConnection(madeof, "muct", madeof);
 
-            repairer.Repair(cat, animal, lifeform, water);
-            repairer.Reciprocate(cat);
-            repairer.Reciprocate(animal);
-            repairer.Reciprocate(lifeform);
-            repairer.Reciprocate(water);
-            repairer.Repair(cat, animal, lifeform, water);
+            Repairer.Repair(cat, animal, lifeform, water);
+            Repairer.Reciprocate(cat);
+            Repairer.Reciprocate(animal);
+            Repairer.Reciprocate(lifeform);
+            Repairer.Reciprocate(water);
+            Repairer.Repair(cat, animal, lifeform, water);
 
             ConnectionManager.Plug(cat, contradict, lifeform);
 
-            repairer.Repair(cat, animal);
+            Repairer.Repair(cat, animal);
 
             ConnectionManager.Plug(cat, isa, animal);
 
-            repairer.Repair(animal, lifeform);
+            Repairer.Repair(animal, lifeform);
 
             ConnectionManager.Plug(animal, isa, lifeform);
 
-            repairer.Repair(lifeform, water);
+            Repairer.Repair(lifeform, water);
 
             ConnectionManager.Plug(lifeform, madeof, water);
 
-            repairer.Repair(cat, animal, lifeform, water);
+            Repairer.Repair(cat, animal, lifeform, water);
 
             //Pre-conditions
 
@@ -78,21 +78,21 @@ namespace AntiCulture.Kid
 
             MetaConnectionManager.AddMetaConnection(isa, "cant", contradict);
 
-            repairer.Repair(cat, animal, lifeform, water);
-            repairer.Reciprocate(cat);
-            repairer.Reciprocate(animal);
-            repairer.Reciprocate(lifeform);
-            repairer.Reciprocate(water);
-            repairer.Repair(cat, animal, lifeform, water);
+            Repairer.Repair(cat, animal, lifeform, water);
+            Repairer.Reciprocate(cat);
+            Repairer.Reciprocate(animal);
+            Repairer.Reciprocate(lifeform);
+            Repairer.Reciprocate(water);
+            Repairer.Repair(cat, animal, lifeform, water);
 
             purifier.PurifyOptimized(cat);
 
-            repairer.Repair(cat, animal, lifeform, water);
-            repairer.Reciprocate(cat);
-            repairer.Reciprocate(animal);
-            repairer.Reciprocate(lifeform);
-            repairer.Reciprocate(water);
-            repairer.Repair(cat, animal, lifeform, water);
+            Repairer.Repair(cat, animal, lifeform, water);
+            Repairer.Reciprocate(cat);
+            Repairer.Reciprocate(animal);
+            Repairer.Reciprocate(lifeform);
+            Repairer.Reciprocate(water);
+            Repairer.Repair(cat, animal, lifeform, water);
 
             if (!ConnectionManager.TestConnection(cat, isa, animal))
                 throw new Exception("Should be connected");
@@ -103,10 +103,10 @@ namespace AntiCulture.Kid
 
         private static void TestPurifyWithPostContradict()
         {
-            Repairer repairer = new Repairer();
             
             
-            Purifier purifier = new Purifier(repairer);
+            
+            Purifier purifier = new Purifier();
             Memory.TotalVerbList = new HashSet<Concept>();
 
             Concept cat = new Concept("cat");
@@ -128,28 +128,28 @@ namespace AntiCulture.Kid
             MetaConnectionManager.AddMetaConnection(isa, "muct", isa);
             MetaConnectionManager.AddMetaConnection(madeof, "muct", madeof);
 
-            repairer.Repair(cat, animal, lifeform, water);
-            repairer.Reciprocate(cat);
-            repairer.Reciprocate(animal);
-            repairer.Reciprocate(lifeform);
-            repairer.Reciprocate(water);
-            repairer.Repair(cat, animal, lifeform, water);
+            Repairer.Repair(cat, animal, lifeform, water);
+            Repairer.Reciprocate(cat);
+            Repairer.Reciprocate(animal);
+            Repairer.Reciprocate(lifeform);
+            Repairer.Reciprocate(water);
+            Repairer.Repair(cat, animal, lifeform, water);
 
             ConnectionManager.Plug(cat, isa, animal);
 
-            repairer.Repair(animal, lifeform);
+            Repairer.Repair(animal, lifeform);
 
             ConnectionManager.Plug(animal, isa, lifeform);
 
-            repairer.Repair(lifeform, water);
+            Repairer.Repair(lifeform, water);
 
             ConnectionManager.Plug(lifeform, madeof, water);
 
-            repairer.Repair(cat,lifeform);
+            Repairer.Repair(cat,lifeform);
 
             ConnectionManager.Plug(cat, contradict, lifeform);
 
-            repairer.Repair(cat, animal, lifeform, water);
+            Repairer.Repair(cat, animal, lifeform, water);
 
             //Pre-conditions
 
@@ -163,21 +163,21 @@ namespace AntiCulture.Kid
 
             MetaConnectionManager.AddMetaConnection(isa, "cant", contradict);
 
-            repairer.Repair(cat, animal, lifeform, water);
-            repairer.Reciprocate(cat);
-            repairer.Reciprocate(animal);
-            repairer.Reciprocate(lifeform);
-            repairer.Reciprocate(water);
-            repairer.Repair(cat, animal, lifeform, water);
+            Repairer.Repair(cat, animal, lifeform, water);
+            Repairer.Reciprocate(cat);
+            Repairer.Reciprocate(animal);
+            Repairer.Reciprocate(lifeform);
+            Repairer.Reciprocate(water);
+            Repairer.Repair(cat, animal, lifeform, water);
 
             purifier.PurifyOptimized(cat);
 
-            repairer.Repair(cat, animal, lifeform, water);
-            repairer.Reciprocate(cat);
-            repairer.Reciprocate(animal);
-            repairer.Reciprocate(lifeform);
-            repairer.Reciprocate(water);
-            repairer.Repair(cat, animal, lifeform, water);
+            Repairer.Repair(cat, animal, lifeform, water);
+            Repairer.Reciprocate(cat);
+            Repairer.Reciprocate(animal);
+            Repairer.Reciprocate(lifeform);
+            Repairer.Reciprocate(water);
+            Repairer.Repair(cat, animal, lifeform, water);
 
             if (!ConnectionManager.TestConnection(cat, isa, animal))
                 throw new Exception("Should be connected");
@@ -188,10 +188,10 @@ namespace AntiCulture.Kid
 
         private static void TestPurifyRangeWithPreContradict()
         {
-            Repairer repairer = new Repairer();
             
             
-            Purifier purifier = new Purifier(repairer);
+            
+            Purifier purifier = new Purifier();
             Memory.TotalVerbList = new HashSet<Concept>();
 
             Concept cat = new Concept("cat");
@@ -213,28 +213,28 @@ namespace AntiCulture.Kid
             MetaConnectionManager.AddMetaConnection(isa, "muct", isa);
             MetaConnectionManager.AddMetaConnection(madeof, "muct", madeof);
 
-            repairer.Repair(cat, animal, lifeform, water);
-            repairer.Reciprocate(cat);
-            repairer.Reciprocate(animal);
-            repairer.Reciprocate(lifeform);
-            repairer.Reciprocate(water);
-            repairer.Repair(cat, animal, lifeform, water);
+            Repairer.Repair(cat, animal, lifeform, water);
+            Repairer.Reciprocate(cat);
+            Repairer.Reciprocate(animal);
+            Repairer.Reciprocate(lifeform);
+            Repairer.Reciprocate(water);
+            Repairer.Repair(cat, animal, lifeform, water);
 
             ConnectionManager.Plug(cat, contradict, lifeform);
 
-            repairer.Repair(cat, animal);
+            Repairer.Repair(cat, animal);
 
             ConnectionManager.Plug(cat, isa, animal);
 
-            repairer.Repair(animal, lifeform);
+            Repairer.Repair(animal, lifeform);
 
             ConnectionManager.Plug(animal, isa, lifeform);
 
-            repairer.Repair(lifeform, water);
+            Repairer.Repair(lifeform, water);
 
             ConnectionManager.Plug(lifeform, madeof, water);
 
-            repairer.Repair(cat, animal, lifeform, water);
+            Repairer.Repair(cat, animal, lifeform, water);
 
             //Pre-conditions
 
@@ -248,21 +248,21 @@ namespace AntiCulture.Kid
 
             MetaConnectionManager.AddMetaConnection(isa, "cant", contradict);
 
-            repairer.Repair(cat, animal, lifeform, water);
-            repairer.Reciprocate(cat);
-            repairer.Reciprocate(animal);
-            repairer.Reciprocate(lifeform);
-            repairer.Reciprocate(water);
-            repairer.Repair(cat, animal, lifeform, water);
+            Repairer.Repair(cat, animal, lifeform, water);
+            Repairer.Reciprocate(cat);
+            Repairer.Reciprocate(animal);
+            Repairer.Reciprocate(lifeform);
+            Repairer.Reciprocate(water);
+            Repairer.Repair(cat, animal, lifeform, water);
 
             purifier.PurifyRangeOptimized(new List<Concept>() { cat, animal, lifeform, water });
 
-            repairer.Repair(cat, animal, lifeform, water);
-            repairer.Reciprocate(cat);
-            repairer.Reciprocate(animal);
-            repairer.Reciprocate(lifeform);
-            repairer.Reciprocate(water);
-            repairer.Repair(cat, animal, lifeform, water);
+            Repairer.Repair(cat, animal, lifeform, water);
+            Repairer.Reciprocate(cat);
+            Repairer.Reciprocate(animal);
+            Repairer.Reciprocate(lifeform);
+            Repairer.Reciprocate(water);
+            Repairer.Repair(cat, animal, lifeform, water);
 
             if (!ConnectionManager.TestConnection(cat, isa, animal))
                 throw new Exception("Should be connected");
@@ -273,10 +273,10 @@ namespace AntiCulture.Kid
 
         private static void TestPurifyRangeWithPostContradict()
         {
-            Repairer repairer = new Repairer();
             
             
-            Purifier purifier = new Purifier(repairer);
+            
+            Purifier purifier = new Purifier();
             Memory.TotalVerbList = new HashSet<Concept>();
 
             Concept cat = new Concept("cat");
@@ -298,28 +298,28 @@ namespace AntiCulture.Kid
             MetaConnectionManager.AddMetaConnection(isa, "muct", isa);
             MetaConnectionManager.AddMetaConnection(madeof, "muct", madeof);
 
-            repairer.Repair(cat, animal, lifeform, water);
-            repairer.Reciprocate(cat);
-            repairer.Reciprocate(animal);
-            repairer.Reciprocate(lifeform);
-            repairer.Reciprocate(water);
-            repairer.Repair(cat, animal, lifeform, water);
+            Repairer.Repair(cat, animal, lifeform, water);
+            Repairer.Reciprocate(cat);
+            Repairer.Reciprocate(animal);
+            Repairer.Reciprocate(lifeform);
+            Repairer.Reciprocate(water);
+            Repairer.Repair(cat, animal, lifeform, water);
 
             ConnectionManager.Plug(cat, isa, animal);
 
-            repairer.Repair(animal, lifeform);
+            Repairer.Repair(animal, lifeform);
 
             ConnectionManager.Plug(animal, isa, lifeform);
 
-            repairer.Repair(lifeform, water);
+            Repairer.Repair(lifeform, water);
 
             ConnectionManager.Plug(lifeform, madeof, water);
 
-            repairer.Repair(cat, lifeform);
+            Repairer.Repair(cat, lifeform);
 
             ConnectionManager.Plug(cat, contradict, lifeform);
 
-            repairer.Repair(cat, animal, lifeform, water);
+            Repairer.Repair(cat, animal, lifeform, water);
 
             //Pre-conditions
 
@@ -333,21 +333,21 @@ namespace AntiCulture.Kid
 
             MetaConnectionManager.AddMetaConnection(isa, "cant", contradict);
 
-            repairer.Repair(cat, animal, lifeform, water);
-            repairer.Reciprocate(cat);
-            repairer.Reciprocate(animal);
-            repairer.Reciprocate(lifeform);
-            repairer.Reciprocate(water);
-            repairer.Repair(cat, animal, lifeform, water);
+            Repairer.Repair(cat, animal, lifeform, water);
+            Repairer.Reciprocate(cat);
+            Repairer.Reciprocate(animal);
+            Repairer.Reciprocate(lifeform);
+            Repairer.Reciprocate(water);
+            Repairer.Repair(cat, animal, lifeform, water);
 
             purifier.PurifyRangeOptimized(new List<Concept>() { cat, animal, lifeform, water });
 
-            repairer.Repair(cat, animal, lifeform, water);
-            repairer.Reciprocate(cat);
-            repairer.Reciprocate(animal);
-            repairer.Reciprocate(lifeform);
-            repairer.Reciprocate(water);
-            repairer.Repair(cat, animal, lifeform, water);
+            Repairer.Repair(cat, animal, lifeform, water);
+            Repairer.Reciprocate(cat);
+            Repairer.Reciprocate(animal);
+            Repairer.Reciprocate(lifeform);
+            Repairer.Reciprocate(water);
+            Repairer.Repair(cat, animal, lifeform, water);
 
             if (!ConnectionManager.TestConnection(cat, isa, animal))
                 throw new Exception("Should be connected");

@@ -69,8 +69,6 @@ namespace AntiCulture.Kid
         /// </summary>
         protected VerbMetaConnectionCache verbMetaConnectionCache;
 
-        protected Repairer repairer;
-
         protected Purifier purifier;
 
         protected Theorizer theorizer;

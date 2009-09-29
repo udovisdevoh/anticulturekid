@@ -16,8 +16,6 @@ namespace AntiCulture.Kid
         #region Fields
         private Memory memory = new Memory();
 
-        private Repairer repairer = new Repairer();
-
         private Teacher teacher = new Teacher();
 
         private Aliaser aliaser;
@@ -38,12 +36,12 @@ namespace AntiCulture.Kid
         #region Constructor
         public Brain()
         {
-            aliaser = new Aliaser(memory, repairer);
+            aliaser = new Aliaser(memory);
             RejectedTheories rejectedTheories = new RejectedTheories();
             analogizer = new Analogizer();
-            disambiguationNamer = new DisambiguationNamer(repairer);
+            disambiguationNamer = new DisambiguationNamer();
             statMaker = new StatMaker();
-            backgroundThinker = new SerialBackgroundThinker(new Purifier(repairer), new Theorizer(rejectedTheories), repairer, rejectedTheories);
+            backgroundThinker = new SerialBackgroundThinker(new Purifier(), new Theorizer(rejectedTheories), rejectedTheories);
         }
         #endregion
 
@@ -63,7 +61,7 @@ namespace AntiCulture.Kid
             Trauma trauma = null;
 
             if (!ConnectionManager.DisableFlattenizeAndOptimizeAndPurify)
-                repairer.Repair(subject, verb, complement);
+                Repairer.Repair(subject, verb, complement);
 
             List<Concept> obstruction = ConnectionManager.FindObstructionToPlug(subject,verb,complement,false);
 
@@ -76,11 +74,11 @@ namespace AntiCulture.Kid
 
                 if (!ConnectionManager.DisableFlattenizeAndOptimizeAndPurify)
                 {
-                    repairer.Repair(subject, verb, complement);    
+                    Repairer.Repair(subject, verb, complement);    
                     #warning PurifyFlat is temporarly disabled
                     /*
                     trauma = purifier.PurifyFlat(subject);
-                    repairer.Repair(subject, complement);
+                    Repairer.Repair(subject, complement);
                     */
                 }
             }
@@ -101,7 +99,7 @@ namespace AntiCulture.Kid
             Concept complement = memory.GetOrCreateConcept(complementConceptId);
 
             if (!ConnectionManager.DisableFlattenizeAndOptimizeAndPurify)
-                repairer.Repair(subject, verb, complement);
+                Repairer.Repair(subject, verb, complement);
 
             if (ConnectionManager.TestConnection(subject, verb, complement))
                 return true;
@@ -136,7 +134,7 @@ namespace AntiCulture.Kid
             Concept complement = memory.GetOrCreateConcept(complementConceptId);
 
             if (!ConnectionManager.DisableFlattenizeAndOptimizeAndPurify)
-                repairer.Repair(subject, verb, complement);
+                Repairer.Repair(subject, verb, complement);
 
             List<Concept> obstruction = ConnectionManager.FindObstructionToPlug(subject, verb, complement, strictMode);
 
@@ -164,12 +162,12 @@ namespace AntiCulture.Kid
             Concept complement = memory.GetOrCreateConcept(complementConceptId);
 
             if (!ConnectionManager.DisableFlattenizeAndOptimizeAndPurify)
-                repairer.Repair(subject, verb, complement);
+                Repairer.Repair(subject, verb, complement);
             
             ConnectionManager.UnPlug(subject, verb, complement);
 
             if (!ConnectionManager.DisableFlattenizeAndOptimizeAndPurify)
-                repairer.Repair(subject, verb, complement);
+                Repairer.Repair(subject, verb, complement);
         }
 
         /// <summary>
@@ -186,7 +184,7 @@ namespace AntiCulture.Kid
             Concept complement = memory.GetOrCreateConcept(complementConceptId);
 
             if (!ConnectionManager.DisableFlattenizeAndOptimizeAndPurify)
-                repairer.Repair(subject, verb, complement);
+                Repairer.Repair(subject, verb, complement);
 
             Proof proof = ConnectionManager.GetProofToConnection(subject, verb, complement);
 
@@ -214,7 +212,7 @@ namespace AntiCulture.Kid
 
             try
             {
-                repairer.RepairRange(memory);
+                Repairer.RepairRange(memory);
 
             }
             catch (TotologyException e)
@@ -222,14 +220,14 @@ namespace AntiCulture.Kid
                 totologyException = e;
                 FeelingMonitor.Add(FeelingMonitor.TOTOLOGY);
                 MetaConnectionManager.RemoveMetaConnection(operator1, metaOperatorName, operator2);
-                repairer.RepairRange(memory);
+                Repairer.RepairRange(memory);
             }
             finally
             {
-                repairer.ReciprocateRange(memory);
+                Repairer.ReciprocateRange(memory);
                 #warning Disabled purifyRange because it's done in BackgroundThinker
                 //trauma = purifier.PurifyRangeOptimized(memory);
-                repairer.RepairRange(memory);
+                Repairer.RepairRange(memory);
 
                 if (totologyException != null)
                 {
@@ -252,8 +250,8 @@ namespace AntiCulture.Kid
 
             MetaConnectionManager.RemoveMetaConnection(operator1, metaOperatorName, operator2);
 
-            repairer.RepairRange(memory);
-            repairer.ReciprocateRange(memory);
+            Repairer.RepairRange(memory);
+            Repairer.ReciprocateRange(memory);
         }
 
         /// <summary>
@@ -280,7 +278,7 @@ namespace AntiCulture.Kid
         {
             Concept concept = memory.GetOrCreateConcept(conceptId);
 
-            repairer.Repair(concept);
+            Repairer.Repair(concept);
 
             Dictionary<Concept, List<Concept>> definitionByConcept = DefinitionMaker.GetShortDefinition(concept);
             Dictionary<int, List<int>> definitionByInt = new Dictionary<int, List<int>>();
@@ -306,7 +304,7 @@ namespace AntiCulture.Kid
         {
             Concept concept = memory.GetOrCreateConcept(conceptId);
 
-            repairer.Repair(concept);
+            Repairer.Repair(concept);
 
             Dictionary<Concept, List<Concept>> definitionByConcept = DefinitionMaker.GetLongDefinition(concept);
             Dictionary<int, List<int>> definitionByInt = new Dictionary<int, List<int>>();
@@ -413,7 +411,7 @@ namespace AntiCulture.Kid
         {
             Concept concept = memory.GetOrCreateConcept(conceptId);
             List<Concept> question = Asker.GetBestQuestionAbout(concept);
-            repairer.Repair(concept);
+            Repairer.Repair(concept);
             List<int> questionById = new List<int>();
             questionById.Add(memory.GetIdFromConcept(question[0]));
             questionById.Add(memory.GetIdFromConcept(question[1]));
@@ -426,7 +424,7 @@ namespace AntiCulture.Kid
         /// <returns>best question about a random concept</returns>
         public List<int> GetBestQuestionAboutRandomConcept()
         {
-            repairer.RepairRange(memory);
+            Repairer.RepairRange(memory);
             List<Concept> question = Asker.GetBestQuestionAboutRandomConcept(memory);
             List<int> questionById = new List<int>();
             questionById.Add(memory.GetIdFromConcept(question[0]));
@@ -446,12 +444,12 @@ namespace AntiCulture.Kid
 
             Concept newConcept = memory.GetOrCreateConcept(newConceptId);
             Concept oldConcept = memory.GetOrCreateConcept(oldConceptId);
-            repairer.Repair(newConcept, oldConcept);
+            Repairer.Repair(newConcept, oldConcept);
             aliaser.AddAlias(newConcept, oldConcept);
             
             #warning Might cause problem, if so, reverse comments
-            //repairer.Repair(newConcept, oldConcept);
-            repairer.Repair(oldConcept);
+            //Repairer.Repair(newConcept, oldConcept);
+            Repairer.Repair(oldConcept);
         }
 
         /// <summary>
@@ -463,9 +461,9 @@ namespace AntiCulture.Kid
         {
             Concept concept1 = memory.GetOrCreateConcept(concept1id);
             Concept concept2 = memory.GetOrCreateConcept(concept2id);
-            repairer.Repair(concept1, concept2);
+            Repairer.Repair(concept1, concept2);
             aliaser.RemoveAlias(concept1, concept2);
-            repairer.Repair(concept1, concept2);
+            Repairer.Repair(concept1, concept2);
         }
 
         /// <summary>
@@ -610,7 +608,7 @@ namespace AntiCulture.Kid
         /// <returns>the best analogy</returns>
         public List<int> GetAnalogy()
         {
-            repairer.RepairRange(memory);
+            Repairer.RepairRange(memory);
 
             Analogy analogy = analogizer.GetBestRandomAnalogy(memory);
 
@@ -637,7 +635,7 @@ namespace AntiCulture.Kid
         /// <returns>the best analogy</returns>
         public List<int> GetAnalogy(int subjectId)
         {
-            repairer.RepairRange(memory);
+            Repairer.RepairRange(memory);
 
             Concept subject = memory.GetOrCreateConcept(subjectId);
 
@@ -667,7 +665,7 @@ namespace AntiCulture.Kid
         /// <returns>the best analogy</returns>
         public List<int> GetAnalogy(int subjectId, int verbId)
         {
-            repairer.RepairRange(memory);
+            Repairer.RepairRange(memory);
 
             Concept subject = memory.GetOrCreateConcept(subjectId);
             Concept verb = memory.GetOrCreateConcept(verbId);
@@ -699,7 +697,7 @@ namespace AntiCulture.Kid
         /// <returns>the best analogy</returns>
         public List<int> GetAnalogy(int subjectId, int verbId, int complementId)
         {
-            repairer.RepairRange(memory);
+            Repairer.RepairRange(memory);
 
             Concept subject = memory.GetOrCreateConcept(subjectId);
             Concept verb = memory.GetOrCreateConcept(verbId);
@@ -816,7 +814,7 @@ namespace AntiCulture.Kid
             Concept numeratorVerb = memory.GetOrCreateConcept(numeratorVerbId);
             Concept numeratorComplement = memory.GetOrCreateConcept(numeratorComplementId);
 
-            repairer.Repair(denominatorVerb, denominatorComplement, numeratorVerb, numeratorComplement);
+            Repairer.Repair(denominatorVerb, denominatorComplement, numeratorVerb, numeratorComplement);
 
             Stat stat = statMaker.GetStatOn(denominatorVerb, denominatorComplement, numeratorVerb, numeratorComplement);
 
@@ -836,7 +834,7 @@ namespace AntiCulture.Kid
             Concept numeratorVerb;
             Concept numeratorComplement;
 
-            repairer.RepairRange(memory);
+            Repairer.RepairRange(memory);
 
             Stat stat = statMaker.GetStatOn(denominatorVerb, denominatorComplement);
 
@@ -860,7 +858,7 @@ namespace AntiCulture.Kid
             Concept numeratorVerb;
             Concept numeratorComplement;
 
-            repairer.RepairRange(memory);
+            Repairer.RepairRange(memory);
 
             Stat stat = statMaker.GetRandomStat(memory);
 
@@ -887,9 +885,9 @@ namespace AntiCulture.Kid
         public HashSet<int> Select(string conditions, NameMapper nameMapperToUse, bool isConsiderSelfMuct)
         {
             HashSet<int> selectionByInt = new HashSet<int>();
-            //repairer.RepairRange(memory);
+            //Repairer.RepairRange(memory);
 
-            HashSet<Concept> selection = AiSqlWrapper.Select(conditions, nameMapperToUse, memory,repairer,isConsiderSelfMuct);
+            HashSet<Concept> selection = AiSqlWrapper.Select(conditions, nameMapperToUse, memory, isConsiderSelfMuct);
 
             foreach (Concept concept in selection)
                 selectionByInt.Add(memory.GetIdFromConcept(concept));
@@ -1059,7 +1057,7 @@ namespace AntiCulture.Kid
         /// </summary>
         public void ForceRepairMemory()
         {
-            repairer.RepairRange(memory);
+            Repairer.RepairRange(memory);
         }
 
         /// <summary>
@@ -1196,7 +1194,7 @@ namespace AntiCulture.Kid
         {
             if (visitor is SaverLoader)
             {
-                repairer.RepairRange(memory);
+                Repairer.RepairRange(memory);
                 return memory;
             }
             else
@@ -1237,7 +1235,7 @@ namespace AntiCulture.Kid
             {
                 this.memory = memory;
                 aliaser.SetMemoryToLoad(memory);
-                repairer.RepairRange(this.memory);
+                Repairer.RepairRange(this.memory);
             }
             else
             {

@@ -11,17 +11,6 @@ namespace AntiCulture.Kid
     /// </summary>
     class FlatPurifier
     {
-        #region Fields
-        private Repairer repairer;
-        #endregion
-
-        #region Constructor
-        public FlatPurifier(Repairer repairer)
-        {
-            this.repairer = repairer;
-        }
-        #endregion
-
         #region Public Methods
         /// <summary>
         /// Remove inconsistant FLAT connections from concept
@@ -48,9 +37,9 @@ namespace AntiCulture.Kid
             mostObstructableConnection = GetMostObstructableConnection(concept, out flatConnectionSource);
             if (mostObstructableConnection != null)
             {
-                repairer.Repair(mostObstructableConnection[0], mostObstructableConnection[2]);
+                Repairer.Repair(mostObstructableConnection[0], mostObstructableConnection[2]);
                 ConnectionManager.UnPlug(mostObstructableConnection[0], mostObstructableConnection[1], mostObstructableConnection[2]);
-                repairer.Repair(mostObstructableConnection[0], mostObstructableConnection[2]);
+                Repairer.Repair(mostObstructableConnection[0], mostObstructableConnection[2]);
 
                 obstruction = ConnectionManager.FindObstructionToPlug(flatConnectionSource[0], flatConnectionSource[1], flatConnectionSource[2], false);
 

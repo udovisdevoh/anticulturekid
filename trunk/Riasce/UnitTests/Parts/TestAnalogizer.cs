@@ -10,7 +10,6 @@ namespace AntiCulture.Kid
         public static void Test()
         {
             Analogizer analogizer = new Analogizer();
-            Repairer repairer = new Repairer();
             Memory.TotalVerbList = new HashSet<Concept>();
 
             Concept fruit = new Concept("fruit");
@@ -32,20 +31,20 @@ namespace AntiCulture.Kid
             MetaConnectionManager.AddMetaConnection(madeof, "liffid", isa);
             MetaConnectionManager.AddMetaConnection(madeof, "madeof", isa);
 
-            repairer.Repair(apple, fruit);
+            Repairer.Repair(apple, fruit);
             ConnectionManager.Plug(apple, isa, fruit);
-            repairer.Repair(banana, fruit);
+            Repairer.Repair(banana, fruit);
             ConnectionManager.Plug(banana, isa, fruit);
-            repairer.Repair(appletree, tree);
+            Repairer.Repair(appletree, tree);
             ConnectionManager.Plug(appletree, isa, tree);
-            repairer.Repair(bananatree, tree);
+            Repairer.Repair(bananatree, tree);
             ConnectionManager.Plug(bananatree, isa, tree);
-            repairer.Repair(appletree, apple);
+            Repairer.Repair(appletree, apple);
             ConnectionManager.Plug(appletree,madeof,apple);
-            repairer.Repair(bananatree, banana);
+            Repairer.Repair(bananatree, banana);
             ConnectionManager.Plug(bananatree, madeof, banana);
 
-            repairer.Repair(fruit, apple, banana, tree, appletree, bananatree);
+            Repairer.Repair(fruit, apple, banana, tree, appletree, bananatree);
 
             //Real test here
 

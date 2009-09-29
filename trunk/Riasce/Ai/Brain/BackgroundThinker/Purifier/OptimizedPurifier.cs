@@ -7,17 +7,6 @@ namespace AntiCulture.Kid
 {
     class OptimizedPurifier
     {
-        #region Fields
-        private Repairer repairer;
-        #endregion
-
-        #region Constructor
-        public OptimizedPurifier(Repairer repairer)
-        {
-            this.repairer = repairer;
-        }
-        #endregion
-
         #region Public Methods
         /// <summary>
         /// Remove inconsistant OPTIMIZED connections from concept
@@ -42,7 +31,7 @@ namespace AntiCulture.Kid
             #region Finding obstructable connection in optimized connections
             do
             {
-                repairer.Repair(concept);
+                Repairer.Repair(concept);
                 mostObstructableConnection = GetMostObstructableConnection(concept);
                 if (mostObstructableConnection != null)
                 {
@@ -89,7 +78,7 @@ namespace AntiCulture.Kid
             #region Finding obstructable connection in optimized connections
             do
             {
-                repairer.RepairRange(conceptCollection);
+                Repairer.RepairRange(conceptCollection);
                 mostObstructableConnection = GetMostObstructableConnection(conceptCollection);
                 if (mostObstructableConnection != null)
                 {

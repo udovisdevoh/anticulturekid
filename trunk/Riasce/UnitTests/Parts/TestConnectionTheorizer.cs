@@ -17,7 +17,6 @@ namespace AntiCulture.Kid
             RejectedTheories rejectedTheories = new RejectedTheories();
 
             ConnectionTheorizer connectionTheorizer = new ConnectionTheorizer(rejectedTheories);
-            Repairer repairer = new Repairer();
             Memory.TotalVerbList = new HashSet<Concept>();
 
             Concept tree = new Concept("tree");
@@ -40,25 +39,25 @@ namespace AntiCulture.Kid
             MetaConnectionManager.AddMetaConnection(madeof, "liffid", isa);
             MetaConnectionManager.AddMetaConnection(madeof, "muct", madeof);
 
-            repairer.Repair(pine, tree);
+            Repairer.Repair(pine, tree);
             ConnectionManager.Plug(pine,isa,tree);
 
-            repairer.Repair(pine, water);
+            Repairer.Repair(pine, water);
             ConnectionManager.Plug(pine, madeof, water);
 
-            repairer.Repair(willow, tree);
+            Repairer.Repair(willow, tree);
             ConnectionManager.Plug(willow, isa, tree);
 
-            repairer.Repair(palmtree, tree);
+            Repairer.Repair(palmtree, tree);
             ConnectionManager.Plug(palmtree, isa, tree);
 
-            repairer.Repair(palmtree, wood);
+            Repairer.Repair(palmtree, wood);
             ConnectionManager.Plug(palmtree, madeof, wood);
 
-            repairer.Repair(willow, wood);
+            Repairer.Repair(willow, wood);
             ConnectionManager.Plug(willow, madeof, wood);
 
-            repairer.Repair(pine,tree,willow,palmtree,wood);
+            Repairer.Repair(pine,tree,willow,palmtree,wood);
 
             //Real test here
 

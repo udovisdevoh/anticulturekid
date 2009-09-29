@@ -9,13 +9,13 @@ namespace AntiCulture.Kid
     /// This class is used to repair concepts. It is a faceade to component concept repairers such
     /// as Flattenizer, Optimizer and Reciprocator
     /// </summary>
-    public class Repairer
+    public static class Repairer
     {
         #region Fields
         /// <summary>
         /// Flattenizer
         /// </summary>
-        private AbstractFlattenizer flattenizer = new SerialFlattenizer();
+        private static AbstractFlattenizer flattenizer = new SerialFlattenizer();
         #endregion
 
         #region Methods
@@ -23,7 +23,7 @@ namespace AntiCulture.Kid
         /// Repair a concept
         /// </summary>
         /// <param name="conceptToRepair">concept</param>
-        public void Repair(Concept conceptToRepair)
+        public static void Repair(Concept conceptToRepair)
         {
             Repair(conceptToRepair, new HashSet<ConnectionBranch>(), new VerbMetaConnectionCache());
         }
@@ -33,7 +33,7 @@ namespace AntiCulture.Kid
         /// </summary>
         /// <param name="conceptToRepair1">concept1</param>
         /// <param name="conceptToRepair2">concept2</param>
-        public void Repair(Concept conceptToRepair1, Concept conceptToRepair2)
+        public static void Repair(Concept conceptToRepair1, Concept conceptToRepair2)
         {
             RepairRange(new List<Concept> { conceptToRepair1, conceptToRepair2 });
         }
@@ -44,7 +44,7 @@ namespace AntiCulture.Kid
         /// <param name="conceptToRepair1">concept1</param>
         /// <param name="conceptToRepair2">concept2</param>
         /// <param name="conceptToRepair3">concept3</param>
-        public void Repair(Concept conceptToRepair1, Concept conceptToRepair2, Concept conceptToRepair3)
+        public static void Repair(Concept conceptToRepair1, Concept conceptToRepair2, Concept conceptToRepair3)
         {
             RepairRange(new List<Concept> { conceptToRepair1, conceptToRepair2, conceptToRepair3});
         }
@@ -56,7 +56,7 @@ namespace AntiCulture.Kid
         /// <param name="conceptToRepair2">concept2</param>
         /// <param name="conceptToRepair3">concept3</param>
         /// <param name="conceptToRepair4">concept4</param>
-        public void Repair(Concept conceptToRepair1, Concept conceptToRepair2, Concept conceptToRepair3, Concept conceptToRepair4)
+        public static void Repair(Concept conceptToRepair1, Concept conceptToRepair2, Concept conceptToRepair3, Concept conceptToRepair4)
         {
             RepairRange(new List<Concept> { conceptToRepair1, conceptToRepair2, conceptToRepair3, conceptToRepair4});
         }
@@ -69,7 +69,7 @@ namespace AntiCulture.Kid
         /// <param name="conceptToRepair3">concept3</param>
         /// <param name="conceptToRepair4">concept4</param>
         /// <param name="conceptToRepair5">concept5</param>
-        public void Repair(Concept conceptToRepair1, Concept conceptToRepair2, Concept conceptToRepair3, Concept conceptToRepair4, Concept conceptToRepair5)
+        public static void Repair(Concept conceptToRepair1, Concept conceptToRepair2, Concept conceptToRepair3, Concept conceptToRepair4, Concept conceptToRepair5)
         {
             RepairRange(new List<Concept> { conceptToRepair1, conceptToRepair2, conceptToRepair3, conceptToRepair4, conceptToRepair5});
         }
@@ -83,7 +83,7 @@ namespace AntiCulture.Kid
         /// <param name="conceptToRepair4">concept4</param>
         /// <param name="conceptToRepair5">concept5</param>
         /// <param name="conceptToRepair6">concept6</param>
-        public void Repair(Concept conceptToRepair1, Concept conceptToRepair2, Concept conceptToRepair3, Concept conceptToRepair4, Concept conceptToRepair5, Concept conceptToRepair6)
+        public static void Repair(Concept conceptToRepair1, Concept conceptToRepair2, Concept conceptToRepair3, Concept conceptToRepair4, Concept conceptToRepair5, Concept conceptToRepair6)
         {
             RepairRange(new List<Concept> {conceptToRepair1,conceptToRepair2,conceptToRepair3,conceptToRepair4,conceptToRepair5,conceptToRepair6});
         }
@@ -98,7 +98,7 @@ namespace AntiCulture.Kid
         /// <param name="conceptToRepair5">concept5</param>
         /// <param name="conceptToRepair6">concept6</param>
         /// <param name="conceptToRepair7">concept7</param>
-        public void Repair(Concept conceptToRepair1, Concept conceptToRepair2, Concept conceptToRepair3, Concept conceptToRepair4, Concept conceptToRepair5, Concept conceptToRepair6, Concept conceptToRepair7)
+        public static void Repair(Concept conceptToRepair1, Concept conceptToRepair2, Concept conceptToRepair3, Concept conceptToRepair4, Concept conceptToRepair5, Concept conceptToRepair6, Concept conceptToRepair7)
         {
             RepairRange(new List<Concept> { conceptToRepair1, conceptToRepair2, conceptToRepair3, conceptToRepair4, conceptToRepair5, conceptToRepair6, conceptToRepair7 });
         }
@@ -114,7 +114,7 @@ namespace AntiCulture.Kid
         /// <param name="conceptToRepair6">concept6</param>
         /// <param name="conceptToRepair7">concept7</param>
         /// <param name="conceptToRepair8">concept8</param>
-        public void Repair(Concept conceptToRepair1, Concept conceptToRepair2, Concept conceptToRepair3, Concept conceptToRepair4, Concept conceptToRepair5, Concept conceptToRepair6, Concept conceptToRepair7, Concept conceptToRepair8)
+        public static void Repair(Concept conceptToRepair1, Concept conceptToRepair2, Concept conceptToRepair3, Concept conceptToRepair4, Concept conceptToRepair5, Concept conceptToRepair6, Concept conceptToRepair7, Concept conceptToRepair8)
         {
             RepairRange(new List<Concept> { conceptToRepair1, conceptToRepair2, conceptToRepair3, conceptToRepair4, conceptToRepair5, conceptToRepair6, conceptToRepair7, conceptToRepair8 });
         }
@@ -131,7 +131,7 @@ namespace AntiCulture.Kid
         /// <param name="conceptToRepair7">concept7</param>
         /// <param name="conceptToRepair8">concept8</param>
         /// <param name="conceptToRepair8">concept9</param>
-        public void Repair(Concept conceptToRepair1, Concept conceptToRepair2, Concept conceptToRepair3, Concept conceptToRepair4, Concept conceptToRepair5, Concept conceptToRepair6, Concept conceptToRepair7, Concept conceptToRepair8, Concept conceptToRepair9)
+        public static void Repair(Concept conceptToRepair1, Concept conceptToRepair2, Concept conceptToRepair3, Concept conceptToRepair4, Concept conceptToRepair5, Concept conceptToRepair6, Concept conceptToRepair7, Concept conceptToRepair8, Concept conceptToRepair9)
         {
             RepairRange(new List<Concept> { conceptToRepair1, conceptToRepair2, conceptToRepair3, conceptToRepair4, conceptToRepair5, conceptToRepair6, conceptToRepair7, conceptToRepair8, conceptToRepair9 });
         }
@@ -149,7 +149,7 @@ namespace AntiCulture.Kid
         /// <param name="conceptToRepair8">concept8</param>
         /// <param name="conceptToRepair8">concept9</param>
         /// <param name="conceptToRepair8">concept10</param>
-        public void Repair(Concept conceptToRepair1, Concept conceptToRepair2, Concept conceptToRepair3, Concept conceptToRepair4, Concept conceptToRepair5, Concept conceptToRepair6, Concept conceptToRepair7, Concept conceptToRepair8, Concept conceptToRepair9, Concept conceptToRepair10)
+        public static void Repair(Concept conceptToRepair1, Concept conceptToRepair2, Concept conceptToRepair3, Concept conceptToRepair4, Concept conceptToRepair5, Concept conceptToRepair6, Concept conceptToRepair7, Concept conceptToRepair8, Concept conceptToRepair9, Concept conceptToRepair10)
         {
             RepairRange(new List<Concept> { conceptToRepair1, conceptToRepair2, conceptToRepair3, conceptToRepair4, conceptToRepair5, conceptToRepair6, conceptToRepair7, conceptToRepair8, conceptToRepair9, conceptToRepair10 });
         }
@@ -168,7 +168,7 @@ namespace AntiCulture.Kid
         /// <param name="conceptToRepair8">concept9</param>
         /// <param name="conceptToRepair8">concept10</param>
         /// <param name="conceptToRepair8">concept11</param>
-        public void Repair(Concept conceptToRepair1, Concept conceptToRepair2, Concept conceptToRepair3, Concept conceptToRepair4, Concept conceptToRepair5, Concept conceptToRepair6, Concept conceptToRepair7, Concept conceptToRepair8, Concept conceptToRepair9, Concept conceptToRepair10, Concept conceptToRepair11)
+        public static void Repair(Concept conceptToRepair1, Concept conceptToRepair2, Concept conceptToRepair3, Concept conceptToRepair4, Concept conceptToRepair5, Concept conceptToRepair6, Concept conceptToRepair7, Concept conceptToRepair8, Concept conceptToRepair9, Concept conceptToRepair10, Concept conceptToRepair11)
         {
             RepairRange(new List<Concept> { conceptToRepair1, conceptToRepair2, conceptToRepair3, conceptToRepair4, conceptToRepair5, conceptToRepair6, conceptToRepair7, conceptToRepair8, conceptToRepair9, conceptToRepair10, conceptToRepair11 });
         }
@@ -177,7 +177,7 @@ namespace AntiCulture.Kid
         /// Flatten and optimize a range of concepts
         /// </summary>
         /// <param name="conceptCollection">collection of concept</param>
-        public void RepairRange(IEnumerable<Concept> conceptCollection)
+        public static void RepairRange(IEnumerable<Concept> conceptCollection)
         {
             HashSet<ConnectionBranch> repairedBranches = new HashSet<ConnectionBranch>();
             VerbMetaConnectionCache verbConnectionCache = new VerbMetaConnectionCache();
@@ -192,7 +192,7 @@ namespace AntiCulture.Kid
         /// <param name="conceptToRepair">concept to repair</param>
         /// <param name="repairedBranches">repaired branches</param>
         /// <param name="verbMetaConnectionCache">verb metaConnection cache</param>
-        public void Repair(Concept conceptToRepair, HashSet<ConnectionBranch> repairedBranches, VerbMetaConnectionCache verbMetaConnectionCache)
+        public static void Repair(Concept conceptToRepair, HashSet<ConnectionBranch> repairedBranches, VerbMetaConnectionCache verbMetaConnectionCache)
         {
             flattenizer.Repair(conceptToRepair, repairedBranches, verbMetaConnectionCache);
             Optimizer.Repair(conceptToRepair);
@@ -203,7 +203,7 @@ namespace AntiCulture.Kid
         /// (The only connections affected will be the optimized connections)
         /// </summary>
         /// <param name="concept">Concept to repair</param>
-        public void Reciprocate(Concept concept)
+        public static void Reciprocate(Concept concept)
         {
             Reciprocator.Reciprocate(concept);
         }
@@ -212,7 +212,7 @@ namespace AntiCulture.Kid
         /// Repair a collection of concepts's reciprocal connections
         /// </summary>
         /// <param name="conceptCollection">collection of concepts</param>
-        public void ReciprocateRange(IEnumerable<Concept> conceptCollection)
+        public static void ReciprocateRange(IEnumerable<Concept> conceptCollection)
         {
             Reciprocator.ReciprocateRange(conceptCollection);
         }
@@ -221,7 +221,7 @@ namespace AntiCulture.Kid
         /// Repair a concept and all concepts flat plugged to it
         /// </summary>
         /// <param name="concept">concept</param>
-        public void RepairConceptAndSurrounding(Concept concept)
+        public static void RepairConceptAndSurrounding(Concept concept)
         {
             HashSet<ConnectionBranch> repairedBranches = new HashSet<ConnectionBranch>();
             VerbMetaConnectionCache verbConnectionCache = new VerbMetaConnectionCache();

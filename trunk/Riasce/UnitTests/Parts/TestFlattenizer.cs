@@ -29,9 +29,6 @@ namespace AntiCulture.Kid
 
         private static void TestFlattenizerInverseOfWithMuct()
         {
-            
-            Repairer repairer = new Repairer();
-
             Concept isa = new Concept("isa");
             Concept someare = new Concept("someare");
 
@@ -45,15 +42,15 @@ namespace AntiCulture.Kid
             if (ConnectionManager.TestConnection(pine, isa, plant))
                 throw new Exception("Connection shouldn't exist yet");
 
-            repairer.Repair(pine, isa, tree, plant);
+            Repairer.Repair(pine, isa, tree, plant);
 
             ConnectionManager.Plug(tree, isa, plant);
 
-            repairer.Repair(pine, isa, tree, plant);
+            Repairer.Repair(pine, isa, tree, plant);
 
             ConnectionManager.Plug(pine, isa, tree);
 
-            repairer.Repair(pine, isa, tree, plant);
+            Repairer.Repair(pine, isa, tree, plant);
 
             //Pre-conditions
 
@@ -474,7 +471,7 @@ namespace AntiCulture.Kid
         private static void TestLongDiversifiedRecursivity()
         {
             
-            Repairer repairer = new Repairer();
+            
 
             Memory.TotalVerbList = new HashSet<Concept>();
 
@@ -499,56 +496,56 @@ namespace AntiCulture.Kid
 
             ConnectionManager.Plug(mygarden, isa, garden);
             
-            repairer.Repair(garden, plant);
+            Repairer.Repair(garden, plant);
 
             ConnectionManager.Plug(garden, madeof, plant);
             
-            repairer.Repair(plant, lifeform);
+            Repairer.Repair(plant, lifeform);
             
             ConnectionManager.Plug(plant, isa, lifeform);
 
-            repairer.Repair(lifeform, water);
+            Repairer.Repair(lifeform, water);
 
             ConnectionManager.Plug(lifeform, madeof, water);
 
-            repairer.Repair(water, liquid);
+            Repairer.Repair(water, liquid);
 
             ConnectionManager.Plug(water, isa, liquid);
 
-            repairer.Repair(liquid, water);
+            Repairer.Repair(liquid, water);
 
             ConnectionManager.Plug(liquid, madeof, matter);
 
             //pre-conditions
 
-            repairer.Repair(mygarden, garden);
+            Repairer.Repair(mygarden, garden);
 
             if (!ConnectionManager.TestConnection(mygarden, isa, garden))
                 throw new Exception("Should be connected because it's explicit");
 
             //real test
 
-            repairer.Repair(mygarden, plant);
+            Repairer.Repair(mygarden, plant);
 
             if (!ConnectionManager.TestConnection(mygarden, madeof, plant))
                 throw new Exception("Should be connected because it's implicit");
 
-            repairer.Repair(mygarden, lifeform);
+            Repairer.Repair(mygarden, lifeform);
 
             if (!ConnectionManager.TestConnection(mygarden, madeof, lifeform))
                 throw new Exception("Should be connected because it's implicit");
 
-            repairer.Repair(mygarden, water);
+            Repairer.Repair(mygarden, water);
 
             if (!ConnectionManager.TestConnection(mygarden, madeof, water))
                 throw new Exception("Should be connected because it's implicit");
 
-            repairer.Repair(mygarden, liquid);
+            Repairer.Repair(mygarden, liquid);
 
             if (!ConnectionManager.TestConnection(mygarden, madeof, liquid))
                 throw new Exception("Should be connected because it's implicit");
 
-            repairer.Repair(mygarden, matter);
+            Repairer.Repair(mygarden, matter);
 
             if (!ConnectionManager.TestConnection(mygarden, madeof, matter))
                 throw new Exception("Should be connected because it's implicit");
@@ -557,7 +554,7 @@ namespace AntiCulture.Kid
         private static void TestXmasPineIsaThing()
         {
             
-            Repairer repairer = new Repairer();
+            
 
             Memory.TotalVerbList = new HashSet<Concept>();
 
@@ -576,23 +573,23 @@ namespace AntiCulture.Kid
 
             ConnectionManager.Plug(xmaspine, isa, pine);
 
-            repairer.Repair(pine, tree);
+            Repairer.Repair(pine, tree);
 
             ConnectionManager.Plug(pine, isa, tree);
             
-            repairer.Repair(tree, plant);
+            Repairer.Repair(tree, plant);
 
             ConnectionManager.Plug(tree, isa, plant);
 
-            repairer.Repair(plant, lifeform);
+            Repairer.Repair(plant, lifeform);
 
             ConnectionManager.Plug(plant, isa, lifeform);
 
-            repairer.Repair(lifeform, thing);
+            Repairer.Repair(lifeform, thing);
 
             ConnectionManager.Plug(lifeform, isa, thing);
 
-            repairer.Repair(xmaspine, pine, tree, plant, lifeform, thing);
+            Repairer.Repair(xmaspine, pine, tree, plant, lifeform, thing);
 
             //Pre-conditions
 
@@ -671,7 +668,7 @@ namespace AntiCulture.Kid
         private static void PineMadeofMaterial()
         {
             
-            Repairer repairer = new Repairer();
+            
             Memory.TotalVerbList = new HashSet<Concept>();
 
             Concept isa = new Concept("isa");
@@ -691,19 +688,19 @@ namespace AntiCulture.Kid
             MetaConnectionManager.AddMetaConnection(madeof, "inverse_of", partof);
             
 
-            repairer.Repair(pine, tree);
+            Repairer.Repair(pine, tree);
 
             ConnectionManager.Plug(pine, isa, tree);
 
-            repairer.Repair(tree,wood);
+            Repairer.Repair(tree,wood);
 
             ConnectionManager.Plug(tree,madeof,wood);
 
-            repairer.Repair(wood, material);
+            Repairer.Repair(wood, material);
 
             ConnectionManager.Plug(wood,isa,material);
 
-            repairer.Repair(pine,tree,wood,material);
+            Repairer.Repair(pine,tree,wood,material);
 
             //Pre-conditions
 
@@ -732,7 +729,7 @@ namespace AntiCulture.Kid
         {
             
             
-            Repairer repairer = new Repairer();
+            
             Memory.TotalVerbList = new HashSet<Concept>();
 
             Concept isa = new Concept("isa");
@@ -755,27 +752,27 @@ namespace AntiCulture.Kid
             MetaConnectionManager.AddMetaConnection(madeof, "muct", madeof);
 
 
-            repairer.Repair(pine, tree);
+            Repairer.Repair(pine, tree);
 
             ConnectionManager.Plug(pine, isa, tree);
 
-            repairer.Repair(tree, wood);
+            Repairer.Repair(tree, wood);
 
             ConnectionManager.Plug(tree, madeof, wood);
 
-            repairer.Repair(wood, material);
+            Repairer.Repair(wood, material);
 
             ConnectionManager.Plug(wood, isa, material);
 
-            repairer.Repair(material, matter);
+            Repairer.Repair(material, matter);
 
             ConnectionManager.Plug(material,madeof,matter);
 
-            repairer.Repair(matter, energy);
+            Repairer.Repair(matter, energy);
 
             ConnectionManager.Plug(matter, madeof, energy);
 
-            repairer.Repair(pine, tree, wood, material,matter,energy);
+            Repairer.Repair(pine, tree, wood, material,matter,energy);
 
             //Pre-conditions
 
@@ -812,7 +809,7 @@ namespace AntiCulture.Kid
 
             Memory.TotalVerbList = new HashSet<Concept>();
             
-            Repairer repairer = new Repairer();
+            
 
             Concept pine = new Concept("pine");
             Concept tree = new Concept("tree");
@@ -828,33 +825,33 @@ namespace AntiCulture.Kid
             MetaConnectionManager.AddMetaConnection(isa, "inverse_of", someare);
             */
 
-            repairer.Repair(pine, tree);
+            Repairer.Repair(pine, tree);
 
             ConnectionManager.Plug(pine, isa, tree);
 
-            repairer.Repair(tree, wood);
+            Repairer.Repair(tree, wood);
 
             ConnectionManager.Plug(tree, madeof, wood);
 
-            repairer.Repair(pine, tree, wood);
+            Repairer.Repair(pine, tree, wood);
 
             MetaConnectionManager.AddMetaConnection(isa, "muct", isa);
             MetaConnectionManager.AddMetaConnection(madeof, "muct", isa);
             MetaConnectionManager.AddMetaConnection(isa, "inverse_of", someare);
 
-            repairer.Repair(pine, tree, wood);
+            Repairer.Repair(pine, tree, wood);
 
             Reciprocator.Reciprocate(pine);
 
-            repairer.Repair(pine, tree, wood);
+            Repairer.Repair(pine, tree, wood);
 
             Reciprocator.Reciprocate(tree);
 
-            repairer.Repair(pine, tree, wood);
+            Repairer.Repair(pine, tree, wood);
 
             Reciprocator.Reciprocate(wood);
 
-            repairer.Repair(pine, tree, wood);
+            Repairer.Repair(pine, tree, wood);
 
             //Pre-conditions
 
@@ -877,7 +874,7 @@ namespace AntiCulture.Kid
         {
             Memory.TotalVerbList = new HashSet<Concept>();
             
-            Repairer repairer = new Repairer();
+            
 
             Concept gravity = new Concept("gravity");
             Concept attract = new Concept("attract");
@@ -898,7 +895,7 @@ namespace AntiCulture.Kid
 
             ConnectionManager.Plug(moon, orbit, earth);
 
-            repairer.Repair(moon, earth);
+            Repairer.Repair(moon, earth);
 
             //Pre-conditions
 
@@ -930,7 +927,7 @@ namespace AntiCulture.Kid
         {
             Memory.TotalVerbList = new HashSet<Concept>();
             
-            Repairer repairer = new Repairer();
+            
 
             Concept gravity = new Concept("gravity");
             Concept attract = new Concept("attract");
@@ -951,7 +948,7 @@ namespace AntiCulture.Kid
             
             ConnectionManager.Plug(moon, orbit, earth);
 
-            repairer.Repair(moon, earth);
+            Repairer.Repair(moon, earth);
 
             //Pre-conditions
 
@@ -983,7 +980,7 @@ namespace AntiCulture.Kid
         {
             Memory.TotalVerbList = new HashSet<Concept>();
             
-            Repairer repairer = new Repairer();
+            
 
             Concept gravity = new Concept("gravity");
             Concept attract = new Concept("attract");
@@ -1004,7 +1001,7 @@ namespace AntiCulture.Kid
 
             ConnectionManager.Plug(moon, orbit, earth);
 
-            repairer.Repair(moon, earth);
+            Repairer.Repair(moon, earth);
 
             //Pre-conditions
 
@@ -1035,8 +1032,6 @@ namespace AntiCulture.Kid
         private static void TestNoIsaMuctIsa()
         {
             Memory.TotalVerbList = new HashSet<Concept>();
-            
-            Repairer repairer = new Repairer();
 
             Concept isa = new Concept("isa");
             Concept someare = new Concept("someare");
@@ -1049,48 +1044,48 @@ namespace AntiCulture.Kid
             Concept water = new Concept("water");
             List<Concept> memory = new List<Concept>() { isa, someare, madeof, partof, pine, tree, plant, water };
 
-            Purifier purifier = new Purifier(repairer);
+            Purifier purifier = new Purifier();
 
-            repairer.RepairRange(memory);
-            repairer.ReciprocateRange(memory);
+            Repairer.RepairRange(memory);
+            Repairer.ReciprocateRange(memory);
             purifier.PurifyRangeOptimized(memory);
-            repairer.RepairRange(memory);
+            Repairer.RepairRange(memory);
             MetaConnectionManager.AddMetaConnection(isa, "inverse_of", someare);
 
-            repairer.RepairRange(memory);
-            repairer.ReciprocateRange(memory);
+            Repairer.RepairRange(memory);
+            Repairer.ReciprocateRange(memory);
             purifier.PurifyRangeOptimized(memory);
-            repairer.RepairRange(memory);
+            Repairer.RepairRange(memory);
             MetaConnectionManager.AddMetaConnection(madeof, "muct", isa);
 
-            repairer.RepairRange(memory);
-            repairer.ReciprocateRange(memory);
+            Repairer.RepairRange(memory);
+            Repairer.ReciprocateRange(memory);
             purifier.PurifyRangeOptimized(memory);
-            repairer.RepairRange(memory);
+            Repairer.RepairRange(memory);
             MetaConnectionManager.AddMetaConnection(madeof, "inverse_of", partof);
 
-            repairer.RepairRange(memory);
-            repairer.ReciprocateRange(memory);
+            Repairer.RepairRange(memory);
+            Repairer.ReciprocateRange(memory);
             purifier.PurifyRangeOptimized(memory);
-            repairer.RepairRange(memory);
+            Repairer.RepairRange(memory);
             MetaConnectionManager.AddMetaConnection(madeof, "liffid", isa);
 
-            /*repairer.RepairRange(memory);
-            repairer.ReciprocateRange(memory);
+            /*Repairer.RepairRange(memory);
+            Repairer.ReciprocateRange(memory);
             purifier.PurifyRange(memory);
-            repairer.RepairRange(memory);
+            Repairer.RepairRange(memory);
             MetaConnectionManager.AddMetaConnection(madeof, "muct", madeof);*/
 
-            repairer.Repair(pine,isa,tree);
+            Repairer.Repair(pine,isa,tree);
             ConnectionManager.Plug(pine, isa, tree);
 
-            repairer.Repair(tree, isa, plant);
+            Repairer.Repair(tree, isa, plant);
             ConnectionManager.Plug(tree,isa,plant);
 
-            repairer.Repair(plant, madeof, water);
+            Repairer.Repair(plant, madeof, water);
             ConnectionManager.Plug(plant,madeof,water);
 
-            repairer.Repair(water,tree,plant,pine);
+            Repairer.Repair(water,tree,plant,pine);
 
             //pre-conditions about metaConnections
 
@@ -1130,7 +1125,7 @@ namespace AntiCulture.Kid
         {
             
             
-            Repairer repairer = new Repairer();
+            
             Memory.TotalVerbList = new HashSet<Concept>();
 
             Concept make = new Concept("make");
@@ -1147,21 +1142,21 @@ namespace AntiCulture.Kid
 
             //Real test here
 
-            repairer.Repair(gm, create, car);
+            Repairer.Repair(gm, create, car);
             ConnectionManager.Plug(gm, create, car);
-            repairer.Repair(gm, create, car);
+            Repairer.Repair(gm, create, car);
 
-            repairer.Repair(gm, create, car);
+            Repairer.Repair(gm, create, car);
             ConnectionManager.UnPlug(gm, create, car);
-            repairer.Repair(gm, create, car);
-            repairer.Repair(gm, create, car);
+            Repairer.Repair(gm, create, car);
+            Repairer.Repair(gm, create, car);
             
-            repairer.Repair(gm, make, car);
+            Repairer.Repair(gm, make, car);
             ConnectionManager.Plug(gm, make, car);
-            repairer.Repair(gm, make, car);
+            Repairer.Repair(gm, make, car);
 
-            repairer.Repair(gm);
-            repairer.Repair(car);
+            Repairer.Repair(gm);
+            Repairer.Repair(car);
             if (!ConnectionManager.TestConnection(gm, make, car))
                 throw new Exception("Should be connected because it's explicit");
         }
@@ -1170,7 +1165,7 @@ namespace AntiCulture.Kid
         {
             
             
-            Repairer repairer = new Repairer();
+            
             Memory.TotalVerbList = new HashSet<Concept>();
 
             Concept love = new Concept("love");
@@ -1184,11 +1179,11 @@ namespace AntiCulture.Kid
 
             //Real test here
 
-            repairer.Repair(me, love, you);
+            Repairer.Repair(me, love, you);
             ConnectionManager.Plug(me, love, you);
-            repairer.Repair(me, love, you);
+            Repairer.Repair(me, love, you);
             ConnectionManager.Plug(you, love, me);
-            repairer.Repair(me, love, you);
+            Repairer.Repair(me, love, you);
 
             Proof expectedProof1 = new Proof();
             expectedProof1.AddArgument(me, love, you);
@@ -1208,7 +1203,7 @@ namespace AntiCulture.Kid
         {
             
             
-            Repairer repairer = new Repairer();
+            
             Memory.TotalVerbList = new HashSet<Concept>();
 
             Concept love = new Concept("love");
@@ -1221,23 +1216,23 @@ namespace AntiCulture.Kid
             MetaConnectionManager.AddMetaConnection(love, "inverse_of", lovedby);
             MetaConnectionManager.AddMetaConnection(love, "muct", love);
 
-            repairer.Repair(me, love, you);
+            Repairer.Repair(me, love, you);
             ConnectionManager.Plug(me, love, you);
-            repairer.Repair(me, love, you);
+            Repairer.Repair(me, love, you);
             ConnectionManager.Plug(you, love, me);
-            repairer.Repair(me, love, you, pie);
+            Repairer.Repair(me, love, you, pie);
 
             //real test here
 
             Proof proof;
 
             ConnectionManager.Plug(you, love, pie);
-            //repairer.Repair(you, pie, me, love);
-            repairer.Repair(pie, you, me, love);
+            //Repairer.Repair(you, pie, me, love);
+            Repairer.Repair(pie, you, me, love);
 
             proof = ConnectionManager.GetProofToConnection(you, love, pie);
 
-            repairer.Repair(you, pie, me, love);
+            Repairer.Repair(you, pie, me, love);
 
             if (!ConnectionManager.TestConnection(you, love, pie))
                 throw new Exception("Should be connected because it's explicit");
@@ -1247,11 +1242,11 @@ namespace AntiCulture.Kid
 
             //Advanced test here
 
-            repairer.Repair(pie, you, me, love);
+            Repairer.Repair(pie, you, me, love);
 
             ConnectionManager.UnPlug(you, love, pie);
 
-            repairer.Repair(pie, you, me, love);
+            Repairer.Repair(pie, you, me, love);
 
             if (ConnectionManager.TestConnection(you, love, pie))
                 throw new Exception("Shouldn't be connected");

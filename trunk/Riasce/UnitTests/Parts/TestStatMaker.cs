@@ -10,9 +10,7 @@ namespace AntiCulture.Kid
         public static void Test()
         {
             Memory.TotalVerbList = new HashSet<Concept>();
-            StatMaker statMaker = new StatMaker();
-            
-            Repairer repairer = new Repairer();
+            StatMaker statMaker = new StatMaker();         
 
             Concept isa = new Concept("isa");
             Concept someare = new Concept("someare");
@@ -33,38 +31,38 @@ namespace AntiCulture.Kid
             MetaConnectionManager.AddMetaConnection(madeof, "liffid", isa);
             MetaConnectionManager.AddMetaConnection(madeof, "muct", madeof);
 
-            repairer.Repair(pine, tree, palmtree, willow, cactus, plant, wood, isa, someare, madeof, partof);
-            repairer.Repair(pine, tree, palmtree, willow, cactus, plant, wood, isa, someare, madeof, partof);
+            Repairer.Repair(pine, tree, palmtree, willow, cactus, plant, wood, isa, someare, madeof, partof);
+            Repairer.Repair(pine, tree, palmtree, willow, cactus, plant, wood, isa, someare, madeof, partof);
 
             ConnectionManager.Plug(tree, isa, plant);
 
-            repairer.Repair(pine, tree, palmtree, willow, cactus, plant, wood, isa, someare, madeof, partof);
-            repairer.Repair(pine, tree, palmtree, willow, cactus, plant, wood, isa, someare, madeof, partof);
+            Repairer.Repair(pine, tree, palmtree, willow, cactus, plant, wood, isa, someare, madeof, partof);
+            Repairer.Repair(pine, tree, palmtree, willow, cactus, plant, wood, isa, someare, madeof, partof);
 
             ConnectionManager.Plug(tree, madeof, wood);
 
-            repairer.Repair(pine, tree, palmtree, willow, cactus, plant, wood, isa, someare, madeof, partof);
-            repairer.Repair(pine, tree, palmtree, willow, cactus, plant, wood, isa, someare, madeof, partof);
+            Repairer.Repair(pine, tree, palmtree, willow, cactus, plant, wood, isa, someare, madeof, partof);
+            Repairer.Repair(pine, tree, palmtree, willow, cactus, plant, wood, isa, someare, madeof, partof);
 
             ConnectionManager.Plug(pine,isa,tree);
 
-            repairer.Repair(pine, tree, palmtree, willow, cactus, plant, wood, isa, someare, madeof, partof);
-            repairer.Repair(pine, tree, palmtree, willow, cactus, plant, wood, isa, someare, madeof, partof);
+            Repairer.Repair(pine, tree, palmtree, willow, cactus, plant, wood, isa, someare, madeof, partof);
+            Repairer.Repair(pine, tree, palmtree, willow, cactus, plant, wood, isa, someare, madeof, partof);
 
             ConnectionManager.Plug(palmtree, isa, tree);
 
-            repairer.Repair(pine, tree, palmtree, willow, cactus, plant, wood, isa, someare, madeof, partof);
-            repairer.Repair(pine, tree, palmtree, willow, cactus, plant, wood, isa, someare, madeof, partof);
+            Repairer.Repair(pine, tree, palmtree, willow, cactus, plant, wood, isa, someare, madeof, partof);
+            Repairer.Repair(pine, tree, palmtree, willow, cactus, plant, wood, isa, someare, madeof, partof);
 
             ConnectionManager.Plug(willow, isa, tree);
 
-            repairer.Repair(pine, tree, palmtree, willow, cactus, plant, wood, isa, someare, madeof, partof);
-            repairer.Repair(pine, tree, palmtree, willow, cactus, plant, wood, isa, someare, madeof, partof);
+            Repairer.Repair(pine, tree, palmtree, willow, cactus, plant, wood, isa, someare, madeof, partof);
+            Repairer.Repair(pine, tree, palmtree, willow, cactus, plant, wood, isa, someare, madeof, partof);
 
             ConnectionManager.Plug(cactus, isa, plant);
 
-            repairer.Repair(pine, tree, palmtree, willow, cactus, plant, wood, isa, someare, madeof, partof);
-            repairer.Repair(pine, tree, palmtree, willow, cactus, plant, wood, isa, someare, madeof, partof);
+            Repairer.Repair(pine, tree, palmtree, willow, cactus, plant, wood, isa, someare, madeof, partof);
+            Repairer.Repair(pine, tree, palmtree, willow, cactus, plant, wood, isa, someare, madeof, partof);
 
             double expectedStat = 0.8;
             double stat = statMaker.GetStatOn(isa, plant, madeof, wood).Ratio;

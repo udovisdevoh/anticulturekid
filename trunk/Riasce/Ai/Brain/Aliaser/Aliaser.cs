@@ -15,18 +15,12 @@ namespace AntiCulture.Kid
         /// Persistant reference to brain's memory
         /// </summary>
         private Memory memory;
-
-        /// <summary>
-        /// Persistant reference to brain's repairer
-        /// </summary>
-        private Repairer repairer;
         #endregion
 
         #region Concstructors
-        public Aliaser(Memory memory, Repairer repairer)
+        public Aliaser(Memory memory)
         {
             this.memory = memory;
-            this.repairer = repairer;
         }
         #endregion
 
@@ -41,13 +35,13 @@ namespace AntiCulture.Kid
             if (Memory.TotalVerbList.Contains(newConcept) || Memory.TotalVerbList.Contains(oldConcept))
                 throw new NameMappingException("Cannot alias/unalias operators");
 
-            repairer.RepairRange(memory);
+            Repairer.RepairRange(memory);
             Assimilator.Assimilate(oldConcept, newConcept);
-            repairer.Repair(oldConcept, newConcept);
+            Repairer.Repair(oldConcept, newConcept);
             Destroyer.Insulate(newConcept, memory);
-            repairer.Repair(oldConcept);
-            repairer.Reciprocate(oldConcept);
-            repairer.Repair(oldConcept);
+            Repairer.Repair(oldConcept);
+            Repairer.Reciprocate(oldConcept);
+            Repairer.Repair(oldConcept);
         }
 
         /// <summary>
@@ -61,8 +55,8 @@ namespace AntiCulture.Kid
                 throw new NameMappingException("Cannot alias/unalias operators");
 
             Assimilator.Assimilate(newConcept, oldConcept);
-            repairer.Repair(newConcept, oldConcept);
-            repairer.Reciprocate(newConcept);
+            Repairer.Repair(newConcept, oldConcept);
+            Repairer.Reciprocate(newConcept);
         }
 
         /// <summary>

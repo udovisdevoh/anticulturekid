@@ -9,7 +9,6 @@ namespace AntiCulture.Kid
     {
         public static void Test()
         {
-            Repairer repairer = new Repairer();
             Memory.TotalVerbList = new HashSet<Concept>();
 
             Concept isa = new Concept("isa");
@@ -20,12 +19,12 @@ namespace AntiCulture.Kid
             Concept machine = new Concept("machine");
             Concept animal = new Concept("animal");
 
-            repairer.Repair(borg, machine);
+            Repairer.Repair(borg, machine);
 
             ConnectionManager.Plug(borg, isa, machine);
             ConnectionManager.Plug(human, isa, animal);
 
-            repairer.Repair(borg, machine, human, animal);
+            Repairer.Repair(borg, machine, human, animal);
 
             //Pre-conditions
 
@@ -39,7 +38,7 @@ namespace AntiCulture.Kid
 
             Assimilator.Assimilate(borg, human);
 
-            repairer.Repair(borg, human);
+            Repairer.Repair(borg, human);
 
             if (!ConnectionManager.TestConnection(borg, isa, machine))
                 throw new Exception("Should be connected because it's explicit");

@@ -15,18 +15,6 @@ namespace AntiCulture.Kid
         /// Disambiguation concept mapping cache
         /// </summary>
         private Dictionary<Concept, Concept> cache = new Dictionary<Concept, Concept>();
-
-        /// <summary>
-        /// Repairer
-        /// </summary>
-        private Repairer repairer;
-        #endregion
-
-        #region Constructor
-        public DisambiguationNamer(Repairer repairer)
-        {
-            this.repairer = repairer;
-        }
         #endregion
 
         #region Public Methods

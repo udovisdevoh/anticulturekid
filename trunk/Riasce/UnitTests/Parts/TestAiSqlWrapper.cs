@@ -18,7 +18,7 @@ namespace AntiCulture.Kid
             Memory memory = new Memory();
             NameMapper nameMapper = new NameMapper(new Name("aiName"), new Name("humanName"));
             
-            Repairer repairer = new Repairer();
+            
             HashSet<Concept> selection;
 
             Concept isa = new Concept("isa");
@@ -56,36 +56,36 @@ namespace AntiCulture.Kid
             MetaConnectionManager.AddMetaConnection(madeof, "liffid", isa);
             MetaConnectionManager.AddMetaConnection(madeof, "muct", madeof);
 
-            repairer.RepairRange(memory);
-            repairer.RepairRange(memory);
+            Repairer.RepairRange(memory);
+            Repairer.RepairRange(memory);
             ConnectionManager.Plug(lifeform, someare, plant);
-            repairer.RepairRange(memory);
-            repairer.RepairRange(memory);
+            Repairer.RepairRange(memory);
+            Repairer.RepairRange(memory);
             ConnectionManager.Plug(lifeform, someare, animal);
-            repairer.RepairRange(memory);
-            repairer.RepairRange(memory);
+            Repairer.RepairRange(memory);
+            Repairer.RepairRange(memory);
             ConnectionManager.Plug(tree, isa, plant);
-            repairer.RepairRange(memory);
-            repairer.RepairRange(memory);
+            Repairer.RepairRange(memory);
+            Repairer.RepairRange(memory);
             ConnectionManager.Plug(cat, isa, animal);
-            repairer.RepairRange(memory);
-            repairer.RepairRange(memory);
+            Repairer.RepairRange(memory);
+            Repairer.RepairRange(memory);
             ConnectionManager.Plug(pine, isa, tree);
-            repairer.RepairRange(memory);
-            repairer.RepairRange(memory);
+            Repairer.RepairRange(memory);
+            Repairer.RepairRange(memory);
             ConnectionManager.Plug(willow, isa, tree);
-            repairer.RepairRange(memory);
-            repairer.RepairRange(memory);
+            Repairer.RepairRange(memory);
+            Repairer.RepairRange(memory);
             ConnectionManager.Plug(palmtree, isa, tree);
-            repairer.RepairRange(memory);
-            repairer.RepairRange(memory);
+            Repairer.RepairRange(memory);
+            Repairer.RepairRange(memory);
             ConnectionManager.Plug(cactus, isa, plant);
-            repairer.RepairRange(memory);
-            repairer.RepairRange(memory);
+            Repairer.RepairRange(memory);
+            Repairer.RepairRange(memory);
 
             //1st real tests here
 
-            selection = AiSqlWrapper.Select("isa plant", nameMapper, memory, repairer, true);
+            selection = AiSqlWrapper.Select("isa plant", nameMapper, memory, true);
 
             if (selection.Count != 6)
                 throw new Exception("Wrong selection count");
@@ -104,7 +104,7 @@ namespace AntiCulture.Kid
 
             //2nd real test here
 
-            selection = AiSqlWrapper.Select("  isa   plant and not (isa tree ) ", nameMapper, memory, repairer, true);
+            selection = AiSqlWrapper.Select("  isa   plant and not (isa tree ) ", nameMapper, memory, true);
 
             if (selection.Count != 2)
                 throw new Exception("Wrong selection count");
@@ -115,7 +115,7 @@ namespace AntiCulture.Kid
 
             //3rd test here
 
-            selection = AiSqlWrapper.Select("(isa plant or isa animal) and not isa tree", nameMapper, memory, repairer, true);
+            selection = AiSqlWrapper.Select("(isa plant or isa animal) and not isa tree", nameMapper, memory, true);
 
             if (selection.Count != 4)
                 throw new Exception("Wrong selection count");
@@ -131,14 +131,14 @@ namespace AntiCulture.Kid
 
             //4th test here
 
-            selection = AiSqlWrapper.Select("isa plant and isa animal", nameMapper, memory, repairer, true);
+            selection = AiSqlWrapper.Select("isa plant and isa animal", nameMapper, memory, true);
 
             if (selection.Count != 0)
                 throw new Exception("Wrong selection count");
 
             //5th test here
 
-            selection = AiSqlWrapper.Select("isa lifeform and isa animal", nameMapper, memory, repairer, true);
+            selection = AiSqlWrapper.Select("isa lifeform and isa animal", nameMapper, memory, true);
 
             if (selection.Count != 2)
                 throw new Exception("Wrong selection count");
@@ -149,7 +149,7 @@ namespace AntiCulture.Kid
 
             //6th test here
 
-            selection = AiSqlWrapper.Select("(((not isa animal)))", nameMapper, memory, repairer, true);
+            selection = AiSqlWrapper.Select("(((not isa animal)))", nameMapper, memory, true);
 
             if (selection.Count != 11)
                 throw new Exception("Wrong selection count");

@@ -9,8 +9,7 @@ namespace AntiCulture.Kid
     {
         public static void Test()
         {
-            Repairer repairer = new Repairer();
-            DisambiguationNamer disambiguationNamer = new DisambiguationNamer(repairer);
+            DisambiguationNamer disambiguationNamer = new DisambiguationNamer();
 
             Concept pine = new Concept("pine");
             Concept tree = new Concept("tree");
@@ -23,9 +22,9 @@ namespace AntiCulture.Kid
             MetaConnectionManager.AddMetaConnection(isa, "muct", isa);
 
             ConnectionManager.Plug(pine, isa, tree);
-            repairer.Repair(pine, tree);
+            Repairer.Repair(pine, tree);
             ConnectionManager.Plug(tree, isa, plant);
-            repairer.Repair(pine, tree, plant);
+            Repairer.Repair(pine, tree, plant);
 
             //pre-conditions
 

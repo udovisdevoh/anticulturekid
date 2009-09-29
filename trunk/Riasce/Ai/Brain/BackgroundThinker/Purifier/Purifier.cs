@@ -12,19 +12,16 @@ namespace AntiCulture.Kid
     class Purifier
     {
         #region Fields
-        private Repairer repairer;
-
         private OptimizedPurifier optimizedPurifier;
 
         private FlatPurifier flatPurifier;
         #endregion
 
         #region Constructor
-        public Purifier(Repairer repairer)
+        public Purifier()
         {
-            this.repairer = repairer;
-            flatPurifier = new FlatPurifier(repairer);
-            optimizedPurifier = new OptimizedPurifier(repairer);
+            flatPurifier = new FlatPurifier();
+            optimizedPurifier = new OptimizedPurifier();
         }
         #endregion
 
