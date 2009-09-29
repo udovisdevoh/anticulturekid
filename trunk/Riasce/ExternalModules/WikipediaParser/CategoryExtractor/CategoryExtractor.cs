@@ -6,27 +6,56 @@ using Microsoft.Win32;
 
 namespace AntiCulture.Kid
 {
+    /// <summary>
+    /// Category extractor
+    /// </summary>
     class CategoryExtractor
     {
         #region Fields
+        /// <summary>
+        /// Model
+        /// </summary>
         private CategoryExtractorModel categoryExtractorModel;
 
+        /// <summary>
+        /// Viewer
+        /// </summary>
         private CategoryExtractorViewer categoryExtractorViewer;
 
+        /// <summary>
+        /// Category element name list
+        /// </summary>
         private HashSet<string> categoryElementNameList;
+        #endregion
 
+        #region Constants
+        /// <summary>
+        /// Button mode waiting for files
+        /// </summary>
         private static readonly int BUTTON_MODE_WAITING_FOR_FILES = 1;
 
+        /// <summary>
+        /// Button mode waiting for start
+        /// </summary>
         private static readonly int BUTTON_MODE_WAITING_FOR_START = 2;
 
+        /// <summary>
+        /// Button mode started
+        /// </summary>
         private static readonly int BUTTON_MODE_STARTED = 3;
         #endregion
 
         #region Events
+        /// <summary>
+        /// Thrown user wants to affect a list of concept to a common affectation
+        /// </summary>
         public event EventHandler OnGeneralAffectation;
         #endregion
 
         #region Constructor
+        /// <summary>
+        /// Create category extractor model
+        /// </summary>
         public CategoryExtractor()
         {
             categoryExtractorModel = new CategoryExtractorModel();
@@ -43,6 +72,9 @@ namespace AntiCulture.Kid
         #endregion
 
         #region Public Methods
+        /// <summary>
+        /// Start category extractor
+        /// </summary>
         public void Start()
         {
             categoryExtractorViewer.Show();
