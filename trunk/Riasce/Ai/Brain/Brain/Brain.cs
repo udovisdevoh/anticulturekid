@@ -36,8 +36,6 @@ namespace AntiCulture.Kid
 
         private StatMaker statMaker;
 
-        private AiSqlWrapper aiSqlWrapper;
-
         private AbstractBackgroundThinker backgroundThinker;
 
         private Thread backgroundThinkerThread = null;
@@ -55,7 +53,6 @@ namespace AntiCulture.Kid
             analogizer = new Analogizer(brotherHoodManager);
             disambiguationNamer = new DisambiguationNamer(brotherHoodManager, repairer);
             statMaker = new StatMaker();
-            aiSqlWrapper = new AiSqlWrapper();
             backgroundThinker = new SerialBackgroundThinker(new Purifier(repairer), new Theorizer(brotherHoodManager, rejectedTheories), repairer, rejectedTheories);
         }
         #endregion
@@ -902,7 +899,7 @@ namespace AntiCulture.Kid
             HashSet<int> selectionByInt = new HashSet<int>();
             //repairer.RepairRange(memory);
 
-            HashSet<Concept> selection = aiSqlWrapper.Select(conditions, nameMapperToUse, memory,repairer,isConsiderSelfMuct);
+            HashSet<Concept> selection = AiSqlWrapper.Select(conditions, nameMapperToUse, memory,repairer,isConsiderSelfMuct);
 
             foreach (Concept concept in selection)
                 selectionByInt.Add(memory.GetIdFromConcept(concept));

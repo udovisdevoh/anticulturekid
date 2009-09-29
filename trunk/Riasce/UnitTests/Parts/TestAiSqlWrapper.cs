@@ -18,9 +18,7 @@ namespace AntiCulture.Kid
             Memory memory = new Memory();
             NameMapper nameMapper = new NameMapper(new Name("aiName"), new Name("humanName"));
             
-            
             Repairer repairer = new Repairer();
-            AiSqlWrapper aiSqlWrapper = new AiSqlWrapper();
             HashSet<Concept> selection;
 
             Concept isa = new Concept("isa");
@@ -87,7 +85,7 @@ namespace AntiCulture.Kid
 
             //1st real tests here
 
-            selection = aiSqlWrapper.Select("isa plant", nameMapper, memory, repairer, true);
+            selection = AiSqlWrapper.Select("isa plant", nameMapper, memory, repairer, true);
 
             if (selection.Count != 6)
                 throw new Exception("Wrong selection count");
@@ -106,7 +104,7 @@ namespace AntiCulture.Kid
 
             //2nd real test here
 
-            selection = aiSqlWrapper.Select("  isa   plant and not (isa tree ) ", nameMapper, memory, repairer, true);
+            selection = AiSqlWrapper.Select("  isa   plant and not (isa tree ) ", nameMapper, memory, repairer, true);
 
             if (selection.Count != 2)
                 throw new Exception("Wrong selection count");
@@ -117,7 +115,7 @@ namespace AntiCulture.Kid
 
             //3rd test here
 
-            selection = aiSqlWrapper.Select("(isa plant or isa animal) and not isa tree", nameMapper, memory, repairer, true);
+            selection = AiSqlWrapper.Select("(isa plant or isa animal) and not isa tree", nameMapper, memory, repairer, true);
 
             if (selection.Count != 4)
                 throw new Exception("Wrong selection count");
@@ -133,14 +131,14 @@ namespace AntiCulture.Kid
 
             //4th test here
 
-            selection = aiSqlWrapper.Select("isa plant and isa animal", nameMapper, memory, repairer, true);
+            selection = AiSqlWrapper.Select("isa plant and isa animal", nameMapper, memory, repairer, true);
 
             if (selection.Count != 0)
                 throw new Exception("Wrong selection count");
 
             //5th test here
 
-            selection = aiSqlWrapper.Select("isa lifeform and isa animal", nameMapper, memory, repairer, true);
+            selection = AiSqlWrapper.Select("isa lifeform and isa animal", nameMapper, memory, repairer, true);
 
             if (selection.Count != 2)
                 throw new Exception("Wrong selection count");
@@ -151,7 +149,7 @@ namespace AntiCulture.Kid
 
             //6th test here
 
-            selection = aiSqlWrapper.Select("(((not isa animal)))", nameMapper, memory, repairer, true);
+            selection = AiSqlWrapper.Select("(((not isa animal)))", nameMapper, memory, repairer, true);
 
             if (selection.Count != 11)
                 throw new Exception("Wrong selection count");
