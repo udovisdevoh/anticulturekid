@@ -84,7 +84,7 @@ namespace AntiCulture.Kid
             
             
             Memory.TotalVerbList = new HashSet<Concept>();
-            Repairer repairer = new Repairer();
+            
 
             Concept orbit = new Concept("orbit");
             Concept orbitedby = new Concept("orbitedby");
@@ -106,7 +106,7 @@ namespace AntiCulture.Kid
 
             ConnectionManager.Plug(moon, orbit, earth);
 
-            repairer.Repair(moon, earth);
+            Repairer.Repair(moon, earth);
 
             //Pre-conditions
 
@@ -143,7 +143,7 @@ namespace AntiCulture.Kid
             
             
             Memory.TotalVerbList = new HashSet<Concept>();
-            Repairer repairer = new Repairer();
+            
 
             Concept isa = new Concept("isa");
             Concept madeof = new Concept("madeof");
@@ -156,11 +156,11 @@ namespace AntiCulture.Kid
 
             ConnectionManager.Plug(pine, isa, tree);
             
-            repairer.Repair(pine, tree);
+            Repairer.Repair(pine, tree);
 
             ConnectionManager.Plug(tree, madeof, wood);
 
-            repairer.Repair(pine, tree, wood);
+            Repairer.Repair(pine, tree, wood);
 
             //Pre-conditions
 
@@ -193,7 +193,7 @@ namespace AntiCulture.Kid
             
             
             Memory.TotalVerbList = new HashSet<Concept>();
-            Repairer repairer = new Repairer();
+            
 
             Concept isa = new Concept("isa");
             Concept someare = new Concept("someare");
@@ -210,11 +210,11 @@ namespace AntiCulture.Kid
 
             ConnectionManager.Plug(pine, isa, tree);
 
-            repairer.Repair(pine, tree);
+            Repairer.Repair(pine, tree);
 
             ConnectionManager.Plug(tree, madeof, wood);
 
-            repairer.Repair(pine, tree, wood);
+            Repairer.Repair(pine, tree, wood);
 
             //Pre-conditions
 
@@ -247,7 +247,7 @@ namespace AntiCulture.Kid
             
             
             Memory.TotalVerbList = new HashSet<Concept>();
-            Repairer repairer = new Repairer();
+            
 
             Concept isa = new Concept("isa");
             Concept madeof = new Concept("madeof");
@@ -258,15 +258,15 @@ namespace AntiCulture.Kid
 
             MetaConnectionManager.AddMetaConnection(madeof, "liffid", isa);
 
-            repairer.Repair(tree,wood);
+            Repairer.Repair(tree,wood);
 
             ConnectionManager.Plug(tree, madeof, wood);
 
-            repairer.Repair(wood,material);
+            Repairer.Repair(wood,material);
 
             ConnectionManager.Plug(wood, isa, material);
 
-            repairer.Repair(tree, wood, material);
+            Repairer.Repair(tree, wood, material);
 
             //Pre-conditions
 
@@ -299,7 +299,7 @@ namespace AntiCulture.Kid
             
             
             Memory.TotalVerbList = new HashSet<Concept>();
-            Repairer repairer = new Repairer();
+            
 
             Concept isa = new Concept("isa");
             Concept someare = new Concept("someare");
@@ -314,15 +314,15 @@ namespace AntiCulture.Kid
             MetaConnectionManager.AddMetaConnection(isa, "inverse_of", someare);
             MetaConnectionManager.AddMetaConnection(madeof, "inverse_of", partof);
 
-            repairer.Repair(tree, wood);
+            Repairer.Repair(tree, wood);
 
             ConnectionManager.Plug(tree, madeof, wood);
 
-            repairer.Repair(wood, material);
+            Repairer.Repair(wood, material);
 
             ConnectionManager.Plug(wood, isa, material);
 
-            repairer.Repair(tree, wood, material);
+            Repairer.Repair(tree, wood, material);
 
             //Pre-conditions
 
@@ -355,7 +355,7 @@ namespace AntiCulture.Kid
             
             
             Memory.TotalVerbList = new HashSet<Concept>();
-            Repairer repairer = new Repairer();
+            
 
             Concept isa = new Concept("isa");
             Concept madeof = new Concept("madeof");
@@ -370,15 +370,15 @@ namespace AntiCulture.Kid
 
             ConnectionManager.Plug(pine, isa, tree);
 
-            repairer.Repair(pine, tree);
+            Repairer.Repair(pine, tree);
 
             ConnectionManager.Plug(tree, madeof, wood);
 
-            repairer.Repair(tree, wood);
+            Repairer.Repair(tree, wood);
 
             ConnectionManager.Plug(wood, isa, material);
 
-            repairer.Repair(pine, tree, wood, material);
+            Repairer.Repair(pine, tree, wood, material);
 
             //Pre-conditions
 
@@ -418,7 +418,7 @@ namespace AntiCulture.Kid
             
             
             Memory.TotalVerbList = new HashSet<Concept>();
-            Repairer repairer = new Repairer();
+            
             Proof expectedProof;
             Proof foundProof;
 
@@ -439,17 +439,17 @@ namespace AntiCulture.Kid
 
             ConnectionManager.Plug(pine, isa, tree);
 
-            repairer.Repair(pine, tree);
+            Repairer.Repair(pine, tree);
 
             ConnectionManager.Plug(tree, madeof, wood);
 
-            repairer.Repair(tree, wood);
+            Repairer.Repair(tree, wood);
 
             ConnectionManager.Plug(wood, isa, material);
 
-            repairer.Repair(pine, tree, wood, material);
+            Repairer.Repair(pine, tree, wood, material);
 
-            repairer.Repair(wood);
+            Repairer.Repair(wood);
 
             //Pre-conditions
 
@@ -529,7 +529,7 @@ namespace AntiCulture.Kid
             
             
             Memory.TotalVerbList = new HashSet<Concept>();
-            Repairer repairer = new Repairer();
+            
 
             Concept isa = new Concept("isa");
             Concept madeof = new Concept("madeof");
@@ -546,19 +546,19 @@ namespace AntiCulture.Kid
 
             ConnectionManager.Plug(pine, isa, tree);
 
-            repairer.Repair(pine, tree);
+            Repairer.Repair(pine, tree);
 
             ConnectionManager.Plug(tree, madeof, wood);
 
-            repairer.Repair(tree, wood);
+            Repairer.Repair(tree, wood);
 
             ConnectionManager.Plug(wood, isa, material);
 
-            repairer.Repair(material, matter);
+            Repairer.Repair(material, matter);
 
             ConnectionManager.Plug(material, madeof, matter);
 
-            repairer.Repair(pine, tree, wood, material, matter);
+            Repairer.Repair(pine, tree, wood, material, matter);
 
             //Pre-conditions
 
@@ -602,7 +602,7 @@ namespace AntiCulture.Kid
             
             
             Memory.TotalVerbList = new HashSet<Concept>();
-            Repairer repairer = new Repairer();
+            
 
             Concept isa = new Concept("isa");
             Concept someare = new Concept("someare");
@@ -623,19 +623,19 @@ namespace AntiCulture.Kid
 
             ConnectionManager.Plug(pine, isa, tree);
 
-            repairer.Repair(pine, tree);
+            Repairer.Repair(pine, tree);
 
             ConnectionManager.Plug(tree, madeof, wood);
 
-            repairer.Repair(tree, wood);
+            Repairer.Repair(tree, wood);
 
             ConnectionManager.Plug(wood, isa, material);
 
-            repairer.Repair(material, matter);
+            Repairer.Repair(material, matter);
 
             ConnectionManager.Plug(material, madeof, matter);
 
-            repairer.Repair(pine, tree, wood, material, matter);
+            Repairer.Repair(pine, tree, wood, material, matter);
 
             //Pre-conditions
 
@@ -679,7 +679,7 @@ namespace AntiCulture.Kid
             
             
             Memory.TotalVerbList = new HashSet<Concept>();
-            Repairer repairer = new Repairer();
+            
 
             Concept isa = new Concept("isa");
             Concept someare = new Concept("someare");
@@ -703,11 +703,11 @@ namespace AntiCulture.Kid
 
             ConnectionManager.Plug(pine, isa, tree);
 
-            repairer.Repair(pine, tree);
+            Repairer.Repair(pine, tree);
 
             ConnectionManager.Plug(tree, madeof, wood);
 
-            repairer.Repair(pine, tree, wood);
+            Repairer.Repair(pine, tree, wood);
 
             //Pre-conditions
 

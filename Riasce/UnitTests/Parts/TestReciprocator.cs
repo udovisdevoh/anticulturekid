@@ -16,7 +16,7 @@ namespace AntiCulture.Kid
         {
             
             
-            Repairer repairer = new Repairer();
+            
             Memory.TotalVerbList = new HashSet<Concept>();
 
             
@@ -31,23 +31,23 @@ namespace AntiCulture.Kid
             Concept water = new Concept("water");
             Concept liquid = new Concept("liquid");
 
-            repairer.Repair(pine, tree);
+            Repairer.Repair(pine, tree);
 
             ConnectionManager.Plug(pine, isa, tree);
 
-            repairer.Repair(tree, plant);
+            Repairer.Repair(tree, plant);
 
             ConnectionManager.Plug(tree, isa, plant);
 
-            repairer.Repair(plant, water);
+            Repairer.Repair(plant, water);
 
             ConnectionManager.Plug(plant, madeof, water);
 
-            repairer.Repair(water, liquid);
+            Repairer.Repair(water, liquid);
 
             ConnectionManager.Plug(water, isa, liquid);
 
-            repairer.Repair(pine, tree, plant, water, liquid);
+            Repairer.Repair(pine, tree, plant, water, liquid);
 
             MetaConnectionManager.AddMetaConnection(isa, "muct", isa);
             MetaConnectionManager.AddMetaConnection(madeof, "muct", isa);
@@ -55,15 +55,15 @@ namespace AntiCulture.Kid
             MetaConnectionManager.AddMetaConnection(madeof, "muct", madeof);
             MetaConnectionManager.AddMetaConnection(madeof, "inverse_of", partof);
 
-            repairer.Repair(pine, tree, plant, water, liquid);
+            Repairer.Repair(pine, tree, plant, water, liquid);
 
-            repairer.Reciprocate(pine);
-            repairer.Reciprocate(tree);
-            repairer.Reciprocate(plant);
-            repairer.Reciprocate(water);
-            repairer.Reciprocate(liquid);
+            Repairer.Reciprocate(pine);
+            Repairer.Reciprocate(tree);
+            Repairer.Reciprocate(plant);
+            Repairer.Reciprocate(water);
+            Repairer.Reciprocate(liquid);
 
-            repairer.Repair(pine, tree, plant, water, liquid);
+            Repairer.Repair(pine, tree, plant, water, liquid);
 
             //Pre-conditions
 

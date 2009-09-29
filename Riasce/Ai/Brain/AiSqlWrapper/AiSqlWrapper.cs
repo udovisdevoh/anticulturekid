@@ -31,8 +31,6 @@ namespace AntiCulture.Kid
         /// Memory to look into
         /// </summary>
         private static Memory currentMemory;
-
-        private static Repairer repairer;
         #endregion
 
         #region Public methods
@@ -45,13 +43,12 @@ namespace AntiCulture.Kid
         /// <param name="repairer">repairer to use</param>
         /// <param name="isStrictMode">whether it consider stuff like "pine" as "isa pine"</param>
         /// <returns>Returns a selection of concept from query (in a SQLish way)</returns>
-        public static HashSet<Concept> Select(string conditions, NameMapper nameMapper, Memory currentMemory, Repairer repairer, bool isConsiderSelfMuct)
+        public static HashSet<Concept> Select(string conditions, NameMapper nameMapper, Memory currentMemory, bool isConsiderSelfMuct)
         {
             repairedBranches = new HashSet<ConnectionBranch>();
             verbMetaConnectionCache = new VerbMetaConnectionCache();
             AiSqlWrapper.nameMapper = nameMapper;
             AiSqlWrapper.currentMemory = currentMemory;
-            AiSqlWrapper.repairer = repairer;
             conditions = conditions.FixStringForHimmlStatementParsing();
             conditions = conditions.TryRemoveUselessParantheses();
             return Select(conditions, isConsiderSelfMuct);
@@ -101,7 +98,7 @@ namespace AntiCulture.Kid
                 Concept verb = verbAndComplement[0];
                 Concept complement = verbAndComplement[1];
 
-                repairer.Repair(complement, repairedBranches, verbMetaConnectionCache);
+                Repairer.Repair(complement, repairedBranches, verbMetaConnectionCache);
 
                 selection1 = GetSubjectListHaving(verb, complement, isConsiderSelfMuct);
 

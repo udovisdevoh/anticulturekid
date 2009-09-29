@@ -18,11 +18,10 @@ namespace AntiCulture.Kid
         /// <param name="theorizer">theorizer</param>
         /// <param name="repairer">repairer</param>
         /// <param name="rejectedTheories">rejected theories</param>
-        public SerialBackgroundThinker(Purifier purifier, Theorizer theorizer, Repairer repairer, RejectedTheories rejectedTheories)
+        public SerialBackgroundThinker(Purifier purifier, Theorizer theorizer, RejectedTheories rejectedTheories)
         {
             this.purifier = purifier;
             this.theorizer = theorizer;
-            this.repairer = repairer;
             this.rejectedTheories = rejectedTheories;
         }
         #endregion
@@ -55,17 +54,17 @@ namespace AntiCulture.Kid
 
                 if (taskTypeCounter == 0)
                 {
-                    repairer.Repair(currentConcept, repairedBranches, verbMetaConnectionCache);
+                    Repairer.Repair(currentConcept, repairedBranches, verbMetaConnectionCache);
                     TryAddTrauma(purifier.PurifyOptimized(currentConcept));
                 }
                 else if (taskTypeCounter == 1)
                 {
-                    repairer.Repair(currentConcept, repairedBranches, verbMetaConnectionCache);
+                    Repairer.Repair(currentConcept, repairedBranches, verbMetaConnectionCache);
                     TryAddTrauma(purifier.PurifyFlat(currentConcept));
                 }
                 else if (taskTypeCounter == 2)
                 {
-                    repairer.Repair(currentConcept, repairedBranches, verbMetaConnectionCache);
+                    Repairer.Repair(currentConcept, repairedBranches, verbMetaConnectionCache);
                     TheorizeAndRememberRandomTheoryAbout(currentConcept);
                 }
                 else //when no type is matched
