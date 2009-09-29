@@ -22,15 +22,6 @@ namespace AntiCulture.Kid
         /// by re-using data
         /// </summary>
         private VerbMetaConnectionCache verbMetaConnectionCache;
-
-        private BrotherHoodManager brotherHoodManager;
-        #endregion
-
-        #region Constructor
-        public Analogizer(BrotherHoodManager brotherHoodManager)
-        {
-            this.brotherHoodManager = brotherHoodManager;
-        }
         #endregion
 
         #region Public Methods
@@ -158,8 +149,8 @@ namespace AntiCulture.Kid
         {
             List<Analogy> analogyList = new List<Analogy>();
 
-            Dictionary<Concept, double> subjectBrotherAndStrenghtList = brotherHoodManager.GetBrotherAndStrengthList(subject);
-            Dictionary<Concept, double> complementBrotherAndStrenghtList = brotherHoodManager.GetBrotherAndStrengthList(complement);
+            Dictionary<Concept, double> subjectBrotherAndStrenghtList = BrotherHoodManager.GetBrotherAndStrengthList(subject);
+            Dictionary<Concept, double> complementBrotherAndStrenghtList = BrotherHoodManager.GetBrotherAndStrengthList(complement);
 
             Concept subjectBrother;
             double subjectBrotherStrength;

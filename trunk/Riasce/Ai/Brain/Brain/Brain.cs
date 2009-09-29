@@ -26,8 +26,6 @@ namespace AntiCulture.Kid
 
         private Analogizer analogizer;
 
-        private BrotherHoodManager brotherHoodManager;
-
         private DisambiguationNamer disambiguationNamer;
 
         private StatMaker statMaker;
@@ -43,12 +41,11 @@ namespace AntiCulture.Kid
         public Brain()
         {
             aliaser = new Aliaser(memory, repairer);
-            brotherHoodManager = new BrotherHoodManager();
             RejectedTheories rejectedTheories = new RejectedTheories();
-            analogizer = new Analogizer(brotherHoodManager);
-            disambiguationNamer = new DisambiguationNamer(brotherHoodManager, repairer);
+            analogizer = new Analogizer();
+            disambiguationNamer = new DisambiguationNamer(repairer);
             statMaker = new StatMaker();
-            backgroundThinker = new SerialBackgroundThinker(new Purifier(repairer), new Theorizer(brotherHoodManager, rejectedTheories), repairer, rejectedTheories);
+            backgroundThinker = new SerialBackgroundThinker(new Purifier(repairer), new Theorizer(rejectedTheories), repairer, rejectedTheories);
         }
         #endregion
 

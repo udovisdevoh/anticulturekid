@@ -8,10 +8,10 @@ namespace AntiCulture.Kid
     /// <summary>
     /// This class is used to find brother concepts to concepts
     /// </summary>
-    public class BrotherHoodManager
+    public static class BrotherHoodManager
     {
         #region Fields
-        private VerbMetaConnectionCache verbMetaConnectionCache;
+        private static VerbMetaConnectionCache verbMetaConnectionCache;
         #endregion
 
         #region Public Methods
@@ -20,7 +20,7 @@ namespace AntiCulture.Kid
         /// </summary>
         /// <param name="subject">subject concept</param>
         /// <returns>a set of brotherhoods for subject concept</returns>
-        public BrotherHoodSet GetFlatBrotherHoodSet(Concept subject)
+        public static BrotherHoodSet GetFlatBrotherHoodSet(Concept subject)
         {
             verbMetaConnectionCache = new VerbMetaConnectionCache();
 
@@ -61,7 +61,7 @@ namespace AntiCulture.Kid
         /// </summary>
         /// <param name="subject">subject concept</param>
         /// <returns>random flat brotherhood to subject concept</returns>
-        public BrotherHoodSet GetRandomFlatBrotherHood(Concept subject)
+        public static BrotherHoodSet GetRandomFlatBrotherHood(Concept subject)
         {
             verbMetaConnectionCache = new VerbMetaConnectionCache();
 
@@ -101,7 +101,7 @@ namespace AntiCulture.Kid
         /// </summary>
         /// <param name="subject">subject concept</param>
         /// <returns>a set of brotherhoods for subject concept</returns>
-        public BrotherHoodSet GetOptimizedBrotherHoodSet(Concept subject)
+        public static BrotherHoodSet GetOptimizedBrotherHoodSet(Concept subject)
         {
             verbMetaConnectionCache = new VerbMetaConnectionCache();
 
@@ -142,7 +142,7 @@ namespace AntiCulture.Kid
         /// </summary>
         /// <param name="subject">subject concept</param>
         /// <returns>random optimized brotherhood to subject concept</returns>
-        public BrotherHoodSet GetRandomOptimizedBrotherHood(Concept subject)
+        public static BrotherHoodSet GetRandomOptimizedBrotherHood(Concept subject)
         {
             verbMetaConnectionCache = new VerbMetaConnectionCache();
 
@@ -182,7 +182,7 @@ namespace AntiCulture.Kid
         /// </summary>
         /// <param name="subject">subject concept</param>
         /// <returns>all brothers of subject and their brotherhood strengths</returns>
-        public Dictionary<Concept, double> GetBrotherAndStrengthList(Concept subject)
+        public static Dictionary<Concept, double> GetBrotherAndStrengthList(Concept subject)
         {
             verbMetaConnectionCache = new VerbMetaConnectionCache();
 
@@ -202,7 +202,7 @@ namespace AntiCulture.Kid
         /// <param name="subject">concept 1</param>
         /// <param name="brother">concept 2</param>
         /// <returns>fraternity strength</returns>
-        public double GetFraternityStrength(Concept subject, Concept brother)
+        public static double GetFraternityStrength(Concept subject, Concept brother)
         {
             double fraternityStrength = 0;
 
@@ -252,7 +252,7 @@ namespace AntiCulture.Kid
         /// </summary>
         /// <param name="verb">provided verb concept</param>
         /// <returns>list of verbs that are inverse_of or permutable_side to provided verb concept</returns>
-        private HashSet<Concept> GetInverseOrPermutableVerb(Concept verb)
+        private static HashSet<Concept> GetInverseOrPermutableVerb(Concept verb)
         {
             HashSet<Concept> inverseOfVerbList = verbMetaConnectionCache.GetVerbFlatListFromCache(verb, "inverse_of", true);
             if (inverseOfVerbList == null)
@@ -279,7 +279,7 @@ namespace AntiCulture.Kid
         /// </summary>
         /// <param name="subject">subject concept</param>
         /// <returns>brother concepts to subject concept</returns>
-        private HashSet<Concept> GetBrotherList(Concept subject)
+        private static HashSet<Concept> GetBrotherList(Concept subject)
         {
             HashSet<Concept> brotherList = new HashSet<Concept>();
 
@@ -313,7 +313,7 @@ namespace AntiCulture.Kid
         /// </summary>
         /// <param name="subject">subject concept</param>
         /// <returns>list of concept plugged to subject</returns>
-        public HashSet<Concept> GetOptimizedParentConceptList(Concept subject)
+        public static HashSet<Concept> GetOptimizedParentConceptList(Concept subject)
         {
             HashSet<Concept> parentConceptList = new HashSet<Concept>();
 

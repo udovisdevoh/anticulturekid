@@ -9,9 +9,7 @@ namespace AntiCulture.Kid
     {
         public static void Test()
         {
-            
-            BrotherHoodManager brotherHoodManager = new BrotherHoodManager();
-            Analogizer analogizer = new Analogizer(brotherHoodManager);
+            Analogizer analogizer = new Analogizer();
             Repairer repairer = new Repairer();
             Memory.TotalVerbList = new HashSet<Concept>();
 

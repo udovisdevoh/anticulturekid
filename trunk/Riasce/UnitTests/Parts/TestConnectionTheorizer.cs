@@ -15,9 +15,8 @@ namespace AntiCulture.Kid
         private static void TestPineMadeOfWood()
         {
             RejectedTheories rejectedTheories = new RejectedTheories();
-            
-            BrotherHoodManager brotherHoodManager = new BrotherHoodManager();
-            ConnectionTheorizer connectionTheorizer = new ConnectionTheorizer(rejectedTheories, brotherHoodManager);
+
+            ConnectionTheorizer connectionTheorizer = new ConnectionTheorizer(rejectedTheories);
             Repairer repairer = new Repairer();
             Memory.TotalVerbList = new HashSet<Concept>();
 
