@@ -8,7 +8,7 @@ namespace AntiCulture.Kid
     /// <summary>
     /// This class is used by aliaser to allow a concept to assimilate another concept's connections
     /// </summary>
-    class Assimilator
+    static class Assimilator
     {
         #region Public Methods
         /// <summary>
@@ -16,7 +16,7 @@ namespace AntiCulture.Kid
         /// </summary>
         /// <param name="assimilator">assimilator concept</param>
         /// <param name="assimilated">assimilated concept</param>
-        public void Assimilate(Concept assimilator, Concept assimilated)
+        public static void Assimilate(Concept assimilator, Concept assimilated)
         {
             AssimilateConnections(assimilator, assimilated);
             AssimilateImplyConnections(assimilator, assimilated);
@@ -29,7 +29,7 @@ namespace AntiCulture.Kid
         /// </summary>
         /// <param name="assimilator">assimilator concept</param>
         /// <param name="assimilated">assimilated concept</param>
-        private void AssimilateConnections(Concept assimilator, Concept assimilated)
+        private static void AssimilateConnections(Concept assimilator, Concept assimilated)
         {
             Concept verb;
             ConnectionBranch optimizedBranch;
@@ -69,7 +69,7 @@ namespace AntiCulture.Kid
         /// </summary>
         /// <param name="assimilator">assimilator concept</param>
         /// <param name="assimilated">assimilated concept</param>
-        private void AssimilateImplyConnections(Concept assimilator, Concept assimilated)
+        private static void AssimilateImplyConnections(Concept assimilator, Concept assimilated)
         {
             Condition newCondition;
             Concept actionVerb, actionComplement;

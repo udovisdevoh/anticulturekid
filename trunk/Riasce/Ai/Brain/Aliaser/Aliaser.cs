@@ -13,8 +13,6 @@ namespace AntiCulture.Kid
         #region Fields
         private Destroyer destroyer = new Destroyer();
 
-        private Assimilator assimilator;
-
         /// <summary>
         /// Persistant reference to brain's memory
         /// </summary>
@@ -31,7 +29,6 @@ namespace AntiCulture.Kid
         {
             this.memory = memory;
             this.repairer = repairer;
-            assimilator = new Assimilator();
         }
         #endregion
 
@@ -47,7 +44,7 @@ namespace AntiCulture.Kid
                 throw new NameMappingException("Cannot alias/unalias operators");
 
             repairer.RepairRange(memory);
-            assimilator.Assimilate(oldConcept, newConcept);
+            Assimilator.Assimilate(oldConcept, newConcept);
             repairer.Repair(oldConcept, newConcept);
             destroyer.Insulate(newConcept, memory);
             repairer.Repair(oldConcept);
@@ -65,7 +62,7 @@ namespace AntiCulture.Kid
             if (Memory.TotalVerbList.Contains(newConcept) || Memory.TotalVerbList.Contains(oldConcept))
                 throw new NameMappingException("Cannot alias/unalias operators");
 
-            assimilator.Assimilate(newConcept, oldConcept);
+            Assimilator.Assimilate(newConcept, oldConcept);
             repairer.Repair(newConcept, oldConcept);
             repairer.Reciprocate(newConcept);
         }

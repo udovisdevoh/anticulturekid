@@ -9,8 +9,6 @@ namespace AntiCulture.Kid
     {
         public static void Test()
         {
-            
-            Assimilator assimilator = new Assimilator();
             Repairer repairer = new Repairer();
             Memory.TotalVerbList = new HashSet<Concept>();
 
@@ -39,7 +37,7 @@ namespace AntiCulture.Kid
 
             //Real test begins here
 
-            assimilator.Assimilate(borg, human);
+            Assimilator.Assimilate(borg, human);
 
             repairer.Repair(borg, human);
 
