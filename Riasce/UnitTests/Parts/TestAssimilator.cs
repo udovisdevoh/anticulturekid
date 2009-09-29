@@ -9,8 +9,8 @@ namespace AntiCulture.Kid
     {
         public static void Test()
         {
-            ConnectionManager connectionManager = new ConnectionManager();
-            Assimilator assimilator = new Assimilator(connectionManager);
+            
+            Assimilator assimilator = new Assimilator();
             Repairer repairer = new Repairer();
             Memory.TotalVerbList = new HashSet<Concept>();
 
@@ -24,17 +24,17 @@ namespace AntiCulture.Kid
 
             repairer.Repair(borg, machine);
 
-            connectionManager.Plug(borg, isa, machine);
-            connectionManager.Plug(human, isa, animal);
+            ConnectionManager.Plug(borg, isa, machine);
+            ConnectionManager.Plug(human, isa, animal);
 
             repairer.Repair(borg, machine, human, animal);
 
             //Pre-conditions
 
-            if (!connectionManager.TestConnection(borg, isa, machine))
+            if (!ConnectionManager.TestConnection(borg, isa, machine))
                 throw new Exception("Should be connected because it's explicit");
 
-            if (!connectionManager.TestConnection(human, isa, animal))
+            if (!ConnectionManager.TestConnection(human, isa, animal))
                 throw new Exception("Should be connected because it's explicit");
 
             //Real test begins here
@@ -43,10 +43,10 @@ namespace AntiCulture.Kid
 
             repairer.Repair(borg, human);
 
-            if (!connectionManager.TestConnection(borg, isa, machine))
+            if (!ConnectionManager.TestConnection(borg, isa, machine))
                 throw new Exception("Should be connected because it's explicit");
 
-            if (!connectionManager.TestConnection(borg, isa, animal))
+            if (!ConnectionManager.TestConnection(borg, isa, animal))
                 throw new Exception("Should be connected because it's implicit");
         }
     }

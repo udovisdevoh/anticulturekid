@@ -27,11 +27,11 @@ namespace AntiCulture.Kid
         #endregion
 
         #region Concstructors
-        public Aliaser(Memory memory, ConnectionManager connectionManager, Repairer repairer)
+        public Aliaser(Memory memory, Repairer repairer)
         {
             this.memory = memory;
             this.repairer = repairer;
-            assimilator = new Assimilator(connectionManager);
+            assimilator = new Assimilator();
         }
         #endregion
 

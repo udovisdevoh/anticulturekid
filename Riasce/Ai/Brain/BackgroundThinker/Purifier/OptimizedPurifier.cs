@@ -8,15 +8,12 @@ namespace AntiCulture.Kid
     class OptimizedPurifier
     {
         #region Fields
-        private ConnectionManager connectionManager;
-
         private Repairer repairer;
         #endregion
 
         #region Constructor
-        public OptimizedPurifier(ConnectionManager connectionManager, Repairer repairer)
+        public OptimizedPurifier(Repairer repairer)
         {
-            this.connectionManager = connectionManager;
             this.repairer = repairer;
         }
         #endregion
@@ -49,8 +46,8 @@ namespace AntiCulture.Kid
                 mostObstructableConnection = GetMostObstructableConnection(concept);
                 if (mostObstructableConnection != null)
                 {
-                    connectionManager.UnPlug(mostObstructableConnection[0], mostObstructableConnection[1], mostObstructableConnection[2]);
-                    obstruction = connectionManager.FindObstructionToPlug(mostObstructableConnection[0], mostObstructableConnection[1], mostObstructableConnection[2], false);
+                    ConnectionManager.UnPlug(mostObstructableConnection[0], mostObstructableConnection[1], mostObstructableConnection[2]);
+                    obstruction = ConnectionManager.FindObstructionToPlug(mostObstructableConnection[0], mostObstructableConnection[1], mostObstructableConnection[2], false);
                     trauma.Add(mostObstructableConnection[0], mostObstructableConnection[1], mostObstructableConnection[2], obstruction[0], obstruction[1], obstruction[2]);
                 }
             } while (mostObstructableConnection != null);
@@ -96,8 +93,8 @@ namespace AntiCulture.Kid
                 mostObstructableConnection = GetMostObstructableConnection(conceptCollection);
                 if (mostObstructableConnection != null)
                 {
-                    connectionManager.UnPlug(mostObstructableConnection[0], mostObstructableConnection[1], mostObstructableConnection[2]);
-                    obstruction = connectionManager.FindObstructionToPlug(mostObstructableConnection[0], mostObstructableConnection[1], mostObstructableConnection[2], false);
+                    ConnectionManager.UnPlug(mostObstructableConnection[0], mostObstructableConnection[1], mostObstructableConnection[2]);
+                    obstruction = ConnectionManager.FindObstructionToPlug(mostObstructableConnection[0], mostObstructableConnection[1], mostObstructableConnection[2], false);
                     trauma.Add(mostObstructableConnection[0], mostObstructableConnection[1], mostObstructableConnection[2], obstruction[0], obstruction[1], obstruction[2]);
                 }
             } while (mostObstructableConnection != null);
@@ -135,7 +132,7 @@ namespace AntiCulture.Kid
                 optimizedBranch = verbAndBranch.Value;
                 foreach (Concept complement in optimizedBranch.ComplementConceptList)
                 {
-                    currentObstructionCount = connectionManager.CountObstructionToPlug(subject, verb, complement, false);
+                    currentObstructionCount = ConnectionManager.CountObstructionToPlug(subject, verb, complement, false);
                     if (currentObstructionCount > maxObstructionCount)
                     {
                         maxObstructionCount = currentObstructionCount;
@@ -167,7 +164,7 @@ namespace AntiCulture.Kid
                     optimizedBranch = verbAndBranch.Value;
                     foreach (Concept complement in optimizedBranch.ComplementConceptList)
                     {
-                        currentObstructionCount = connectionManager.CountObstructionToPlug(subject, verb, complement, false);
+                        currentObstructionCount = ConnectionManager.CountObstructionToPlug(subject, verb, complement, false);
                         if (currentObstructionCount > maxObstructionCount)
                         {
                             maxObstructionCount = currentObstructionCount;

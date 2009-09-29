@@ -9,7 +9,7 @@ namespace AntiCulture.Kid
     {
         public static void Test()
         {
-            ConnectionManager connectionManager = new ConnectionManager();
+            
             #region We create the verbs that we will need
             Concept isa = new Concept("isa");
             Concept someare = new Concept("someare");
@@ -70,7 +70,7 @@ namespace AntiCulture.Kid
             if (tree.IsFlatDirty)
                 throw new Exception("Concept shouldn't be dirty");
 
-            connectionManager.Plug(tree, isa, plant);
+            ConnectionManager.Plug(tree, isa, plant);
 
             if (!tree.IsFlatDirty)
                 throw new Exception("Concept should be dirty");
@@ -81,12 +81,12 @@ namespace AntiCulture.Kid
             tree.IsFlatDirty = false;
             plant.IsFlatDirty = false;
 
-            connectionManager.Plug(animal, contradict, plant);
+            ConnectionManager.Plug(animal, contradict, plant);
             animal.IsFlatDirty = false;
 
             tree.AddFlatConnection(isa, plant);
 
-            connectionManager.Plug(pine, isa, tree);
+            ConnectionManager.Plug(pine, isa, tree);
 
             if (!plant.IsFlatDirty)
                 throw new Exception("Concept should be dirty");
@@ -97,15 +97,15 @@ namespace AntiCulture.Kid
             pine.IsFlatDirty = false;
             plant.IsFlatDirty = false;
 
-            if (connectionManager.TestConnection(pine, isa, plant))
+            if (ConnectionManager.TestConnection(pine, isa, plant))
                 throw new Exception("Connection shouldn't exist");
 
             pine.AddFlatConnection(isa, plant);
             plant.AddFlatConnection(someare, pine);
-            if (!connectionManager.TestConnection(pine, isa, plant))
+            if (!ConnectionManager.TestConnection(pine, isa, plant))
                 throw new Exception("Connection should exist");
 
-            connectionManager.Plug(cat, isa, animal);
+            ConnectionManager.Plug(cat, isa, animal);
             cat.IsFlatDirty = false;
             animal.IsFlatDirty = false;
 
@@ -115,7 +115,7 @@ namespace AntiCulture.Kid
             if (!animal.IsOptimizedConnectedTo(someare, cat))
                 throw new Exception("Connection should exist");
 
-            connectionManager.UnPlug(cat, isa, animal);
+            ConnectionManager.UnPlug(cat, isa, animal);
 
             if (cat.IsOptimizedConnectedTo(isa, animal))
                 throw new Exception("Connection shouldn't exist");
@@ -140,14 +140,14 @@ namespace AntiCulture.Kid
             cat.AddFlatConnection(contradict, plant);
             plant.AddFlatConnection(contradict, cat);
 
-            connectionManager.TestConnection(cat, contradict, plant);
+            ConnectionManager.TestConnection(cat, contradict, plant);
 
 
             animal.IsFlatDirty = false;
             plant.IsFlatDirty = false;
             cat.IsFlatDirty = false;
 
-            obstruction = connectionManager.FindObstructionToPlug(cat, isa, plant, true);
+            obstruction = ConnectionManager.FindObstructionToPlug(cat, isa, plant, true);
 
             if (obstruction == null)
                 throw new Exception("Obstruction should be found");
@@ -155,7 +155,7 @@ namespace AntiCulture.Kid
             if (obstruction[0] != cat && obstruction[1] != contradict && obstruction[2] != plant)
                 throw new Exception("Wrong obstruction");
 
-            obstruction = connectionManager.FindObstructionToPlug(animal, isa, cat, true);
+            obstruction = ConnectionManager.FindObstructionToPlug(animal, isa, cat, true);
 
             if (obstruction == null)
                 throw new Exception("Obstruction should be found");

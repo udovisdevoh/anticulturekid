@@ -6,16 +6,16 @@ using System.Text;
 namespace AntiCulture.Kid
 {
     /// <summary>
-    /// Concrete implementation of connection manager
+    /// Connection manager
     /// (handles connections/disconnections)
     /// </summary>
-    class ConnectionManager : AbstractConnectionManager
+    static class ConnectionManager
     {
         #region Fields
         /// <summary>
         /// By default: false. Use this to disable repair after adding/removing connections
         /// </summary>
-        private bool disableFlattenizeAndOptimizeAndPurify = false;
+        private static bool disableFlattenizeAndOptimizeAndPurify = false;
         #endregion
 
         #region Plugging and Unplugging
@@ -28,7 +28,7 @@ namespace AntiCulture.Kid
         /// <param name="subject">subject concept</param>
         /// <param name="verb">verb concept</param>
         /// <param name="complement">complement concept</param>
-        public override void Plug(Concept subject, Concept verb, Concept complement)
+        public static void Plug(Concept subject, Concept verb, Concept complement)
         {
             #region We throw exception if concepts are dirty or if subject is verb or is complement
             if (!disableFlattenizeAndOptimizeAndPurify && (subject.IsFlatDirty || verb.IsFlatDirty || complement.IsFlatDirty))
@@ -79,7 +79,7 @@ namespace AntiCulture.Kid
         /// <param name="subject">subject concept</param>
         /// <param name="verb">verb concept</param>
         /// <param name="complement">complement concept</param>
-        public override void UnPlug(Concept subject, Concept verb, Concept complement)
+        public static void UnPlug(Concept subject, Concept verb, Concept complement)
         {
             #region We throw exception if concepts are dirty or if subject is verb or is complement
             if (!disableFlattenizeAndOptimizeAndPurify && (subject.IsFlatDirty || verb.IsFlatDirty || complement.IsFlatDirty))
@@ -141,7 +141,7 @@ namespace AntiCulture.Kid
         /// <param name="strictMode">if true, consider unlikeliness as an obstruction, if not, don't</param>
         /// <returns>List of 3 concepts (subject, verb, complement) that prevents to connect specified concepts
         /// Return null if couldn't find anything obstructing specified connection</returns>
-        public override List<Concept> FindObstructionToPlug(Concept subject, Concept verb, Concept complement, bool strictMode)
+        public static List<Concept> FindObstructionToPlug(Concept subject, Concept verb, Concept complement, bool strictMode)
         {
             if (!disableFlattenizeAndOptimizeAndPurify && (subject.IsFlatDirty /*|| verb.IsFlatDirty || complement.IsFlatDirty*/))
                 throw new ConnectionException("Repair concepts first");
@@ -162,7 +162,7 @@ namespace AntiCulture.Kid
         /// <param name="strictMode">if true, consider unlikeliness as an obstruction, if not, don't</param>
         /// <returns>List of 3 concepts (subject, verb, complement) that prevents to connect specified concepts
         /// Return null if couldn't find anything obstructing specified connection</returns>
-        public override List<Concept> FindObstructionToPlugAllowInverseAndPermutableSide(Concept subject, Concept verb, Concept complement, bool strictMode)
+        public static List<Concept> FindObstructionToPlugAllowInverseAndPermutableSide(Concept subject, Concept verb, Concept complement, bool strictMode)
         {
             if (!disableFlattenizeAndOptimizeAndPurify && (subject.IsFlatDirty /*|| verb.IsFlatDirty || complement.IsFlatDirty*/))
                 throw new ConnectionException("Repair concepts first");
@@ -187,7 +187,7 @@ namespace AntiCulture.Kid
         /// <param name="complement">complement concept</param>
         /// <param name="strictMode">if true, consider unlikeliness as an obstruction, if not, don't</param>
         /// <returns>the amount of possible flat connections that prevent provided connection to be possible</returns>
-        public override int CountObstructionToPlug(Concept subject, Concept verb, Concept complement, bool strictMode)
+        public static int CountObstructionToPlug(Concept subject, Concept verb, Concept complement, bool strictMode)
         {
             int obstructionCount = 0;
             if (!disableFlattenizeAndOptimizeAndPurify && subject.IsFlatDirty)
@@ -209,7 +209,7 @@ namespace AntiCulture.Kid
         /// <param name="verb">verb concept</param>
         /// <param name="complement">complement concept</param>
         /// <returns>True if connection exist, false if not</returns>
-        public override bool TestConnection(Concept subject, Concept verb, Concept complement)
+        public static bool TestConnection(Concept subject, Concept verb, Concept complement)
         {
             bool isConnected;
             if (!disableFlattenizeAndOptimizeAndPurify && (subject.IsFlatDirty || verb.IsFlatDirty || complement.IsFlatDirty))
@@ -237,7 +237,7 @@ namespace AntiCulture.Kid
         /// <param name="verb">verb concept</param>
         /// <param name="complement">complement concept</param>
         /// <returns>Proof object, null if connection doesn't exist</returns>
-        public override Proof GetProofToConnection(Concept subject, Concept verb, Concept complement)
+        public static Proof GetProofToConnection(Concept subject, Concept verb, Concept complement)
         {
             if (!TestConnection(subject, verb, complement))
                 return null;
@@ -250,7 +250,7 @@ namespace AntiCulture.Kid
         /// <summary>
         /// By default: false. Use this to disable repair after adding/removing connections
         /// </summary>
-        public override bool DisableFlattenizeAndOptimizeAndPurify
+        public static bool DisableFlattenizeAndOptimizeAndPurify
         {
             get { return disableFlattenizeAndOptimizeAndPurify; }
             set { disableFlattenizeAndOptimizeAndPurify = value; }

@@ -12,15 +12,12 @@ namespace AntiCulture.Kid
     class FlatPurifier
     {
         #region Fields
-        private ConnectionManager connectionManager;
-
         private Repairer repairer;
         #endregion
 
         #region Constructor
-        public FlatPurifier(ConnectionManager connectionManager, Repairer repairer)
+        public FlatPurifier(Repairer repairer)
         {
-            this.connectionManager = connectionManager;
             this.repairer = repairer;
         }
         #endregion
@@ -52,10 +49,10 @@ namespace AntiCulture.Kid
             if (mostObstructableConnection != null)
             {
                 repairer.Repair(mostObstructableConnection[0], mostObstructableConnection[2]);
-                connectionManager.UnPlug(mostObstructableConnection[0], mostObstructableConnection[1], mostObstructableConnection[2]);
+                ConnectionManager.UnPlug(mostObstructableConnection[0], mostObstructableConnection[1], mostObstructableConnection[2]);
                 repairer.Repair(mostObstructableConnection[0], mostObstructableConnection[2]);
 
-                obstruction = connectionManager.FindObstructionToPlug(flatConnectionSource[0], flatConnectionSource[1], flatConnectionSource[2], false);
+                obstruction = ConnectionManager.FindObstructionToPlug(flatConnectionSource[0], flatConnectionSource[1], flatConnectionSource[2], false);
 
                 if (obstruction != null)
                     trauma.Add(mostObstructableConnection[0], mostObstructableConnection[1], mostObstructableConnection[2], obstruction[0], obstruction[1], obstruction[2]);
@@ -138,7 +135,7 @@ namespace AntiCulture.Kid
                 flatBranch = verbAndBranch.Value;
                 foreach (Concept complement in flatBranch.ComplementConceptList)
                 {
-                    if (connectionManager.FindObstructionToPlugAllowInverseAndPermutableSide(subject,verb,complement,false) != null)
+                    if (ConnectionManager.FindObstructionToPlugAllowInverseAndPermutableSide(subject,verb,complement,false) != null)
                     {
                         proof = subject.GetFlatConnectionBranch(verb).GetProofTo(complement);
 
@@ -172,7 +169,7 @@ namespace AntiCulture.Kid
                 flatBranch = verbAndBranch.Value;
                 foreach (Concept complement in flatBranch.ComplementConceptList)
                 {
-                    currentObstructionCount = connectionManager.CountObstructionToPlug(subject, verb, complement, false);
+                    currentObstructionCount = ConnectionManager.CountObstructionToPlug(subject, verb, complement, false);
                     if (currentObstructionCount > maxObstructionCount)
                     {
                         maxObstructionCount = currentObstructionCount;

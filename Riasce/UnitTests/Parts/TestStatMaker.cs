@@ -11,7 +11,7 @@ namespace AntiCulture.Kid
         {
             Memory.TotalVerbList = new HashSet<Concept>();
             StatMaker statMaker = new StatMaker();
-            ConnectionManager connectionManager = new ConnectionManager();
+            
             Repairer repairer = new Repairer();
 
             Concept isa = new Concept("isa");
@@ -36,32 +36,32 @@ namespace AntiCulture.Kid
             repairer.Repair(pine, tree, palmtree, willow, cactus, plant, wood, isa, someare, madeof, partof);
             repairer.Repair(pine, tree, palmtree, willow, cactus, plant, wood, isa, someare, madeof, partof);
 
-            connectionManager.Plug(tree, isa, plant);
+            ConnectionManager.Plug(tree, isa, plant);
 
             repairer.Repair(pine, tree, palmtree, willow, cactus, plant, wood, isa, someare, madeof, partof);
             repairer.Repair(pine, tree, palmtree, willow, cactus, plant, wood, isa, someare, madeof, partof);
 
-            connectionManager.Plug(tree, madeof, wood);
+            ConnectionManager.Plug(tree, madeof, wood);
 
             repairer.Repair(pine, tree, palmtree, willow, cactus, plant, wood, isa, someare, madeof, partof);
             repairer.Repair(pine, tree, palmtree, willow, cactus, plant, wood, isa, someare, madeof, partof);
 
-            connectionManager.Plug(pine,isa,tree);
+            ConnectionManager.Plug(pine,isa,tree);
 
             repairer.Repair(pine, tree, palmtree, willow, cactus, plant, wood, isa, someare, madeof, partof);
             repairer.Repair(pine, tree, palmtree, willow, cactus, plant, wood, isa, someare, madeof, partof);
 
-            connectionManager.Plug(palmtree, isa, tree);
+            ConnectionManager.Plug(palmtree, isa, tree);
 
             repairer.Repair(pine, tree, palmtree, willow, cactus, plant, wood, isa, someare, madeof, partof);
             repairer.Repair(pine, tree, palmtree, willow, cactus, plant, wood, isa, someare, madeof, partof);
 
-            connectionManager.Plug(willow, isa, tree);
+            ConnectionManager.Plug(willow, isa, tree);
 
             repairer.Repair(pine, tree, palmtree, willow, cactus, plant, wood, isa, someare, madeof, partof);
             repairer.Repair(pine, tree, palmtree, willow, cactus, plant, wood, isa, someare, madeof, partof);
 
-            connectionManager.Plug(cactus, isa, plant);
+            ConnectionManager.Plug(cactus, isa, plant);
 
             repairer.Repair(pine, tree, palmtree, willow, cactus, plant, wood, isa, someare, madeof, partof);
             repairer.Repair(pine, tree, palmtree, willow, cactus, plant, wood, isa, someare, madeof, partof);

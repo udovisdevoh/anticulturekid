@@ -18,10 +18,10 @@ namespace AntiCulture.Kid
         private static void TestPurifyWithPreContradict()
         {
             Repairer repairer = new Repairer();
-            ConnectionManager connectionManager = new ConnectionManager();
+            
             
             Memory memory = new Memory();
-            Purifier purifier = new Purifier(repairer, connectionManager);
+            Purifier purifier = new Purifier(repairer);
             Memory.TotalVerbList = new HashSet<Concept>();
 
             Concept cat = new Concept("cat");
@@ -50,28 +50,28 @@ namespace AntiCulture.Kid
             repairer.Reciprocate(water);
             repairer.Repair(cat, animal, lifeform, water);
 
-            connectionManager.Plug(cat, contradict, lifeform);
+            ConnectionManager.Plug(cat, contradict, lifeform);
 
             repairer.Repair(cat, animal);
 
-            connectionManager.Plug(cat, isa, animal);
+            ConnectionManager.Plug(cat, isa, animal);
 
             repairer.Repair(animal, lifeform);
 
-            connectionManager.Plug(animal, isa, lifeform);
+            ConnectionManager.Plug(animal, isa, lifeform);
 
             repairer.Repair(lifeform, water);
 
-            connectionManager.Plug(lifeform, madeof, water);
+            ConnectionManager.Plug(lifeform, madeof, water);
 
             repairer.Repair(cat, animal, lifeform, water);
 
             //Pre-conditions
 
-            if (!connectionManager.TestConnection(cat, isa, animal))
+            if (!ConnectionManager.TestConnection(cat, isa, animal))
                 throw new Exception("Should be connected because it's explicit");
 
-            if (!connectionManager.TestConnection(cat, contradict, lifeform))
+            if (!ConnectionManager.TestConnection(cat, contradict, lifeform))
                 throw new Exception("Should be connected because it's explicit");
 
             //Real test here
@@ -94,19 +94,19 @@ namespace AntiCulture.Kid
             repairer.Reciprocate(water);
             repairer.Repair(cat, animal, lifeform, water);
 
-            if (!connectionManager.TestConnection(cat, isa, animal))
+            if (!ConnectionManager.TestConnection(cat, isa, animal))
                 throw new Exception("Should be connected");
 
-            if (connectionManager.TestConnection(cat, contradict, animal))
+            if (ConnectionManager.TestConnection(cat, contradict, animal))
                 throw new Exception("Shouldn't be connected");
         }
 
         private static void TestPurifyWithPostContradict()
         {
             Repairer repairer = new Repairer();
-            ConnectionManager connectionManager = new ConnectionManager();
             
-            Purifier purifier = new Purifier(repairer, connectionManager);
+            
+            Purifier purifier = new Purifier(repairer);
             Memory.TotalVerbList = new HashSet<Concept>();
 
             Concept cat = new Concept("cat");
@@ -135,28 +135,28 @@ namespace AntiCulture.Kid
             repairer.Reciprocate(water);
             repairer.Repair(cat, animal, lifeform, water);
 
-            connectionManager.Plug(cat, isa, animal);
+            ConnectionManager.Plug(cat, isa, animal);
 
             repairer.Repair(animal, lifeform);
 
-            connectionManager.Plug(animal, isa, lifeform);
+            ConnectionManager.Plug(animal, isa, lifeform);
 
             repairer.Repair(lifeform, water);
 
-            connectionManager.Plug(lifeform, madeof, water);
+            ConnectionManager.Plug(lifeform, madeof, water);
 
             repairer.Repair(cat,lifeform);
 
-            connectionManager.Plug(cat, contradict, lifeform);
+            ConnectionManager.Plug(cat, contradict, lifeform);
 
             repairer.Repair(cat, animal, lifeform, water);
 
             //Pre-conditions
 
-            if (!connectionManager.TestConnection(cat, isa, animal))
+            if (!ConnectionManager.TestConnection(cat, isa, animal))
                 throw new Exception("Should be connected because it's explicit");
 
-            if (!connectionManager.TestConnection(cat, contradict, lifeform))
+            if (!ConnectionManager.TestConnection(cat, contradict, lifeform))
                 throw new Exception("Should be connected because it's explicit");
 
             //Real test here
@@ -179,19 +179,19 @@ namespace AntiCulture.Kid
             repairer.Reciprocate(water);
             repairer.Repair(cat, animal, lifeform, water);
 
-            if (!connectionManager.TestConnection(cat, isa, animal))
+            if (!ConnectionManager.TestConnection(cat, isa, animal))
                 throw new Exception("Should be connected");
 
-            if (connectionManager.TestConnection(cat, contradict, animal))
+            if (ConnectionManager.TestConnection(cat, contradict, animal))
                 throw new Exception("Shouldn't be connected");
         }
 
         private static void TestPurifyRangeWithPreContradict()
         {
             Repairer repairer = new Repairer();
-            ConnectionManager connectionManager = new ConnectionManager();
             
-            Purifier purifier = new Purifier(repairer, connectionManager);
+            
+            Purifier purifier = new Purifier(repairer);
             Memory.TotalVerbList = new HashSet<Concept>();
 
             Concept cat = new Concept("cat");
@@ -220,28 +220,28 @@ namespace AntiCulture.Kid
             repairer.Reciprocate(water);
             repairer.Repair(cat, animal, lifeform, water);
 
-            connectionManager.Plug(cat, contradict, lifeform);
+            ConnectionManager.Plug(cat, contradict, lifeform);
 
             repairer.Repair(cat, animal);
 
-            connectionManager.Plug(cat, isa, animal);
+            ConnectionManager.Plug(cat, isa, animal);
 
             repairer.Repair(animal, lifeform);
 
-            connectionManager.Plug(animal, isa, lifeform);
+            ConnectionManager.Plug(animal, isa, lifeform);
 
             repairer.Repair(lifeform, water);
 
-            connectionManager.Plug(lifeform, madeof, water);
+            ConnectionManager.Plug(lifeform, madeof, water);
 
             repairer.Repair(cat, animal, lifeform, water);
 
             //Pre-conditions
 
-            if (!connectionManager.TestConnection(cat, isa, animal))
+            if (!ConnectionManager.TestConnection(cat, isa, animal))
                 throw new Exception("Should be connected because it's explicit");
 
-            if (!connectionManager.TestConnection(cat, contradict, lifeform))
+            if (!ConnectionManager.TestConnection(cat, contradict, lifeform))
                 throw new Exception("Should be connected because it's explicit");
 
             //Real test here
@@ -264,19 +264,19 @@ namespace AntiCulture.Kid
             repairer.Reciprocate(water);
             repairer.Repair(cat, animal, lifeform, water);
 
-            if (!connectionManager.TestConnection(cat, isa, animal))
+            if (!ConnectionManager.TestConnection(cat, isa, animal))
                 throw new Exception("Should be connected");
 
-            if (connectionManager.TestConnection(cat, contradict, animal))
+            if (ConnectionManager.TestConnection(cat, contradict, animal))
                 throw new Exception("Shouldn't be connected");
         }
 
         private static void TestPurifyRangeWithPostContradict()
         {
             Repairer repairer = new Repairer();
-            ConnectionManager connectionManager = new ConnectionManager();
             
-            Purifier purifier = new Purifier(repairer, connectionManager);
+            
+            Purifier purifier = new Purifier(repairer);
             Memory.TotalVerbList = new HashSet<Concept>();
 
             Concept cat = new Concept("cat");
@@ -305,28 +305,28 @@ namespace AntiCulture.Kid
             repairer.Reciprocate(water);
             repairer.Repair(cat, animal, lifeform, water);
 
-            connectionManager.Plug(cat, isa, animal);
+            ConnectionManager.Plug(cat, isa, animal);
 
             repairer.Repair(animal, lifeform);
 
-            connectionManager.Plug(animal, isa, lifeform);
+            ConnectionManager.Plug(animal, isa, lifeform);
 
             repairer.Repair(lifeform, water);
 
-            connectionManager.Plug(lifeform, madeof, water);
+            ConnectionManager.Plug(lifeform, madeof, water);
 
             repairer.Repair(cat, lifeform);
 
-            connectionManager.Plug(cat, contradict, lifeform);
+            ConnectionManager.Plug(cat, contradict, lifeform);
 
             repairer.Repair(cat, animal, lifeform, water);
 
             //Pre-conditions
 
-            if (!connectionManager.TestConnection(cat, isa, animal))
+            if (!ConnectionManager.TestConnection(cat, isa, animal))
                 throw new Exception("Should be connected because it's explicit");
 
-            if (!connectionManager.TestConnection(cat, contradict, lifeform))
+            if (!ConnectionManager.TestConnection(cat, contradict, lifeform))
                 throw new Exception("Should be connected because it's explicit");
 
             //Real test here
@@ -349,10 +349,10 @@ namespace AntiCulture.Kid
             repairer.Reciprocate(water);
             repairer.Repair(cat, animal, lifeform, water);
 
-            if (!connectionManager.TestConnection(cat, isa, animal))
+            if (!ConnectionManager.TestConnection(cat, isa, animal))
                 throw new Exception("Should be connected");
 
-            if (connectionManager.TestConnection(cat, contradict, animal))
+            if (ConnectionManager.TestConnection(cat, contradict, animal))
                 throw new Exception("Shouldn't be connected");
         }
     }

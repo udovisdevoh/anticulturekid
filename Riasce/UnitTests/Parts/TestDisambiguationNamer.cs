@@ -9,11 +9,9 @@ namespace AntiCulture.Kid
     {
         public static void Test()
         {
-            ConnectionManager connectionManager  = new ConnectionManager();
             BrotherHoodManager brotherHoodManger = new BrotherHoodManager();
             Repairer repairer = new Repairer();
             DisambiguationNamer disambiguationNamer = new DisambiguationNamer(brotherHoodManger,repairer);
-            
 
             Concept pine = new Concept("pine");
             Concept tree = new Concept("tree");
@@ -25,14 +23,14 @@ namespace AntiCulture.Kid
             MetaConnectionManager.AddMetaConnection(isa, "inverse_of", someare);
             MetaConnectionManager.AddMetaConnection(isa, "muct", isa);
 
-            connectionManager.Plug(pine, isa, tree);
+            ConnectionManager.Plug(pine, isa, tree);
             repairer.Repair(pine, tree);
-            connectionManager.Plug(tree, isa, plant);
+            ConnectionManager.Plug(tree, isa, plant);
             repairer.Repair(pine, tree, plant);
 
             //pre-conditions
 
-            if (!connectionManager.TestConnection(pine, isa, plant))
+            if (!ConnectionManager.TestConnection(pine, isa, plant))
                 throw new Exception("Should be connected because it's implicit");
 
             //real test begins here

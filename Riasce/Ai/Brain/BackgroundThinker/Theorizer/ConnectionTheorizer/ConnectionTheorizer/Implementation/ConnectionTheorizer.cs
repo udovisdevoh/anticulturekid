@@ -14,18 +14,15 @@ namespace AntiCulture.Kid
 
         private TheoryStatistics theoryStatistics = new TheoryStatistics();
 
-        private ConnectionManager connectionManager;
-
         private BrotherHoodManager brotherHoodManager;
 
         private Random random = new Random();
         #endregion
 
         #region Constructor
-        public ConnectionTheorizer(RejectedTheories rejectedTheories, ConnectionManager connectionManager, BrotherHoodManager brotherHoodManager)
+        public ConnectionTheorizer(RejectedTheories rejectedTheories, BrotherHoodManager brotherHoodManager)
         {
             this.rejectedTheories = rejectedTheories;
-            this.connectionManager = connectionManager;
             this.brotherHoodManager = brotherHoodManager;
         }
         #endregion
@@ -92,7 +89,7 @@ namespace AntiCulture.Kid
                         {
                             if (theory.GetConcept(0) != theory.GetConcept(2))
                             {
-                                if (connectionManager.FindObstructionToPlug(theory.GetConcept(0), theory.GetConcept(1), theory.GetConcept(2), true) == null)
+                                if (ConnectionManager.FindObstructionToPlug(theory.GetConcept(0), theory.GetConcept(1), theory.GetConcept(2), true) == null)
                                 {
                                     if (IsTheoryConservativeFriendly(theory))
                                     {
