@@ -11,8 +11,6 @@ namespace AntiCulture.Kid
     class Aliaser
     {
         #region Fields
-        private Destroyer destroyer = new Destroyer();
-
         /// <summary>
         /// Persistant reference to brain's memory
         /// </summary>
@@ -46,7 +44,7 @@ namespace AntiCulture.Kid
             repairer.RepairRange(memory);
             Assimilator.Assimilate(oldConcept, newConcept);
             repairer.Repair(oldConcept, newConcept);
-            destroyer.Insulate(newConcept, memory);
+            Destroyer.Insulate(newConcept, memory);
             repairer.Repair(oldConcept);
             repairer.Reciprocate(oldConcept);
             repairer.Repair(oldConcept);
