@@ -11,7 +11,7 @@ namespace AntiCulture.Kid
     class Asker
     {
         #region Fields
-        private Random random = new Random();
+        private static Random random = new Random();
 
         /// <summary>
         /// Maximum amount of questions created when picking the best one
