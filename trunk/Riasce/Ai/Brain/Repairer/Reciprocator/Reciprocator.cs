@@ -8,7 +8,7 @@ namespace AntiCulture.Kid
     /// <summary>
     /// This class is used to copy a concepts connection to its complement as inverse or permutable side connection
     /// </summary>
-    class Reciprocator
+    static class Reciprocator
     {
         #region Methods
         /// <summary>
@@ -16,7 +16,7 @@ namespace AntiCulture.Kid
         /// (The only connections affected will be the optimized connections)
         /// </summary>
         /// <param name="concept">Concept to repair</param>
-        public void Reciprocate(Concept subject)
+        public static void Reciprocate(Concept subject)
         {
             FeelingMonitor.Add(FeelingMonitor.RECIPROCATING);
             Repair(subject, new VerbMetaConnectionCache());
@@ -26,7 +26,7 @@ namespace AntiCulture.Kid
         /// Repair a collection of concepts's reciprocal connections
         /// </summary>
         /// <param name="conceptCollection">collection of concepts</param>
-        public void ReciprocateRange(IEnumerable<Concept> conceptCollection)
+        public static void ReciprocateRange(IEnumerable<Concept> conceptCollection)
         {
             FeelingMonitor.Add(FeelingMonitor.RECIPROCATING);
             VerbMetaConnectionCache verbMetaConnectionCache = new VerbMetaConnectionCache();
@@ -41,7 +41,7 @@ namespace AntiCulture.Kid
         /// </summary>
         /// <param name="subject">subject concept to repair</param>
         /// <param name="verbMetaConnectionCache">verb metaConnection cache</param>
-        private void Repair(Concept subject, VerbMetaConnectionCache verbMetaConnectionCache)
+        private static void Repair(Concept subject, VerbMetaConnectionCache verbMetaConnectionCache)
         {
             if (subject.IsFlatDirty || subject.IsOptimizedDirty)
                 throw new ReciprocatorException("Repair concept first");

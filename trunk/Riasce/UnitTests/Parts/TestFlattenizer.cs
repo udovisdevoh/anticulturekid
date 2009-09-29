@@ -815,8 +815,6 @@ namespace AntiCulture.Kid
 
             Memory.TotalVerbList = new HashSet<Concept>();
             
-            
-            Reciprocator reciprocator = new Reciprocator();
             Repairer repairer = new Repairer();
 
             Concept pine = new Concept("pine");
@@ -849,15 +847,15 @@ namespace AntiCulture.Kid
 
             repairer.Repair(pine, tree, wood);
 
-            reciprocator.Reciprocate(pine);
+            Reciprocator.Reciprocate(pine);
 
             repairer.Repair(pine, tree, wood);
 
-            reciprocator.Reciprocate(tree);
+            Reciprocator.Reciprocate(tree);
 
             repairer.Repair(pine, tree, wood);
 
-            reciprocator.Reciprocate(wood);
+            Reciprocator.Reciprocate(wood);
 
             repairer.Repair(pine, tree, wood);
 
@@ -882,8 +880,6 @@ namespace AntiCulture.Kid
         {
             Memory.TotalVerbList = new HashSet<Concept>();
             
-            
-            Reciprocator reciprocator = new Reciprocator();
             Repairer repairer = new Repairer();
 
             Concept gravity = new Concept("gravity");
@@ -937,8 +933,6 @@ namespace AntiCulture.Kid
         {
             Memory.TotalVerbList = new HashSet<Concept>();
             
-            
-            Reciprocator reciprocator = new Reciprocator();
             Repairer repairer = new Repairer();
 
             Concept gravity = new Concept("gravity");
@@ -992,8 +986,6 @@ namespace AntiCulture.Kid
         {
             Memory.TotalVerbList = new HashSet<Concept>();
             
-            
-            Reciprocator reciprocator = new Reciprocator();
             Repairer repairer = new Repairer();
 
             Concept gravity = new Concept("gravity");
@@ -1047,8 +1039,6 @@ namespace AntiCulture.Kid
         {
             Memory.TotalVerbList = new HashSet<Concept>();
             
-            
-            Reciprocator reciprocator = new Reciprocator();
             Repairer repairer = new Repairer();
 
             Concept isa = new Concept("isa");
