@@ -9,7 +9,7 @@ namespace AntiCulture.Kid
     /// <summary>
     /// This class is used to convert AiSql Queries as string into real conditions
     /// </summary>
-    class ConditionBuilder
+    static class ConditionBuilder
     {
         #region Public Methods
         /// <summary>
@@ -19,7 +19,7 @@ namespace AntiCulture.Kid
         /// <param name="nameMapper">name mapper to look into</param>
         /// <param name="memory">memory to look into</param>
         /// <returns>Parsed condition</returns>
-        public Condition ParseString(string text, NameMapper nameMapper, Memory memory)
+        public static Condition ParseString(string text, NameMapper nameMapper, Memory memory)
         {
             text = text.FixStringForHimmlStatementParsing();
             text = text.TryRemoveUselessParantheses();
@@ -55,7 +55,7 @@ namespace AntiCulture.Kid
         /// <param name="nameMapper">name mapper to look into</param>
         /// <param name="currentMemory">memory to look into</param>
         /// <returns>verb and complement from atomic query</returns>
-        private List<Concept> GetVerbAndComplement(string query, NameMapper nameMapper, Memory currentMemory)
+        private static List<Concept> GetVerbAndComplement(string query, NameMapper nameMapper, Memory currentMemory)
         {
             if (query.StartsWith("not "))
                 query = query.Substring(4);
