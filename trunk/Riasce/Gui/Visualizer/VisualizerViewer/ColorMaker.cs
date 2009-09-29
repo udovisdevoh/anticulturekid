@@ -7,15 +7,30 @@ using Text;
 
 namespace AntiCulture.Kid
 {
-    class ColorMaker : AbstractColorMaker
+    /// <summary>
+    /// Used to create colors from strings
+    /// </summary>
+    class ColorMaker
     {
         #region Public Methods
-        public override SolidColorBrush GetColorFromString(string text)
+        /// <summary>
+        /// Return a color from provided string
+        /// </summary>
+        /// <param name="text">provided string</param>
+        /// <returns>color from provided string</returns>
+        public SolidColorBrush GetColorFromString(string text)
         {
             return GetColorFromString(text, 0, 255);
         }
 
-        public override SolidColorBrush GetColorFromString(string text, byte minStrength, byte maxStrength)
+        /// <summary>
+        /// Return a color from provided string
+        /// </summary>
+        /// <param name="text">provided string</param>
+        /// <param name="minStrength">minimum channel strength (default: 0)</param>
+        /// <param name="maxStrength">maximum channel strength (default: 255)</param>
+        /// <returns>color from provided string</returns>
+        public SolidColorBrush GetColorFromString(string text, byte minStrength, byte maxStrength)
         {
             byte red, green, blue;
 
@@ -27,7 +42,14 @@ namespace AntiCulture.Kid
             return brush;
         }
 
-        public override LinearGradientBrush GetLinearGradientFromString(string text, byte minStrength, byte maxStrength)
+        /// <summary>
+        /// Returns a gradient from provided string
+        /// </summary>
+        /// <param name="text">provided string</param>
+        /// <param name="minStrength">minimum channel strength (default: 0)</param>
+        /// <param name="maxStrength">maximum channel strength (default: 255)</param>
+        /// <returns>gradient from provided string</returns>
+        public LinearGradientBrush GetLinearGradientFromString(string text, byte minStrength, byte maxStrength)
         {
             byte red, green, blue;
             Color startColor;
@@ -51,7 +73,14 @@ namespace AntiCulture.Kid
             return brush;
         }
 
-        public override LinearGradientBrush GetWhiteToColorLinearGradientFromString(string text, byte minStrength, byte maxStrength)
+        /// <summary>
+        /// Returns a gradient from provided string
+        /// </summary>
+        /// <param name="text">provided string</param>
+        /// <param name="minStrength">minimum channel strength (default: 0)</param>
+        /// <param name="maxStrength">maximum channel strength (default: 255)</param>
+        /// <returns>gradient from provided string</returns>
+        public LinearGradientBrush GetWhiteToColorLinearGradientFromString(string text, byte minStrength, byte maxStrength)
         {
             byte red, green, blue;
             Color startColor = Colors.White;
@@ -70,6 +99,15 @@ namespace AntiCulture.Kid
         #endregion
 
         #region Private methods
+        /// <summary>
+        /// Get channel strength
+        /// </summary>
+        /// <param name="text">text</param>
+        /// <param name="fromChar">from char</param>
+        /// <param name="length">length</param>
+        /// <param name="minStrength">min strength</param>
+        /// <param name="maxStrength">max strength</param>
+        /// <returns>channel strength</returns>
         private byte GetChannelStrength(string text, int fromChar, int length, byte minStrength, byte maxStrength)
         {
             text = text.FixStringForHimmlStatementParsing();
@@ -99,6 +137,11 @@ namespace AntiCulture.Kid
             return (byte)(currentValue);
         }
 
+        /// <summary>
+        /// Get current value
+        /// </summary>
+        /// <param name="chunk">chunk</param>
+        /// <returns>current value</returns>
         private int GetCurrentValue(string chunk)
         {
             int value = 0;
@@ -112,6 +155,11 @@ namespace AntiCulture.Kid
             return value;
         }
 
+        /// <summary>
+        /// Get max possible value
+        /// </summary>
+        /// <param name="length">length</param>
+        /// <returns>max possible value</returns>
         private int GetMaxPossibleValue(int length)
         {
             return (int)(Math.Pow((double)(26), (double)(length)));

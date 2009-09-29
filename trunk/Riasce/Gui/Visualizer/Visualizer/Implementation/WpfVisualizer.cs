@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Windows;
 using System.Threading;
+using System.Windows.Controls;
 
 namespace AntiCulture.Kid
 {
@@ -13,16 +14,34 @@ namespace AntiCulture.Kid
     class WpfVisualizer : AbstractVisualizer
     {
         #region Fields
+        /// <summary>
+        /// Picture cache
+        /// </summary>
         private PictureCache pictureCache;
 
+        /// <summary>
+        /// Visualizer viewer
+        /// </summary>
         private VisualizerViewer visualizerViewer;
 
+        /// <summary>
+        /// Visualizer history
+        /// </summary>
         private VisualizerHistory visualizerHistory;
 
+        /// <summary>
+        /// Concept name
+        /// </summary>
         private string conceptName;
 
+        /// <summary>
+        /// Is visualizer showing long concept definition
+        /// </summary>
         private bool isShowingLongDefinition;
 
+        /// <summary>
+        /// Visualizer viewer's thread
+        /// </summary>
         private Thread viewerThread;
         #endregion
 
@@ -106,6 +125,9 @@ namespace AntiCulture.Kid
         #endregion
 
         #region Private Methods
+        /// <summary>
+        /// Stop the viewer as soon as possible
+        /// </summary>
         private void StopViewer()
         {
             if (viewerThread != null && viewerThread.IsAlive)
@@ -168,23 +190,35 @@ namespace AntiCulture.Kid
         #endregion
 
         #region Properties
+        /// <summary>
+        /// Whether the visualizer is visible
+        /// </summary>
         public bool IsVisible
         {
             get { return visualizerViewer.IsVisible;}
         }
 
+        /// <summary>
+        /// Visualizer viewer
+        /// </summary>
         public override VisualizerViewer VisualizerViewer
         {
             get { return visualizerViewer; }
         }
 
+        /// <summary>
+        /// Is visualizer showing long concept definition
+        /// </summary>
         public bool IsShowingLongDefinition
         {
             get { return isShowingLongDefinition; }
             set { isShowingLongDefinition = value; }
         }
 
-        public System.Windows.Controls.TreeView TreeView
+        /// <summary>
+        /// Tree View
+        /// </summary>
+        public TreeView TreeView
         {
             get { return visualizerViewer.treeView; }
         }
