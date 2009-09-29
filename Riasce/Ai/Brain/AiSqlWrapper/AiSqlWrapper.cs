@@ -9,30 +9,30 @@ namespace AntiCulture.Kid
     /// <summary>
     /// This class represents a brain component module used to make AiSql queries to brain's memory
     /// </summary>
-    class AiSqlWrapper
+    static class AiSqlWrapper
     {
         #region Fields and parts
         /// <summary>
         /// Cache of repaired branch to improve flattenizer's performance
         /// </summary>
-        private HashSet<ConnectionBranch> repairedBranches;
+        private static HashSet<ConnectionBranch> repairedBranches;
 
         /// <summary>
         /// Cache of verb meta connections to improove meta connection flattenizer's performances
         /// </summary>
-        private VerbMetaConnectionCache verbMetaConnectionCache;
+        private static VerbMetaConnectionCache verbMetaConnectionCache;
 
         /// <summary>
         /// Name mapper to look into
         /// </summary>
-        private NameMapper nameMapper;
+        private static NameMapper nameMapper;
 
         /// <summary>
         /// Memory to look into
         /// </summary>
-        private Memory currentMemory;
+        private static Memory currentMemory;
 
-        private Repairer repairer;
+        private static Repairer repairer;
         #endregion
 
         #region Public methods
@@ -45,13 +45,13 @@ namespace AntiCulture.Kid
         /// <param name="repairer">repairer to use</param>
         /// <param name="isStrictMode">whether it consider stuff like "pine" as "isa pine"</param>
         /// <returns>Returns a selection of concept from query (in a SQLish way)</returns>
-        public HashSet<Concept> Select(string conditions, NameMapper nameMapper, Memory currentMemory, Repairer repairer, bool isConsiderSelfMuct)
+        public static HashSet<Concept> Select(string conditions, NameMapper nameMapper, Memory currentMemory, Repairer repairer, bool isConsiderSelfMuct)
         {
             repairedBranches = new HashSet<ConnectionBranch>();
             verbMetaConnectionCache = new VerbMetaConnectionCache();
-            this.nameMapper = nameMapper;
-            this.currentMemory = currentMemory;
-            this.repairer = repairer;
+            AiSqlWrapper.nameMapper = nameMapper;
+            AiSqlWrapper.currentMemory = currentMemory;
+            AiSqlWrapper.repairer = repairer;
             conditions = conditions.FixStringForHimmlStatementParsing();
             conditions = conditions.TryRemoveUselessParantheses();
             return Select(conditions, isConsiderSelfMuct);
@@ -65,7 +65,7 @@ namespace AntiCulture.Kid
         /// <param name="query">AiSql query</param>
         /// <param name="isConsiderSelfMuct">whether we consider stuff like pie isa pie because isa muct isa</param>
         /// <returns>all concept matching provided query</returns>
-        private HashSet<Concept> Select(string query, bool isConsiderSelfMuct)
+        private static HashSet<Concept> Select(string query, bool isConsiderSelfMuct)
         {
             HashSet<Concept> selection1;
             HashSet<Concept> selection2;
@@ -121,7 +121,7 @@ namespace AntiCulture.Kid
         /// </summary>
         /// <param name="query">provided atomic aiSql query</param>
         /// <returns>verb and complement</returns>
-        private List<Concept> GetVerbAndComplement(string query)
+        private static List<Concept> GetVerbAndComplement(string query)
         {
             Concept verb, complement;
             int verbId, complementId;
@@ -152,7 +152,7 @@ namespace AntiCulture.Kid
         /// <param name="complement">complement</param>
         /// <param name="isConsiderSelfMuct">whether we consider stuff like pie isa pie because isa muct isa</param>
         /// <returns>all concept having provided connection</returns>
-        private HashSet<Concept> GetSubjectListHaving(Concept verb, Concept complement, bool isConsiderSelfMuct)
+        private static HashSet<Concept> GetSubjectListHaving(Concept verb, Concept complement, bool isConsiderSelfMuct)
         {
             if (verb.IsFlatDirty || (complement != null && complement.IsFlatDirty))
                 throw new AiSqlException("Repair concepts first");
