@@ -9,11 +9,20 @@ using System.IO;
 
 namespace AntiCulture.Kid
 {
-    public class PictureCache : AbstractPictureCache
+    /// <summary>
+    /// Picture cache to remember downloaded images
+    /// </summary>
+    public class PictureCache
     {
         #region Fields
+        /// <summary>
+        /// Random number generator
+        /// </summary>
         private static Random random;
 
+        /// <summary>
+        /// Relative path
+        /// </summary>
         private static readonly string relativePath = System.Reflection.Assembly.GetExecutingAssembly().Location.Substring(0,System.Reflection.Assembly.GetExecutingAssembly().Location.LastIndexOf('\\')) + "/ImageCache";
         #endregion
 
@@ -59,6 +68,11 @@ namespace AntiCulture.Kid
         #endregion
 
         #region Private Methods
+        /// <summary>
+        /// Try get image from disk
+        /// </summary>
+        /// <param name="imageName">image name</param>
+        /// <returns>image from disk</returns>
         private Image TryGetImageFromDisk(string imageName)
         {
             if (!File.Exists(relativePath + "/" + imageName + ".jpg"))
@@ -69,6 +83,11 @@ namespace AntiCulture.Kid
             return GetJpegImageFromStream(imageStreamSource);
         }
 
+        /// <summary>
+        /// Get png image from stream
+        /// </summary>
+        /// <param name="imageStreamSource">image stream source</param>
+        /// <returns>png image from stream</returns>
         private Image GetPngImageFromStream(Stream imageStreamSource)
         {
             PngBitmapDecoder decoder = new PngBitmapDecoder(imageStreamSource, BitmapCreateOptions.PreservePixelFormat, BitmapCacheOption.Default);
@@ -81,6 +100,11 @@ namespace AntiCulture.Kid
             return image;
         }
 
+        /// <summary>
+        /// Get jpeg image from stream
+        /// </summary>
+        /// <param name="imageStreamSource">image stream source</param>
+        /// <returns>jpeg image from stream</returns>
         private Image GetJpegImageFromStream(Stream imageStreamSource)
         {
             try
@@ -107,6 +131,11 @@ namespace AntiCulture.Kid
             }
         }
 
+        /// <summary>
+        /// Write png image on disk
+        /// </summary>
+        /// <param name="imageName">image name</param>
+        /// <param name="image">image to write</param>
         private void WritePngImageOnDisk(string imageName, Image image)
         {
             Stream imageStreamSource = new FileStream(relativePath + "/" + imageName + ".png", FileMode.Create, FileAccess.Write, FileShare.Write);
@@ -126,6 +155,11 @@ namespace AntiCulture.Kid
             encoder.Save(imageStreamSource);
         }
 
+        /// <summary>
+        /// Write Jpeg image on disk
+        /// </summary>
+        /// <param name="fileContent">file content</param>
+        /// <param name="imageName">image name</param>
         private void WriteJpegImageOnDisk(byte[] fileContent, string imageName)
         {
             using (BinaryWriter binaryWriter = new BinaryWriter(File.Open(relativePath + "/" + imageName + ".jpg", FileMode.Create)))
@@ -134,6 +168,12 @@ namespace AntiCulture.Kid
             }
         }
 
+        /// <summary>
+        /// Try get image from web
+        /// </summary>
+        /// <param name="imageName">image name</param>
+        /// <param name="data">low level data</param>
+        /// <returns>image from web</returns>
         private Image TryGetImageFromWeb(string imageName, out byte[] data)
         {
             string imageUrl = GetImageUrl(imageName);
@@ -151,6 +191,11 @@ namespace AntiCulture.Kid
             return GetJpegImageFromStream(stream);
         }
 
+        /// <summary>
+        /// Get image url
+        /// </summary>
+        /// <param name="imageName">image name</param>
+        /// <returns>image url</returns>
         private string GetImageUrl(string imageName)
         {
             //string pageContent = WebExplorer.GetStringPageContent("http://images.google.com/images?as_q=" + imageName.Replace('_', '+') + "&um=1&hl=fr&btnG=Recherche+Google&as_epq=&as_oq=&as_eq=&imgtype=&imgsz=small|medium|large&as_filetype=&imgc=&as_sitesearch=&safe=active&as_st=y");
