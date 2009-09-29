@@ -7,6 +7,9 @@ using System.Windows.Media;
 
 namespace AntiCulture.Kid
 {
+    /// <summary>
+    /// Xaml Ai visible comment builder
+    /// </summary>
     class XamlAiVisibleCommentBuilder : AbstractAiVisibleCommentBuilder
     {
         #region Fields

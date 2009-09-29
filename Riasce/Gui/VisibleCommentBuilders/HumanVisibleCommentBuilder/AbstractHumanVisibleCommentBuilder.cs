@@ -6,6 +6,9 @@ using System.Windows.Documents;
 
 namespace AntiCulture.Kid
 {
+    /// <summary>
+    /// Abstract human visible comment builder
+    /// </summary>
     abstract class AbstractHumanVisibleCommentBuilder : AbstractVisibleCommentBuilder
     {
         #region Fields

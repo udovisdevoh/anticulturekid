@@ -8,6 +8,9 @@ using Text;
 
 namespace AntiCulture.Kid
 {
+    /// <summary>
+    /// Xaml Human visible comment builder
+    /// </summary>
     class XamlHumanVisibleCommentBuilder : AbstractHumanVisibleCommentBuilder
     {
         #region Fields

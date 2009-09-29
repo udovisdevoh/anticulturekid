@@ -5,12 +5,13 @@ using System.Text;
 
 namespace AntiCulture.Kid
 {
+    /// <summary>
+    /// Exception thrown when visible comment construction fails
+    /// </summary>
     class VisibleCommentConstructionException : Exception
     {
-        #region Constructors
         public VisibleCommentConstructionException(string info)
             : base(info)
         { }
-        #endregion
     }
 }
