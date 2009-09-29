@@ -14,6 +14,18 @@ whole project major refactoring:
 
 
 
+
+background thinker/phonothink:
+make theories using statistical occurence of connection for each phoneme
+for instance: hy,yd,dr,ro often matches "need water"
+use other languages by translating words, use chinese occurence of symbols
+and translate back to english
+create XML language translation definitions for each language's settings
+
+
+
+
+
 remove magical strings for metaOperator and ultra-basic operators
 so they can be replaced if needed
 
