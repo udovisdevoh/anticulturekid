@@ -7,13 +7,24 @@ using System.IO;
 
 namespace AntiCulture.Kid
 {
+    /// <summary>
+    /// Used to get websites HTML contents
+    /// </summary>
     static class WebExplorer
     {
         #region Fields
+        /// <summary>
+        /// Default user agent
+        /// </summary>
         private static readonly string userAgent = "Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1; WOW64; Trident/4.0; SLCC2; Media Center PC 6.0; InfoPath.2; MS-RTC LM 8)";
         #endregion
 
         #region Public Methods
+        /// <summary>
+        /// Get string page content from URL
+        /// </summary>
+        /// <param name="url">url</param>
+        /// <returns>string page content from URL</returns>
         public static string GetStringPageContent(string url)
         {
             // used to build entire input
@@ -67,6 +78,11 @@ namespace AntiCulture.Kid
             return content.ToString();
         }
 
+        /// <summary>
+        /// Get byte array content from URL
+        /// </summary>
+        /// <param name="url">url</param>
+        /// <returns>byte array content from URL</returns>
         public static byte[] GetBytesFromUrl(string url)
         {
             byte[] b;

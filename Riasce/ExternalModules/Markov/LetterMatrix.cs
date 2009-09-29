@@ -5,17 +5,32 @@ using System.Text;
 
 namespace AntiCulture.Kid
 {
-    class LetterMatrix : AbstractLetterMatrix
+    /// <summary>
+    /// Letter Matrix
+    /// </summary>
+    class LetterMatrix
     {
         #region Fields
+        /// <summary>
+        /// Matrix's data
+        /// </summary>
         private Dictionary<string, Dictionary<string, int>> data;
 
+        /// <summary>
+        /// Random number generator
+        /// </summary>
         private static Random random;
         #endregion
 
         #region Constants
+        /// <summary>
+        /// Sample size
+        /// </summary>
         private const int sampleSize = 2000;
 
+        /// <summary>
+        /// Max word count
+        /// </summary>
         private static int maxWordCount = 20;
         #endregion
 
@@ -44,7 +59,11 @@ namespace AntiCulture.Kid
         #endregion
 
         #region Public Methods
-        public override void Learn(string source)
+        /// <summary>
+        /// Learn from the word or sentence and add statistics to the matrix
+        /// </summary>
+        /// <param name="source">source word or sentence</param>
+        public void Learn(string source)
         {
             source = source.Replace('_', ' ');
 
@@ -54,12 +73,20 @@ namespace AntiCulture.Kid
                 LearnWord(source);
         }
 
-        public override void Learn(IEnumerable<string> source)
+        /// <summary>
+        /// Learn from the word group and add content to the matrix
+        /// </summary>
+        /// <param name="source">word group</param>
+        public void Learn(IEnumerable<string> source)
         {
             foreach (string element in source)
                 Learn(element);
         }
 
+        /// <summary>
+        /// Return a random word from matrix which will not be longer than longest word yet
+        /// </summary>
+        /// <returns>a random word from matrix</returns>
         public string GenerateWord(int desiredLength)
         {
             maxWordCount = desiredLength + 5;
@@ -86,7 +113,11 @@ namespace AntiCulture.Kid
             return bestWord;
         }
 
-        public override string GenerateWord()
+        /// <summary>
+        /// Generate word
+        /// </summary>
+        /// <returns>randomly generated word</returns>
+        public string GenerateWord()
         {
             string word = string.Empty;
             string currentChar;
@@ -105,6 +136,10 @@ namespace AntiCulture.Kid
             return word;
         }
 
+        /// <summary>
+        /// Get utter random character
+        /// </summary>
+        /// <returns>utter random character</returns>
         private string GetUtterRandomChar()
         {
             List<string> charList = new List<string>(data.Keys);
@@ -113,6 +148,10 @@ namespace AntiCulture.Kid
         #endregion
 
         #region Private Methods
+        /// <summary>
+        /// Learn word
+        /// </summary>
+        /// <param name="word">word to learn from</param>
         private void LearnWord(string word)
         {
             word = word.ToLower();
@@ -129,6 +168,10 @@ namespace AntiCulture.Kid
             }
         }
 
+        /// <summary>
+        /// Learn sentence
+        /// </summary>
+        /// <param name="source">text source</param>
         private void LearnSentence(string source)
         {
             string[] wordList = source.Split(' ');
@@ -144,6 +187,11 @@ namespace AntiCulture.Kid
             }
         }
 
+        /// <summary>
+        /// Add statistics
+        /// </summary>
+        /// <param name="from">from word</param>
+        /// <param name="to">to word</param>
         private void AddStatistics(string from, string to)
         {
             Dictionary<string, int> row;
@@ -164,6 +212,11 @@ namespace AntiCulture.Kid
             }
         }
 
+        /// <summary>
+        /// Get next char
+        /// </summary>
+        /// <param name="twoChars">two chars preceeding next char</param>
+        /// <returns>next char</returns>
         private string GetNextChar(string twoChars)
         {
             Dictionary<string, int> availableCharacterList;
@@ -174,45 +227,55 @@ namespace AntiCulture.Kid
             return GetPonderatedRandomValue(GetProbabilityMatrix(availableCharacterList));
         }
 
-        private Dictionary<string, double> GetProbabilityMatrix(Dictionary<string, int> charAndCountList)
+        /// <summary>
+        /// Get probability matrix
+        /// </summary>
+        /// <param name="charAndCountList">char and count list</param>
+        /// <returns>probability matrix</returns>
+        private Dictionary<string, float> GetProbabilityMatrix(Dictionary<string, int> charAndCountList)
         {
-            Dictionary<string, double> probabilityMatrix = new Dictionary<string, double>();
+            Dictionary<string, float> probabilityMatrix = new Dictionary<string, float>();
 
             int totalCount = 0;
             foreach (int count in charAndCountList.Values)
                 totalCount += count;
 
             foreach (KeyValuePair<string,int> charAndCount in charAndCountList)
-                probabilityMatrix.Add(charAndCount.Key, (double)(charAndCount.Value) / (double)(totalCount));
+                probabilityMatrix.Add(charAndCount.Key, (float)(charAndCount.Value) / (float)(totalCount));
 
             return probabilityMatrix;
         }
 
-        private string GetPonderatedRandomValue(Dictionary<string, double> charAndProbabilityList)
+        /// <summary>
+        /// Get ponderated random value
+        /// </summary>
+        /// <param name="charAndProbabilityList">char and probability list</param>
+        /// <returns>ponderated random value</returns>
+        private string GetPonderatedRandomValue(Dictionary<string, float> charAndProbabilityList)
         {
             if (charAndProbabilityList.Count < 1)
                 return " ";
 
-            double randomDouble = random.NextDouble();
-            double doubleCounter = 0;
+            float randomFloat = (float)random.NextDouble();
+            float floatCounter = 0;
             
             string character;
             string previousCharacter = null;
-            double probability;
-            foreach (KeyValuePair<string,double> charAndProbability in charAndProbabilityList)
+            float probability;
+            foreach (KeyValuePair<string, float> charAndProbability in charAndProbabilityList)
             {
                 character = charAndProbability.Key;
                 probability = charAndProbability.Value;
-                doubleCounter += probability;
+                floatCounter += probability;
 
                 if (previousCharacter == null)
                     previousCharacter = character;
 
                 character = charAndProbability.Key;
                 probability = charAndProbability.Value;
-                doubleCounter += probability;
+                floatCounter += probability;
 
-                if (doubleCounter >= randomDouble)
+                if (floatCounter >= randomFloat)
                     break;
                 
                 previousCharacter = character;

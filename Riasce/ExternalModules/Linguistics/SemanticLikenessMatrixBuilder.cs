@@ -5,15 +5,27 @@ using System.Text;
 
 namespace AntiCulture.Kid
 {
+    /// <summary>
+    /// Semantic likeness matrix builder
+    /// </summary>
     class SemanticLikenessMatrixBuilder
     {
         #region Parts
+        /// <summary>
+        /// Reduced row cache
+        /// </summary>
         private Dictionary<string, Dictionary<string, float>> reducedRowCache = new Dictionary<string, Dictionary<string, float>>();
         #endregion
 
         #region Constants
+        /// <summary>
+        /// Default source word count
+        /// </summary>
         private static readonly int defaultSourceWordCount = 2000;
 
+        /// <summary>
+        /// Default target word count
+        /// </summary>
         private static readonly int defaultTargetWordCount = 60;
         #endregion
 
@@ -55,6 +67,11 @@ namespace AntiCulture.Kid
         #endregion
 
         #region Private Methods
+        /// <summary>
+        /// Sort matrix by to-name value
+        /// </summary>
+        /// <param name="semanticLikenessMatrix">semantic likeness matrix</param>
+        /// <returns>sorted semantic likeness matrix</returns>
         private Matrix SortByToNameValue(Matrix semanticLikenessMatrix)
         {
             IEnumerable<KeyValuePair<string, float>> orderedRow;
@@ -91,6 +108,12 @@ namespace AntiCulture.Kid
             return semanticLikenessMatrix;
         }
 
+        /// <summary>
+        /// Trim semantic likeness matrix
+        /// </summary>
+        /// <param name="semanticLikenessMatrix">semantic likeness matrix to trim</param>
+        /// <param name="maxToValueCount">max count value</param>
+        /// <returns>trimmed semantic likeness matrix</returns>
         private Matrix Trim(Matrix semanticLikenessMatrix, int maxToValueCount)
         {
             IEnumerable<KeyValuePair<string, float>> trimmedRow;
@@ -127,6 +150,13 @@ namespace AntiCulture.Kid
             return semanticLikenessMatrix;
         }
 
+        /// <summary>
+        /// Learn half of the information from data
+        /// </summary>
+        /// <param name="semanticLikenessMatrix">semantic likeness matrix</param>
+        /// <param name="data">data</param>
+        /// <param name="sourceWordCount">source word count</param>
+        /// <param name="targetWordCount">target word count</param>
         private void HalfLearnFromData(Matrix semanticLikenessMatrix, Dictionary<string, Dictionary<string, float>> data, int sourceWordCount, int targetWordCount)
         {
             data = GetReducedData(data, sourceWordCount);
@@ -164,6 +194,11 @@ namespace AntiCulture.Kid
             }
         }
 
+        /// <summary>
+        /// Trim exceeding content
+        /// </summary>
+        /// <param name="semanticLikenessMatrix">semantic likeness matrix</param>
+        /// <param name="targetWordCount">target word count</param>
         private void TrimExceedingContent(Matrix semanticLikenessMatrix, int targetWordCount)
         {
             TrimExceedingContent(semanticLikenessMatrix.NormalData, targetWordCount);
@@ -171,6 +206,11 @@ namespace AntiCulture.Kid
             semanticLikenessMatrix.ReversedData.Clear();
         }
 
+        /// <summary>
+        /// Trim exceeding content
+        /// </summary>
+        /// <param name="data">data</param>
+        /// <param name="targetWordCount">target word count</param>
         private void TrimExceedingContent(Dictionary<string, Dictionary<string, float>> data, int targetWordCount)
         {
             List<KeyValuePair<string, Dictionary<string, float>>> oldData = new List<KeyValuePair<string, Dictionary<string, float>>>(data);
@@ -185,6 +225,12 @@ namespace AntiCulture.Kid
             }
         }
 
+        /// <summary>
+        /// Trim exceeding content
+        /// </summary>
+        /// <param name="oldRow">old row</param>
+        /// <param name="targetWordCount">target word count</param>
+        /// <returns>Trimmed data</returns>
         private Dictionary<string, float> TrimExceedingContent(Dictionary<string, float> oldRow, int targetWordCount)
         {
             if (oldRow.Count > targetWordCount * 6)
@@ -203,6 +249,12 @@ namespace AntiCulture.Kid
             }
         }
 
+        /// <summary>
+        /// Intersect row with available word list
+        /// </summary>
+        /// <param name="row">row</param>
+        /// <param name="availableWordList">available word list</param>
+        /// <returns>row with only data</returns>
         private Dictionary<string, float> IntersetcWith(Dictionary<string, float> row, HashSet<string> availableWordList)
         {
             Dictionary<string, float> trimmedDow = new Dictionary<string, float>();
@@ -214,6 +266,12 @@ namespace AntiCulture.Kid
             return trimmedDow;
         }
 
+        /// <summary>
+        /// Get reduced data
+        /// </summary>
+        /// <param name="data">data</param>
+        /// <param name="sourceWordCount">source word count</param>
+        /// <returns>reduced data</returns>
         private Dictionary<string, Dictionary<string, float>> GetReducedData(Dictionary<string, Dictionary<string, float>> data, int sourceWordCount)
         {
             IEnumerable<KeyValuePair<string, Dictionary<string, float>>> orderedData = data.OrderByDescending(pair => pair.Value.Count);
@@ -224,6 +282,11 @@ namespace AntiCulture.Kid
             return data;
         }
 
+        /// <summary>
+        /// Normalize matrix to max target value by row
+        /// </summary>
+        /// <param name="rawMatrix">raw matrix</param>
+        /// <returns>normalized matrix</returns>
         private Matrix NormalizeToMaxOne(Matrix rawMatrix)
         {
             Matrix normalizedMatrix = new Matrix();
@@ -237,6 +300,11 @@ namespace AntiCulture.Kid
             return normalizedMatrix;
         }
 
+        /// <summary>
+        /// Normalize row
+        /// </summary>
+        /// <param name="rawRow">raw row</param>
+        /// <returns>normalized row</returns>
         private Dictionary<string, float> NormalizeToMaxOne(Dictionary<string, float> rawRow)
         {
             Dictionary<string, float> normalizedRow = new Dictionary<string, float>();
@@ -252,6 +320,11 @@ namespace AntiCulture.Kid
             return normalizedRow;
         }
 
+        /// <summary>
+        /// Normalize row to total
+        /// </summary>
+        /// <param name="rawRow">raw row</param>
+        /// <returns>normalized row</returns>
         private Dictionary<string, float> NormalizeToTotalOne(Dictionary<string, float> rawRow)
         {
             Dictionary<string, float> normalizedRow = new Dictionary<string, float>();
@@ -267,6 +340,14 @@ namespace AntiCulture.Kid
             return normalizedRow;
         }
 
+        /// <summary>
+        /// Compare rows (some kind of dotproduct)
+        /// </summary>
+        /// <param name="row1">row 1</param>
+        /// <param name="row2">row 2</param>
+        /// <param name="word1">word 1</param>
+        /// <param name="word2">word 2</param>
+        /// <returns>likeness</returns>
         private float CompareRows(Dictionary<string, float> row1, Dictionary<string, float> row2, string word1, string word2)
         {
             if (row1 == null || row2 == null)
