@@ -16,7 +16,7 @@ namespace AntiCulture.Kid
 
         private BrotherHoodManager brotherHoodManager;
 
-        private Random random = new Random();
+        private static Random random = new Random();
         #endregion
 
         #region Constructor

@@ -20,8 +20,6 @@ namespace AntiCulture.Kid
 
         private Repairer repairer = new Repairer();
 
-        private DefinitionMaker definitionMaker = new DefinitionMaker();
-
         private Teacher teacher = new Teacher();
 
         private Aliaser aliaser;
@@ -292,7 +290,7 @@ namespace AntiCulture.Kid
 
             repairer.Repair(concept);
 
-            Dictionary<Concept, List<Concept>> definitionByConcept = definitionMaker.GetShortDefinition(concept);
+            Dictionary<Concept, List<Concept>> definitionByConcept = DefinitionMaker.GetShortDefinition(concept);
             Dictionary<int, List<int>> definitionByInt = new Dictionary<int, List<int>>();
 
             foreach (KeyValuePair<Concept, List<Concept>> verbAndBranch in definitionByConcept)
@@ -318,7 +316,7 @@ namespace AntiCulture.Kid
 
             repairer.Repair(concept);
 
-            Dictionary<Concept, List<Concept>> definitionByConcept = definitionMaker.GetLongDefinition(concept);
+            Dictionary<Concept, List<Concept>> definitionByConcept = DefinitionMaker.GetLongDefinition(concept);
             Dictionary<int, List<int>> definitionByInt = new Dictionary<int, List<int>>();
 
             foreach (KeyValuePair<Concept, List<Concept>> verbAndBranch in definitionByConcept)

@@ -57,7 +57,7 @@ namespace AntiCulture.Kid
 
         private StringBasedDefinitionBuilder definitionManager = new StringBasedDefinitionBuilder();
 
-        private Random random = new Random();
+        private static Random random = new Random();
         #endregion
 
         #region Constructor

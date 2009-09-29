@@ -8,7 +8,7 @@ namespace AntiCulture.Kid
     /// <summary>
     /// This class is used to build concept based concept definition
     /// </summary>
-    class DefinitionMaker
+    static class DefinitionMaker
     {
         /// <summary>
         /// Returns a short definition from concept's optimized representation
@@ -16,7 +16,7 @@ namespace AntiCulture.Kid
         /// </summary>
         /// <param name="concept">concept</param>
         /// <returns>a short definition</returns>
-        public Dictionary<Concept, List<Concept>> GetShortDefinition(Concept concept)
+        public static Dictionary<Concept, List<Concept>> GetShortDefinition(Concept concept)
         {
             if (concept.IsFlatDirty || concept.IsOptimizedDirty)
                 throw new DefinitionException("Repair concept first");
@@ -36,7 +36,7 @@ namespace AntiCulture.Kid
         /// </summary>
         /// <param name="concept">concept</param>
         /// <returns>a long definition</returns>
-        public Dictionary<Concept, List<Concept>> GetLongDefinition(Concept concept)
+        public static Dictionary<Concept, List<Concept>> GetLongDefinition(Concept concept)
         {
             if (concept.IsFlatDirty || concept.IsOptimizedDirty)
                 throw new DefinitionException("Repair concept first");
