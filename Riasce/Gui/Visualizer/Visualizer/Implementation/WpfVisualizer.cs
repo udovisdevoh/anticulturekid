@@ -97,7 +97,7 @@ namespace AntiCulture.Kid
         /// <summary>
         /// Get Visualizer Viewer
         /// </summary>
-        public override void ShowProof(List<string> proofDefinitionList)
+        public void ShowProof(List<string> proofDefinitionList)
         {
             StopViewer();
             visualizerViewer.ClearItems();

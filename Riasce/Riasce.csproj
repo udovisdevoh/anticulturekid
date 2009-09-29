@@ -192,8 +192,7 @@
     </Compile>
     <Compile Include="Gui\Visualizer\StringEventArgs.cs" />
     <Compile Include="Gui\Visualizer\PictureCache.cs" />
-    <Compile Include="Gui\Visualizer\VisualizerHistory\AbstractVisualizerHistory.cs" />
-    <Compile Include="Gui\Visualizer\VisualizerHistory\Implementation\VisualizerHistory.cs" />
+    <Compile Include="Gui\Visualizer\VisualizerHistory.cs" />
     <Compile Include="Gui\Visualizer\VisualizerViewer\ColorMaker\AbstractColorMaker.cs" />
     <Compile Include="Gui\Visualizer\VisualizerViewer\ColorMaker\Implementation\ColorMaker.cs" />
     <Compile Include="ExternalModules\Linguistics\Matrix.cs" />
@@ -292,7 +291,7 @@
       <DependentUpon>VisualizerViewer.xaml</DependentUpon>
     </Compile>
     <Compile Include="Gui\Visualizer\Visualizer\AbstractVisualizer.cs" />
-    <Compile Include="Gui\Visualizer\Visualizer\Implementation\Visualizer.cs" />
+    <Compile Include="Gui\Visualizer\Visualizer\Implementation\WpfVisualizer.cs" />
     <Compile Include="ExternalModules\WikipediaParser\CategoryExtractor\CategoryExtractorModel\CategoryCheckList.cs" />
     <Compile Include="ExternalModules\WikipediaParser\CategoryExtractor\CategoryExtractorModel\CategoryExtractorModel.cs" />
     <Compile Include="ExternalModules\WikipediaParser\CategoryExtractor\CategoryExtractorModel\SourceCategoryList.cs" />
