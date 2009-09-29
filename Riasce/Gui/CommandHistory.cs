@@ -5,16 +5,30 @@ using System.Text;
 
 namespace AntiCulture.Kid
 {
-    class CommandHistory : AbstractCommandHistory
+    /// <summary>
+    /// Represents a command history for the console
+    /// </summary>
+    class CommandHistory
     {
         #region Fields
+        /// <summary>
+        /// Position in history
+        /// </summary>
         private int pointer = 0;
 
+        /// <summary>
+        /// Command list
+        /// </summary>
         private List<string> commandList = new List<string>();
         #endregion
 
         #region Methods
-        public override void Add(string command)
+        /// <summary>
+        /// Add latest user input at the end of history
+        /// and move pointer to the end of the history
+        /// </summary>
+        /// <param name="expression"></param>
+        public void Add(string command)
         {
             if (commandList.Count > 0 && commandList[commandList.Count - 1] == command)
                 return;
@@ -23,7 +37,11 @@ namespace AntiCulture.Kid
             pointer = commandList.Count;
         }
 
-        public override string GetMoveUp()
+        /// <summary>
+        /// Move the pointer up and return the command
+        /// </summary>
+        /// <returns>command from history</returns>
+        public string GetMoveUp()
         {
             if (commandList.Count == 0)
                 return "";
@@ -35,7 +53,11 @@ namespace AntiCulture.Kid
             return commandList[pointer];
         }
 
-        public override string GetMoveDown()
+        /// <summary>
+        /// Move the pointer down and return the command
+        /// </summary>
+        /// <returns>command from history</returns>
+        public string GetMoveDown()
         {
             if (commandList.Count == 0)
                 return "";
