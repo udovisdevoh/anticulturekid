@@ -1,8 +1,11 @@
+optimize flattenizer for (just for single thread for now)
+proof must work with some kind of linked list rather than array with copied content
+
+
+
 whole project major refactoring:
--classe that should be static will be static
 -everything must be unit testable and unit tested
 -visualizer thread must be safe (no visual conflict)
--must create new class diagram
 -flattenizer must be multithreaded
 -background thinker must be multithreaded
 -flat branch cache must be persistant
@@ -27,8 +30,6 @@ create XML language translation definitions for each language's settings
 
 remove magical strings for metaOperator and ultra-basic operators
 so they can be replaced if needed
-
-proof must work with some kind of linked list rather than array with copied content
 
 
 
