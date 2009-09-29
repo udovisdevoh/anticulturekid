@@ -5,7 +5,7 @@ using System.Text;
 
 namespace AntiCulture.Kid
 {
-    class Destroyer
+    static class Destroyer
     {
         #region Public Methods
         /// <summary>
@@ -14,7 +14,7 @@ namespace AntiCulture.Kid
         /// </summary>
         /// <param name="concept">concept to insulate</param>
         /// <param name="memory">memory to look into</param>
-        public void Insulate(Concept conceptToInsulate, Memory memory)
+        public static void Insulate(Concept conceptToInsulate, Memory memory)
         {
             foreach (Concept otherConcept in memory)
                 RemoveOptimizedCollectionFromTo(otherConcept, conceptToInsulate);
@@ -33,7 +33,7 @@ namespace AntiCulture.Kid
         /// </summary>
         /// <param name="conceptToLookInto">concept to look into</param>
         /// <param name="conceptToInsulate">concept to insulate</param>
-        private void RemoveOptimizedCollectionFromTo(Concept conceptToLookInto, Concept conceptToInsulate)
+        private static void RemoveOptimizedCollectionFromTo(Concept conceptToLookInto, Concept conceptToInsulate)
         {
             Concept verb;
             ConnectionBranch optimizedBranch;
@@ -50,7 +50,7 @@ namespace AntiCulture.Kid
         /// Destroy all "imply" connections depending on concept to insulate
         /// </summary>
         /// <param name="conceptToInsulate">concept to insulate</param>
-        private void DestroyImplyConnectionDependingOn(Concept conceptToInsulate)
+        private static void DestroyImplyConnectionDependingOn(Concept conceptToInsulate)
         {
             Concept actionVerb, actionComplement;
             bool isPositive;
