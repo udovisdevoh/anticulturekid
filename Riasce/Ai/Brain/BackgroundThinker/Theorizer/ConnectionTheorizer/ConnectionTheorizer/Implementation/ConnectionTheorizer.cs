@@ -14,16 +14,13 @@ namespace AntiCulture.Kid
 
         private TheoryStatistics theoryStatistics = new TheoryStatistics();
 
-        private BrotherHoodManager brotherHoodManager;
-
         private static Random random = new Random();
         #endregion
 
         #region Constructor
-        public ConnectionTheorizer(RejectedTheories rejectedTheories, BrotherHoodManager brotherHoodManager)
+        public ConnectionTheorizer(RejectedTheories rejectedTheories)
         {
             this.rejectedTheories = rejectedTheories;
-            this.brotherHoodManager = brotherHoodManager;
         }
         #endregion
 
@@ -54,9 +51,9 @@ namespace AntiCulture.Kid
                 throw new TheoryException("Repair concept first");
 
             if (useFlatBrotherHood)
-                brotherHoodSet = brotherHoodManager.GetFlatBrotherHoodSet(subject);
+                brotherHoodSet = BrotherHoodManager.GetFlatBrotherHoodSet(subject);
             else
-                brotherHoodSet = brotherHoodManager.GetOptimizedBrotherHoodSet(subject);
+                brotherHoodSet = BrotherHoodManager.GetOptimizedBrotherHoodSet(subject);
 
             TheoryStatistics theoryStatistics = GetTheoryStatistics(subject,brotherHoodSet);
             List<Theory> theoryList = GetTheoryList(theoryStatistics, brotherHoodSet.CountBrothers);
@@ -186,9 +183,9 @@ namespace AntiCulture.Kid
 
             BrotherHoodSet brotherHoodSet;
             if (random.Next(2) == 0)
-                brotherHoodSet = brotherHoodManager.GetRandomFlatBrotherHood(subject);
+                brotherHoodSet = BrotherHoodManager.GetRandomFlatBrotherHood(subject);
             else
-                brotherHoodSet = brotherHoodManager.GetRandomOptimizedBrotherHood(subject);
+                brotherHoodSet = BrotherHoodManager.GetRandomOptimizedBrotherHood(subject);
 
             if (brotherHoodSet == null)
                 return null;

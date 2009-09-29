@@ -12,11 +12,6 @@ namespace AntiCulture.Kid
     {
         #region Fields
         /// <summary>
-        /// Brotherhood manager
-        /// </summary>
-        private BrotherHoodManager brotherHoodManager;
-
-        /// <summary>
         /// Disambiguation concept mapping cache
         /// </summary>
         private Dictionary<Concept, Concept> cache = new Dictionary<Concept, Concept>();
@@ -28,9 +23,8 @@ namespace AntiCulture.Kid
         #endregion
 
         #region Constructor
-        public DisambiguationNamer(BrotherHoodManager brotherHoodManager, Repairer repairer)
+        public DisambiguationNamer(Repairer repairer)
         {
-            this.brotherHoodManager = brotherHoodManager;
             this.repairer = repairer;
         }
         #endregion
@@ -48,7 +42,7 @@ namespace AntiCulture.Kid
             if (cache.TryGetValue(subject, out bestParent))
                 return bestParent;
 
-            HashSet<Concept> parentConceptList = brotherHoodManager.GetOptimizedParentConceptList(subject);
+            HashSet<Concept> parentConceptList = BrotherHoodManager.GetOptimizedParentConceptList(subject);
 
             double maxBrotherHoodStrength = 0;
             double currentBrotherHoodStrength;
@@ -56,7 +50,7 @@ namespace AntiCulture.Kid
 
             foreach (Concept currentParentConcept in parentConceptList)
             {
-                currentBrotherHoodStrength = brotherHoodManager.GetFraternityStrength(subject, currentParentConcept);
+                currentBrotherHoodStrength = BrotherHoodManager.GetFraternityStrength(subject, currentParentConcept);
                 if (maxBrotherHoodStrength == 0 || currentBrotherHoodStrength > maxBrotherHoodStrength)
                 {
                     bestParent = currentParentConcept;

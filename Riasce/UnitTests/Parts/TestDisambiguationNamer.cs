@@ -9,9 +9,8 @@ namespace AntiCulture.Kid
     {
         public static void Test()
         {
-            BrotherHoodManager brotherHoodManger = new BrotherHoodManager();
             Repairer repairer = new Repairer();
-            DisambiguationNamer disambiguationNamer = new DisambiguationNamer(brotherHoodManger,repairer);
+            DisambiguationNamer disambiguationNamer = new DisambiguationNamer(repairer);
 
             Concept pine = new Concept("pine");
             Concept tree = new Concept("tree");
