@@ -38,8 +38,6 @@ namespace AntiCulture.Kid
 
         private AiSqlWrapper aiSqlWrapper;
 
-        private ConditionBuilder conditionBuilder = new ConditionBuilder();
-
         private AbstractBackgroundThinker backgroundThinker;
 
         private Thread backgroundThinkerThread = null;
@@ -920,7 +918,7 @@ namespace AntiCulture.Kid
         /// <param name="nameMapper">name mapper to look into</param>
         public void AddImplyConnection(string action, string textCondition, NameMapper nameMapper)
         {
-            Condition condition = conditionBuilder.ParseString(textCondition,nameMapper,memory);
+            Condition condition = ConditionBuilder.ParseString(textCondition,nameMapper,memory);
             string actionVerbName, actionComplementName;
             string actionPreviousVerbName = null;
             int actionVerbId, actionComplementId;
@@ -956,7 +954,7 @@ namespace AntiCulture.Kid
         /// <param name="nameMapper">name mapper to look into</param>
         public void RemoveImplyConnection(string action, string textCondition, NameMapper nameMapper)
         {
-            Condition condition = conditionBuilder.ParseString(textCondition, nameMapper, memory);
+            Condition condition = ConditionBuilder.ParseString(textCondition, nameMapper, memory);
             string actionVerbName, actionComplementName;
             string actionPreviousVerbName = null;
             int actionVerbId, actionComplementId;
@@ -993,7 +991,7 @@ namespace AntiCulture.Kid
         /// <returns>true if it exists, else: false</returns>
         public bool TestImplyConnection(string action, string textCondition, NameMapper nameMapper)
         {
-            Condition condition = conditionBuilder.ParseString(textCondition, nameMapper, memory);
+            Condition condition = ConditionBuilder.ParseString(textCondition, nameMapper, memory);
             string actionVerbName, actionComplementName;
             string actionPreviousVerbName = null;
             int actionVerbId, actionComplementId;
