@@ -5,7 +5,7 @@ using System.Text;
 
 namespace AntiCulture.Kid
 {
-    class OptimizedPurifier
+    static class OptimizedPurifier
     {
         #region Public Methods
         /// <summary>
@@ -15,7 +15,7 @@ namespace AntiCulture.Kid
         /// </summary>
         /// <param name="concept">concept to repair</param>
         /// <returns>Trauma object about removed connections</returns>
-        public Trauma Purify(Concept concept)
+        public static Trauma Purify(Concept concept)
         {
             //loop:
             //  repair the concept
@@ -60,7 +60,7 @@ namespace AntiCulture.Kid
         /// </summary>
         /// <param name="conceptCollection">concept collection</param>
         /// <returns>Trauma object about removed connections</returns>
-        public Trauma PurifiyRange(IEnumerable<Concept> conceptCollection)
+        public static Trauma PurifiyRange(IEnumerable<Concept> conceptCollection)
         {
             #warning Must be eventually optimized because it might be slow when the memory is big
 
@@ -107,7 +107,7 @@ namespace AntiCulture.Kid
         /// </summary>
         /// <param name="subject">provided concept</param>
         /// <returns>If most obstructable connection has obstruction, return obstructable connection, else: null</returns>
-        private List<Concept> GetMostObstructableConnection(Concept subject)
+        private static List<Concept> GetMostObstructableConnection(Concept subject)
         {
             List<Concept> mostObstructableConnection = null;
             int currentObstructionCount;
@@ -137,7 +137,7 @@ namespace AntiCulture.Kid
         /// </summary>
         /// <param name="conceptCollection">concept collection</param>
         /// <returns>If most obstructable connection has obstruction, return obstructable connection, else: null</returns>
-        private List<Concept> GetMostObstructableConnection(IEnumerable<Concept> conceptCollection)
+        private static List<Concept> GetMostObstructableConnection(IEnumerable<Concept> conceptCollection)
         {
             List<Concept> mostObstructableConnection = null;
             int currentObstructionCount;

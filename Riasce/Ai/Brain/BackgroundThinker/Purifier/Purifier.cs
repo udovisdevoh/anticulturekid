@@ -11,17 +11,6 @@ namespace AntiCulture.Kid
     /// </summary>
     class Purifier
     {
-        #region Fields
-        private OptimizedPurifier optimizedPurifier;
-        #endregion
-
-        #region Constructor
-        public Purifier()
-        {
-            optimizedPurifier = new OptimizedPurifier();
-        }
-        #endregion
-
         #region Public Methods
         /// <summary>
         /// Remove inconsistant OPTIMIZED connections from concept
@@ -32,7 +21,7 @@ namespace AntiCulture.Kid
         /// <returns>Trauma object about removed connections</returns>
         public Trauma PurifyOptimized(Concept concept)
         {
-            return optimizedPurifier.Purify(concept);
+            return OptimizedPurifier.Purify(concept);
         }
 
         /// <summary>
@@ -56,7 +45,7 @@ namespace AntiCulture.Kid
         /// <returns>Trauma object about removed connections</returns>
         public Trauma PurifyRangeOptimized(IEnumerable<Concept> conceptCollection)
         {
-            return optimizedPurifier.PurifiyRange(conceptCollection);
+            return OptimizedPurifier.PurifiyRange(conceptCollection);
         }
         #endregion
     }
