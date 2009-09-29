@@ -13,14 +13,11 @@ namespace AntiCulture.Kid
     {
         #region Fields
         private OptimizedPurifier optimizedPurifier;
-
-        private FlatPurifier flatPurifier;
         #endregion
 
         #region Constructor
         public Purifier()
         {
-            flatPurifier = new FlatPurifier();
             optimizedPurifier = new OptimizedPurifier();
         }
         #endregion
@@ -47,7 +44,7 @@ namespace AntiCulture.Kid
         /// <returns>Trauma object about removed connections</returns>
         public Trauma PurifyFlat(Concept concept)
         {
-            return flatPurifier.Purify(concept);
+            return FlatPurifier.Purify(concept);
         }
 
         /// <summary>

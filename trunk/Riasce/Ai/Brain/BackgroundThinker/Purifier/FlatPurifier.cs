@@ -9,7 +9,7 @@ namespace AntiCulture.Kid
     /// This class is used to remove implicity connections that make no sens
     /// by removing explicit connections on which they are based
     /// </summary>
-    class FlatPurifier
+    static class FlatPurifier
     {
         #region Public Methods
         /// <summary>
@@ -19,7 +19,7 @@ namespace AntiCulture.Kid
         /// </summary>
         /// <param name="concept">concept to repair</param>
         /// <returns>Trauma object about removed connections</returns>
-        public Trauma Purify(Concept concept)
+        public static Trauma Purify(Concept concept)
         {
             //loop:
             //  repair the concept
@@ -65,7 +65,7 @@ namespace AntiCulture.Kid
         /// <param name="subject">provided concept</param>
         /// <param name="flatConnectionSource">source flat connection for which obstruction can be found</param>
         /// <returns>If most obstructable connection has obstruction, return obstructable connection, else: null</returns>
-        public List<Concept> GetMostObstructableConnection(Concept subject, out List<Concept> flatConnectionSource)
+        public static List<Concept> GetMostObstructableConnection(Concept subject, out List<Concept> flatConnectionSource)
         {
             //flatConnectionSource = GetMostObstructableFlatConnection(subject);
             flatConnectionSource = GetSomeArbitraryObstructableFlatConnection(subject);
@@ -88,7 +88,7 @@ namespace AntiCulture.Kid
         /// </summary>
         /// <param name="proof">proof to look into</param>
         /// <returns>From proof, returns the last argument that is an optimized connection</returns>
-        private List<Concept> GetFirstOptimizedArgument(Proof proof)
+        private static List<Concept> GetFirstOptimizedArgument(Proof proof)
         {
             Concept subject,verb,complement;
             foreach (List<Concept> argument in proof)
@@ -113,7 +113,7 @@ namespace AntiCulture.Kid
         /// <returns>randomly chosen implicit connection that are being
         /// obstructed by another connection (these implicit connection are
         /// about subject concept)</returns>
-        private List<Concept> GetSomeArbitraryObstructableFlatConnection(Concept subject)
+        private static List<Concept> GetSomeArbitraryObstructableFlatConnection(Concept subject)
         {
             Concept verb;
             ConnectionBranch flatBranch;
@@ -144,7 +144,7 @@ namespace AntiCulture.Kid
         /// </summary>
         /// <param name="subject">subject concept to perform selection on</param>
         /// <returns>most obstructable implicit connections about subject</returns>
-        private List<Concept> GetMostObstructableFlatConnection(Concept subject)
+        private static List<Concept> GetMostObstructableFlatConnection(Concept subject)
         {
             List<Concept> mostObstructableConnection = null;
             int currentObstructionCount;
