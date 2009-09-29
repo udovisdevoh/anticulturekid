@@ -246,11 +246,17 @@ namespace AntiCulture.Kid
         #endregion
 
         #region Properties
+        /// <summary>
+        /// Category name list
+        /// </summary>
         public HashSet<string> CategoryElementNameList
         {
             get { return categoryElementNameList; }
         }
 
+        /// <summary>
+        /// General affectation
+        /// </summary>
         public string GeneralAffectation
         {
             get { return categoryExtractorViewer.textBoxGeneralAffectation.Text; }
