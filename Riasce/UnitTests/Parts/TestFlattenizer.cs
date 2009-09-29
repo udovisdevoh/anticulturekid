@@ -93,7 +93,6 @@ namespace AntiCulture.Kid
             Memory.TotalVerbList = new HashSet<Concept>();
             
             SerialFlattenizer flattenizer = new SerialFlattenizer();
-            Optimizer optimizer = new Optimizer();
 
             #region We create the verbs that we will need
             Concept isa = new Concept("isa");
@@ -204,9 +203,9 @@ namespace AntiCulture.Kid
             ConnectionManager.Plug(mother, make, child);
 
             flattenizer.Repair(mother);
-            optimizer.Repair(mother);
+            Optimizer.Repair(mother);
             flattenizer.Repair(child);
-            optimizer.Repair(child);
+            Optimizer.Repair(child);
 
             if (!ConnectionManager.TestConnection(child, love, mother))
                 throw new Exception("Concepts should be connected because it's implicit");
@@ -228,11 +227,11 @@ namespace AntiCulture.Kid
             #endregion
 
             flattenizer.Repair(tree);
-            optimizer.Repair(tree);
+            Optimizer.Repair(tree);
             flattenizer.Repair(pine);
-            optimizer.Repair(pine);
+            Optimizer.Repair(pine);
             flattenizer.Repair(plant);
-            optimizer.Repair(plant);
+            Optimizer.Repair(plant);
 
             if (ConnectionManager.TestConnection(pine, isa, plant))
                 throw new Exception("Connection shouldn't exist yet exist");
@@ -242,11 +241,11 @@ namespace AntiCulture.Kid
             ConnectionManager.Plug(tree, isa, plant);
 
             flattenizer.Repair(tree);
-            optimizer.Repair(tree);
+            Optimizer.Repair(tree);
             flattenizer.Repair(pine);
-            optimizer.Repair(pine);
+            Optimizer.Repair(pine);
             flattenizer.Repair(plant);
-            optimizer.Repair(plant);
+            Optimizer.Repair(plant);
 
             if (!ConnectionManager.TestConnection(tree, isa, plant))
                 throw new Exception("Connection should exist");
@@ -269,13 +268,13 @@ namespace AntiCulture.Kid
             ConnectionManager.Plug(plant, isa, lifeform);
 
             flattenizer.Repair(tree);
-            optimizer.Repair(tree);
+            Optimizer.Repair(tree);
             flattenizer.Repair(plant);
-            optimizer.Repair(plant);
+            Optimizer.Repair(plant);
             flattenizer.Repair(lifeform);
-            optimizer.Repair(lifeform);
+            Optimizer.Repair(lifeform);
             flattenizer.Repair(pine);
-            optimizer.Repair(pine);
+            Optimizer.Repair(pine);
 
             //Pre-conditions
 
@@ -294,11 +293,11 @@ namespace AntiCulture.Kid
                 throw new Exception("Connection should exist");
 
             flattenizer.Repair(plant);
-            optimizer.Repair(plant);
+            Optimizer.Repair(plant);
             flattenizer.Repair(lifeform);
-            optimizer.Repair(lifeform);
+            Optimizer.Repair(lifeform);
             flattenizer.Repair(tree);
-            optimizer.Repair(tree);
+            Optimizer.Repair(tree);
 
             if (ConnectionManager.TestConnection(pine, madeof, wood))
                 throw new Exception("Connection shouldn't exist yet");
@@ -306,11 +305,11 @@ namespace AntiCulture.Kid
             ConnectionManager.Plug(tree, madeof, wood);
 
             flattenizer.Repair(wood);
-            optimizer.Repair(wood);
+            Optimizer.Repair(wood);
             flattenizer.Repair(pine);
-            optimizer.Repair(pine);
+            Optimizer.Repair(pine);
             flattenizer.Repair(tree);
-            optimizer.Repair(tree);
+            Optimizer.Repair(tree);
 
             if (!ConnectionManager.TestConnection(pine, madeof, wood))
                 throw new Exception("Connection should exist");
@@ -321,9 +320,9 @@ namespace AntiCulture.Kid
             ConnectionManager.Plug(wood, isa, material);
 
             flattenizer.Repair(pine);
-            optimizer.Repair(pine);
+            Optimizer.Repair(pine);
             flattenizer.Repair(material);
-            optimizer.Repair(material);
+            Optimizer.Repair(material);
 
             if (!ConnectionManager.TestConnection(pine, madeof, material))
                 throw new Exception("Connection should exist");
@@ -333,17 +332,17 @@ namespace AntiCulture.Kid
 
 
             flattenizer.Repair(water);
-            optimizer.Repair(water);
+            Optimizer.Repair(water);
             flattenizer.Repair(solid);
-            optimizer.Repair(solid);
+            Optimizer.Repair(solid);
             flattenizer.Repair(liquid);
-            optimizer.Repair(liquid);
+            Optimizer.Repair(liquid);
             flattenizer.Repair(material);
-            optimizer.Repair(material);
+            Optimizer.Repair(material);
             flattenizer.Repair(wood);
-            optimizer.Repair(wood);
+            Optimizer.Repair(wood);
             flattenizer.Repair(pine);
-            optimizer.Repair(pine);
+            Optimizer.Repair(pine);
 
             if (ConnectionManager.TestConnection(wood, contradict, water))
                 throw new Exception("Connection shouldn't exist yet");
@@ -351,77 +350,77 @@ namespace AntiCulture.Kid
             ConnectionManager.Plug(liquid, contradict, solid);
 
             flattenizer.Repair(water);
-            optimizer.Repair(water);
+            Optimizer.Repair(water);
             flattenizer.Repair(solid);
-            optimizer.Repair(solid);
+            Optimizer.Repair(solid);
             flattenizer.Repair(liquid);
-            optimizer.Repair(liquid);
+            Optimizer.Repair(liquid);
             flattenizer.Repair(material);
-            optimizer.Repair(material);
+            Optimizer.Repair(material);
             flattenizer.Repair(wood);
-            optimizer.Repair(wood);
+            Optimizer.Repair(wood);
             flattenizer.Repair(pine);
-            optimizer.Repair(pine);
+            Optimizer.Repair(pine);
 
             ConnectionManager.Plug(solid, isa, material);
 
             flattenizer.Repair(water);
-            optimizer.Repair(water);
+            Optimizer.Repair(water);
             flattenizer.Repair(solid);
-            optimizer.Repair(solid);
+            Optimizer.Repair(solid);
             flattenizer.Repair(liquid);
-            optimizer.Repair(liquid);
+            Optimizer.Repair(liquid);
             flattenizer.Repair(material);
-            optimizer.Repair(material);
+            Optimizer.Repair(material);
             flattenizer.Repair(wood);
-            optimizer.Repair(wood);
+            Optimizer.Repair(wood);
             flattenizer.Repair(pine);
-            optimizer.Repair(pine);
+            Optimizer.Repair(pine);
 
             ConnectionManager.Plug(liquid, isa, material);
 
             flattenizer.Repair(water);
-            optimizer.Repair(water);
+            Optimizer.Repair(water);
             flattenizer.Repair(solid);
-            optimizer.Repair(solid);
+            Optimizer.Repair(solid);
             flattenizer.Repair(liquid);
-            optimizer.Repair(liquid);
+            Optimizer.Repair(liquid);
             flattenizer.Repair(material);
-            optimizer.Repair(material);
+            Optimizer.Repair(material);
             flattenizer.Repair(wood);
-            optimizer.Repair(wood);
+            Optimizer.Repair(wood);
             flattenizer.Repair(pine);
-            optimizer.Repair(pine);
+            Optimizer.Repair(pine);
 
             ConnectionManager.Plug(wood, isa, solid);
 
             flattenizer.Repair(water);
-            optimizer.Repair(water);
+            Optimizer.Repair(water);
             flattenizer.Repair(solid);
-            optimizer.Repair(solid);
+            Optimizer.Repair(solid);
             flattenizer.Repair(liquid);
-            optimizer.Repair(liquid);
+            Optimizer.Repair(liquid);
             flattenizer.Repair(material);
-            optimizer.Repair(material);
+            Optimizer.Repair(material);
             flattenizer.Repair(wood);
-            optimizer.Repair(wood);
+            Optimizer.Repair(wood);
             flattenizer.Repair(pine);
-            optimizer.Repair(pine);
+            Optimizer.Repair(pine);
 
             ConnectionManager.Plug(water, isa, liquid);
 
             flattenizer.Repair(water);
-            optimizer.Repair(water);
+            Optimizer.Repair(water);
             flattenizer.Repair(solid);
-            optimizer.Repair(solid);
+            Optimizer.Repair(solid);
             flattenizer.Repair(liquid);
-            optimizer.Repair(liquid);
+            Optimizer.Repair(liquid);
             flattenizer.Repair(material);
-            optimizer.Repair(material);
+            Optimizer.Repair(material);
             flattenizer.Repair(wood);
-            optimizer.Repair(wood);
+            Optimizer.Repair(wood);
             flattenizer.Repair(pine);
-            optimizer.Repair(pine);
+            Optimizer.Repair(pine);
 
             if (!ConnectionManager.TestConnection(solid, contradict, liquid))
                 throw new Exception("Connection should exist");
@@ -454,18 +453,18 @@ namespace AntiCulture.Kid
                 throw new Exception("Connection shouldn't exist yet");
 
             flattenizer.Repair(lifeform);
-            optimizer.Repair(lifeform);
+            Optimizer.Repair(lifeform);
 
             ConnectionManager.Plug(lifeform, madeof, water);
 
             flattenizer.Repair(lifeform);
-            optimizer.Repair(lifeform);
+            Optimizer.Repair(lifeform);
 
             flattenizer.Repair(pine);
-            optimizer.Repair(pine);
+            Optimizer.Repair(pine);
 
             flattenizer.Repair(water);
-            optimizer.Repair(water);
+            Optimizer.Repair(water);
 
             if (!ConnectionManager.TestConnection(pine, madeof, water))
                 throw new Exception("Connection should exist");
@@ -620,9 +619,7 @@ namespace AntiCulture.Kid
 
         private static void TestTreeMadeofMaterial()
         {
-            
             SerialFlattenizer flattenizer = new SerialFlattenizer();
-            Optimizer optimizer = new Optimizer();
             Memory.TotalVerbList = new HashSet<Concept>();
 
             Concept isa = new Concept("isa");
@@ -639,11 +636,11 @@ namespace AntiCulture.Kid
             MetaConnectionManager.AddMetaConnection(madeof, "liffid", isa);
 
             flattenizer.Repair(tree);
-            optimizer.Repair(tree);
+            Optimizer.Repair(tree);
             flattenizer.Repair(wood);
-            optimizer.Repair(wood);
+            Optimizer.Repair(wood);
             flattenizer.Repair(material);
-            optimizer.Repair(material);
+            Optimizer.Repair(material);
 
             if (ConnectionManager.TestConnection(tree, madeof, material))
                 throw new Exception("Connection shouldn't exist yet");
@@ -652,20 +649,20 @@ namespace AntiCulture.Kid
             ConnectionManager.Plug(tree, madeof, wood);
 
             flattenizer.Repair(tree);
-            optimizer.Repair(tree);
+            Optimizer.Repair(tree);
             flattenizer.Repair(wood);
-            optimizer.Repair(wood);
+            Optimizer.Repair(wood);
             flattenizer.Repair(material);
-            optimizer.Repair(material);
+            Optimizer.Repair(material);
 
             ConnectionManager.Plug(wood, isa, material);
 
             flattenizer.Repair(tree);
-            optimizer.Repair(tree);
+            Optimizer.Repair(tree);
             flattenizer.Repair(wood);
-            optimizer.Repair(wood);
+            Optimizer.Repair(wood);
             flattenizer.Repair(material);
-            optimizer.Repair(material);
+            Optimizer.Repair(material);
 
             if (!ConnectionManager.TestConnection(tree, madeof, material))
                 throw new Exception("Connection should exist because it's implicit");

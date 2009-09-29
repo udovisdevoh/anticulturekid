@@ -16,11 +16,6 @@ namespace AntiCulture.Kid
         /// Flattenizer
         /// </summary>
         private AbstractFlattenizer flattenizer = new SerialFlattenizer();
-
-        /// <summary>
-        /// Optimizer
-        /// </summary>
-        private Optimizer optimizer = new Optimizer();
         #endregion
 
         #region Methods
@@ -200,7 +195,7 @@ namespace AntiCulture.Kid
         public void Repair(Concept conceptToRepair, HashSet<ConnectionBranch> repairedBranches, VerbMetaConnectionCache verbMetaConnectionCache)
         {
             flattenizer.Repair(conceptToRepair, repairedBranches, verbMetaConnectionCache);
-            optimizer.Repair(conceptToRepair);
+            Optimizer.Repair(conceptToRepair);
         }
 
         /// <summary>
