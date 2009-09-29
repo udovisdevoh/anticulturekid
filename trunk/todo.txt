@@ -1,6 +1,4 @@
 whole project major refactoring:
--everything must be documented
--remove useless abstraction
 -each class must be responsible of only one thing
 -classe that should be static will be static
 -everything must be unit testable and unit tested
