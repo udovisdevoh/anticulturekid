@@ -18,9 +18,8 @@ namespace AntiCulture.Kid
         /// <param name="theorizer">theorizer</param>
         /// <param name="repairer">repairer</param>
         /// <param name="rejectedTheories">rejected theories</param>
-        public SerialBackgroundThinker(Purifier purifier, Theorizer theorizer, RejectedTheories rejectedTheories)
+        public SerialBackgroundThinker(Theorizer theorizer, RejectedTheories rejectedTheories)
         {
-            this.purifier = purifier;
             this.theorizer = theorizer;
             this.rejectedTheories = rejectedTheories;
         }
@@ -55,12 +54,12 @@ namespace AntiCulture.Kid
                 if (taskTypeCounter == 0)
                 {
                     Repairer.Repair(currentConcept, repairedBranches, verbMetaConnectionCache);
-                    TryAddTrauma(purifier.PurifyOptimized(currentConcept));
+                    TryAddTrauma(Purifier.PurifyOptimized(currentConcept));
                 }
                 else if (taskTypeCounter == 1)
                 {
                     Repairer.Repair(currentConcept, repairedBranches, verbMetaConnectionCache);
-                    TryAddTrauma(purifier.PurifyFlat(currentConcept));
+                    TryAddTrauma(Purifier.PurifyFlat(currentConcept));
                 }
                 else if (taskTypeCounter == 2)
                 {

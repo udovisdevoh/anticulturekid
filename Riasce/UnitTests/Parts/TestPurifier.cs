@@ -17,11 +17,7 @@ namespace AntiCulture.Kid
 
         private static void TestPurifyWithPreContradict()
         {
-            
-            
-            
             Memory memory = new Memory();
-            Purifier purifier = new Purifier();
             Memory.TotalVerbList = new HashSet<Concept>();
 
             Concept cat = new Concept("cat");
@@ -85,7 +81,7 @@ namespace AntiCulture.Kid
             Repairer.Reciprocate(water);
             Repairer.Repair(cat, animal, lifeform, water);
 
-            purifier.PurifyOptimized(cat);
+            Purifier.PurifyOptimized(cat);
 
             Repairer.Repair(cat, animal, lifeform, water);
             Repairer.Reciprocate(cat);
@@ -103,10 +99,6 @@ namespace AntiCulture.Kid
 
         private static void TestPurifyWithPostContradict()
         {
-            
-            
-            
-            Purifier purifier = new Purifier();
             Memory.TotalVerbList = new HashSet<Concept>();
 
             Concept cat = new Concept("cat");
@@ -170,7 +162,7 @@ namespace AntiCulture.Kid
             Repairer.Reciprocate(water);
             Repairer.Repair(cat, animal, lifeform, water);
 
-            purifier.PurifyOptimized(cat);
+            Purifier.PurifyOptimized(cat);
 
             Repairer.Repair(cat, animal, lifeform, water);
             Repairer.Reciprocate(cat);
@@ -188,10 +180,6 @@ namespace AntiCulture.Kid
 
         private static void TestPurifyRangeWithPreContradict()
         {
-            
-            
-            
-            Purifier purifier = new Purifier();
             Memory.TotalVerbList = new HashSet<Concept>();
 
             Concept cat = new Concept("cat");
@@ -255,7 +243,7 @@ namespace AntiCulture.Kid
             Repairer.Reciprocate(water);
             Repairer.Repair(cat, animal, lifeform, water);
 
-            purifier.PurifyRangeOptimized(new List<Concept>() { cat, animal, lifeform, water });
+            Purifier.PurifyRangeOptimized(new List<Concept>() { cat, animal, lifeform, water });
 
             Repairer.Repair(cat, animal, lifeform, water);
             Repairer.Reciprocate(cat);
@@ -273,10 +261,6 @@ namespace AntiCulture.Kid
 
         private static void TestPurifyRangeWithPostContradict()
         {
-            
-            
-            
-            Purifier purifier = new Purifier();
             Memory.TotalVerbList = new HashSet<Concept>();
 
             Concept cat = new Concept("cat");
@@ -340,7 +324,7 @@ namespace AntiCulture.Kid
             Repairer.Reciprocate(water);
             Repairer.Repair(cat, animal, lifeform, water);
 
-            purifier.PurifyRangeOptimized(new List<Concept>() { cat, animal, lifeform, water });
+            Purifier.PurifyRangeOptimized(new List<Concept>() { cat, animal, lifeform, water });
 
             Repairer.Repair(cat, animal, lifeform, water);
             Repairer.Reciprocate(cat);

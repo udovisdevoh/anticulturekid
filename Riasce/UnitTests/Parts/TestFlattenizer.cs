@@ -1044,35 +1044,33 @@ namespace AntiCulture.Kid
             Concept water = new Concept("water");
             List<Concept> memory = new List<Concept>() { isa, someare, madeof, partof, pine, tree, plant, water };
 
-            Purifier purifier = new Purifier();
-
             Repairer.RepairRange(memory);
             Repairer.ReciprocateRange(memory);
-            purifier.PurifyRangeOptimized(memory);
+            Purifier.PurifyRangeOptimized(memory);
             Repairer.RepairRange(memory);
             MetaConnectionManager.AddMetaConnection(isa, "inverse_of", someare);
 
             Repairer.RepairRange(memory);
             Repairer.ReciprocateRange(memory);
-            purifier.PurifyRangeOptimized(memory);
+            Purifier.PurifyRangeOptimized(memory);
             Repairer.RepairRange(memory);
             MetaConnectionManager.AddMetaConnection(madeof, "muct", isa);
 
             Repairer.RepairRange(memory);
             Repairer.ReciprocateRange(memory);
-            purifier.PurifyRangeOptimized(memory);
+            Purifier.PurifyRangeOptimized(memory);
             Repairer.RepairRange(memory);
             MetaConnectionManager.AddMetaConnection(madeof, "inverse_of", partof);
 
             Repairer.RepairRange(memory);
             Repairer.ReciprocateRange(memory);
-            purifier.PurifyRangeOptimized(memory);
+            Purifier.PurifyRangeOptimized(memory);
             Repairer.RepairRange(memory);
             MetaConnectionManager.AddMetaConnection(madeof, "liffid", isa);
 
             /*Repairer.RepairRange(memory);
             Repairer.ReciprocateRange(memory);
-            purifier.PurifyRange(memory);
+            Purifier.PurifyRange(memory);
             Repairer.RepairRange(memory);
             MetaConnectionManager.AddMetaConnection(madeof, "muct", madeof);*/
 

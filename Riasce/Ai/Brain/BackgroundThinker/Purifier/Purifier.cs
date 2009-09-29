@@ -9,7 +9,7 @@ namespace AntiCulture.Kid
     /// This class is used to purify the Ai's memory by removing connections
     /// that make no sense. It is a faceade to FlatPurifier and OptimizedPurifier
     /// </summary>
-    class Purifier
+    static class Purifier
     {
         #region Public Methods
         /// <summary>
@@ -19,7 +19,7 @@ namespace AntiCulture.Kid
         /// </summary>
         /// <param name="concept">concept to repair</param>
         /// <returns>Trauma object about removed connections</returns>
-        public Trauma PurifyOptimized(Concept concept)
+        public static Trauma PurifyOptimized(Concept concept)
         {
             return OptimizedPurifier.Purify(concept);
         }
@@ -31,7 +31,7 @@ namespace AntiCulture.Kid
         /// </summary>
         /// <param name="concept">concept to repair</param>
         /// <returns>Trauma object about removed connections</returns>
-        public Trauma PurifyFlat(Concept concept)
+        public static Trauma PurifyFlat(Concept concept)
         {
             return FlatPurifier.Purify(concept);
         }
@@ -43,7 +43,7 @@ namespace AntiCulture.Kid
         /// </summary>
         /// <param name="conceptCollection">concept collection</param>
         /// <returns>Trauma object about removed connections</returns>
-        public Trauma PurifyRangeOptimized(IEnumerable<Concept> conceptCollection)
+        public static Trauma PurifyRangeOptimized(IEnumerable<Concept> conceptCollection)
         {
             return OptimizedPurifier.PurifiyRange(conceptCollection);
         }
