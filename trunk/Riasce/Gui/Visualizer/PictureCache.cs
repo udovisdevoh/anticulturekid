@@ -25,7 +25,12 @@ namespace AntiCulture.Kid
         #endregion
 
         #region Public Methods
-        public override Image GetCachedImage(string imageName)
+        /// <summary>
+        /// Returns the cached image from cache
+        /// </summary>
+        /// <param name="imageName">image name</param>
+        /// <returns>Image from cache</returns>
+        public Image GetCachedImage(string imageName)
         {
             Image image;
 
@@ -51,7 +56,6 @@ namespace AntiCulture.Kid
 
             return image;
         }
-
         #endregion
 
         #region Private Methods

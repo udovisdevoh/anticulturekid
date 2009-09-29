@@ -9,6 +9,9 @@ using System.Windows.Media;
 
 namespace AntiCulture.Kid
 {
+    /// <summary>
+    /// Represents visible comment builders
+    /// </summary>
     abstract class AbstractVisibleCommentBuilder
     {
         #region Methods
