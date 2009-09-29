@@ -6,15 +6,28 @@ using System.IO;
 
 namespace AntiCulture.Kid
 {
-    class CategoryCheckList : AbstractCategoryCheckList
+    /// <summary>
+    /// Category check list
+    /// </summary>
+    class CategoryCheckList
     {
         #region Fields
+        /// <summary>
+        /// Name List
+        /// </summary>
         private HashSet<string> nameList;
 
+        /// <summary>
+        /// File name
+        /// </summary>
         private string fileName;
         #endregion
 
         #region Constructor
+        /// <summary>
+        /// Create category checklist from file name
+        /// </summary>
+        /// <param name="fileName">file name</param>
         public CategoryCheckList(string fileName)
         {
             this.fileName = fileName;
@@ -37,12 +50,21 @@ namespace AntiCulture.Kid
         #endregion
 
         #region Public Methods
-        public override bool Contains(string elementName)
+        /// <summary>
+        /// Whether the checklist contains element name
+        /// </summary>
+        /// <param name="elementName">element name</param>
+        /// <returns>whether the checklist contains element name or not</returns>
+        public bool Contains(string elementName)
         {
             return nameList.Contains(elementName);
         }
 
-        public override void Add(string elementName)
+        /// <summary>
+        /// Add element name to the checklist
+        /// </summary>
+        /// <param name="elementName">element name</param>
+        public void Add(string elementName)
         {
             if (elementName == null || elementName.Trim() == "")
                 return;

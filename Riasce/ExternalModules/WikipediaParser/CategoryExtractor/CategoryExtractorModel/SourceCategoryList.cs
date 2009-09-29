@@ -6,11 +6,20 @@ using System.IO;
 
 namespace AntiCulture.Kid
 {
-    class SourceCategoryList : AbstractSourceCategoryList
+    /// <summary>
+    /// Source category list
+    /// </summary>
+    class SourceCategoryList
     {
         #region Fields
+        /// <summary>
+        /// Element list
+        /// </summary>
         private List<string> elementList;
 
+        /// <summary>
+        /// Current index
+        /// </summary>
         private int currentIndex = -1;
         #endregion
 
@@ -33,7 +42,11 @@ namespace AntiCulture.Kid
         #endregion
 
         #region Public Methods
-        public override string GetNext()
+        /// <summary>
+        /// Get next element
+        /// </summary>
+        /// <returns>Next element or null if no more element available</returns>
+        public string GetNext()
         {
             if (elementList.Count == 0)
                 return null;
@@ -44,7 +57,11 @@ namespace AntiCulture.Kid
             return elementList[currentIndex];
         }
 
-        public override string GetPrevious()
+        /// <summary>
+        /// Get previous element
+        /// </summary>
+        /// <returns>Previous element or null if no more element available</returns>
+        public string GetPrevious()
         {
             if (elementList.Count == 0)
                 return null;
@@ -55,12 +72,20 @@ namespace AntiCulture.Kid
             return elementList[currentIndex];
         }
 
-        public override bool HasNext()
+        /// <summary>
+        /// Whether it's possible to call GetNext()
+        /// </summary>
+        /// <returns>Whether it's possible to call GetNext()</returns>
+        public bool HasNext()
         {
             return currentIndex < elementList.Count - 1;
         }
 
-        public override bool HasPrevious()
+        /// <summary>
+        /// Whether it's possible to call GetPrevious()
+        /// </summary>
+        /// <returns>Whether it's possible to call GetPrevious()</returns>
+        public bool HasPrevious()
         {
             return currentIndex > 0;
         }

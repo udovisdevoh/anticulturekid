@@ -5,22 +5,44 @@ using System.Text;
 
 namespace AntiCulture.Kid
 {
-    class CategoryExtractorModel : AbstractCategoryExtractorModel
+    /// <summary>
+    /// Category extractor model
+    /// </summary>
+    class CategoryExtractorModel
     {
         #region Fields
+        /// <summary>
+        /// Source file name
+        /// </summary>
         private string sourceFileName;
 
+        /// <summary>
+        /// Checklist file name
+        /// </summary>
         private string checkListFileName;
 
+        /// <summary>
+        /// Current category name
+        /// </summary>
         private string currentCategoryName;
 
+        /// <summary>
+        /// Lazy initialization, do not use directly, use without underscore instead
+        /// </summary>
         private CategoryCheckList __categoryCheckList;//Lazy initialization, do not use directly
 
+        /// <summary>
+        /// Lazy initialization, do not use directly, use without underscore instead
+        /// </summary>
         private SourceCategoryList __sourceCategoryList;//Lazy initialization, do not use directly
         #endregion
 
         #region Public Methods
-        public override string GetNextCategoryName()
+        /// <summary>
+        /// Get the next category name to extract
+        /// </summary>
+        /// <returns>next category name to extract</returns>
+        public string GetNextCategoryName()
         {
             string categoryName;
             do
@@ -34,7 +56,11 @@ namespace AntiCulture.Kid
                 return categoryName;
         }
 
-        public override string GetPreviousCategoryName()
+        /// <summary>
+        /// Get the previous category name to extract
+        /// </summary>
+        /// <returns>previous category name to extract</returns>
+        public string GetPreviousCategoryName()
         {
             string categoryName;
             do
@@ -48,37 +74,58 @@ namespace AntiCulture.Kid
                 return categoryName;
         }
 
-        public override HashSet<string> GetCategoryElementNameList(string categoryName)
+        /// <summary>
+        /// Get the elements from provided category
+        /// </summary>
+        /// <param name="categoryName">category name</param>
+        /// <returns>the elements in provided category</returns>
+        public HashSet<string> GetCategoryElementNameList(string categoryName)
         {
             WikiCategoryPage wikiCategoryPage = new WikiCategoryPage(categoryName);
             return wikiCategoryPage.GetElementNameList();
         }
 
-        public override void MarkAsDone(string categoryName)
+        /// <summary>
+        /// Add category name to check list (once it's applied or ignored)
+        /// </summary>
+        /// <param name="categoryName">category name</param>
+        public void MarkAsDone(string categoryName)
         {
             categoryCheckList.Add(categoryName);
         }
         #endregion
 
         #region Properties
+        /// <summary>
+        /// Source file name
+        /// </summary>
         public string SourceFileName
         {
             get { return sourceFileName; }
             set { sourceFileName = value; }
         }
 
+        /// <summary>
+        /// Checklist file name
+        /// </summary>
         public string CheckListFileName
         {
             get { return checkListFileName; }
             set { checkListFileName = value; }
         }
 
+        /// <summary>
+        /// Current category name
+        /// </summary>
         public string CurrentCategoryName
         {
             get { return currentCategoryName; }
             set { currentCategoryName = value; }
         }
 
+        /// <summary>
+        /// Category checklist
+        /// </summary>
         private CategoryCheckList categoryCheckList
         {
             get
@@ -89,6 +136,9 @@ namespace AntiCulture.Kid
             }
         }
 
+        /// <summary>
+        /// Source category list
+        /// </summary>
         private SourceCategoryList sourceCategoryList
         {
             get

@@ -5,15 +5,28 @@ using System.Text;
 
 namespace AntiCulture.Kid
 {
-    class WikiCategoryPage : AbstractWikiCategoryPage
+    /// <summary>
+    /// Represents a wikipedia category page
+    /// </summary>
+    class WikiCategoryPage
     {
         #region Fields
+        /// <summary>
+        /// Default url
+        /// </summary>
         private static readonly string defaultUrl = "http://en.wikipedia.org/w/index.php?title=Category:";
         
+        /// <summary>
+        /// Category name
+        /// </summary>
         private string categoryName;
         #endregion
 
         #region Constructor
+        /// <summary>
+        /// Wiki category page
+        /// </summary>
+        /// <param name="categoryName">category name</param>
         public WikiCategoryPage(string categoryName)
         {
             this.categoryName = categoryName;
@@ -21,7 +34,11 @@ namespace AntiCulture.Kid
         #endregion
 
         #region Public Methods
-        public override HashSet<string> GetElementNameList()
+        /// <summary>
+        /// Extract (recursively) article name list from wikipedia category
+        /// </summary>
+        /// <returns>article name list from wikipedia category</returns>
+        public HashSet<string> GetElementNameList()
         {
             HashSet<string> elementNameList = GetFlatElementList();
             /*
@@ -36,6 +53,10 @@ namespace AntiCulture.Kid
         #endregion
 
         #region Private Methods
+        /// <summary>
+        /// Get subcategory name list
+        /// </summary>
+        /// <returns>subcategory name list</returns>
         private HashSet<string> GetSubCategoryNameList()
         {
             HashSet<string> subCategoryNameList = new HashSet<string>();
@@ -83,11 +104,20 @@ namespace AntiCulture.Kid
             return subCategoryNameList;
         }
 
+        /// <summary>
+        /// Get flat element list
+        /// </summary>
+        /// <returns>flat element list</returns>
         private HashSet<string> GetFlatElementList()
         {
             return GetFlatElementList("");
         }
 
+        /// <summary>
+        /// Get flat element list
+        /// </summary>
+        /// <param name="from">from category name</param>
+        /// <returns>flat element list</returns>
         private HashSet<string> GetFlatElementList(string from)
         {
             HashSet<string> elementList = new HashSet<string>();
@@ -142,6 +172,11 @@ namespace AntiCulture.Kid
             return elementList;
         }
 
+        /// <summary>
+        /// Get next offset name
+        /// </summary>
+        /// <param name="textZone">text zone</param>
+        /// <returns>next offset name</returns>
         private string GetNextOffsetName(string textZone)
         {
             if (!textZone.Contains("next 200</a>"))
