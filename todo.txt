@@ -1,8 +1,3 @@
-optimize flattenizer for (just for single thread for now)
-proof must work with some kind of linked list rather than array with copied content
-
-
-
 whole project major refactoring:
 -everything must be unit testable and unit tested
 -visualizer thread must be safe (no visual conflict)
