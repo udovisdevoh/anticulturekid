@@ -2,16 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 
 namespace AntiCulture.Kid
 {
-    /// <summary>
-    /// Represents the single threaded version of the connection flattenizer
-    /// </summary>
-    class SerialFlattenizer : AbstractFlattenizer
+    class ParallelFlattenizer : AbstractFlattenizer
     {
         #region Public Methods
-        /// <summary>
         /// Repair a concept's flat representation and regenerate its optimized representation
         /// so no useless connection persist.
         /// THIS METHOD MUST ONLY BE USED BY REPAIRER CLASS!!!
@@ -26,12 +23,12 @@ namespace AntiCulture.Kid
 
             ConnectionBranch flatBranch;
             ConnectionBranch optimizedBranch;
-            
+
             foreach (Concept verb in Memory.TotalVerbList)
             {
                 flatBranch = subject.GetFlatConnectionBranch(verb);
                 optimizedBranch = subject.GetOptimizedConnectionBranch(verb);
-                flatBranch = RepairFlatBranch(flatBranch, optimizedBranch, subject, verb);
+                flatBranch = RepairFlatBranch(flatBranch, optimizedBranch, subject, verb, new AutoResetEvent(false));
             }
 
             subject.IsFlatDirty = false;
@@ -46,22 +43,33 @@ namespace AntiCulture.Kid
         /// <param name="optimizedBranch">source optimized branch</param>
         /// <param name="optimizedBranch">flat branch to repair</param>
         /// <returns>repaired flat branch</returns>
-        private ConnectionBranch RepairFlatBranch(ConnectionBranch flatBranch, ConnectionBranch optimizedBranch, Concept subject, Concept verb)
+        private ConnectionBranch RepairFlatBranch(ConnectionBranch flatBranch, ConnectionBranch optimizedBranch, Concept subject, Concept verb, AutoResetEvent autoResetEvent)
         {
             int complementCount;
 
             repairedBranches.Add(flatBranch);
 
-            flatBranch.ComplementConceptList.Clear();
+            Dictionary<ConnectionBranch, ConnectionBranch> branchesToRepair;
+            List<AutoResetEvent> waitingBranchResetEventList;
 
-            foreach (Concept complement in optimizedBranch.ComplementConceptList)
-            {
-                flatBranch.AddConnection(complement);
-                flatBranch.SetProofTo(complement, new Proof(subject,verb,complement));
-            }
+            flatBranch.ComplementConceptList.Clear();
 
             do
             {
+                branchesToRepair = GetBranchesToRepair();
+                waitingBranchResetEventList = new List<AutoResetEvent>();
+
+                foreach (KeyValuePair<ConnectionBranch, ConnectionBranch> currentBranch in branchesToRepair)
+                    waitingBranchResetEventList.Add(RepairFlatBranchInOtherThread(currentBranch.Key, currentBranch.Value, subject));
+
+                WaitForBranchesToBeRepaired(waitingBranchResetEventList);
+              
+                foreach (Concept complement in optimizedBranch.ComplementConceptList)
+                {
+                    flatBranch.AddConnection(complement);
+                    flatBranch.SetProofTo(complement, new Proof(subject, verb, complement));
+                }
+
                 complementCount = flatBranch.ComplementConceptList.Count;
                 FlattenDirectImplication(flatBranch, subject, verb);
                 FlattenLiffid(flatBranch, subject, verb);
@@ -73,7 +81,19 @@ namespace AntiCulture.Kid
 
             flatBranch.IsDirty = false;
 
+            autoResetEvent.Set();
+
             return flatBranch;
+        }
+
+        /// <summary>
+        /// Wait for branches to be repaired in their own threads
+        /// </summary>
+        /// <param name="waitingBranchResetEventList">waiting branch event list</param>
+        private void WaitForBranchesToBeRepaired(List<AutoResetEvent> waitingBranchResetEventList)
+        {
+            foreach (AutoResetEvent autoResetEvent in waitingBranchResetEventList)
+                autoResetEvent.WaitOne();
         }
 
         /// <summary>
@@ -94,9 +114,6 @@ namespace AntiCulture.Kid
             {
                 ConnectionBranch farFlatBranch = subject.GetFlatConnectionBranch(directlyImpliedVerb);
                 ConnectionBranch farOptimizedBranch = subject.GetOptimizedConnectionBranch(directlyImpliedVerb);
-
-                if (!repairedBranches.Contains(farFlatBranch))
-                    RepairFlatBranch(farFlatBranch, farOptimizedBranch, subject, directlyImpliedVerb);
 
                 foreach (Concept complement in farFlatBranch.ComplementConceptList)
                 {
@@ -139,76 +156,6 @@ namespace AntiCulture.Kid
         }
 
         /// <summary>
-        /// Flatten connections depending on liffid metaConnections
-        /// </summary>
-        /// <param name="flatBranch">flat branch</param>
-        /// <param name="subject">subject concept</param>
-        /// <param name="verb">verb concept</param>
-        private void FlattenLiffid(ConnectionBranch flatBranch, Concept subject, Concept verb)
-        {
-            HashSet<Concept> liffidVerbList = verbConnectionCache.GetVerbFlatListFromCache(verb, "liffid", true);
-            if (liffidVerbList == null)
-            {
-                liffidVerbList = MetaConnectionManager.GetVerbFlatListFromMetaConnection(verb, "liffid", true);
-                verbConnectionCache.Remember(verb, "liffid", true, liffidVerbList);
-            }
-            foreach (Concept liffidVerb in liffidVerbList)
-            {
-                HashSet<Concept> complementList = new HashSet<Concept>(subject.GetFlatConnectionBranch(verb).ComplementConceptList);
-
-                foreach (Concept complement in complementList)
-                {
-                    ConnectionBranch farFlatBranch = complement.GetFlatConnectionBranch(liffidVerb);
-                    ConnectionBranch farOptimizedBranch = complement.GetOptimizedConnectionBranch(liffidVerb);
-
-                    if (!repairedBranches.Contains(farFlatBranch))//if (liffidVerb != verb && subject != complement)
-                        RepairFlatBranch(farFlatBranch, farOptimizedBranch, complement, liffidVerb);
-
-
-                    HashSet<Concept> conceptAffectedByLiffidVerb = farFlatBranch.ComplementConceptList;
-
-                    foreach (Concept metaComplement in conceptAffectedByLiffidVerb)
-                    {
-                        Proof closeProof = subject.GetFlatConnectionBranch(verb).GetProofTo(complement);
-                        Proof farProof = farFlatBranch.GetProofTo(metaComplement);
-                        if (!closeProof.ContainsArgument(subject, verb, metaComplement) &&
-                            !farProof.ContainsArgument(subject, verb, metaComplement) &&
-                            !closeProof.ContainsArgument(subject, verb, complement) &&
-                            !farProof.ContainsArgument(complement, liffidVerb, metaComplement) &&
-                            subject != metaComplement)
-                        {
-                            flatBranch.AddConnection(metaComplement);
-                            flatBranch.SetProofTo(metaComplement, new Proof(subject, verb, metaComplement));
-
-                            if (closeProof.Count > 1 && closeProof != flatBranch.GetProofTo(metaComplement))
-                            {
-                                flatBranch.GetProofTo(metaComplement).AddProof(closeProof);
-                            }
-                            else
-                            {
-                                if (complement != metaComplement)
-                                    flatBranch.GetProofTo(metaComplement).AddArgument(subject, verb, complement);
-                            }
-
-                            if (farProof.Count > 1 && farProof != flatBranch.GetProofTo(metaComplement))
-                            {
-                                flatBranch.GetProofTo(metaComplement).AddProof(farProof);
-                            }
-                            else
-                            {
-                                if (verb != liffidVerb)
-                                    flatBranch.GetProofTo(metaComplement).AddArgument(complement, liffidVerb, metaComplement);
-                            }
-
-                            if (flatBranch.GetProofTo(metaComplement).ContainsArgument(subject, verb, metaComplement))
-                                throw new TotologyException("Trying to prove something with itself");
-                        }
-                    }
-                }
-            }
-        }
-
-        /// <summary>
         /// Flatten connections depending on muct metaConnections
         /// </summary>
         /// <param name="flatBranch">flat branch</param>
@@ -230,8 +177,6 @@ namespace AntiCulture.Kid
                 {
                     ConnectionBranch farFlatBranch = complement.GetFlatConnectionBranch(verb);
                     ConnectionBranch farOptimizedBranch = complement.GetOptimizedConnectionBranch(verb);
-                    if (!repairedBranches.Contains(farFlatBranch))//if (muctVerb != verb && subject != complement)
-                        RepairFlatBranch(farFlatBranch, farOptimizedBranch, complement, verb);
 
                     HashSet<Concept> conceptAffectedByMuctVerb = farFlatBranch.ComplementConceptList;
 
@@ -282,23 +227,67 @@ namespace AntiCulture.Kid
         }
 
         /// <summary>
-        /// Flatten connections depending on positive "Imply" connections
+        /// Flatten connections depending on liffid metaConnections
         /// </summary>
         /// <param name="flatBranch">flat branch</param>
         /// <param name="subject">subject concept</param>
         /// <param name="verb">verb concept</param>
-        private void FlattenPositiveImply(ConnectionBranch flatBranch, Concept subject, Concept verb)
+        private void FlattenLiffid(ConnectionBranch flatBranch, Concept subject, Concept verb)
         {
-            Concept complement;
-            HashSet<Condition> conditionList;
-            foreach (KeyValuePair<Concept, HashSet<Condition>> complementAndConditionList in verb.ImplyConnectionTreePositive)
+            HashSet<Concept> liffidVerbList = verbConnectionCache.GetVerbFlatListFromCache(verb, "liffid", true);
+            if (liffidVerbList == null)
             {
-                complement = complementAndConditionList.Key;
-                conditionList = complementAndConditionList.Value;
+                liffidVerbList = MetaConnectionManager.GetVerbFlatListFromMetaConnection(verb, "liffid", true);
+                verbConnectionCache.Remember(verb, "liffid", true, liffidVerbList);
+            }
+            foreach (Concept liffidVerb in liffidVerbList)
+            {
+                HashSet<Concept> complementList = new HashSet<Concept>(subject.GetFlatConnectionBranch(verb).ComplementConceptList);
 
-                foreach (Condition condition in conditionList)
+                foreach (Concept complement in complementList)
                 {
-                    TryFlattenConditionPositiveImply(flatBranch, subject, verb, condition);
+                    ConnectionBranch farFlatBranch = complement.GetFlatConnectionBranch(liffidVerb);
+                    ConnectionBranch farOptimizedBranch = complement.GetOptimizedConnectionBranch(liffidVerb);
+
+                    HashSet<Concept> conceptAffectedByLiffidVerb = farFlatBranch.ComplementConceptList;
+
+                    foreach (Concept metaComplement in conceptAffectedByLiffidVerb)
+                    {
+                        Proof closeProof = subject.GetFlatConnectionBranch(verb).GetProofTo(complement);
+                        Proof farProof = farFlatBranch.GetProofTo(metaComplement);
+                        if (!closeProof.ContainsArgument(subject, verb, metaComplement) &&
+                            !farProof.ContainsArgument(subject, verb, metaComplement) &&
+                            !closeProof.ContainsArgument(subject, verb, complement) &&
+                            !farProof.ContainsArgument(complement, liffidVerb, metaComplement) &&
+                            subject != metaComplement)
+                        {
+                            flatBranch.AddConnection(metaComplement);
+                            flatBranch.SetProofTo(metaComplement, new Proof(subject, verb, metaComplement));
+
+                            if (closeProof.Count > 1 && closeProof != flatBranch.GetProofTo(metaComplement))
+                            {
+                                flatBranch.GetProofTo(metaComplement).AddProof(closeProof);
+                            }
+                            else
+                            {
+                                if (complement != metaComplement)
+                                    flatBranch.GetProofTo(metaComplement).AddArgument(subject, verb, complement);
+                            }
+
+                            if (farProof.Count > 1 && farProof != flatBranch.GetProofTo(metaComplement))
+                            {
+                                flatBranch.GetProofTo(metaComplement).AddProof(farProof);
+                            }
+                            else
+                            {
+                                if (verb != liffidVerb)
+                                    flatBranch.GetProofTo(metaComplement).AddArgument(complement, liffidVerb, metaComplement);
+                            }
+
+                            if (flatBranch.GetProofTo(metaComplement).ContainsArgument(subject, verb, metaComplement))
+                                throw new TotologyException("Trying to prove something with itself");
+                        }
+                    }
                 }
             }
         }
@@ -321,6 +310,79 @@ namespace AntiCulture.Kid
                 foreach (Condition condition in conditionList)
                 {
                     TryFlattenConditionNegativeImply(flatBranch, subject, verb, condition);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Flatten connections depending on positive "Imply" connections
+        /// </summary>
+        /// <param name="flatBranch">flat branch</param>
+        /// <param name="subject">subject concept</param>
+        /// <param name="verb">verb concept</param>
+        private void FlattenPositiveImply(ConnectionBranch flatBranch, Concept subject, Concept verb)
+        {
+            Concept complement;
+            HashSet<Condition> conditionList;
+            foreach (KeyValuePair<Concept, HashSet<Condition>> complementAndConditionList in verb.ImplyConnectionTreePositive)
+            {
+                complement = complementAndConditionList.Key;
+                conditionList = complementAndConditionList.Value;
+
+                foreach (Condition condition in conditionList)
+                {
+                    TryFlattenConditionPositiveImply(flatBranch, subject, verb, condition);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Try flatten negative imply condition
+        /// </summary>
+        /// <param name="flatBranch">flat branch</param>
+        /// <param name="subject">subject concept</param>
+        /// <param name="verb">verb concept</param>
+        /// <param name="condition">imply condition</param>
+        private void TryFlattenConditionNegativeImply(ConnectionBranch flatBranch, Concept subject, Concept verb, Condition condition)
+        {
+            if (subject != condition.ActionComplement) //Ignore flattenization if subject is not concerned
+                return;
+
+            Proof proof;
+
+            //Get list of branch on which the condition is dependent on
+            List<List<Concept>> branchPrototypeToFlattenizeList = condition.GetBranchSignatureListToFlattenize();
+
+            //Flatten that list of branches
+            foreach (List<Concept> branchSignature in branchPrototypeToFlattenizeList)
+            {
+                Concept farVerb = branchSignature[0];
+                Concept farComplement = branchSignature[1];
+
+                ConnectionBranch farFlatBranch = farComplement.GetFlatConnectionBranch(farVerb);
+                ConnectionBranch farOptimizedBranch = farComplement.GetOptimizedConnectionBranch(farVerb);
+            }
+
+            //We get the selection from the condition
+            Dictionary<Concept, HashSet<ArgumentPrototype>> selection = condition.GetNegativeSelectionWithProofPrototype();
+
+            //We add flat connections to concepts from selection
+            foreach (KeyValuePair<Concept, HashSet<ArgumentPrototype>> complementAndProofPrototype in selection)
+            {
+                Concept complement = complementAndProofPrototype.Key;
+                HashSet<ArgumentPrototype> proofPrototype = complementAndProofPrototype.Value;
+
+                if (subject != complement) //Cannot add a connection to itself
+                {
+                    flatBranch.AddConnection(complement);
+
+                    proof = GetProofFromPrototype(proofPrototype);
+
+                    #warning Next line might cause problem
+                    if (!proof.ContainsArgument(subject, verb, complement))
+                        flatBranch.SetProofTo(complement, proof);
+                    else
+                        flatBranch.SetProofTo(complement, new Proof());
                 }
             }
         }
@@ -350,12 +412,9 @@ namespace AntiCulture.Kid
                 ConnectionBranch farFlatBranch = subject.GetFlatConnectionBranch(dependantVerb);
                 ConnectionBranch farOptimizedBranch = subject.GetOptimizedConnectionBranch(dependantVerb);
 
-                if (!repairedBranches.Contains(farFlatBranch))
-                    RepairFlatBranch(farFlatBranch, farOptimizedBranch, subject, dependantVerb);
-
                 flatConnectionSetList.Add(dependantVerb, farFlatBranch.ComplementConceptList);
             }
-            
+
             //If condition is satisfied, add flat connection
             HashSet<ArgumentPrototype> proofPrototype = condition.GetProofPrototype(subject, flatConnectionSetList);
             if (proofPrototype != null)
@@ -365,64 +424,10 @@ namespace AntiCulture.Kid
                 proof = GetProofFromPrototype(proofPrototype);
 
                 #warning Next line might cause problem
-                if (!proof.ContainsArgument(subject,verb,condition.ActionComplement))
+                if (!proof.ContainsArgument(subject, verb, condition.ActionComplement))
                     flatBranch.SetProofTo(condition.ActionComplement, proof);
                 else
                     flatBranch.SetProofTo(condition.ActionComplement, new Proof());
-            }
-        }
-        
-        /// <summary>
-        /// Try flatten negative imply condition
-        /// </summary>
-        /// <param name="flatBranch">flat branch</param>
-        /// <param name="subject">subject concept</param>
-        /// <param name="verb">verb concept</param>
-        /// <param name="condition">imply condition</param>
-        private void TryFlattenConditionNegativeImply(ConnectionBranch flatBranch, Concept subject, Concept verb, Condition condition)
-        {
-            if (subject != condition.ActionComplement) //Ignore flattenization if subject is not concerned
-                return;
-
-            Proof proof;
-
-            //Get list of branch on which the condition is dependent on
-            List<List<Concept>> branchPrototypeToFlattenizeList = condition.GetBranchSignatureListToFlattenize();
-
-            //Flatten that list of branches
-            foreach (List<Concept> branchSignature in branchPrototypeToFlattenizeList)
-            {
-                Concept farVerb = branchSignature[0];
-                Concept farComplement = branchSignature[1];
-
-                ConnectionBranch farFlatBranch = farComplement.GetFlatConnectionBranch(farVerb);
-                ConnectionBranch farOptimizedBranch = farComplement.GetOptimizedConnectionBranch(farVerb);
-
-                if (!repairedBranches.Contains(farFlatBranch))
-                    RepairFlatBranch(farFlatBranch, farOptimizedBranch, farComplement, farVerb);
-            }
-
-            //We get the selection from the condition
-            Dictionary<Concept,HashSet<ArgumentPrototype>> selection = condition.GetNegativeSelectionWithProofPrototype();
-
-            //We add flat connections to concepts from selection
-            foreach (KeyValuePair<Concept,HashSet<ArgumentPrototype>> complementAndProofPrototype in selection)
-            {
-                Concept complement = complementAndProofPrototype.Key;
-                HashSet<ArgumentPrototype> proofPrototype = complementAndProofPrototype.Value;
-
-                if (subject != complement) //Cannot add a connection to itself
-                {
-                    flatBranch.AddConnection(complement);
-
-                    proof = GetProofFromPrototype(proofPrototype);
-
-                    #warning Next line might cause problem
-                    if (!proof.ContainsArgument(subject,verb,complement))
-                        flatBranch.SetProofTo(complement, proof);
-                    else
-                        flatBranch.SetProofTo(complement, new Proof());
-                }
             }
         }
         #endregion
