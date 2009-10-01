@@ -72,6 +72,8 @@ namespace AntiCulture.Kid
                 inverseVerb.AddIndexToImplyCondition(inverseCondition);
                 inverseVerb.AddImplyConnection(complement, inverseCondition, false);
             }
+
+            RepairedFlatBranchCache.Clear();
         }
 
         /// <summary>
@@ -91,6 +93,8 @@ namespace AntiCulture.Kid
 
             foreach (Concept inverseVerb in inverseVerbList)
                 inverseVerb.RemoveImplyConnection(complement, inverseCondition, false);
+
+            RepairedFlatBranchCache.Clear();
         }
 
         /// <summary>

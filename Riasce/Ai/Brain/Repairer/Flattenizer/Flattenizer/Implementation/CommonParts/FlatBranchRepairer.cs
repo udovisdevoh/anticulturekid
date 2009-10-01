@@ -14,8 +14,7 @@ namespace AntiCulture.Kid
         /// <param name="flatBranch">flat branch</param>
         /// <param name="subject">subject concept</param>
         /// <param name="verb">verb concept</param>
-        /// <param name="repairedBranches">repaired branches</param>
-        public static void FlattenDirectImplication(ConnectionBranch flatBranch, Concept subject, Concept verb, HashSet<ConnectionBranch> repairedBranches)
+        public static void FlattenDirectImplication(ConnectionBranch flatBranch, Concept subject, Concept verb)
         {
             HashSet<Concept> directImplicationVerbList = VerbMetaConnectionCache.GetVerbFlatListFromCache(verb, "direct_implication", false);
             if (directImplicationVerbList == null)
@@ -28,7 +27,7 @@ namespace AntiCulture.Kid
                 ConnectionBranch farFlatBranch = subject.GetFlatConnectionBranch(directlyImpliedVerb);
                 ConnectionBranch farOptimizedBranch = subject.GetOptimizedConnectionBranch(directlyImpliedVerb);
 
-                if (!repairedBranches.Contains(farFlatBranch))
+                if (!RepairedFlatBranchCache.Contains(farFlatBranch))
                     throw new FlattenizationException("Branch should already be repaired by now but isn't repaired yet");
 
                 foreach (Concept complement in farFlatBranch.ComplementConceptList)
@@ -77,8 +76,7 @@ namespace AntiCulture.Kid
         /// <param name="flatBranch">flat branch</param>
         /// <param name="subject">subject concept</param>
         /// <param name="verb">verb concept</param>
-        /// <param name="repairedBranches">repaired branches</param>
-        public static void FlattenMuct(ConnectionBranch flatBranch, Concept subject, Concept verb, HashSet<ConnectionBranch> repairedBranches)
+        public static void FlattenMuct(ConnectionBranch flatBranch, Concept subject, Concept verb)
         {
             HashSet<Concept> muctVerbList = VerbMetaConnectionCache.GetVerbFlatListFromCache(verb, "muct", true);
             if (muctVerbList == null)
@@ -95,7 +93,7 @@ namespace AntiCulture.Kid
                     ConnectionBranch farFlatBranch = complement.GetFlatConnectionBranch(verb);
                     ConnectionBranch farOptimizedBranch = complement.GetOptimizedConnectionBranch(verb);
 
-                    if (!repairedBranches.Contains(farFlatBranch))
+                    if (!RepairedFlatBranchCache.Contains(farFlatBranch))
                         throw new FlattenizationException("Branch should already be repaired by now but isn't repaired yet");
 
                     HashSet<Concept> conceptAffectedByMuctVerb = farFlatBranch.ComplementConceptList;
@@ -152,8 +150,7 @@ namespace AntiCulture.Kid
         /// <param name="flatBranch">flat branch</param>
         /// <param name="subject">subject concept</param>
         /// <param name="verb">verb concept</param>
-        /// <param name="repairedBranches">repaired branches</param>
-        public static void FlattenLiffid(ConnectionBranch flatBranch, Concept subject, Concept verb, HashSet<ConnectionBranch> repairedBranches)
+        public static void FlattenLiffid(ConnectionBranch flatBranch, Concept subject, Concept verb)
         {
             HashSet<Concept> liffidVerbList = VerbMetaConnectionCache.GetVerbFlatListFromCache(verb, "liffid", true);
             if (liffidVerbList == null)
@@ -170,7 +167,7 @@ namespace AntiCulture.Kid
                     ConnectionBranch farFlatBranch = complement.GetFlatConnectionBranch(liffidVerb);
                     ConnectionBranch farOptimizedBranch = complement.GetOptimizedConnectionBranch(liffidVerb);
 
-                    if (!repairedBranches.Contains(farFlatBranch))
+                    if (!RepairedFlatBranchCache.Contains(farFlatBranch))
                         throw new FlattenizationException("Branch should already be repaired by now but isn't repaired yet");
 
                     HashSet<Concept> conceptAffectedByLiffidVerb = farFlatBranch.ComplementConceptList;
@@ -222,8 +219,7 @@ namespace AntiCulture.Kid
         /// <param name="flatBranch">flat branch</param>
         /// <param name="subject">subject concept</param>
         /// <param name="verb">verb concept</param>
-        /// <param name="repairedBranches">repaired branches</param>
-        public static void FlattenNegativeImply(ConnectionBranch flatBranch, Concept subject, Concept verb, HashSet<ConnectionBranch> repairedBranches)
+        public static void FlattenNegativeImply(ConnectionBranch flatBranch, Concept subject, Concept verb)
         {
             Concept complement;
             HashSet<Condition> conditionList;
@@ -234,7 +230,7 @@ namespace AntiCulture.Kid
 
                 foreach (Condition condition in conditionList)
                 {
-                    TryFlattenConditionNegativeImply(flatBranch, subject, verb, condition, repairedBranches);
+                    TryFlattenConditionNegativeImply(flatBranch, subject, verb, condition);
                 }
             }
         }
@@ -245,8 +241,7 @@ namespace AntiCulture.Kid
         /// <param name="flatBranch">flat branch</param>
         /// <param name="subject">subject concept</param>
         /// <param name="verb">verb concept</param>
-        /// <param name="repairedBranches">repaired branches</param>
-        public static void FlattenPositiveImply(ConnectionBranch flatBranch, Concept subject, Concept verb, HashSet<ConnectionBranch> repairedBranches)
+        public static void FlattenPositiveImply(ConnectionBranch flatBranch, Concept subject, Concept verb)
         {
             Concept complement;
             HashSet<Condition> conditionList;
@@ -257,7 +252,7 @@ namespace AntiCulture.Kid
 
                 foreach (Condition condition in conditionList)
                 {
-                    TryFlattenConditionPositiveImply(flatBranch, subject, verb, condition, repairedBranches);
+                    TryFlattenConditionPositiveImply(flatBranch, subject, verb, condition);
                 }
             }
         }
@@ -269,8 +264,7 @@ namespace AntiCulture.Kid
         /// <param name="subject">subject concept</param>
         /// <param name="verb">verb concept</param>
         /// <param name="condition">imply condition</param>
-        /// <param name="repairedBranches">repaired branches</param>
-        private static void TryFlattenConditionNegativeImply(ConnectionBranch flatBranch, Concept subject, Concept verb, Condition condition, HashSet<ConnectionBranch> repairedBranches)
+        private static void TryFlattenConditionNegativeImply(ConnectionBranch flatBranch, Concept subject, Concept verb, Condition condition)
         {
             if (subject != condition.ActionComplement) //Ignore flattenization if subject is not concerned
                 return;
@@ -289,7 +283,7 @@ namespace AntiCulture.Kid
                 ConnectionBranch farFlatBranch = farComplement.GetFlatConnectionBranch(farVerb);
                 ConnectionBranch farOptimizedBranch = farComplement.GetOptimizedConnectionBranch(farVerb);
 
-                if (!repairedBranches.Contains(farFlatBranch))
+                if (!RepairedFlatBranchCache.Contains(farFlatBranch))
                     throw new FlattenizationException("Branch should already be repaired by now but isn't repaired yet");
             }
 
@@ -324,8 +318,7 @@ namespace AntiCulture.Kid
         /// <param name="subject">subject concept</param>
         /// <param name="verb">verb concept</param>
         /// <param name="condition">imply condition</param>
-        /// <param name="repairedBranches">repaired branches</param>
-        private static void TryFlattenConditionPositiveImply(ConnectionBranch flatBranch, Concept subject, Concept verb, Condition condition, HashSet<ConnectionBranch> repairedBranches)
+        private static void TryFlattenConditionPositiveImply(ConnectionBranch flatBranch, Concept subject, Concept verb, Condition condition)
         {
             if (subject == condition.ActionComplement) //Cannot plug a concept to itself
                 return;
@@ -343,7 +336,7 @@ namespace AntiCulture.Kid
                 ConnectionBranch farFlatBranch = subject.GetFlatConnectionBranch(dependantVerb);
                 ConnectionBranch farOptimizedBranch = subject.GetOptimizedConnectionBranch(dependantVerb);
 
-                if (!repairedBranches.Contains(farFlatBranch))
+                if (!RepairedFlatBranchCache.Contains(farFlatBranch))
                     throw new FlattenizationException("Branch should already be repaired by now but isn't repaired yet");
 
                 flatConnectionSetList.Add(dependantVerb, farFlatBranch.ComplementConceptList);

@@ -18,6 +18,7 @@ namespace AntiCulture.Kid
         /// <param name="assimilated">assimilated concept</param>
         public static void Assimilate(Concept assimilator, Concept assimilated)
         {
+            RepairedFlatBranchCache.Clear();
             AssimilateConnections(assimilator, assimilated);
             AssimilateImplyConnections(assimilator, assimilated);
         }

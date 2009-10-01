@@ -13,11 +13,6 @@ namespace AntiCulture.Kid
     {
         #region Fields and parts
         /// <summary>
-        /// Cache of repaired branch to improve flattenizer's performance
-        /// </summary>
-        private static HashSet<ConnectionBranch> repairedBranches;
-
-        /// <summary>
         /// Name mapper to look into
         /// </summary>
         private static NameMapper nameMapper;
@@ -40,7 +35,6 @@ namespace AntiCulture.Kid
         /// <returns>Returns a selection of concept from query (in a SQLish way)</returns>
         public static HashSet<Concept> Select(string conditions, NameMapper nameMapper, Memory currentMemory, bool isConsiderSelfMuct)
         {
-            repairedBranches = new HashSet<ConnectionBranch>();
             AiSqlWrapper.nameMapper = nameMapper;
             AiSqlWrapper.currentMemory = currentMemory;
             conditions = conditions.FixStringForHimmlStatementParsing();
@@ -92,7 +86,7 @@ namespace AntiCulture.Kid
                 Concept verb = verbAndComplement[0];
                 Concept complement = verbAndComplement[1];
 
-                Repairer.Repair(complement, repairedBranches);
+                Repairer.Repair(complement);
 
                 selection1 = GetSubjectListHaving(verb, complement, isConsiderSelfMuct);
 

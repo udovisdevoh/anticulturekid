@@ -10,32 +10,14 @@ namespace AntiCulture.Kid
     /// </summary>
     public abstract class AbstractFlattenizer
     {
-        #region Protected Fields
-        /// <summary>
-        /// Remember which branches are already repaired to improve performance a lot
-        /// </summary>
-        protected HashSet<ConnectionBranch> repairedBranches;
-        #endregion
-
         #region Public Methods
-        /// <summary>
-        /// Repair a concept's flat representation and regenerate its optimized representation
-        /// so no useless connection persist
-        /// </summary>
-        /// <param name="concept">Concept to repair</param>
-        public void Repair(Concept subject)
-        {
-            Repair(subject, new HashSet<ConnectionBranch>());
-        }
-
         /// <summary>
         /// Repair a concept's flat representation and regenerate its optimized representation
         /// so no useless connection persist.
         /// THIS METHOD MUST ONLY BE USED BY REPAIRER CLASS!!!
         /// </summary>
         /// <param name="subject">concept to repair</param>
-        /// <param name="repairedBranches">provided HashSet to rememebr which branches were repaired</param>
-        public abstract void Repair(Concept subject, HashSet<ConnectionBranch> repairedBranches);
+        public abstract void Repair(Concept subject);
         #endregion
 
         #region Protected Methods
