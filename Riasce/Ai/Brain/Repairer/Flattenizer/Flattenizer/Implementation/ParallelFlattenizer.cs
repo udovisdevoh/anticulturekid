@@ -75,15 +75,15 @@ namespace AntiCulture.Kid
                     complementCount = flatBranch.ComplementConceptList.Count;
 
                     if (i == 0)
-                        FlatBranchRepairer.FlattenDirectImplication(flatBranch, subject, verb);
+                        FlatBranchRepairer.FlattenDirectImplication(flatBranch, subject, verb,repairedBranches);
                     else if (i == 1)
-                        FlatBranchRepairer.FlattenLiffid(flatBranch, subject, verb);
+                        FlatBranchRepairer.FlattenLiffid(flatBranch, subject, verb, repairedBranches);
                     else if (i == 2)
-                        FlatBranchRepairer.FlattenMuct(flatBranch, subject, verb);
+                        FlatBranchRepairer.FlattenMuct(flatBranch, subject, verb, repairedBranches);
                     else if (i == 3)
-                        FlatBranchRepairer.FlattenPositiveImply(flatBranch, subject, verb);
+                        FlatBranchRepairer.FlattenPositiveImply(flatBranch, subject, verb, repairedBranches);
                     else
-                        FlatBranchRepairer.FlattenNegativeImply(flatBranch, subject, verb);
+                        FlatBranchRepairer.FlattenNegativeImply(flatBranch, subject, verb, repairedBranches);
                 }
             }
             while (flatBranch.ComplementConceptList.Count != complementCount);

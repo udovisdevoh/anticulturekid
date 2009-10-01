@@ -10,6 +10,9 @@ whole project major refactoring:
 -if, then statements must be c-like
 
 
+parallel flattenizer:
+must not start flattenizing a branch if it has already started inside another thread
+
 
 
 background thinker/phonothink:

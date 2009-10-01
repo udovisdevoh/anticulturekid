@@ -5,12 +5,20 @@ using System.Text;
 
 namespace AntiCulture.Kid
 {
-    class TestParallelFlattenizer
+    class TestFlattenizer
     {
-        public static void Test()
-        {
-            Repairer.Flattenizer = new ParallelFlattenizer();
+        #region Fields
+        private static AbstractFlattenizer flattenizer;
+        #endregion
 
+        #region Public Methods
+        public static void Test(AbstractFlattenizer flattenizerToUse)
+        {
+            Repairer.Flattenizer = flattenizerToUse;
+            TestFlattenizer.flattenizer = flattenizerToUse;
+
+            TestCreateImplyMake();
+            TestCreateImplyMakeImplyCause();
             TestTreeMadeofMaterial();
             PineMadeofMaterial();
             PineMadeofEnergy();
@@ -27,6 +35,94 @@ namespace AntiCulture.Kid
             #warning Test is disabled because subject == complement is not currently allowed
             //TestDoubleSidedLove();
             TestDoubleSidedLoveYouLovePie();
+        }
+
+        private static void TestCreateImplyMake()
+        {
+            Concept isa = new Concept("isa");
+            Concept someare = new Concept("someare");
+            Concept madeof = new Concept("madeof");
+            Concept partof = new Concept("partof");
+            Concept create = new Concept("create");
+            Concept createdby = new Concept("createdby");
+            Concept make = new Concept("make");
+            Concept madeby = new Concept("madeby");
+
+            Concept god = new Concept("god");
+            Concept adam = new Concept("adam");
+
+            MetaConnectionManager.AddMetaConnection(isa, "inverse_of", someare);
+            MetaConnectionManager.AddMetaConnection(madeof, "inverse_of", partof);
+            MetaConnectionManager.AddMetaConnection(create, "inverse_of", createdby);
+            MetaConnectionManager.AddMetaConnection(make, "inverse_of", madeby);
+
+            MetaConnectionManager.AddMetaConnection(create, "direct_implication", make);
+
+            Repairer.Repair(god, create, adam);
+
+            ConnectionManager.Plug(god, create, adam);
+
+            Repairer.Repair(god, create, adam);
+
+            //Pre-conditions
+
+            if (!ConnectionManager.TestConnection(god, create, adam))
+                throw new Exception("Connection should exist because it's explicit");
+
+            //Real test
+
+            if (!ConnectionManager.TestConnection(god, make, adam))
+                throw new Exception("Connection should exist because it's implicit");
+        }
+
+        private static void TestCreateImplyMakeImplyCause()
+        {
+            Concept isa = new Concept("isa");
+            Concept someare = new Concept("someare");
+            Concept madeof = new Concept("madeof");
+            Concept partof = new Concept("partof");
+            Concept create = new Concept("create");
+            Concept createdby = new Concept("createdby");
+            Concept make = new Concept("make");
+            Concept madeby = new Concept("madeby");
+            Concept cause = new Concept("cause");
+            Concept causedby = new Concept("causedby");
+
+            Concept god = new Concept("god");
+            Concept adam = new Concept("adam");
+
+            MetaConnectionManager.AddMetaConnection(isa, "inverse_of", someare);
+            MetaConnectionManager.AddMetaConnection(madeof, "inverse_of", partof);
+            MetaConnectionManager.AddMetaConnection(create, "inverse_of", createdby);
+            MetaConnectionManager.AddMetaConnection(make, "inverse_of", madeby);
+            MetaConnectionManager.AddMetaConnection(cause, "inverse_of", causedby);
+            MetaConnectionManager.AddMetaConnection(create, "direct_implication", make);
+            MetaConnectionManager.AddMetaConnection(make, "direct_implication", cause);
+
+            Repairer.Repair(god, create, adam);
+
+            ConnectionManager.Plug(god, create, adam);
+
+            Repairer.Repair(god, create, adam);
+
+            //Pre-conditions
+
+            if (!MetaConnectionManager.IsFlatMetaConnected(create, "direct_implication", cause))
+                throw new Exception("MetaConnection should exist because it's explicit");
+
+            if (!ConnectionManager.TestConnection(god, create, adam))
+                throw new Exception("Connection should exist because it's explicit");
+
+            if (!ConnectionManager.TestConnection(god, make, adam))
+                throw new Exception("Connection should exist because it's implicit");
+
+            //Real test
+
+            if (!ConnectionManager.TestConnection(god, cause, adam))
+                throw new Exception("Connection should exist because it's implicit");
+
+            if (!ConnectionManager.TestConnection(adam, causedby, god))
+                throw new Exception("Connection should exist because it's implicit");
         }
 
         private static void TestFlattenizerInverseOfWithMuct()
@@ -90,8 +186,6 @@ namespace AntiCulture.Kid
         private static void TestFlattenizerGeneralStuff()
         {
             Memory.TotalVerbList = new HashSet<Concept>();
-
-            ParallelFlattenizer flattenizer = new ParallelFlattenizer();
 
             #region We create the verbs that we will need
             Concept isa = new Concept("isa");
@@ -618,7 +712,6 @@ namespace AntiCulture.Kid
 
         private static void TestTreeMadeofMaterial()
         {
-            ParallelFlattenizer flattenizer = new ParallelFlattenizer();
             Memory.TotalVerbList = new HashSet<Concept>();
 
             Concept isa = new Concept("isa");
@@ -1254,5 +1347,6 @@ namespace AntiCulture.Kid
             if (ConnectionManager.TestConnection(me, love, pie))
                 throw new Exception("Shouldn't be connected");
         }
+        #endregion
     }
 }
