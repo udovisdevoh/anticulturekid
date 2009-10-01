@@ -17,17 +17,16 @@ namespace AntiCulture.Kid
         /// <param name="optimizedBranch">parent optmizedBranch</param>
         /// <param name="subject">subject</param>
         /// <param name="verb">verb</param>
-        /// <param name="repairedBranches"></param>
         /// <returns>which branches to repair (keys: flat branches, values: optimized branches)</returns>
-        public static Dictionary<ConnectionBranch, ConnectionBranch> GetBranchesToRepair(ConnectionBranch flatBranch, ConnectionBranch optimizedBranch, Concept subject, Concept verb, HashSet<ConnectionBranch> repairedBranches)
+        public static Dictionary<ConnectionBranch, ConnectionBranch> GetBranchesToRepair(ConnectionBranch flatBranch, ConnectionBranch optimizedBranch, Concept subject, Concept verb)
         {
             Dictionary<ConnectionBranch, ConnectionBranch> branchesToRepair = new Dictionary<ConnectionBranch, ConnectionBranch>();
 
-            AddBranchesToRepairFromDirectImplication(branchesToRepair, flatBranch, optimizedBranch, subject, verb, repairedBranches);
-            AddBranchesToRepairFromMuct(branchesToRepair, flatBranch, optimizedBranch, subject, verb, repairedBranches);
-            AddBranchesToRepairFromLiffid(branchesToRepair, flatBranch, optimizedBranch, subject, verb, repairedBranches);
-            AddBranchesToRepairFromNegativeImply(branchesToRepair, flatBranch, optimizedBranch, subject, verb, repairedBranches);
-            AddBranchesToRepairFromPositiveImply(branchesToRepair, flatBranch, optimizedBranch, subject, verb, repairedBranches);
+            AddBranchesToRepairFromDirectImplication(branchesToRepair, flatBranch, optimizedBranch, subject, verb);
+            AddBranchesToRepairFromMuct(branchesToRepair, flatBranch, optimizedBranch, subject, verb);
+            AddBranchesToRepairFromLiffid(branchesToRepair, flatBranch, optimizedBranch, subject, verb);
+            AddBranchesToRepairFromNegativeImply(branchesToRepair, flatBranch, optimizedBranch, subject, verb);
+            AddBranchesToRepairFromPositiveImply(branchesToRepair, flatBranch, optimizedBranch, subject, verb);
 
             return branchesToRepair;
         }
@@ -42,8 +41,7 @@ namespace AntiCulture.Kid
         /// <param name="optimizedBranch">optimized branch</param>
         /// <param name="subject">subject concept</param>
         /// <param name="verb">verb concept</param>
-        /// <param name="repairedBranches">repaired branches</param>
-        private static void AddBranchesToRepairFromDirectImplication(Dictionary<ConnectionBranch, ConnectionBranch> branchesToRepair, ConnectionBranch flatBranch, ConnectionBranch optimizedBranch, Concept subject, Concept verb, HashSet<ConnectionBranch> repairedBranches)
+        private static void AddBranchesToRepairFromDirectImplication(Dictionary<ConnectionBranch, ConnectionBranch> branchesToRepair, ConnectionBranch flatBranch, ConnectionBranch optimizedBranch, Concept subject, Concept verb)
         {
             HashSet<Concept> directImplicationVerbList = VerbMetaConnectionCache.GetVerbFlatListFromCache(verb, "direct_implication", false);
             if (directImplicationVerbList == null)
@@ -56,8 +54,8 @@ namespace AntiCulture.Kid
             {
                 ConnectionBranch farFlatBranch = subject.GetFlatConnectionBranch(directlyImpliedVerb);
                 ConnectionBranch farOptimizedBranch = subject.GetOptimizedConnectionBranch(directlyImpliedVerb);
-                
-                if (!repairedBranches.Contains(farFlatBranch))
+
+                if (!RepairedFlatBranchCache.Contains(farFlatBranch))
                     if (!branchesToRepair.ContainsKey(farFlatBranch))
                         branchesToRepair.Add(farFlatBranch, farOptimizedBranch);
             }
@@ -71,8 +69,7 @@ namespace AntiCulture.Kid
         /// <param name="optimizedBranch">optimized branch</param>
         /// <param name="subject">subject concept</param>
         /// <param name="verb">verb concept</param>
-        /// <param name="repairedBranches">repaired branches</param>
-        private static void AddBranchesToRepairFromMuct(Dictionary<ConnectionBranch, ConnectionBranch> branchesToRepair, ConnectionBranch flatBranch, ConnectionBranch optimizedBranch, Concept subject, Concept verb, HashSet<ConnectionBranch> repairedBranches)
+        private static void AddBranchesToRepairFromMuct(Dictionary<ConnectionBranch, ConnectionBranch> branchesToRepair, ConnectionBranch flatBranch, ConnectionBranch optimizedBranch, Concept subject, Concept verb)
         {
             HashSet<Concept> muctVerbList = VerbMetaConnectionCache.GetVerbFlatListFromCache(verb, "muct", true);
             if (muctVerbList == null)
@@ -89,8 +86,8 @@ namespace AntiCulture.Kid
                 {
                     ConnectionBranch farFlatBranch = complement.GetFlatConnectionBranch(verb);
                     ConnectionBranch farOptimizedBranch = complement.GetOptimizedConnectionBranch(verb);
-                    
-                    if (!repairedBranches.Contains(farFlatBranch))
+
+                    if (!RepairedFlatBranchCache.Contains(farFlatBranch))
                         if (!branchesToRepair.ContainsKey(farFlatBranch))
                             branchesToRepair.Add(farFlatBranch, farOptimizedBranch);
                 }
@@ -105,8 +102,7 @@ namespace AntiCulture.Kid
         /// <param name="optimizedBranch">optimized branch</param>
         /// <param name="subject">subject concept</param>
         /// <param name="verb">verb concept</param>
-        /// <param name="repairedBranches">repaired branches</param>
-        private static void AddBranchesToRepairFromLiffid(Dictionary<ConnectionBranch, ConnectionBranch> branchesToRepair, ConnectionBranch flatBranch, ConnectionBranch optimizedBranch, Concept subject, Concept verb, HashSet<ConnectionBranch> repairedBranches)
+        private static void AddBranchesToRepairFromLiffid(Dictionary<ConnectionBranch, ConnectionBranch> branchesToRepair, ConnectionBranch flatBranch, ConnectionBranch optimizedBranch, Concept subject, Concept verb)
         {
             HashSet<Concept> liffidVerbList = VerbMetaConnectionCache.GetVerbFlatListFromCache(verb, "liffid", true);
             if (liffidVerbList == null)
@@ -124,7 +120,7 @@ namespace AntiCulture.Kid
                     ConnectionBranch farFlatBranch = complement.GetFlatConnectionBranch(liffidVerb);
                     ConnectionBranch farOptimizedBranch = complement.GetOptimizedConnectionBranch(liffidVerb);
 
-                    if (!repairedBranches.Contains(farFlatBranch))
+                    if (!RepairedFlatBranchCache.Contains(farFlatBranch))
                         if (!branchesToRepair.ContainsKey(farFlatBranch))
                             branchesToRepair.Add(farFlatBranch, farOptimizedBranch);
                 }
@@ -139,8 +135,7 @@ namespace AntiCulture.Kid
         /// <param name="optimizedBranch">optimized branch</param>
         /// <param name="subject">subject concept</param>
         /// <param name="verb">verb concept</param>
-        /// <param name="repairedBranches">repaired branches</param>
-        private static void AddBranchesToRepairFromPositiveImply(Dictionary<ConnectionBranch, ConnectionBranch> branchesToRepair, ConnectionBranch flatBranch, ConnectionBranch optimizedBranch, Concept subject, Concept verb, HashSet<ConnectionBranch> repairedBranches)
+        private static void AddBranchesToRepairFromPositiveImply(Dictionary<ConnectionBranch, ConnectionBranch> branchesToRepair, ConnectionBranch flatBranch, ConnectionBranch optimizedBranch, Concept subject, Concept verb)
         {
             Concept complement;
             HashSet<Condition> conditionList;
@@ -151,7 +146,7 @@ namespace AntiCulture.Kid
 
                 foreach (Condition condition in conditionList)
                 {
-                    AddBranchesToRepairFromConditionPositiveImply(branchesToRepair, flatBranch, optimizedBranch, subject, verb, condition, repairedBranches);
+                    AddBranchesToRepairFromConditionPositiveImply(branchesToRepair, flatBranch, optimizedBranch, subject, verb, condition);
                 }
             }
         }
@@ -164,8 +159,7 @@ namespace AntiCulture.Kid
         /// <param name="optimizedBranch">optimized branch</param>
         /// <param name="subject">subject concept</param>
         /// <param name="verb">verb concept</param>
-        /// <param name="repairedBranches">repaired branches</param>
-        private static void AddBranchesToRepairFromNegativeImply(Dictionary<ConnectionBranch, ConnectionBranch> branchesToRepair, ConnectionBranch flatBranch, ConnectionBranch optimizedBranch, Concept subject, Concept verb, HashSet<ConnectionBranch> repairedBranches)
+        private static void AddBranchesToRepairFromNegativeImply(Dictionary<ConnectionBranch, ConnectionBranch> branchesToRepair, ConnectionBranch flatBranch, ConnectionBranch optimizedBranch, Concept subject, Concept verb)
         {
             Concept complement;
             HashSet<Condition> conditionList;
@@ -176,7 +170,7 @@ namespace AntiCulture.Kid
 
                 foreach (Condition condition in conditionList)
                 {
-                    AddBranchesToRepairFromConditionNegativeImply(branchesToRepair, flatBranch, optimizedBranch, subject, verb, condition, repairedBranches);
+                    AddBranchesToRepairFromConditionNegativeImply(branchesToRepair, flatBranch, optimizedBranch, subject, verb, condition);
                 }
             }
         }
@@ -190,8 +184,7 @@ namespace AntiCulture.Kid
         /// <param name="subject">subject concept</param>
         /// <param name="verb">verb concept</param>
         /// <param name="condition">positive imply condition</param>
-        /// <param name="repairedBranches">repaired branches</param>
-        private static void AddBranchesToRepairFromConditionPositiveImply(Dictionary<ConnectionBranch, ConnectionBranch> branchesToRepair, ConnectionBranch flatBranch, ConnectionBranch optimizedBranch, Concept subject, Concept verb, Condition condition, HashSet<ConnectionBranch> repairedBranches)
+        private static void AddBranchesToRepairFromConditionPositiveImply(Dictionary<ConnectionBranch, ConnectionBranch> branchesToRepair, ConnectionBranch flatBranch, ConnectionBranch optimizedBranch, Concept subject, Concept verb, Condition condition)
         {
             if (subject == condition.ActionComplement) //Cannot plug a concept to itself
                 return;
@@ -204,7 +197,7 @@ namespace AntiCulture.Kid
                 ConnectionBranch farFlatBranch = subject.GetFlatConnectionBranch(dependantVerb);
                 ConnectionBranch farOptimizedBranch = subject.GetOptimizedConnectionBranch(dependantVerb);
 
-                if (!repairedBranches.Contains(farFlatBranch))
+                if (!RepairedFlatBranchCache.Contains(farFlatBranch))
                     if (!branchesToRepair.ContainsKey(farFlatBranch))
                         branchesToRepair.Add(farFlatBranch, farOptimizedBranch);
             }
@@ -219,8 +212,7 @@ namespace AntiCulture.Kid
         /// <param name="subject">subject concept</param>
         /// <param name="verb">verb concept</param>
         /// <param name="condition">negative imply condition</param>
-        /// <param name="repairedBranches">repaired branches</param>
-        private static void AddBranchesToRepairFromConditionNegativeImply(Dictionary<ConnectionBranch, ConnectionBranch> branchesToRepair, ConnectionBranch flatBranch, ConnectionBranch optimizedBranch, Concept subject, Concept verb, Condition condition, HashSet<ConnectionBranch> repairedBranches)
+        private static void AddBranchesToRepairFromConditionNegativeImply(Dictionary<ConnectionBranch, ConnectionBranch> branchesToRepair, ConnectionBranch flatBranch, ConnectionBranch optimizedBranch, Concept subject, Concept verb, Condition condition)
         {
             if (subject != condition.ActionComplement) //Ignore flattenization if subject is not concerned
                 return;
@@ -236,7 +228,7 @@ namespace AntiCulture.Kid
                 ConnectionBranch farFlatBranch = farComplement.GetFlatConnectionBranch(farVerb);
                 ConnectionBranch farOptimizedBranch = farComplement.GetOptimizedConnectionBranch(farVerb);
 
-                if (!repairedBranches.Contains(farFlatBranch))
+                if (!RepairedFlatBranchCache.Contains(farFlatBranch))
                     if (!branchesToRepair.ContainsKey(farFlatBranch))
                         branchesToRepair.Add(farFlatBranch, farOptimizedBranch);
             }

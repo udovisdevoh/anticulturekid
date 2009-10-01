@@ -59,11 +59,6 @@ namespace AntiCulture.Kid
         /// </summary>
         protected AutoResetEvent autoResetEvent = new AutoResetEvent(false);
 
-        /// <summary>
-        /// We use this cache to improve flattenization performances
-        /// </summary>
-        protected HashSet<ConnectionBranch> repairedBranches;
-
         protected Theorizer theorizer;
 
         protected Random random = new Random();

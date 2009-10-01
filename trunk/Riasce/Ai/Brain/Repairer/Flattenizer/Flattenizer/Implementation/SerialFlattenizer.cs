@@ -13,11 +13,8 @@ namespace AntiCulture.Kid
         /// THIS METHOD MUST ONLY BE USED BY REPAIRER CLASS!!!
         /// </summary>
         /// <param name="subject">concept to repair</param>
-        /// <param name="repairedBranches">provided HashSet to rememebr which branches were repaired</param>
-        public override void Repair(Concept subject, HashSet<ConnectionBranch> repairedBranches)
+        public override void Repair(Concept subject)
         {
-            this.repairedBranches = repairedBranches;
-
             ConnectionBranch flatBranch;
             ConnectionBranch optimizedBranch;
 
@@ -26,7 +23,7 @@ namespace AntiCulture.Kid
                 flatBranch = subject.GetFlatConnectionBranch(verb);
                 optimizedBranch = subject.GetOptimizedConnectionBranch(verb);
 
-                if (repairedBranches.Contains(flatBranch))
+                if (RepairedFlatBranchCache.Contains(flatBranch))
                     RepairFlatBranch(flatBranch, optimizedBranch, subject, verb);
             }
 
@@ -49,7 +46,7 @@ namespace AntiCulture.Kid
             int complementCount = 0;
             int complementCountBeforeLoop = 0;
 
-            repairedBranches.Add(flatBranch);
+            RepairedFlatBranchCache.Add(flatBranch);
 
             Dictionary<ConnectionBranch, ConnectionBranch> branchesToRepair;
 
@@ -70,22 +67,22 @@ namespace AntiCulture.Kid
                 {
                     if (i == 0 || complementCount != flatBranch.ComplementConceptList.Count)
                     {
-                        branchesToRepair = FlatBranchSelector.GetBranchesToRepair(flatBranch, optimizedBranch, subject, verb, repairedBranches);
+                        branchesToRepair = FlatBranchSelector.GetBranchesToRepair(flatBranch, optimizedBranch, subject, verb);
                         foreach (KeyValuePair<ConnectionBranch, ConnectionBranch> currentBranch in branchesToRepair)
                             RepairFlatBranch(currentBranch.Key, currentBranch.Value, subject, verb);
                         complementCount = flatBranch.ComplementConceptList.Count;
                     }
 
                     if (i == 0)
-                        FlatBranchRepairer.FlattenDirectImplication(flatBranch, subject, verb, repairedBranches);
+                        FlatBranchRepairer.FlattenDirectImplication(flatBranch, subject, verb);
                     else if (i == 1)
-                        FlatBranchRepairer.FlattenLiffid(flatBranch, subject, verb, repairedBranches);
+                        FlatBranchRepairer.FlattenLiffid(flatBranch, subject, verb);
                     else if (i == 2)
-                        FlatBranchRepairer.FlattenMuct(flatBranch, subject, verb, repairedBranches);
+                        FlatBranchRepairer.FlattenMuct(flatBranch, subject, verb);
                     else if (i == 3)
-                        FlatBranchRepairer.FlattenPositiveImply(flatBranch, subject, verb, repairedBranches);
+                        FlatBranchRepairer.FlattenPositiveImply(flatBranch, subject, verb);
                     else
-                        FlatBranchRepairer.FlattenNegativeImply(flatBranch, subject, verb, repairedBranches);
+                        FlatBranchRepairer.FlattenNegativeImply(flatBranch, subject, verb);
                 }
             }
             while (flatBranch.ComplementConceptList.Count != complementCount || flatBranch.ComplementConceptList.Count != complementCountBeforeLoop);

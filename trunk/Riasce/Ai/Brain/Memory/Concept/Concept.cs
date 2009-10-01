@@ -91,7 +91,12 @@ namespace AntiCulture.Kid
                 connectionBranch = new ConnectionBranch();
                 optimizedConnectionBranchList.Add(verbConcept, connectionBranch);
             }
-            connectionBranch.AddConnection(complementConcept);
+
+            if (!connectionBranch.ComplementConceptList.Contains(complementConcept))
+            {
+                connectionBranch.AddConnection(complementConcept);
+                RepairedFlatBranchCache.Clear();
+            }
         }
 
         /// <summary>
@@ -103,7 +108,10 @@ namespace AntiCulture.Kid
         {
             ConnectionBranch connectionBranch;
             if (optimizedConnectionBranchList.TryGetValue(verbConcept, out connectionBranch))
+            {
                 connectionBranch.RemoveConnection(complementConcept);
+                RepairedFlatBranchCache.Clear();
+            }
         }
 
         /// <summary>

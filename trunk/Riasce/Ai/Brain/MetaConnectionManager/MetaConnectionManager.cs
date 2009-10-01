@@ -216,6 +216,7 @@ namespace AntiCulture.Kid
             }
 
             VerbMetaConnectionCache.Clear();
+            RepairedFlatBranchCache.Clear();
         }
 
         /// <summary>
@@ -238,6 +239,7 @@ namespace AntiCulture.Kid
             }
 
             VerbMetaConnectionCache.Clear();
+            RepairedFlatBranchCache.Clear();
 
             if (IsFlatMetaConnected(concept1, metaOperatorName, concept2))
                 throw new MetaConnectionException("MetaConnection is still present as the result of the combination of other metaConnections.");

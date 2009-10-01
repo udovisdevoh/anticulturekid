@@ -17,11 +17,8 @@ namespace AntiCulture.Kid
         /// THIS METHOD MUST ONLY BE USED BY REPAIRER CLASS!!!
         /// </summary>
         /// <param name="subject">concept to repair</param>
-        /// <param name="repairedBranches">provided HashSet to rememebr which branches were repaired</param>
-        public override void Repair(Concept subject, HashSet<ConnectionBranch> repairedBranches)
+        public override void Repair(Concept subject)
         {
-            this.repairedBranches = repairedBranches;
-
             ConnectionBranch flatBranch;
             ConnectionBranch optimizedBranch;
             
@@ -30,7 +27,7 @@ namespace AntiCulture.Kid
                 flatBranch = subject.GetFlatConnectionBranch(verb);
                 optimizedBranch = subject.GetOptimizedConnectionBranch(verb);
 
-                if (!repairedBranches.Contains(flatBranch))
+                if (!RepairedFlatBranchCache.Contains(flatBranch))
                     RepairFlatBranch(flatBranch, optimizedBranch, subject, verb);
             }
 
@@ -50,7 +47,7 @@ namespace AntiCulture.Kid
         {
             int complementCount;
 
-            repairedBranches.Add(flatBranch);
+            RepairedFlatBranchCache.Add(flatBranch);
 
             flatBranch.ComplementConceptList.Clear();
 
@@ -95,7 +92,7 @@ namespace AntiCulture.Kid
                 ConnectionBranch farFlatBranch = subject.GetFlatConnectionBranch(directlyImpliedVerb);
                 ConnectionBranch farOptimizedBranch = subject.GetOptimizedConnectionBranch(directlyImpliedVerb);
 
-                if (!repairedBranches.Contains(farFlatBranch))
+                if (!RepairedFlatBranchCache.Contains(farFlatBranch))
                     RepairFlatBranch(farFlatBranch, farOptimizedBranch, subject, directlyImpliedVerb);
 
                 foreach (Concept complement in farFlatBranch.ComplementConceptList)
@@ -161,7 +158,7 @@ namespace AntiCulture.Kid
                     ConnectionBranch farFlatBranch = complement.GetFlatConnectionBranch(liffidVerb);
                     ConnectionBranch farOptimizedBranch = complement.GetOptimizedConnectionBranch(liffidVerb);
 
-                    if (!repairedBranches.Contains(farFlatBranch))//if (liffidVerb != verb && subject != complement)
+                    if (!RepairedFlatBranchCache.Contains(farFlatBranch))//if (liffidVerb != verb && subject != complement)
                         RepairFlatBranch(farFlatBranch, farOptimizedBranch, complement, liffidVerb);
 
 
@@ -230,7 +227,7 @@ namespace AntiCulture.Kid
                 {
                     ConnectionBranch farFlatBranch = complement.GetFlatConnectionBranch(verb);
                     ConnectionBranch farOptimizedBranch = complement.GetOptimizedConnectionBranch(verb);
-                    if (!repairedBranches.Contains(farFlatBranch))//if (muctVerb != verb && subject != complement)
+                    if (!RepairedFlatBranchCache.Contains(farFlatBranch))//if (muctVerb != verb && subject != complement)
                         RepairFlatBranch(farFlatBranch, farOptimizedBranch, complement, verb);
 
                     HashSet<Concept> conceptAffectedByMuctVerb = farFlatBranch.ComplementConceptList;
@@ -350,7 +347,7 @@ namespace AntiCulture.Kid
                 ConnectionBranch farFlatBranch = subject.GetFlatConnectionBranch(dependantVerb);
                 ConnectionBranch farOptimizedBranch = subject.GetOptimizedConnectionBranch(dependantVerb);
 
-                if (!repairedBranches.Contains(farFlatBranch))
+                if (!RepairedFlatBranchCache.Contains(farFlatBranch))
                     RepairFlatBranch(farFlatBranch, farOptimizedBranch, subject, dependantVerb);
 
                 flatConnectionSetList.Add(dependantVerb, farFlatBranch.ComplementConceptList);
@@ -398,7 +395,7 @@ namespace AntiCulture.Kid
                 ConnectionBranch farFlatBranch = farComplement.GetFlatConnectionBranch(farVerb);
                 ConnectionBranch farOptimizedBranch = farComplement.GetOptimizedConnectionBranch(farVerb);
 
-                if (!repairedBranches.Contains(farFlatBranch))
+                if (!RepairedFlatBranchCache.Contains(farFlatBranch))
                     RepairFlatBranch(farFlatBranch, farOptimizedBranch, farComplement, farVerb);
             }
 

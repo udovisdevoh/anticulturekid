@@ -20,15 +20,6 @@ namespace AntiCulture.Kid
 
         #region Methods
         /// <summary>
-        /// Repair a concept
-        /// </summary>
-        /// <param name="conceptToRepair">concept</param>
-        public static void Repair(Concept conceptToRepair)
-        {
-            Repair(conceptToRepair, new HashSet<ConnectionBranch>());
-        }
-
-        /// <summary>
         /// Repair two concepts
         /// </summary>
         /// <param name="conceptToRepair1">concept1</param>
@@ -179,20 +170,17 @@ namespace AntiCulture.Kid
         /// <param name="conceptCollection">collection of concept</param>
         public static void RepairRange(IEnumerable<Concept> conceptCollection)
         {
-            HashSet<ConnectionBranch> repairedBranches = new HashSet<ConnectionBranch>();
-
             foreach (Concept conceptToRepair in conceptCollection)
-                Repair(conceptToRepair, repairedBranches);
+                Repair(conceptToRepair);
         }
 
         /// <summary>
         /// Repair a concept
         /// </summary>
         /// <param name="conceptToRepair">concept to repair</param>
-        /// <param name="repairedBranches">repaired branches</param>
-        public static void Repair(Concept conceptToRepair, HashSet<ConnectionBranch> repairedBranches)
+        public static void Repair(Concept conceptToRepair)
         {
-            flattenizer.Repair(conceptToRepair, repairedBranches);
+            flattenizer.Repair(conceptToRepair);
             Optimizer.Repair(conceptToRepair);
         }
 
@@ -221,13 +209,11 @@ namespace AntiCulture.Kid
         /// <param name="concept">concept</param>
         public static void RepairConceptAndSurrounding(Concept concept)
         {
-            HashSet<ConnectionBranch> repairedBranches = new HashSet<ConnectionBranch>();
-
-            Repair(concept, repairedBranches);
+            Repair(concept);
 
             foreach (Concept complement in concept.ConceptFlatPluggedTo)
             {
-                Repair(complement, repairedBranches);
+                Repair(complement);
             }
         }
         #endregion

@@ -1,10 +1,10 @@
-repairedBranch must be static and transcendant
-(it must be inside the new static class: FlatBranchCache)
-reset FlatBranchCache when modifiying operators or metaOperators
+fix bug:
+create imply connection
+FlatBranchCache is repaired
+save
+bug: there is a defect proof in memory
 
 
-
-"in" operator must be properly placed in custom order
 
 
 
