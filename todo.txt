@@ -1,6 +1,3 @@
-verbConnectionCache must be static and transcendant
-(reset when creating/removing metaOperators)
-
 repairedBranch must be static and transcendant
 (it must be inside the new static class: FlatBranchCache)
 reset FlatBranchCache when modifiying operators or metaOperators
@@ -16,6 +13,10 @@ stop background thinker when waiting for visualizer to finish showing something
 
 
 flattenizers must be static
+
+
+
+add definition arrow |_> image to repository
 
 
 
