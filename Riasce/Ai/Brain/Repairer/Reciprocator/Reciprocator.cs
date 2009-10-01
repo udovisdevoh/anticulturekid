@@ -18,7 +18,6 @@ namespace AntiCulture.Kid
         /// <param name="concept">Concept to repair</param>
         public static void Reciprocate(Concept subject)
         {
-            VerbMetaConnectionCache.Clear();
             FeelingMonitor.Add(FeelingMonitor.RECIPROCATING);
             Repair(subject);
         }
@@ -30,7 +29,6 @@ namespace AntiCulture.Kid
         public static void ReciprocateRange(IEnumerable<Concept> conceptCollection)
         {
             FeelingMonitor.Add(FeelingMonitor.RECIPROCATING);
-            VerbMetaConnectionCache.Clear();
             foreach (Concept subject in conceptCollection)
                 Repair(subject);
         }

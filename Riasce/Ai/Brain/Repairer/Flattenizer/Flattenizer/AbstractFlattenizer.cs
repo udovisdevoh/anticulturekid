@@ -25,7 +25,6 @@ namespace AntiCulture.Kid
         /// <param name="concept">Concept to repair</param>
         public void Repair(Concept subject)
         {
-            VerbMetaConnectionCache.Clear();
             Repair(subject, new HashSet<ConnectionBranch>());
         }
 

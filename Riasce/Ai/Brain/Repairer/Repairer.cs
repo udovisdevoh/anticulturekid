@@ -25,7 +25,6 @@ namespace AntiCulture.Kid
         /// <param name="conceptToRepair">concept</param>
         public static void Repair(Concept conceptToRepair)
         {
-            VerbMetaConnectionCache.Clear();
             Repair(conceptToRepair, new HashSet<ConnectionBranch>());
         }
 
@@ -181,7 +180,6 @@ namespace AntiCulture.Kid
         public static void RepairRange(IEnumerable<Concept> conceptCollection)
         {
             HashSet<ConnectionBranch> repairedBranches = new HashSet<ConnectionBranch>();
-            VerbMetaConnectionCache.Clear();
 
             foreach (Concept conceptToRepair in conceptCollection)
                 Repair(conceptToRepair, repairedBranches);
@@ -224,7 +222,6 @@ namespace AntiCulture.Kid
         public static void RepairConceptAndSurrounding(Concept concept)
         {
             HashSet<ConnectionBranch> repairedBranches = new HashSet<ConnectionBranch>();
-            VerbMetaConnectionCache.Clear();
 
             Repair(concept, repairedBranches);
 

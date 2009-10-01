@@ -34,8 +34,6 @@ namespace AntiCulture.Kid
             if (complement.IsFlatDirty || complement.IsOptimizedDirty)
                 throw new AnalogyException("Repair concept first");
 
-            VerbMetaConnectionCache.Clear();
-
             List<Analogy> analogyList = GetAnalogyList(subject,verb,complement);
 
             Analogy bestAnalogy = null;
@@ -58,8 +56,6 @@ namespace AntiCulture.Kid
         {
             if (subject.IsFlatDirty || subject.IsOptimizedDirty)
                 throw new AnalogyException("Repair concept first");
-
-            VerbMetaConnectionCache.Clear();
 
             List<Analogy> analogyList = new List<Analogy>();
 
@@ -88,8 +84,6 @@ namespace AntiCulture.Kid
             if (subject.IsFlatDirty || subject.IsOptimizedDirty)
                 throw new AnalogyException("Repair concept first");
 
-            VerbMetaConnectionCache.Clear();
-
             List<Analogy> analogyList = new List<Analogy>();
 
             foreach (Concept verb in Memory.TotalVerbList)
@@ -112,8 +106,6 @@ namespace AntiCulture.Kid
         /// <returns>Analogy</returns>
         public Analogy GetBestRandomAnalogy(IEnumerable<Concept> conceptCollection)
         {
-            VerbMetaConnectionCache.Clear();
-
             HashSet<Concept> conceptSample = conceptCollection.GetRandomSample(samplingSize);
 
             List<Analogy> analogyList = new List<Analogy>();

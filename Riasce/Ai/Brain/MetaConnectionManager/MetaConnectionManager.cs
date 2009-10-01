@@ -214,6 +214,8 @@ namespace AntiCulture.Kid
                 concept1.AddMetaConnection(metaOperatorName, concept2, true);
                 concept2.AddMetaConnection(metaOperatorName, concept1, false);
             }
+
+            VerbMetaConnectionCache.Clear();
         }
 
         /// <summary>
@@ -234,6 +236,8 @@ namespace AntiCulture.Kid
                 concept1.RemoveMetaConnection(metaOperatorName, concept2, true);
                 concept2.RemoveMetaConnection(metaOperatorName, concept1, false);
             }
+
+            VerbMetaConnectionCache.Clear();
 
             if (IsFlatMetaConnected(concept1, metaOperatorName, concept2))
                 throw new MetaConnectionException("MetaConnection is still present as the result of the combination of other metaConnections.");
