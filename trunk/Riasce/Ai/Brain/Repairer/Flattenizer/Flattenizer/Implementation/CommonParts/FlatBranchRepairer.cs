@@ -189,7 +189,7 @@ namespace AntiCulture.Kid
                         if (!closeProof.ContainsArgument(subject, verb, metaComplement) &&
                             !farProof.ContainsArgument(subject, verb, metaComplement) &&
                             !closeProof.ContainsArgument(subject, verb, complement) &&
-                            !farProof.ContainsArgument(complement, liffidVerb, metaComplement) &&
+                            !farProof.ContainsArgument(complement, liffidVerb, metaComplement ) &&
                             subject != metaComplement)
                         {
                             flatBranch.AddConnection(metaComplement);

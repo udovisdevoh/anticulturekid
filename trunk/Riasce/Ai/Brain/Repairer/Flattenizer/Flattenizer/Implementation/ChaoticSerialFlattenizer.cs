@@ -31,7 +31,9 @@ namespace AntiCulture.Kid
             {
                 flatBranch = subject.GetFlatConnectionBranch(verb);
                 optimizedBranch = subject.GetOptimizedConnectionBranch(verb);
-                flatBranch = RepairFlatBranch(flatBranch, optimizedBranch, subject, verb);
+
+                if (!repairedBranches.Contains(flatBranch))
+                    RepairFlatBranch(flatBranch, optimizedBranch, subject, verb);
             }
 
             subject.IsFlatDirty = false;
