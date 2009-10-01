@@ -16,12 +16,6 @@ namespace AntiCulture.Kid
         /// analogy among them
         /// </summary>
         private static readonly int samplingSize = 20;
-
-        /// <summary>
-        /// Used by metaConnection flattenizer to improve metaConnection flattenization performances
-        /// by re-using data
-        /// </summary>
-        private VerbMetaConnectionCache verbMetaConnectionCache;
         #endregion
 
         #region Public Methods
@@ -40,7 +34,7 @@ namespace AntiCulture.Kid
             if (complement.IsFlatDirty || complement.IsOptimizedDirty)
                 throw new AnalogyException("Repair concept first");
 
-            verbMetaConnectionCache = new VerbMetaConnectionCache();
+            VerbMetaConnectionCache.Clear();
 
             List<Analogy> analogyList = GetAnalogyList(subject,verb,complement);
 
@@ -65,7 +59,7 @@ namespace AntiCulture.Kid
             if (subject.IsFlatDirty || subject.IsOptimizedDirty)
                 throw new AnalogyException("Repair concept first");
 
-            verbMetaConnectionCache = new VerbMetaConnectionCache();
+            VerbMetaConnectionCache.Clear();
 
             List<Analogy> analogyList = new List<Analogy>();
 
@@ -94,7 +88,7 @@ namespace AntiCulture.Kid
             if (subject.IsFlatDirty || subject.IsOptimizedDirty)
                 throw new AnalogyException("Repair concept first");
 
-            verbMetaConnectionCache = new VerbMetaConnectionCache();
+            VerbMetaConnectionCache.Clear();
 
             List<Analogy> analogyList = new List<Analogy>();
 
@@ -118,7 +112,7 @@ namespace AntiCulture.Kid
         /// <returns>Analogy</returns>
         public Analogy GetBestRandomAnalogy(IEnumerable<Concept> conceptCollection)
         {
-            verbMetaConnectionCache = new VerbMetaConnectionCache();
+            VerbMetaConnectionCache.Clear();
 
             HashSet<Concept> conceptSample = conceptCollection.GetRandomSample(samplingSize);
 

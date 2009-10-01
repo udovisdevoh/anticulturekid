@@ -40,7 +40,7 @@ namespace AntiCulture.Kid
                 throw new Exception("Name Mapper must be set before starting background thinker");
 
             repairedBranches = new HashSet<ConnectionBranch>();
-            verbMetaConnectionCache = new VerbMetaConnectionCache();
+            VerbMetaConnectionCache.Clear();
 
             mustStopNow = false;
 
@@ -53,17 +53,17 @@ namespace AntiCulture.Kid
 
                 if (taskTypeCounter == 0)
                 {
-                    Repairer.Repair(currentConcept, repairedBranches, verbMetaConnectionCache);
+                    Repairer.Repair(currentConcept, repairedBranches);
                     TryAddTrauma(Purifier.PurifyOptimized(currentConcept));
                 }
                 else if (taskTypeCounter == 1)
                 {
-                    Repairer.Repair(currentConcept, repairedBranches, verbMetaConnectionCache);
+                    Repairer.Repair(currentConcept, repairedBranches);
                     TryAddTrauma(Purifier.PurifyFlat(currentConcept));
                 }
                 else if (taskTypeCounter == 2)
                 {
-                    Repairer.Repair(currentConcept, repairedBranches, verbMetaConnectionCache);
+                    Repairer.Repair(currentConcept, repairedBranches);
                     TheorizeAndRememberRandomTheoryAbout(currentConcept);
                 }
                 else //when no type is matched

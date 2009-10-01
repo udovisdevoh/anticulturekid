@@ -18,11 +18,9 @@ namespace AntiCulture.Kid
         /// </summary>
         /// <param name="subject">concept to repair</param>
         /// <param name="repairedBranches">provided HashSet to rememebr which branches were repaired</param>
-        /// <param name="verbConnectionCache">provided cache to remember flattenized metaConnections</param>
-        public override void Repair(Concept subject, HashSet<ConnectionBranch> repairedBranches, VerbMetaConnectionCache verbConnectionCache)
+        public override void Repair(Concept subject, HashSet<ConnectionBranch> repairedBranches)
         {
             this.repairedBranches = repairedBranches;
-            this.verbMetaConnectionCache = verbConnectionCache;
 
             ConnectionBranch flatBranch;
             ConnectionBranch optimizedBranch;
@@ -86,11 +84,11 @@ namespace AntiCulture.Kid
         /// <param name="verb">verb concept</param>
         private void FlattenDirectImplication(ConnectionBranch flatBranch, Concept subject, Concept verb)
         {
-            HashSet<Concept> directImplicationVerbList = verbMetaConnectionCache.GetVerbFlatListFromCache(verb, "direct_implication", false);
+            HashSet<Concept> directImplicationVerbList = VerbMetaConnectionCache.GetVerbFlatListFromCache(verb, "direct_implication", false);
             if (directImplicationVerbList == null)
             {
                 directImplicationVerbList = MetaConnectionManager.GetVerbFlatListFromMetaConnection(verb, "direct_implication", false);
-                verbMetaConnectionCache.Remember(verb, "direct_implication", false, directImplicationVerbList);
+                VerbMetaConnectionCache.Remember(verb, "direct_implication", false, directImplicationVerbList);
             }
             foreach (Concept directlyImpliedVerb in directImplicationVerbList)
             {
@@ -148,11 +146,11 @@ namespace AntiCulture.Kid
         /// <param name="verb">verb concept</param>
         private void FlattenLiffid(ConnectionBranch flatBranch, Concept subject, Concept verb)
         {
-            HashSet<Concept> liffidVerbList = verbMetaConnectionCache.GetVerbFlatListFromCache(verb, "liffid", true);
+            HashSet<Concept> liffidVerbList = VerbMetaConnectionCache.GetVerbFlatListFromCache(verb, "liffid", true);
             if (liffidVerbList == null)
             {
                 liffidVerbList = MetaConnectionManager.GetVerbFlatListFromMetaConnection(verb, "liffid", true);
-                verbMetaConnectionCache.Remember(verb, "liffid", true, liffidVerbList);
+                VerbMetaConnectionCache.Remember(verb, "liffid", true, liffidVerbList);
             }
             foreach (Concept liffidVerb in liffidVerbList)
             {
@@ -218,11 +216,11 @@ namespace AntiCulture.Kid
         /// <param name="verb">verb concept</param>
         private void FlattenMuct(ConnectionBranch flatBranch, Concept subject, Concept verb)
         {
-            HashSet<Concept> muctVerbList = verbMetaConnectionCache.GetVerbFlatListFromCache(verb, "muct", true);
+            HashSet<Concept> muctVerbList = VerbMetaConnectionCache.GetVerbFlatListFromCache(verb, "muct", true);
             if (muctVerbList == null)
             {
                 muctVerbList = MetaConnectionManager.GetVerbFlatListFromMetaConnection(verb, "muct", true);
-                verbMetaConnectionCache.Remember(verb, "muct", true, muctVerbList);
+                VerbMetaConnectionCache.Remember(verb, "muct", true, muctVerbList);
             }
             foreach (Concept muctVerb in muctVerbList)
             {

@@ -25,7 +25,8 @@ namespace AntiCulture.Kid
         /// <param name="conceptToRepair">concept</param>
         public static void Repair(Concept conceptToRepair)
         {
-            Repair(conceptToRepair, new HashSet<ConnectionBranch>(), new VerbMetaConnectionCache());
+            VerbMetaConnectionCache.Clear();
+            Repair(conceptToRepair, new HashSet<ConnectionBranch>());
         }
 
         /// <summary>
@@ -180,10 +181,10 @@ namespace AntiCulture.Kid
         public static void RepairRange(IEnumerable<Concept> conceptCollection)
         {
             HashSet<ConnectionBranch> repairedBranches = new HashSet<ConnectionBranch>();
-            VerbMetaConnectionCache verbConnectionCache = new VerbMetaConnectionCache();
+            VerbMetaConnectionCache.Clear();
 
             foreach (Concept conceptToRepair in conceptCollection)
-                Repair(conceptToRepair, repairedBranches, verbConnectionCache);
+                Repair(conceptToRepair, repairedBranches);
         }
 
         /// <summary>
@@ -191,10 +192,9 @@ namespace AntiCulture.Kid
         /// </summary>
         /// <param name="conceptToRepair">concept to repair</param>
         /// <param name="repairedBranches">repaired branches</param>
-        /// <param name="verbMetaConnectionCache">verb metaConnection cache</param>
-        public static void Repair(Concept conceptToRepair, HashSet<ConnectionBranch> repairedBranches, VerbMetaConnectionCache verbMetaConnectionCache)
+        public static void Repair(Concept conceptToRepair, HashSet<ConnectionBranch> repairedBranches)
         {
-            flattenizer.Repair(conceptToRepair, repairedBranches, verbMetaConnectionCache);
+            flattenizer.Repair(conceptToRepair, repairedBranches);
             Optimizer.Repair(conceptToRepair);
         }
 
@@ -224,13 +224,13 @@ namespace AntiCulture.Kid
         public static void RepairConceptAndSurrounding(Concept concept)
         {
             HashSet<ConnectionBranch> repairedBranches = new HashSet<ConnectionBranch>();
-            VerbMetaConnectionCache verbConnectionCache = new VerbMetaConnectionCache();
+            VerbMetaConnectionCache.Clear();
 
-            Repair(concept, repairedBranches, verbConnectionCache);
+            Repair(concept, repairedBranches);
 
             foreach (Concept complement in concept.ConceptFlatPluggedTo)
             {
-                Repair(complement, repairedBranches, verbConnectionCache);
+                Repair(complement, repairedBranches);
             }
         }
         #endregion

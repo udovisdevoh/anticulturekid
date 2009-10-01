@@ -10,10 +10,6 @@ namespace AntiCulture.Kid
     /// </summary>
     public static class BrotherHoodManager
     {
-        #region Fields
-        private static VerbMetaConnectionCache verbMetaConnectionCache;
-        #endregion
-
         #region Public Methods
         /// <summary>
         /// Returns a set of brotherhoods for subject concept
@@ -22,7 +18,7 @@ namespace AntiCulture.Kid
         /// <returns>a set of brotherhoods for subject concept</returns>
         public static BrotherHoodSet GetFlatBrotherHoodSet(Concept subject)
         {
-            verbMetaConnectionCache = new VerbMetaConnectionCache();
+            VerbMetaConnectionCache.Clear();
 
             BrotherHoodSet brotherHoodSet = new BrotherHoodSet();
 
@@ -63,7 +59,7 @@ namespace AntiCulture.Kid
         /// <returns>random flat brotherhood to subject concept</returns>
         public static BrotherHoodSet GetRandomFlatBrotherHood(Concept subject)
         {
-            verbMetaConnectionCache = new VerbMetaConnectionCache();
+            VerbMetaConnectionCache.Clear();
 
             if (subject.FlatConnectionBranchList.Count < 1)
                 return null;
@@ -103,7 +99,7 @@ namespace AntiCulture.Kid
         /// <returns>a set of brotherhoods for subject concept</returns>
         public static BrotherHoodSet GetOptimizedBrotherHoodSet(Concept subject)
         {
-            verbMetaConnectionCache = new VerbMetaConnectionCache();
+            VerbMetaConnectionCache.Clear();
 
             BrotherHoodSet brotherHoodSet = new BrotherHoodSet();
 
@@ -144,7 +140,7 @@ namespace AntiCulture.Kid
         /// <returns>random optimized brotherhood to subject concept</returns>
         public static BrotherHoodSet GetRandomOptimizedBrotherHood(Concept subject)
         {
-            verbMetaConnectionCache = new VerbMetaConnectionCache();
+            VerbMetaConnectionCache.Clear();
 
             if (subject.OptimizedConnectionBranchList.Count < 1)
                 return null;
@@ -184,7 +180,7 @@ namespace AntiCulture.Kid
         /// <returns>all brothers of subject and their brotherhood strengths</returns>
         public static Dictionary<Concept, double> GetBrotherAndStrengthList(Concept subject)
         {
-            verbMetaConnectionCache = new VerbMetaConnectionCache();
+            VerbMetaConnectionCache.Clear();
 
             HashSet<Concept> brotherList = GetBrotherList(subject);
 
@@ -254,18 +250,18 @@ namespace AntiCulture.Kid
         /// <returns>list of verbs that are inverse_of or permutable_side to provided verb concept</returns>
         private static HashSet<Concept> GetInverseOrPermutableVerb(Concept verb)
         {
-            HashSet<Concept> inverseOfVerbList = verbMetaConnectionCache.GetVerbFlatListFromCache(verb, "inverse_of", true);
+            HashSet<Concept> inverseOfVerbList = VerbMetaConnectionCache.GetVerbFlatListFromCache(verb, "inverse_of", true);
             if (inverseOfVerbList == null)
             {
                 inverseOfVerbList = MetaConnectionManager.GetVerbFlatListFromMetaConnection(verb, "inverse_of", true);
-                verbMetaConnectionCache.Remember(verb, "inverse_of", true, inverseOfVerbList);
+                VerbMetaConnectionCache.Remember(verb, "inverse_of", true, inverseOfVerbList);
             }
 
-            HashSet<Concept> permutableSideVerbList = verbMetaConnectionCache.GetVerbFlatListFromCache(verb, "permutable_side", true);
+            HashSet<Concept> permutableSideVerbList = VerbMetaConnectionCache.GetVerbFlatListFromCache(verb, "permutable_side", true);
             if (permutableSideVerbList == null)
             {
                 permutableSideVerbList = MetaConnectionManager.GetVerbFlatListFromMetaConnection(verb, "permutable_side", true);
-                verbMetaConnectionCache.Remember(verb, "permutable_side", true, permutableSideVerbList);
+                VerbMetaConnectionCache.Remember(verb, "permutable_side", true, permutableSideVerbList);
             }
 
             HashSet<Concept> inverseOrPermutableVerb = new HashSet<Concept>();

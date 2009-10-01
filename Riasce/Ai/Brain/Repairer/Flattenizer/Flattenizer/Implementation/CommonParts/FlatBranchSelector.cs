@@ -7,10 +7,6 @@ namespace AntiCulture.Kid
 {
     static class FlatBranchSelector
     {
-        #region Fields
-        private static VerbMetaConnectionCache verbMetaConnectionCache;
-        #endregion
-
         #region Public Methods
         /// <summary>
         /// Get which branches to repair
@@ -23,10 +19,8 @@ namespace AntiCulture.Kid
         /// <param name="verb">verb</param>
         /// <param name="repairedBranches"></param>
         /// <returns>which branches to repair (keys: flat branches, values: optimized branches)</returns>
-        public static Dictionary<ConnectionBranch, ConnectionBranch> GetBranchesToRepair(ConnectionBranch flatBranch, ConnectionBranch optimizedBranch, Concept subject, Concept verb, HashSet<ConnectionBranch> repairedBranches, VerbMetaConnectionCache verbMetaConnectionCache)
+        public static Dictionary<ConnectionBranch, ConnectionBranch> GetBranchesToRepair(ConnectionBranch flatBranch, ConnectionBranch optimizedBranch, Concept subject, Concept verb, HashSet<ConnectionBranch> repairedBranches)
         {
-            FlatBranchSelector.verbMetaConnectionCache = verbMetaConnectionCache;
-
             Dictionary<ConnectionBranch, ConnectionBranch> branchesToRepair = new Dictionary<ConnectionBranch, ConnectionBranch>();
 
             AddBranchesToRepairFromDirectImplication(branchesToRepair, flatBranch, optimizedBranch, subject, verb, repairedBranches);
@@ -51,11 +45,11 @@ namespace AntiCulture.Kid
         /// <param name="repairedBranches">repaired branches</param>
         private static void AddBranchesToRepairFromDirectImplication(Dictionary<ConnectionBranch, ConnectionBranch> branchesToRepair, ConnectionBranch flatBranch, ConnectionBranch optimizedBranch, Concept subject, Concept verb, HashSet<ConnectionBranch> repairedBranches)
         {
-            HashSet<Concept> directImplicationVerbList = verbMetaConnectionCache.GetVerbFlatListFromCache(verb, "direct_implication", false);
+            HashSet<Concept> directImplicationVerbList = VerbMetaConnectionCache.GetVerbFlatListFromCache(verb, "direct_implication", false);
             if (directImplicationVerbList == null)
             {
                 directImplicationVerbList = MetaConnectionManager.GetVerbFlatListFromMetaConnection(verb, "direct_implication", false);
-                verbMetaConnectionCache.Remember(verb, "direct_implication", false, directImplicationVerbList);
+                VerbMetaConnectionCache.Remember(verb, "direct_implication", false, directImplicationVerbList);
             }
 
             foreach (Concept directlyImpliedVerb in directImplicationVerbList)
@@ -80,11 +74,11 @@ namespace AntiCulture.Kid
         /// <param name="repairedBranches">repaired branches</param>
         private static void AddBranchesToRepairFromMuct(Dictionary<ConnectionBranch, ConnectionBranch> branchesToRepair, ConnectionBranch flatBranch, ConnectionBranch optimizedBranch, Concept subject, Concept verb, HashSet<ConnectionBranch> repairedBranches)
         {
-            HashSet<Concept> muctVerbList = verbMetaConnectionCache.GetVerbFlatListFromCache(verb, "muct", true);
+            HashSet<Concept> muctVerbList = VerbMetaConnectionCache.GetVerbFlatListFromCache(verb, "muct", true);
             if (muctVerbList == null)
             {
                 muctVerbList = MetaConnectionManager.GetVerbFlatListFromMetaConnection(verb, "muct", true);
-                verbMetaConnectionCache.Remember(verb, "muct", true, muctVerbList);
+                VerbMetaConnectionCache.Remember(verb, "muct", true, muctVerbList);
             }
 
             foreach (Concept muctVerb in muctVerbList)
@@ -114,11 +108,11 @@ namespace AntiCulture.Kid
         /// <param name="repairedBranches">repaired branches</param>
         private static void AddBranchesToRepairFromLiffid(Dictionary<ConnectionBranch, ConnectionBranch> branchesToRepair, ConnectionBranch flatBranch, ConnectionBranch optimizedBranch, Concept subject, Concept verb, HashSet<ConnectionBranch> repairedBranches)
         {
-            HashSet<Concept> liffidVerbList = verbMetaConnectionCache.GetVerbFlatListFromCache(verb, "liffid", true);
+            HashSet<Concept> liffidVerbList = VerbMetaConnectionCache.GetVerbFlatListFromCache(verb, "liffid", true);
             if (liffidVerbList == null)
             {
                 liffidVerbList = MetaConnectionManager.GetVerbFlatListFromMetaConnection(verb, "liffid", true);
-                verbMetaConnectionCache.Remember(verb, "liffid", true, liffidVerbList);
+                VerbMetaConnectionCache.Remember(verb, "liffid", true, liffidVerbList);
             }
 
             foreach (Concept liffidVerb in liffidVerbList)
