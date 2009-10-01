@@ -5,10 +5,12 @@ using System.Text;
 
 namespace AntiCulture.Kid
 {
-    class TestFlattenizer
+    class TestParallelFlattenizer
     {
         public static void Test()
         {
+            Repairer.Flattenizer = new ParallelFlattenizer();
+
             TestTreeMadeofMaterial();
             PineMadeofMaterial();
             PineMadeofEnergy();
@@ -88,8 +90,8 @@ namespace AntiCulture.Kid
         private static void TestFlattenizerGeneralStuff()
         {
             Memory.TotalVerbList = new HashSet<Concept>();
-            
-            SerialFlattenizer flattenizer = new SerialFlattenizer();
+
+            ParallelFlattenizer flattenizer = new ParallelFlattenizer();
 
             #region We create the verbs that we will need
             Concept isa = new Concept("isa");
@@ -470,8 +472,8 @@ namespace AntiCulture.Kid
 
         private static void TestLongDiversifiedRecursivity()
         {
-            
-            
+
+
 
             Memory.TotalVerbList = new HashSet<Concept>();
 
@@ -495,13 +497,13 @@ namespace AntiCulture.Kid
             MetaConnectionManager.AddMetaConnection(madeof, "muct", madeof);
 
             ConnectionManager.Plug(mygarden, isa, garden);
-            
+
             Repairer.Repair(garden, plant);
 
             ConnectionManager.Plug(garden, madeof, plant);
-            
+
             Repairer.Repair(plant, lifeform);
-            
+
             ConnectionManager.Plug(plant, isa, lifeform);
 
             Repairer.Repair(lifeform, water);
@@ -553,8 +555,8 @@ namespace AntiCulture.Kid
 
         private static void TestXmasPineIsaThing()
         {
-            
-            
+
+
 
             Memory.TotalVerbList = new HashSet<Concept>();
 
@@ -576,7 +578,7 @@ namespace AntiCulture.Kid
             Repairer.Repair(pine, tree);
 
             ConnectionManager.Plug(pine, isa, tree);
-            
+
             Repairer.Repair(tree, plant);
 
             ConnectionManager.Plug(tree, isa, plant);
@@ -593,7 +595,7 @@ namespace AntiCulture.Kid
 
             //Pre-conditions
 
-            if (!MetaConnectionManager.IsFlatMetaConnected(someare,"liffid",someare))
+            if (!MetaConnectionManager.IsFlatMetaConnected(someare, "liffid", someare))
                 throw new Exception("Should be flat metaConnected because it's implicit");
 
             //Real test
@@ -616,7 +618,7 @@ namespace AntiCulture.Kid
 
         private static void TestTreeMadeofMaterial()
         {
-            SerialFlattenizer flattenizer = new SerialFlattenizer();
+            ParallelFlattenizer flattenizer = new ParallelFlattenizer();
             Memory.TotalVerbList = new HashSet<Concept>();
 
             Concept isa = new Concept("isa");
@@ -667,8 +669,8 @@ namespace AntiCulture.Kid
 
         private static void PineMadeofMaterial()
         {
-            
-            
+
+
             Memory.TotalVerbList = new HashSet<Concept>();
 
             Concept isa = new Concept("isa");
@@ -686,28 +688,28 @@ namespace AntiCulture.Kid
             MetaConnectionManager.AddMetaConnection(madeof, "muct", isa);
             MetaConnectionManager.AddMetaConnection(madeof, "liffid", isa);
             MetaConnectionManager.AddMetaConnection(madeof, "inverse_of", partof);
-            
+
 
             Repairer.Repair(pine, tree);
 
             ConnectionManager.Plug(pine, isa, tree);
 
-            Repairer.Repair(tree,wood);
+            Repairer.Repair(tree, wood);
 
-            ConnectionManager.Plug(tree,madeof,wood);
+            ConnectionManager.Plug(tree, madeof, wood);
 
             Repairer.Repair(wood, material);
 
-            ConnectionManager.Plug(wood,isa,material);
+            ConnectionManager.Plug(wood, isa, material);
 
-            Repairer.Repair(pine,tree,wood,material);
+            Repairer.Repair(pine, tree, wood, material);
 
             //Pre-conditions
 
             if (!ConnectionManager.TestConnection(pine, isa, tree))
                 throw new Exception("Concepts should be connected because it's explicit");
 
-            if (!ConnectionManager.TestConnection(tree,madeof,wood))
+            if (!ConnectionManager.TestConnection(tree, madeof, wood))
                 throw new Exception("Concepts should be connected because it's explicit");
 
             if (!ConnectionManager.TestConnection(wood, isa, material))
@@ -727,9 +729,9 @@ namespace AntiCulture.Kid
 
         private static void PineMadeofEnergy()
         {
-            
-            
-            
+
+
+
             Memory.TotalVerbList = new HashSet<Concept>();
 
             Concept isa = new Concept("isa");
@@ -766,13 +768,13 @@ namespace AntiCulture.Kid
 
             Repairer.Repair(material, matter);
 
-            ConnectionManager.Plug(material,madeof,matter);
+            ConnectionManager.Plug(material, madeof, matter);
 
             Repairer.Repair(matter, energy);
 
             ConnectionManager.Plug(matter, madeof, energy);
 
-            Repairer.Repair(pine, tree, wood, material,matter,energy);
+            Repairer.Repair(pine, tree, wood, material, matter, energy);
 
             //Pre-conditions
 
@@ -808,8 +810,8 @@ namespace AntiCulture.Kid
 
 
             Memory.TotalVerbList = new HashSet<Concept>();
-            
-            
+
+
 
             Concept pine = new Concept("pine");
             Concept tree = new Concept("tree");
@@ -866,15 +868,15 @@ namespace AntiCulture.Kid
             if (!ConnectionManager.TestConnection(pine, isa, tree))
                 throw new Exception("Should be connected because it's implicit");
 
-            if (!ConnectionManager.TestConnection(tree,someare,pine))
+            if (!ConnectionManager.TestConnection(tree, someare, pine))
                 throw new Exception("Should be connected because it's implicit");
         }
 
         private static void TestOrbitDirectImplySuckInGoodOrder()
         {
             Memory.TotalVerbList = new HashSet<Concept>();
-            
-            
+
+
 
             Concept gravity = new Concept("gravity");
             Concept attract = new Concept("attract");
@@ -919,15 +921,15 @@ namespace AntiCulture.Kid
 
             //Real test begins here
 
-            if (!ConnectionManager.TestConnection(moon,suck,earth))
+            if (!ConnectionManager.TestConnection(moon, suck, earth))
                 throw new Exception("Should be flat connected because it's implicit");
         }
 
         private static void TestOrbitDirectImplySuckInBadOrderWithPermutalbleSide()
         {
             Memory.TotalVerbList = new HashSet<Concept>();
-            
-            
+
+
 
             Concept gravity = new Concept("gravity");
             Concept attract = new Concept("attract");
@@ -945,7 +947,7 @@ namespace AntiCulture.Kid
             MetaConnectionManager.AddMetaConnection(gravity, "direct_implication", attract);
             MetaConnectionManager.AddMetaConnection(attract, "direct_implication", suck);
             MetaConnectionManager.AddMetaConnection(orbit, "direct_implication", gravity);
-            
+
             ConnectionManager.Plug(moon, orbit, earth);
 
             Repairer.Repair(moon, earth);
@@ -979,8 +981,8 @@ namespace AntiCulture.Kid
         private static void TestOrbitDirectImplySuckInBadOrder()
         {
             Memory.TotalVerbList = new HashSet<Concept>();
-            
-            
+
+
 
             Concept gravity = new Concept("gravity");
             Concept attract = new Concept("attract");
@@ -992,7 +994,7 @@ namespace AntiCulture.Kid
 
 
             MetaConnectionManager.AddMetaConnection(orbit, "permutable_side", orbit);
-            MetaConnectionManager.AddMetaConnection(gravity, "permutable_side",gravity);
+            MetaConnectionManager.AddMetaConnection(gravity, "permutable_side", gravity);
             MetaConnectionManager.AddMetaConnection(attract, "permutable_side", attract);
             MetaConnectionManager.AddMetaConnection(suck, "permutable_side", suck);
             MetaConnectionManager.AddMetaConnection(gravity, "direct_implication", attract);
@@ -1074,16 +1076,16 @@ namespace AntiCulture.Kid
             Repairer.RepairRange(memory);
             MetaConnectionManager.AddMetaConnection(madeof, "muct", madeof);*/
 
-            Repairer.Repair(pine,isa,tree);
+            Repairer.Repair(pine, isa, tree);
             ConnectionManager.Plug(pine, isa, tree);
 
             Repairer.Repair(tree, isa, plant);
-            ConnectionManager.Plug(tree,isa,plant);
+            ConnectionManager.Plug(tree, isa, plant);
 
             Repairer.Repair(plant, madeof, water);
-            ConnectionManager.Plug(plant,madeof,water);
+            ConnectionManager.Plug(plant, madeof, water);
 
-            Repairer.Repair(water,tree,plant,pine);
+            Repairer.Repair(water, tree, plant, pine);
 
             //pre-conditions about metaConnections
 
@@ -1095,7 +1097,7 @@ namespace AntiCulture.Kid
 
             //pre-conditions about connections
 
-            if (!ConnectionManager.TestConnection(pine,isa,tree))
+            if (!ConnectionManager.TestConnection(pine, isa, tree))
                 throw new Exception("Should be connected because it's explicit");
 
             if (!ConnectionManager.TestConnection(plant, madeof, water))
@@ -1104,10 +1106,10 @@ namespace AntiCulture.Kid
             if (!ConnectionManager.TestConnection(tree, madeof, water))
                 throw new Exception("Should be connected because it's implicit");
 
-            if (!ConnectionManager.TestConnection(water,partof,tree))
+            if (!ConnectionManager.TestConnection(water, partof, tree))
                 throw new Exception("Should be connected because it's implicit");
 
-            if (!ConnectionManager.TestConnection(tree,someare,pine))
+            if (!ConnectionManager.TestConnection(tree, someare, pine))
                 throw new Exception("Should be connected because it's implicit");
 
             //real test here
@@ -1121,9 +1123,9 @@ namespace AntiCulture.Kid
 
         private static void TestGmNotCreateCarGmMakeCar()
         {
-            
-            
-            
+
+
+
             Memory.TotalVerbList = new HashSet<Concept>();
 
             Concept make = new Concept("make");
@@ -1148,7 +1150,7 @@ namespace AntiCulture.Kid
             ConnectionManager.UnPlug(gm, create, car);
             Repairer.Repair(gm, create, car);
             Repairer.Repair(gm, create, car);
-            
+
             Repairer.Repair(gm, make, car);
             ConnectionManager.Plug(gm, make, car);
             Repairer.Repair(gm, make, car);
@@ -1161,9 +1163,9 @@ namespace AntiCulture.Kid
 
         private static void TestDoubleSidedLove()
         {
-            
-            
-            
+
+
+
             Memory.TotalVerbList = new HashSet<Concept>();
 
             Concept love = new Concept("love");
@@ -1199,9 +1201,9 @@ namespace AntiCulture.Kid
 
         private static void TestDoubleSidedLoveYouLovePie()
         {
-            
-            
-            
+
+
+
             Memory.TotalVerbList = new HashSet<Concept>();
 
             Concept love = new Concept("love");

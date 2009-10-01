@@ -15,7 +15,7 @@ namespace AntiCulture.Kid
         /// <summary>
         /// Flattenizer
         /// </summary>
-        private static AbstractFlattenizer flattenizer = new SerialFlattenizer();
+        private static AbstractFlattenizer flattenizer = new ChaoticSerialFlattenizer();
         #endregion
 
         #region Methods
@@ -232,6 +232,17 @@ namespace AntiCulture.Kid
             {
                 Repair(complement, repairedBranches, verbConnectionCache);
             }
+        }
+        #endregion
+
+        #region Properties
+        /// <summary>
+        /// Change default flattenizer
+        /// </summary>
+        public static AbstractFlattenizer Flattenizer
+        {
+            get {return flattenizer;}
+            set { flattenizer = value; }
         }
         #endregion
     }

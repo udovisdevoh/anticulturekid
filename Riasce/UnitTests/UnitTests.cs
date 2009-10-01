@@ -25,13 +25,15 @@ namespace AntiCulture.Kid
             TestMetaConnectionManager.Test();
             TestConnectionManager.Test();
             TestOptimizer.Test();
+            TestChaoticSerialFlattenizer.Test(); //SLOW!!!!
+            //TestSerialFlattenizer.Test(); //SLOW!!!!
+            //TestParallelFlattenizer.Test(); //SLOW!!!!
             TestMetaConnectionFlattenizer.Test(); //SLOW!!!!
             TestBrain.Test();
             TestReciprocator.Test();
             TestProof.Test();
             TestAssimilator.Test();
             TestPurifier.Test();
-            TestFlattenizer.Test(); //SLOW!!!!
             TestRejectedTheories.Test();
             TestMctFromMetaConnection.Test();
             TestConnectionTheorizer.Test();
