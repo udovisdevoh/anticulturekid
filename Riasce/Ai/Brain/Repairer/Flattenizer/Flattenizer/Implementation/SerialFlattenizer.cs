@@ -36,6 +36,14 @@ namespace AntiCulture.Kid
         #endregion
 
         #region Private Methods
+        /// <summary>
+        /// Repair flat branch
+        /// </summary>
+        /// <param name="flatBranch">flat branch to repair</param>
+        /// <param name="optimizedBranch">optimized branch</param>
+        /// <param name="subject">subject</param>
+        /// <param name="verb">verb</param>
+        /// <returns>repaired flat branch</returns>
         private ConnectionBranch RepairFlatBranch(ConnectionBranch flatBranch, ConnectionBranch optimizedBranch, Concept subject, Concept verb)
         {
             int complementCount = 0;
