@@ -40,7 +40,6 @@ namespace AntiCulture.Kid
                 throw new Exception("Name Mapper must be set before starting background thinker");
 
             repairedBranches = new HashSet<ConnectionBranch>();
-            VerbMetaConnectionCache.Clear();
 
             mustStopNow = false;
 

@@ -41,7 +41,6 @@ namespace AntiCulture.Kid
         public static HashSet<Concept> Select(string conditions, NameMapper nameMapper, Memory currentMemory, bool isConsiderSelfMuct)
         {
             repairedBranches = new HashSet<ConnectionBranch>();
-            VerbMetaConnectionCache.Clear();
             AiSqlWrapper.nameMapper = nameMapper;
             AiSqlWrapper.currentMemory = currentMemory;
             conditions = conditions.FixStringForHimmlStatementParsing();

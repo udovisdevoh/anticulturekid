@@ -18,8 +18,6 @@ namespace AntiCulture.Kid
         /// <returns>a set of brotherhoods for subject concept</returns>
         public static BrotherHoodSet GetFlatBrotherHoodSet(Concept subject)
         {
-            VerbMetaConnectionCache.Clear();
-
             BrotherHoodSet brotherHoodSet = new BrotherHoodSet();
 
             Concept verb;
@@ -59,8 +57,6 @@ namespace AntiCulture.Kid
         /// <returns>random flat brotherhood to subject concept</returns>
         public static BrotherHoodSet GetRandomFlatBrotherHood(Concept subject)
         {
-            VerbMetaConnectionCache.Clear();
-
             if (subject.FlatConnectionBranchList.Count < 1)
                 return null;
 
@@ -99,8 +95,6 @@ namespace AntiCulture.Kid
         /// <returns>a set of brotherhoods for subject concept</returns>
         public static BrotherHoodSet GetOptimizedBrotherHoodSet(Concept subject)
         {
-            VerbMetaConnectionCache.Clear();
-
             BrotherHoodSet brotherHoodSet = new BrotherHoodSet();
 
             Concept verb;
@@ -140,8 +134,6 @@ namespace AntiCulture.Kid
         /// <returns>random optimized brotherhood to subject concept</returns>
         public static BrotherHoodSet GetRandomOptimizedBrotherHood(Concept subject)
         {
-            VerbMetaConnectionCache.Clear();
-
             if (subject.OptimizedConnectionBranchList.Count < 1)
                 return null;
 
@@ -180,8 +172,6 @@ namespace AntiCulture.Kid
         /// <returns>all brothers of subject and their brotherhood strengths</returns>
         public static Dictionary<Concept, double> GetBrotherAndStrengthList(Concept subject)
         {
-            VerbMetaConnectionCache.Clear();
-
             HashSet<Concept> brotherList = GetBrotherList(subject);
 
             Dictionary<Concept, double> brotherAndStrengthList = new Dictionary<Concept, double>();
