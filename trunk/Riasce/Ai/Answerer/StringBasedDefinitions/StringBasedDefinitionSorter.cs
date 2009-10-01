@@ -64,6 +64,8 @@ namespace AntiCulture.Kid
             sortedOperatorList.Add("partof");
             sortedOperatorList.Add("someare");
             sortedOperatorList.Add("notpartof");
+            sortedOperatorList.Add("in");
+            sortedOperatorList.Add("placeof");
 
             customOrder = new Dictionary<string, int>();
             int key = 0;
