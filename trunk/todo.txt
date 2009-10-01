@@ -1,3 +1,16 @@
+verbConnectionCache must be static and transcendant
+(reset when creating/removing metaOperators)
+
+repairedBranch must be static and transcendant
+(it must be inside the new static class: FlatBranchCache)
+reset FlatBranchCache when modifiying operators or metaOperators
+
+
+
+"in" operator must be properly placed in custom order
+
+
+
 whole project major refactoring:
 -everything must be unit testable and unit tested
 -visualizer thread must be safe (no visual conflict)
@@ -8,6 +21,13 @@ whole project major refactoring:
 -make it possible to create web view, implement web view
 -ultrabasic operators (if, and etc...) must be customizable and renamable
 -if, then statements must be c-like
+
+
+
+create operator: in / placeof
+in inverse_of placeof
+
+
 
 
 parallel flattenizer:

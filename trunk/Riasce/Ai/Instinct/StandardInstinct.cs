@@ -16,6 +16,7 @@ namespace AntiCulture.Kid
             //We link the default operators together
             Add("pine isa tree = tree someare pine");
             Add("tree madeof wood = wood partof tree");
+            Add("student in school = school placeof student");
             Add("life need water = water allow life");
             Add("mother make baby = baby madeby mother");
             Add("human was ape = ape become human");
@@ -45,6 +46,15 @@ namespace AntiCulture.Kid
             Add("IF pine isa tree AND tree madeof wood THEN pine madeof wood");
             Add("IF pine madeof wood AND wood isa material THEN pine madeof material");
             Add("IF big_mac madeof trans_fat AND trans_fat oppress lifeform THEN big_mac oppress lifeform");
+
+            //In and PlaceOf
+            Add("IF pine madeof wood THEN pine placeof wood");
+            Add("IF school placeof student THEN school UNLIKELY in student");//Used to be "cant"
+            Add("IF pine isa tree THEN pine UNLIKELY placeof tree");//Used to be "cant"
+            Add("IF tree someare pine THEN tree UNLIKELY placeof pine");//Used to be "cant"
+            Add("IF city placeof school AND school placeof student THEN city placeof student");
+            Add("IF school isa building AND building placeof people THEN school placeof people");
+            Add("IF school placeof student AND student isa person THEN school placeof person");
 
             //Need AND Allow
             Add("IF bird need tree AND tree need light THEN bird need light");
