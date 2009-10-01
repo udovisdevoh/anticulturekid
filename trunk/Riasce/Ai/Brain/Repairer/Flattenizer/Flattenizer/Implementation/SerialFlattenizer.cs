@@ -14,11 +14,9 @@ namespace AntiCulture.Kid
         /// </summary>
         /// <param name="subject">concept to repair</param>
         /// <param name="repairedBranches">provided HashSet to rememebr which branches were repaired</param>
-        /// <param name="verbConnectionCache">provided cache to remember flattenized metaConnections</param>
-        public override void Repair(Concept subject, HashSet<ConnectionBranch> repairedBranches, VerbMetaConnectionCache verbConnectionCache)
+        public override void Repair(Concept subject, HashSet<ConnectionBranch> repairedBranches)
         {
             this.repairedBranches = repairedBranches;
-            this.verbMetaConnectionCache = verbConnectionCache;
 
             ConnectionBranch flatBranch;
             ConnectionBranch optimizedBranch;
@@ -63,8 +61,6 @@ namespace AntiCulture.Kid
                 flatBranch.SetProofTo(complement, new Proof(subject, verb, complement));
             }
 
-            FlatBranchRepairer.VerbMetaConnectionCache = verbMetaConnectionCache;
-
             int i;
             do
             {
@@ -74,7 +70,7 @@ namespace AntiCulture.Kid
                 {
                     if (i == 0 || complementCount != flatBranch.ComplementConceptList.Count)
                     {
-                        branchesToRepair = FlatBranchSelector.GetBranchesToRepair(flatBranch, optimizedBranch, subject, verb, repairedBranches, verbMetaConnectionCache);
+                        branchesToRepair = FlatBranchSelector.GetBranchesToRepair(flatBranch, optimizedBranch, subject, verb, repairedBranches);
                         foreach (KeyValuePair<ConnectionBranch, ConnectionBranch> currentBranch in branchesToRepair)
                             RepairFlatBranch(currentBranch.Key, currentBranch.Value, subject, verb);
                         complementCount = flatBranch.ComplementConceptList.Count;

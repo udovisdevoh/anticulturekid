@@ -12,10 +12,10 @@ namespace AntiCulture.Kid
         {
             #warning implement and unit test and integrate: EpisodicMemory and Neologizer
 
-            //UnitTests.TestAll();
+            UnitTests.TestAll();
 
-            Ai ai = new Ai();
-            ai.Start();
+            //Ai ai = new Ai();
+            //ai.Start();
         }
     }
 }

@@ -15,6 +15,9 @@ stop background thinker when waiting for visualizer to finish showing something
 
 
 
+flattenizers must be static
+
+
 
 
 whole project major refactoring:

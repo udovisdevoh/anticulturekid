@@ -18,11 +18,6 @@ namespace AntiCulture.Kid
         private static HashSet<ConnectionBranch> repairedBranches;
 
         /// <summary>
-        /// Cache of verb meta connections to improove meta connection flattenizer's performances
-        /// </summary>
-        private static VerbMetaConnectionCache verbMetaConnectionCache;
-
-        /// <summary>
         /// Name mapper to look into
         /// </summary>
         private static NameMapper nameMapper;
@@ -46,7 +41,7 @@ namespace AntiCulture.Kid
         public static HashSet<Concept> Select(string conditions, NameMapper nameMapper, Memory currentMemory, bool isConsiderSelfMuct)
         {
             repairedBranches = new HashSet<ConnectionBranch>();
-            verbMetaConnectionCache = new VerbMetaConnectionCache();
+            VerbMetaConnectionCache.Clear();
             AiSqlWrapper.nameMapper = nameMapper;
             AiSqlWrapper.currentMemory = currentMemory;
             conditions = conditions.FixStringForHimmlStatementParsing();
@@ -98,7 +93,7 @@ namespace AntiCulture.Kid
                 Concept verb = verbAndComplement[0];
                 Concept complement = verbAndComplement[1];
 
-                Repairer.Repair(complement, repairedBranches, verbMetaConnectionCache);
+                Repairer.Repair(complement, repairedBranches);
 
                 selection1 = GetSubjectListHaving(verb, complement, isConsiderSelfMuct);
 

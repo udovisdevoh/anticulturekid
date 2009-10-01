@@ -18,8 +18,9 @@ namespace AntiCulture.Kid
         /// <param name="concept">Concept to repair</param>
         public static void Reciprocate(Concept subject)
         {
+            VerbMetaConnectionCache.Clear();
             FeelingMonitor.Add(FeelingMonitor.RECIPROCATING);
-            Repair(subject, new VerbMetaConnectionCache());
+            Repair(subject);
         }
 
         /// <summary>
@@ -29,9 +30,9 @@ namespace AntiCulture.Kid
         public static void ReciprocateRange(IEnumerable<Concept> conceptCollection)
         {
             FeelingMonitor.Add(FeelingMonitor.RECIPROCATING);
-            VerbMetaConnectionCache verbMetaConnectionCache = new VerbMetaConnectionCache();
+            VerbMetaConnectionCache.Clear();
             foreach (Concept subject in conceptCollection)
-                Repair(subject, verbMetaConnectionCache);
+                Repair(subject);
         }
         #endregion
 
@@ -40,8 +41,7 @@ namespace AntiCulture.Kid
         /// Repair a concept
         /// </summary>
         /// <param name="subject">subject concept to repair</param>
-        /// <param name="verbMetaConnectionCache">verb metaConnection cache</param>
-        private static void Repair(Concept subject, VerbMetaConnectionCache verbMetaConnectionCache)
+        private static void Repair(Concept subject)
         {
             if (subject.IsFlatDirty || subject.IsOptimizedDirty)
                 throw new ReciprocatorException("Repair concept first");
@@ -52,18 +52,18 @@ namespace AntiCulture.Kid
                 ConnectionBranch branch = branchAndVerb.Value;
 
                 #region We try to get the verb list from verbMetaConnectionCache
-                HashSet<Concept> inverseOfVerbList = verbMetaConnectionCache.GetVerbFlatListFromCache(verb, "inverse_of", true);
+                HashSet<Concept> inverseOfVerbList = VerbMetaConnectionCache.GetVerbFlatListFromCache(verb, "inverse_of", true);
                 if (inverseOfVerbList == null)
                 {
                     inverseOfVerbList = MetaConnectionManager.GetVerbFlatListFromMetaConnection(verb, "inverse_of", true);
-                    verbMetaConnectionCache.Remember(verb, "inverse_of", true, inverseOfVerbList);
+                    VerbMetaConnectionCache.Remember(verb, "inverse_of", true, inverseOfVerbList);
                 }
                 
-                HashSet<Concept> permutableSideVerbList = verbMetaConnectionCache.GetVerbFlatListFromCache(verb, "permutable_side", true);
+                HashSet<Concept> permutableSideVerbList = VerbMetaConnectionCache.GetVerbFlatListFromCache(verb, "permutable_side", true);
                 if (permutableSideVerbList == null)
                 {
                     permutableSideVerbList = MetaConnectionManager.GetVerbFlatListFromMetaConnection(verb, "permutable_side", true);
-                    verbMetaConnectionCache.Remember(verb, "permutable_side", true, permutableSideVerbList);
+                    VerbMetaConnectionCache.Remember(verb, "permutable_side", true, permutableSideVerbList);
                 }
                 #endregion
 

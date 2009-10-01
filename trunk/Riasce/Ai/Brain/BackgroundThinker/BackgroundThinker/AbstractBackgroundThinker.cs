@@ -64,11 +64,6 @@ namespace AntiCulture.Kid
         /// </summary>
         protected HashSet<ConnectionBranch> repairedBranches;
 
-        /// <summary>
-        /// We use this cache to improve metaConnection flattenization performances
-        /// </summary>
-        protected VerbMetaConnectionCache verbMetaConnectionCache;
-
         protected Theorizer theorizer;
 
         protected Random random = new Random();
