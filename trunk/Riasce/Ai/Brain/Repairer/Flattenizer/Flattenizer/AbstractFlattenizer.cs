@@ -8,7 +8,7 @@ namespace AntiCulture.Kid
     /// <summary>
     /// Represents the abstraction of connection flattenizers
     /// </summary>
-    abstract class AbstractFlattenizer
+    public abstract class AbstractFlattenizer
     {
         #region Protected Fields
         /// <summary>
@@ -19,7 +19,7 @@ namespace AntiCulture.Kid
         /// <summary>
         /// Remember metaConnections to improve performances
         /// </summary>
-        protected VerbMetaConnectionCache verbConnectionCache;
+        protected VerbMetaConnectionCache verbMetaConnectionCache;
         #endregion
 
         #region Public Methods
