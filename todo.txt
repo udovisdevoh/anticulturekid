@@ -11,6 +11,12 @@ reset FlatBranchCache when modifiying operators or metaOperators
 
 
 
+stop background thinker when waiting for visualizer to finish showing something
+
+
+
+
+
 whole project major refactoring:
 -everything must be unit testable and unit tested
 -visualizer thread must be safe (no visual conflict)
