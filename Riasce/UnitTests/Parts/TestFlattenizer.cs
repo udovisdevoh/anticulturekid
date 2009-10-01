@@ -566,9 +566,6 @@ namespace AntiCulture.Kid
 
         private static void TestLongDiversifiedRecursivity()
         {
-
-
-
             Memory.TotalVerbList = new HashSet<Concept>();
 
             Concept isa = new Concept("isa");
@@ -649,9 +646,6 @@ namespace AntiCulture.Kid
 
         private static void TestXmasPineIsaThing()
         {
-
-
-
             Memory.TotalVerbList = new HashSet<Concept>();
 
             Concept xmaspine = new Concept("christmas pine");
@@ -755,6 +749,16 @@ namespace AntiCulture.Kid
             Optimizer.Repair(wood);
             flattenizer.Repair(material);
             Optimizer.Repair(material);
+
+            //Pre-conditions
+
+            if (!ConnectionManager.TestConnection(tree, madeof, wood))
+                throw new Exception("Connection should exist because it's explicit");
+
+            if (!ConnectionManager.TestConnection(wood, isa, material))
+                throw new Exception("Connection should exist because it's explicit");
+
+            //Real test
 
             if (!ConnectionManager.TestConnection(tree, madeof, material))
                 throw new Exception("Connection should exist because it's implicit");

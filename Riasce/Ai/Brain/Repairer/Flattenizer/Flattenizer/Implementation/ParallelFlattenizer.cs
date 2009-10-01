@@ -28,7 +28,9 @@ namespace AntiCulture.Kid
             {
                 flatBranch = subject.GetFlatConnectionBranch(verb);
                 optimizedBranch = subject.GetOptimizedConnectionBranch(verb);
-                flatBranch = RepairFlatBranch(flatBranch, optimizedBranch, subject, verb, new AutoResetEvent(false));
+
+                if (repairedBranches.Contains(flatBranch))
+                    RepairFlatBranch(flatBranch, optimizedBranch, subject, verb, new AutoResetEvent(false));
             }
 
             subject.IsFlatDirty = false;
@@ -46,6 +48,7 @@ namespace AntiCulture.Kid
         private ConnectionBranch RepairFlatBranch(ConnectionBranch flatBranch, ConnectionBranch optimizedBranch, Concept subject, Concept verb, AutoResetEvent autoResetEvent)
         {
             int complementCount = 0;
+            int complementCountBeforeLoop = 0;
 
             repairedBranches.Add(flatBranch);
 
@@ -65,14 +68,19 @@ namespace AntiCulture.Kid
             int i;
             do
             {
+                complementCountBeforeLoop = flatBranch.ComplementConceptList.Count;
+
                 for (i = 0; i < 5; i++)
                 {
-                    branchesToRepair = FlatBranchSelector.GetBranchesToRepair(flatBranch, optimizedBranch, subject, verb, repairedBranches, verbMetaConnectionCache);
-                    waitingBranchResetEventList = new List<AutoResetEvent>();
-                    foreach (KeyValuePair<ConnectionBranch, ConnectionBranch> currentBranch in branchesToRepair)
-                        waitingBranchResetEventList.Add(RepairFlatBranchInOtherThread(currentBranch.Key, currentBranch.Value, subject, verb));
-                    WaitForBranchesToBeRepaired(waitingBranchResetEventList);
-                    complementCount = flatBranch.ComplementConceptList.Count;
+                    if (i == 0 || complementCount != flatBranch.ComplementConceptList.Count)
+                    {
+                        branchesToRepair = FlatBranchSelector.GetBranchesToRepair(flatBranch, optimizedBranch, subject, verb, repairedBranches, verbMetaConnectionCache);
+                        waitingBranchResetEventList = new List<AutoResetEvent>();
+                        foreach (KeyValuePair<ConnectionBranch, ConnectionBranch> currentBranch in branchesToRepair)
+                            waitingBranchResetEventList.Add(RepairFlatBranchInOtherThread(currentBranch.Key, currentBranch.Value, subject, verb));
+                        WaitForBranchesToBeRepaired(waitingBranchResetEventList);
+                        complementCount = flatBranch.ComplementConceptList.Count;
+                    }
 
                     if (i == 0)
                         FlatBranchRepairer.FlattenDirectImplication(flatBranch, subject, verb,repairedBranches);
@@ -86,7 +94,7 @@ namespace AntiCulture.Kid
                         FlatBranchRepairer.FlattenNegativeImply(flatBranch, subject, verb, repairedBranches);
                 }
             }
-            while (flatBranch.ComplementConceptList.Count != complementCount);
+            while (flatBranch.ComplementConceptList.Count != complementCount || flatBranch.ComplementConceptList.Count != complementCountBeforeLoop);
 
             flatBranch.IsDirty = false;
 
