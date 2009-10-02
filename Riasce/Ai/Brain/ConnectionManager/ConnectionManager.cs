@@ -37,7 +37,9 @@ namespace AntiCulture.Kid
                 throw new ConnectionException("Cannot plug a concept to itself");
             #endregion
 
-            subject.AddOptimizedConnection(verb, complement);
+            if (subject.AddOptimizedConnection(verb, complement))
+                RepairedFlatBranchCache.Clear();
+
             Memory.TotalVerbList.Add(verb);
 
             HashSet<Concept> dependantVerbList = MetaConnectionManager.GetVerbListDependantOn(verb);
@@ -60,13 +62,15 @@ namespace AntiCulture.Kid
             #region We add the contraposate connection on complement if subject permutable_side complement
             HashSet<Concept> permutableSideVerbList = MetaConnectionManager.GetVerbListFromMetaConnection(verb, "permutable_side", true);
             foreach (Concept permutableSideVerb in permutableSideVerbList)
-                complement.AddOptimizedConnection(permutableSideVerb, subject);
+                if (complement.AddOptimizedConnection(permutableSideVerb, subject))
+                    RepairedFlatBranchCache.Clear();
             #endregion
 
             #region We add the contraposate connection on complement if subject inverse_of complement
             HashSet<Concept> inverseOfVerbList = MetaConnectionManager.GetVerbListFromMetaConnection(verb, "inverse_of", true);
             foreach (Concept inverseVerb in inverseOfVerbList)
-                complement.AddOptimizedConnection(inverseVerb, subject);
+                if (complement.AddOptimizedConnection(inverseVerb, subject))
+                    RepairedFlatBranchCache.Clear();
             #endregion
         }
 
@@ -88,7 +92,8 @@ namespace AntiCulture.Kid
                 throw new ConnectionException("Cannot plug a concept to itself");
             #endregion
 
-            subject.RemoveOptimizedConnection(verb, complement);
+            if (subject.RemoveOptimizedConnection(verb, complement))
+                RepairedFlatBranchCache.Clear();
 
             HashSet<Concept> dependantVerbList = MetaConnectionManager.GetVerbListDependantOn(verb);
 
@@ -109,7 +114,8 @@ namespace AntiCulture.Kid
             HashSet<Concept> permutableSideVerbList = MetaConnectionManager.GetVerbListFromMetaConnection(verb, "permutable_side", true);
             foreach (Concept permutableSideVerb in permutableSideVerbList)
             {
-                complement.RemoveOptimizedConnection(permutableSideVerb, subject);
+                if (complement.RemoveOptimizedConnection(permutableSideVerb, subject))
+                    RepairedFlatBranchCache.Clear();
                 complement.GetFlatConnectionBranch(permutableSideVerb).IsDirty = true;
                 dependantVerbList = MetaConnectionManager.GetVerbListDependantOn(permutableSideVerb);
                 foreach (Concept dependantVerb in dependantVerbList)
@@ -121,7 +127,8 @@ namespace AntiCulture.Kid
             HashSet<Concept> inverseOfVerbList = MetaConnectionManager.GetVerbListFromMetaConnection(verb, "inverse_of", true);
             foreach (Concept inverseVerb in inverseOfVerbList)
             {
-                complement.RemoveOptimizedConnection(inverseVerb, subject);
+                if (complement.RemoveOptimizedConnection(inverseVerb, subject))
+                    RepairedFlatBranchCache.Clear();
                 complement.GetFlatConnectionBranch(inverseVerb).IsDirty = true;
                 dependantVerbList = MetaConnectionManager.GetVerbListDependantOn(inverseVerb);
                 foreach (Concept dependantVerb in dependantVerbList)

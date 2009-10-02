@@ -74,6 +74,8 @@ namespace AntiCulture.Kid
                 }
             }
 
+            RepairedFlatBranchCache.Clear();
+
             subject.IsFlatDirty = true;
         }
         #endregion

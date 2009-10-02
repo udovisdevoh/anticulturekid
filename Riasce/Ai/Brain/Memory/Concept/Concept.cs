@@ -83,7 +83,8 @@ namespace AntiCulture.Kid
         /// </summary>
         /// <param name="verbConcept">verb concept</param>
         /// <param name="complementConcept">complement concept</param>
-        public void AddOptimizedConnection(Concept verbConcept, Concept complementConcept)
+        /// <returns>true if optimized connection was created because it didn't exist</returns>
+        public bool AddOptimizedConnection(Concept verbConcept, Concept complementConcept)
         {
             ConnectionBranch connectionBranch;
             if (!optimizedConnectionBranchList.TryGetValue(verbConcept, out connectionBranch))
@@ -95,8 +96,9 @@ namespace AntiCulture.Kid
             if (!connectionBranch.ComplementConceptList.Contains(complementConcept))
             {
                 connectionBranch.AddConnection(complementConcept);
-                RepairedFlatBranchCache.Clear();
+                return true;
             }
+            return false;
         }
 
         /// <summary>
@@ -104,14 +106,16 @@ namespace AntiCulture.Kid
         /// </summary>
         /// <param name="verbConcept">verb concept</param>
         /// <param name="complementConcept">complement concept</param>
-        public void RemoveOptimizedConnection(Concept verbConcept, Concept complementConcept)
+        /// <returns>true if optimized connection was removed because it did exist</returns>
+        public bool RemoveOptimizedConnection(Concept verbConcept, Concept complementConcept)
         {
             ConnectionBranch connectionBranch;
             if (optimizedConnectionBranchList.TryGetValue(verbConcept, out connectionBranch))
             {
                 connectionBranch.RemoveConnection(complementConcept);
-                RepairedFlatBranchCache.Clear();
+                return true;
             }
+            return false;
         }
 
         /// <summary>

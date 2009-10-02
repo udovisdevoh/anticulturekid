@@ -1099,6 +1099,8 @@ namespace AntiCulture.Kid
                 }
                 #endregion
             }
+
+            RepairedFlatBranchCache.Clear();
             
             return memory;
         }
