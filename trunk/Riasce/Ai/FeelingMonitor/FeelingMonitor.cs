@@ -61,6 +61,16 @@ namespace AntiCulture.Kid
         /// Connection exception
         /// </summary>
         public static readonly int CONNECTION_EXCEPTION = 9;
+
+        /// <summary>
+        /// Stop background thinker
+        /// </summary>
+        public static readonly int STOP_BACKGROUND_THINKER = 10;
+
+        /// <summary>
+        /// Start background thinker
+        /// </summary>
+        public static readonly int START_BACKGROUND_THINKER = 11;
         #endregion
 
         #region Methods
@@ -81,7 +91,15 @@ namespace AntiCulture.Kid
         {
             HashSet<string> currentFeelingDescriptionList = new HashSet<string>();
 
-            if (feelingList.Contains(PURIFICATION))
+            if (feelingList.Contains(STOP_BACKGROUND_THINKER))
+            {
+                currentFeelingDescriptionList.Add("I think about stuff");
+            }
+            else if (feelingList.Contains(START_BACKGROUND_THINKER))
+            {
+                currentFeelingDescriptionList.Add("I stop thinking about stuff");
+            }
+            else if (feelingList.Contains(PURIFICATION))
             {
                 currentFeelingDescriptionList.Add(":( I was traumatized by some nonsense connection that had to be removed, but not I'm ok! :|");
             }

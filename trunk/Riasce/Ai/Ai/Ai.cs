@@ -135,6 +135,7 @@ namespace AntiCulture.Kid
             mainWindow.UserOccurenceToSemantic += UserOccurenceToSemanticHandler;
             mainWindow.UserExtractOccurenceMatrix += UserExtractOccurenceMatrixHandler;
             mainWindow.UserExtractPhoneticMatrix += UserExtractPhoneticMatrixHandler;
+            mainWindow.VisualizerFinishedCallBack = StartBackgroundThinker;
         }
         #endregion
 
@@ -146,7 +147,7 @@ namespace AntiCulture.Kid
         {
             Application application = new Application();
             application.Run(mainWindow);
-            brain.StartBackgroundThinker(nameMapper);
+            StartBackgroundThinker();
         }
         #endregion
 
@@ -356,10 +357,20 @@ namespace AntiCulture.Kid
         }
 
         /// <summary>
+        /// Start background thinker
+        /// </summary>
+        private void StartBackgroundThinker()
+        {
+            brain.StartBackgroundThinker(nameMapper);
+            FeelingMonitor.Add(FeelingMonitor.START_BACKGROUND_THINKER);
+        }
+
+        /// <summary>
         /// Brain stop background thinker and answer if found trauma
         /// </summary>
         private void StopBackgroundThinker()
         {
+            FeelingMonitor.Add(FeelingMonitor.STOP_BACKGROUND_THINKER);
             Stack<Trauma> traumaStack = brain.StopBackgroundThinker();
 
             while (traumaStack.Count > 0)
@@ -375,6 +386,7 @@ namespace AntiCulture.Kid
         /// <param name="e">event</param>
         public void UserSendCommentHandler(object sender, EventArgs e)
         {
+            bool isEnableRestartBackgroundThinker = true;
             StopBackgroundThinker();
 
             List<Statement> statementList;
@@ -396,7 +408,11 @@ namespace AntiCulture.Kid
                 }
 
                 foreach (Statement statement in statementList)
+                {
                     ListenTo(statement);
+                    if (statement.NullaryOrUnaryOperatorName == "visualize")
+                        isEnableRestartBackgroundThinker = false;
+                }
             }
             catch (StatementParsingException)
             {
@@ -413,7 +429,9 @@ namespace AntiCulture.Kid
                     ListenTo(conversation.GetCurrentStatementForAiToAnswerTo());
 
                 answerer.TellAboutFeelings();
-                brain.StartBackgroundThinker(nameMapper);
+               
+                if (isEnableRestartBackgroundThinker)
+                    StartBackgroundThinker();
             }
         }
 
@@ -456,7 +474,7 @@ namespace AntiCulture.Kid
         {
             StopBackgroundThinker();
             ResetHumanName();
-            brain.StartBackgroundThinker(nameMapper);
+            StartBackgroundThinker();
         }
 
         /// <summary>
@@ -468,7 +486,7 @@ namespace AntiCulture.Kid
         {
             StopBackgroundThinker();
             AllowUserToLoadScriptFile();
-            brain.StartBackgroundThinker(nameMapper);
+            StartBackgroundThinker();
         }
 
         /// <summary>
@@ -496,7 +514,7 @@ namespace AntiCulture.Kid
             }
             TryLoadMemoryFile();
 
-            brain.StartBackgroundThinker(nameMapper);
+            StartBackgroundThinker();
         }
 
         /// <summary>
@@ -536,10 +554,8 @@ namespace AntiCulture.Kid
         private void UserSaveFileHandler(object sender, EventArgs e)
         {
             StopBackgroundThinker();
-
             AllowUserToSaveOrSaveAs();
-
-            brain.StartBackgroundThinker(nameMapper);
+            StartBackgroundThinker();
         }
 
         /// <summary>
@@ -559,7 +575,7 @@ namespace AntiCulture.Kid
                 SaveMemoryToFile(fileName);
             }
 
-            brain.StartBackgroundThinker(nameMapper);
+            StartBackgroundThinker();
         }
 
         /// <summary>
@@ -584,7 +600,7 @@ namespace AntiCulture.Kid
             conversation = new Conversation();
             ListenTo(conversation.GetCurrentStatementForAiToAnswerTo());
 
-            brain.StartBackgroundThinker(nameMapper);
+            StartBackgroundThinker();
         }
 
         /// <summary>
@@ -598,7 +614,7 @@ namespace AntiCulture.Kid
 
             conversation = null;
 
-            brain.StartBackgroundThinker(nameMapper);
+            StartBackgroundThinker();
         }
 
         /// <summary>
@@ -613,7 +629,7 @@ namespace AntiCulture.Kid
             StandardInstinct standardInstinct = new StandardInstinct();
             DeployInstinct(standardInstinct);
 
-            brain.StartBackgroundThinker(nameMapper);
+            StartBackgroundThinker();
         }
 
         /// <summary>
@@ -628,7 +644,7 @@ namespace AntiCulture.Kid
             Ego ego = new Ego();
             DeployInstinct(ego);
 
-            brain.StartBackgroundThinker(nameMapper);
+            StartBackgroundThinker();
         }
 
         /// <summary>
@@ -663,7 +679,7 @@ namespace AntiCulture.Kid
             foreach (Statement statement in statementList)
                 ListenTo(statement);
 
-            brain.StartBackgroundThinker(nameMapper);
+            StartBackgroundThinker();
         }
 
         /// <summary>
@@ -686,7 +702,7 @@ namespace AntiCulture.Kid
             Thread thread = new Thread(categoryListExtractor.Start);
             thread.Start();
 
-            brain.StartBackgroundThinker(nameMapper);
+            StartBackgroundThinker();
         }
 
         /// <summary>
@@ -708,7 +724,7 @@ namespace AntiCulture.Kid
             if (outputFileName != null)
                 categoryListSorterTrimmer.SortAndTrimCategoryListFile(inputFileName, outputFileName);
 
-            brain.StartBackgroundThinker(nameMapper);
+            StartBackgroundThinker();
         }
 
         /// <summary>
@@ -724,7 +740,7 @@ namespace AntiCulture.Kid
             categoryExtractor.OnGeneralAffectation += CategoryExtractorGeneralAffectationHandler;
             categoryExtractor.Start();
 
-            brain.StartBackgroundThinker(nameMapper);
+            StartBackgroundThinker();
         }
 
         /// <summary>
@@ -750,7 +766,7 @@ namespace AntiCulture.Kid
                 }
             }
 
-            brain.StartBackgroundThinker(nameMapper);
+            StartBackgroundThinker();
         }
 
         /// <summary>
@@ -776,7 +792,7 @@ namespace AntiCulture.Kid
                 }
             }
 
-            brain.StartBackgroundThinker(nameMapper);
+            StartBackgroundThinker();
         }
 
         /// <summary>
@@ -807,7 +823,7 @@ namespace AntiCulture.Kid
                 }
             }
 
-            brain.StartBackgroundThinker(nameMapper);
+            StartBackgroundThinker();
         }
 
         /// <summary>
@@ -824,7 +840,7 @@ namespace AntiCulture.Kid
             string generalAffectationStatement = categoryExtractor.GeneralAffectation;
             answerer.ParseGeneralAffectation(affectedConceptNameList, generalAffectationStatement);
 
-            brain.StartBackgroundThinker(nameMapper);
+            StartBackgroundThinker();
         }
 
         /// <summary>
@@ -840,8 +856,6 @@ namespace AntiCulture.Kid
 
             foreach (Statement statement in statementList)
                 ListenTo(statement);
-
-            brain.StartBackgroundThinker(nameMapper);
         }
 
         /// <summary>
@@ -860,7 +874,7 @@ namespace AntiCulture.Kid
             foreach (Statement statement in statementList)
                 ListenTo(statement);
 
-            brain.StartBackgroundThinker(nameMapper);
+            StartBackgroundThinker();
         }
 
         /// <summary>
@@ -877,7 +891,7 @@ namespace AntiCulture.Kid
             foreach (Statement statement in statementList)
                 ListenTo(statement);
 
-            brain.StartBackgroundThinker(nameMapper);
+            StartBackgroundThinker();
         }
 
         /// <summary>
