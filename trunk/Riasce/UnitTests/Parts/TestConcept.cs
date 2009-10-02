@@ -46,23 +46,29 @@ namespace AntiCulture.Kid
                 throw new Exception("Optimized connection shouldn't exist");
 
             pine.AddOptimizedConnection(isa, tree);
+            RepairedFlatBranchCache.Clear();
 
             if (!pine.IsOptimizedConnectedTo(isa, tree))
                 throw new Exception("Optimized connection should exist");
 
             pine.AddOptimizedConnection(isa, tree);
+            RepairedFlatBranchCache.Clear();
 
             if (!pine.IsOptimizedConnectedTo(isa, tree))
                 throw new Exception("Optimized connection should exist");
 
             pine.AddOptimizedConnection(isa, tree);
+            RepairedFlatBranchCache.Clear();
             pine.RemoveOptimizedConnection(isa, tree);
+            RepairedFlatBranchCache.Clear();
 
             if (pine.IsOptimizedConnectedTo(isa, tree))
                 throw new Exception("Optimized connection shouldn't exist");
 
             pine.RemoveOptimizedConnection(isa, tree);
+            RepairedFlatBranchCache.Clear();
             pine.RemoveOptimizedConnection(isa, tree);
+            RepairedFlatBranchCache.Clear();
 
             if (pine.IsOptimizedConnectedTo(isa, tree))
                 throw new Exception("Optimized connection shouldn't exist");

@@ -1,5 +1,5 @@
 when loading memory or loading script or instinct or general affectation
-don't clean flat branch every time optimized connection is created
+clean flat branch every time optimized connection is created
 |
 Concept.AddOptimizedConnection
 et
@@ -8,6 +8,13 @@ mettre ça en bool comme valeur de retour
 et mettre RepairedFlatBranchCache.Clear(); à l'extérieur
 (dans connectionManager)
 
+
+
+society allow social animal
+society need social animal
+BUG!!! add metaOperator "replace"
+synergize replace allow
+synergize replace need
 
 
 
