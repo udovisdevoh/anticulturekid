@@ -19,6 +19,7 @@ namespace AntiCulture.Kid
         /// <param name="condition">condition</param>
         public static void AddImplyConnection(Concept verb, Concept complement, Condition condition)
         {
+            RepairedFlatBranchCache.Clear();
             Memory.TotalVerbList.Add(verb);
 
             condition.ActionVerb = verb;
@@ -72,8 +73,6 @@ namespace AntiCulture.Kid
                 inverseVerb.AddIndexToImplyCondition(inverseCondition);
                 inverseVerb.AddImplyConnection(complement, inverseCondition, false);
             }
-
-            RepairedFlatBranchCache.Clear();
         }
 
         /// <summary>
@@ -84,6 +83,7 @@ namespace AntiCulture.Kid
         /// <param name="condition">condition</param>
         public static void RemoveImplyConnection(Concept verb, Concept complement, Condition condition)
         {
+            RepairedFlatBranchCache.Clear();
             verb.RemoveImplyConnection(complement, condition, true);
 
             HashSet<Concept> inverseVerbList = verb.MetaConnectionTreePositive.GetAffectedOperatorsByMetaConnection("inverse_of");
@@ -93,8 +93,6 @@ namespace AntiCulture.Kid
 
             foreach (Concept inverseVerb in inverseVerbList)
                 inverseVerb.RemoveImplyConnection(complement, inverseCondition, false);
-
-            RepairedFlatBranchCache.Clear();
         }
 
         /// <summary>
