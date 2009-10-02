@@ -1,13 +1,11 @@
-fix bug:
-create imply connection
-FlatBranchCache is repaired
-save
-bug: there is a defect proof in memory
-
-
-
 when loading memory or loading script or instinct or general affectation
 don't clean flat branch every time optimized connection is created
+
+
+
+fix bug:
+osama_bin_laden partof middle_east
+therefore, middle_east oppress you
 
 
 
