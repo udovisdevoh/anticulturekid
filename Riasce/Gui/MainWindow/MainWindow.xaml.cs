@@ -601,15 +601,6 @@ namespace AntiCulture.Kid
                 help.VerbNameList = value;
             }
         }
-
-        /// <summary>
-        /// Action called when finished visualizing concept
-        /// </summary>
-        public Action VisualizerFinishedCallBack
-        {
-            get { return visualizer.VisualizerFinishedCallBack; }
-            set { visualizer.VisualizerFinishedCallBack = value;}
-        }
         #endregion
     }
 }

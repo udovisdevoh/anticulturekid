@@ -135,7 +135,6 @@ namespace AntiCulture.Kid
             mainWindow.UserOccurenceToSemantic += UserOccurenceToSemanticHandler;
             mainWindow.UserExtractOccurenceMatrix += UserExtractOccurenceMatrixHandler;
             mainWindow.UserExtractPhoneticMatrix += UserExtractPhoneticMatrixHandler;
-            mainWindow.VisualizerFinishedCallBack = StartBackgroundThinker;
         }
         #endregion
 
@@ -362,7 +361,6 @@ namespace AntiCulture.Kid
         private void StartBackgroundThinker()
         {
             brain.StartBackgroundThinker(nameMapper);
-            FeelingMonitor.Add(FeelingMonitor.START_BACKGROUND_THINKER);
         }
 
         /// <summary>
@@ -370,7 +368,6 @@ namespace AntiCulture.Kid
         /// </summary>
         private void StopBackgroundThinker()
         {
-            FeelingMonitor.Add(FeelingMonitor.STOP_BACKGROUND_THINKER);
             Stack<Trauma> traumaStack = brain.StopBackgroundThinker();
 
             while (traumaStack.Count > 0)
@@ -386,7 +383,6 @@ namespace AntiCulture.Kid
         /// <param name="e">event</param>
         public void UserSendCommentHandler(object sender, EventArgs e)
         {
-            bool isEnableRestartBackgroundThinker = true;
             StopBackgroundThinker();
 
             List<Statement> statementList;
@@ -408,11 +404,7 @@ namespace AntiCulture.Kid
                 }
 
                 foreach (Statement statement in statementList)
-                {
                     ListenTo(statement);
-                    if (statement.NullaryOrUnaryOperatorName == "visualize")
-                        isEnableRestartBackgroundThinker = false;
-                }
             }
             catch (StatementParsingException)
             {
@@ -429,9 +421,7 @@ namespace AntiCulture.Kid
                     ListenTo(conversation.GetCurrentStatementForAiToAnswerTo());
 
                 answerer.TellAboutFeelings();
-               
-                if (isEnableRestartBackgroundThinker)
-                    StartBackgroundThinker();
+                StartBackgroundThinker();
             }
         }
 
@@ -856,6 +846,8 @@ namespace AntiCulture.Kid
 
             foreach (Statement statement in statementList)
                 ListenTo(statement);
+
+            StartBackgroundThinker();
         }
 
         /// <summary>

@@ -40,11 +40,6 @@ namespace AntiCulture.Kid
         private string latestSubjectName;
 
         private string latestVerbName;
-
-        /// <summary>
-        /// Will be called after visualizer has finished or got cancelled
-        /// </summary>
-        private Action callBackAction;
         #endregion
 
         #region Delegates types
@@ -114,9 +109,6 @@ namespace AntiCulture.Kid
             }
 
             Dispatcher.Invoke(System.Windows.Threading.DispatcherPriority.Normal, new OtherThreadDelegate(SetRegularCursor));
-            
-            //We fire the callback to tell controller visualizer thread has finished
-            if (callBackAction != null) callBackAction();
         }
 
         public void ShowProof(List<string> proofDefinitionList)
@@ -458,12 +450,6 @@ namespace AntiCulture.Kid
         {
             get { return connectionsNoWhy; }
             set { connectionsNoWhy = value; }
-        }
-
-        public Action VisualizerFinishedCallBack
-        {
-            get { return callBackAction; }
-            set { callBackAction = value; }
         }
         #endregion
     }
