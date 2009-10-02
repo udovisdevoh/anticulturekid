@@ -1007,7 +1007,6 @@ namespace AntiCulture.Kid
             Concept operator2;
             HashSet<int> farVerbIdList;
             string metaOperatorName;
-
             foreach (ConceptInfo conceptInfo in conceptInfoList.Values)
             {
                 #region We regenerate connections

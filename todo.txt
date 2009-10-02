@@ -1,5 +1,13 @@
 when loading memory or loading script or instinct or general affectation
 don't clean flat branch every time optimized connection is created
+|
+Concept.AddOptimizedConnection
+et
+RemoveOptimizedConnection
+mettre ça en bool comme valeur de retour
+et mettre RepairedFlatBranchCache.Clear(); à l'extérieur
+(dans connectionManager)
+
 
 
 

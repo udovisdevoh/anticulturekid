@@ -198,6 +198,8 @@ namespace AntiCulture.Kid
 
             if (saverLoader.FileName != null)
             {
+                VerbMetaConnectionCache.Clear();
+                RepairedFlatBranchCache.Clear();
                 brain.ResetBackgroundThinkerTheoryMemory();
                 saverLoader.Load();
                 Memory.TotalVerbList = saverLoader.TotalVerbList;
@@ -223,6 +225,8 @@ namespace AntiCulture.Kid
         /// </summary>
         private void ResetMemory()
         {
+            VerbMetaConnectionCache.Clear();
+            RepairedFlatBranchCache.Clear();
             saverLoader.FileName = null;
             saverLoader.FileNeedSave = false;
             mainWindow.Title = GetCurrentProgramTitle();
