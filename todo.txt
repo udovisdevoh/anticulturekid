@@ -6,6 +6,9 @@ bug: there is a defect proof in memory
 
 
 
+when loading memory or loading script or instinct or general affectation
+don't clean flat branch every time optimized connection is created
+
 
 
 stop background thinker when waiting for visualizer to finish showing something
