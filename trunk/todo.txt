@@ -1,15 +1,3 @@
-when loading memory or loading script or instinct or general affectation
-clean flat branch every time optimized connection is created
-|
-Concept.AddOptimizedConnection
-et
-RemoveOptimizedConnection
-mettre ça en bool comme valeur de retour
-et mettre RepairedFlatBranchCache.Clear(); à l'extérieur
-(dans connectionManager)
-
-
-
 society allow social animal
 society need social animal
 BUG!!! add metaOperator "replace"
@@ -42,7 +30,6 @@ whole project major refactoring:
 -visualizer thread must be safe (no visual conflict)
 -flattenizer must be multithreaded
 -background thinker must be multithreaded
--flat branch cache must be persistant
 -add linq queries where needed
 -make it possible to create web view, implement web view
 -ultrabasic operators (if, and etc...) must be customizable and renamable
