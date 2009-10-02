@@ -135,6 +135,9 @@ namespace AntiCulture.Kid
                 viewerThread.Abort();
                 while (viewerThread.IsAlive)
                     Thread.Sleep(10);
+
+                if (visualizerViewer.VisualizerFinishedCallBack != null)
+                    visualizerViewer.VisualizerFinishedCallBack();
             }
         }
         #endregion
@@ -221,6 +224,15 @@ namespace AntiCulture.Kid
         public TreeView TreeView
         {
             get { return visualizerViewer.treeView; }
+        }
+
+        /// <summary>
+        /// Action called when finished visualizing concept
+        /// </summary>
+        public Action VisualizerFinishedCallBack
+        {
+            get { return visualizerViewer.VisualizerFinishedCallBack; }
+            set { visualizerViewer.VisualizerFinishedCallBack = value;}
         }
         #endregion
     }

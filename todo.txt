@@ -1,3 +1,10 @@
+fix bug: visualizer
+clicking on random concepts
+background thinker
+remembered memory: exception: collection was modified
+
+
+
 society allow social animal
 society need social animal
 BUG!!! add metaOperator "replace"
@@ -12,15 +19,8 @@ therefore, middle_east oppress you
 
 
 
-stop background thinker when waiting for visualizer to finish showing something
-
-
 
 flattenizers must be static
-
-
-
-add definition arrow |_> image to repository
 
 
 

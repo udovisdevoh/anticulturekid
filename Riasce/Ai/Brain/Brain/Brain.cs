@@ -1124,6 +1124,7 @@ namespace AntiCulture.Kid
 
         /// <summary>
         /// Start the background thinker thread
+        /// (Only used by Ai class)
         /// </summary>
         public void StartBackgroundThinker(NameMapper nameMapper)
         {
@@ -1137,6 +1138,7 @@ namespace AntiCulture.Kid
 
         /// <summary>
         /// Stop the background thinker thread
+        /// (Only used by Ai class)
         /// </summary>
         /// <returns>A stack of trauma (can be empty)</returns>
         public Stack<Trauma> StopBackgroundThinker()
