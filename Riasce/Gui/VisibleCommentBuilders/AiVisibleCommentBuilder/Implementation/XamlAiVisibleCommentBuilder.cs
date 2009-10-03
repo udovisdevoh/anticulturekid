@@ -478,6 +478,10 @@ namespace AntiCulture.Kid
             alpha2.Foreground = aiConceptColor;
             alpha2.Inlines.Add("alpha");
 
+            Span alpha3 = new Span();
+            alpha3.Foreground = aiConceptColor;
+            alpha3.Inlines.Add("alpha");
+
             Span beta1 = new Span();
             beta1.Foreground = aiConceptColor;
             beta1.Inlines.Add("beta");
@@ -485,6 +489,10 @@ namespace AntiCulture.Kid
             Span beta2 = new Span();
             beta2.Foreground = aiConceptColor;
             beta2.Inlines.Add("beta");
+
+            Span beta3 = new Span();
+            beta3.Foreground = aiConceptColor;
+            beta3.Inlines.Add("beta");
 
             Span gamma1 = new Span();
             gamma1.Foreground = aiConceptColor;
@@ -686,6 +694,26 @@ namespace AntiCulture.Kid
                     paragraph.Inlines.Add(realOperationMetaOperator);
                     paragraph.Inlines.Add(" ");
                     paragraph.Inlines.Add(realOperationVerb2);
+                    break;
+                case "xor_to_and":
+                    paragraph.Inlines.Add("if ");
+                    paragraph.Inlines.Add(alpha1);
+                    paragraph.Inlines.Add(" ");
+                    paragraph.Inlines.Add(farVerb1);
+                    paragraph.Inlines.Add(" ");
+                    paragraph.Inlines.Add(beta1);
+                    paragraph.Inlines.Add(" and ");
+                    paragraph.Inlines.Add(beta2);
+                    paragraph.Inlines.Add(" ");
+                    paragraph.Inlines.Add(farVerb2);
+                    paragraph.Inlines.Add(" ");
+                    paragraph.Inlines.Add(alpha2);
+                    paragraph.Inlines.Add(" then ");
+                    paragraph.Inlines.Add(alpha3);
+                    paragraph.Inlines.Add(" ");
+                    paragraph.Inlines.Add(verb1);
+                    paragraph.Inlines.Add(" ");
+                    paragraph.Inlines.Add(beta3);
                     break;
             }
             return paragraph;
