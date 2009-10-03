@@ -517,9 +517,23 @@ namespace AntiCulture.Kid
                 throw new Exception(statement.GetConceptName(1) + " concept name is wrong");
             if (statement.GetConceptName(2) != null)
                 throw new Exception(statement.GetConceptName(2) + " concept name is wrong");
+
+            statement = interpreter.GetInterpretedHumanStatement("Luke", "if bird need tree and tree need bird then bird synergize tree");
+            if (statement.MetaOperatorName != "xor_to_and")
+                throw new Exception(statement.MetaOperatorName + " metaOperator name is wrong");
+            if (statement.GetConceptName(0) != "need")
+                throw new Exception(statement.GetConceptName(0) + " concept name is wrong");
+            if (statement.GetConceptName(1) != "synergize")
+                throw new Exception(statement.GetConceptName(1) + " concept name is wrong");
+            if (statement.GetConceptName(2) != null)
+                throw new Exception(statement.GetConceptName(2) + " concept name is wrong");
             #endregion
 
             #region Testing for negativity
+            statement = interpreter.GetInterpretedHumanStatement("Luke", "if bird need tree and tree need bird then bird synergize tree");
+            if (statement.IsNegative != false)
+                throw new Exception("Negativity is wrong");
+
             statement = interpreter.GetInterpretedHumanStatement("Luke", "if pine isa tree and wood partof tree then wood partof pine");
             if (statement.IsNegative != false)
                 throw new Exception("Negativity is wrong");
@@ -533,6 +547,10 @@ namespace AntiCulture.Kid
                 throw new Exception("Negativity is wrong");
 
             statement = interpreter.GetInterpretedHumanStatement("Luke", "not if pine isa tree and wood partof tree then wood partof pine not");
+            if (statement.IsNegative != true)
+                throw new Exception("Negativity is wrong");
+
+            statement = interpreter.GetInterpretedHumanStatement("Luke", "not if bird need tree and tree need bird then bird synergize tree");
             if (statement.IsNegative != true)
                 throw new Exception("Negativity is wrong");
             #endregion
