@@ -54,6 +54,16 @@ namespace AntiCulture.Kid
         private static readonly Regex consicsB = new Regex(@"if ([a-z0-9_()]+) ([a-z0-9_()]+) ([a-z0-9_()]+) and ([a-z0-9_()]+) ([a-z0-9_()]+) \3 then \1 \2 \4");
 
         /// <summary>
+        /// if bird need tree and tree need bird then bird synergize tree
+        /// </summary>
+        private static readonly Regex xor_to_andA = new Regex(@"if ([a-z0-9_()]+) ([a-z0-9_()]+) ([a-z0-9_()]+) and \3 \2 \1 then \1 ([a-z0-9_()]+) \3");
+
+        /// <summary>
+        /// if bird need tree and tree need bird then tree synergize bird
+        /// </summary>
+        private static readonly Regex xor_to_andB = new Regex(@"if ([a-z0-9_()]+) ([a-z0-9_()]+) ([a-z0-9_()]+) and \3 \2 \1 then \3 ([a-z0-9_()]+) \1");
+
+        /// <summary>
         /// Imply statement factory
         /// </summary>
         private ImplyStatementFactory implyStatementFactory = new ImplyStatementFactory();
@@ -117,6 +127,16 @@ namespace AntiCulture.Kid
             else if (consicsB.IsMatch(humanStatement))
             {
                 return new Statement(humanName, Statement.MODE_META_OPERATION, "consics", words[2], words[6], isNegative, humanStatement);
+            }
+            //if bird need tree and tree need bird then bird synergize tree
+            else if (xor_to_andA.IsMatch(humanStatement))
+            {
+                return new Statement(humanName, Statement.MODE_META_OPERATION, "xor_to_and", words[10], words[2], isNegative, humanStatement);
+            }
+            //if bird need tree and tree need bird then tree synergize bird
+            else if (xor_to_andB.IsMatch(humanStatement))
+            {
+                return new Statement(humanName, Statement.MODE_META_OPERATION, "xor_to_and", words[10], words[2], isNegative, humanStatement);
             }
             else
             {
