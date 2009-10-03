@@ -5,7 +5,10 @@ using System.Text;
 
 namespace AntiCulture.Kid
 {
-    class TheoryMemory : AbstractTheoryMemory
+    /// <summary>
+    /// Represents the theorizer's memory
+    /// </summary>
+    class TheoryMemory
     {
         #region Constants
         private static readonly int maxTheoryCountForConcept = 1000;
@@ -18,7 +21,11 @@ namespace AntiCulture.Kid
         #endregion
 
         #region Public Methods
-        public override void RememberNewTheory(Theory theory)
+        /// <summary>
+        /// Remember new theory
+        /// </summary>
+        /// <param name="theory">theory to remember</param>
+        public void RememberNewTheory(Theory theory)
         {
             if (theory == null)
                 return;

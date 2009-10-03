@@ -1,3 +1,19 @@
+whole project major refactoring:
+-Some classe must be documented
+-Some abstract classes must be removed
+-everything must be unit testable and unit tested
+-visualizer thread must be safe (no visual conflict)
+-flattenizer must be multithreaded
+-background thinker must be multithreaded
+-add linq queries where needed
+-make it possible to create web view, implement web view
+-ultrabasic operators (if, and etc...) must be customizable and renamable
+-if, then statements must be c-like
+
+
+
+
+
 society allow social animal
 society need social animal
 BUG!!! add metaOperator "replace"
@@ -18,15 +34,7 @@ flattenizers must be static
 
 
 
-whole project major refactoring:
--everything must be unit testable and unit tested
--visualizer thread must be safe (no visual conflict)
--flattenizer must be multithreaded
--background thinker must be multithreaded
--add linq queries where needed
--make it possible to create web view, implement web view
--ultrabasic operators (if, and etc...) must be customizable and renamable
--if, then statements must be c-like
+
 
 
 
