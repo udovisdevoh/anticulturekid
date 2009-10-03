@@ -475,6 +475,11 @@ namespace AntiCulture.Kid
             statement2 = interpreter.GetInterpretedHumanStatement("Luke", "if wood partof tree and pine isa tree then wood partof pine");
             if (statement != statement2)
                 throw new Exception("Equivalent expression not parsed as equivalent");
+
+            statement = interpreter.GetInterpretedHumanStatement("Luke", "if bird need tree and tree need bird then bird synergize tree");
+            statement2 = interpreter.GetInterpretedHumanStatement("Luke", "if bird need tree and tree need bird then tree synergize bird");
+            if (statement != statement2)
+                throw new Exception("Equivalent expression not parsed as equivalent");
             #endregion
 
             #region Testing for metaOperator and concept names
@@ -521,9 +526,9 @@ namespace AntiCulture.Kid
             statement = interpreter.GetInterpretedHumanStatement("Luke", "if bird need tree and tree need bird then bird synergize tree");
             if (statement.MetaOperatorName != "xor_to_and")
                 throw new Exception(statement.MetaOperatorName + " metaOperator name is wrong");
-            if (statement.GetConceptName(0) != "need")
+            if (statement.GetConceptName(0) != "synergize")
                 throw new Exception(statement.GetConceptName(0) + " concept name is wrong");
-            if (statement.GetConceptName(1) != "synergize")
+            if (statement.GetConceptName(1) != "need")
                 throw new Exception(statement.GetConceptName(1) + " concept name is wrong");
             if (statement.GetConceptName(2) != null)
                 throw new Exception(statement.GetConceptName(2) + " concept name is wrong");

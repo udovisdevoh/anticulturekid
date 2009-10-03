@@ -30,6 +30,23 @@ antagonize xor_to_and oppress
 add unit test for metaConnection flattenization of xor_to_need
 add unit test for connection flattenization of xor_to_need
 
+when xor_to_and is succesfully implemented,
+add this feature:
+when explicitely trying to ovrrride need with synergize
+or
+when explicitely saying that bird need tree and tree need bird,
+just don't prevent user from doing so. Replace need and allow to synergize
+
+
+
+
+
+add some kind of graphical representation of the instinct
+(could be some kind of compiled or optimized source code or some
+kind of uml flowchart diagram)
+
+
+
 
 
 
