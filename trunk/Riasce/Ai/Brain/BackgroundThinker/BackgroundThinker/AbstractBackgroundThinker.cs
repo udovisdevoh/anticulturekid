@@ -86,7 +86,7 @@ namespace AntiCulture.Kid
         /// <returns>best theory from background thinker</returns>
         public Theory GetBestTheory()
         {
-            currentTheory = theoryMemory.GetBestLogicTheory(rejectedTheories);
+            currentTheory = theoryMemory.GetBestLogicTheory(rejectedTheories,memory);
             return currentTheory;
         }
 
@@ -107,7 +107,7 @@ namespace AntiCulture.Kid
         /// <returns></returns>
         public Theory GetBestTheoryAbout(Concept subject)
         {
-            currentTheory = theoryMemory.GetBestLogicTheoryAbout(subject, rejectedTheories);
+            currentTheory = theoryMemory.GetBestLogicTheoryAbout(subject, rejectedTheories, memory);
             return currentTheory;
         }
 
@@ -180,7 +180,7 @@ namespace AntiCulture.Kid
         /// <returns>best linguistic theory</returns>
         public Theory GetBestLinguisticTheory()
         {
-            currentTheory = theoryMemory.GetBestLinguisticTheory(rejectedTheories);
+            currentTheory = theoryMemory.GetBestLinguisticTheory(rejectedTheories, memory);
             return currentTheory;
         }
 
@@ -190,7 +190,7 @@ namespace AntiCulture.Kid
         /// <returns>best phonetic theory</returns>
         public Theory GetBestPhoneticTheory()
         {
-            currentTheory = theoryMemory.GetBestPhoneticTheory(rejectedTheories);
+            currentTheory = theoryMemory.GetBestPhoneticTheory(rejectedTheories, memory);
             return currentTheory;
         }
 
@@ -201,7 +201,7 @@ namespace AntiCulture.Kid
         /// <returns>best linguistic theory about provided concept</returns>
         public Theory GetBestLinguisticTheoryAbout(Concept subject)
         {
-            currentTheory = theoryMemory.GetBestLinguisticTheoryAbout(subject, rejectedTheories);
+            currentTheory = theoryMemory.GetBestLinguisticTheoryAbout(subject, rejectedTheories, memory);
             return currentTheory;
         }
 
@@ -212,7 +212,7 @@ namespace AntiCulture.Kid
         /// <returns>best phonetic theory about provided concept</returns>
         public Theory GetBestPhoneticTheoryAbout(Concept subject)
         {
-            currentTheory = theoryMemory.GetBestPhoneticTheoryAbout(subject, rejectedTheories);
+            currentTheory = theoryMemory.GetBestPhoneticTheoryAbout(subject, rejectedTheories, memory);
             return currentTheory;
         }
 

@@ -208,9 +208,14 @@ namespace AntiCulture.Kid
             throw new NotImplementedException();
         }
 
-        public bool Contains(Concept item)
+        /// <summary>
+        /// Whether the memory contains concept
+        /// </summary>
+        /// <param name="concept">concept</param>
+        /// <returns>Whether the memory contains concept</returns>
+        public bool Contains(Concept concept)
         {
-            throw new NotImplementedException();
+            return idList.ContainsKey(concept);
         }
 
         public bool IsReadOnly
