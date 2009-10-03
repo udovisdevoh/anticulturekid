@@ -1,6 +1,8 @@
 remove flattenizer's hack when repairing concept
 replace with real solution to memory inconsistency bug
 
+background thinker: improve performance when picking best theory
+
 
 
 whole project major refactoring:
@@ -16,6 +18,9 @@ whole project major refactoring:
 -if, then statements must be c-like
 
 
+
+bush aliasof george_w_bush
+rename bush bush_(george_w)
 
 
 
@@ -42,9 +47,10 @@ flattenizers must be static
 
 
 
+rêves (avec graphiques)
+connections sans obstructions)
+comme une psychose mais sans affectation, output graphique images 
 
-create operator: in / placeof
-in inverse_of placeof
 
 
 

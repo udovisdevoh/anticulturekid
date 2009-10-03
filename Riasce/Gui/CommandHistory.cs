@@ -31,7 +31,10 @@ namespace AntiCulture.Kid
         public void Add(string command)
         {
             if (commandList.Count > 0 && commandList[commandList.Count - 1] == command)
+            {
+                pointer = commandList.Count;
                 return;
+            }
 
             commandList.Add(command);
             pointer = commandList.Count;
