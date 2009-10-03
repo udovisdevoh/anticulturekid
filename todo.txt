@@ -1,6 +1,22 @@
 background thinker: improve performance when picking best theory
 add maximum count for total theories
+add documentation to TheoryList and TheoryMemory
 
+
+fix bug in autocomplete
+homo_(genus) is selected, does homo_(genus))
+
+
+fix bug
+bush aliasof george_w_bush
+think
+concept not found in memory
+
+
+
+
+
+?don't repair memory after loading it?
 
 
 whole project major refactoring:
@@ -19,6 +35,7 @@ whole project major refactoring:
 
 bush aliasof george_w_bush
 rename bush bush_(george_w)
+hominid_(genus) isa social animal
 
 
 
