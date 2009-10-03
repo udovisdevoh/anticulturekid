@@ -100,6 +100,8 @@ namespace AntiCulture.Kid
                     howManyToRemove--;
                 }
 
+                this.theoryList = sortedTheoryList;
+
                 return true;
             }
             return false;

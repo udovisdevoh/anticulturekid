@@ -81,26 +81,52 @@ namespace AntiCulture.Kid
             #endregion
         }
 
+        /// <summary>
+        /// Get best logic theory
+        /// </summary>
+        /// <param name="rejectedTheories">rejected theories</param>
+        /// <returns>best logic theory</returns>
         public Theory GetBestLogicTheory(RejectedTheories rejectedTheories)
         {
             return totalTheoryList.GetBestLogicTheory(rejectedTheories);
         }
 
+        /// <summary>
+        /// Get best linguistic theory
+        /// </summary>
+        /// <param name="rejectedTheories">rejected theories</param>
+        /// <returns>best linguistic theory</returns>
         public Theory GetBestLinguisticTheory(RejectedTheories rejectedTheories)
         {
             return totalTheoryList.GetBestLinguisticTheory(rejectedTheories);
         }
 
+        /// <summary>
+        /// Get best phonetic theory
+        /// </summary>
+        /// <param name="rejectedTheories">rejected theories</param>
+        /// <returns>best phonetic theory</returns>
         public Theory GetBestPhoneticTheory(RejectedTheories rejectedTheories)
         {
             return totalTheoryList.GetBestPhoneticTheory(rejectedTheories);
         }
 
+        /// <summary>
+        /// Get best metaConnection theory
+        /// </summary>
+        /// <param name="rejectedTheories">rejected theories</param>
+        /// <returns>best metaConnection theory</returns>
         public Theory GetBestMetaTheory(RejectedTheories rejectedTheories)
         {
             return totalTheoryList.GetBestMetaTheory(rejectedTheories);
         }
 
+        /// <summary>
+        /// Get best metaConnection theory about subject concept
+        /// </summary>
+        /// <param name="subject">subject concept</param>
+        /// <param name="rejectedTheories">rejected theories</param>
+        /// <returns>best metaConnection theory about subject concept</returns>
         public Theory GetBestMetaTheoryAbout(Concept subject, RejectedTheories rejectedTheories)
         {
             TheoryList theoryListForConcept;
@@ -113,6 +139,12 @@ namespace AntiCulture.Kid
             return theoryListForConcept.GetBestMetaTheory(rejectedTheories);
         }
 
+        /// <summary>
+        /// Get best logic theory about subject concept
+        /// </summary>
+        /// <param name="subject">subject concept</param>
+        /// <param name="rejectedTheories">rejected theories</param>
+        /// <returns>best logic theory about subject concept</returns>
         public Theory GetBestLogicTheoryAbout(Concept subject, RejectedTheories rejectedTheories)
         {
             TheoryList theoryListForConcept;
@@ -125,6 +157,12 @@ namespace AntiCulture.Kid
             return theoryListForConcept.GetBestLogicTheory(rejectedTheories);
         }
 
+        /// <summary>
+        /// Get best linguistic theory about subject concept
+        /// </summary>
+        /// <param name="subject">subject concept</param>
+        /// <param name="rejectedTheories">rejected theories</param>
+        /// <returns>best linguistic theory about subject concept</returns>
         public Theory GetBestLinguisticTheoryAbout(Concept subject, RejectedTheories rejectedTheories)
         {
             TheoryList theoryListForConcept;
@@ -137,6 +175,12 @@ namespace AntiCulture.Kid
             return theoryListForConcept.GetBestLinguisticTheory(rejectedTheories);
         }
 
+        /// <summary>
+        /// Get best phonetic theory about subject concept
+        /// </summary>
+        /// <param name="subject">subject concept</param>
+        /// <param name="rejectedTheories">rejected theories</param>
+        /// <returns>best phonetic theory about subject concept</returns>
         public Theory GetBestPhoneticTheoryAbout(Concept subject, RejectedTheories rejectedTheories)
         {
             TheoryList theoryListForConcept;
@@ -149,11 +193,17 @@ namespace AntiCulture.Kid
             return theoryListForConcept.GetBestPhoneticTheory(rejectedTheories);
         }
 
+        /// <summary>
+        /// Remove theories about existing connections
+        /// </summary>
         public void RemoveExistingConnections()
         {
             totalTheoryList.RemoveExistingConnections();
         }
 
+        /// <summary>
+        /// Reset all theory lists
+        /// </summary>
         public void Reset()
         {
             totalTheoryList.Clear();
@@ -162,6 +212,9 @@ namespace AntiCulture.Kid
         #endregion
 
         #region Properties
+        /// <summary>
+        /// Total theory list
+        /// </summary>
         public TheoryList TotalTheoryList
         {
             get
