@@ -150,8 +150,7 @@
     <Compile Include="Ai\Brain\Memory\EpisodicMemory\Memento\SpecializedMementos\StatementMemento.cs" />
     <Compile Include="Ai\Brain\BackgroundThinker\BackgroundThinker\AbstractBackgroundThinker.cs" />
     <Compile Include="Ai\Brain\BackgroundThinker\BackgroundThinker\Implementation\SerialBackgroundThinker.cs" />
-    <Compile Include="Ai\Brain\BackgroundThinker\TheoryMemory\TheoryList\AbstractTheoryList.cs" />
-    <Compile Include="Ai\Brain\BackgroundThinker\TheoryMemory\TheoryList\Implementation\TheoryList.cs" />
+    <Compile Include="Ai\Brain\BackgroundThinker\TheoryMemory\TheoryList.cs" />
     <Compile Include="Ai\Brain\BackgroundThinker\TheoryMemory\TheoryMemory.cs" />
     <Compile Include="Ai\StatementListFactory\StatementFactory\AbstractStatementFactory.cs" />
     <Compile Include="Ai\StatementListFactory\StatementFactory\Implementation\NameMapping\AliasStatementFactory.cs" />
