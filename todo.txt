@@ -13,11 +13,6 @@ add xor_to_and to define and whatis (with proper source code)
 xor_to_and should remove connections "allow" and "need" when flattenizing concepts
 and add "synergize" instead
 
-xor_to_and should only be allowed if
-first operator has permutable_side
-and
-last operator has inverse_of
-
 society allow social animal
 society need social animal
 BUG!!!
