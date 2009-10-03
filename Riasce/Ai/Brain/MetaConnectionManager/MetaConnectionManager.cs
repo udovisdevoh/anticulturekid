@@ -191,6 +191,21 @@ namespace AntiCulture.Kid
                     throw new MetaConnectionException("can't both liffid and consics");
                 }
             }
+            else if (metaOperatorName == "xor_to_and")
+            {
+                if (concept1 == concept2)
+                {
+                    throw new MetaConnectionException("No operator should self xor_to_and.");
+                }
+                else if (GetVerbFlatListFromMetaConnection(concept1, "permutable_side", true).Count < 1)
+                {
+                    throw new MetaConnectionException("First operator must be \"permutable_side\"");
+                }
+                else if (GetVerbFlatListFromMetaConnection(concept2, "inverse_of", true).Count < 1)
+                {
+                    throw new MetaConnectionException("Second operator must have an \"inverse_of\" operator");
+                }
+            }
 
             if (metaOperatorName == "sublar" || metaOperatorName == "consics" || metaOperatorName == "inverse_implication" || metaOperatorName == "direct_implication")
             {
