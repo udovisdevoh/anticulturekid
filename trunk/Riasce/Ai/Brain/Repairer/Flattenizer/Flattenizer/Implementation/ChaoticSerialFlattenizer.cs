@@ -27,6 +27,7 @@ namespace AntiCulture.Kid
                 flatBranch = subject.GetFlatConnectionBranch(verb);
                 optimizedBranch = subject.GetOptimizedConnectionBranch(verb);
 
+                #warning Optimization is disabled because it creates memory corruption
                 //if (!RepairedFlatBranchCache.Contains(flatBranch))
                 RepairFlatBranch(flatBranch, optimizedBranch, subject, verb);
             }
