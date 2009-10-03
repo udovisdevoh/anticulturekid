@@ -3,12 +3,6 @@ instead of removing metaOperation "IF bird need tree AND tree madeof wood THEN b
 to prevent memory corruption,
 add metaOperator "xor_to_and" for:
 
-parse it that way:
-if bird need tree and tree need bird then bird synergize tree
-
-it will affect allow because need inverse_of allow
-
-add xor_to_and to define and whatis (with proper source code)
 
 xor_to_and should remove connections "allow" and "need" when flattenizing concepts
 and add "synergize" instead
@@ -22,7 +16,7 @@ synergize xor_to_and need
 synergize xor_to_and make
 antagonize xor_to_and oppress
 
-add unit test for metaConnection flattenization of xor_to_need
+
 add unit test for connection flattenization of xor_to_need
 
 when xor_to_and is succesfully implemented,
