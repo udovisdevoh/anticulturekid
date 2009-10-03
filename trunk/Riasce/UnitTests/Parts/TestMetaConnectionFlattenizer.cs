@@ -56,6 +56,8 @@ namespace AntiCulture.Kid
             TestNoSelfCant();
 
             TestOrbitedByDirectImplicationGravity();
+
+            TestXorToAnd();
         }
 
         private static void TestMuctSublarLiffidConsics()
@@ -302,7 +304,6 @@ namespace AntiCulture.Kid
         private static void TestCant()
         {
             Memory.TotalVerbList = new HashSet<Concept>();
-            
 
             #region We create the verbs that we will need
             Concept isa = new Concept("isa");
@@ -337,6 +338,39 @@ namespace AntiCulture.Kid
                 throw new Exception("Should be metaConnected because it's implicit");
 
             if (!MetaConnectionManager.IsFlatMetaConnected(contradict, "cant", someare))
+                throw new Exception("Should be metaConnected because it's implicit");
+        }
+
+        private static void TestXorToAnd()
+        {
+            Memory.TotalVerbList = new HashSet<Concept>();
+
+            #region We create the verbs that we will need
+            Concept need = new Concept("need");
+            Concept allow = new Concept("allow");
+            Concept synergize = new Concept("synergize");
+            #endregion
+
+            if (MetaConnectionManager.IsFlatMetaConnected(need, "inverse_of", allow))
+                throw new Exception("Shouldn't be metaConnected yet");
+
+            if (MetaConnectionManager.IsFlatMetaConnected(synergize, "permutable_side", synergize))
+                throw new Exception("Shouldn't be metaConnected yet");
+
+            if (MetaConnectionManager.IsFlatMetaConnected(synergize, "xor_to_and", allow))
+                throw new Exception("Shouldn't be metaConnected yet");
+
+            if (MetaConnectionManager.IsFlatMetaConnected(synergize, "xor_to_and", need))
+                throw new Exception("Shouldn't be metaConnected yet");
+
+            MetaConnectionManager.AddMetaConnection(need, "inverse_of", allow);
+            MetaConnectionManager.AddMetaConnection(synergize, "permutable_side", synergize);
+            MetaConnectionManager.AddMetaConnection(synergize, "xor_to_and", need);
+
+            if (!MetaConnectionManager.IsFlatMetaConnected(synergize, "xor_to_and", need))
+                throw new Exception("Should be metaConnected because it's explicit");
+
+            if (!MetaConnectionManager.IsFlatMetaConnected(synergize, "xor_to_and", allow))
                 throw new Exception("Should be metaConnected because it's implicit");
         }
 

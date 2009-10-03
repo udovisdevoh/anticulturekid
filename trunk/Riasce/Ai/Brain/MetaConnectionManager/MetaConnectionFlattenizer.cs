@@ -122,6 +122,10 @@ namespace AntiCulture.Kid
             {
                 flatMetaConnectionVerbList = RenderFlatMetaConnectionDirectImplication(flatMetaConnectionVerbList, sourceVerb, ignoreList, isMetaConnectionPositive);
             }
+            else if (metaOperatorName == "xor_to_and")
+            {
+                flatMetaConnectionVerbList = RenderFlatMetaConnectionXorToAnd(flatMetaConnectionVerbList, sourceVerb, ignoreList, isMetaConnectionPositive);
+            }
             return flatMetaConnectionVerbList;
         }
 
@@ -659,6 +663,25 @@ namespace AntiCulture.Kid
             }
 
             return muctFlatMetaConnectionVerbList;
+        }
+
+        /// <summary>
+        /// Render flat metaConnectionXorToAnd
+        /// </summary>
+        /// <param name="xorToAndFlatMetaConnectionVerbList"></param>
+        /// <param name="sourceVerb"></param>
+        /// <param name="ignoreList"></param>
+        /// <param name="isMetaConnectionPositive"></param>
+        /// <returns></returns>
+        private static HashSet<Concept> RenderFlatMetaConnectionXorToAnd(HashSet<Concept> xorToAndFlatMetaConnectionVerbList, Concept sourceVerb, HashSet<string> ignoreList, bool isMetaConnectionPositive)
+        {
+            foreach (Concept farXorToAndVerb in new HashSet<Concept>(xorToAndFlatMetaConnectionVerbList))
+            {
+                HashSet<Concept> farFarInverseOf = farXorToAndVerb.MetaConnectionTreePositive.GetAffectedOperatorsByMetaConnection("inverse_of");
+                xorToAndFlatMetaConnectionVerbList.UnionWith(farFarInverseOf);
+            }
+
+            return xorToAndFlatMetaConnectionVerbList;
         }
         #endregion
     }
