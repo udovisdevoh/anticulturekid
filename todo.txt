@@ -1,7 +1,5 @@
-remove flattenizer's hack when repairing concept
-replace with real solution to memory inconsistency bug
-
 background thinker: improve performance when picking best theory
+add maximum count for total theories
 
 
 

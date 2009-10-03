@@ -11,12 +11,21 @@ namespace AntiCulture.Kid
     class TheoryMemory
     {
         #region Constants
+        /// <summary>
+        /// Max theory count for each concept
+        /// </summary>
         private static readonly int maxTheoryCountForConcept = 1000;
         #endregion
 
         #region Fields
+        /// <summary>
+        /// Total theory list
+        /// </summary>
         private TheoryList totalTheoryList = new TheoryList();
 
+        /// <summary>
+        /// Theory list for each concept
+        /// </summary>
         private Dictionary<Concept, TheoryList> theoryListForConcepts = new Dictionary<Concept, TheoryList>();
         #endregion
 
@@ -30,9 +39,15 @@ namespace AntiCulture.Kid
             if (theory == null)
                 return;
 
+            #region We manage total theory list
             if (!totalTheoryList.Contains(theory))
                 totalTheoryList.Add(theory);
 
+            if (totalTheoryList.Count > maxTheoryCountForConcept)
+                totalTheoryList.RemoveLeastProbableTheory((maxTheoryCountForConcept / 2) + 1);
+            #endregion
+
+            #region We manage theories added to list of theories for each concept
             TheoryList theoryListForConcept;
 
             if (!theoryListForConcepts.TryGetValue(theory.GetConcept(0), out theoryListForConcept))
@@ -44,11 +59,9 @@ namespace AntiCulture.Kid
             if (!theoryListForConcept.Contains(theory))
                 theoryListForConcept.Add(theory);
 
-            if (theoryListForConcept.Count > maxTheoryCountForConcept + 2)
-            {
-                theoryListForConcept.RemoveOldestTheory();
-                theoryListForConcept.RemoveLeastProbableTheory();
-            }
+            if (theoryListForConcept.Count > maxTheoryCountForConcept)
+                theoryListForConcept.RemoveLeastProbableTheory((maxTheoryCountForConcept / 2) + 1);
+            #endregion
 
             #region We add theory to complement concept if not null
             if (theory.GetConcept(2) != null)
@@ -62,11 +75,8 @@ namespace AntiCulture.Kid
                 if (!theoryListForConcept.Contains(theory))
                     theoryListForConcept.Add(theory);
 
-                if (theoryListForConcept.Count > maxTheoryCountForConcept + 2)
-                {
-                    theoryListForConcept.RemoveOldestTheory();
-                    theoryListForConcept.RemoveLeastProbableTheory();
-                }
+                if (theoryListForConcept.Count > maxTheoryCountForConcept)
+                    theoryListForConcept.RemoveLeastProbableTheory((maxTheoryCountForConcept / 2) + 1);
             }
             #endregion
         }
