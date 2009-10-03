@@ -1,3 +1,8 @@
+remove flattenizer's hack when repairing concept
+replace with real solution to memory inconsistency bug
+
+
+
 whole project major refactoring:
 -Some classe must be documented
 -Some abstract classes must be removed
