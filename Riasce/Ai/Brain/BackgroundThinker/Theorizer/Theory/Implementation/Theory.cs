@@ -210,6 +210,18 @@ namespace AntiCulture.Kid
         {
             return (int)(other.predictedProbability * 10000) - (int)(this.predictedProbability * 10000);
         }
+
+        public HashSet<Concept> GetFeaturedConceptList()
+        {
+            HashSet<Concept> featuredConceptList = new HashSet<Concept>();
+
+            featuredConceptList.UnionWith(conceptList);
+
+            foreach (List<Concept> argument in connectionArgumentList)
+                featuredConceptList.UnionWith(argument);
+
+            return featuredConceptList;
+        }
         #endregion
 
         #region Operator Overloading

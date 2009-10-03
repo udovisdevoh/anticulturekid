@@ -14,7 +14,7 @@ namespace AntiCulture.Kid
         /// <summary>
         /// Max theory count for each concept
         /// </summary>
-        private static readonly int maxTheoryCountForConcept = 1000;
+        private static readonly int maxTheoryCountForConcept = 3000;
         #endregion
 
         #region Fields
@@ -85,9 +85,11 @@ namespace AntiCulture.Kid
         /// Get best logic theory
         /// </summary>
         /// <param name="rejectedTheories">rejected theories</param>
+        /// <param name="memory">memory</param>
         /// <returns>best logic theory</returns>
-        public Theory GetBestLogicTheory(RejectedTheories rejectedTheories)
+        public Theory GetBestLogicTheory(RejectedTheories rejectedTheories, Memory memory)
         {
+            totalTheoryList.RemoveTheoriesAboutConceptNotIn(memory);
             return totalTheoryList.GetBestLogicTheory(rejectedTheories);
         }
 
@@ -95,9 +97,11 @@ namespace AntiCulture.Kid
         /// Get best linguistic theory
         /// </summary>
         /// <param name="rejectedTheories">rejected theories</param>
+        /// <param name="memory">memory</param>
         /// <returns>best linguistic theory</returns>
-        public Theory GetBestLinguisticTheory(RejectedTheories rejectedTheories)
+        public Theory GetBestLinguisticTheory(RejectedTheories rejectedTheories, Memory memory)
         {
+            totalTheoryList.RemoveTheoriesAboutConceptNotIn(memory);
             return totalTheoryList.GetBestLinguisticTheory(rejectedTheories);
         }
 
@@ -105,9 +109,11 @@ namespace AntiCulture.Kid
         /// Get best phonetic theory
         /// </summary>
         /// <param name="rejectedTheories">rejected theories</param>
+        /// <param name="memory">memory</param>
         /// <returns>best phonetic theory</returns>
-        public Theory GetBestPhoneticTheory(RejectedTheories rejectedTheories)
+        public Theory GetBestPhoneticTheory(RejectedTheories rejectedTheories, Memory memory)
         {
+            totalTheoryList.RemoveTheoriesAboutConceptNotIn(memory);
             return totalTheoryList.GetBestPhoneticTheory(rejectedTheories);
         }
 
@@ -126,6 +132,7 @@ namespace AntiCulture.Kid
         /// </summary>
         /// <param name="subject">subject concept</param>
         /// <param name="rejectedTheories">rejected theories</param>
+        /// <param name="memory">memory</param>
         /// <returns>best metaConnection theory about subject concept</returns>
         public Theory GetBestMetaTheoryAbout(Concept subject, RejectedTheories rejectedTheories)
         {
@@ -136,6 +143,8 @@ namespace AntiCulture.Kid
                 theoryListForConcepts.Add(subject, theoryListForConcept);
             }
 
+            //theoryListForConcept.RemoveTheoriesAboutConceptNotIn(memory);
+
             return theoryListForConcept.GetBestMetaTheory(rejectedTheories);
         }
 
@@ -144,8 +153,9 @@ namespace AntiCulture.Kid
         /// </summary>
         /// <param name="subject">subject concept</param>
         /// <param name="rejectedTheories">rejected theories</param>
+        /// <param name="memory">memory</param>
         /// <returns>best logic theory about subject concept</returns>
-        public Theory GetBestLogicTheoryAbout(Concept subject, RejectedTheories rejectedTheories)
+        public Theory GetBestLogicTheoryAbout(Concept subject, RejectedTheories rejectedTheories, Memory memory)
         {
             TheoryList theoryListForConcept;
             if (!theoryListForConcepts.TryGetValue(subject, out theoryListForConcept))
@@ -153,6 +163,8 @@ namespace AntiCulture.Kid
                 theoryListForConcept = new TheoryList();
                 theoryListForConcepts.Add(subject, theoryListForConcept);
             }
+
+            theoryListForConcept.RemoveTheoriesAboutConceptNotIn(memory);
 
             return theoryListForConcept.GetBestLogicTheory(rejectedTheories);
         }
@@ -162,8 +174,9 @@ namespace AntiCulture.Kid
         /// </summary>
         /// <param name="subject">subject concept</param>
         /// <param name="rejectedTheories">rejected theories</param>
+        /// <param name="memory">memory</param>
         /// <returns>best linguistic theory about subject concept</returns>
-        public Theory GetBestLinguisticTheoryAbout(Concept subject, RejectedTheories rejectedTheories)
+        public Theory GetBestLinguisticTheoryAbout(Concept subject, RejectedTheories rejectedTheories, Memory memory)
         {
             TheoryList theoryListForConcept;
             if (!theoryListForConcepts.TryGetValue(subject, out theoryListForConcept))
@@ -171,6 +184,8 @@ namespace AntiCulture.Kid
                 theoryListForConcept = new TheoryList();
                 theoryListForConcepts.Add(subject, theoryListForConcept);
             }
+
+            theoryListForConcept.RemoveTheoriesAboutConceptNotIn(memory);
 
             return theoryListForConcept.GetBestLinguisticTheory(rejectedTheories);
         }
@@ -180,8 +195,9 @@ namespace AntiCulture.Kid
         /// </summary>
         /// <param name="subject">subject concept</param>
         /// <param name="rejectedTheories">rejected theories</param>
+        /// <param name="memory">memory</param>
         /// <returns>best phonetic theory about subject concept</returns>
-        public Theory GetBestPhoneticTheoryAbout(Concept subject, RejectedTheories rejectedTheories)
+        public Theory GetBestPhoneticTheoryAbout(Concept subject, RejectedTheories rejectedTheories, Memory memory)
         {
             TheoryList theoryListForConcept;
             if (!theoryListForConcepts.TryGetValue(subject, out theoryListForConcept))
@@ -189,6 +205,8 @@ namespace AntiCulture.Kid
                 theoryListForConcept = new TheoryList();
                 theoryListForConcepts.Add(subject, theoryListForConcept);
             }
+
+            theoryListForConcept.RemoveTheoriesAboutConceptNotIn(memory);
 
             return theoryListForConcept.GetBestPhoneticTheory(rejectedTheories);
         }

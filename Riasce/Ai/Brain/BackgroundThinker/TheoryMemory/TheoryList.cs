@@ -288,6 +288,28 @@ namespace AntiCulture.Kid
         {
             theoryList.Clear();
         }
+
+        /// <summary>
+        /// Remove theories that contain concept not in memory
+        /// </summary>
+        /// <param name="memory">memory</param>
+        public void RemoveTheoriesAboutConceptNotIn(Memory memory)
+        {
+            HashSet<Theory> newList = new HashSet<Theory>(theoryList);
+            foreach (Theory currentTheory in theoryList)
+            {
+                foreach (Concept featuredConcept in currentTheory.GetFeaturedConceptList())
+                {
+                    if (!memory.Contains(featuredConcept))
+                    {
+                        newList.Remove(currentTheory);
+                        break;
+                    }
+                }
+            }
+
+            theoryList = new List<Theory>(newList);
+        }
         #endregion
     }
 }
