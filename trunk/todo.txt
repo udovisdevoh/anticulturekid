@@ -27,6 +27,12 @@ when explicitely saying that bird need tree and tree need bird,
 just don't prevent user from doing so. Replace need and allow to synergize
 
 
+add some kind of monitor when seeing connection inconsistency
+
+
+
+
+
 
 
 
