@@ -12,8 +12,8 @@ namespace AntiCulture.Kid
         public static void TestAll()
         {
             DateTime startTime = DateTime.Now;
-            
-            //TestFlattenizer.Test(new SerialFlattenizer()); //SLOW!!!!
+
+            TestFlattenizer.Test(new SerialFlattenizer()); //SLOW!!!!
             TestFlattenizer.Test(new ChaoticSerialFlattenizer()); //SLOW!!!!
             //TestFlattenizer.Test(new ParallelFlattenizer()); //SLOW!!!!
             TestStatementListFactory.Test();

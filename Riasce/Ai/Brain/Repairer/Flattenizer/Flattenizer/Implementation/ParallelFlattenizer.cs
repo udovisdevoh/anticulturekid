@@ -1,4 +1,5 @@
-﻿using System;
+﻿/*
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -24,7 +25,7 @@ namespace AntiCulture.Kid
                 flatBranch = subject.GetFlatConnectionBranch(verb);
                 optimizedBranch = subject.GetOptimizedConnectionBranch(verb);
 
-                if (RepairedFlatBranchCache.Contains(flatBranch))
+                if (!RepairedFlatBranchCache.Contains(flatBranch))
                     RepairFlatBranch(flatBranch, optimizedBranch, subject, verb, new AutoResetEvent(false));
             }
 
@@ -47,7 +48,7 @@ namespace AntiCulture.Kid
 
             RepairedFlatBranchCache.Add(flatBranch);
 
-            Dictionary<ConnectionBranch, ConnectionBranch> branchesToRepair;
+            HashSet<ScheduledRepair> branchesToRepair;
             List<AutoResetEvent> waitingBranchResetEventList;
 
             flatBranch.ComplementConceptList.Clear();
@@ -144,3 +145,4 @@ namespace AntiCulture.Kid
         #endregion
     }
 }
+*/
