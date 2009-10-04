@@ -94,7 +94,8 @@ namespace AntiCulture.Kid
                 ConnectionBranch farOptimizedBranch = subject.GetOptimizedConnectionBranch(directlyImpliedVerb);
 
                 if (!RepairedFlatBranchCache.Contains(farFlatBranch))
-                    RepairFlatBranch(farFlatBranch, farOptimizedBranch, subject, directlyImpliedVerb);
+                    if (directlyImpliedVerb != verb)
+                        RepairFlatBranch(farFlatBranch, farOptimizedBranch, subject, directlyImpliedVerb);
 
                 foreach (Concept complement in farFlatBranch.ComplementConceptList)
                 {
@@ -160,7 +161,8 @@ namespace AntiCulture.Kid
                     ConnectionBranch farOptimizedBranch = complement.GetOptimizedConnectionBranch(liffidVerb);
 
                     if (!RepairedFlatBranchCache.Contains(farFlatBranch))//if (liffidVerb != verb && subject != complement)
-                        RepairFlatBranch(farFlatBranch, farOptimizedBranch, complement, liffidVerb);
+                        if (complement != subject && liffidVerb != verb)
+                            RepairFlatBranch(farFlatBranch, farOptimizedBranch, complement, liffidVerb);
 
 
                     HashSet<Concept> conceptAffectedByLiffidVerb = farFlatBranch.ComplementConceptList;
@@ -228,8 +230,9 @@ namespace AntiCulture.Kid
                 {
                     ConnectionBranch farFlatBranch = complement.GetFlatConnectionBranch(verb);
                     ConnectionBranch farOptimizedBranch = complement.GetOptimizedConnectionBranch(verb);
-                    if (!RepairedFlatBranchCache.Contains(farFlatBranch))//if (muctVerb != verb && subject != complement)
-                        RepairFlatBranch(farFlatBranch, farOptimizedBranch, complement, verb);
+                    if (!RepairedFlatBranchCache.Contains(farFlatBranch))
+                        if (subject != complement)
+                            RepairFlatBranch(farFlatBranch, farOptimizedBranch, complement, verb);
 
                     HashSet<Concept> conceptAffectedByMuctVerb = farFlatBranch.ComplementConceptList;
 
@@ -349,7 +352,8 @@ namespace AntiCulture.Kid
                 ConnectionBranch farOptimizedBranch = subject.GetOptimizedConnectionBranch(dependantVerb);
 
                 if (!RepairedFlatBranchCache.Contains(farFlatBranch))
-                    RepairFlatBranch(farFlatBranch, farOptimizedBranch, subject, dependantVerb);
+                    if (dependantVerb != verb)
+                        RepairFlatBranch(farFlatBranch, farOptimizedBranch, subject, dependantVerb);
 
                 flatConnectionSetList.Add(dependantVerb, farFlatBranch.ComplementConceptList);
             }
@@ -397,7 +401,8 @@ namespace AntiCulture.Kid
                 ConnectionBranch farOptimizedBranch = farComplement.GetOptimizedConnectionBranch(farVerb);
 
                 if (!RepairedFlatBranchCache.Contains(farFlatBranch))
-                    RepairFlatBranch(farFlatBranch, farOptimizedBranch, farComplement, farVerb);
+                    if (farComplement != subject && farVerb != verb)
+                        RepairFlatBranch(farFlatBranch, farOptimizedBranch, farComplement, farVerb);
             }
 
             //We get the selection from the condition
