@@ -135,7 +135,8 @@ namespace AntiCulture.Kid
             mainWindow.UserOccurenceToSemantic += UserOccurenceToSemanticHandler;
             mainWindow.UserExtractOccurenceMatrix += UserExtractOccurenceMatrixHandler;
             mainWindow.UserExtractPhoneticMatrix += UserExtractPhoneticMatrixHandler;
-            mainWindow.UserScanMemory += UserScanMemoryHandler;
+            mainWindow.UserScanOptimizedMemory += UserScanOptimizedMemoryHandler;
+            mainWindow.UserScanFlatMemory += UserScanFlatMemoryHandler;
         }
         #endregion
 
@@ -932,14 +933,26 @@ namespace AntiCulture.Kid
         }
 
         /// <summary>
-        /// Scan memory for inconsistencies
+        /// Scan optimized memory for inconsistencies
         /// </summary>
         /// <param name="sender">source UI object</param>
         /// <param name="e">event</param>
-        private void UserScanMemoryHandler(object sender, EventArgs e)
+        private void UserScanOptimizedMemoryHandler(object sender, EventArgs e)
         {
             StopBackgroundThinker();
-            mainWindow.AddToOutputText(brain.ScanMemoryGetOutput(nameMapper));
+            mainWindow.AddToOutputText(brain.ScanMemoryGetOutput(nameMapper, false));
+            StartBackgroundThinker();
+        }
+
+        /// <summary>
+        /// Scan flat memory for inconsistencies
+        /// </summary>
+        /// <param name="sender">source UI object</param>
+        /// <param name="e">event</param>
+        private void UserScanFlatMemoryHandler(object sender, EventArgs e)
+        {
+            StopBackgroundThinker();
+            mainWindow.AddToOutputText(brain.ScanMemoryGetOutput(nameMapper, true));
             StartBackgroundThinker();
         }
         #endregion
