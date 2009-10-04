@@ -23,7 +23,7 @@ namespace AntiCulture.Kid
                 flatBranch = subject.GetFlatConnectionBranch(verb);
                 optimizedBranch = subject.GetOptimizedConnectionBranch(verb);
 
-                if (RepairedFlatBranchCache.Contains(flatBranch))
+                if (!RepairedFlatBranchCache.Contains(flatBranch))
                     RepairFlatBranch(flatBranch, optimizedBranch, subject, verb);
             }
 
@@ -48,7 +48,7 @@ namespace AntiCulture.Kid
 
             RepairedFlatBranchCache.Add(flatBranch);
 
-            Dictionary<ConnectionBranch, ConnectionBranch> branchesToRepair;
+            HashSet<ScheduledRepair> branchesToRepair;
 
             flatBranch.ComplementConceptList.Clear();
 
@@ -68,8 +68,9 @@ namespace AntiCulture.Kid
                     if (i == 0 || complementCount != flatBranch.ComplementConceptList.Count)
                     {
                         branchesToRepair = FlatBranchSelector.GetBranchesToRepair(flatBranch, optimizedBranch, subject, verb);
-                        foreach (KeyValuePair<ConnectionBranch, ConnectionBranch> currentBranch in branchesToRepair)
-                            RepairFlatBranch(currentBranch.Key, currentBranch.Value, subject, verb);
+                        foreach (ScheduledRepair scheduledRepair in branchesToRepair)
+                            if (!RepairedFlatBranchCache.Contains(scheduledRepair.FlatBranch))
+                                RepairFlatBranch(scheduledRepair.FlatBranch, scheduledRepair.OptimizedBranch, scheduledRepair.Subject, scheduledRepair.Verb);
                         complementCount = flatBranch.ComplementConceptList.Count;
                     }
 

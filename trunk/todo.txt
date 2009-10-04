@@ -1,46 +1,43 @@
-fix bug:
-instead of removing metaOperation "IF bird need tree AND tree madeof wood THEN bird need wood"
-to prevent memory corruption,
-add metaOperator "xor_to_and" for:
-
-
-xor_to_and should remove connections "allow" and "need" when flattenizing concepts
-and add "synergize" instead
-
-society allow social animal
-society need social animal
-BUG!!!
-
-add to instinct and memory:
-synergize xor_to_and need
-synergize xor_to_and make
-antagonize xor_to_and oppress
-
-
-add unit test for connection flattenization of xor_to_need
-
-when xor_to_and is succesfully implemented,
-add this feature:
-when explicitely trying to ovrrride need with synergize
-or
-when explicitely saying that bird need tree and tree need bird,
-just don't prevent user from doing so. Replace need and allow to synergize
-
-
-
-
 re-implement flattenizer but this time without the inconsistency bug
-(serial flattenizer)
+{
+	new name (serial flattenizer)
+	
+	fix flattenization so Ai starts with no inconsistency
+	and memory can be flattenized without reflattening root connections for each concept
+	
+	add xor_to_and to flattenization
+	{
+		fix bug:
+		instead of removing metaOperation "IF bird need tree AND tree madeof wood THEN bird need wood"
+		to prevent memory corruption,
+		add metaOperator "xor_to_and" for:
 
 
+		xor_to_and should remove connections "allow" and "need" when flattenizing concepts
+		and add "synergize" instead
+
+		society allow social animal
+		society need social animal
+		BUG!!!
+
+		add to instinct and memory:
+		synergize xor_to_and need
+		synergize xor_to_and make
+		antagonize xor_to_and oppress
 
 
+		add unit test for connection flattenization of xor_to_need
 
-
-fix flattenization so Ai starts with no inconsistency
-and memory can be flattenizing without reflattening root connections for each concept
-
-
+		when xor_to_and is succesfully implemented,
+		add this feature:
+		when explicitely trying to override need with synergize
+		or
+		when explicitely saying that bird need tree and tree need bird,
+		just don't prevent user from doing so. Replace need and allow to synergize
+	}
+	
+	dont repair memory after loading
+}
 
 
 
