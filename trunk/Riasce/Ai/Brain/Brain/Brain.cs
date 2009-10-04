@@ -1237,7 +1237,7 @@ namespace AntiCulture.Kid
             {
                 this.memory = memory;
                 aliaser.SetMemoryToLoad(memory);
-                Repairer.RepairRange(this.memory);
+                //Repairer.RepairRange(this.memory);
             }
             else
             {

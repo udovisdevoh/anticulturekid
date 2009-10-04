@@ -19,7 +19,7 @@ namespace AntiCulture.Kid
 
             HashSet<string> elementNameList = wikiCategoryPage.GetElementNameList();
 
-            if (elementNameList.Count < 40)
+            if (elementNameList.Count < 30)
                 throw new Exception("List is too small");
 
             if (!elementNameList.Contains("george_alberti"))
