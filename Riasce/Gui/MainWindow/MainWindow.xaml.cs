@@ -82,6 +82,8 @@ namespace AntiCulture.Kid
 
         public event EventHandler UserOccurenceToSemantic;
 
+        public event EventHandler UserScanMemory;
+
         public event EventHandler<StringEventArgs> OnVisualizerClickConcept;
 
         public event EventHandler<StringEventArgs> OnVisualizerClickWhyLink;
@@ -109,6 +111,13 @@ namespace AntiCulture.Kid
         #endregion
 
         #region Public Methods
+        public void AddToOutputText(string text)
+        {
+            Paragraph paragraph = new Paragraph();
+            paragraph.Inlines.Add(text);
+            AddToOutputText(paragraph);
+        }
+
         public void AddToOutputText(Paragraph paragraph)
         {
             if (tabControl.SelectedIndex == 1)
@@ -578,6 +587,11 @@ namespace AntiCulture.Kid
         private void menuItemOccurenceToSemantic_Click(object sender, RoutedEventArgs e)
         {
             if (UserOccurenceToSemantic != null) UserOccurenceToSemantic(this, e);
+        }
+
+        private void menuItem_ClickScanMemory(object sender, RoutedEventArgs e)
+        {
+            if (UserScanMemory != null) UserScanMemory(this, e);
         }
         #endregion
 

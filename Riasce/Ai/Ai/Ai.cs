@@ -135,6 +135,7 @@ namespace AntiCulture.Kid
             mainWindow.UserOccurenceToSemantic += UserOccurenceToSemanticHandler;
             mainWindow.UserExtractOccurenceMatrix += UserExtractOccurenceMatrixHandler;
             mainWindow.UserExtractPhoneticMatrix += UserExtractPhoneticMatrixHandler;
+            mainWindow.UserScanMemory += UserScanMemoryHandler;
         }
         #endregion
 
@@ -928,6 +929,18 @@ namespace AntiCulture.Kid
             }
 
             //brain.StartBackgroundThinker(nameMapper);
+        }
+
+        /// <summary>
+        /// Scan memory for inconsistencies
+        /// </summary>
+        /// <param name="sender">source UI object</param>
+        /// <param name="e">event</param>
+        private void UserScanMemoryHandler(object sender, EventArgs e)
+        {
+            StopBackgroundThinker();
+            mainWindow.AddToOutputText(brain.ScanMemoryGetOutput(nameMapper));
+            StartBackgroundThinker();
         }
         #endregion
     }

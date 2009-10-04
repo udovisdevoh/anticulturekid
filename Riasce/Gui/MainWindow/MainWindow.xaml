@@ -44,6 +44,7 @@
                 <MenuItem Header="_Open" Command="ApplicationCommands.Open"/>
                 <MenuItem Header="_Save" Command="ApplicationCommands.Save"/>
                 <MenuItem Header="Save As" Command="ApplicationCommands.SaveAs"/>
+                <MenuItem Header="Scan Memory" Click="menuItem_ClickScanMemory"/>
                 <Separator />
                 <MenuItem Header="Print Visualizer" Command="ApplicationCommands.Print"/>
                 <Separator />

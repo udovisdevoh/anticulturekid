@@ -1293,6 +1293,17 @@ namespace AntiCulture.Kid
         {
             backgroundThinker.RemoveExistingConnections();
         }
+
+        /// <summary>
+        /// Scan memory for inconsistency and return output
+        /// </summary>
+        /// <param name="nameMapper">name mapper</param>
+        /// <returns>Memory scanning output</returns>
+        public string ScanMemoryGetOutput(NameMapper nameMapper)
+        {
+            Repairer.RepairRange(memory);
+            return Scanner.ScanMemoryGetOutput(memory, nameMapper);
+        }
         #endregion
 
         #region Properties
