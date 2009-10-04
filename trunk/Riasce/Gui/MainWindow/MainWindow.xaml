@@ -44,7 +44,6 @@
                 <MenuItem Header="_Open" Command="ApplicationCommands.Open"/>
                 <MenuItem Header="_Save" Command="ApplicationCommands.Save"/>
                 <MenuItem Header="Save As" Command="ApplicationCommands.SaveAs"/>
-                <MenuItem Header="Scan Memory" Click="menuItem_ClickScanMemory"/>
                 <Separator />
                 <MenuItem Header="Print Visualizer" Command="ApplicationCommands.Print"/>
                 <Separator />
@@ -72,6 +71,10 @@
                 <MenuItem Header="_Word transition to semantic matrix" Click="menuItemOccurenceToSemantic_Click" />
                 <Separator />
                 <MenuItem Header="Extract _phonetic matrix" Click="menuItemExtractPhoneticMatrix_Click" />
+            </MenuItem>
+            <MenuItem Header="_Diagnostics">
+                <MenuItem Header="Scan Optimized Memory" Click="menuItem_ClickScanOptimizedMemory"/>
+                <MenuItem Header="Scan Flat Memory" Click="menuItem_ClickScanFlatMemory"/>
             </MenuItem>
             <MenuItem Header="_Help">
                 <MenuItem Header="_How To Use" Command="ApplicationCommands.Help"/>

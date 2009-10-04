@@ -1237,7 +1237,7 @@ namespace AntiCulture.Kid
             {
                 this.memory = memory;
                 aliaser.SetMemoryToLoad(memory);
-                //Repairer.RepairRange(this.memory);
+                Repairer.RepairRange(this.memory);
             }
             else
             {
@@ -1298,11 +1298,12 @@ namespace AntiCulture.Kid
         /// Scan memory for inconsistency and return output
         /// </summary>
         /// <param name="nameMapper">name mapper</param>
+        /// <param name="isFlatMode">whether whe scan flat memory</param>
         /// <returns>Memory scanning output</returns>
-        public string ScanMemoryGetOutput(NameMapper nameMapper)
+        public string ScanMemoryGetOutput(NameMapper nameMapper, bool isFlatMode)
         {
             Repairer.RepairRange(memory);
-            return Scanner.ScanMemoryGetOutput(memory, nameMapper);
+            return Scanner.ScanMemoryGetOutput(memory, nameMapper, isFlatMode);
         }
         #endregion
 

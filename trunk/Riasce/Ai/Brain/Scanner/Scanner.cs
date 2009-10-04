@@ -13,8 +13,9 @@ namespace AntiCulture.Kid
         /// </summary>
         /// <param name="memory">memory</param>
         /// <param name="nameMapper">name mapper</param>
+        /// <param name="isFlatMode">whether we scan flat memory</param>
         /// <returns>memory scanning output</returns>
-        public static string ScanMemoryGetOutput(Memory memory, NameMapper nameMapper)
+        public static string ScanMemoryGetOutput(Memory memory, NameMapper nameMapper, bool isFlatMode)
         {
             string output = "\n";
             int count = 0;
@@ -24,11 +25,24 @@ namespace AntiCulture.Kid
                 {
                     HashSet<Concept> inverseOfVerbList = GetInverseOrPermutableVerbList(verb);
 
-                    foreach (Concept complement in subject.GetFlatConnectionBranch(verb).ComplementConceptList)
+                    HashSet<Concept> subjectComplementList;
+                    if (isFlatMode)
+                        subjectComplementList = subject.GetFlatConnectionBranch(verb).ComplementConceptList;
+                    else
+                        subjectComplementList = subject.GetOptimizedConnectionBranch(verb).ComplementConceptList;
+
+                    foreach (Concept complement in subjectComplementList)
                     {
                         foreach (Concept currentInverseVerb in inverseOfVerbList)
                         {
-                            if (!complement.GetFlatConnectionBranch(currentInverseVerb).ComplementConceptList.Contains(subject))
+
+                            HashSet<Concept> complementSubjectList;
+                            if (isFlatMode)
+                                complementSubjectList = complement.GetFlatConnectionBranch(currentInverseVerb).ComplementConceptList;
+                            else
+                                complementSubjectList = complement.GetOptimizedConnectionBranch(currentInverseVerb).ComplementConceptList;
+
+                            if (!complementSubjectList.Contains(subject))
                             {
                                 output += GetFormatedInconsistency(subject, verb, complement, currentInverseVerb, nameMapper, memory);
                                 count++;
