@@ -39,6 +39,8 @@ namespace AntiCulture.Kid
             regexList.Add(new Regex(@"\Avisualize_why not [a-z0-9_()]+ [a-z0-9_()]+\Z"));
             //asking not
             regexList.Add(new Regex(@"\Anot [a-z0-9_()]+ [a-z0-9_()]+ [a-z0-9_()]+\Z"));
+            //asking not
+            regexList.Add(new Regex(@"\Anot imply [a-z0-9_()]+ [a-z0-9_()]+\Z"));
             //asking why not
             regexList.Add(new Regex(@"\Awhy not [a-z0-9_()]+ [a-z0-9_()]+ [a-z0-9_()]+\Z"));
             //asking visualize_why not

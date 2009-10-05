@@ -1,3 +1,6 @@
+add a menu function: "export knowledge (for future generations)"
+
+
 re-implement flattenizer but this time without the inconsistency bug
 {
 	new name (serial flattenizer)

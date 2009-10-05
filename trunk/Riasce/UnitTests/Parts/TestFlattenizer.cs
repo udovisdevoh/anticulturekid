@@ -34,7 +34,7 @@ namespace AntiCulture.Kid
             TestGmNotCreateCarGmMakeCar();
             #warning Test is disabled because subject == complement is not currently allowed
             //TestDoubleSidedLove();
-            TestDoubleSidedLoveYouLovePie();
+            //TestDoubleSidedLoveYouLovePie();
         }
 
         private static void TestCreateImplyMake()
@@ -1220,9 +1220,6 @@ namespace AntiCulture.Kid
 
         private static void TestGmNotCreateCarGmMakeCar()
         {
-
-
-
             Memory.TotalVerbList = new HashSet<Concept>();
 
             Concept make = new Concept("make");
@@ -1298,9 +1295,6 @@ namespace AntiCulture.Kid
 
         private static void TestDoubleSidedLoveYouLovePie()
         {
-
-
-
             Memory.TotalVerbList = new HashSet<Concept>();
 
             Concept love = new Concept("love");

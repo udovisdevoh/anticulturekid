@@ -21,8 +21,8 @@ namespace AntiCulture.Kid
             HashSet<ScheduledRepair> branchesToRepair = new HashSet<ScheduledRepair>();
 
             AddBranchesToRepairFromDirectImplication(branchesToRepair, flatBranch, optimizedBranch, subject, verb);
-            AddBranchesToRepairFromMuct(branchesToRepair, flatBranch, optimizedBranch, subject, verb);
             AddBranchesToRepairFromLiffid(branchesToRepair, flatBranch, optimizedBranch, subject, verb);
+            AddBranchesToRepairFromMuct(branchesToRepair, flatBranch, optimizedBranch, subject, verb);
             AddBranchesToRepairFromNegativeImply(branchesToRepair, flatBranch, optimizedBranch, subject, verb);
             AddBranchesToRepairFromPositiveImply(branchesToRepair, flatBranch, optimizedBranch, subject, verb);
 
@@ -53,7 +53,7 @@ namespace AntiCulture.Kid
                 ConnectionBranch farFlatBranch = subject.GetFlatConnectionBranch(directlyImpliedVerb);
                 ConnectionBranch farOptimizedBranch = subject.GetOptimizedConnectionBranch(directlyImpliedVerb);
 
-                if (!RepairedFlatBranchCache.Contains(farFlatBranch))
+                if (!RepairedFlatBranchCache.Contains(farFlatBranch) && flatBranch != farFlatBranch)
                     branchesToRepair.Add(new ScheduledRepair(farFlatBranch, farOptimizedBranch,subject,verb));
             }
         }
@@ -84,7 +84,7 @@ namespace AntiCulture.Kid
                     ConnectionBranch farFlatBranch = complement.GetFlatConnectionBranch(verb);
                     ConnectionBranch farOptimizedBranch = complement.GetOptimizedConnectionBranch(verb);
 
-                    if (!RepairedFlatBranchCache.Contains(farFlatBranch))
+                    if (!RepairedFlatBranchCache.Contains(farFlatBranch) && farFlatBranch != flatBranch)
                         branchesToRepair.Add(new ScheduledRepair(farFlatBranch, farOptimizedBranch, complement, verb));
                 }
             }
@@ -116,7 +116,7 @@ namespace AntiCulture.Kid
                     ConnectionBranch farFlatBranch = complement.GetFlatConnectionBranch(liffidVerb);
                     ConnectionBranch farOptimizedBranch = complement.GetOptimizedConnectionBranch(liffidVerb);
 
-                    if (!RepairedFlatBranchCache.Contains(farFlatBranch))
+                    if (!RepairedFlatBranchCache.Contains(farFlatBranch) && farFlatBranch != flatBranch)
                         branchesToRepair.Add(new ScheduledRepair(farFlatBranch, farOptimizedBranch, complement, liffidVerb));
                 }
             }
@@ -192,7 +192,7 @@ namespace AntiCulture.Kid
                 ConnectionBranch farFlatBranch = subject.GetFlatConnectionBranch(dependantVerb);
                 ConnectionBranch farOptimizedBranch = subject.GetOptimizedConnectionBranch(dependantVerb);
 
-                if (!RepairedFlatBranchCache.Contains(farFlatBranch))
+                if (!RepairedFlatBranchCache.Contains(farFlatBranch) && farFlatBranch != flatBranch)
                     branchesToRepair.Add(new ScheduledRepair(farFlatBranch,farOptimizedBranch,subject,dependantVerb));
             }
         }
@@ -222,7 +222,7 @@ namespace AntiCulture.Kid
                 ConnectionBranch farFlatBranch = farComplement.GetFlatConnectionBranch(farVerb);
                 ConnectionBranch farOptimizedBranch = farComplement.GetOptimizedConnectionBranch(farVerb);
 
-                if (!RepairedFlatBranchCache.Contains(farFlatBranch))
+                if (!RepairedFlatBranchCache.Contains(farFlatBranch) && farFlatBranch != flatBranch)
                     branchesToRepair.Add(new ScheduledRepair(farFlatBranch, farOptimizedBranch, farComplement, farVerb));
             }
         }
