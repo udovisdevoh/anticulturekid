@@ -28,22 +28,22 @@ namespace AntiCulture.Kid
             ConnectionBranch flatBranch;
             ConnectionBranch optimizedBranch;
             
-            foreach (Concept verb in Memory.TotalVerbList)
+            try
             {
-                flatBranch = subject.GetFlatConnectionBranch(verb);
-                optimizedBranch = subject.GetOptimizedConnectionBranch(verb);
-
-                try
+                foreach (Concept verb in Memory.TotalVerbList)
                 {
+                    flatBranch = subject.GetFlatConnectionBranch(verb);
+                    optimizedBranch = subject.GetOptimizedConnectionBranch(verb);
+
                     #warning Optimization is disabled because it creates memory corruption
                     //if (!RepairedFlatBranchCache.Contains(flatBranch))
                     RepairFlatBranch(flatBranch, optimizedBranch, subject, verb);
                 }
-                catch (CyclicFlatBranchDependencyException e)
-                {
-                    e.AddToProofStackTrace(subject, verb);
-                    throw e;
-                }
+
+            }
+            catch (CyclicFlatBranchDependencyException e)
+            {
+                throw e;
             }
 
             subject.IsFlatDirty = false;
@@ -60,6 +60,8 @@ namespace AntiCulture.Kid
         /// <returns>repaired flat branch</returns>
         private ConnectionBranch RepairFlatBranch(ConnectionBranch flatBranch, ConnectionBranch optimizedBranch, Concept subject, Concept verb)
         {
+            //RepairedFlatBranchCache.Add(flatBranch);
+
             int complementCount;
 
             if (encounteredBranchList.Contains(flatBranch) && !RepairedFlatBranchCache.Contains(flatBranch))
