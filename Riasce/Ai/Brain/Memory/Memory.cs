@@ -163,6 +163,15 @@ namespace AntiCulture.Kid
             get { return conceptList.Count; }
         }
 
+        /// <summary>
+        /// Remove all dirty flat concept flags
+        /// </summary>
+        public void RemoveAllFlatDirtFlags()
+        {
+            foreach (Concept concept in this)
+                concept.IsFlatDirty = false;
+        }
+
         public void CopyTo(Concept[] array, int arrayIndex)
         {
             conceptList.Values.CopyTo(array, arrayIndex);

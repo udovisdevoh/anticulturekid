@@ -231,6 +231,16 @@ namespace AntiCulture.Kid
                 MetaConnectionManager.RemoveMetaConnection(operator1, metaOperatorName, operator2);
                 Repairer.RepairRange(memory);
             }
+            catch (CyclicFlatBranchDependencyException e)
+            {
+                MetaConnectionManager.RemoveMetaConnection(operator1, metaOperatorName, operator2);
+                memory.RemoveAllFlatDirtFlags();
+                Repairer.RepairRange(memory);
+                e.ProofStackTraceById = e.GetProofStackTraceById(memory);
+                RepairedFlatBranchCache.Clear();
+                Repairer.RepairRange(memory);
+                throw e;
+            }
             finally
             {
                 Repairer.ReciprocateRange(memory);
