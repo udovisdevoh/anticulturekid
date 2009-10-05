@@ -27,7 +27,7 @@ namespace AntiCulture.Kid
                 ConnectionBranch farFlatBranch = subject.GetFlatConnectionBranch(directlyImpliedVerb);
                 ConnectionBranch farOptimizedBranch = subject.GetOptimizedConnectionBranch(directlyImpliedVerb);
 
-                if (!RepairedFlatBranchCache.Contains(farFlatBranch))
+                if (!RepairedFlatBranchCache.Contains(farFlatBranch) && flatBranch != farFlatBranch)
                     throw new FlattenizationException("Branch should already be repaired by now but isn't repaired yet");
 
                 foreach (Concept complement in farFlatBranch.ComplementConceptList)
@@ -55,6 +55,9 @@ namespace AntiCulture.Kid
                                 flatBranch.GetProofTo(complement).AddArgument(subject, directlyImpliedVerb, complement);
                         }
                     }
+
+                    if (flatBranch.GetProofTo(complement) == null)
+                        flatBranch.SetProofTo(complement, new Proof(subject,verb,complement));
 
                     if (flatBranch.GetProofTo(complement).ContainsArgument(subject, verb, complement))
                         throw new TotologyException("Trying to prove something with itself");
@@ -93,7 +96,7 @@ namespace AntiCulture.Kid
                     ConnectionBranch farFlatBranch = complement.GetFlatConnectionBranch(verb);
                     ConnectionBranch farOptimizedBranch = complement.GetOptimizedConnectionBranch(verb);
 
-                    if (!RepairedFlatBranchCache.Contains(farFlatBranch))
+                    if (!RepairedFlatBranchCache.Contains(farFlatBranch) && farFlatBranch != flatBranch)
                         throw new FlattenizationException("Branch should already be repaired by now but isn't repaired yet");
 
                     HashSet<Concept> conceptAffectedByMuctVerb = farFlatBranch.ComplementConceptList;
@@ -336,7 +339,7 @@ namespace AntiCulture.Kid
                 ConnectionBranch farFlatBranch = subject.GetFlatConnectionBranch(dependantVerb);
                 ConnectionBranch farOptimizedBranch = subject.GetOptimizedConnectionBranch(dependantVerb);
 
-                if (!RepairedFlatBranchCache.Contains(farFlatBranch))
+                if (!RepairedFlatBranchCache.Contains(farFlatBranch) && farFlatBranch != flatBranch)
                     throw new FlattenizationException("Branch should already be repaired by now but isn't repaired yet");
 
                 flatConnectionSetList.Add(dependantVerb, farFlatBranch.ComplementConceptList);
