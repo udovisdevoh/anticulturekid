@@ -12,6 +12,10 @@ namespace AntiCulture.Kid
     {
         #region Private Fields
         private HashSet<ConnectionBranch> encounteredBranchList = new HashSet<ConnectionBranch>();
+
+        private static bool invertMuctAndLiffidOrder = false;
+
+        private static Random random = new Random();
         #endregion
 
         #region Public Methods
@@ -23,27 +27,28 @@ namespace AntiCulture.Kid
         /// <param name="subject">concept to repair</param>
         public override void Repair(Concept subject)
         {
+            invertMuctAndLiffidOrder = (random.Next(2) == 1) ? true : false;
+
             encounteredBranchList.Clear();
 
             ConnectionBranch flatBranch;
             ConnectionBranch optimizedBranch;
             
-            try
+            foreach (Concept verb in Memory.TotalVerbList)
             {
-                foreach (Concept verb in Memory.TotalVerbList)
-                {
-                    flatBranch = subject.GetFlatConnectionBranch(verb);
-                    optimizedBranch = subject.GetOptimizedConnectionBranch(verb);
+                flatBranch = subject.GetFlatConnectionBranch(verb);
+                optimizedBranch = subject.GetOptimizedConnectionBranch(verb);
 
+                try
+                {
                     #warning Optimization is disabled because it creates memory corruption
                     //if (!RepairedFlatBranchCache.Contains(flatBranch))
                     RepairFlatBranch(flatBranch, optimizedBranch, subject, verb);
                 }
-
-            }
-            catch (CyclicFlatBranchDependencyException e)
-            {
-                throw e;
+                catch (CyclicFlatBranchDependencyException e)
+                {
+                    throw e;
+                }
             }
 
             subject.IsFlatDirty = false;
@@ -81,8 +86,16 @@ namespace AntiCulture.Kid
             {
                 complementCount = flatBranch.ComplementConceptList.Count;
                 FlattenDirectImplication(flatBranch, subject, verb);
-                FlattenLiffid(flatBranch, subject, verb);
-                FlattenMuct(flatBranch, subject, verb);
+                if (invertMuctAndLiffidOrder)
+                {
+                    FlattenMuct(flatBranch, subject, verb);
+                    FlattenLiffid(flatBranch, subject, verb);
+                }
+                else
+                {
+                    FlattenLiffid(flatBranch, subject, verb);
+                    FlattenMuct(flatBranch, subject, verb);
+                }
                 FlattenPositiveImply(flatBranch, subject, verb);
                 FlattenNegativeImply(flatBranch, subject, verb);
             }

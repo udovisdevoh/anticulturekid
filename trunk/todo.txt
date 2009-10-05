@@ -4,6 +4,8 @@ add a menu function: "export knowledge (for future generations)"
 repair main flat branch: set branch to repaired after it's repaired
 fix stack overflow:
 load instinct
+IF bird need tree AND tree madeof wood THEN bird need wood
+IF lifeform madeof cell AND cell need water THEN lifeform need water
 animal partof nature
 animal need nature
 when preventing user from making infinite flat repair dependency loops
