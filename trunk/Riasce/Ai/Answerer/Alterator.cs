@@ -86,11 +86,22 @@ namespace AntiCulture.Kid
             }
             else
             {
-                trauma = brain.TryAddConnection(
-                    nameMapper.GetOrCreateConceptId(statement.GetConceptName(0)),
-                    nameMapper.GetOrCreateConceptId(statement.GetConceptName(1)),
-                    nameMapper.GetOrCreateConceptId(statement.GetConceptName(2))
-                    );
+                try
+                {
+                    trauma = brain.TryAddConnection(
+                        nameMapper.GetOrCreateConceptId(statement.GetConceptName(0)),
+                        nameMapper.GetOrCreateConceptId(statement.GetConceptName(1)),
+                        nameMapper.GetOrCreateConceptId(statement.GetConceptName(2))
+                        );
+                }
+                catch (CyclicFlatBranchDependencyException e)
+                {
+                    string newMessage = "Connection: " + statement.GetConceptName(0) + " " + statement.GetConceptName(1) + " " + statement.GetConceptName(2) + " was rejected because it creates an infinite dependency loop";
+                    if (e.ProofStackTraceById != null)
+                        newMessage += "\nTrace: " + e.GetProofStackTraceByString(nameMapper);
+
+                    throw new CyclicFlatBranchDependencyException(newMessage);
+                }
             }
             return trauma;
         }

@@ -1,7 +1,14 @@
 add a menu function: "export knowledge (for future generations)"
 
 
-?eventually only consider a flat branch to be repaired AFTER it has been repaired instead of before?
+repair main flat branch: set branch to repaired after it's repaired
+fix stack overflow:
+load instinct
+animal partof nature
+animal need nature
+when preventing user from making infinite flat repair dependency loops
+for instance: suggest to use "synergize" instead of need because synergize xor_to_and need
+
 
 
 re-implement flattenizer but this time without the inconsistency bug
