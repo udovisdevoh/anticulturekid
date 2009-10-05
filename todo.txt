@@ -1,6 +1,9 @@
 add a menu function: "export knowledge (for future generations)"
 
 
+?eventually only consider a flat branch to be repaired AFTER it has been repaired instead of before?
+
+
 re-implement flattenizer but this time without the inconsistency bug
 {
 	new name (serial flattenizer)
