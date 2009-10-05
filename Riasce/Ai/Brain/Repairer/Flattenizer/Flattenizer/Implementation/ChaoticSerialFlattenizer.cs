@@ -10,6 +10,10 @@ namespace AntiCulture.Kid
     /// </summary>
     class ChaoticSerialFlattenizer : AbstractFlattenizer
     {
+        #region Private Fields
+        private HashSet<ConnectionBranch> encounteredBranchList = new HashSet<ConnectionBranch>();
+        #endregion
+
         #region Public Methods
         /// <summary>
         /// Repair a concept's flat representation and regenerate its optimized representation
@@ -19,6 +23,8 @@ namespace AntiCulture.Kid
         /// <param name="subject">concept to repair</param>
         public override void Repair(Concept subject)
         {
+            encounteredBranchList.Clear();
+
             ConnectionBranch flatBranch;
             ConnectionBranch optimizedBranch;
             
@@ -27,9 +33,17 @@ namespace AntiCulture.Kid
                 flatBranch = subject.GetFlatConnectionBranch(verb);
                 optimizedBranch = subject.GetOptimizedConnectionBranch(verb);
 
-                #warning Optimization is disabled because it creates memory corruption
-                //if (!RepairedFlatBranchCache.Contains(flatBranch))
-                RepairFlatBranch(flatBranch, optimizedBranch, subject, verb);
+                try
+                {
+                    #warning Optimization is disabled because it creates memory corruption
+                    //if (!RepairedFlatBranchCache.Contains(flatBranch))
+                    RepairFlatBranch(flatBranch, optimizedBranch, subject, verb);
+                }
+                catch (CyclicFlatBranchDependencyException e)
+                {
+                    e.AddToProofStackTrace(subject, verb);
+                    throw e;
+                }
             }
 
             subject.IsFlatDirty = false;
@@ -48,7 +62,10 @@ namespace AntiCulture.Kid
         {
             int complementCount;
 
-            RepairedFlatBranchCache.Add(flatBranch);
+            if (encounteredBranchList.Contains(flatBranch) && !RepairedFlatBranchCache.Contains(flatBranch))
+                throw new CyclicFlatBranchDependencyException("This branch is needed to repair itself", subject, verb);
+
+            encounteredBranchList.Add(flatBranch);
 
             flatBranch.ComplementConceptList.Clear();
 
@@ -70,6 +87,8 @@ namespace AntiCulture.Kid
             while (flatBranch.ComplementConceptList.Count != complementCount);
 
             flatBranch.IsDirty = false;
+
+            RepairedFlatBranchCache.Add(flatBranch);
 
             return flatBranch;
         }
@@ -93,9 +112,17 @@ namespace AntiCulture.Kid
                 ConnectionBranch farFlatBranch = subject.GetFlatConnectionBranch(directlyImpliedVerb);
                 ConnectionBranch farOptimizedBranch = subject.GetOptimizedConnectionBranch(directlyImpliedVerb);
 
-                if (!RepairedFlatBranchCache.Contains(farFlatBranch))
-                    if (directlyImpliedVerb != verb)
-                        RepairFlatBranch(farFlatBranch, farOptimizedBranch, subject, directlyImpliedVerb);
+                try
+                {
+                    if (!RepairedFlatBranchCache.Contains(farFlatBranch))
+                        if (directlyImpliedVerb != verb)
+                            RepairFlatBranch(farFlatBranch, farOptimizedBranch, subject, directlyImpliedVerb);
+                }
+                catch (CyclicFlatBranchDependencyException e)
+                {
+                    e.AddToProofStackTrace(subject, verb);
+                    throw e;
+                }
 
                 foreach (Concept complement in farFlatBranch.ComplementConceptList)
                 {
@@ -160,10 +187,17 @@ namespace AntiCulture.Kid
                     ConnectionBranch farFlatBranch = complement.GetFlatConnectionBranch(liffidVerb);
                     ConnectionBranch farOptimizedBranch = complement.GetOptimizedConnectionBranch(liffidVerb);
 
-                    if (!RepairedFlatBranchCache.Contains(farFlatBranch))//if (liffidVerb != verb && subject != complement)
-                        if (complement != subject && liffidVerb != verb)
-                            RepairFlatBranch(farFlatBranch, farOptimizedBranch, complement, liffidVerb);
-
+                    try
+                    {
+                        if (!RepairedFlatBranchCache.Contains(farFlatBranch))//if (liffidVerb != verb && subject != complement)
+                            if (complement != subject && liffidVerb != verb)
+                                RepairFlatBranch(farFlatBranch, farOptimizedBranch, complement, liffidVerb);
+                    }
+                    catch (CyclicFlatBranchDependencyException e)
+                    {
+                        e.AddToProofStackTrace(subject, verb);
+                        throw e;
+                    }
 
                     HashSet<Concept> conceptAffectedByLiffidVerb = farFlatBranch.ComplementConceptList;
 
@@ -230,9 +264,18 @@ namespace AntiCulture.Kid
                 {
                     ConnectionBranch farFlatBranch = complement.GetFlatConnectionBranch(verb);
                     ConnectionBranch farOptimizedBranch = complement.GetOptimizedConnectionBranch(verb);
-                    if (!RepairedFlatBranchCache.Contains(farFlatBranch))
-                        if (subject != complement)
-                            RepairFlatBranch(farFlatBranch, farOptimizedBranch, complement, verb);
+
+                    try
+                    {
+                        if (!RepairedFlatBranchCache.Contains(farFlatBranch))
+                            if (subject != complement)
+                                RepairFlatBranch(farFlatBranch, farOptimizedBranch, complement, verb);
+                    }
+                    catch (CyclicFlatBranchDependencyException e)
+                    {
+                        e.AddToProofStackTrace(subject, verb);
+                        throw e;
+                    }
 
                     HashSet<Concept> conceptAffectedByMuctVerb = farFlatBranch.ComplementConceptList;
 
@@ -351,9 +394,17 @@ namespace AntiCulture.Kid
                 ConnectionBranch farFlatBranch = subject.GetFlatConnectionBranch(dependantVerb);
                 ConnectionBranch farOptimizedBranch = subject.GetOptimizedConnectionBranch(dependantVerb);
 
-                if (!RepairedFlatBranchCache.Contains(farFlatBranch))
-                    if (dependantVerb != verb)
-                        RepairFlatBranch(farFlatBranch, farOptimizedBranch, subject, dependantVerb);
+                try
+                {
+                    if (!RepairedFlatBranchCache.Contains(farFlatBranch))
+                        if (dependantVerb != verb)
+                            RepairFlatBranch(farFlatBranch, farOptimizedBranch, subject, dependantVerb);
+                }
+                catch (CyclicFlatBranchDependencyException e)
+                {
+                    e.AddToProofStackTrace(subject, verb);
+                    throw e;
+                }
 
                 flatConnectionSetList.Add(dependantVerb, farFlatBranch.ComplementConceptList);
             }
@@ -400,9 +451,17 @@ namespace AntiCulture.Kid
                 ConnectionBranch farFlatBranch = farComplement.GetFlatConnectionBranch(farVerb);
                 ConnectionBranch farOptimizedBranch = farComplement.GetOptimizedConnectionBranch(farVerb);
 
-                if (!RepairedFlatBranchCache.Contains(farFlatBranch))
-                    if (farComplement != subject && farVerb != verb)
-                        RepairFlatBranch(farFlatBranch, farOptimizedBranch, farComplement, farVerb);
+                try
+                {
+                    if (!RepairedFlatBranchCache.Contains(farFlatBranch))
+                        if (farComplement != subject && farVerb != verb)
+                            RepairFlatBranch(farFlatBranch, farOptimizedBranch, farComplement, farVerb);
+                }
+                catch (CyclicFlatBranchDependencyException e)
+                {
+                    e.AddToProofStackTrace(subject, verb);
+                    throw e;
+                }
             }
 
             //We get the selection from the condition

@@ -74,12 +74,21 @@ namespace AntiCulture.Kid
 
                 if (!ConnectionManager.DisableFlattenizeAndOptimizeAndPurify)
                 {
-                    Repairer.Repair(subject, verb, complement);    
-                    #warning PurifyFlat is temporarly disabled
-                    /*
-                    trauma = Purifier.PurifyFlat(subject);
-                    Repairer.Repair(subject, complement);
-                    */
+                    try
+                    {
+                        Repairer.Repair(subject, verb, complement);
+                    }
+                    catch (CyclicFlatBranchDependencyException e)
+                    {
+                        subject.IsFlatDirty = false;
+                        verb.IsFlatDirty = false;
+                        complement.IsFlatDirty = false;
+                        ConnectionManager.UnPlug(subject, verb, complement);
+                        RepairedFlatBranchCache.Clear();
+                        Repairer.Repair(subject, verb, complement);
+                        e.ProofStackTraceById = e.GetProofStackTraceById(memory);
+                        throw e;
+                    }
                 }
             }
             return trauma;

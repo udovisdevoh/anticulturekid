@@ -29,6 +29,19 @@ namespace AntiCulture.Kid
             connectionList.Add(new List<Concept>() { nonSenseSubject, nonSenseVerb, nonSenseComplement, sourceSubject, sourceVerb, sourceComplement });
         }
 
+        /// <summary>
+        /// Add a connection and its source stub to trauma
+        /// </summary>
+        /// <param name="nonSenseSubject">non-sense subject</param>
+        /// <param name="nonSenseVerb">non-sense verb</param>
+        /// <param name="nonSenseComplement">non-sense complement</param>
+        /// <param name="sourceSubject">source subject</param>
+        /// <param name="sourceVerb">source verb</param>
+        public void Add(Concept nonSenseSubject, Concept nonSenseVerb, Concept nonSenseComplement, Concept sourceSubject, Concept sourceVerb)
+        {
+            connectionList.Add(new List<Concept>() { nonSenseSubject, nonSenseVerb, nonSenseComplement, sourceSubject, sourceVerb });
+        }
+
         public IEnumerator<List<Concept>> GetEnumerator()
         {
             return connectionList.GetEnumerator();
