@@ -124,11 +124,22 @@ namespace AntiCulture.Kid
             }
             else
             {
-                trauma = brain.TryAddMetaConnection(
-                    nameMapper.GetOrCreateConceptId(statement.GetConceptName(0)),
-                    statement.MetaOperatorName,
-                    nameMapper.GetOrCreateConceptId(statement.GetConceptName(1))
-                    );
+                try
+                {
+                    trauma = brain.TryAddMetaConnection(
+                        nameMapper.GetOrCreateConceptId(statement.GetConceptName(0)),
+                        statement.MetaOperatorName,
+                        nameMapper.GetOrCreateConceptId(statement.GetConceptName(1))
+                        );
+                }
+                catch (CyclicFlatBranchDependencyException e)
+                {
+                    string newMessage = "MetaConnection: " + statement.GetConceptName(0) + " " + statement.MetaOperatorName + " " + statement.GetConceptName(1) + " was rejected because it creates an infinite dependency loop";
+                    if (e.ProofStackTraceById != null)
+                        newMessage += "\nTrace: " + e.GetProofStackTraceByString(nameMapper);
+
+                    throw new CyclicFlatBranchDependencyException(newMessage);
+                }
             }
             return trauma;
         }

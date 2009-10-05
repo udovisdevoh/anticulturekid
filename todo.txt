@@ -25,6 +25,11 @@ when flattenizing, shuffle order by which MUCT and LIFFID are flattenized
 
 
 
+
+
+load memory in safe mode when find infinite dependencies
+
+
 adding metaConnections and imply connections that create
 infinite dependencies will be prevented
 
