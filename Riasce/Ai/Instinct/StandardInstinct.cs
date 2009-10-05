@@ -58,10 +58,10 @@ namespace AntiCulture.Kid
 
             //Need AND Allow
             Add("IF bird need tree AND tree need light THEN bird need light");
-            Add("IF bird need tree AND tree madeof wood THEN bird need wood");
+            //Add("IF bird need tree AND tree madeof wood THEN bird need wood");//Recently removed
             Add("IF bird need tree AND tree isa lifeform THEN bird need lifeform");
             Add("IF crow isa bird AND bird need tree THEN crow need tree");
-            Add("IF lifeform madeof cell AND cell need water THEN lifeform need water");
+            //Add("IF lifeform madeof cell AND cell need water THEN lifeform need water");//Recently removed
 
             //Make AND MadeBy
             Add("IF daughter madeby mother THEN daughter CANT make mother");

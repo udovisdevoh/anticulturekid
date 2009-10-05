@@ -11,6 +11,22 @@ for instance: suggest to use "synergize" instead of need because synergize xor_t
 
 
 
+add metaOperator "likely"
+add to instinct and memory
+"madeof" likely "synergize"
+
+
+set memory to "need to save" when remove imply connection
+
+
+when flattenizing, shuffle order by which MUCT and LIFFID are flattenized
+
+
+
+adding metaConnections and imply connections that create
+infinite dependencies will be prevented
+
+
 re-implement flattenizer but this time without the inconsistency bug
 {
 	new name (serial flattenizer)
