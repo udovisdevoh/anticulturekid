@@ -17,7 +17,7 @@ namespace AntiCulture.Kid
         /// <returns>memory scanning output</returns>
         public static string ScanMemoryGetOutput(Memory memory, NameMapper nameMapper, bool isFlatMode)
         {
-            string output = "\n";
+            string output = string.Empty;
             int count = 0;
             foreach (Concept subject in memory)
             {
@@ -52,7 +52,9 @@ namespace AntiCulture.Kid
                 }
             }
 
-            output += "\nMemory scanning finished. Total inconsistencies found: " + count;
+            string inconsistencyType = isFlatMode ? "flat" : "optimized";
+
+            output += "\nMemory scanning finished. Total " + inconsistencyType + " inconsistencies found: " + count;
 
             return output;
         }

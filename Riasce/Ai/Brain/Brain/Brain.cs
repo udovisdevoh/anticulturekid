@@ -1256,7 +1256,8 @@ namespace AntiCulture.Kid
             {
                 this.memory = memory;
                 aliaser.SetMemoryToLoad(memory);
-                Repairer.RepairRange(this.memory);
+                #warning Disabled repair of memory when loading, not sure yet whether it's a good thing or not
+                //Repairer.RepairRange(this.memory);
             }
             else
             {

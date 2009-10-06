@@ -74,28 +74,6 @@ kind of uml flowchart diagram)
 
 
 
-
-fix bug in autocomplete
-homo_(genus) is selected, does homo_(genus))
-
-
-
-
-there must be no memory corruptions
-when not repairing root flat branch because
-they are already repaired
-pine need water?
-pedophile partof islam?
-connection inconsistency
-
-
-
-
-
-?don't repair memory when loading?
-
-
-
 whole project major refactoring:
 -Some classe must be documented
 -Some abstract classes must be removed
