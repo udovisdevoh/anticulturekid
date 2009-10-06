@@ -18,13 +18,6 @@ for instance: suggest to use "synergize" instead of need because synergize xor_t
 
 
 
-scan memory before saving, show warning dialog if find inconsistencies
-
-inconsistant connection bug still present but less severe
-root branch sill flattenized every time memory is repaired
-
-
-
 
 add metaOperator "likely"
 add to instinct and memory
