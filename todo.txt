@@ -21,18 +21,6 @@ add to instinct and memory
 set memory to "need to save" when remove imply connection
 
 
-when flattenizing, shuffle order by which MUCT and LIFFID are flattenized
-
-
-
-
-
-load memory in safe mode when find infinite dependencies
-
-
-adding metaConnections and imply connections that create
-infinite dependencies will be prevented
-
 
 re-implement flattenizer but this time without the inconsistency bug
 {
