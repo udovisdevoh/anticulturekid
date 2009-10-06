@@ -218,6 +218,13 @@ namespace AntiCulture.Kid
                 Alterator alterator = new Alterator(brain, nameMapper);
                 answerer = new Answerer(brain, nameMapper, mainWindow, alterator, aiVisibleCommentBuilder, statementListFactory, aiName, humanName);
                 mainWindow.Title = GetCurrentProgramTitle();
+
+                //We scan memory for inconsistencies after loading it
+                /*string output = brain.RepairAndScanMemoryGetOutput(nameMapper);
+                if (output != null)
+                    mainWindow.AddToOutputText(output);
+                else
+                    mainWindow.AddToOutputText("No inconsistency found");*/
             }
         }
 
@@ -507,7 +514,6 @@ namespace AntiCulture.Kid
                 }
             }
             TryLoadMemoryFile();
-
             StartBackgroundThinker();
         }
 
