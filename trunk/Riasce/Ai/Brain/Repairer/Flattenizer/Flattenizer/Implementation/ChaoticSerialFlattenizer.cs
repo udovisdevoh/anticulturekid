@@ -11,11 +11,26 @@ namespace AntiCulture.Kid
     class ChaoticSerialFlattenizer : AbstractFlattenizer
     {
         #region Private Fields
+        /// <summary>
+        /// We use this temporary cache so we know we encoutered branches
+        /// When it happens we throw a CyclicFlatBranchDependencyException
+        /// </summary>
         private HashSet<ConnectionBranch> encounteredBranchList = new HashSet<ConnectionBranch>();
 
+        /// <summary>
+        /// Current shuffled inversion state for proof diversity
+        /// </summary>
         private static bool invertMuctAndLiffidOrder = false;
 
+        /// <summary>
+        /// Random number generator
+        /// </summary>
         private static Random random = new Random();
+
+        /// <summary>
+        /// Whether we shuffle orders to make proofs more diversified
+        /// </summary>
+        private static bool allowRandomMuctAndLiffdOrder = false;
         #endregion
 
         #region Public Methods
@@ -27,7 +42,8 @@ namespace AntiCulture.Kid
         /// <param name="subject">concept to repair</param>
         public override void Repair(Concept subject)
         {
-            //invertMuctAndLiffidOrder = (random.Next(2) == 1) ? true : false;
+            if (allowRandomMuctAndLiffdOrder) 
+                invertMuctAndLiffidOrder = (random.Next(2) == 1) ? true : false;
 
             encounteredBranchList.Clear();
 
@@ -506,6 +522,17 @@ namespace AntiCulture.Kid
                         flatBranch.SetProofTo(complement, new Proof());
                 }
             }
+        }
+        #endregion
+
+        #region Properties
+        /// <summary>
+        /// Whether we shuffle orders to make proofs more diversified
+        /// </summary>
+        public static bool AllowRandomMuctAndLiffdOrder
+        {
+            get { return allowRandomMuctAndLiffdOrder; }
+            set { allowRandomMuctAndLiffdOrder = value; }
         }
         #endregion
     }
