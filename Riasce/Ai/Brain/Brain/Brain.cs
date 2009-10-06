@@ -1207,24 +1207,6 @@ namespace AntiCulture.Kid
         }
 
         /// <summary>
-        /// NEVER EVER USE THIS UNLESS YOU WANNA EXPORT MEMORY TO A FILE
-        /// </summary>
-        /// <param name="visitor">visitor (source object)</param>
-        /// <returns>memory to export</returns>
-        public Memory GetRepairedMemoryToExport(object visitor)
-        {
-            if (visitor is SaverLoader)
-            {
-                Repairer.RepairRange(memory);
-                return memory;
-            }
-            else
-            {
-                throw new MemoryException("Unauthorized access to memory");
-            }
-        }
-
-        /// <summary>
         /// NEVER EVER USE THIS UNLESS
         /// EITHER
         /// YOU WANNA UPDATE AUTOCOMPLETE
@@ -1234,12 +1216,14 @@ namespace AntiCulture.Kid
         /// YOU WANNA UPDATE THE VERB NAME LIST IN HELP
         /// OR
         /// YOU WANNA COUNT A CONCEPT'S PROOF LENGTH TO A COMPLEMENT
+        /// OR
+        /// YOU WANNA EXPORT MEMORY TO A FILE AND IT'S ALREADY REPAIRED
         /// </summary>
         /// <param name="visitor">visitor (source object)</param>
         /// <returns>memory for autoCompletion update</returns>
         public Memory GetUnRepairedMemory(object visitor)
         {
-            if (visitor is MainWindow)
+            if (visitor is MainWindow || visitor is SaverLoader)
                 return memory;
             else
                 throw new MemoryException("Unauthorized access to memory");
@@ -1319,7 +1303,7 @@ namespace AntiCulture.Kid
         /// </summary>
         /// <param name="nameMapper">name mapper</param>
         /// <returns>Memory scanning output or NULL if no inconsistency found</returns>
-        public string ScanMemoryGetOutput(NameMapper nameMapper)
+        public string RepairAndScanMemoryGetOutput(NameMapper nameMapper)
         {
             Repairer.RepairRange(memory);
 
