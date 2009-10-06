@@ -61,6 +61,56 @@ namespace AntiCulture.Kid
 
             return output;
         }
+
+        public static bool FindFlatInconsistency(this Concept subject)
+        {
+            HashSet<Concept> inverseOfVerbList, subjectComplementList, complementSubjectList;
+
+            foreach (Concept verb in Memory.TotalVerbList)
+            {
+                inverseOfVerbList = GetInverseOrPermutableVerbList(verb);
+                subjectComplementList = subject.GetFlatConnectionBranch(verb).ComplementConceptList;
+
+                foreach (Concept complement in subjectComplementList)
+                {
+                    foreach (Concept currentInverseVerb in inverseOfVerbList)
+                    {
+                        complementSubjectList = complement.GetFlatConnectionBranch(currentInverseVerb).ComplementConceptList;
+                        
+                        if (!complementSubjectList.Contains(subject))
+                        {
+                            return true;
+                        }
+                    }
+                }
+            }
+            return false;
+        }
+
+        public static bool FindOptimizedInconsistency(this Concept subject)
+        {
+            HashSet<Concept> inverseOfVerbList, subjectComplementList, complementSubjectList;
+
+            foreach (Concept verb in Memory.TotalVerbList)
+            {
+                inverseOfVerbList = GetInverseOrPermutableVerbList(verb);
+                subjectComplementList = subject.GetOptimizedConnectionBranch(verb).ComplementConceptList;
+
+                foreach (Concept complement in subjectComplementList)
+                {
+                    foreach (Concept currentInverseVerb in inverseOfVerbList)
+                    {
+                        complementSubjectList = complement.GetOptimizedConnectionBranch(currentInverseVerb).ComplementConceptList;
+
+                        if (!complementSubjectList.Contains(subject))
+                        {
+                            return true;
+                        }
+                    }
+                }
+            }
+            return false;
+        }
         #endregion
 
         #region Private Methods
