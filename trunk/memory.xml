@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ai aiNameValue="riasce" humanNameValue="guillaume" nameMapperCounter="577">
+<ai aiNameValue="riasce" humanNameValue="guillaume" nameMapperCounter="581">
     <conceptList>
         <concept id="0"><!--isa-->
             <nameList>
@@ -630,6 +630,7 @@
                 <verb id="4"><!--madeof-->
                     <complement id="449" /><!--detroit-->
                     <complement id="435" /><!--george_w_bush-->
+                    <complement id="578" /><!--barack_obama-->
                 </verb>
                 <verb id="18"><!--originof-->
                     <complement id="435" /><!--george_w_bush-->
@@ -2886,6 +2887,9 @@
                 <verb id="17"><!--from-->
                     <complement id="349" /><!--west_africa-->
                 </verb>
+                <verb id="11"><!--become-->
+                    <complement id="580" /><!--mulatto-->
+                </verb>
             </connectionList>
             <metaConnectionList>
                 <positiveMetaConnectionList />
@@ -3648,6 +3652,9 @@
                 <verb id="0"><!--isa-->
                     <complement id="72" /><!--caucasian_human-->
                 </verb>
+                <verb id="11"><!--become-->
+                    <complement id="580" /><!--mulatto-->
+                </verb>
                 <verb id="17"><!--from-->
                     <complement id="73" /><!--europe-->
                 </verb>
@@ -4169,6 +4176,7 @@
                 <verb id="9"><!--madeby-->
                     <complement id="392" /><!--trade_union-->
                     <complement id="440" /><!--gift_to_poor_people-->
+                    <complement id="578" /><!--barack_obama-->
                 </verb>
             </connectionList>
             <metaConnectionList>
@@ -11862,6 +11870,72 @@
                 </verb>
                 <verb id="15"><!--synergize-->
                     <complement id="575" /><!--jordan-->
+                </verb>
+            </connectionList>
+            <metaConnectionList>
+                <positiveMetaConnectionList />
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="579"><!--president-->
+            <nameList>
+                <name>president</name>
+            </nameList>
+            <connectionList>
+                <verb id="1"><!--someare-->
+                    <complement id="578" /><!--barack_obama-->
+                </verb>
+            </connectionList>
+            <metaConnectionList>
+                <positiveMetaConnectionList />
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="578"><!--barack_obama-->
+            <nameList>
+                <name>barack_obama</name>
+                <name>obama</name>
+            </nameList>
+            <connectionList>
+                <verb id="5"><!--partof-->
+                    <complement id="436" /><!--usa-->
+                </verb>
+                <verb id="0"><!--isa-->
+                    <complement id="579" /><!--president-->
+                    <complement id="580" /><!--mulatto-->
+                </verb>
+                <verb id="8"><!--make-->
+                    <complement id="411" /><!--social_justice-->
+                </verb>
+            </connectionList>
+            <metaConnectionList>
+                <positiveMetaConnectionList />
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="580"><!--mulatto-->
+            <nameList>
+                <name>mulatto</name>
+            </nameList>
+            <connectionList>
+                <verb id="1"><!--someare-->
+                    <complement id="578" /><!--barack_obama-->
+                </verb>
+                <verb id="10"><!--was-->
+                    <complement id="68" /><!--congoid_human-->
+                    <complement id="80" /><!--white_caucasian_human-->
                 </verb>
             </connectionList>
             <metaConnectionList>
