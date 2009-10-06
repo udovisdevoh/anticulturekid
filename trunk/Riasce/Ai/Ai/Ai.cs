@@ -268,21 +268,19 @@ namespace AntiCulture.Kid
         {
             if (fileName != null)
             {
-                if (brain.ScanMemoryGetOutput(nameMapper) != null)
+                if (brain.RepairAndScanMemoryGetOutput(nameMapper) == null || mainWindow.GetBoolInput("Warning", "Warning, inconsistent connections exist in memory. You you wish to save anyway?"))
                 {
-                    
+                    saverLoader.FileName = fileName;
+                    saverLoader.Memory = brain.GetUnRepairedMemory(saverLoader);
+                    saverLoader.NameMapper = nameMapper;
+                    saverLoader.TotalVerbList = Memory.TotalVerbList;
+                    saverLoader.RejectedTheories = brain.GetRejectedTheoriesToSave(saverLoader);
+                    saverLoader.TotalTheoryList = brain.GetTheoryListToSave();
+                    saverLoader.Save();
+                    saverLoader.FileName = fileName;//we set file name again for next save
+                    saverLoader.FileNeedSave = false;
+                    mainWindow.Title = GetCurrentProgramTitle();
                 }
-
-                saverLoader.FileName = fileName;
-                saverLoader.Memory = brain.GetRepairedMemoryToExport(saverLoader);
-                saverLoader.NameMapper = nameMapper;
-                saverLoader.TotalVerbList = Memory.TotalVerbList;
-                saverLoader.RejectedTheories = brain.GetRejectedTheoriesToSave(saverLoader);
-                saverLoader.TotalTheoryList = brain.GetTheoryListToSave();
-                saverLoader.Save();
-                saverLoader.FileName = fileName;//we set file name again for next save
-                saverLoader.FileNeedSave = false;
-                mainWindow.Title = GetCurrentProgramTitle();
             }
         }
 
@@ -946,7 +944,7 @@ namespace AntiCulture.Kid
             string output;
             StopBackgroundThinker();
             mainWindow.AddToOutputText("Scanning memory for inconsistencies, please wait");
-            output = brain.ScanMemoryGetOutput(nameMapper);
+            output = brain.RepairAndScanMemoryGetOutput(nameMapper);
             if (output != null)
                 mainWindow.AddToOutputText(output);
             else
