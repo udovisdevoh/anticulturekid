@@ -19,6 +19,15 @@ for instance: suggest to use "synergize" instead of need because synergize xor_t
 
 
 
+scanning memory for inconsistencies:
+{
+	show when starting scanning
+	single command for two scans
+	scan memory before saving, show warning dialog if find inconsistencies
+}
+
+
+
 add metaOperator "likely"
 add to instinct and memory
 "madeof" likely "synergize"
