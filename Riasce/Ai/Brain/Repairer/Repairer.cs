@@ -15,8 +15,15 @@ namespace AntiCulture.Kid
         /// <summary>
         /// Flattenizer
         /// </summary>
-        private static AbstractFlattenizer flattenizer = new ChaoticSerialFlattenizer();
-        //private static AbstractFlattenizer flattenizer = new SerialFlattenizer();
+        private static AbstractFlattenizer flattenizer;
+        #endregion
+
+        #region Constructors
+        static Repairer()
+        {
+            flattenizer = new ChaoticSerialFlattenizer();
+            ChaoticSerialFlattenizer.AllowRandomMuctAndLiffdOrder = true;
+        }
         #endregion
 
         #region Methods

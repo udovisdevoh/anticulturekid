@@ -112,7 +112,7 @@
     <Compile Include="Ai\Brain\MetaConnectionManager\MetaConnectionException.cs" />
     <Compile Include="Ai\Brain\ConnectionManager\ConnectionManager.cs" />
     <Compile Include="Ai\Brain\Repairer\Flattenizer\Flattenizer\Implementation\CommonParts\ScheduledRepair.cs" />
-    <Compile Include="Ai\Brain\Repairer\Flattenizer\Flattenizer\Implementation\CyclicFlatBranchDependencyException.cs" />
+    <Compile Include="Ai\Brain\Repairer\Flattenizer\CyclicFlatBranchDependencyException.cs" />
     <Compile Include="Ai\Brain\Repairer\Flattenizer\Flattenizer\Implementation\ParallelFlattenizer.cs" />
     <Compile Include="Ai\Brain\Repairer\Flattenizer\Flattenizer\Implementation\SerialFlattenizer.cs" />
     <Compile Include="Ai\Brain\Repairer\Flattenizer\RepairedFlatBranchCache.cs" />
