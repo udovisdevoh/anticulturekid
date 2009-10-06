@@ -88,14 +88,6 @@ whole project major refactoring:
 
 
 
-bush aliasof george_w_bush
-rename bush bush_(george_w)
-hominid_(genus) isa social animal
-
-
-
-
-
 fix bug:
 osama_bin_laden partof middle_east
 therefore, middle_east oppress you
