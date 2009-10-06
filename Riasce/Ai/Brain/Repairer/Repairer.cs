@@ -22,7 +22,7 @@ namespace AntiCulture.Kid
         static Repairer()
         {
             flattenizer = new ChaoticSerialFlattenizer();
-            ChaoticSerialFlattenizer.AllowRandomMuctAndLiffdOrder = true;
+            //ChaoticSerialFlattenizer.AllowRandomMuctAndLiffdOrder = true;
         }
         #endregion
 

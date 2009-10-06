@@ -269,6 +269,8 @@ namespace AntiCulture.Kid
             int endingParanthesesCount = wordContainingCarret.CountEndingChar(")");
             int startingParanthesesCount = wordContainingCarret.CountStartingChar("(");
 
+            endingParanthesesCount -= (wordContainingCarret.CountChar('(') - startingParanthesesCount);
+
             for (int i = 0 ; i < endingParanthesesCount ; i++)
                 wordFromAutoComplete += ')';
 
