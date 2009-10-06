@@ -152,7 +152,7 @@ namespace AntiCulture.Kid
                 catch (CyclicFlatBranchDependencyException e)
                 {
                     e.AddToProofStackTrace(subject, verb);
-                    return;
+                    continue;
                     //throw e;
                 }
 
@@ -228,7 +228,7 @@ namespace AntiCulture.Kid
                     catch (CyclicFlatBranchDependencyException e)
                     {
                         e.AddToProofStackTrace(subject, verb);
-                        return;
+                        continue;
                         //throw e;
                     }
 
@@ -307,7 +307,7 @@ namespace AntiCulture.Kid
                     catch (CyclicFlatBranchDependencyException e)
                     {
                         e.AddToProofStackTrace(subject, verb);
-                        return;
+                        continue;
                         //throw e;
                     }
 
@@ -437,7 +437,7 @@ namespace AntiCulture.Kid
                 catch (CyclicFlatBranchDependencyException e)
                 {
                     e.AddToProofStackTrace(subject, verb);
-                    return;
+                    continue;
                     //throw e;
                 }
 
@@ -495,7 +495,7 @@ namespace AntiCulture.Kid
                 catch (CyclicFlatBranchDependencyException e)
                 {
                     e.AddToProofStackTrace(subject, verb);
-                    return;
+                    continue;
                     //throw e;
                 }
             }
