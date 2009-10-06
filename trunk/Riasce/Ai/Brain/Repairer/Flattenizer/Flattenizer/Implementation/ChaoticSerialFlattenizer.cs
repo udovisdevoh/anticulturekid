@@ -136,7 +136,8 @@ namespace AntiCulture.Kid
                 catch (CyclicFlatBranchDependencyException e)
                 {
                     e.AddToProofStackTrace(subject, verb);
-                    throw e;
+                    return;
+                    //throw e;
                 }
 
                 foreach (Concept complement in farFlatBranch.ComplementConceptList)
@@ -211,7 +212,8 @@ namespace AntiCulture.Kid
                     catch (CyclicFlatBranchDependencyException e)
                     {
                         e.AddToProofStackTrace(subject, verb);
-                        throw e;
+                        return;
+                        //throw e;
                     }
 
                     HashSet<Concept> conceptAffectedByLiffidVerb = farFlatBranch.ComplementConceptList;
@@ -289,7 +291,8 @@ namespace AntiCulture.Kid
                     catch (CyclicFlatBranchDependencyException e)
                     {
                         e.AddToProofStackTrace(subject, verb);
-                        throw e;
+                        return;
+                        //throw e;
                     }
 
                     HashSet<Concept> conceptAffectedByMuctVerb = farFlatBranch.ComplementConceptList;
@@ -418,7 +421,8 @@ namespace AntiCulture.Kid
                 catch (CyclicFlatBranchDependencyException e)
                 {
                     e.AddToProofStackTrace(subject, verb);
-                    throw e;
+                    return;
+                    //throw e;
                 }
 
                 flatConnectionSetList.Add(dependantVerb, farFlatBranch.ComplementConceptList);
@@ -475,7 +479,8 @@ namespace AntiCulture.Kid
                 catch (CyclicFlatBranchDependencyException e)
                 {
                     e.AddToProofStackTrace(subject, verb);
-                    throw e;
+                    return;
+                    //throw e;
                 }
             }
 
