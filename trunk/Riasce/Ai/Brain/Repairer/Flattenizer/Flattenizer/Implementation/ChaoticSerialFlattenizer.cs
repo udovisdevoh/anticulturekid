@@ -27,7 +27,7 @@ namespace AntiCulture.Kid
         /// <param name="subject">concept to repair</param>
         public override void Repair(Concept subject)
         {
-            invertMuctAndLiffidOrder = (random.Next(2) == 1) ? true : false;
+            //invertMuctAndLiffidOrder = (random.Next(2) == 1) ? true : false;
 
             encounteredBranchList.Clear();
 

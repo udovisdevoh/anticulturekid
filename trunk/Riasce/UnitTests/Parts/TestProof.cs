@@ -591,6 +591,7 @@ namespace AntiCulture.Kid
             expectedProof.AddArgument(wood, isa, material);
             expectedProof.AddArgument(material, madeof, matter);
 
+
             Proof foundProof = pine.GetFlatConnectionBranch(madeof).GetProofTo(matter);
 
             if (foundProof != expectedProof)
