@@ -248,6 +248,15 @@ namespace Text
 
             return text.Trim();
         }
+
+        public static int CountChar(this string text, char letterToCount)
+        {
+            int count = 0;
+            foreach (char letter in text)
+                if (letter == letterToCount)
+                    count++;
+            return count;
+        }
         #endregion
     }
 }
