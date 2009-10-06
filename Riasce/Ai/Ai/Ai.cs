@@ -219,12 +219,14 @@ namespace AntiCulture.Kid
                 answerer = new Answerer(brain, nameMapper, mainWindow, alterator, aiVisibleCommentBuilder, statementListFactory, aiName, humanName);
                 mainWindow.Title = GetCurrentProgramTitle();
 
-                //We scan memory for inconsistencies after loading it
-                /*string output = brain.RepairAndScanMemoryGetOutput(nameMapper);
-                if (output != null)
-                    mainWindow.AddToOutputText(output);
-                else
-                    mainWindow.AddToOutputText("No inconsistency found");*/
+                //Ugly hack: we reload memory as long as there are less inconsistency than last time
+                int inconsistencyCount = -1, previousInconsistencyCount = -1;
+                do
+                {
+                    previousInconsistencyCount = inconsistencyCount;
+                    inconsistencyCount = brain.RepairAndScanMemoryInconsistencyCount();
+                } while (inconsistencyCount > 0 && (previousInconsistencyCount == -1 || inconsistencyCount < previousInconsistencyCount));
+                mainWindow.AddToOutputText("Total inconsistencies found in memory: " + inconsistencyCount);
             }
         }
 
