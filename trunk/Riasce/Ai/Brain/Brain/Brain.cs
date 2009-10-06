@@ -1316,6 +1316,16 @@ namespace AntiCulture.Kid
 
             return output;
         }
+
+        /// <summary>
+        /// Repair memory and 
+        /// </summary>
+        /// <returns></returns>
+        public int RepairAndScanMemoryInconsistencyCount()
+        {
+            Repairer.RepairRange(memory);
+            return Scanner.GetInconsistencyCount(memory);
+        }
         #endregion
 
         #region Properties

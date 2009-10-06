@@ -111,6 +111,11 @@ namespace AntiCulture.Kid
             }
             return false;
         }
+
+        public static int GetInconsistencyCount(Memory memory)
+        {
+            return GetInconsistencyCount(memory, false) + GetInconsistencyCount(memory, true);
+        }
         #endregion
 
         #region Private Methods
@@ -169,6 +174,44 @@ namespace AntiCulture.Kid
         {
             int conceptId = memory.GetIdFromConcept(concept);
             return nameMapper.GetConceptNames(conceptId)[0];
+        }
+
+        private static int GetInconsistencyCount(Memory memory, bool isFlatMode)
+        {
+            int count = 0;
+            foreach (Concept subject in memory)
+            {
+                foreach (Concept verb in Memory.TotalVerbList)
+                {
+                    HashSet<Concept> inverseOfVerbList = GetInverseOrPermutableVerbList(verb);
+
+                    HashSet<Concept> subjectComplementList;
+                    if (isFlatMode)
+                        subjectComplementList = subject.GetFlatConnectionBranch(verb).ComplementConceptList;
+                    else
+                        subjectComplementList = subject.GetOptimizedConnectionBranch(verb).ComplementConceptList;
+
+                    foreach (Concept complement in subjectComplementList)
+                    {
+                        foreach (Concept currentInverseVerb in inverseOfVerbList)
+                        {
+
+                            HashSet<Concept> complementSubjectList;
+                            if (isFlatMode)
+                                complementSubjectList = complement.GetFlatConnectionBranch(currentInverseVerb).ComplementConceptList;
+                            else
+                                complementSubjectList = complement.GetOptimizedConnectionBranch(currentInverseVerb).ComplementConceptList;
+
+                            if (!complementSubjectList.Contains(subject))
+                            {
+                                count++;
+                            }
+                        }
+                    }
+                }
+            }
+
+            return count;
         }
         #endregion
     }
