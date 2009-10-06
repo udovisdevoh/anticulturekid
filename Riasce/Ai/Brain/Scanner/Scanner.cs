@@ -56,6 +56,9 @@ namespace AntiCulture.Kid
 
             output += "\nMemory scanning finished. Total " + inconsistencyType + " inconsistencies found: " + count;
 
+            if (count == 0)
+                return null;
+
             return output;
         }
         #endregion

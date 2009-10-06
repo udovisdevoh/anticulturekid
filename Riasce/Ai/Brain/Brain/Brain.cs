@@ -1318,12 +1318,19 @@ namespace AntiCulture.Kid
         /// Scan memory for inconsistency and return output
         /// </summary>
         /// <param name="nameMapper">name mapper</param>
-        /// <param name="isFlatMode">whether whe scan flat memory</param>
-        /// <returns>Memory scanning output</returns>
-        public string ScanMemoryGetOutput(NameMapper nameMapper, bool isFlatMode)
+        /// <returns>Memory scanning output or NULL if no inconsistency found</returns>
+        public string ScanMemoryGetOutput(NameMapper nameMapper)
         {
             Repairer.RepairRange(memory);
-            return Scanner.ScanMemoryGetOutput(memory, nameMapper, isFlatMode);
+
+            string output = Scanner.ScanMemoryGetOutput(memory, nameMapper, false);
+
+            if (output == null)
+                output = Scanner.ScanMemoryGetOutput(memory, nameMapper, true);
+            else
+                output += Scanner.ScanMemoryGetOutput(memory, nameMapper, true);
+
+            return output;
         }
         #endregion
 

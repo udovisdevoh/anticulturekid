@@ -268,6 +268,11 @@ namespace AntiCulture.Kid
         {
             if (fileName != null)
             {
+                if (brain.ScanMemoryGetOutput(nameMapper) != null)
+                {
+                    
+                }
+
                 saverLoader.FileName = fileName;
                 saverLoader.Memory = brain.GetRepairedMemoryToExport(saverLoader);
                 saverLoader.NameMapper = nameMapper;
@@ -938,10 +943,14 @@ namespace AntiCulture.Kid
         /// <param name="e">event</param>
         private void UserScanMemoryHandler(object sender, EventArgs e)
         {
+            string output;
             StopBackgroundThinker();
             mainWindow.AddToOutputText("Scanning memory for inconsistencies, please wait");
-            mainWindow.AddToOutputText(brain.ScanMemoryGetOutput(nameMapper, false));
-            mainWindow.AddToOutputText(brain.ScanMemoryGetOutput(nameMapper, true));
+            output = brain.ScanMemoryGetOutput(nameMapper);
+            if (output != null)
+                mainWindow.AddToOutputText(output);
+            else
+                mainWindow.AddToOutputText("No inconsistency found");
             StartBackgroundThinker();
         }
         #endregion
