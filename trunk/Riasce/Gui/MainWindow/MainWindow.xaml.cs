@@ -82,7 +82,7 @@ namespace AntiCulture.Kid
 
         public event EventHandler UserOccurenceToSemantic;
 
-        public event EventHandler UserScanOptimizedMemory;
+        public event EventHandler UserScanMemory;
 
         public event EventHandler UserScanFlatMemory;
 
@@ -593,14 +593,9 @@ namespace AntiCulture.Kid
             if (UserOccurenceToSemantic != null) UserOccurenceToSemantic(this, e);
         }
 
-        private void menuItem_ClickScanOptimizedMemory(object sender, RoutedEventArgs e)
+        private void menuItem_ClickScanMemory(object sender, RoutedEventArgs e)
         {
-            if (UserScanOptimizedMemory != null) UserScanOptimizedMemory(this, e);
-        }
-
-        private void menuItem_ClickScanFlatMemory(object sender, RoutedEventArgs e)
-        {
-            if (UserScanFlatMemory != null) UserScanFlatMemory(this, e);
+            if (UserScanMemory != null) UserScanMemory(this, e);
         }
         #endregion
 

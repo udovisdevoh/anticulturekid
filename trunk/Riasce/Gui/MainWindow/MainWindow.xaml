@@ -73,8 +73,7 @@
                 <MenuItem Header="Extract _phonetic matrix" Click="menuItemExtractPhoneticMatrix_Click" />
             </MenuItem>
             <MenuItem Header="_Diagnostics">
-                <MenuItem Header="Scan Optimized Memory" Click="menuItem_ClickScanOptimizedMemory"/>
-                <MenuItem Header="Scan Flat Memory" Click="menuItem_ClickScanFlatMemory"/>
+                <MenuItem Header="Scan Memory" Click="menuItem_ClickScanMemory"/>
             </MenuItem>
             <MenuItem Header="_Help">
                 <MenuItem Header="_How To Use" Command="ApplicationCommands.Help"/>
