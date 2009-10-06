@@ -164,6 +164,18 @@ namespace AntiCulture.Kid
             return Microsoft.VisualBasic.Interaction.InputBox("What is your unique concept name?", "Name input", currentName, 0, 0).ConceptNameFormat();
         }
 
+        public bool GetBoolInput(string question)
+        {
+            if (MessageBox.Show(question, question, MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
         public int GetIntegerInput(string question, int minValue, int defaultValue, int maxValue)
         {
             question += " (min: " + minValue.ToString() + " max: " + maxValue.ToString() + ")";
