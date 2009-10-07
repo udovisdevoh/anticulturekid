@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.30729</ProductVersion>
+    <ProductVersion>9.0.21022</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{3796AA35-DC7B-41DF-A296-2B45DAF6496B}</ProjectGuid>
     <OutputType>WinExe</OutputType>
@@ -88,6 +88,7 @@
     <Compile Include="Ai\Brain\DefinitionMaker\DefinitionMaker.cs" />
     <Compile Include="Ai\Brain\ImplyConnectionManager\ImplyConnectionException.cs" />
     <Compile Include="Ai\Brain\ImplyConnectionManager\ImplyConnectionManager.cs" />
+    <Compile Include="Ai\Brain\Memory\Concept\ConnectionBranch\Proof\Argument.cs" />
     <Compile Include="Ai\Brain\Memory\Concept\ImplyConnectionTree.cs" />
     <Compile Include="Ai\Brain\Memory\Concept\TotologyException.cs" />
     <Compile Include="Ai\Brain\Memory\EpisodicMemory\Memento\SpecializedMementos\ListStringAndConceptMemento.cs" />
@@ -104,7 +105,7 @@
     <Compile Include="Ai\Brain\Repairer\Flattenizer\Flattenizer\Implementation\CommonParts\FlatBranchRepairer.cs" />
     <Compile Include="Ai\Brain\Repairer\Flattenizer\Flattenizer\Implementation\CommonParts\FlatBranchSelector.cs" />
     <Compile Include="Ai\Brain\Repairer\Flattenizer\Flattenizer\Implementation\ChaoticSerialFlattenizer.cs" />
-    <Compile Include="Ai\Brain\Memory\Concept\ConnectionBranch\Proof.cs" />
+    <Compile Include="Ai\Brain\Memory\Concept\ConnectionBranch\Proof\Proof.cs" />
     <Compile Include="Ai\Brain\Memory\Memory.cs" />
     <Compile Include="Ai\Brain\Memory\Concept\MetaConnectionTree.cs" />
     <Compile Include="Ai\Brain\Memory\MemoryException.cs" />
