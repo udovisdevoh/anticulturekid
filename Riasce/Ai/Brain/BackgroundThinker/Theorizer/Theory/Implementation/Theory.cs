@@ -7,6 +7,10 @@ namespace AntiCulture.Kid
 {
     class Theory : AbstractTheory
     {
+        #region Constants
+        private static readonly int maxArgumentCount = 8;
+        #endregion
+
         #region Fields
         private double predictedProbability;
 
@@ -42,8 +46,27 @@ namespace AntiCulture.Kid
         {
             this.predictedProbability = predictedProbability;
             conceptList = new List<Concept>() { theoryInfo.Subject, theoryInfo.Verb, theoryInfo.Complement };
+
+            List<List<Concept>> nonOptimizedArgumentList = new List<List<Concept>>();
+
             foreach (List<Concept> argument in theoryInfo)
-                this.AddConnectionArgument(argument[0], argument[1], argument[2]);
+            {
+                if (connectionArgumentList.Count > maxArgumentCount)
+                    break;
+
+                if (argument[0].IsOptimizedConnectedTo(argument[1], argument[2]))
+                    AddConnectionArgument(argument[0], argument[1], argument[2]);
+                else
+                    nonOptimizedArgumentList.Add(new List<Concept>() { argument[0], argument[1], argument[2] });
+            }
+
+            foreach (List<Concept> argument in nonOptimizedArgumentList)
+            {
+                if (connectionArgumentList.Count > maxArgumentCount)
+                    break;
+
+                AddConnectionArgument(argument[0], argument[1], argument[2]);
+            }
         }
         #endregion
 
