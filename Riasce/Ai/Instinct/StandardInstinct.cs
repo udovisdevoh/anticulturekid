@@ -101,6 +101,7 @@ namespace AntiCulture.Kid
             Add("IF me antagonize jew THEN me unlikely isa jew");
             Add("IF me antagonize jew THEN me unlikely allow jew");
             Add("IF me antagonize jew THEN me cant synergize jew");
+            Add("IF walmart make cheap_labour AND cheap_labour antagonize social_justice THEN walmart antagonize social_justice");
 
             //From and originof
             Add("IF grunge from seattle AND seattle partof usa THEN grunge from usa");
