@@ -52,17 +52,18 @@ namespace AntiCulture.Kid
         public void AddProof(Proof otherProof)
         {
             #warning Totology detection disabled to improve performances
-            /*if (this == otherProof)
+            /*
+            if (this == otherProof)
             {
                 argumentList.Clear();
                 throw new TotologyException("Totology detected");
             }
-            else if (statementToProove != null && otherProof.ContainsArgument(statementToProove[0], statementToProove[1], statementToProove[2]))
+            else if (statementToProove != null && otherProof.ContainsArgument(statementToProove.Subject, statementToProove.Verb, statementToProove.Complement))
             {
                 argumentList.Clear();
                 throw new TotologyException("Totology detected");
-            }*/
-
+            }
+            */
             argumentList.AddRange(otherProof.argumentList);
         }
 
