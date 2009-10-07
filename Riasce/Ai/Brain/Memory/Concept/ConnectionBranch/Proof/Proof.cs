@@ -30,7 +30,7 @@ namespace AntiCulture.Kid
 
         public Proof(Concept subject, Concept verb, Concept complement)
         {
-            statementToProove = Argument.Build(subject, verb, complement);
+            statementToProove = new Argument(subject, verb, complement);
             argumentList = new List<Argument>();
         }
         #endregion
