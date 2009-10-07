@@ -44,6 +44,7 @@ namespace AntiCulture.Kid
         /// <param name="complement">complement concept</param>
         public void AddArgument(Concept subject, Concept verb, Concept complement)
         {
+            #warning This method is slow: optimize
             argumentList.Add(new List<Concept>() { subject, verb, complement });
         }
 

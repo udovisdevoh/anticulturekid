@@ -23,27 +23,7 @@ add to instinct and memory
 set memory to "need to save" when remove imply connection
 
 
-fix stuff like: winter oppress me
-why
-winter madeof christmas
-christmas madeof jesus
-jesus isa christian_god
-christian_god make hell
-hell isa threat
-threat make fear
-fear make violent_reaction
-violent_reaction make injury
-injury oppress human
-human someare caucasian_human
-caucasian_human someare white_caucasian_human
-white_caucasian_human someare you
-therefore, winter oppress you
-
-
-fix bug:
-osama_bin_laden partof middle_east
-therefore, middle_east oppress you
-
+add progress bar for each long procedure
 
 
 
