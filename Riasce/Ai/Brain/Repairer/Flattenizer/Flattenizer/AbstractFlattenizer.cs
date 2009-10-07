@@ -36,7 +36,7 @@ namespace AntiCulture.Kid
                 if (argumentProof.Count > 0)
                     proof.AddProof(argumentProof);
 
-                proof.AddArgument(new Argument(argumentPrototype.Subject, argumentPrototype.Verb, argumentPrototype.Complement));
+                proof.AddArgument(Argument.Build(argumentPrototype.Subject, argumentPrototype.Verb, argumentPrototype.Complement));
             }
             return proof;
         }

@@ -155,7 +155,7 @@ namespace AntiCulture.Kid
 
             foreach (Concept incompatibleVerb in MetaConnectionManager.GetIncompatibleVerbList(verb, strictMode))
                 if (subject.IsFlatConnectedTo(incompatibleVerb, complement))
-                    return new Argument(subject, incompatibleVerb, complement);
+                    return Argument.Build(subject, incompatibleVerb, complement);
 
             return null;
         }

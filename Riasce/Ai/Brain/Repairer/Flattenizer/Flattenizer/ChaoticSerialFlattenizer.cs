@@ -166,12 +166,12 @@ namespace AntiCulture.Kid
                                 flatBranch.GetProofTo(complement).AddProof(subject.GetFlatConnectionBranch(directlyImpliedVerb).GetProofTo(complement));
                             }
                             if (verb != directlyImpliedVerb)
-                                flatBranch.GetProofTo(complement).AddArgument(new Argument(subject, directlyImpliedVerb, complement));
+                                flatBranch.GetProofTo(complement).AddArgument(Argument.Build(subject, directlyImpliedVerb, complement));
                         }
                         else
                         {
                             if (verb != directlyImpliedVerb)
-                                flatBranch.GetProofTo(complement).AddArgument(new Argument(subject, directlyImpliedVerb, complement));
+                                flatBranch.GetProofTo(complement).AddArgument(Argument.Build(subject, directlyImpliedVerb, complement));
                         }
                     }
 
@@ -247,7 +247,7 @@ namespace AntiCulture.Kid
                             else
                             {
                                 if (complement != metaComplement)
-                                    flatBranch.GetProofTo(metaComplement).AddArgument(new Argument(subject, verb, complement));
+                                    flatBranch.GetProofTo(metaComplement).AddArgument(Argument.Build(subject, verb, complement));
                             }
 
                             if (farProof.Count > 1 && farProof != flatBranch.GetProofTo(metaComplement))
@@ -257,7 +257,7 @@ namespace AntiCulture.Kid
                             else
                             {
                                 if (verb != liffidVerb)
-                                    flatBranch.GetProofTo(metaComplement).AddArgument(new Argument(complement, liffidVerb, metaComplement));
+                                    flatBranch.GetProofTo(metaComplement).AddArgument(Argument.Build(complement, liffidVerb, metaComplement));
                             }
 
                             if (flatBranch.GetProofTo(metaComplement).ContainsArgument(subject, verb, metaComplement))
@@ -328,7 +328,7 @@ namespace AntiCulture.Kid
                             else
                             {
                                 if (verb != muctVerb || complement != metaComplement)
-                                    flatBranch.GetProofTo(metaComplement).AddArgument(new Argument(subject, muctVerb, complement));
+                                    flatBranch.GetProofTo(metaComplement).AddArgument(Argument.Build(subject, muctVerb, complement));
                             }
 
                             if (farProof.Count > 1 && farProof != flatBranch.GetProofTo(metaComplement))
@@ -340,7 +340,7 @@ namespace AntiCulture.Kid
                             {
                                 if (complement != subject)
                                 {
-                                    flatBranch.GetProofTo(metaComplement).AddArgument(new Argument(complement, verb, metaComplement));
+                                    flatBranch.GetProofTo(metaComplement).AddArgument(Argument.Build(complement, verb, metaComplement));
                                 }
                             }
 
