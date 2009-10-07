@@ -8,7 +8,7 @@ namespace AntiCulture.Kid
     /// <summary>
     /// This class represents a proof's argument
     /// </summary>
-    class Argument
+    class Argument : IEquatable<Argument>
     {
         #region Fields
         private Concept subject, verb, complement;
@@ -20,6 +20,19 @@ namespace AntiCulture.Kid
             this.subject = subject;
             this.verb = verb;
             this.complement = complement;
+        }
+        #endregion
+
+        #region IEquatable<Argument> Members
+        public bool Equals(Argument other)
+        {
+            if (subject != other.subject)
+                return false;
+            if (verb != other.verb)
+                return false;
+            if (complement != other.complement)
+                return false;
+            return true;
         }
         #endregion
 
