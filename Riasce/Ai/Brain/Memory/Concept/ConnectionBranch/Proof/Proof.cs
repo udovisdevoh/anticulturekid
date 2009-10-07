@@ -8,30 +8,30 @@ namespace AntiCulture.Kid
     /// <summary>
     /// Represent a proof to a connection
     /// </summary>
-    public class Proof : IEnumerable<List<Concept>>, IEquatable<Proof>
+    public class Proof : IEnumerable<Argument>, IEquatable<Proof>
     {
         #region Fields
         /// <summary>
         /// Argument list
         /// </summary>
-        private List<List<Concept>> argumentList;
+        private List<Argument> argumentList;
 
         /// <summary>
         /// Which statement to prove
         /// </summary>
-        private List<Concept> statementToProove = null;
+        private Argument statementToProove = null;
         #endregion
 
         #region Constructors
         public Proof()
         {
-            argumentList = new List<List<Concept>>();
+            argumentList = new List<Argument>();
         }
 
         public Proof(Concept subject, Concept verb, Concept complement)
         {
-            statementToProove = new List<Concept>() { subject, verb, complement };
-            argumentList = new List<List<Concept>>();
+            statementToProove = new Argument(subject, verb, complement);
+            argumentList = new List<Argument>();
         }
         #endregion
 
@@ -39,13 +39,10 @@ namespace AntiCulture.Kid
         /// <summary>
         /// Adds an argument at the end of the proof
         /// </summary>
-        /// <param name="subject">subject concept</param>
-        /// <param name="verb">verb concept</param>
-        /// <param name="complement">complement concept</param>
-        public void AddArgument(Concept subject, Concept verb, Concept complement)
+        /// <param name="argument">argument</param>
+        public void AddArgument(Argument argument)
         {
-            #warning This method is slow: optimize
-            argumentList.Add(new List<Concept>() { subject, verb, complement });
+            argumentList.Add(argument);
         }
 
         /// <summary>
@@ -54,7 +51,8 @@ namespace AntiCulture.Kid
         /// <param name="otherProof">other proof</param>
         public void AddProof(Proof otherProof)
         {
-            if (this == otherProof)
+            #warning Totology detection disabled to improve performances
+            /*if (this == otherProof)
             {
                 argumentList.Clear();
                 throw new TotologyException("Totology detected");
@@ -63,10 +61,9 @@ namespace AntiCulture.Kid
             {
                 argumentList.Clear();
                 throw new TotologyException("Totology detected");
-            }
+            }*/
 
-            foreach (List<Concept> argument in otherProof.argumentList)
-                this.AddArgument(argument[0], argument[1], argument[2]);
+            argumentList.AddRange(otherProof.argumentList);
         }
 
         /// <summary>
@@ -80,13 +77,9 @@ namespace AntiCulture.Kid
                 return false;
 
             int counter = 0;
-            foreach (List<Concept> currentArgument in this.argumentList)
+            foreach (Argument currentArgument in this.argumentList)
             {
-                if (otherProof.argumentList[counter][0] != currentArgument[0])
-                    return false;
-                else if (otherProof.argumentList[counter][1] != currentArgument[1])
-                    return false;
-                else if (otherProof.argumentList[counter][2] != currentArgument[2])
+                if (!currentArgument.Equals(otherProof.argumentList[counter]))
                     return false;
 
                 counter++;
@@ -115,8 +108,8 @@ namespace AntiCulture.Kid
         /// <returns>true if proof contains argument, else: false</returns>
         public bool ContainsArgument(Concept subject, Concept verb, Concept complement)
         {
-            foreach (List<Concept> argument in argumentList)
-                if (argument[0] == subject && argument[1] == verb && argument[2] == complement)
+            foreach (Argument argument in argumentList)
+                if (argument.Subject == subject && argument.Verb == verb && argument.Complement == complement)
                     return true;
             return false;
         }
@@ -127,7 +120,7 @@ namespace AntiCulture.Kid
         /// <returns>the very last concept in the proof's last argument</returns>
         public Concept GetLastWord()
         {
-            return argumentList[argumentList.Count - 1][2];
+            return argumentList[argumentList.Count - 1].Complement;
         }
 
         /// <summary>
@@ -136,7 +129,7 @@ namespace AntiCulture.Kid
         /// <returns>the very first concept in the proof's first argument</returns>
         public Concept GetFirstWord()
         {
-            return argumentList[0][0];
+            return argumentList[0].Subject;
         }
 
         /// <summary>
@@ -145,11 +138,11 @@ namespace AntiCulture.Kid
         /// <returns>Whether the proof contains duplicate argument or not</returns>
         public bool ContainsDuplicateArgument()
         {
-            HashSet<string> ignoreList = new HashSet<string>();
-            string currentHashCode;
-            foreach (List<Concept> argument in argumentList)
+            HashSet<int> ignoreList = new HashSet<int>();
+            int currentHashCode;
+            foreach (Argument argument in argumentList)
             {
-                currentHashCode = argument[0].GetHashCode() + "-" + argument[1].GetHashCode() + "-" + argument[2].GetHashCode() + "|" + argument[0].DebuggerName + "|" + argument[1].DebuggerName + "|" + argument[2].DebuggerName;
+                currentHashCode = argument.GetHashCode();
                 if (ignoreList.Contains(currentHashCode))
                     return true;
 
@@ -163,7 +156,7 @@ namespace AntiCulture.Kid
             return base.GetHashCode();
         }
 
-        public IEnumerator<List<Concept>> GetEnumerator()
+        public IEnumerator<Argument> GetEnumerator()
         {
             return argumentList.GetEnumerator();
         }

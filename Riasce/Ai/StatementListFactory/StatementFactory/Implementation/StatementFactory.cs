@@ -48,8 +48,8 @@ namespace AntiCulture.Kid
         /// <returns>parsed statement of any kind</returns>
         public sealed override Statement GetInterpretedHumanStatement(string humanName, string humanStatement)
         {
-            Argument.Ensure(humanName, "Human name");
-            Argument.Ensure(humanStatement, "Human statement");
+            Misc.Argument.Ensure(humanName, "Human name");
+            Misc.Argument.Ensure(humanStatement, "Human statement");
 
             humanStatement = humanStatement.FixStringForHimmlStatementParsing();
 

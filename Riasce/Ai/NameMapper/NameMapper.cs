@@ -92,7 +92,7 @@ namespace AntiCulture.Kid
         /// <returns>The concept's unique id</returns>
         public int GetOrCreateConceptId(string conceptName)
         {
-            Argument.Ensure(conceptName, "concept name");
+            Misc.Argument.Ensure(conceptName, "concept name");
             EnsureWordConformParantheseRules(conceptName);
                 
             #region We take care of YOU and ME special concept names
@@ -131,7 +131,7 @@ namespace AntiCulture.Kid
         /// <returns>List of possible names (for instance: circle, round)</returns>
         public List<string> GetConceptNames(int conceptId, bool processYouAndMe)
         {
-            Argument.Ensure(conceptId, "concept id");
+            Misc.Argument.Ensure(conceptId, "concept id");
 
             if (processYouAndMe)
             {
@@ -161,8 +161,8 @@ namespace AntiCulture.Kid
         /// <param name="newConceptName">new name</param>
         public void Rename(string oldConceptName, string newConceptName)
         {
-            Argument.Ensure(oldConceptName, "old concept name");
-            Argument.Ensure(newConceptName, "new concept name");
+            Misc.Argument.Ensure(oldConceptName, "old concept name");
+            Misc.Argument.Ensure(newConceptName, "new concept name");
             EnsureWordConformParantheseRules(oldConceptName);
             EnsureWordConformParantheseRules(newConceptName);
 
@@ -193,8 +193,8 @@ namespace AntiCulture.Kid
             if (newNameForConcept == "me" || newNameForConcept == "you" || existingNameForConcept == "me" || existingNameForConcept == "you" || newNameForConcept == "i" || existingNameForConcept == "i")
                 throw new NameMappingException("No concept can be mapped to \"you\" and \"me\"");
 
-            Argument.Ensure(newNameForConcept, "new name for concept");
-            Argument.Ensure(existingNameForConcept, "existing name for concept");
+            Misc.Argument.Ensure(newNameForConcept, "new name for concept");
+            Misc.Argument.Ensure(existingNameForConcept, "existing name for concept");
 
             EnsureWordConformParantheseRules(newNameForConcept);
             EnsureWordConformParantheseRules(existingNameForConcept);
@@ -225,8 +225,8 @@ namespace AntiCulture.Kid
         /// <returns>2nd concept's unique id</returns>
         public int RemoveAliasAndGetSecondConceptId(string concept1Name, string concept2Name)
         {
-            Argument.Ensure(concept1Name, "concept 1 name");
-            Argument.Ensure(concept2Name, "concept 2 name");
+            Misc.Argument.Ensure(concept1Name, "concept 1 name");
+            Misc.Argument.Ensure(concept2Name, "concept 2 name");
 
             EnsureWordConformParantheseRules(concept1Name);
             EnsureWordConformParantheseRules(concept2Name);
@@ -340,7 +340,7 @@ namespace AntiCulture.Kid
                 throw new NameMappingException("No concept can be mapped to \"you\" and \"me\"");
 
             int conceptId = GetNextId();
-            Argument.Ensure(conceptName, "concept name");
+            Misc.Argument.Ensure(conceptName, "concept name");
 
             if (idMap.ContainsKey(conceptName))
                 throw new NameMappingException("Concept name already assigned to a concept id");

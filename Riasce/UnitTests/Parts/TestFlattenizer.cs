@@ -308,12 +308,12 @@ namespace AntiCulture.Kid
 
             Proof testProof;
             testProof = new Proof();
-            testProof.AddArgument(mother, make, child);
+            testProof.AddArgument(new Argument(mother, make, child));
             if (mother.GetFlatConnectionBranch(lovedby).GetProofTo(child) != testProof)
                 throw new Exception("Proof should match");
 
             testProof = new Proof();
-            testProof.AddArgument(child, madeby, mother);
+            testProof.AddArgument(new Argument(child, madeby, mother));
             if (child.GetFlatConnectionBranch(love).GetProofTo(mother) != testProof)
                 throw new Exception("Proof should match");
 
@@ -1280,12 +1280,12 @@ namespace AntiCulture.Kid
             Repairer.Repair(me, love, you);
 
             Proof expectedProof1 = new Proof();
-            expectedProof1.AddArgument(me, love, you);
-            expectedProof1.AddArgument(you, love, me);
+            expectedProof1.AddArgument(new Argument(me, love, you));
+            expectedProof1.AddArgument(new Argument(you, love, me));
 
             Proof expectedProof2 = new Proof();
-            expectedProof2.AddArgument(you, love, me);
-            expectedProof2.AddArgument(me, love, you);
+            expectedProof2.AddArgument(new Argument(you, love, me));
+            expectedProof2.AddArgument(new Argument(me, love, you));
 
             Proof proof = ConnectionManager.GetProofToConnection(me, love, me);
 
