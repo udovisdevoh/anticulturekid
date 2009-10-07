@@ -1,7 +1,3 @@
-fix slow "think" bug
-
-
-
 add a menu function: "export knowledge (for future generations)"
 
 
