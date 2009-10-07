@@ -45,7 +45,7 @@ namespace AntiCulture.Kid
             Add("IF pine madeof wood AND wood madeof carbon THEN pine madeof carbon");
             Add("IF pine isa tree AND tree madeof wood THEN pine madeof wood");
             Add("IF pine madeof wood AND wood isa material THEN pine madeof material");
-            Add("IF big_mac madeof trans_fat AND trans_fat oppress lifeform THEN big_mac oppress lifeform");
+            //Add("IF big_mac madeof trans_fat AND trans_fat oppress lifeform THEN big_mac oppress lifeform"); //Recently removed
 
             /*//In and PlaceOf
             Add("IF pine madeof wood THEN pine placeof wood");
