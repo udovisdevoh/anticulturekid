@@ -140,6 +140,14 @@ add special operator "definition_priority"
 to make it so that some operator are displayed before others
 instead of sorting them by custom order
 add new information to instinct
+other use for it:
+isa definition_priority someare
+when doing proofs, replace arguments containing someare to isa
+and inverse subject and complement
+because isa is a prefered operator and someare inverse_of isa
+and maybe inverse argument orders for chunks of arguments when operator is inverted to definition_priority
+add "definition_priority" to instinct and standard memory
+
 
 
 
@@ -188,17 +196,6 @@ remove calls to RepairRange, do selective repair instead
 
 
 analogies must be made in background thinker
-
-
-
-
-create metaOperator prefered_operator
-for instance: isa prefered_operator someare
-when doing proofs, replace arguments containing someare to isa
-and inverse subject and complement
-because isa is a prefered operator and someare inverse_of isa
-and maybe inverse argument orders for chunks of arguments when operator is inverted to prefered_operator
-add prefered_operator to instinct and standard memory
 
 
 
