@@ -715,6 +715,11 @@ namespace AntiCulture.Kid
                     paragraph.Inlines.Add(" ");
                     paragraph.Inlines.Add(beta3);
                     break;
+                default:
+                    paragraph.Inlines.Add(farVerb1);
+                    paragraph.Inlines.Add(" " + metaOperatorName + " ");
+                    paragraph.Inlines.Add(farVerb2);
+                    break;
             }
             return paragraph;
         }
