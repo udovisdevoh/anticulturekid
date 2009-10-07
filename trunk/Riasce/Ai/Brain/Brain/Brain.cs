@@ -63,7 +63,7 @@ namespace AntiCulture.Kid
             if (!ConnectionManager.DisableFlattenizeAndOptimizeAndPurify)
                 Repairer.Repair(subject, verb, complement);
 
-            List<Concept> obstruction = ConnectionManager.FindObstructionToPlug(subject,verb,complement,false);
+            Argument obstruction = ConnectionManager.FindObstructionToPlug(subject,verb,complement,false);
 
             if (obstruction == null)
             {
@@ -145,15 +145,16 @@ namespace AntiCulture.Kid
             if (!ConnectionManager.DisableFlattenizeAndOptimizeAndPurify)
                 Repairer.Repair(subject, verb, complement);
 
-            List<Concept> obstruction = ConnectionManager.FindObstructionToPlug(subject, verb, complement, strictMode);
+            Argument obstruction = ConnectionManager.FindObstructionToPlug(subject, verb, complement, strictMode);
 
             if (obstruction == null)
                 return null;
 
             List<int> obstructionByInt = new List<int>();
 
-            foreach (Concept concept in obstruction)
-                obstructionByInt.Add(memory.GetIdFromConcept(concept));
+            obstructionByInt.Add(memory.GetIdFromConcept(obstruction.Subject));
+            obstructionByInt.Add(memory.GetIdFromConcept(obstruction.Verb));
+            obstructionByInt.Add(memory.GetIdFromConcept(obstruction.Complement));
 
             return obstructionByInt;
         }
@@ -801,12 +802,12 @@ namespace AntiCulture.Kid
             HashSet<string> ignoreList = new HashSet<string>();
             List<List<int>> proofInInt = new List<List<int>>();
             List<int> argumentInInt;
-            foreach (List<Concept> argument in proof)
+            foreach (Argument argument in proof)
             {
                 argumentInInt = new List<int>();
-                argumentInInt.Add(memory.GetIdFromConcept(argument[0]));
-                argumentInInt.Add(memory.GetIdFromConcept(argument[1]));
-                argumentInInt.Add(memory.GetIdFromConcept(argument[2]));
+                argumentInInt.Add(memory.GetIdFromConcept(argument.Subject));
+                argumentInInt.Add(memory.GetIdFromConcept(argument.Verb));
+                argumentInInt.Add(memory.GetIdFromConcept(argument.Complement));
 
                 if (!ignoreList.Contains(argumentInInt[0] + "-" + argumentInInt[1] + "-" + argumentInInt[2]))
                 {

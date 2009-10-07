@@ -13,9 +13,7 @@ namespace AntiCulture.Kid
         {
             DateTime startTime = DateTime.Now;
 
-            TestFlattenizer.Test(new SerialFlattenizer()); //SLOW!!!!
             TestFlattenizer.Test(new ChaoticSerialFlattenizer()); //SLOW!!!!
-            //TestFlattenizer.Test(new ParallelFlattenizer()); //SLOW!!!!
             TestStatementListFactory.Test();
             TestConditionBuilder.Test();
             TestWikiCategoryPage.Test();

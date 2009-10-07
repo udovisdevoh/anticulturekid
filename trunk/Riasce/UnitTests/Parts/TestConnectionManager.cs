@@ -9,7 +9,6 @@ namespace AntiCulture.Kid
     {
         public static void Test()
         {
-            
             #region We create the verbs that we will need
             Concept isa = new Concept("isa");
             Concept someare = new Concept("someare");
@@ -126,7 +125,7 @@ namespace AntiCulture.Kid
             #endregion
 
             #region Testing finding obstruction
-            List<Concept> obstruction;
+            Argument obstruction;
             animal.IsFlatDirty = false;
             plant.IsFlatDirty = false;
             cat.IsFlatDirty = false;
@@ -152,7 +151,7 @@ namespace AntiCulture.Kid
             if (obstruction == null)
                 throw new Exception("Obstruction should be found");
 
-            if (obstruction[0] != cat && obstruction[1] != contradict && obstruction[2] != plant)
+            if (obstruction.Subject != cat && obstruction.Verb != contradict && obstruction.Complement != plant)
                 throw new Exception("Wrong obstruction");
 
             obstruction = ConnectionManager.FindObstructionToPlug(animal, isa, cat, true);
@@ -160,7 +159,7 @@ namespace AntiCulture.Kid
             if (obstruction == null)
                 throw new Exception("Obstruction should be found");
 
-            if (obstruction[0] != animal && obstruction[1] != someare && obstruction[2] != cat)
+            if (obstruction.Subject != animal && obstruction.Verb != someare && obstruction.Complement != cat)
                 throw new Exception("Wrong obstruction");
 
             #endregion

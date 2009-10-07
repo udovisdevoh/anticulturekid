@@ -25,8 +25,8 @@ namespace AntiCulture.Kid
 
             Trauma trauma = new Trauma();
 
-            List<Concept> obstruction;
-            List<Concept> mostObstructableConnection;
+            Argument obstruction;
+            Argument mostObstructableConnection;
 
             #region Finding obstructable connection in optimized connections
             do
@@ -35,9 +35,9 @@ namespace AntiCulture.Kid
                 mostObstructableConnection = GetMostObstructableConnection(concept);
                 if (mostObstructableConnection != null)
                 {
-                    ConnectionManager.UnPlug(mostObstructableConnection[0], mostObstructableConnection[1], mostObstructableConnection[2]);
-                    obstruction = ConnectionManager.FindObstructionToPlug(mostObstructableConnection[0], mostObstructableConnection[1], mostObstructableConnection[2], false);
-                    trauma.Add(mostObstructableConnection[0], mostObstructableConnection[1], mostObstructableConnection[2], obstruction[0], obstruction[1], obstruction[2]);
+                    ConnectionManager.UnPlug(mostObstructableConnection.Subject, mostObstructableConnection.Verb, mostObstructableConnection.Complement);
+                    obstruction = ConnectionManager.FindObstructionToPlug(mostObstructableConnection.Subject, mostObstructableConnection.Verb, mostObstructableConnection.Complement, false);
+                    trauma.Add(mostObstructableConnection.Subject, mostObstructableConnection.Verb, mostObstructableConnection.Complement, obstruction.Subject, obstruction.Verb, obstruction.Complement);
                 }
             } while (mostObstructableConnection != null);
             #endregion
@@ -72,8 +72,8 @@ namespace AntiCulture.Kid
 
             Trauma trauma = new Trauma();
 
-            List<Concept> obstruction;
-            List<Concept> mostObstructableConnection;
+            Argument obstruction;
+            Argument mostObstructableConnection;
 
             #region Finding obstructable connection in optimized connections
             do
@@ -82,9 +82,9 @@ namespace AntiCulture.Kid
                 mostObstructableConnection = GetMostObstructableConnection(conceptCollection);
                 if (mostObstructableConnection != null)
                 {
-                    ConnectionManager.UnPlug(mostObstructableConnection[0], mostObstructableConnection[1], mostObstructableConnection[2]);
-                    obstruction = ConnectionManager.FindObstructionToPlug(mostObstructableConnection[0], mostObstructableConnection[1], mostObstructableConnection[2], false);
-                    trauma.Add(mostObstructableConnection[0], mostObstructableConnection[1], mostObstructableConnection[2], obstruction[0], obstruction[1], obstruction[2]);
+                    ConnectionManager.UnPlug(mostObstructableConnection.Subject, mostObstructableConnection.Verb, mostObstructableConnection.Complement);
+                    obstruction = ConnectionManager.FindObstructionToPlug(mostObstructableConnection.Subject, mostObstructableConnection.Verb, mostObstructableConnection.Complement, false);
+                    trauma.Add(mostObstructableConnection.Subject, mostObstructableConnection.Verb, mostObstructableConnection.Complement, obstruction.Subject, obstruction.Verb, obstruction.Complement);
                 }
             } while (mostObstructableConnection != null);
             #endregion
@@ -107,9 +107,9 @@ namespace AntiCulture.Kid
         /// </summary>
         /// <param name="subject">provided concept</param>
         /// <returns>If most obstructable connection has obstruction, return obstructable connection, else: null</returns>
-        private static List<Concept> GetMostObstructableConnection(Concept subject)
+        private static Argument GetMostObstructableConnection(Concept subject)
         {
-            List<Concept> mostObstructableConnection = null;
+            Argument mostObstructableConnection = null;
             int currentObstructionCount;
             int maxObstructionCount = 0;
 
@@ -125,7 +125,7 @@ namespace AntiCulture.Kid
                     if (currentObstructionCount > maxObstructionCount)
                     {
                         maxObstructionCount = currentObstructionCount;
-                        mostObstructableConnection = new List<Concept>() { subject, verb, complement };
+                        mostObstructableConnection = new Argument(subject, verb, complement);
                     }
                 }
             }
@@ -137,9 +137,9 @@ namespace AntiCulture.Kid
         /// </summary>
         /// <param name="conceptCollection">concept collection</param>
         /// <returns>If most obstructable connection has obstruction, return obstructable connection, else: null</returns>
-        private static List<Concept> GetMostObstructableConnection(IEnumerable<Concept> conceptCollection)
+        private static Argument GetMostObstructableConnection(IEnumerable<Concept> conceptCollection)
         {
-            List<Concept> mostObstructableConnection = null;
+            Argument mostObstructableConnection = null;
             int currentObstructionCount;
             int maxObstructionCount = 0;
 
@@ -157,7 +157,7 @@ namespace AntiCulture.Kid
                         if (currentObstructionCount > maxObstructionCount)
                         {
                             maxObstructionCount = currentObstructionCount;
-                            mostObstructableConnection = new List<Concept>() { subject, verb, complement };
+                            mostObstructableConnection = new Argument(subject, verb, complement);
                         }
                     }
                 }

@@ -8,7 +8,7 @@ namespace AntiCulture.Kid
     /// <summary>
     /// This class represents a proof's argument
     /// </summary>
-    class Argument : IEquatable<Argument>
+    public class Argument : IEquatable<Argument>
     {
         #region Fields
         private Concept subject, verb, complement;
@@ -33,6 +33,13 @@ namespace AntiCulture.Kid
             if (complement != other.complement)
                 return false;
             return true;
+        }
+        #endregion
+
+        #region Public Methods
+        public override int GetHashCode()
+        {
+            return subject.GetHashCode() ^ verb.GetHashCode() ^ complement.GetHashCode() ^ subject.DebuggerName.GetHashCode() ^ verb.DebuggerName.GetHashCode() ^ complement.DebuggerName.GetHashCode();
         }
         #endregion
 
