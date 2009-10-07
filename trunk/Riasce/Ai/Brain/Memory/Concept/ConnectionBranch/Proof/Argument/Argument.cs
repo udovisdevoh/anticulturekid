@@ -17,9 +17,11 @@ namespace AntiCulture.Kid
         #region Constructor
         public Argument(Concept subject, Concept verb, Concept complement)
         {
-            this.subject = subject;
-            this.verb = verb;
-            this.complement = complement;
+            throw new Exception("Don't use argument constructor, use Argument.Build(Concept,Concept,Concept) instead");
+        }
+
+        private Argument()
+        {
         }
         #endregion
 
@@ -43,20 +45,42 @@ namespace AntiCulture.Kid
         }
         #endregion
 
+        #region Public Static Methods
+        public static Argument Build(Concept subject, Concept verb, Concept complement)
+        {
+            Argument argument = new Argument();
+            argument.subject = subject;
+            argument.verb = subject;
+            argument.complement = subject;
+
+            return argument;
+
+            //return ArgumentCache.GetOrCreateArgument(subject,verb,complement);
+        }
+
+        public static Argument GetNewEmptyArgument()
+        {
+            return new Argument();
+        }
+        #endregion
+
         #region Properties
         public Concept Subject
         {
             get { return subject; }
+            set { subject = value; }
         }
 
         public Concept Verb
         {
             get { return verb; }
+            set { verb = value; }
         }
 
         public Concept Complement
         {
             get { return complement; }
+            set { complement = value; }
         }
         #endregion
     }

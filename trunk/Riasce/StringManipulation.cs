@@ -18,7 +18,7 @@ namespace Text
         #region Public Methods
         public static string FixStringForHimmlStatementParsing(this string text)
         {
-            Argument.Ensure(text, "text");
+            FunctionArgument.Ensure(text, "text");
             text = text.Replace(",", " and ");
             text = text.Trim();
             text = text.RemoveDoubleSpaces();
@@ -34,7 +34,7 @@ namespace Text
 
         public static string RemoveDoubleSpaces(this string text)
         {
-            Argument.Ensure(text, "text");
+            FunctionArgument.Ensure(text, "text");
 
             while (text.Contains("  "))
                 text = text.Replace("  ", " ");
@@ -43,15 +43,15 @@ namespace Text
 
         public static string RemoveProhibitedChars(this string text)
         {
-            Argument.Ensure(text, "text");
+            FunctionArgument.Ensure(text, "text");
 
             return prohibitedChars.Replace(text, "");
         }
 
         public static string RemoveWord(this string text, string word)
         {
-            Argument.Ensure(text, "text");
-            Argument.Ensure(word, "word");
+            FunctionArgument.Ensure(text, "text");
+            FunctionArgument.Ensure(word, "word");
 
             text = " " + text + " ";
             text = text.Replace(" " + word + " ", " ");
@@ -129,8 +129,8 @@ namespace Text
 
         public static bool ContainsWord(this string text, string word)
         {
-            Argument.Ensure(text, "text");
-            Argument.Ensure(word, "word");
+            FunctionArgument.Ensure(text, "text");
+            FunctionArgument.Ensure(word, "word");
 
             bool containsWord = false;
             text = " " + text + " ";

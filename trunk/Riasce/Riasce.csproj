@@ -88,7 +88,8 @@
     <Compile Include="Ai\Brain\DefinitionMaker\DefinitionMaker.cs" />
     <Compile Include="Ai\Brain\ImplyConnectionManager\ImplyConnectionException.cs" />
     <Compile Include="Ai\Brain\ImplyConnectionManager\ImplyConnectionManager.cs" />
-    <Compile Include="Ai\Brain\Memory\Concept\ConnectionBranch\Proof\Argument.cs" />
+    <Compile Include="Ai\Brain\Memory\Concept\ConnectionBranch\Proof\Argument\Argument.cs" />
+    <Compile Include="Ai\Brain\Memory\Concept\ConnectionBranch\Proof\Argument\ArgumentCache.cs" />
     <Compile Include="Ai\Brain\Memory\Concept\ImplyConnectionTree.cs" />
     <Compile Include="Ai\Brain\Memory\Concept\TotologyException.cs" />
     <Compile Include="Ai\Brain\Memory\EpisodicMemory\Memento\SpecializedMementos\ListStringAndConceptMemento.cs" />
@@ -277,7 +278,7 @@
     <Compile Include="Gui\VisibleCommentBuilders\HumanVisibleCommentBuilder\Implementation\XamlHumanVisibleCommentBuilder.cs" />
     <Compile Include="Gui\VisibleCommentBuilders\VisibleCommentConstructionException.cs" />
     <Compile Include="Gui\VisibleCommentBuilders\AiVisibleCommentBuilder\Implementation\XamlAiVisibleCommentBuilder.cs" />
-    <Compile Include="Argument.cs" />
+    <Compile Include="FunctionArgument.cs" />
     <Compile Include="LanguageDictionary.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

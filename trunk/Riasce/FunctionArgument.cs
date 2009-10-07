@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Misc
 {
-    static class Argument
+    static class FunctionArgument
     {
         #region Methods
         public static void Ensure(object argument, string argumentName)

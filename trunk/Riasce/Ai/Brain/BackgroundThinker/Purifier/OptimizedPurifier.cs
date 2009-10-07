@@ -125,7 +125,7 @@ namespace AntiCulture.Kid
                     if (currentObstructionCount > maxObstructionCount)
                     {
                         maxObstructionCount = currentObstructionCount;
-                        mostObstructableConnection = new Argument(subject, verb, complement);
+                        mostObstructableConnection = Argument.Build(subject, verb, complement);
                     }
                 }
             }
@@ -157,7 +157,7 @@ namespace AntiCulture.Kid
                         if (currentObstructionCount > maxObstructionCount)
                         {
                             maxObstructionCount = currentObstructionCount;
-                            mostObstructableConnection = new Argument(subject, verb, complement);
+                            mostObstructableConnection = Argument.Build(subject, verb, complement);
                         }
                     }
                 }
