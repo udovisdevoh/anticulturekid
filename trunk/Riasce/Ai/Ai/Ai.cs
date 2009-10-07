@@ -221,12 +221,14 @@ namespace AntiCulture.Kid
 
                 //Ugly hack: we reload memory as long as there are less inconsistency than last time
                 int inconsistencyCount = -1, previousInconsistencyCount = -1;
+                int tryCount = 0;
                 do
                 {
                     previousInconsistencyCount = inconsistencyCount;
                     inconsistencyCount = brain.RepairAndScanMemoryInconsistencyCount();
+                    tryCount++;
                 } while (inconsistencyCount > 0 && (previousInconsistencyCount == -1 || inconsistencyCount < previousInconsistencyCount));
-                mainWindow.AddToOutputText("Total inconsistencies found in memory: " + inconsistencyCount);
+                mainWindow.AddToOutputText("Total inconsistencies found in memory: " + inconsistencyCount + ", total try: " + tryCount);
             }
         }
 
