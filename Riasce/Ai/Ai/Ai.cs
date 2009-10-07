@@ -220,6 +220,7 @@ namespace AntiCulture.Kid
                 mainWindow.Title = GetCurrentProgramTitle();
 
                 //Ugly hack: we reload memory as long as there are less inconsistency than last time
+                DateTime startTime = DateTime.Now;
                 int inconsistencyCount = -1, previousInconsistencyCount = -1;
                 int tryCount = 0;
                 do
@@ -228,7 +229,7 @@ namespace AntiCulture.Kid
                     inconsistencyCount = brain.RepairAndScanMemoryInconsistencyCount();
                     tryCount++;
                 } while (inconsistencyCount > 0 && (previousInconsistencyCount == -1 || inconsistencyCount < previousInconsistencyCount));
-                mainWindow.AddToOutputText("Total inconsistencies found in memory: " + inconsistencyCount + ", total try: " + tryCount);
+                mainWindow.AddToOutputText("Total inconsistencies found in memory: " + inconsistencyCount + "\nTotal try: " + tryCount + "\nTotal time: " + (DateTime.Now - startTime).TotalMilliseconds + " ms");
             }
         }
 

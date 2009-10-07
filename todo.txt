@@ -15,9 +15,9 @@ for instance: suggest to use "synergize" instead of need because synergize xor_t
 
 
 
-add metaOperator "likely"
+?add metaOperator "likely"
 add to instinct and memory
-"madeof" likely "synergize"
+"madeof" likely "synergize"?
 
 
 set memory to "need to save" when remove imply connection
