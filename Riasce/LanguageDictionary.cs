@@ -65,7 +65,8 @@ namespace AntiCulture.Kid
                                                                                    "liffid",
                                                                                    "consics",
                                                                                    "conservative_thinking",
-                                                                                   "xor_to_and" };
+                                                                                   "xor_to_and",
+                                                                                   "prefered_operator" };
         #endregion
 
         #region Methods
