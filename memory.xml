@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ai aiNameValue="riasce" humanNameValue="guillaume" nameMapperCounter="603">
+<ai aiNameValue="riasce" humanNameValue="guillaume" nameMapperCounter="612">
     <conceptList>
         <concept id="0"><!--isa-->
             <nameList>
@@ -680,27 +680,9 @@
                     <complement id="562" /><!--frank-->
                     <complement id="575" /><!--jordan-->
                     <complement id="567" /><!--eric-->
-                </verb>
-            </connectionList>
-            <metaConnectionList>
-                <positiveMetaConnectionList />
-                <negativeMetaConnectionList />
-            </metaConnectionList>
-            <implyConditionList>
-                <positiveImplyConditionList />
-                <negativeImplyConditionList />
-            </implyConditionList>
-        </concept>
-        <concept id="433"><!--neuron-->
-            <nameList>
-                <name>neuron</name>
-            </nameList>
-            <connectionList>
-                <verb id="0"><!--isa-->
-                    <complement id="600" /><!--cell_(biology)-->
-                </verb>
-                <verb id="5"><!--partof-->
-                    <complement id="121" /><!--brain-->
+                    <complement id="603" /><!--jonatan-->
+                    <complement id="605" /><!--kovalev-->
+                    <complement id="610" /><!--gabriel-->
                 </verb>
             </connectionList>
             <metaConnectionList>
@@ -744,12 +726,12 @@
                 <verb id="5"><!--partof-->
                     <complement id="264" /><!--america-->
                 </verb>
-                <verb id="6"><!--need-->
-                    <complement id="408" /><!--society-->
-                </verb>
                 <verb id="4"><!--madeof-->
                     <complement id="470" /><!--canada-->
                     <complement id="436" /><!--usa-->
+                </verb>
+                <verb id="6"><!--need-->
+                    <complement id="408" /><!--society-->
                 </verb>
             </connectionList>
             <metaConnectionList>
@@ -766,11 +748,11 @@
                 <name>country</name>
             </nameList>
             <connectionList>
-                <verb id="6"><!--need-->
-                    <complement id="408" /><!--society-->
-                </verb>
                 <verb id="4"><!--madeof-->
                     <complement id="155" /><!--city-->
+                </verb>
+                <verb id="6"><!--need-->
+                    <complement id="408" /><!--society-->
                 </verb>
                 <verb id="1"><!--someare-->
                     <complement id="82" /><!--india-->
@@ -793,31 +775,6 @@
                     <complement id="517" /><!--finland-->
                     <complement id="518" /><!--spain-->
                     <complement id="519" /><!--portugal-->
-                </verb>
-            </connectionList>
-            <metaConnectionList>
-                <positiveMetaConnectionList />
-                <negativeMetaConnectionList />
-            </metaConnectionList>
-            <implyConditionList>
-                <positiveImplyConditionList />
-                <negativeImplyConditionList />
-            </implyConditionList>
-        </concept>
-        <concept id="337"><!--intelligence-->
-            <nameList>
-                <name>intelligence</name>
-            </nameList>
-            <connectionList>
-                <verb id="6"><!--need-->
-                    <complement id="336" /><!--critical_thinking-->
-                    <complement id="120" /><!--big_brain-->
-                </verb>
-                <verb id="7"><!--allow-->
-                    <complement id="106" /><!--human-->
-                </verb>
-                <verb id="15"><!--synergize-->
-                    <complement id="336" /><!--critical_thinking-->
                 </verb>
             </connectionList>
             <metaConnectionList>
@@ -1573,6 +1530,7 @@
                     <complement id="504" /><!--student-->
                     <complement id="265" /><!--programmer-->
                     <complement id="41" /><!--man-->
+                    <complement id="80" /><!--white_caucasian_human-->
                 </verb>
                 <verb id="15"><!--synergize-->
                     <complement id="546" /><!--guitar-->
@@ -1599,6 +1557,7 @@
                     <complement id="504" /><!--student-->
                     <complement id="265" /><!--programmer-->
                     <complement id="41" /><!--man-->
+                    <complement id="80" /><!--white_caucasian_human-->
                 </verb>
                 <verb id="15"><!--synergize-->
                     <complement id="563" /><!--beer-->
@@ -1654,6 +1613,45 @@
                 </verb>
                 <verb id="15"><!--synergize-->
                     <complement id="570" /><!--java-->
+                </verb>
+            </connectionList>
+            <metaConnectionList>
+                <positiveMetaConnectionList />
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="433"><!--neuron-->
+            <nameList>
+                <name>neuron</name>
+            </nameList>
+            <connectionList>
+                <verb id="0"><!--isa-->
+                    <complement id="600" /><!--cell_(biology)-->
+                </verb>
+                <verb id="5"><!--partof-->
+                    <complement id="121" /><!--brain-->
+                </verb>
+            </connectionList>
+            <metaConnectionList>
+                <positiveMetaConnectionList />
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="600"><!--cell_(biology)-->
+            <nameList>
+                <name>cell_(biology)</name>
+            </nameList>
+            <connectionList>
+                <verb id="1"><!--someare-->
+                    <complement id="433" /><!--neuron-->
                 </verb>
             </connectionList>
             <metaConnectionList>
@@ -1747,11 +1745,11 @@
                 <verb id="0"><!--isa-->
                     <complement id="74" /><!--continent-->
                 </verb>
-                <verb id="6"><!--need-->
-                    <complement id="408" /><!--society-->
-                </verb>
                 <verb id="4"><!--madeof-->
                     <complement id="471" /><!--north_america-->
+                </verb>
+                <verb id="6"><!--need-->
+                    <complement id="408" /><!--society-->
                 </verb>
             </connectionList>
             <metaConnectionList>
@@ -2298,6 +2296,31 @@
                 <negativeImplyConditionList />
             </implyConditionList>
         </concept>
+        <concept id="337"><!--intelligence-->
+            <nameList>
+                <name>intelligence</name>
+            </nameList>
+            <connectionList>
+                <verb id="6"><!--need-->
+                    <complement id="336" /><!--critical_thinking-->
+                    <complement id="120" /><!--big_brain-->
+                </verb>
+                <verb id="7"><!--allow-->
+                    <complement id="106" /><!--human-->
+                </verb>
+                <verb id="15"><!--synergize-->
+                    <complement id="336" /><!--critical_thinking-->
+                </verb>
+            </connectionList>
+            <metaConnectionList>
+                <positiveMetaConnectionList />
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
         <concept id="336"><!--critical_thinking-->
             <nameList>
                 <name>critical_thinking</name>
@@ -2311,11 +2334,11 @@
                 <verb id="7"><!--allow-->
                     <complement id="337" /><!--intelligence-->
                 </verb>
-                <verb id="15"><!--synergize-->
-                    <complement id="337" /><!--intelligence-->
-                </verb>
                 <verb id="8"><!--make-->
                     <complement id="30" /><!--proof-->
+                </verb>
+                <verb id="15"><!--synergize-->
+                    <complement id="337" /><!--intelligence-->
                 </verb>
                 <verb id="16"><!--antagonize-->
                     <complement id="477" /><!--faith-->
@@ -2352,385 +2375,6 @@
                 </verb>
                 <verb id="19"><!--largerthan-->
                     <complement id="122" /><!--small_brain-->
-                </verb>
-            </connectionList>
-            <metaConnectionList>
-                <positiveMetaConnectionList />
-                <negativeMetaConnectionList />
-            </metaConnectionList>
-            <implyConditionList>
-                <positiveImplyConditionList />
-                <negativeImplyConditionList />
-            </implyConditionList>
-        </concept>
-        <concept id="32"><!--islam-->
-            <nameList>
-                <name>islam</name>
-            </nameList>
-            <connectionList>
-                <verb id="0"><!--isa-->
-                    <complement id="489" /><!--abrahamic_religion-->
-                </verb>
-                <verb id="16"><!--antagonize-->
-                    <complement id="137" /><!--judaism-->
-                </verb>
-                <verb id="9"><!--madeby-->
-                    <complement id="36" /><!--muhammad-->
-                </verb>
-                <verb id="6"><!--need-->
-                    <complement id="408" /><!--society-->
-                </verb>
-                <verb id="202"><!--own-->
-                    <complement id="223" /><!--muslim-->
-                </verb>
-                <verb id="17"><!--from-->
-                    <complement id="148" /><!--arabia-->
-                </verb>
-                <verb id="4"><!--madeof-->
-                    <complement id="64" /><!--male_supremacism-->
-                    <complement id="35" /><!--quran-->
-                    <complement id="34" /><!--allah-->
-                    <complement id="36" /><!--muhammad-->
-                    <complement id="450" /><!--wallace_fard_muhammad-->
-                    <complement id="452" /><!--elijah_muhammad-->
-                </verb>
-                <verb id="11"><!--become-->
-                    <complement id="446" /><!--nation_of_islam-->
-                </verb>
-            </connectionList>
-            <metaConnectionList>
-                <positiveMetaConnectionList />
-                <negativeMetaConnectionList />
-            </metaConnectionList>
-            <implyConditionList>
-                <positiveImplyConditionList />
-                <negativeImplyConditionList />
-            </implyConditionList>
-        </concept>
-        <concept id="252"><!--holy_trinity-->
-            <nameList>
-                <name>holy_trinity</name>
-            </nameList>
-            <connectionList>
-                <verb id="5"><!--partof-->
-                    <complement id="77" /><!--christianism-->
-                </verb>
-                <verb id="6"><!--need-->
-                    <complement id="408" /><!--society-->
-                </verb>
-                <verb id="4"><!--madeof-->
-                    <complement id="78" /><!--jesus-->
-                    <complement id="250" /><!--holy_spirit-->
-                    <complement id="251" /><!--god_the_father-->
-                </verb>
-            </connectionList>
-            <metaConnectionList>
-                <positiveMetaConnectionList />
-                <negativeMetaConnectionList />
-            </metaConnectionList>
-            <implyConditionList>
-                <positiveImplyConditionList />
-                <negativeImplyConditionList />
-            </implyConditionList>
-        </concept>
-        <concept id="529"><!--christmas-->
-            <nameList>
-                <name>christmas</name>
-            </nameList>
-            <connectionList>
-                <verb id="5"><!--partof-->
-                    <complement id="521" /><!--winter-->
-                </verb>
-                <verb id="0"><!--isa-->
-                    <complement id="530" /><!--holy_day-->
-                </verb>
-                <verb id="6"><!--need-->
-                    <complement id="408" /><!--society-->
-                </verb>
-                <verb id="17"><!--from-->
-                    <complement id="77" /><!--christianism-->
-                </verb>
-                <verb id="4"><!--madeof-->
-                    <complement id="43" /><!--pine-->
-                    <complement id="78" /><!--jesus-->
-                    <complement id="531" /><!--santa_claus-->
-                </verb>
-            </connectionList>
-            <metaConnectionList>
-                <positiveMetaConnectionList />
-                <negativeMetaConnectionList />
-            </metaConnectionList>
-            <implyConditionList>
-                <positiveImplyConditionList />
-                <negativeImplyConditionList />
-            </implyConditionList>
-        </concept>
-        <concept id="77"><!--christianism-->
-            <nameList>
-                <name>christianism</name>
-            </nameList>
-            <connectionList>
-                <verb id="1"><!--someare-->
-                    <complement id="151" /><!--catholiscism-->
-                    <complement id="253" /><!--protestantism-->
-                </verb>
-                <verb id="0"><!--isa-->
-                    <complement id="489" /><!--abrahamic_religion-->
-                </verb>
-                <verb id="6"><!--need-->
-                    <complement id="408" /><!--society-->
-                </verb>
-                <verb id="202"><!--own-->
-                    <complement id="229" /><!--christian-->
-                </verb>
-                <verb id="4"><!--madeof-->
-                    <complement id="76" /><!--bible-->
-                    <complement id="166" /><!--bishop-->
-                    <complement id="252" /><!--holy_trinity-->
-                </verb>
-                <verb id="18"><!--originof-->
-                    <complement id="529" /><!--christmas-->
-                </verb>
-                <verb id="9"><!--madeby-->
-                    <complement id="78" /><!--jesus-->
-                </verb>
-            </connectionList>
-            <metaConnectionList>
-                <positiveMetaConnectionList />
-                <negativeMetaConnectionList />
-            </metaConnectionList>
-            <implyConditionList>
-                <positiveImplyConditionList />
-                <negativeImplyConditionList />
-            </implyConditionList>
-        </concept>
-        <concept id="464"><!--cvm-->
-            <nameList>
-                <name>cvm</name>
-            </nameList>
-            <connectionList>
-                <verb id="5"><!--partof-->
-                    <complement id="467" /><!--montreal-->
-                </verb>
-                <verb id="0"><!--isa-->
-                    <complement id="465" /><!--cegep-->
-                </verb>
-                <verb id="4"><!--madeof-->
-                    <complement id="463" /><!--jp-->
-                    <complement id="191" /><!--you-->
-                    <complement id="474" /><!--felix-->
-                    <complement id="475" /><!--kevin-->
-                    <complement id="481" /><!--etienne-->
-                    <complement id="503" /><!--tristan-->
-                    <complement id="542" /><!--mathieu-->
-                    <complement id="545" /><!--aladdin-->
-                    <complement id="561" /><!--pascal-->
-                    <complement id="562" /><!--frank-->
-                    <complement id="567" /><!--eric-->
-                    <complement id="575" /><!--jordan-->
-                </verb>
-                <verb id="6"><!--need-->
-                    <complement id="408" /><!--society-->
-                </verb>
-            </connectionList>
-            <metaConnectionList>
-                <positiveMetaConnectionList />
-                <negativeMetaConnectionList />
-            </metaConnectionList>
-            <implyConditionList>
-                <positiveImplyConditionList />
-                <negativeImplyConditionList />
-            </implyConditionList>
-        </concept>
-        <concept id="467"><!--montreal-->
-            <nameList>
-                <name>montreal</name>
-            </nameList>
-            <connectionList>
-                <verb id="5"><!--partof-->
-                    <complement id="468" /><!--quebec-->
-                </verb>
-                <verb id="0"><!--isa-->
-                    <complement id="155" /><!--city-->
-                </verb>
-                <verb id="4"><!--madeof-->
-                    <complement id="464" /><!--cvm-->
-                </verb>
-                <verb id="18"><!--originof-->
-                    <complement id="463" /><!--jp-->
-                </verb>
-            </connectionList>
-            <metaConnectionList>
-                <positiveMetaConnectionList />
-                <negativeMetaConnectionList />
-            </metaConnectionList>
-            <implyConditionList>
-                <positiveImplyConditionList />
-                <negativeImplyConditionList />
-            </implyConditionList>
-        </concept>
-        <concept id="468"><!--quebec-->
-            <nameList>
-                <name>quebec</name>
-            </nameList>
-            <connectionList>
-                <verb id="5"><!--partof-->
-                    <complement id="470" /><!--canada-->
-                </verb>
-                <verb id="0"><!--isa-->
-                    <complement id="469" /><!--province-->
-                </verb>
-                <verb id="4"><!--madeof-->
-                    <complement id="467" /><!--montreal-->
-                    <complement id="543" /><!--st_remi-->
-                    <complement id="573" /><!--mcmasterville-->
-                </verb>
-                <verb id="6"><!--need-->
-                    <complement id="394" /><!--justice-->
-                    <complement id="553" /><!--population-->
-                </verb>
-            </connectionList>
-            <metaConnectionList>
-                <positiveMetaConnectionList />
-                <negativeMetaConnectionList />
-            </metaConnectionList>
-            <implyConditionList>
-                <positiveImplyConditionList />
-                <negativeImplyConditionList />
-            </implyConditionList>
-        </concept>
-        <concept id="89"><!--earth-->
-            <nameList>
-                <name>earth</name>
-            </nameList>
-            <connectionList>
-                <verb id="5"><!--partof-->
-                    <complement id="129" /><!--solar_system-->
-                </verb>
-                <verb id="0"><!--isa-->
-                    <complement id="90" /><!--planet-->
-                </verb>
-                <verb id="4"><!--madeof-->
-                    <complement id="73" /><!--europe-->
-                    <complement id="70" /><!--asia-->
-                    <complement id="71" /><!--africa-->
-                    <complement id="88" /><!--oceania-->
-                    <complement id="146" /><!--middle_east-->
-                    <complement id="264" /><!--america-->
-                    <complement id="291" /><!--nature-->
-                </verb>
-                <verb id="18"><!--originof-->
-                    <complement id="59" /><!--animal-->
-                    <complement id="44" /><!--plant-->
-                </verb>
-                <verb id="14"><!--oppressedby-->
-                    <complement id="388" /><!--abusive_resource_extraction-->
-                </verb>
-            </connectionList>
-            <metaConnectionList>
-                <positiveMetaConnectionList />
-                <negativeMetaConnectionList />
-            </metaConnectionList>
-            <implyConditionList>
-                <positiveImplyConditionList />
-                <negativeImplyConditionList />
-            </implyConditionList>
-        </concept>
-        <concept id="521"><!--winter-->
-            <nameList>
-                <name>winter</name>
-            </nameList>
-            <connectionList>
-                <verb id="0"><!--isa-->
-                    <complement id="522" /><!--season-->
-                </verb>
-                <verb id="6"><!--need-->
-                    <complement id="408" /><!--society-->
-                </verb>
-                <verb id="4"><!--madeof-->
-                    <complement id="523" /><!--snow-->
-                    <complement id="529" /><!--christmas-->
-                </verb>
-                <verb id="12"><!--contradict-->
-                    <complement id="528" /><!--summer-->
-                </verb>
-            </connectionList>
-            <metaConnectionList>
-                <positiveMetaConnectionList />
-                <negativeMetaConnectionList />
-            </metaConnectionList>
-            <implyConditionList>
-                <positiveImplyConditionList />
-                <negativeImplyConditionList />
-            </implyConditionList>
-        </concept>
-        <concept id="129"><!--solar_system-->
-            <nameList>
-                <name>solar_system</name>
-            </nameList>
-            <connectionList>
-                <verb id="5"><!--partof-->
-                    <complement id="352" /><!--milky_way-->
-                </verb>
-                <verb id="0"><!--isa-->
-                    <complement id="130" /><!--stellar_system-->
-                </verb>
-                <verb id="6"><!--need-->
-                    <complement id="394" /><!--justice-->
-                    <complement id="553" /><!--population-->
-                </verb>
-                <verb id="4"><!--madeof-->
-                    <complement id="89" /><!--earth-->
-                    <complement id="131" /><!--sun-->
-                    <complement id="135" /><!--moon-->
-                </verb>
-            </connectionList>
-            <metaConnectionList>
-                <positiveMetaConnectionList />
-                <negativeMetaConnectionList />
-            </metaConnectionList>
-            <implyConditionList>
-                <positiveImplyConditionList />
-                <negativeImplyConditionList />
-            </implyConditionList>
-        </concept>
-        <concept id="352"><!--milky_way-->
-            <nameList>
-                <name>milky_way</name>
-            </nameList>
-            <connectionList>
-                <verb id="5"><!--partof-->
-                    <complement id="428" /><!--universe-->
-                </verb>
-                <verb id="0"><!--isa-->
-                    <complement id="353" /><!--galaxy-->
-                </verb>
-                <verb id="6"><!--need-->
-                    <complement id="408" /><!--society-->
-                </verb>
-                <verb id="4"><!--madeof-->
-                    <complement id="129" /><!--solar_system-->
-                </verb>
-            </connectionList>
-            <metaConnectionList>
-                <positiveMetaConnectionList />
-                <negativeMetaConnectionList />
-            </metaConnectionList>
-            <implyConditionList>
-                <positiveImplyConditionList />
-                <negativeImplyConditionList />
-            </implyConditionList>
-        </concept>
-        <concept id="428"><!--universe-->
-            <nameList>
-                <name>universe</name>
-            </nameList>
-            <connectionList>
-                <verb id="6"><!--need-->
-                    <complement id="408" /><!--society-->
-                </verb>
-                <verb id="4"><!--madeof-->
-                    <complement id="352" /><!--milky_way-->
                 </verb>
             </connectionList>
             <metaConnectionList>
@@ -2829,13 +2473,13 @@
                 <verb id="14"><!--oppressedby-->
                     <complement id="385" /><!--cheap_labour-->
                 </verb>
-                <verb id="7"><!--allow-->
-                    <complement id="408" /><!--society-->
-                </verb>
                 <verb id="9"><!--madeby-->
                     <complement id="392" /><!--trade_union-->
                     <complement id="440" /><!--gift_to_poor_people-->
                     <complement id="578" /><!--barack_obama-->
+                </verb>
+                <verb id="7"><!--allow-->
+                    <complement id="408" /><!--society-->
                 </verb>
             </connectionList>
             <metaConnectionList>
@@ -2868,6 +2512,9 @@
                     <complement id="561" /><!--pascal-->
                     <complement id="562" /><!--frank-->
                     <complement id="575" /><!--jordan-->
+                    <complement id="603" /><!--jonatan-->
+                    <complement id="605" /><!--kovalev-->
+                    <complement id="610" /><!--gabriel-->
                 </verb>
             </connectionList>
             <metaConnectionList>
@@ -3372,6 +3019,50 @@
                 <negativeImplyConditionList />
             </implyConditionList>
         </concept>
+        <concept id="32"><!--islam-->
+            <nameList>
+                <name>islam</name>
+            </nameList>
+            <connectionList>
+                <verb id="0"><!--isa-->
+                    <complement id="489" /><!--abrahamic_religion-->
+                </verb>
+                <verb id="16"><!--antagonize-->
+                    <complement id="137" /><!--judaism-->
+                </verb>
+                <verb id="9"><!--madeby-->
+                    <complement id="36" /><!--muhammad-->
+                </verb>
+                <verb id="202"><!--own-->
+                    <complement id="223" /><!--muslim-->
+                </verb>
+                <verb id="17"><!--from-->
+                    <complement id="148" /><!--arabia-->
+                </verb>
+                <verb id="4"><!--madeof-->
+                    <complement id="64" /><!--male_supremacism-->
+                    <complement id="35" /><!--quran-->
+                    <complement id="34" /><!--allah-->
+                    <complement id="36" /><!--muhammad-->
+                    <complement id="450" /><!--wallace_fard_muhammad-->
+                    <complement id="452" /><!--elijah_muhammad-->
+                </verb>
+                <verb id="6"><!--need-->
+                    <complement id="408" /><!--society-->
+                </verb>
+                <verb id="11"><!--become-->
+                    <complement id="446" /><!--nation_of_islam-->
+                </verb>
+            </connectionList>
+            <metaConnectionList>
+                <positiveMetaConnectionList />
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
         <concept id="42"><!--pedophile-->
             <nameList>
                 <name>pedophile</name>
@@ -3472,6 +3163,64 @@
                 <negativeImplyConditionList />
             </implyConditionList>
         </concept>
+        <concept id="252"><!--holy_trinity-->
+            <nameList>
+                <name>holy_trinity</name>
+            </nameList>
+            <connectionList>
+                <verb id="5"><!--partof-->
+                    <complement id="77" /><!--christianism-->
+                </verb>
+                <verb id="4"><!--madeof-->
+                    <complement id="78" /><!--jesus-->
+                    <complement id="250" /><!--holy_spirit-->
+                    <complement id="251" /><!--god_the_father-->
+                </verb>
+                <verb id="6"><!--need-->
+                    <complement id="408" /><!--society-->
+                </verb>
+            </connectionList>
+            <metaConnectionList>
+                <positiveMetaConnectionList />
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="529"><!--christmas-->
+            <nameList>
+                <name>christmas</name>
+            </nameList>
+            <connectionList>
+                <verb id="5"><!--partof-->
+                    <complement id="521" /><!--winter-->
+                </verb>
+                <verb id="0"><!--isa-->
+                    <complement id="530" /><!--holy_day-->
+                </verb>
+                <verb id="17"><!--from-->
+                    <complement id="77" /><!--christianism-->
+                </verb>
+                <verb id="4"><!--madeof-->
+                    <complement id="43" /><!--pine-->
+                    <complement id="78" /><!--jesus-->
+                    <complement id="531" /><!--santa_claus-->
+                </verb>
+                <verb id="6"><!--need-->
+                    <complement id="408" /><!--society-->
+                </verb>
+            </connectionList>
+            <metaConnectionList>
+                <positiveMetaConnectionList />
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
         <concept id="249"><!--christian_god-->
             <nameList>
                 <name>christian_god</name>
@@ -3493,6 +3242,45 @@
                 </verb>
                 <verb id="10"><!--was-->
                     <complement id="263" /><!--yahweh-->
+                </verb>
+            </connectionList>
+            <metaConnectionList>
+                <positiveMetaConnectionList />
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="77"><!--christianism-->
+            <nameList>
+                <name>christianism</name>
+            </nameList>
+            <connectionList>
+                <verb id="1"><!--someare-->
+                    <complement id="151" /><!--catholiscism-->
+                    <complement id="253" /><!--protestantism-->
+                </verb>
+                <verb id="0"><!--isa-->
+                    <complement id="489" /><!--abrahamic_religion-->
+                </verb>
+                <verb id="202"><!--own-->
+                    <complement id="229" /><!--christian-->
+                </verb>
+                <verb id="4"><!--madeof-->
+                    <complement id="76" /><!--bible-->
+                    <complement id="166" /><!--bishop-->
+                    <complement id="252" /><!--holy_trinity-->
+                </verb>
+                <verb id="18"><!--originof-->
+                    <complement id="529" /><!--christmas-->
+                </verb>
+                <verb id="9"><!--madeby-->
+                    <complement id="78" /><!--jesus-->
+                </verb>
+                <verb id="6"><!--need-->
+                    <complement id="408" /><!--society-->
                 </verb>
             </connectionList>
             <metaConnectionList>
@@ -3557,10 +3345,6 @@
                 <verb id="16"><!--antagonize-->
                     <complement id="32" /><!--islam-->
                 </verb>
-                <verb id="6"><!--need-->
-                    <complement id="394" /><!--justice-->
-                    <complement id="553" /><!--population-->
-                </verb>
                 <verb id="202"><!--own-->
                     <complement id="228" /><!--jew-->
                 </verb>
@@ -3570,6 +3354,10 @@
                 <verb id="4"><!--madeof-->
                     <complement id="149" /><!--torah-->
                     <complement id="136" /><!--moses-->
+                </verb>
+                <verb id="6"><!--need-->
+                    <complement id="394" /><!--justice-->
+                    <complement id="553" /><!--population-->
                 </verb>
             </connectionList>
             <metaConnectionList>
@@ -3589,9 +3377,6 @@
                 <verb id="0"><!--isa-->
                     <complement id="139" /><!--monotheistic_religion-->
                 </verb>
-                <verb id="6"><!--need-->
-                    <complement id="408" /><!--society-->
-                </verb>
                 <verb id="202"><!--own-->
                     <complement id="237" /><!--zoroastrianist-->
                 </verb>
@@ -3605,6 +3390,9 @@
                 </verb>
                 <verb id="9"><!--madeby-->
                     <complement id="147" /><!--zoroaster-->
+                </verb>
+                <verb id="6"><!--need-->
+                    <complement id="408" /><!--society-->
                 </verb>
             </connectionList>
             <metaConnectionList>
@@ -3720,6 +3508,47 @@
                 <negativeImplyConditionList />
             </implyConditionList>
         </concept>
+        <concept id="464"><!--cvm-->
+            <nameList>
+                <name>cvm</name>
+            </nameList>
+            <connectionList>
+                <verb id="5"><!--partof-->
+                    <complement id="467" /><!--montreal-->
+                </verb>
+                <verb id="0"><!--isa-->
+                    <complement id="465" /><!--cegep-->
+                </verb>
+                <verb id="4"><!--madeof-->
+                    <complement id="463" /><!--jp-->
+                    <complement id="191" /><!--you-->
+                    <complement id="474" /><!--felix-->
+                    <complement id="475" /><!--kevin-->
+                    <complement id="481" /><!--etienne-->
+                    <complement id="503" /><!--tristan-->
+                    <complement id="542" /><!--mathieu-->
+                    <complement id="545" /><!--aladdin-->
+                    <complement id="561" /><!--pascal-->
+                    <complement id="562" /><!--frank-->
+                    <complement id="567" /><!--eric-->
+                    <complement id="575" /><!--jordan-->
+                    <complement id="603" /><!--jonatan-->
+                    <complement id="605" /><!--kovalev-->
+                    <complement id="610" /><!--gabriel-->
+                </verb>
+                <verb id="6"><!--need-->
+                    <complement id="408" /><!--society-->
+                </verb>
+            </connectionList>
+            <metaConnectionList>
+                <positiveMetaConnectionList />
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
         <concept id="504"><!--student-->
             <nameList>
                 <name>student</name>
@@ -3737,6 +3566,9 @@
                     <complement id="542" /><!--mathieu-->
                     <complement id="545" /><!--aladdin-->
                     <complement id="575" /><!--jordan-->
+                    <complement id="603" /><!--jonatan-->
+                    <complement id="605" /><!--kovalev-->
+                    <complement id="610" /><!--gabriel-->
                 </verb>
             </connectionList>
             <metaConnectionList>
@@ -3756,6 +3588,10 @@
                 <verb id="1"><!--someare-->
                     <complement id="191" /><!--you-->
                     <complement id="567" /><!--eric-->
+                    <complement id="603" /><!--jonatan-->
+                    <complement id="562" /><!--frank-->
+                    <complement id="610" /><!--gabriel-->
+                    <complement id="561" /><!--pascal-->
                 </verb>
                 <verb id="0"><!--isa-->
                     <complement id="72" /><!--caucasian_human-->
@@ -3862,6 +3698,33 @@
                 </verb>
                 <verb id="12"><!--contradict-->
                     <complement id="151" /><!--catholiscism-->
+                </verb>
+            </connectionList>
+            <metaConnectionList>
+                <positiveMetaConnectionList />
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="467"><!--montreal-->
+            <nameList>
+                <name>montreal</name>
+            </nameList>
+            <connectionList>
+                <verb id="5"><!--partof-->
+                    <complement id="468" /><!--quebec-->
+                </verb>
+                <verb id="0"><!--isa-->
+                    <complement id="155" /><!--city-->
+                </verb>
+                <verb id="4"><!--madeof-->
+                    <complement id="464" /><!--cvm-->
+                </verb>
+                <verb id="18"><!--originof-->
+                    <complement id="463" /><!--jp-->
                 </verb>
             </connectionList>
             <metaConnectionList>
@@ -4074,6 +3937,7 @@
                 </verb>
                 <verb id="15"><!--synergize-->
                     <complement id="575" /><!--jordan-->
+                    <complement id="610" /><!--gabriel-->
                 </verb>
             </connectionList>
             <metaConnectionList>
@@ -4279,6 +4143,43 @@
                 <negativeImplyConditionList />
             </implyConditionList>
         </concept>
+        <concept id="89"><!--earth-->
+            <nameList>
+                <name>earth</name>
+            </nameList>
+            <connectionList>
+                <verb id="5"><!--partof-->
+                    <complement id="129" /><!--solar_system-->
+                </verb>
+                <verb id="0"><!--isa-->
+                    <complement id="90" /><!--planet-->
+                </verb>
+                <verb id="4"><!--madeof-->
+                    <complement id="73" /><!--europe-->
+                    <complement id="70" /><!--asia-->
+                    <complement id="71" /><!--africa-->
+                    <complement id="88" /><!--oceania-->
+                    <complement id="146" /><!--middle_east-->
+                    <complement id="264" /><!--america-->
+                    <complement id="291" /><!--nature-->
+                </verb>
+                <verb id="18"><!--originof-->
+                    <complement id="59" /><!--animal-->
+                    <complement id="44" /><!--plant-->
+                </verb>
+                <verb id="14"><!--oppressedby-->
+                    <complement id="388" /><!--abusive_resource_extraction-->
+                </verb>
+            </connectionList>
+            <metaConnectionList>
+                <positiveMetaConnectionList />
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
         <concept id="74"><!--continent-->
             <nameList>
                 <name>continent</name>
@@ -4471,6 +4372,34 @@
                 <negativeImplyConditionList />
             </implyConditionList>
         </concept>
+        <concept id="521"><!--winter-->
+            <nameList>
+                <name>winter</name>
+            </nameList>
+            <connectionList>
+                <verb id="0"><!--isa-->
+                    <complement id="522" /><!--season-->
+                </verb>
+                <verb id="4"><!--madeof-->
+                    <complement id="523" /><!--snow-->
+                    <complement id="529" /><!--christmas-->
+                </verb>
+                <verb id="6"><!--need-->
+                    <complement id="408" /><!--society-->
+                </verb>
+                <verb id="12"><!--contradict-->
+                    <complement id="528" /><!--summer-->
+                </verb>
+            </connectionList>
+            <metaConnectionList>
+                <positiveMetaConnectionList />
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
         <concept id="171"><!--byzantine_empire-->
             <nameList>
                 <name>byzantine_empire</name>
@@ -4495,6 +4424,84 @@
                 <verb id="11"><!--become-->
                     <complement id="170" /><!--ottoman_empire-->
                     <complement id="157" /><!--eastern_orthodox_church-->
+                </verb>
+            </connectionList>
+            <metaConnectionList>
+                <positiveMetaConnectionList />
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="352"><!--milky_way-->
+            <nameList>
+                <name>milky_way</name>
+            </nameList>
+            <connectionList>
+                <verb id="5"><!--partof-->
+                    <complement id="428" /><!--universe-->
+                </verb>
+                <verb id="0"><!--isa-->
+                    <complement id="353" /><!--galaxy-->
+                </verb>
+                <verb id="4"><!--madeof-->
+                    <complement id="129" /><!--solar_system-->
+                </verb>
+                <verb id="6"><!--need-->
+                    <complement id="408" /><!--society-->
+                </verb>
+            </connectionList>
+            <metaConnectionList>
+                <positiveMetaConnectionList />
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="428"><!--universe-->
+            <nameList>
+                <name>universe</name>
+            </nameList>
+            <connectionList>
+                <verb id="4"><!--madeof-->
+                    <complement id="352" /><!--milky_way-->
+                </verb>
+                <verb id="6"><!--need-->
+                    <complement id="408" /><!--society-->
+                </verb>
+            </connectionList>
+            <metaConnectionList>
+                <positiveMetaConnectionList />
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="468"><!--quebec-->
+            <nameList>
+                <name>quebec</name>
+            </nameList>
+            <connectionList>
+                <verb id="5"><!--partof-->
+                    <complement id="470" /><!--canada-->
+                </verb>
+                <verb id="0"><!--isa-->
+                    <complement id="469" /><!--province-->
+                </verb>
+                <verb id="4"><!--madeof-->
+                    <complement id="467" /><!--montreal-->
+                    <complement id="543" /><!--st_remi-->
+                    <complement id="573" /><!--mcmasterville-->
+                </verb>
+                <verb id="6"><!--need-->
+                    <complement id="394" /><!--justice-->
+                    <complement id="553" /><!--population-->
                 </verb>
             </connectionList>
             <metaConnectionList>
@@ -4778,6 +4785,54 @@
                 </verb>
                 <verb id="17"><!--from-->
                     <complement id="87" /><!--australia-->
+                </verb>
+            </connectionList>
+            <metaConnectionList>
+                <positiveMetaConnectionList />
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="592"><!--boomerang-->
+            <nameList>
+                <name>boomerang</name>
+            </nameList>
+            <connectionList>
+                <verb id="0"><!--isa-->
+                    <complement id="593" /><!--weapon-->
+                </verb>
+                <verb id="17"><!--from-->
+                    <complement id="87" /><!--australia-->
+                </verb>
+                <verb id="4"><!--madeof-->
+                    <complement id="45" /><!--wood-->
+                </verb>
+            </connectionList>
+            <metaConnectionList>
+                <positiveMetaConnectionList />
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="596"><!--digeridoo-->
+            <nameList>
+                <name>digeridoo</name>
+            </nameList>
+            <connectionList>
+                <verb id="0"><!--isa-->
+                    <complement id="547" /><!--musical_instrument-->
+                </verb>
+                <verb id="17"><!--from-->
+                    <complement id="87" /><!--australia-->
+                </verb>
+                <verb id="4"><!--madeof-->
+                    <complement id="45" /><!--wood-->
                 </verb>
             </connectionList>
             <metaConnectionList>
@@ -5320,11 +5375,11 @@
                 <verb id="18"><!--originof-->
                     <complement id="249" /><!--christian_god-->
                 </verb>
-                <verb id="6"><!--need-->
-                    <complement id="477" /><!--faith-->
-                </verb>
                 <verb id="202"><!--own-->
                     <complement id="229" /><!--christian-->
+                </verb>
+                <verb id="6"><!--need-->
+                    <complement id="477" /><!--faith-->
                 </verb>
             </connectionList>
             <metaConnectionList>
@@ -5404,6 +5459,36 @@
                 <negativeImplyConditionList />
             </implyConditionList>
         </concept>
+        <concept id="129"><!--solar_system-->
+            <nameList>
+                <name>solar_system</name>
+            </nameList>
+            <connectionList>
+                <verb id="5"><!--partof-->
+                    <complement id="352" /><!--milky_way-->
+                </verb>
+                <verb id="0"><!--isa-->
+                    <complement id="130" /><!--stellar_system-->
+                </verb>
+                <verb id="4"><!--madeof-->
+                    <complement id="89" /><!--earth-->
+                    <complement id="131" /><!--sun-->
+                    <complement id="135" /><!--moon-->
+                </verb>
+                <verb id="6"><!--need-->
+                    <complement id="394" /><!--justice-->
+                    <complement id="553" /><!--population-->
+                </verb>
+            </connectionList>
+            <metaConnectionList>
+                <positiveMetaConnectionList />
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
         <concept id="90"><!--planet-->
             <nameList>
                 <name>planet</name>
@@ -5447,12 +5532,12 @@
                     <complement id="59" /><!--animal-->
                     <complement id="44" /><!--plant-->
                 </verb>
+                <verb id="5"><!--partof-->
+                    <complement id="89" /><!--earth-->
+                </verb>
                 <verb id="4"><!--madeof-->
                     <complement id="59" /><!--animal-->
                     <complement id="44" /><!--plant-->
-                </verb>
-                <verb id="5"><!--partof-->
-                    <complement id="89" /><!--earth-->
                 </verb>
             </connectionList>
             <metaConnectionList>
@@ -5472,16 +5557,16 @@
                 <verb id="0"><!--isa-->
                     <complement id="274" /><!--lifeform-->
                 </verb>
-                <verb id="6"><!--need-->
-                    <complement id="291" /><!--nature-->
-                    <complement id="583" /><!--oxygen-->
-                    <complement id="459" /><!--water-->
-                </verb>
                 <verb id="17"><!--from-->
                     <complement id="89" /><!--earth-->
                 </verb>
                 <verb id="4"><!--madeof-->
                     <complement id="416" /><!--organ_(anatomy)-->
+                </verb>
+                <verb id="6"><!--need-->
+                    <complement id="291" /><!--nature-->
+                    <complement id="583" /><!--oxygen-->
+                    <complement id="459" /><!--water-->
                 </verb>
                 <verb id="14"><!--oppressedby-->
                     <complement id="341" /><!--disease-->
@@ -5523,12 +5608,12 @@
                 <verb id="0"><!--isa-->
                     <complement id="274" /><!--lifeform-->
                 </verb>
+                <verb id="17"><!--from-->
+                    <complement id="89" /><!--earth-->
+                </verb>
                 <verb id="6"><!--need-->
                     <complement id="459" /><!--water-->
                     <complement id="291" /><!--nature-->
-                </verb>
-                <verb id="17"><!--from-->
-                    <complement id="89" /><!--earth-->
                 </verb>
                 <verb id="8"><!--make-->
                     <complement id="583" /><!--oxygen-->
@@ -6106,6 +6191,31 @@
                 <negativeImplyConditionList />
             </implyConditionList>
         </concept>
+        <concept id="586"><!--sexual_integrity-->
+            <nameList>
+                <name>sexual_integrity</name>
+            </nameList>
+            <connectionList>
+                <verb id="0"><!--isa-->
+                    <complement id="589" /><!--psychological_integrity-->
+                    <complement id="588" /><!--physical_integrity-->
+                </verb>
+                <verb id="14"><!--oppressedby-->
+                    <complement id="585" /><!--rapist-->
+                </verb>
+                <verb id="7"><!--allow-->
+                    <complement id="587" /><!--dignity-->
+                </verb>
+            </connectionList>
+            <metaConnectionList>
+                <positiveMetaConnectionList />
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
         <concept id="331"><!--statement-->
             <nameList>
                 <name>statement</name>
@@ -6316,11 +6426,11 @@
                 <name>southern_africa</name>
             </nameList>
             <connectionList>
-                <verb id="18"><!--originof-->
-                    <complement id="84" /><!--capoid_human-->
-                </verb>
                 <verb id="5"><!--partof-->
                     <complement id="71" /><!--africa-->
+                </verb>
+                <verb id="18"><!--originof-->
+                    <complement id="84" /><!--capoid_human-->
                 </verb>
             </connectionList>
             <metaConnectionList>
@@ -6694,11 +6804,11 @@
                 <name>israel</name>
             </nameList>
             <connectionList>
-                <verb id="18"><!--originof-->
-                    <complement id="137" /><!--judaism-->
-                </verb>
                 <verb id="5"><!--partof-->
                     <complement id="146" /><!--middle_east-->
+                </verb>
+                <verb id="18"><!--originof-->
+                    <complement id="137" /><!--judaism-->
                 </verb>
             </connectionList>
             <metaConnectionList>
@@ -6731,11 +6841,11 @@
                 <verb id="5"><!--partof-->
                     <complement id="137" /><!--judaism-->
                 </verb>
-                <verb id="6"><!--need-->
-                    <complement id="477" /><!--faith-->
-                </verb>
                 <verb id="202"><!--own-->
                     <complement id="228" /><!--jew-->
+                </verb>
+                <verb id="6"><!--need-->
+                    <complement id="477" /><!--faith-->
                 </verb>
             </connectionList>
             <metaConnectionList>
@@ -8120,11 +8230,11 @@
                 <verb id="0"><!--isa-->
                     <complement id="206" /><!--belief-->
                 </verb>
-                <verb id="6"><!--need-->
-                    <complement id="477" /><!--faith-->
-                </verb>
                 <verb id="4"><!--madeof-->
                     <complement id="60" /><!--god-->
+                </verb>
+                <verb id="6"><!--need-->
+                    <complement id="477" /><!--faith-->
                 </verb>
                 <verb id="12"><!--contradict-->
                     <complement id="493" /><!--atheism-->
@@ -8591,11 +8701,11 @@
                 <verb id="5"><!--partof-->
                     <complement id="459" /><!--water-->
                 </verb>
-                <verb id="7"><!--allow-->
-                    <complement id="59" /><!--animal-->
-                </verb>
                 <verb id="9"><!--madeby-->
                     <complement id="44" /><!--plant-->
+                </verb>
+                <verb id="7"><!--allow-->
+                    <complement id="59" /><!--animal-->
                 </verb>
             </connectionList>
             <metaConnectionList>
@@ -8623,6 +8733,33 @@
                     <complement id="537" /><!--ice-->
                 </verb>
                 <verb id="7"><!--allow-->
+                    <complement id="44" /><!--plant-->
+                    <complement id="59" /><!--animal-->
+                </verb>
+            </connectionList>
+            <metaConnectionList>
+                <positiveMetaConnectionList />
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="341"><!--disease-->
+            <nameList>
+                <name>disease</name>
+                <name>illness</name>
+            </nameList>
+            <connectionList>
+                <verb id="1"><!--someare-->
+                    <complement id="340" /><!--fatal_disease-->
+                    <complement id="534" /><!--flu-->
+                </verb>
+                <verb id="9"><!--madeby-->
+                    <complement id="525" /><!--cold-->
+                </verb>
+                <verb id="13"><!--oppress-->
                     <complement id="44" /><!--plant-->
                     <complement id="59" /><!--animal-->
                 </verb>
@@ -9168,6 +9305,30 @@
                     <complement id="226" /><!--terrorism-->
                 </verb>
                 <verb id="0"><!--isa-->
+                    <complement id="339" /><!--fatal_injury-->
+                </verb>
+            </connectionList>
+            <metaConnectionList>
+                <positiveMetaConnectionList />
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="593"><!--weapon-->
+            <nameList>
+                <name>weapon</name>
+            </nameList>
+            <connectionList>
+                <verb id="1"><!--someare-->
+                    <complement id="592" /><!--boomerang-->
+                    <complement id="594" /><!--gun-->
+                    <complement id="595" /><!--sword-->
+                </verb>
+                <verb id="8"><!--make-->
+                    <complement id="240" /><!--fight-->
                     <complement id="339" /><!--fatal_injury-->
                 </verb>
             </connectionList>
@@ -10044,144 +10205,6 @@
                 <negativeImplyConditionList />
             </implyConditionList>
         </concept>
-        <concept id="584"><!--gas-->
-            <nameList>
-                <name>gas</name>
-            </nameList>
-            <connectionList>
-                <verb id="1"><!--someare-->
-                    <complement id="583" /><!--oxygen-->
-                </verb>
-            </connectionList>
-            <metaConnectionList>
-                <positiveMetaConnectionList />
-                <negativeMetaConnectionList />
-            </metaConnectionList>
-            <implyConditionList>
-                <positiveImplyConditionList />
-                <negativeImplyConditionList />
-            </implyConditionList>
-        </concept>
-        <concept id="537"><!--ice-->
-            <nameList>
-                <name>ice</name>
-            </nameList>
-            <connectionList>
-                <verb id="0"><!--isa-->
-                    <complement id="538" /><!--sold-->
-                </verb>
-                <verb id="4"><!--madeof-->
-                    <complement id="459" /><!--water-->
-                    <complement id="525" /><!--cold-->
-                </verb>
-                <verb id="16"><!--antagonize-->
-                    <complement id="415" /><!--fire-->
-                </verb>
-            </connectionList>
-            <metaConnectionList>
-                <positiveMetaConnectionList />
-                <negativeMetaConnectionList />
-            </metaConnectionList>
-            <implyConditionList>
-                <positiveImplyConditionList />
-                <negativeImplyConditionList />
-            </implyConditionList>
-        </concept>
-        <concept id="306"><!--mollusc-->
-            <nameList>
-                <name>mollusc</name>
-            </nameList>
-            <connectionList>
-                <verb id="0"><!--isa-->
-                    <complement id="303" /><!--invertebrate-->
-                </verb>
-                <verb id="12"><!--contradict-->
-                    <complement id="307" /><!--arthropod-->
-                </verb>
-            </connectionList>
-            <metaConnectionList>
-                <positiveMetaConnectionList />
-                <negativeMetaConnectionList />
-            </metaConnectionList>
-            <implyConditionList>
-                <positiveImplyConditionList />
-                <negativeImplyConditionList />
-            </implyConditionList>
-        </concept>
-        <concept id="307"><!--arthropod-->
-            <nameList>
-                <name>arthropod</name>
-            </nameList>
-            <connectionList>
-                <verb id="1"><!--someare-->
-                    <complement id="309" /><!--insect-->
-                </verb>
-                <verb id="0"><!--isa-->
-                    <complement id="303" /><!--invertebrate-->
-                </verb>
-                <verb id="4"><!--madeof-->
-                    <complement id="308" /><!--exoskeleton-->
-                </verb>
-                <verb id="12"><!--contradict-->
-                    <complement id="306" /><!--mollusc-->
-                </verb>
-            </connectionList>
-            <metaConnectionList>
-                <positiveMetaConnectionList />
-                <negativeMetaConnectionList />
-            </metaConnectionList>
-            <implyConditionList>
-                <positiveImplyConditionList />
-                <negativeImplyConditionList />
-            </implyConditionList>
-        </concept>
-        <concept id="284"><!--hamburger-->
-            <nameList>
-                <name>hamburger</name>
-            </nameList>
-            <connectionList>
-                <verb id="0"><!--isa-->
-                    <complement id="287" /><!--sandwich-->
-                </verb>
-                <verb id="1"><!--someare-->
-                    <complement id="277" /><!--cheeseburger-->
-                </verb>
-                <verb id="4"><!--madeof-->
-                    <complement id="289" /><!--meat-->
-                </verb>
-            </connectionList>
-            <metaConnectionList>
-                <positiveMetaConnectionList />
-                <negativeMetaConnectionList />
-            </metaConnectionList>
-            <implyConditionList>
-                <positiveImplyConditionList />
-                <negativeImplyConditionList />
-            </implyConditionList>
-        </concept>
-        <concept id="282"><!--food-->
-            <nameList>
-                <name>food</name>
-            </nameList>
-            <connectionList>
-                <verb id="1"><!--someare-->
-                    <complement id="275" /><!--mcnugget-->
-                    <complement id="285" /><!--cheese-->
-                    <complement id="287" /><!--sandwich-->
-                    <complement id="278" /><!--fried_potato-->
-                    <complement id="288" /><!--bread-->
-                    <complement id="289" /><!--meat-->
-                </verb>
-            </connectionList>
-            <metaConnectionList>
-                <positiveMetaConnectionList />
-                <negativeMetaConnectionList />
-            </metaConnectionList>
-            <implyConditionList>
-                <positiveImplyConditionList />
-                <negativeImplyConditionList />
-            </implyConditionList>
-        </concept>
         <concept id="309"><!--insect-->
             <nameList>
                 <name>insect</name>
@@ -10531,148 +10554,6 @@
                 <negativeImplyConditionList />
             </implyConditionList>
         </concept>
-        <concept id="318"><!--moral-->
-            <nameList>
-                <name>moral</name>
-            </nameList>
-            <connectionList>
-                <verb id="1"><!--someare-->
-                    <complement id="317" /><!--moral_objectivism-->
-                    <complement id="319" /><!--moral_relativism-->
-                </verb>
-            </connectionList>
-            <metaConnectionList>
-                <positiveMetaConnectionList />
-                <negativeMetaConnectionList />
-            </metaConnectionList>
-            <implyConditionList>
-                <positiveImplyConditionList />
-                <negativeImplyConditionList />
-            </implyConditionList>
-        </concept>
-        <concept id="321"><!--transcendence-->
-            <nameList>
-                <name>transcendence</name>
-            </nameList>
-            <connectionList>
-                <verb id="5"><!--partof-->
-                    <complement id="317" /><!--moral_objectivism-->
-                    <complement id="488" /><!--pantheism-->
-                </verb>
-                <verb id="12"><!--contradict-->
-                    <complement id="320" /><!--immanence-->
-                </verb>
-            </connectionList>
-            <metaConnectionList>
-                <positiveMetaConnectionList />
-                <negativeMetaConnectionList />
-            </metaConnectionList>
-            <implyConditionList>
-                <positiveImplyConditionList />
-                <negativeImplyConditionList />
-            </implyConditionList>
-        </concept>
-        <concept id="319"><!--moral_relativism-->
-            <nameList>
-                <name>moral_relativism</name>
-            </nameList>
-            <connectionList>
-                <verb id="5"><!--partof-->
-                    <complement id="316" /><!--nihilism-->
-                </verb>
-                <verb id="0"><!--isa-->
-                    <complement id="318" /><!--moral-->
-                </verb>
-                <verb id="4"><!--madeof-->
-                    <complement id="320" /><!--immanence-->
-                </verb>
-                <verb id="12"><!--contradict-->
-                    <complement id="317" /><!--moral_objectivism-->
-                </verb>
-            </connectionList>
-            <metaConnectionList>
-                <positiveMetaConnectionList />
-                <negativeMetaConnectionList />
-            </metaConnectionList>
-            <implyConditionList>
-                <positiveImplyConditionList />
-                <negativeImplyConditionList />
-            </implyConditionList>
-        </concept>
-        <concept id="316"><!--nihilism-->
-            <nameList>
-                <name>nihilism</name>
-            </nameList>
-            <connectionList>
-                <verb id="0"><!--isa-->
-                    <complement id="143" /><!--philosophy-->
-                </verb>
-                <verb id="4"><!--madeof-->
-                    <complement id="319" /><!--moral_relativism-->
-                </verb>
-                <verb id="310"><!--without-->
-                    <complement id="317" /><!--moral_objectivism-->
-                </verb>
-                <verb id="11"><!--become-->
-                    <complement id="314" /><!--existentialism-->
-                </verb>
-            </connectionList>
-            <metaConnectionList>
-                <positiveMetaConnectionList />
-                <negativeMetaConnectionList />
-            </metaConnectionList>
-            <implyConditionList>
-                <positiveImplyConditionList />
-                <negativeImplyConditionList />
-            </implyConditionList>
-        </concept>
-        <concept id="143"><!--philosophy-->
-            <nameList>
-                <name>philosophy</name>
-            </nameList>
-            <connectionList>
-                <verb id="1"><!--someare-->
-                    <complement id="142" /><!--dualism-->
-                    <complement id="248" /><!--monism-->
-                    <complement id="312" /><!--determinism-->
-                    <complement id="314" /><!--existentialism-->
-                    <complement id="316" /><!--nihilism-->
-                    <complement id="417" /><!--rationalism-->
-                    <complement id="419" /><!--hedonism-->
-                    <complement id="512" /><!--epistemology-->
-                </verb>
-            </connectionList>
-            <metaConnectionList>
-                <positiveMetaConnectionList />
-                <negativeMetaConnectionList />
-            </metaConnectionList>
-            <implyConditionList>
-                <positiveImplyConditionList />
-                <negativeImplyConditionList />
-            </implyConditionList>
-        </concept>
-        <concept id="248"><!--monism-->
-            <nameList>
-                <name>monism</name>
-            </nameList>
-            <connectionList>
-                <verb id="0"><!--isa-->
-                    <complement id="143" /><!--philosophy-->
-                </verb>
-                <verb id="12"><!--contradict-->
-                    <complement id="142" /><!--dualism-->
-                    <complement id="490" /><!--pluralism-->
-                </verb>
-            </connectionList>
-            <metaConnectionList>
-                <positiveMetaConnectionList />
-                <negativeMetaConnectionList />
-            </metaConnectionList>
-            <implyConditionList>
-                <positiveImplyConditionList />
-                <negativeImplyConditionList />
-            </implyConditionList>
-        </concept>
         <concept id="382"><!--womens_liberation-->
             <nameList>
                 <name>womens_liberation</name>
@@ -10755,6 +10636,147 @@
                 <negativeImplyConditionList />
             </implyConditionList>
         </concept>
+        <concept id="584"><!--gas-->
+            <nameList>
+                <name>gas</name>
+            </nameList>
+            <connectionList>
+                <verb id="1"><!--someare-->
+                    <complement id="583" /><!--oxygen-->
+                </verb>
+            </connectionList>
+            <metaConnectionList>
+                <positiveMetaConnectionList />
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="537"><!--ice-->
+            <nameList>
+                <name>ice</name>
+            </nameList>
+            <connectionList>
+                <verb id="5"><!--partof-->
+                    <complement id="606" /><!--hockey-->
+                </verb>
+                <verb id="0"><!--isa-->
+                    <complement id="538" /><!--sold-->
+                </verb>
+                <verb id="4"><!--madeof-->
+                    <complement id="459" /><!--water-->
+                    <complement id="525" /><!--cold-->
+                </verb>
+                <verb id="16"><!--antagonize-->
+                    <complement id="415" /><!--fire-->
+                </verb>
+            </connectionList>
+            <metaConnectionList>
+                <positiveMetaConnectionList />
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="306"><!--mollusc-->
+            <nameList>
+                <name>mollusc</name>
+            </nameList>
+            <connectionList>
+                <verb id="0"><!--isa-->
+                    <complement id="303" /><!--invertebrate-->
+                </verb>
+                <verb id="12"><!--contradict-->
+                    <complement id="307" /><!--arthropod-->
+                </verb>
+            </connectionList>
+            <metaConnectionList>
+                <positiveMetaConnectionList />
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="307"><!--arthropod-->
+            <nameList>
+                <name>arthropod</name>
+            </nameList>
+            <connectionList>
+                <verb id="1"><!--someare-->
+                    <complement id="309" /><!--insect-->
+                </verb>
+                <verb id="0"><!--isa-->
+                    <complement id="303" /><!--invertebrate-->
+                </verb>
+                <verb id="4"><!--madeof-->
+                    <complement id="308" /><!--exoskeleton-->
+                </verb>
+                <verb id="12"><!--contradict-->
+                    <complement id="306" /><!--mollusc-->
+                </verb>
+            </connectionList>
+            <metaConnectionList>
+                <positiveMetaConnectionList />
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="284"><!--hamburger-->
+            <nameList>
+                <name>hamburger</name>
+            </nameList>
+            <connectionList>
+                <verb id="0"><!--isa-->
+                    <complement id="287" /><!--sandwich-->
+                </verb>
+                <verb id="1"><!--someare-->
+                    <complement id="277" /><!--cheeseburger-->
+                </verb>
+                <verb id="4"><!--madeof-->
+                    <complement id="289" /><!--meat-->
+                </verb>
+            </connectionList>
+            <metaConnectionList>
+                <positiveMetaConnectionList />
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="282"><!--food-->
+            <nameList>
+                <name>food</name>
+            </nameList>
+            <connectionList>
+                <verb id="1"><!--someare-->
+                    <complement id="275" /><!--mcnugget-->
+                    <complement id="285" /><!--cheese-->
+                    <complement id="287" /><!--sandwich-->
+                    <complement id="278" /><!--fried_potato-->
+                    <complement id="288" /><!--bread-->
+                    <complement id="289" /><!--meat-->
+                </verb>
+            </connectionList>
+            <metaConnectionList>
+                <positiveMetaConnectionList />
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
         <concept id="280"><!--potato-->
             <nameList>
                 <name>potato</name>
@@ -10802,33 +10824,6 @@
             <connectionList>
                 <verb id="1"><!--someare-->
                     <complement id="526" /><!--hot-->
-                    <complement id="525" /><!--cold-->
-                </verb>
-            </connectionList>
-            <metaConnectionList>
-                <positiveMetaConnectionList />
-                <negativeMetaConnectionList />
-            </metaConnectionList>
-            <implyConditionList>
-                <positiveImplyConditionList />
-                <negativeImplyConditionList />
-            </implyConditionList>
-        </concept>
-        <concept id="341"><!--disease-->
-            <nameList>
-                <name>disease</name>
-                <name>illness</name>
-            </nameList>
-            <connectionList>
-                <verb id="13"><!--oppress-->
-                    <complement id="44" /><!--plant-->
-                    <complement id="59" /><!--animal-->
-                </verb>
-                <verb id="1"><!--someare-->
-                    <complement id="340" /><!--fatal_disease-->
-                    <complement id="534" /><!--flu-->
-                </verb>
-                <verb id="9"><!--madeby-->
                     <complement id="525" /><!--cold-->
                 </verb>
             </connectionList>
@@ -11004,6 +10999,148 @@
             <connectionList>
                 <verb id="1"><!--someare-->
                     <complement id="213" /><!--pantheon-->
+                </verb>
+            </connectionList>
+            <metaConnectionList>
+                <positiveMetaConnectionList />
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="318"><!--moral-->
+            <nameList>
+                <name>moral</name>
+            </nameList>
+            <connectionList>
+                <verb id="1"><!--someare-->
+                    <complement id="317" /><!--moral_objectivism-->
+                    <complement id="319" /><!--moral_relativism-->
+                </verb>
+            </connectionList>
+            <metaConnectionList>
+                <positiveMetaConnectionList />
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="321"><!--transcendence-->
+            <nameList>
+                <name>transcendence</name>
+            </nameList>
+            <connectionList>
+                <verb id="5"><!--partof-->
+                    <complement id="317" /><!--moral_objectivism-->
+                    <complement id="488" /><!--pantheism-->
+                </verb>
+                <verb id="12"><!--contradict-->
+                    <complement id="320" /><!--immanence-->
+                </verb>
+            </connectionList>
+            <metaConnectionList>
+                <positiveMetaConnectionList />
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="319"><!--moral_relativism-->
+            <nameList>
+                <name>moral_relativism</name>
+            </nameList>
+            <connectionList>
+                <verb id="5"><!--partof-->
+                    <complement id="316" /><!--nihilism-->
+                </verb>
+                <verb id="0"><!--isa-->
+                    <complement id="318" /><!--moral-->
+                </verb>
+                <verb id="4"><!--madeof-->
+                    <complement id="320" /><!--immanence-->
+                </verb>
+                <verb id="12"><!--contradict-->
+                    <complement id="317" /><!--moral_objectivism-->
+                </verb>
+            </connectionList>
+            <metaConnectionList>
+                <positiveMetaConnectionList />
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="316"><!--nihilism-->
+            <nameList>
+                <name>nihilism</name>
+            </nameList>
+            <connectionList>
+                <verb id="0"><!--isa-->
+                    <complement id="143" /><!--philosophy-->
+                </verb>
+                <verb id="4"><!--madeof-->
+                    <complement id="319" /><!--moral_relativism-->
+                </verb>
+                <verb id="310"><!--without-->
+                    <complement id="317" /><!--moral_objectivism-->
+                </verb>
+                <verb id="11"><!--become-->
+                    <complement id="314" /><!--existentialism-->
+                </verb>
+            </connectionList>
+            <metaConnectionList>
+                <positiveMetaConnectionList />
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="143"><!--philosophy-->
+            <nameList>
+                <name>philosophy</name>
+            </nameList>
+            <connectionList>
+                <verb id="1"><!--someare-->
+                    <complement id="142" /><!--dualism-->
+                    <complement id="248" /><!--monism-->
+                    <complement id="312" /><!--determinism-->
+                    <complement id="314" /><!--existentialism-->
+                    <complement id="316" /><!--nihilism-->
+                    <complement id="417" /><!--rationalism-->
+                    <complement id="419" /><!--hedonism-->
+                    <complement id="512" /><!--epistemology-->
+                </verb>
+            </connectionList>
+            <metaConnectionList>
+                <positiveMetaConnectionList />
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="248"><!--monism-->
+            <nameList>
+                <name>monism</name>
+            </nameList>
+            <connectionList>
+                <verb id="0"><!--isa-->
+                    <complement id="143" /><!--philosophy-->
+                </verb>
+                <verb id="12"><!--contradict-->
+                    <complement id="142" /><!--dualism-->
+                    <complement id="490" /><!--pluralism-->
                 </verb>
             </connectionList>
             <metaConnectionList>
@@ -11201,6 +11338,24 @@
             <connectionList>
                 <verb id="1"><!--someare-->
                     <complement id="293" /><!--poisonous_gmo-->
+                </verb>
+            </connectionList>
+            <metaConnectionList>
+                <positiveMetaConnectionList />
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="538"><!--sold-->
+            <nameList>
+                <name>sold</name>
+            </nameList>
+            <connectionList>
+                <verb id="1"><!--someare-->
+                    <complement id="537" /><!--ice-->
                 </verb>
             </connectionList>
             <metaConnectionList>
@@ -11443,6 +11598,29 @@
                 <negativeImplyConditionList />
             </implyConditionList>
         </concept>
+        <concept id="595"><!--sword-->
+            <nameList>
+                <name>sword</name>
+            </nameList>
+            <connectionList>
+                <verb id="0"><!--isa-->
+                    <complement id="593" /><!--weapon-->
+                </verb>
+                <verb id="4"><!--madeof-->
+                    <complement id="45" /><!--wood-->
+                    <complement id="597" /><!--metal-->
+                    <complement id="599" /><!--blade-->
+                </verb>
+            </connectionList>
+            <metaConnectionList>
+                <positiveMetaConnectionList />
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
         <concept id="480"><!--paper-->
             <nameList>
                 <name>paper</name>
@@ -11604,24 +11782,6 @@
             <connectionList>
                 <verb id="0"><!--isa-->
                     <complement id="357" /><!--artificial_satellite-->
-                </verb>
-            </connectionList>
-            <metaConnectionList>
-                <positiveMetaConnectionList />
-                <negativeMetaConnectionList />
-            </metaConnectionList>
-            <implyConditionList>
-                <positiveImplyConditionList />
-                <negativeImplyConditionList />
-            </implyConditionList>
-        </concept>
-        <concept id="538"><!--sold-->
-            <nameList>
-                <name>sold</name>
-            </nameList>
-            <connectionList>
-                <verb id="1"><!--someare-->
-                    <complement id="537" /><!--ice-->
                 </verb>
             </connectionList>
             <metaConnectionList>
@@ -11976,31 +12136,6 @@
                 <negativeImplyConditionList />
             </implyConditionList>
         </concept>
-        <concept id="586"><!--sexual_integrity-->
-            <nameList>
-                <name>sexual_integrity</name>
-            </nameList>
-            <connectionList>
-                <verb id="0"><!--isa-->
-                    <complement id="589" /><!--psychological_integrity-->
-                    <complement id="588" /><!--physical_integrity-->
-                </verb>
-                <verb id="14"><!--oppressedby-->
-                    <complement id="585" /><!--rapist-->
-                </verb>
-                <verb id="7"><!--allow-->
-                    <complement id="587" /><!--dignity-->
-                </verb>
-            </connectionList>
-            <metaConnectionList>
-                <positiveMetaConnectionList />
-                <negativeMetaConnectionList />
-            </metaConnectionList>
-            <implyConditionList>
-                <positiveImplyConditionList />
-                <negativeImplyConditionList />
-            </implyConditionList>
-        </concept>
         <concept id="589"><!--psychological_integrity-->
             <nameList>
                 <name>psychological_integrity</name>
@@ -12062,54 +12197,6 @@
                 <negativeImplyConditionList />
             </implyConditionList>
         </concept>
-        <concept id="592"><!--boomerang-->
-            <nameList>
-                <name>boomerang</name>
-            </nameList>
-            <connectionList>
-                <verb id="0"><!--isa-->
-                    <complement id="593" /><!--weapon-->
-                </verb>
-                <verb id="17"><!--from-->
-                    <complement id="87" /><!--australia-->
-                </verb>
-                <verb id="4"><!--madeof-->
-                    <complement id="45" /><!--wood-->
-                </verb>
-            </connectionList>
-            <metaConnectionList>
-                <positiveMetaConnectionList />
-                <negativeMetaConnectionList />
-            </metaConnectionList>
-            <implyConditionList>
-                <positiveImplyConditionList />
-                <negativeImplyConditionList />
-            </implyConditionList>
-        </concept>
-        <concept id="593"><!--weapon-->
-            <nameList>
-                <name>weapon</name>
-            </nameList>
-            <connectionList>
-                <verb id="1"><!--someare-->
-                    <complement id="592" /><!--boomerang-->
-                    <complement id="594" /><!--gun-->
-                    <complement id="595" /><!--sword-->
-                </verb>
-                <verb id="8"><!--make-->
-                    <complement id="240" /><!--fight-->
-                    <complement id="339" /><!--fatal_injury-->
-                </verb>
-            </connectionList>
-            <metaConnectionList>
-                <positiveMetaConnectionList />
-                <negativeMetaConnectionList />
-            </metaConnectionList>
-            <implyConditionList>
-                <positiveImplyConditionList />
-                <negativeImplyConditionList />
-            </implyConditionList>
-        </concept>
         <concept id="594"><!--gun-->
             <nameList>
                 <name>gun</name>
@@ -12118,77 +12205,12 @@
                 <verb id="0"><!--isa-->
                     <complement id="593" /><!--weapon-->
                 </verb>
-                <verb id="6"><!--need-->
-                    <complement id="598" /><!--gun_powder-->
-                </verb>
                 <verb id="4"><!--madeof-->
                     <complement id="601" /><!--trigger-->
                     <complement id="602" /><!--cannon-->
                 </verb>
-            </connectionList>
-            <metaConnectionList>
-                <positiveMetaConnectionList />
-                <negativeMetaConnectionList />
-            </metaConnectionList>
-            <implyConditionList>
-                <positiveImplyConditionList />
-                <negativeImplyConditionList />
-            </implyConditionList>
-        </concept>
-        <concept id="595"><!--sword-->
-            <nameList>
-                <name>sword</name>
-            </nameList>
-            <connectionList>
-                <verb id="0"><!--isa-->
-                    <complement id="593" /><!--weapon-->
-                </verb>
-                <verb id="4"><!--madeof-->
-                    <complement id="45" /><!--wood-->
-                    <complement id="597" /><!--metal-->
-                    <complement id="599" /><!--blade-->
-                </verb>
-            </connectionList>
-            <metaConnectionList>
-                <positiveMetaConnectionList />
-                <negativeMetaConnectionList />
-            </metaConnectionList>
-            <implyConditionList>
-                <positiveImplyConditionList />
-                <negativeImplyConditionList />
-            </implyConditionList>
-        </concept>
-        <concept id="596"><!--digeridoo-->
-            <nameList>
-                <name>digeridoo</name>
-            </nameList>
-            <connectionList>
-                <verb id="0"><!--isa-->
-                    <complement id="547" /><!--musical_instrument-->
-                </verb>
-                <verb id="17"><!--from-->
-                    <complement id="87" /><!--australia-->
-                </verb>
-                <verb id="4"><!--madeof-->
-                    <complement id="45" /><!--wood-->
-                </verb>
-            </connectionList>
-            <metaConnectionList>
-                <positiveMetaConnectionList />
-                <negativeMetaConnectionList />
-            </metaConnectionList>
-            <implyConditionList>
-                <positiveImplyConditionList />
-                <negativeImplyConditionList />
-            </implyConditionList>
-        </concept>
-        <concept id="597"><!--metal-->
-            <nameList>
-                <name>metal</name>
-            </nameList>
-            <connectionList>
-                <verb id="5"><!--partof-->
-                    <complement id="595" /><!--sword-->
+                <verb id="6"><!--need-->
+                    <complement id="598" /><!--gun_powder-->
                 </verb>
             </connectionList>
             <metaConnectionList>
@@ -12207,42 +12229,6 @@
             <connectionList>
                 <verb id="7"><!--allow-->
                     <complement id="594" /><!--gun-->
-                </verb>
-            </connectionList>
-            <metaConnectionList>
-                <positiveMetaConnectionList />
-                <negativeMetaConnectionList />
-            </metaConnectionList>
-            <implyConditionList>
-                <positiveImplyConditionList />
-                <negativeImplyConditionList />
-            </implyConditionList>
-        </concept>
-        <concept id="599"><!--blade-->
-            <nameList>
-                <name>blade</name>
-            </nameList>
-            <connectionList>
-                <verb id="5"><!--partof-->
-                    <complement id="595" /><!--sword-->
-                </verb>
-            </connectionList>
-            <metaConnectionList>
-                <positiveMetaConnectionList />
-                <negativeMetaConnectionList />
-            </metaConnectionList>
-            <implyConditionList>
-                <positiveImplyConditionList />
-                <negativeImplyConditionList />
-            </implyConditionList>
-        </concept>
-        <concept id="600"><!--cell_(biology)-->
-            <nameList>
-                <name>cell_(biology)</name>
-            </nameList>
-            <connectionList>
-                <verb id="1"><!--someare-->
-                    <complement id="433" /><!--neuron-->
                 </verb>
             </connectionList>
             <metaConnectionList>
@@ -12279,6 +12265,241 @@
             <connectionList>
                 <verb id="5"><!--partof-->
                     <complement id="594" /><!--gun-->
+                </verb>
+            </connectionList>
+            <metaConnectionList>
+                <positiveMetaConnectionList />
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="597"><!--metal-->
+            <nameList>
+                <name>metal</name>
+            </nameList>
+            <connectionList>
+                <verb id="5"><!--partof-->
+                    <complement id="595" /><!--sword-->
+                </verb>
+            </connectionList>
+            <metaConnectionList>
+                <positiveMetaConnectionList />
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="599"><!--blade-->
+            <nameList>
+                <name>blade</name>
+            </nameList>
+            <connectionList>
+                <verb id="5"><!--partof-->
+                    <complement id="595" /><!--sword-->
+                </verb>
+            </connectionList>
+            <metaConnectionList>
+                <positiveMetaConnectionList />
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="603"><!--jonatan-->
+            <nameList>
+                <name>jonatan</name>
+            </nameList>
+            <connectionList>
+                <verb id="5"><!--partof-->
+                    <complement id="464" /><!--cvm-->
+                </verb>
+                <verb id="0"><!--isa-->
+                    <complement id="265" /><!--programmer-->
+                    <complement id="41" /><!--man-->
+                    <complement id="504" /><!--student-->
+                    <complement id="80" /><!--white_caucasian_human-->
+                </verb>
+                <verb id="4"><!--madeof-->
+                    <complement id="604" /><!--long_hair-->
+                </verb>
+            </connectionList>
+            <metaConnectionList>
+                <positiveMetaConnectionList />
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="604"><!--long_hair-->
+            <nameList>
+                <name>long_hair</name>
+            </nameList>
+            <connectionList>
+                <verb id="5"><!--partof-->
+                    <complement id="603" /><!--jonatan-->
+                </verb>
+            </connectionList>
+            <metaConnectionList>
+                <positiveMetaConnectionList />
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="605"><!--kovalev-->
+            <nameList>
+                <name>kovalev</name>
+            </nameList>
+            <connectionList>
+                <verb id="5"><!--partof-->
+                    <complement id="464" /><!--cvm-->
+                </verb>
+                <verb id="0"><!--isa-->
+                    <complement id="504" /><!--student-->
+                    <complement id="41" /><!--man-->
+                    <complement id="265" /><!--programmer-->
+                </verb>
+                <verb id="15"><!--synergize-->
+                    <complement id="606" /><!--hockey-->
+                </verb>
+            </connectionList>
+            <metaConnectionList>
+                <positiveMetaConnectionList />
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="606"><!--hockey-->
+            <nameList>
+                <name>hockey</name>
+            </nameList>
+            <connectionList>
+                <verb id="0"><!--isa-->
+                    <complement id="607" /><!--sport-->
+                </verb>
+                <verb id="4"><!--madeof-->
+                    <complement id="537" /><!--ice-->
+                    <complement id="608" /><!--puck-->
+                    <complement id="609" /><!--hockey_stick-->
+                </verb>
+                <verb id="15"><!--synergize-->
+                    <complement id="605" /><!--kovalev-->
+                </verb>
+            </connectionList>
+            <metaConnectionList>
+                <positiveMetaConnectionList />
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="607"><!--sport-->
+            <nameList>
+                <name>sport</name>
+            </nameList>
+            <connectionList>
+                <verb id="1"><!--someare-->
+                    <complement id="606" /><!--hockey-->
+                </verb>
+            </connectionList>
+            <metaConnectionList>
+                <positiveMetaConnectionList />
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="608"><!--puck-->
+            <nameList>
+                <name>puck</name>
+            </nameList>
+            <connectionList>
+                <verb id="5"><!--partof-->
+                    <complement id="606" /><!--hockey-->
+                </verb>
+            </connectionList>
+            <metaConnectionList>
+                <positiveMetaConnectionList />
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="609"><!--hockey_stick-->
+            <nameList>
+                <name>hockey_stick</name>
+            </nameList>
+            <connectionList>
+                <verb id="5"><!--partof-->
+                    <complement id="606" /><!--hockey-->
+                </verb>
+            </connectionList>
+            <metaConnectionList>
+                <positiveMetaConnectionList />
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="610"><!--gabriel-->
+            <nameList>
+                <name>gabriel</name>
+            </nameList>
+            <connectionList>
+                <verb id="5"><!--partof-->
+                    <complement id="464" /><!--cvm-->
+                </verb>
+                <verb id="0"><!--isa-->
+                    <complement id="41" /><!--man-->
+                    <complement id="265" /><!--programmer-->
+                    <complement id="504" /><!--student-->
+                    <complement id="80" /><!--white_caucasian_human-->
+                </verb>
+                <verb id="8"><!--make-->
+                    <complement id="611" /><!--exception_(programming_analogy)-->
+                </verb>
+                <verb id="15"><!--synergize-->
+                    <complement id="576" /><!--marijuana-->
+                </verb>
+            </connectionList>
+            <metaConnectionList>
+                <positiveMetaConnectionList />
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="611"><!--exception_(programming_analogy)-->
+            <nameList>
+                <name>exception_(programming_analogy)</name>
+            </nameList>
+            <connectionList>
+                <verb id="9"><!--madeby-->
+                    <complement id="610" /><!--gabriel-->
                 </verb>
             </connectionList>
             <metaConnectionList>
