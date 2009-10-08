@@ -18,12 +18,8 @@ namespace AntiCulture.Kid
         public Argument(Concept subject, Concept verb, Concept complement)
         {
             this.subject = subject;
-            this.verb = subject;
-            this.complement = subject;
-        }
-
-        private Argument()
-        {
+            this.verb = verb;
+            this.complement = complement;
         }
         #endregion
 
@@ -51,19 +47,16 @@ namespace AntiCulture.Kid
         public Concept Subject
         {
             get { return subject; }
-            set { subject = value; }
         }
 
         public Concept Verb
         {
             get { return verb; }
-            set { verb = value; }
         }
 
         public Concept Complement
         {
             get { return complement; }
-            set { complement = value; }
         }
         #endregion
     }
