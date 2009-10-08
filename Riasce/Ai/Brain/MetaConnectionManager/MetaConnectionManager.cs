@@ -206,13 +206,6 @@ namespace AntiCulture.Kid
                     throw new MetaConnectionException("Second operator must have an \"inverse_of\" operator");
                 }
             }
-            else if (metaOperatorName == "prefered_operator")
-            {
-                if (!GetVerbFlatListFromMetaConnection(concept1, "inverse_of", true).Contains(concept2))
-                    throw new MetaConnectionException("Prefered_operator is for inverse_of operators only");
-                else if (GetVerbFlatListFromMetaConnection(concept2,"prefered_operator", true).Contains(concept1))
-                    throw new MetaConnectionException("Second operator already prefered_operator first operator");
-            }
 
             if (metaOperatorName == "sublar" || metaOperatorName == "consics" || metaOperatorName == "inverse_implication" || metaOperatorName == "direct_implication")
             {

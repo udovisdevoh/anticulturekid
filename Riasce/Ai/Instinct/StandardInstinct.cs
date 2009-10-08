@@ -37,7 +37,6 @@ namespace AntiCulture.Kid
             Add("IF pine isa tree THEN tree CANT someare pine");
             Add("IF pine isa tree AND tree isa plant THEN pine isa plant");
             //Add("IF homo_ergaster isa hominid THEN homo_ergaster was hominid"); //not sure if it's useful
-            //Add("isa prefered_operator someare");
 
             //MadeOf AND PartOf
             Add("IF tree madeof wood THEN tree UNLIKELY partof wood");//Used to be "cant"
@@ -47,7 +46,6 @@ namespace AntiCulture.Kid
             Add("IF pine isa tree AND tree madeof wood THEN pine madeof wood");
             Add("IF pine madeof wood AND wood isa material THEN pine madeof material");
             //Add("IF big_mac madeof trans_fat AND trans_fat oppress lifeform THEN big_mac oppress lifeform"); //Recently removed
-            //Add("madeof prefered_operator partof");
 
             /*//In and PlaceOf
             Add("IF pine madeof wood THEN pine placeof wood");
@@ -64,7 +62,6 @@ namespace AntiCulture.Kid
             Add("IF bird need tree AND tree isa lifeform THEN bird need lifeform");
             Add("IF crow isa bird AND bird need tree THEN crow need tree");
             //Add("IF lifeform madeof cell AND cell need water THEN lifeform need water");//Recently removed
-            //Add("need prefered_operator allow");
 
             //Make AND MadeBy
             Add("IF daughter madeby mother THEN daughter CANT make mother");
@@ -73,7 +70,6 @@ namespace AntiCulture.Kid
             Add("IF mom isa mother AND mother make child THEN mom make child");
             //Add("IF mcdonalds make big_mac AND big_mac madeof trans_fat THEN mcdonalds make trans_fat"); //Should be replaced to mcdonalds promote trans_fat
             //Add("IF sergy make google AND google originof gmail THEN sergy make gmail");//Not sure at all
-            //Add("make prefered_operator madeby");
 
             //Oppress and OppressedBy
             Add("IF pollution oppress human AND me isa human THEN pollution oppress me");
@@ -83,7 +79,6 @@ namespace AntiCulture.Kid
             //Add("IF earth madeof nature AND gm oppress nature THEN gm oppress earth");
             Add("IF pollution oppress nature THEN pollution unlikely allow nature");
             //Add("IF dogma oppress critical_thinking AND critical_thinking synergize intelligence THEN dogma oppress intelligence"); //Create some inconsistency bug... must be fixed
-            //Add("oppress prefered_operator oppressedby");
 
             //Was AND Become
             Add("IF human madeof flesh THEN human UNLIKELY was flesh");
@@ -92,7 +87,6 @@ namespace AntiCulture.Kid
             Add("IF adult was child AND child was baby THEN adult was baby");
             Add("IF bird was egg AND egg isa sphere THEN bird was sphere");
             //Add("IF human become ape AND ape isa primate THEN human become primate");
-            //Add("was prefered_operator become");
 
             //Contradict
             Add("IF human isa animal THEN human CANT contradict animal");
@@ -112,7 +106,6 @@ namespace AntiCulture.Kid
             //From and originof
             Add("IF grunge from seattle AND seattle partof usa THEN grunge from usa");
             Add("IF dragon_ball isa manga AND manga from japan THEN dragon_ball from japan");
-            //Add("from prefered_operator originof");
 
             //Largerthan and smallerthan
             Add("IF sun largerthan earth AND earth largerthan moon THEN sun largerthan moon");
@@ -123,14 +116,12 @@ namespace AntiCulture.Kid
             Add("IF catholic isa christian AND christian ownedby christianism THEN catholic ownedby christianism");
             Add("IF dalai_lama own buddhism AND buddhism own buddhist THEN dalai_lama own buddhist");
             Add("IF joe isa hat_wearer AND hat_wearer own hat THEN joe own hat");
-            //Add("own prefered_operator ownedby");
 
             //Without and notpartof
             Add("IF insect madeof exoskeleton THEN insect cant without exoskeleton");
             Add("IF joe without tooth AND tooth someare molar THEN joe without molar");
             Add("IF invertebrate without vertebrate_column AND invertebrate someare arthropod THEN arthropod without vertebrate_column");
             Add("IF joe without hat THEN joe cant own hat");
-            //Add("without prefered_operator notpartof");
         }
         #endregion
     }
