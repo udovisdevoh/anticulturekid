@@ -33,6 +33,12 @@ namespace AntiCulture.Kid
             statementToProove = new Argument(subject, verb, complement);
             argumentList = new List<Argument>();
         }
+
+        public Proof(Argument statementToProove)
+        {
+            this.statementToProove = statementToProove;
+            argumentList = new List<Argument>();
+        }
         #endregion
 
         #region Public Methods
@@ -191,6 +197,11 @@ namespace AntiCulture.Kid
         public int Count
         {
             get { return argumentList.Count; }
+        }
+
+        public Argument StatementToProove
+        {
+            get { return statementToProove; }
         }
         #endregion
     }
