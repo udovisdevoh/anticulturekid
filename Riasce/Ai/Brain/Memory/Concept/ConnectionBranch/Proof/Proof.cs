@@ -28,12 +28,6 @@ namespace AntiCulture.Kid
             argumentList = new List<Argument>();
         }
 
-        public Proof(Argument statementToProove)
-        {
-            this.statementToProove = statementToProove;
-            argumentList = new List<Argument>();
-        }
-
         public Proof(Concept subject, Concept verb, Concept complement)
         {
             statementToProove = new Argument(subject, verb, complement);
@@ -58,8 +52,7 @@ namespace AntiCulture.Kid
         public void AddProof(Proof otherProof)
         {
             #warning Totology detection disabled to improve performances
-            /*
-            if (this == otherProof)
+            /*if (this == otherProof)
             {
                 argumentList.Clear();
                 throw new TotologyException("Totology detected");
@@ -68,8 +61,8 @@ namespace AntiCulture.Kid
             {
                 argumentList.Clear();
                 throw new TotologyException("Totology detected");
-            }
-            */
+            }*/
+
             argumentList.AddRange(otherProof.argumentList);
         }
 
@@ -198,14 +191,6 @@ namespace AntiCulture.Kid
         public int Count
         {
             get { return argumentList.Count; }
-        }
-
-        /// <summary>
-        /// Statement to proove
-        /// </summary>
-        public Argument StatementToProove
-        {
-            get { return this.statementToProove; }
         }
         #endregion
     }
