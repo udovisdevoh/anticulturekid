@@ -196,43 +196,9 @@ namespace AntiCulture.Kid
             if (!ConnectionManager.DisableFlattenizeAndOptimizeAndPurify)
                 Repairer.Repair(subject, verb, complement);
 
-            Proof proof = ParsePreferedOperators(ConnectionManager.GetProofToConnection(subject, verb, complement));
+            Proof proof = ConnectionManager.GetProofToConnection(subject, verb, complement);
 
             return ProofToInt(proof);
-        }
-
-        /// <summary>
-        /// Return a proof but inverse operators to their prefered inverse_of operator
-        /// and swap subject with complement
-        /// </summary>
-        /// <param name="oldProof">old proof</param>
-        /// <returns>new proof with prefered operators</returns>
-        private Proof ParsePreferedOperators(Proof oldProof)
-        {
-            Proof newProof = new Proof(oldProof.StatementToProove);
-
-            HashSet<Concept> preferedOperatorList;
-            Concept selectedPreferedVerb = null;
-            foreach (Argument argument in oldProof)
-            {
-                preferedOperatorList = MetaConnectionManager.GetVerbFlatListFromMetaConnection(argument.Verb,"prefered_operator",false);
-                if (preferedOperatorList.Count > 0)
-                {
-                    foreach (Concept preferedVerb in preferedOperatorList)
-                    {
-                        selectedPreferedVerb = preferedVerb;
-                        break;
-                    }
-
-                    newProof.AddArgument(new Argument(argument.Complement, selectedPreferedVerb, argument.Subject));
-                }
-                else
-                {
-                    newProof.AddArgument(argument);
-                }
-            }
-
-            return newProof;
         }
 
         /// <summary>
