@@ -1,6 +1,14 @@
 add a menu function: "export knowledge (for future generations)"
 
 
+
+add class "Program"
+which will contain Ai and Gui
+Ai and Gui will have their own threads
+add command stack to class program
+
+
+
 repair main flat branch: set branch to repaired after it's repaired
 fix stack overflow:
 load instinct

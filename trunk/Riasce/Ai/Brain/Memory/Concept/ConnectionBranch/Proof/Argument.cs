@@ -17,7 +17,9 @@ namespace AntiCulture.Kid
         #region Constructor
         public Argument(Concept subject, Concept verb, Concept complement)
         {
-            throw new Exception("Don't use argument constructor, use Argument.Build(Concept,Concept,Concept) instead");
+            this.subject = subject;
+            this.verb = subject;
+            this.complement = subject;
         }
 
         private Argument()
@@ -42,25 +44,6 @@ namespace AntiCulture.Kid
         public override int GetHashCode()
         {
             return subject.GetHashCode() ^ verb.GetHashCode() ^ complement.GetHashCode() ^ subject.DebuggerName.GetHashCode() ^ verb.DebuggerName.GetHashCode() ^ complement.DebuggerName.GetHashCode();
-        }
-        #endregion
-
-        #region Public Static Methods
-        public static Argument Build(Concept subject, Concept verb, Concept complement)
-        {
-            Argument argument = new Argument();
-            argument.subject = subject;
-            argument.verb = subject;
-            argument.complement = subject;
-
-            return argument;
-
-            //return ArgumentCache.GetOrCreateArgument(subject,verb,complement);
-        }
-
-        public static Argument GetNewEmptyArgument()
-        {
-            return new Argument();
         }
         #endregion
 

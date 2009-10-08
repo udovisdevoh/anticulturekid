@@ -42,8 +42,8 @@ namespace AntiCulture.Kid
             Proof proof5 = null;
             Proof proof6 = null;
 
-            proof1.AddArgument(Argument.Build(pine, isa, tree));
-            proof2.AddArgument(Argument.Build(pine, isa, tree));
+            proof1.AddArgument(new Argument(pine, isa, tree));
+            proof2.AddArgument(new Argument(pine, isa, tree));
 
 
             if (proof1 == proof3)
@@ -68,12 +68,12 @@ namespace AntiCulture.Kid
                 throw new Exception("Proofs should be equal");
 
 
-            proof3.AddArgument(Argument.Build(pine, isa, plant));
+            proof3.AddArgument(new Argument(pine, isa, plant));
 
             if (proof1 == proof3)
                 throw new Exception("Proofs shouldn't be equal");
 
-            proof1.AddArgument(Argument.Build(tree, isa, plant));
+            proof1.AddArgument(new Argument(tree, isa, plant));
 
             if (proof1 == proof2)
                 throw new Exception("Proofs shouldn't be equal");
@@ -128,9 +128,9 @@ namespace AntiCulture.Kid
             //Real test
 
             Proof expectedProof = new Proof();
-            expectedProof.AddArgument(Argument.Build(moon, orbit, earth));
-            expectedProof.AddArgument(Argument.Build(moon, gravity, earth));
-            expectedProof.AddArgument(Argument.Build(moon, attract, earth));
+            expectedProof.AddArgument(new Argument(moon, orbit, earth));
+            expectedProof.AddArgument(new Argument(moon, gravity, earth));
+            expectedProof.AddArgument(new Argument(moon, attract, earth));
 
             Proof proofFound = moon.GetFlatConnectionBranch(interaction).GetProofTo(earth);
 
@@ -179,8 +179,8 @@ namespace AntiCulture.Kid
             //Real test begins here
 
             Proof expectedProof = new Proof();
-            expectedProof.AddArgument(Argument.Build(pine, isa, tree));
-            expectedProof.AddArgument(Argument.Build(tree, madeof, wood));
+            expectedProof.AddArgument(new Argument(pine, isa, tree));
+            expectedProof.AddArgument(new Argument(tree, madeof, wood));
 
             Proof foundProof = pine.GetFlatConnectionBranch(madeof).GetProofTo(wood);
 
@@ -233,8 +233,8 @@ namespace AntiCulture.Kid
             //Real test begins here
 
             Proof expectedProof = new Proof();
-            expectedProof.AddArgument(Argument.Build(wood, partof, tree));
-            expectedProof.AddArgument(Argument.Build(tree, someare, pine));
+            expectedProof.AddArgument(new Argument(wood, partof, tree));
+            expectedProof.AddArgument(new Argument(tree, someare, pine));
 
             Proof foundProof = wood.GetFlatConnectionBranch(partof).GetProofTo(pine);
 
@@ -285,8 +285,8 @@ namespace AntiCulture.Kid
             //Real test begins here
 
             Proof expectedProof = new Proof();
-            expectedProof.AddArgument(Argument.Build(tree, madeof, wood));
-            expectedProof.AddArgument(Argument.Build(wood, isa, material));
+            expectedProof.AddArgument(new Argument(tree, madeof, wood));
+            expectedProof.AddArgument(new Argument(wood, isa, material));
 
             Proof foundProof = tree.GetFlatConnectionBranch(madeof).GetProofTo(material);
 
@@ -341,8 +341,8 @@ namespace AntiCulture.Kid
             //Real test begins here
 
             Proof expectedProof = new Proof();
-            expectedProof.AddArgument(Argument.Build(material, someare, wood));
-            expectedProof.AddArgument(Argument.Build(wood, partof, tree));
+            expectedProof.AddArgument(new Argument(material, someare, wood));
+            expectedProof.AddArgument(new Argument(wood, partof, tree));
 
             Proof foundProof = material.GetFlatConnectionBranch(partof).GetProofTo(tree);
 
@@ -403,9 +403,9 @@ namespace AntiCulture.Kid
             //Real test begins here
 
             Proof expectedProof = new Proof();
-            expectedProof.AddArgument(Argument.Build(pine, isa, tree));
-            expectedProof.AddArgument(Argument.Build(tree, madeof, wood));
-            expectedProof.AddArgument(Argument.Build(wood, isa, material));
+            expectedProof.AddArgument(new Argument(pine, isa, tree));
+            expectedProof.AddArgument(new Argument(tree, madeof, wood));
+            expectedProof.AddArgument(new Argument(wood, isa, material));
 
             Proof foundProof = pine.GetFlatConnectionBranch(madeof).GetProofTo(material);
 
@@ -492,8 +492,8 @@ namespace AntiCulture.Kid
             //Other pre-condition
 
             expectedProof = new Proof();
-            expectedProof.AddArgument(Argument.Build(wood, partof, tree));
-            expectedProof.AddArgument(Argument.Build(tree, someare, pine));
+            expectedProof.AddArgument(new Argument(wood, partof, tree));
+            expectedProof.AddArgument(new Argument(tree, someare, pine));
 
             foundProof = wood.GetFlatConnectionBranch(partof).GetProofTo(pine);
 
@@ -503,8 +503,8 @@ namespace AntiCulture.Kid
             //Other pre-condition
 
             expectedProof = new Proof();
-            expectedProof.AddArgument(Argument.Build(material, someare, wood));
-            expectedProof.AddArgument(Argument.Build(wood, partof, tree));
+            expectedProof.AddArgument(new Argument(material, someare, wood));
+            expectedProof.AddArgument(new Argument(wood, partof, tree));
 
             foundProof = material.GetFlatConnectionBranch(partof).GetProofTo(tree);
 
@@ -514,9 +514,9 @@ namespace AntiCulture.Kid
             //Real test begins here
 
             expectedProof = new Proof();
-            expectedProof.AddArgument(Argument.Build(material, someare, wood));
-            expectedProof.AddArgument(Argument.Build(wood, partof, tree));
-            expectedProof.AddArgument(Argument.Build(tree, someare, pine));
+            expectedProof.AddArgument(new Argument(material, someare, wood));
+            expectedProof.AddArgument(new Argument(wood, partof, tree));
+            expectedProof.AddArgument(new Argument(tree, someare, pine));
 
             foundProof = material.GetFlatConnectionBranch(partof).GetProofTo(pine);
 
@@ -586,10 +586,10 @@ namespace AntiCulture.Kid
             //Real test begins here
 
             Proof expectedProof = new Proof();
-            expectedProof.AddArgument(Argument.Build(pine, isa, tree));
-            expectedProof.AddArgument(Argument.Build(tree, madeof, wood));
-            expectedProof.AddArgument(Argument.Build(wood, isa, material));
-            expectedProof.AddArgument(Argument.Build(material, madeof, matter));
+            expectedProof.AddArgument(new Argument(pine, isa, tree));
+            expectedProof.AddArgument(new Argument(tree, madeof, wood));
+            expectedProof.AddArgument(new Argument(wood, isa, material));
+            expectedProof.AddArgument(new Argument(material, madeof, matter));
 
 
             Proof foundProof = pine.GetFlatConnectionBranch(madeof).GetProofTo(matter);
@@ -664,10 +664,10 @@ namespace AntiCulture.Kid
             //Real test begins here
 
             Proof expectedProof = new Proof();
-            expectedProof.AddArgument(Argument.Build(matter, partof, material));
-            expectedProof.AddArgument(Argument.Build(material, someare, wood));
-            expectedProof.AddArgument(Argument.Build(wood, partof, tree));
-            expectedProof.AddArgument(Argument.Build(tree, someare, pine));
+            expectedProof.AddArgument(new Argument(matter, partof, material));
+            expectedProof.AddArgument(new Argument(material, someare, wood));
+            expectedProof.AddArgument(new Argument(wood, partof, tree));
+            expectedProof.AddArgument(new Argument(tree, someare, pine));
 
             Proof foundProof = matter.GetFlatConnectionBranch(partof).GetProofTo(pine);
 
@@ -730,9 +730,9 @@ namespace AntiCulture.Kid
             //Real test begins here
 
             Proof expectedProof = new Proof();
-            expectedProof.AddArgument(Argument.Build(pine, isa, tree));
-            expectedProof.AddArgument(Argument.Build(tree, madeof, wood));
-            expectedProof.AddArgument(Argument.Build(pine, madeof, wood));
+            expectedProof.AddArgument(new Argument(pine, isa, tree));
+            expectedProof.AddArgument(new Argument(tree, madeof, wood));
+            expectedProof.AddArgument(new Argument(pine, madeof, wood));
 
             Proof foundProof = pine.GetFlatConnectionBranch(composition).GetProofTo(wood);
 
@@ -742,9 +742,9 @@ namespace AntiCulture.Kid
             //Advanced test begins here
 
             expectedProof = new Proof();
-            expectedProof.AddArgument(Argument.Build(pine, isa, tree));
-            expectedProof.AddArgument(Argument.Build(tree, madeof, wood));
-            expectedProof.AddArgument(Argument.Build(pine, madeof, wood));
+            expectedProof.AddArgument(new Argument(pine, isa, tree));
+            expectedProof.AddArgument(new Argument(tree, madeof, wood));
+            expectedProof.AddArgument(new Argument(pine, madeof, wood));
             //expectedProof.AddArgument(pine, composition, wood);
 
             foundProof = pine.GetFlatConnectionBranch(interaction).GetProofTo(wood);

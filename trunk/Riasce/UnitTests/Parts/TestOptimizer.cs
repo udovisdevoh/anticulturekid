@@ -77,7 +77,7 @@ namespace AntiCulture.Kid
 
             pine.AddFlatConnection(isa, plant);
             proof = new Proof();
-            proof.AddArgument(Argument.Build(pine, isa, tree));
+            proof.AddArgument(new Argument(pine, isa, tree));
             pine.GetFlatConnectionBranch(isa).SetProofTo(plant, proof);
 
             Optimizer.Repair(pine);
