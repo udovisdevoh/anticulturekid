@@ -121,7 +121,7 @@ namespace AntiCulture.Kid
 
                         if (!subject.GetOptimizedConnectionBranch(verb).ComplementConceptList.Contains(complement))
                         {
-                            return Argument.Build(subject, verb, complement);
+                            return new Argument(subject, verb, complement);
                         }
                     }
                 }
