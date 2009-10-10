@@ -1327,6 +1327,16 @@ namespace AntiCulture.Kid
             Repairer.RepairRange(memory);
             return Scanner.GetInconsistencyCount(memory);
         }
+
+        /// <summary>
+        /// Return a string list based dream
+        /// </summary>
+        /// <param name="nameMapper">name mapper</param>
+        /// <returns>string list based dream</returns>
+        public List<string> GetDream(NameMapper nameMapper)
+        {
+            return Dreamer.GetDream(memory, nameMapper);
+        }
         #endregion
 
         #region Properties

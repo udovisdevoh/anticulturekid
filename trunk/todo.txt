@@ -179,10 +179,6 @@ imply isa musician wher
 
 
 
-console input must be in a different thread
-
-
-
 
 
 when Ai ask about his theory, allow human to reject argumentation

@@ -36,7 +36,8 @@ namespace AntiCulture.Kid
                                                                                       "statcross",
                                                                                       "select",
                                                                                       "update",
-                                                                                      "imply"};
+                                                                                      "imply",
+                                                                                      "telldream"};
 
         private static readonly List<string> unaryOperatorList = new List<string> { "askabout",
                                                                                     "define",

@@ -61,6 +61,8 @@ namespace AntiCulture.Kid
         private HashSet<string> selection;
 
         private string implyConnectionMessage;
+
+        private List<string> dream;
         #endregion
 
         #region Methods
@@ -109,6 +111,7 @@ namespace AntiCulture.Kid
             statCrossExpression = null;
             selection = null;
             implyConnectionMessage = null;
+            dream = null;
         }
         #endregion
 
@@ -347,6 +350,12 @@ namespace AntiCulture.Kid
         {
             get { return implyConnectionMessage; }
             set { implyConnectionMessage = value; }
+        }
+
+        public List<string> Dream
+        {
+            get { return dream; }
+            set { dream = value; }
         }
         #endregion
     }
