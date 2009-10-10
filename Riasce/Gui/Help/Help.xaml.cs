@@ -189,6 +189,12 @@ namespace AntiCulture.Kid
                      "teachabout tree",
                      "[...]tree madeof wood, therefore tree madeof material");
 
+            AddOperatorTopic("Telldream",
+                     "Tells the AI to tell you about his/her dreams",
+                     "telldream",
+                     "telldream",
+                     "last night me dream[...]");
+
             AddOperatorTopic("Think",
                      "Tells the AI to try to make a logical deduction about a random concept",
                      "think",

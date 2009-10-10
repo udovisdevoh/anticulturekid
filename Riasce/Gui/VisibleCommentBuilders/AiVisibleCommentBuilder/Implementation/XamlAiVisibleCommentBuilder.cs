@@ -71,6 +71,10 @@ namespace AntiCulture.Kid
             {
                 return GetAnswerTrauma(Trauma);
             }
+            else if (Dream != null)
+            {
+                return GetAnswerToDream(Dream);
+            }
             else if (Selection != null)
             {
                 return GetAnswerSelect(Selection);
@@ -982,6 +986,63 @@ namespace AntiCulture.Kid
                 paragraph.Inlines.Add(" ");
                 paragraph.Inlines.Add(numeratorComplement);
             }
+
+            return paragraph;
+        }
+
+        private Paragraph GetAnswerToDream(List<string> dream)
+        {
+            Paragraph paragraph = new Paragraph();
+
+            Span meSpan = new Span();
+            meSpan.Foreground = aiConceptColor;
+            meSpan.Inlines.Add("me");
+            AddLink(meSpan, "InvertYouAndMePov visualize me");
+
+            Span dreamSpan = new Span();
+            dreamSpan.Foreground = aiOperatorColor;
+            dreamSpan.Inlines.Add("dream");
+            AddLink(dreamSpan, "InvertYouAndMePov visualize dream");
+
+            paragraph.Inlines.Add(AiName + ": last night ");
+            paragraph.Inlines.Add(meSpan);
+            paragraph.Inlines.Add(" ");
+            paragraph.Inlines.Add(dreamSpan);
+            paragraph.Inlines.Add(" of ");
+
+            bool fisrtShown = false;
+            foreach (String line in dream)
+            {
+                string[] word = line.Split(' ');
+
+                Span subjectSpan = new Span();
+                subjectSpan.Foreground = aiConceptColor;
+                subjectSpan.Inlines.Add(word[0]);
+                AddLink(subjectSpan, "InvertYouAndMePov visualize " + word[0]);
+
+                Span verbSpan = new Span();
+                verbSpan.Foreground = aiOperatorColor;
+                verbSpan.Inlines.Add(word[1]);
+                AddLink(verbSpan, "InvertYouAndMePov visualize " + word[1]);
+
+                Span complementSpan = new Span();
+                complementSpan.Foreground = aiConceptColor;
+                complementSpan.Inlines.Add(word[2]);
+                AddLink(subjectSpan, "InvertYouAndMePov visualize " + word[2]);
+
+                if (!fisrtShown)
+                {
+                    paragraph.Inlines.Add(new LineBreak());
+                    paragraph.Inlines.Add(subjectSpan);
+                }
+                paragraph.Inlines.Add(" ");
+                paragraph.Inlines.Add(verbSpan);
+                paragraph.Inlines.Add(" ");
+                paragraph.Inlines.Add(complementSpan);
+
+                fisrtShown = true;
+            }
+
 
             return paragraph;
         }

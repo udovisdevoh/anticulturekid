@@ -208,6 +208,8 @@ namespace AntiCulture.Kid
                 AnswerToStatementLinguisThink(statement);
             else if (statement.NullaryOrUnaryOperatorName == "phonothink")
                 AnswerToStatementPhonoThink(statement);
+            else if (statement.NullaryOrUnaryOperatorName == "telldream")
+                AnswerToTellDream(statement);
             else if (statement.NullaryOrUnaryOperatorName == "start_psychosis")
             {
                 AnswerToStatementStartPsychosis(statement);
@@ -260,6 +262,16 @@ namespace AntiCulture.Kid
                 brain.ForgetCurrentTheory();
 
             mainWindow.AddToOutputText(aiVisibleCommentBuilder.Build());
+        }
+
+        /// <summary>
+        /// The ai answers to "telldream"
+        /// </summary>
+        /// <param name="statement">statement</param>
+        private void AnswerToTellDream(Statement statement)
+        {
+            aiVisibleCommentBuilder.AiName = aiName.Value;
+            aiVisibleCommentBuilder.Dream = brain.GetDream(nameMapper);
         }
 
         /// <summary>
