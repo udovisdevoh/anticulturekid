@@ -8,36 +8,36 @@ namespace AntiCulture.Kid
     /// <summary>
     /// Represent a proof to a connection
     /// </summary>
-    public class Proof : IEnumerable<Argument>, IEquatable<Proof>
+    public class Proof : IEnumerable<Proposition>, IEquatable<Proof>
     {
         #region Fields
         /// <summary>
         /// Argument list
         /// </summary>
-        private List<Argument> argumentList;
+        private List<Proposition> argumentList;
 
         /// <summary>
         /// Which statement to prove
         /// </summary>
-        private Argument statementToProove = null;
+        private Proposition statementToProove = null;
         #endregion
 
         #region Constructors
         public Proof()
         {
-            argumentList = new List<Argument>();
+            argumentList = new List<Proposition>();
         }
 
         public Proof(Concept subject, Concept verb, Concept complement)
         {
-            statementToProove = new Argument(subject, verb, complement);
-            argumentList = new List<Argument>();
+            statementToProove = new Proposition(subject, verb, complement);
+            argumentList = new List<Proposition>();
         }
 
-        public Proof(Argument statementToProove)
+        public Proof(Proposition statementToProove)
         {
             this.statementToProove = statementToProove;
-            argumentList = new List<Argument>();
+            argumentList = new List<Proposition>();
         }
         #endregion
 
@@ -46,7 +46,7 @@ namespace AntiCulture.Kid
         /// Adds an argument at the end of the proof
         /// </summary>
         /// <param name="argument">argument</param>
-        public void AddArgument(Argument argument)
+        public void AddArgument(Proposition argument)
         {
             argumentList.Add(argument);
         }
@@ -83,7 +83,7 @@ namespace AntiCulture.Kid
                 return false;
 
             int counter = 0;
-            foreach (Argument currentArgument in this.argumentList)
+            foreach (Proposition currentArgument in this.argumentList)
             {
                 if (!currentArgument.Equals(otherProof.argumentList[counter]))
                     return false;
@@ -114,7 +114,7 @@ namespace AntiCulture.Kid
         /// <returns>true if proof contains argument, else: false</returns>
         public bool ContainsArgument(Concept subject, Concept verb, Concept complement)
         {
-            foreach (Argument argument in argumentList)
+            foreach (Proposition argument in argumentList)
                 if (argument.Subject == subject && argument.Verb == verb && argument.Complement == complement)
                     return true;
             return false;
@@ -146,7 +146,7 @@ namespace AntiCulture.Kid
         {
             HashSet<int> ignoreList = new HashSet<int>();
             int currentHashCode;
-            foreach (Argument argument in argumentList)
+            foreach (Proposition argument in argumentList)
             {
                 currentHashCode = argument.GetHashCode();
                 if (ignoreList.Contains(currentHashCode))
@@ -162,7 +162,7 @@ namespace AntiCulture.Kid
             return base.GetHashCode();
         }
 
-        public IEnumerator<Argument> GetEnumerator()
+        public IEnumerator<Proposition> GetEnumerator()
         {
             return argumentList.GetEnumerator();
         }
@@ -199,7 +199,7 @@ namespace AntiCulture.Kid
             get { return argumentList.Count; }
         }
 
-        public Argument StatementToProove
+        public Proposition StatementToProove
         {
             get { return statementToProove; }
         }

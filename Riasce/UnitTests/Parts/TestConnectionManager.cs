@@ -125,7 +125,7 @@ namespace AntiCulture.Kid
             #endregion
 
             #region Testing finding obstruction
-            Argument obstruction;
+            Proposition obstruction;
             animal.IsFlatDirty = false;
             plant.IsFlatDirty = false;
             cat.IsFlatDirty = false;

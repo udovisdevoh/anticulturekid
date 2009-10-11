@@ -34,7 +34,7 @@ namespace AntiCulture.Kid
             List<string> dream = new List<string>();
 
             Concept sourceConcept = memory.GetRandomItem();
-            Argument dreamElement;
+            Proposition dreamElement;
 
             while (dream.Count < maxDreamElement)
             {
@@ -63,7 +63,7 @@ namespace AntiCulture.Kid
         /// <param name="subject">subject concept</param>
         /// <param name="memory"></param>
         /// <returns></returns>
-        private static Argument GetNextElement(Concept subject, Memory memory)
+        private static Proposition GetNextElement(Concept subject, Memory memory)
         {
 
             HashSet<Concept> complementList = memory.GetRandomSample(samplingSize);
@@ -72,7 +72,7 @@ namespace AntiCulture.Kid
             foreach (Concept verb in verbList)
                 foreach (Concept complement in complementList)
                     if (ConnectionManager.FindObstructionToPlug(subject, verb, complement, true) == null)
-                        return new Argument(subject, verb, complement);
+                        return new Proposition(subject, verb, complement);
 
             return null;
         }
@@ -84,7 +84,7 @@ namespace AntiCulture.Kid
         /// <param name="memory">memory to look into</param>
         /// <param name="nameMapper">name mapper to look into</param>
         /// <returns>string connection</returns>
-        private static string ArgumentToString(Argument dreamElement, Memory memory, NameMapper nameMapper)
+        private static string ArgumentToString(Proposition dreamElement, Memory memory, NameMapper nameMapper)
         {
             return GetConceptName(dreamElement.Subject, memory, nameMapper) + " " + GetConceptName(dreamElement.Verb, memory, nameMapper) + " " + GetConceptName(dreamElement.Complement, memory, nameMapper);
         }

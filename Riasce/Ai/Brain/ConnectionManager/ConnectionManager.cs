@@ -148,14 +148,14 @@ namespace AntiCulture.Kid
         /// <param name="strictMode">if true, consider unlikeliness as an obstruction, if not, don't</param>
         /// <returns>List of 3 concepts (subject, verb, complement) that prevents to connect specified concepts
         /// Return null if couldn't find anything obstructing specified connection</returns>
-        public static Argument FindObstructionToPlug(Concept subject, Concept verb, Concept complement, bool strictMode)
+        public static Proposition FindObstructionToPlug(Concept subject, Concept verb, Concept complement, bool strictMode)
         {
             if (!disableFlattenizeAndOptimizeAndPurify && (subject.IsFlatDirty /*|| verb.IsFlatDirty || complement.IsFlatDirty*/))
                 throw new ConnectionException("Repair concepts first");
 
             foreach (Concept incompatibleVerb in MetaConnectionManager.GetIncompatibleVerbList(verb, strictMode))
                 if (subject.IsFlatConnectedTo(incompatibleVerb, complement))
-                    return new Argument(subject, incompatibleVerb, complement);
+                    return new Proposition(subject, incompatibleVerb, complement);
 
             return null;
         }
