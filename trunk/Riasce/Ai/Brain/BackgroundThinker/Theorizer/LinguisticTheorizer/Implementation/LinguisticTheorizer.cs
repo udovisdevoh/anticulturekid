@@ -13,6 +13,7 @@ namespace AntiCulture.Kid
 
         #region Constants
         private static readonly string matrixFileName = "EnglishSemanticMatrix5000short.xml";
+        //private static readonly string matrixFileName = "EnglishSemanticMatrix20.xml";
         #endregion
 
         #region Constructor
