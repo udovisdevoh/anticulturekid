@@ -29,9 +29,9 @@ namespace AntiCulture.Kid
 
             Trauma trauma = new Trauma();
 
-            Argument obstruction;
-            Argument mostObstructableConnection;
-            Argument flatConnectionSource;
+            Proposition obstruction;
+            Proposition mostObstructableConnection;
+            Proposition flatConnectionSource;
 
             #region Finding obstructable connection in flat connections
             mostObstructableConnection = GetMostObstructableConnection(concept, out flatConnectionSource);
@@ -65,7 +65,7 @@ namespace AntiCulture.Kid
         /// <param name="subject">provided concept</param>
         /// <param name="flatConnectionSource">source flat connection for which obstruction can be found</param>
         /// <returns>If most obstructable connection has obstruction, return obstructable connection, else: null</returns>
-        public static Argument GetMostObstructableConnection(Concept subject, out Argument flatConnectionSource)
+        public static Proposition GetMostObstructableConnection(Concept subject, out Proposition flatConnectionSource)
         {
             //flatConnectionSource = GetMostObstructableFlatConnection(subject);
             flatConnectionSource = GetSomeArbitraryObstructableFlatConnection(subject);
@@ -88,9 +88,9 @@ namespace AntiCulture.Kid
         /// </summary>
         /// <param name="proof">proof to look into</param>
         /// <returns>From proof, returns the last argument that is an optimized connection</returns>
-        private static Argument GetFirstOptimizedArgument(Proof proof)
+        private static Proposition GetFirstOptimizedArgument(Proof proof)
         {
-            foreach (Argument argument in proof)
+            foreach (Proposition argument in proof)
                 if (argument.Subject.IsOptimizedConnectedTo(argument.Verb, argument.Complement))
                     return argument;
             return null;
@@ -104,7 +104,7 @@ namespace AntiCulture.Kid
         /// <returns>randomly chosen implicit connection that are being
         /// obstructed by another connection (these implicit connection are
         /// about subject concept)</returns>
-        private static Argument GetSomeArbitraryObstructableFlatConnection(Concept subject)
+        private static Proposition GetSomeArbitraryObstructableFlatConnection(Concept subject)
         {
             Concept verb;
             ConnectionBranch flatBranch;
@@ -121,7 +121,7 @@ namespace AntiCulture.Kid
 
                         if (!subject.GetOptimizedConnectionBranch(verb).ComplementConceptList.Contains(complement))
                         {
-                            return new Argument(subject, verb, complement);
+                            return new Proposition(subject, verb, complement);
                         }
                     }
                 }

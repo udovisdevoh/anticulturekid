@@ -6,16 +6,30 @@ using System.Text;
 namespace AntiCulture.Kid
 {
     /// <summary>
-    /// This class represents a proof's argument
+    /// This class represents a proposition (subject, verb and complement)
     /// </summary>
-    public class Argument : IEquatable<Argument>
+    public class Proposition : IEquatable<Proposition>
     {
         #region Fields
+        /// <summary>
+        /// Subject, verb and complement concepts
+        /// </summary>
         private Concept subject, verb, complement;
+
+        /// <summary>
+        /// Whether the proposition is positive (new core feature)
+        /// </summary>
+        private bool isPositive = true;
         #endregion
 
         #region Constructor
-        public Argument(Concept subject, Concept verb, Concept complement)
+        /// <summary>
+        /// Create a proposition from subject, verb and complement
+        /// </summary>
+        /// <param name="subject"></param>
+        /// <param name="verb"></param>
+        /// <param name="complement"></param>
+        public Proposition(Concept subject, Concept verb, Concept complement)
         {
             this.subject = subject;
             this.verb = verb;
@@ -23,8 +37,8 @@ namespace AntiCulture.Kid
         }
         #endregion
 
-        #region IEquatable<Argument> Members
-        public bool Equals(Argument other)
+        #region IEquatable<Proposition> Members
+        public bool Equals(Proposition other)
         {
             if (subject != other.subject)
                 return false;
@@ -44,19 +58,37 @@ namespace AntiCulture.Kid
         #endregion
 
         #region Properties
+        /// <summary>
+        /// Subject concept
+        /// </summary>
         public Concept Subject
         {
             get { return subject; }
         }
 
+        /// <summary>
+        /// Verb concept
+        /// </summary>
         public Concept Verb
         {
             get { return verb; }
         }
 
+        /// <summary>
+        /// Complement concept
+        /// </summary>
         public Concept Complement
         {
             get { return complement; }
+        }
+
+        /// <summary>
+        /// Whether the proposition is positive (new core feature)
+        /// </summary>
+        public bool IsPositive
+        {
+            get { return isPositive; }
+            set { isPositive = value; }
         }
         #endregion
     }

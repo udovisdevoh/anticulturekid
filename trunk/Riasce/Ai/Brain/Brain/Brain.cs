@@ -63,7 +63,7 @@ namespace AntiCulture.Kid
             if (!ConnectionManager.DisableFlattenizeAndOptimizeAndPurify)
                 Repairer.Repair(subject, verb, complement);
 
-            Argument obstruction = ConnectionManager.FindObstructionToPlug(subject,verb,complement,false);
+            Proposition obstruction = ConnectionManager.FindObstructionToPlug(subject,verb,complement,false);
 
             if (obstruction == null)
             {
@@ -145,7 +145,7 @@ namespace AntiCulture.Kid
             if (!ConnectionManager.DisableFlattenizeAndOptimizeAndPurify)
                 Repairer.Repair(subject, verb, complement);
 
-            Argument obstruction = ConnectionManager.FindObstructionToPlug(subject, verb, complement, strictMode);
+            Proposition obstruction = ConnectionManager.FindObstructionToPlug(subject, verb, complement, strictMode);
 
             if (obstruction == null)
                 return null;
@@ -802,7 +802,7 @@ namespace AntiCulture.Kid
             HashSet<string> ignoreList = new HashSet<string>();
             List<List<int>> proofInInt = new List<List<int>>();
             List<int> argumentInInt;
-            foreach (Argument argument in proof)
+            foreach (Proposition argument in proof)
             {
                 argumentInInt = new List<int>();
                 argumentInInt.Add(memory.GetIdFromConcept(argument.Subject));

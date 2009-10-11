@@ -25,8 +25,8 @@ namespace AntiCulture.Kid
 
             Trauma trauma = new Trauma();
 
-            Argument obstruction;
-            Argument mostObstructableConnection;
+            Proposition obstruction;
+            Proposition mostObstructableConnection;
 
             #region Finding obstructable connection in optimized connections
             do
@@ -72,8 +72,8 @@ namespace AntiCulture.Kid
 
             Trauma trauma = new Trauma();
 
-            Argument obstruction;
-            Argument mostObstructableConnection;
+            Proposition obstruction;
+            Proposition mostObstructableConnection;
 
             #region Finding obstructable connection in optimized connections
             do
@@ -107,9 +107,9 @@ namespace AntiCulture.Kid
         /// </summary>
         /// <param name="subject">provided concept</param>
         /// <returns>If most obstructable connection has obstruction, return obstructable connection, else: null</returns>
-        private static Argument GetMostObstructableConnection(Concept subject)
+        private static Proposition GetMostObstructableConnection(Concept subject)
         {
-            Argument mostObstructableConnection = null;
+            Proposition mostObstructableConnection = null;
             int currentObstructionCount;
             int maxObstructionCount = 0;
 
@@ -125,7 +125,7 @@ namespace AntiCulture.Kid
                     if (currentObstructionCount > maxObstructionCount)
                     {
                         maxObstructionCount = currentObstructionCount;
-                        mostObstructableConnection = new Argument(subject, verb, complement);
+                        mostObstructableConnection = new Proposition(subject, verb, complement);
                     }
                 }
             }
@@ -137,9 +137,9 @@ namespace AntiCulture.Kid
         /// </summary>
         /// <param name="conceptCollection">concept collection</param>
         /// <returns>If most obstructable connection has obstruction, return obstructable connection, else: null</returns>
-        private static Argument GetMostObstructableConnection(IEnumerable<Concept> conceptCollection)
+        private static Proposition GetMostObstructableConnection(IEnumerable<Concept> conceptCollection)
         {
-            Argument mostObstructableConnection = null;
+            Proposition mostObstructableConnection = null;
             int currentObstructionCount;
             int maxObstructionCount = 0;
 
@@ -157,7 +157,7 @@ namespace AntiCulture.Kid
                         if (currentObstructionCount > maxObstructionCount)
                         {
                             maxObstructionCount = currentObstructionCount;
-                            mostObstructableConnection = new Argument(subject, verb, complement);
+                            mostObstructableConnection = new Proposition(subject, verb, complement);
                         }
                     }
                 }

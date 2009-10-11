@@ -90,7 +90,7 @@
     <Compile Include="Ai\Brain\Dreamer\DreamException.cs" />
     <Compile Include="Ai\Brain\ImplyConnectionManager\ImplyConnectionException.cs" />
     <Compile Include="Ai\Brain\ImplyConnectionManager\ImplyConnectionManager.cs" />
-    <Compile Include="Ai\Brain\Memory\Concept\ConnectionBranch\Proof\Argument.cs" />
+    <Compile Include="Core\Proposition.cs" />
     <Compile Include="Ai\Brain\Memory\Concept\ImplyConnectionTree.cs" />
     <Compile Include="Ai\Brain\Memory\Concept\TotologyException.cs" />
     <Compile Include="Ai\Brain\Memory\EpisodicMemory\Memento\SpecializedMementos\ListStringAndConceptMemento.cs" />
@@ -175,6 +175,9 @@
     <Compile Include="Ai\StatementListFactory\StatementParsingException.cs" />
     <Compile Include="Ai\StatementListFactory\StatementFactory\Implementation\UnaryStatementFactory.cs" />
     <Compile Include="Ai\StatementListFactory\StatementFactory\Implementation\AiSql\UpdateStatementFactory.cs" />
+    <Compile Include="Core\DeclarativeIfThen.cs" />
+    <Compile Include="Core\Specification.cs" />
+    <Compile Include="Core\SpecificationException.cs" />
     <Compile Include="ExternalModules\Linguistics\PhoneticMatrixManager.cs" />
     <Compile Include="Gui\AutoComplete\AutoCompleteModel\AutoCompleteModel\Implementation\AutoCompleteModelBinarySearch.cs" />
     <Compile Include="Gui\AutoComplete\AutoCompleteModel\DisambiguationNamer.cs" />

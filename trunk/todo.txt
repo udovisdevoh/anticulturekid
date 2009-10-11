@@ -4,6 +4,8 @@ add composite concept management
 create axioms and propositions to replace metaconnections and imply conditions
 remove flattenizer and optimizer
 add cyclic dependency management
+multithreaded rendering will be done in background by rendering random propositions
+
 
 
 
