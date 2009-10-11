@@ -1,7 +1,7 @@
 huge refactoring of the core engine
 start by creating new class and testing them in unit test
 add composite concept management
-create axioms and propositions to replace connections, metaconnections and imply conditions
+create axioms and propositions to replace metaconnections and imply conditions
 remove flattenizer and optimizer
 add cyclic dependency management
 
