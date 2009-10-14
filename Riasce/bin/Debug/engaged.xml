@@ -1,0 +1,912 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ai aiNameValue="riasce" humanNameValue="someone" nameMapperCounter="51">
+    <conceptList>
+        <concept id="0"><!--isa-->
+            <nameList>
+                <name>isa</name>
+            </nameList>
+            <connectionList />
+            <metaConnectionList>
+                <positiveMetaConnectionList>
+                    <metaConnection metaOperator="inverse_of">
+                        <operator id="1" /><!--someare-->
+                    </metaConnection>
+                    <metaConnection metaOperator="cant">
+                        <operator id="12" /><!--contradict-->
+                    </metaConnection>
+                    <metaConnection metaOperator="unlikely">
+                        <operator id="4" /><!--madeof-->
+                        <operator id="16" /><!--antagonize-->
+                    </metaConnection>
+                    <metaConnection metaOperator="muct">
+                        <operator id="0" /><!--isa-->
+                    </metaConnection>
+                </positiveMetaConnectionList>
+                <negativeMetaConnectionList>
+                    <metaConnection metaOperator="muct">
+                        <operator id="0" /><!--isa-->
+                        <operator id="4" /><!--madeof-->
+                        <operator id="6" /><!--need-->
+                        <operator id="8" /><!--make-->
+                        <operator id="13" /><!--oppress-->
+                        <operator id="12" /><!--contradict-->
+                        <operator id="15" /><!--synergize-->
+                        <operator id="16" /><!--antagonize-->
+                        <operator id="22" /><!--ownedby-->
+                        <operator id="21" /><!--own-->
+                    </metaConnection>
+                    <metaConnection metaOperator="liffid">
+                        <operator id="4" /><!--madeof-->
+                        <operator id="6" /><!--need-->
+                        <operator id="8" /><!--make-->
+                        <operator id="10" /><!--was-->
+                    </metaConnection>
+                    <metaConnection metaOperator="consics">
+                        <operator id="13" /><!--oppress-->
+                    </metaConnection>
+                </negativeMetaConnectionList>
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="1"><!--someare-->
+            <nameList>
+                <name>someare</name>
+            </nameList>
+            <connectionList />
+            <metaConnectionList>
+                <positiveMetaConnectionList>
+                    <metaConnection metaOperator="inverse_of">
+                        <operator id="0" /><!--isa-->
+                    </metaConnection>
+                    <metaConnection metaOperator="conservative_thinking">
+                        <operator id="1" /><!--someare-->
+                    </metaConnection>
+                </positiveMetaConnectionList>
+                <negativeMetaConnectionList>
+                    <metaConnection metaOperator="sublar">
+                        <operator id="23" /><!--without-->
+                    </metaConnection>
+                    <metaConnection metaOperator="liffid">
+                        <operator id="23" /><!--without-->
+                    </metaConnection>
+                    <metaConnection metaOperator="conservative_thinking">
+                        <operator id="1" /><!--someare-->
+                    </metaConnection>
+                </negativeMetaConnectionList>
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="12"><!--contradict-->
+            <nameList>
+                <name>contradict</name>
+            </nameList>
+            <connectionList />
+            <metaConnectionList>
+                <positiveMetaConnectionList>
+                    <metaConnection metaOperator="permutable_side">
+                        <operator id="12" /><!--contradict-->
+                    </metaConnection>
+                    <metaConnection metaOperator="cant">
+                        <operator id="0" /><!--isa-->
+                    </metaConnection>
+                    <metaConnection metaOperator="muct">
+                        <operator id="0" /><!--isa-->
+                    </metaConnection>
+                </positiveMetaConnectionList>
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="4"><!--madeof-->
+            <nameList>
+                <name>madeof</name>
+            </nameList>
+            <connectionList />
+            <metaConnectionList>
+                <positiveMetaConnectionList>
+                    <metaConnection metaOperator="inverse_of">
+                        <operator id="5" /><!--partof-->
+                    </metaConnection>
+                    <metaConnection metaOperator="cant">
+                        <operator id="23" /><!--without-->
+                    </metaConnection>
+                    <metaConnection metaOperator="unlikely">
+                        <operator id="0" /><!--isa-->
+                        <operator id="5" /><!--partof-->
+                        <operator id="10" /><!--was-->
+                    </metaConnection>
+                    <metaConnection metaOperator="muct">
+                        <operator id="4" /><!--madeof-->
+                        <operator id="0" /><!--isa-->
+                    </metaConnection>
+                    <metaConnection metaOperator="liffid">
+                        <operator id="0" /><!--isa-->
+                    </metaConnection>
+                </positiveMetaConnectionList>
+                <negativeMetaConnectionList>
+                    <metaConnection metaOperator="muct">
+                        <operator id="4" /><!--madeof-->
+                    </metaConnection>
+                </negativeMetaConnectionList>
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="16"><!--antagonize-->
+            <nameList>
+                <name>antagonize</name>
+            </nameList>
+            <connectionList />
+            <metaConnectionList>
+                <positiveMetaConnectionList>
+                    <metaConnection metaOperator="permutable_side">
+                        <operator id="16" /><!--antagonize-->
+                    </metaConnection>
+                    <metaConnection metaOperator="cant">
+                        <operator id="15" /><!--synergize-->
+                    </metaConnection>
+                    <metaConnection metaOperator="unlikely">
+                        <operator id="0" /><!--isa-->
+                        <operator id="7" /><!--allow-->
+                    </metaConnection>
+                    <metaConnection metaOperator="muct">
+                        <operator id="0" /><!--isa-->
+                        <operator id="8" /><!--make-->
+                    </metaConnection>
+                </positiveMetaConnectionList>
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="6"><!--need-->
+            <nameList>
+                <name>need</name>
+            </nameList>
+            <connectionList />
+            <metaConnectionList>
+                <positiveMetaConnectionList>
+                    <metaConnection metaOperator="inverse_of">
+                        <operator id="7" /><!--allow-->
+                    </metaConnection>
+                    <metaConnection metaOperator="muct">
+                        <operator id="6" /><!--need-->
+                        <operator id="0" /><!--isa-->
+                    </metaConnection>
+                    <metaConnection metaOperator="liffid">
+                        <operator id="0" /><!--isa-->
+                    </metaConnection>
+                </positiveMetaConnectionList>
+                <negativeMetaConnectionList>
+                    <metaConnection metaOperator="muct">
+                        <operator id="6" /><!--need-->
+                    </metaConnection>
+                    <metaConnection metaOperator="consics">
+                        <operator id="13" /><!--oppress-->
+                    </metaConnection>
+                </negativeMetaConnectionList>
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="8"><!--make-->
+            <nameList>
+                <name>make</name>
+            </nameList>
+            <connectionList />
+            <metaConnectionList>
+                <positiveMetaConnectionList>
+                    <metaConnection metaOperator="inverse_of">
+                        <operator id="9" /><!--madeby-->
+                    </metaConnection>
+                    <metaConnection metaOperator="muct">
+                        <operator id="8" /><!--make-->
+                        <operator id="0" /><!--isa-->
+                    </metaConnection>
+                    <metaConnection metaOperator="liffid">
+                        <operator id="0" /><!--isa-->
+                    </metaConnection>
+                </positiveMetaConnectionList>
+                <negativeMetaConnectionList>
+                    <metaConnection metaOperator="muct">
+                        <operator id="8" /><!--make-->
+                        <operator id="13" /><!--oppress-->
+                        <operator id="16" /><!--antagonize-->
+                    </metaConnection>
+                </negativeMetaConnectionList>
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="13"><!--oppress-->
+            <nameList>
+                <name>oppress</name>
+            </nameList>
+            <connectionList />
+            <metaConnectionList>
+                <positiveMetaConnectionList>
+                    <metaConnection metaOperator="inverse_of">
+                        <operator id="14" /><!--oppressedby-->
+                    </metaConnection>
+                    <metaConnection metaOperator="cant">
+                        <operator id="15" /><!--synergize-->
+                    </metaConnection>
+                    <metaConnection metaOperator="unlikely">
+                        <operator id="7" /><!--allow-->
+                    </metaConnection>
+                    <metaConnection metaOperator="muct">
+                        <operator id="0" /><!--isa-->
+                        <operator id="8" /><!--make-->
+                    </metaConnection>
+                    <metaConnection metaOperator="consics">
+                        <operator id="0" /><!--isa-->
+                        <operator id="6" /><!--need-->
+                    </metaConnection>
+                </positiveMetaConnectionList>
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="15"><!--synergize-->
+            <nameList>
+                <name>synergize</name>
+            </nameList>
+            <connectionList />
+            <metaConnectionList>
+                <positiveMetaConnectionList>
+                    <metaConnection metaOperator="permutable_side">
+                        <operator id="15" /><!--synergize-->
+                    </metaConnection>
+                    <metaConnection metaOperator="cant">
+                        <operator id="13" /><!--oppress-->
+                        <operator id="16" /><!--antagonize-->
+                    </metaConnection>
+                    <metaConnection metaOperator="muct">
+                        <operator id="0" /><!--isa-->
+                    </metaConnection>
+                </positiveMetaConnectionList>
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="22"><!--ownedby-->
+            <nameList>
+                <name>ownedby</name>
+            </nameList>
+            <connectionList />
+            <metaConnectionList>
+                <positiveMetaConnectionList>
+                    <metaConnection metaOperator="inverse_of">
+                        <operator id="21" /><!--own-->
+                    </metaConnection>
+                    <metaConnection metaOperator="muct">
+                        <operator id="0" /><!--isa-->
+                    </metaConnection>
+                </positiveMetaConnectionList>
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="21"><!--own-->
+            <nameList>
+                <name>own</name>
+            </nameList>
+            <connectionList />
+            <metaConnectionList>
+                <positiveMetaConnectionList>
+                    <metaConnection metaOperator="inverse_of">
+                        <operator id="22" /><!--ownedby-->
+                    </metaConnection>
+                    <metaConnection metaOperator="cant">
+                        <operator id="23" /><!--without-->
+                    </metaConnection>
+                    <metaConnection metaOperator="muct">
+                        <operator id="21" /><!--own-->
+                        <operator id="0" /><!--isa-->
+                    </metaConnection>
+                </positiveMetaConnectionList>
+                <negativeMetaConnectionList>
+                    <metaConnection metaOperator="muct">
+                        <operator id="21" /><!--own-->
+                    </metaConnection>
+                </negativeMetaConnectionList>
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="10"><!--was-->
+            <nameList>
+                <name>was</name>
+            </nameList>
+            <connectionList />
+            <metaConnectionList>
+                <positiveMetaConnectionList>
+                    <metaConnection metaOperator="inverse_of">
+                        <operator id="11" /><!--become-->
+                    </metaConnection>
+                    <metaConnection metaOperator="unlikely">
+                        <operator id="4" /><!--madeof-->
+                    </metaConnection>
+                    <metaConnection metaOperator="muct">
+                        <operator id="10" /><!--was-->
+                    </metaConnection>
+                    <metaConnection metaOperator="liffid">
+                        <operator id="0" /><!--isa-->
+                    </metaConnection>
+                </positiveMetaConnectionList>
+                <negativeMetaConnectionList>
+                    <metaConnection metaOperator="muct">
+                        <operator id="10" /><!--was-->
+                    </metaConnection>
+                </negativeMetaConnectionList>
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="23"><!--without-->
+            <nameList>
+                <name>without</name>
+            </nameList>
+            <connectionList />
+            <metaConnectionList>
+                <positiveMetaConnectionList>
+                    <metaConnection metaOperator="inverse_of">
+                        <operator id="24" /><!--notpartof-->
+                    </metaConnection>
+                    <metaConnection metaOperator="cant">
+                        <operator id="4" /><!--madeof-->
+                        <operator id="21" /><!--own-->
+                    </metaConnection>
+                    <metaConnection metaOperator="sublar">
+                        <operator id="1" /><!--someare-->
+                    </metaConnection>
+                    <metaConnection metaOperator="liffid">
+                        <operator id="1" /><!--someare-->
+                    </metaConnection>
+                </positiveMetaConnectionList>
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="5"><!--partof-->
+            <nameList>
+                <name>partof</name>
+            </nameList>
+            <connectionList />
+            <metaConnectionList>
+                <positiveMetaConnectionList>
+                    <metaConnection metaOperator="inverse_of">
+                        <operator id="4" /><!--madeof-->
+                    </metaConnection>
+                    <metaConnection metaOperator="unlikely">
+                        <operator id="4" /><!--madeof-->
+                    </metaConnection>
+                </positiveMetaConnectionList>
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="7"><!--allow-->
+            <nameList>
+                <name>allow</name>
+            </nameList>
+            <connectionList />
+            <metaConnectionList>
+                <positiveMetaConnectionList>
+                    <metaConnection metaOperator="inverse_of">
+                        <operator id="6" /><!--need-->
+                    </metaConnection>
+                    <metaConnection metaOperator="unlikely">
+                        <operator id="13" /><!--oppress-->
+                        <operator id="16" /><!--antagonize-->
+                    </metaConnection>
+                </positiveMetaConnectionList>
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="9"><!--madeby-->
+            <nameList>
+                <name>madeby</name>
+            </nameList>
+            <connectionList />
+            <metaConnectionList>
+                <positiveMetaConnectionList>
+                    <metaConnection metaOperator="inverse_of">
+                        <operator id="8" /><!--make-->
+                    </metaConnection>
+                </positiveMetaConnectionList>
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="14"><!--oppressedby-->
+            <nameList>
+                <name>oppressedby</name>
+            </nameList>
+            <connectionList />
+            <metaConnectionList>
+                <positiveMetaConnectionList>
+                    <metaConnection metaOperator="inverse_of">
+                        <operator id="13" /><!--oppress-->
+                    </metaConnection>
+                </positiveMetaConnectionList>
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="11"><!--become-->
+            <nameList>
+                <name>become</name>
+            </nameList>
+            <connectionList />
+            <metaConnectionList>
+                <positiveMetaConnectionList>
+                    <metaConnection metaOperator="inverse_of">
+                        <operator id="10" /><!--was-->
+                    </metaConnection>
+                </positiveMetaConnectionList>
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="24"><!--notpartof-->
+            <nameList>
+                <name>notpartof</name>
+            </nameList>
+            <connectionList />
+            <metaConnectionList>
+                <positiveMetaConnectionList>
+                    <metaConnection metaOperator="inverse_of">
+                        <operator id="23" /><!--without-->
+                    </metaConnection>
+                </positiveMetaConnectionList>
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="19"><!--largerthan-->
+            <nameList>
+                <name>largerthan</name>
+            </nameList>
+            <connectionList />
+            <metaConnectionList>
+                <positiveMetaConnectionList>
+                    <metaConnection metaOperator="inverse_of">
+                        <operator id="20" /><!--smallerthan-->
+                    </metaConnection>
+                    <metaConnection metaOperator="muct">
+                        <operator id="19" /><!--largerthan-->
+                    </metaConnection>
+                </positiveMetaConnectionList>
+                <negativeMetaConnectionList>
+                    <metaConnection metaOperator="muct">
+                        <operator id="19" /><!--largerthan-->
+                    </metaConnection>
+                </negativeMetaConnectionList>
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="20"><!--smallerthan-->
+            <nameList>
+                <name>smallerthan</name>
+            </nameList>
+            <connectionList />
+            <metaConnectionList>
+                <positiveMetaConnectionList>
+                    <metaConnection metaOperator="inverse_of">
+                        <operator id="19" /><!--largerthan-->
+                    </metaConnection>
+                </positiveMetaConnectionList>
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="25"><!--capitalism-->
+            <nameList>
+                <name>capitalism</name>
+            </nameList>
+            <connectionList>
+                <verb id="0"><!--isa-->
+                    <complement id="27" /><!--competition-->
+                    <complement id="29" /><!--system-->
+                </verb>
+                <verb id="4"><!--madeof-->
+                    <complement id="33" /><!--property_right-->
+                </verb>
+                <verb id="15"><!--synergize-->
+                    <complement id="26" /><!--selfishness-->
+                    <complement id="28" /><!--money-->
+                </verb>
+            </connectionList>
+            <metaConnectionList>
+                <positiveMetaConnectionList />
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="27"><!--competition-->
+            <nameList>
+                <name>competition</name>
+            </nameList>
+            <connectionList>
+                <verb id="6"><!--need-->
+                    <complement id="30" /><!--inequality-->
+                </verb>
+                <verb id="1"><!--someare-->
+                    <complement id="25" /><!--capitalism-->
+                </verb>
+            </connectionList>
+            <metaConnectionList>
+                <positiveMetaConnectionList />
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="29"><!--system-->
+            <nameList>
+                <name>system</name>
+            </nameList>
+            <connectionList>
+                <verb id="1"><!--someare-->
+                    <complement id="25" /><!--capitalism-->
+                </verb>
+            </connectionList>
+            <metaConnectionList>
+                <positiveMetaConnectionList />
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="33"><!--property_right-->
+            <nameList>
+                <name>property_right</name>
+            </nameList>
+            <connectionList>
+                <verb id="5"><!--partof-->
+                    <complement id="25" /><!--capitalism-->
+                </verb>
+                <verb id="22"><!--ownedby-->
+                    <complement id="43" /><!--powerfull_entity-->
+                </verb>
+                <verb id="14"><!--oppressedby-->
+                    <complement id="50" /><!--anarchism-->
+                </verb>
+            </connectionList>
+            <metaConnectionList>
+                <positiveMetaConnectionList />
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="26"><!--selfishness-->
+            <nameList>
+                <name>selfishness</name>
+            </nameList>
+            <connectionList>
+                <verb id="15"><!--synergize-->
+                    <complement id="25" /><!--capitalism-->
+                </verb>
+                <verb id="8"><!--make-->
+                    <complement id="30" /><!--inequality-->
+                </verb>
+            </connectionList>
+            <metaConnectionList>
+                <positiveMetaConnectionList />
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="28"><!--money-->
+            <nameList>
+                <name>money</name>
+            </nameList>
+            <connectionList>
+                <verb id="0"><!--isa-->
+                    <complement id="34" /><!--unit_of_measurement-->
+                </verb>
+                <verb id="15"><!--synergize-->
+                    <complement id="25" /><!--capitalism-->
+                </verb>
+            </connectionList>
+            <metaConnectionList>
+                <positiveMetaConnectionList />
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="30"><!--inequality-->
+            <nameList>
+                <name>inequality</name>
+            </nameList>
+            <connectionList>
+                <verb id="7"><!--allow-->
+                    <complement id="27" /><!--competition-->
+                </verb>
+                <verb id="12"><!--contradict-->
+                    <complement id="31" /><!--egalitarianism-->
+                </verb>
+                <verb id="9"><!--madeby-->
+                    <complement id="41" /><!--luck-->
+                    <complement id="26" /><!--selfishness-->
+                </verb>
+            </connectionList>
+            <metaConnectionList>
+                <positiveMetaConnectionList />
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="43"><!--powerfull_entity-->
+            <nameList>
+                <name>powerfull_entity</name>
+            </nameList>
+            <connectionList>
+                <verb id="21"><!--own-->
+                    <complement id="33" /><!--property_right-->
+                </verb>
+                <verb id="19"><!--largerthan-->
+                    <complement id="49" /><!--weak_entity-->
+                </verb>
+            </connectionList>
+            <metaConnectionList>
+                <positiveMetaConnectionList />
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="34"><!--unit_of_measurement-->
+            <nameList>
+                <name>unit_of_measurement</name>
+            </nameList>
+            <connectionList>
+                <verb id="1"><!--someare-->
+                    <complement id="28" /><!--money-->
+                </verb>
+            </connectionList>
+            <metaConnectionList>
+                <positiveMetaConnectionList />
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="31"><!--egalitarianism-->
+            <nameList>
+                <name>egalitarianism</name>
+            </nameList>
+            <connectionList>
+                <verb id="12"><!--contradict-->
+                    <complement id="30" /><!--inequality-->
+                </verb>
+            </connectionList>
+            <metaConnectionList>
+                <positiveMetaConnectionList />
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="41"><!--luck-->
+            <nameList>
+                <name>luck</name>
+            </nameList>
+            <connectionList>
+                <verb id="9"><!--madeby-->
+                    <complement id="42" /><!--randomness-->
+                </verb>
+                <verb id="8"><!--make-->
+                    <complement id="30" /><!--inequality-->
+                </verb>
+            </connectionList>
+            <metaConnectionList>
+                <positiveMetaConnectionList />
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="39"><!--abusive_resource_extraction-->
+            <nameList>
+                <name>abusive_resource_extraction</name>
+            </nameList>
+            <connectionList>
+                <verb id="0"><!--isa-->
+                    <complement id="40" /><!--pollution-->
+                </verb>
+            </connectionList>
+            <metaConnectionList>
+                <positiveMetaConnectionList />
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="40"><!--pollution-->
+            <nameList>
+                <name>pollution</name>
+            </nameList>
+            <connectionList>
+                <verb id="13"><!--oppress-->
+                    <complement id="48" /><!--organic_life-->
+                </verb>
+                <verb id="1"><!--someare-->
+                    <complement id="39" /><!--abusive_resource_extraction-->
+                </verb>
+            </connectionList>
+            <metaConnectionList>
+                <positiveMetaConnectionList />
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="42"><!--randomness-->
+            <nameList>
+                <name>randomness</name>
+            </nameList>
+            <connectionList>
+                <verb id="8"><!--make-->
+                    <complement id="41" /><!--luck-->
+                </verb>
+            </connectionList>
+            <metaConnectionList>
+                <positiveMetaConnectionList />
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="48"><!--organic_life-->
+            <nameList>
+                <name>organic_life</name>
+            </nameList>
+            <connectionList>
+                <verb id="14"><!--oppressedby-->
+                    <complement id="40" /><!--pollution-->
+                </verb>
+            </connectionList>
+            <metaConnectionList>
+                <positiveMetaConnectionList />
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="49"><!--weak_entity-->
+            <nameList>
+                <name>weak_entity</name>
+            </nameList>
+            <connectionList>
+                <verb id="20"><!--smallerthan-->
+                    <complement id="43" /><!--powerfull_entity-->
+                </verb>
+            </connectionList>
+            <metaConnectionList>
+                <positiveMetaConnectionList />
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+        <concept id="50"><!--anarchism-->
+            <nameList>
+                <name>anarchism</name>
+            </nameList>
+            <connectionList>
+                <verb id="13"><!--oppress-->
+                    <complement id="33" /><!--property_right-->
+                </verb>
+            </connectionList>
+            <metaConnectionList>
+                <positiveMetaConnectionList />
+                <negativeMetaConnectionList />
+            </metaConnectionList>
+            <implyConditionList>
+                <positiveImplyConditionList />
+                <negativeImplyConditionList />
+            </implyConditionList>
+        </concept>
+    </conceptList>
+    <rejectedTheoryList>
+        <rejectedConnectionTheoryList />
+        <rejectedMetaConnectionTheoryList />
+    </rejectedTheoryList>
+</ai>
