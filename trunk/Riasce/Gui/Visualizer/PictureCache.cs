@@ -203,7 +203,7 @@ namespace AntiCulture.Kid
 
 
             string[] separator = new string[1];
-            separator[0] = "imgurl\\x3d";
+            separator[0] = "imgurl=";
 
             List<string> imageUrls = new List<string>(pageContent.Split(separator, 100, 0));
 
