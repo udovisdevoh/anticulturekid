@@ -1,0 +1,1 @@
+Artificial Intelligence program. Makes logical derivation, statistical inference. Works with propositional logicl and declarative programming.
